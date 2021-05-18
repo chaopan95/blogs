@@ -654,82 +654,146 @@ a & c & f & a & c & {\color{Blue} f} \\
 <h3 id="21">2.1 、坏字符<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
 <p>当模式串P与文本串T在某以位置pos发生不匹配时，T[pos]叫做坏字符。</p>
 <p>1.1 坏字符哈希表的构造，一遍扫描将P中的字符位置保存在字典中，key为字符本身，value为字符在P中的位置。</p>
-<p>1.2 当坏字符不在模式串中，将模式串全部移动到坏字符后一位
-$$
+<p>1.2 当坏字符不在模式串中，将模式串全部移动到坏字符后一位</p>
+<div>
+<div class="MathJax_Preview">
 \begin{matrix}
-a &amp; c &amp; {\color{Red} e} &amp; a &amp; f &amp; d &amp; b &amp; e \
-a &amp; f &amp; {\color{Blue} d} \
-&amp; &amp; &amp; &amp; \downarrow \
+a &amp; c &amp; {\color{Red} e} &amp; a &amp; f &amp; d &amp; b &amp; e \\
+a &amp; f &amp; {\color{Blue} d} \\
+&amp; &amp; &amp; &amp; \downarrow \\
 &amp; &amp; &amp; a &amp; f &amp; d
 \end{matrix}
-$$</p>
-<p>1.3 当坏字符出现在模式串中，将P中最近的字符与T中的坏字符对应
-$$
+</div>
+<script type="math/tex; mode=display">
 \begin{matrix}
-a &amp; c &amp; {\color{Red} e} &amp; a &amp; f &amp; d &amp; b &amp; e \
-a &amp; c &amp; {\color{Blue} d} \
-&amp; &amp; &amp; &amp; \downarrow \
+a & c & {\color{Red} e} & a & f & d & b & e \\
+a & f & {\color{Blue} d} \\
+& & & & \downarrow \\
+& & & a & f & d
+\end{matrix}
+</script>
+</div>
+<p>1.3 当坏字符出现在模式串中，将P中最近的字符与T中的坏字符对应</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+a &amp; c &amp; {\color{Red} e} &amp; a &amp; f &amp; d &amp; b &amp; e \\
+a &amp; c &amp; {\color{Blue} d} \\
+&amp; &amp; &amp; &amp; \downarrow \\
 &amp; a &amp; e &amp; d
 \end{matrix}
-$$
-但是如果坏字符在P中的位置大于不匹配的位置j时，移动的距离是负数
-$$
+</div>
+<script type="math/tex; mode=display">
 \begin{matrix}
-&amp; {\color{Red} a} &amp; c &amp; d &amp; a &amp; f &amp; d &amp; b &amp; e \
-&amp; {\color{Blue} b} &amp; a &amp; d \
-&amp; &amp; &amp; &amp; \downarrow \
+a & c & {\color{Red} e} & a & f & d & b & e \\
+a & c & {\color{Blue} d} \\
+& & & & \downarrow \\
+& a & e & d
+\end{matrix}
+</script>
+</div>
+<p>但是如果坏字符在P中的位置大于不匹配的位置j时，移动的距离是负数</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+&amp; {\color{Red} a} &amp; c &amp; d &amp; a &amp; f &amp; d &amp; b &amp; e \\
+&amp; {\color{Blue} b} &amp; a &amp; d \\
+&amp; &amp; &amp; &amp; \downarrow \\
 {\color{Blue} b} &amp; a &amp; d
 \end{matrix}
-$$
-为了避免这种情况，BM还需要好后缀规则。</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+& {\color{Red} a} & c & d & a & f & d & b & e \\
+& {\color{Blue} b} & a & d \\
+& & & & \downarrow \\
+{\color{Blue} b} & a & d
+\end{matrix}
+</script>
+</div>
+<p>为了避免这种情况，BM还需要好后缀规则。</p>
 <h3 id="22">2.2. 好后缀<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
 <p>因为T与P的匹配是从左到右（移动方向一直是向右），当出现坏字符时，P的后半部分（如果有）一定是匹配好的，这部分叫做好后缀。
-2.1 好后缀在P的前缀中出现，将P的好后缀匹配的前缀部分与T对齐
-$$
+2.1 好后缀在P的前缀中出现，将P的好后缀匹配的前缀部分与T对齐</p>
+<div>
+<div class="MathJax_Preview">
 \begin{matrix}
-c &amp; a &amp; c &amp; {\color{Red} d} &amp; {\color{Green} e} &amp; {\color{Green} f} &amp; a &amp; d &amp; e &amp; f \
-a &amp; e &amp; f &amp; {\color{Blue} c} &amp; {\color{Green} e} &amp; {\color{Green} f} \
-&amp; &amp; &amp; &amp; \downarrow \
+c &amp; a &amp; c &amp; {\color{Red} d} &amp; {\color{Green} e} &amp; {\color{Green} f} &amp; a &amp; d &amp; e &amp; f \\
+a &amp; e &amp; f &amp; {\color{Blue} c} &amp; {\color{Green} e} &amp; {\color{Green} f} \\
+&amp; &amp; &amp; &amp; \downarrow \\
 &amp; &amp; &amp; a &amp; {\color{Green} e} &amp; {\color{Green} f} &amp; c &amp; e &amp; f
 \end{matrix}
-$$
-2.2 好后缀的部分（后缀）在P的前缀中出现，将部分后缀（P前缀中的）与T对齐
-$$
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+c & a & c & {\color{Red} d} & {\color{Green} e} & {\color{Green} f} & a & d & e & f \\
+a & e & f & {\color{Blue} c} & {\color{Green} e} & {\color{Green} f} \\
+& & & & \downarrow \\
+& & & a & {\color{Green} e} & {\color{Green} f} & c & e & f
+\end{matrix}
+</script>
+</div>
+<p>2.2 好后缀的部分（后缀）在P的前缀中出现，将部分后缀（P前缀中的）与T对齐</p>
+<p>$$
 \begin{matrix}
 c &amp; a &amp; {\color{Red} d} &amp; {\color{Green} c} &amp; {\color{Green} e} &amp; {\color{Green} f} &amp; a &amp; d &amp; e &amp; f \
 a &amp; e &amp; {\color{Blue} f} &amp; {\color{Green} c} &amp; {\color{Green} e} &amp; {\color{Green} f} \
 &amp; &amp; &amp; &amp; \downarrow \
 &amp; &amp; &amp; a &amp; {\color{Green} e} &amp; {\color{Green} f} &amp; c &amp; e &amp; f
-\end{matrix}
-$$
-2.3 好后缀在P的前缀中没有出现，将P整体移动lenP（P的长度）
-$$
+\end{matrix}</p>
+<p>$$</p>
+<p>2.3 好后缀在P的前缀中没有出现，将P整体移动lenP（P的长度）</p>
+<div>
+<div class="MathJax_Preview">
 \begin{matrix}
-a &amp; c &amp; {\color{Red} f} &amp; {\color{Green} a} &amp; {\color{Green} f} &amp; d &amp; b &amp; e &amp; c &amp; f\
-&amp; c &amp; {\color{Blue} c} &amp; {\color{Green} a} &amp; {\color{Green} f} \
-&amp; &amp; &amp; &amp; \downarrow \
+a &amp; c &amp; {\color{Red} f} &amp; {\color{Green} a} &amp; {\color{Green} f} &amp; d &amp; b &amp; e &amp; c &amp; f\\
+&amp; c &amp; {\color{Blue} c} &amp; {\color{Green} a} &amp; {\color{Green} f} \\
+&amp; &amp; &amp; &amp; \downarrow \\
 &amp; &amp; &amp; &amp; &amp; c &amp; c &amp; a &amp; f
 \end{matrix}
-$$
-2.4 好后缀的构造
-$$
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+a & c & {\color{Red} f} & {\color{Green} a} & {\color{Green} f} & d & b & e & c & f\\
+& c & {\color{Blue} c} & {\color{Green} a} & {\color{Green} f} \\
+& & & & \downarrow \\
+& & & & & c & c & a & f
+\end{matrix}
+</script>
+</div>
+<p>2.4 好后缀的构造</p>
+<p>$$
 \begin{aligned}
 &amp; \text{suffix[ k ] = pos} \
 &amp; \text{prefix[ k ] = T/F}
 \end{aligned}
 $$
-k表示好后缀的长度（从1开始），pos表示好后缀在前缀出现的位置（若不存在为-1）, T/F表示长度为k的后缀在P的前缀中是否出现，例如
+k表示好后缀的长度（从1开始），pos表示好后缀在前缀出现的位置（若不存在为-1）, T/F表示长度为k的后缀在P的前缀中是否出现，例如</p>
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
-&amp; \text{P = cefcef} \
-&amp; \text{suffix[1] = 2,} \quad \text{prefix[1] = False} \
-&amp; \text{suffix[2] = 1,} \quad \text{prefix[1] = False} \
-&amp; \text{suffix[3] = 0,} \quad \text{prefix[1] = True} \
-&amp; \text{suffix[4] = -1,} \quad \text{prefix[1] = False} \
-&amp; \text{suffix[5] = -1,} \quad \text{prefix[1] = False} \
-\end{aligned}</p>
+&amp; \text{P = cefcef} \\
+&amp; \text{suffix[1] = 2,} \quad \text{prefix[1] = False} \\
+&amp; \text{suffix[2] = 1,} \quad \text{prefix[1] = False} \\
+&amp; \text{suffix[3] = 0,} \quad \text{prefix[1] = True} \\
+&amp; \text{suffix[4] = -1,} \quad \text{prefix[1] = False} \\
+&amp; \text{suffix[5] = -1,} \quad \text{prefix[1] = False} \\
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{P = cefcef} \\
+& \text{suffix[1] = 2,} \quad \text{prefix[1] = False} \\
+& \text{suffix[2] = 1,} \quad \text{prefix[1] = False} \\
+& \text{suffix[3] = 0,} \quad \text{prefix[1] = True} \\
+& \text{suffix[4] = -1,} \quad \text{prefix[1] = False} \\
+& \text{suffix[5] = -1,} \quad \text{prefix[1] = False} \\
+\end{aligned}
+</script>
+</div>
 <h2 id="23">2.3. 坏字符与好后缀组合<a class="headerlink" href="#23" title="Permanent link">&para;</a></h2>
-<p>分别计算两种规则下移动的距离，取较大者。空间复杂度：<span><span class="MathJax_Preview">O(m + \Sigma)</span><script type="math/tex">O(m + \Sigma)</script></span>；时间复杂度：最好情况下<span><span class="MathJax_Preview">O(\frac{n}{m})</span><script type="math/tex">O(\frac{n}{m})</script></span>，最差情况下<span><span class="MathJax_Preview">O(n+m)</span><script type="math/tex">O(n+m)</script></span>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p>分别计算两种规则下移动的距离，取较大者。空间复杂度：<span><span class="MathJax_Preview">O(m + \Sigma)</span><script type="math/tex">O(m + \Sigma)</script></span>；时间复杂度：最好情况下<span><span class="MathJax_Preview">O(\frac{n}{m})</span><script type="math/tex">O(\frac{n}{m})</script></span>，最差情况下<span><span class="MathJax_Preview">O(n+m)</span><script type="math/tex">O(n+m)</script></span></p>
+<details class="note"><summary><a href="">「BoyerMoore」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -911,10 +975,11 @@ k表示好后缀的长度（从1开始），pos表示好后缀在前缀出现的
 <span class="cm">vector&lt;int&gt; pos = bm.match();  // [0 2]</span>
 <span class="cm">*/</span>
 </code></pre></div>
-</td></tr></table></p>
+</td></tr></table>
+</details>
 <h2 id="3-rabin-karp">3. Rabin-Karp<a class="headerlink" href="#3-rabin-karp" title="Permanent link">&para;</a></h2>
-<p>利用哈希的方法，将字符串转化成一个数。由此，两字符串之间的比较转化为两数字的比较。如果出现散列冲突，逐一比较两字符串是否相等。
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p>利用哈希的方法，将字符串转化成一个数。由此，两字符串之间的比较转化为两数字的比较。如果出现散列冲突，逐一比较两字符串是否相等。</p>
+<details class="note"><summary><a href="">「Rabin-Karp」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -988,7 +1053,8 @@ k表示好后缀的长度（从1开始），pos表示好后缀在前缀出现的
     <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-</td></tr></table></p>
+</td></tr></table>
+</details>
                 
               
               
