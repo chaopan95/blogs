@@ -309,65 +309,45 @@
     6.1 编辑距离
   </a>
   
-    <nav class="md-nav" aria-label="6.1 编辑距离">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#611-levenshtein-distance" class="md-nav__link">
-    6.1.1 Levenshtein distance
-  </a>
-  
 </li>
         
           <li class="md-nav__item">
-  <a href="#612-damerau-levenshtein-distance" class="md-nav__link">
-    6.1.2 Damerau-Levenshtein distance
+  <a href="#62" class="md-nav__link">
+    6.2 具有最大和的连续子数组
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    连续子数组最大和、最大积
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
     背包问题
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     正方形
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     编辑距离
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     最长公共子序列
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     最长公共子串
   </a>
   
@@ -558,65 +538,45 @@
     6.1 编辑距离
   </a>
   
-    <nav class="md-nav" aria-label="6.1 编辑距离">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#611-levenshtein-distance" class="md-nav__link">
-    6.1.1 Levenshtein distance
-  </a>
-  
 </li>
         
           <li class="md-nav__item">
-  <a href="#612-damerau-levenshtein-distance" class="md-nav__link">
-    6.1.2 Damerau-Levenshtein distance
+  <a href="#62" class="md-nav__link">
+    6.2 具有最大和的连续子数组
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    连续子数组最大和、最大积
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
     背包问题
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     正方形
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     编辑距离
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     最长公共子序列
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     最长公共子串
   </a>
   
@@ -711,7 +671,7 @@
 </ul>
 <h2 id="6">6. 经典问题<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <h3 id="61">6.1 编辑距离<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
-<h4 id="611-levenshtein-distance">6.1.1 Levenshtein distance<a class="headerlink" href="#611-levenshtein-distance" title="Permanent link">&para;</a></h4>
+<p>莱文斯特距离（Levenshtein distance）有三种操作：增加、删除和替换</p>
 <div>
 <div class="MathJax_Preview">
 \text{LD}_{a, b}(i, j) =
@@ -742,6 +702,11 @@
 <p>If <span><span class="MathJax_Preview">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i-1, j) + 1</span><script type="math/tex">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i-1, j) + 1</script></span>, delete <span><span class="MathJax_Preview">a_{i}</span><script type="math/tex">a_{i}</script></span></p>
 <p>If <span><span class="MathJax_Preview">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i, j-1) + 1</span><script type="math/tex">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i, j-1) + 1</script></span>, insert <span><span class="MathJax_Preview">b_{j}</span><script type="math/tex">b_{j}</script></span> at <span><span class="MathJax_Preview">a_{i}</span><script type="math/tex">a_{i}</script></span></p>
 <p>If <span><span class="MathJax_Preview">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}</span><script type="math/tex">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}</script></span>, replace <span><span class="MathJax_Preview">a_{i}</span><script type="math/tex">a_{i}</script></span> with <span><span class="MathJax_Preview">b_{j}</span><script type="math/tex">b_{j}</script></span></p>
+<p>例如：word1 = "horse", word2 = "ros"，莱文斯特距离为3</p>
+<p>解释：</p>
+<p>horse -&gt; rorse (将 'h' 替换为 'r')</p>
+<p>rorse -&gt; rose (删除 'r')</p>
+<p>rose -&gt; ros (删除 'e')</p>
 <details class="note"><summary><a href="">「Levenshtein distance的代码」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -912,7 +877,7 @@
 </code></pre></div>
 </td></tr></table>
 </details>
-<h4 id="612-damerau-levenshtein-distance">6.1.2 Damerau-Levenshtein distance<a class="headerlink" href="#612-damerau-levenshtein-distance" title="Permanent link">&para;</a></h4>
+<p>Damerau-Levenshtein distance</p>
 <div>
 <div class="MathJax_Preview">
 \text{DLD}_{a, b}(i, j) =
@@ -953,37 +918,9 @@
 \end{cases}
 </script>
 </div>
-<h3 id="_1">连续子数组最大和、最大积<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<details class="note"><summary><a href="https://leetcode-cn.com/problems/maximum-subarray/">「Leetcode 53. 最大子序和」</a></summary><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
-<p>Input: nums = [-2,1,-3,4,-1,2,1,-5,4]</p>
-<p>Output: 6</p>
-<p>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maxSubArray</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-    <span class="kt">int</span> <span class="n">maxSum</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mf">1l</span><span class="n">l</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">),</span> <span class="n">curSum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">curSum</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="n">curSum</span> <span class="o">+=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
-        <span class="k">else</span> <span class="p">{</span> <span class="n">curSum</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">curSum</span> <span class="o">&gt;</span> <span class="n">maxSum</span><span class="p">)</span> <span class="p">{</span> <span class="n">maxSum</span> <span class="o">=</span> <span class="n">curSum</span><span class="p">;</span> <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">maxSum</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-</details>
-<details class="note"><summary><a href="">「最大和的子数组」</a></summary><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
-<p>Input: nums = [-2,1,-3,4,-1,2,1,-5,4]</p>
-<p>Output: [4,-1,2,1]</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<h3 id="62">6.2 具有最大和的连续子数组<a class="headerlink" href="#62" title="Permanent link">&para;</a></h3>
+<p>给定一个整数数组nums，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回这个子数组。例如：nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]，最大和的字数组为[4, -1, 2, 1]，最大和为6</p>
+<details class="note"><summary><a href="https://leetcode-cn.com/problems/maximum-subarray/">「Leetcode 53. 最大子序和」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1005,19 +942,13 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">getMaxSumEpisode</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nums</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// vector&lt;int&gt; nums {1, 2, -1, 3};</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">getMaxSumEpisode</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ans</span><span class="p">;</span> <span class="p">}</span>
     <span class="kt">int</span> <span class="n">maxSum</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mf">1l</span><span class="n">l</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">),</span> <span class="n">curSum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">begin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">curSum</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="n">curSum</span> <span class="o">+=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
         <span class="k">else</span> <span class="p">{</span>
             <span class="n">curSum</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
@@ -1037,6 +968,7 @@
 </code></pre></div>
 </td></tr></table>
 </details>
+<p>类似题目</p>
 <details class="note"><summary><a href="">「Leetcode 152. 乘积最大子数组」</a></summary><p>Input: nums = [2,3,-2,4]</p>
 <p>Output: 6</p>
 <p>Explanation: [2,3] has the largest product 6.</p>
@@ -1204,7 +1136,7 @@
 </code></pre></div>
 </td></tr></table>
 </details>
-<h3 id="_2">背包问题<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_1">背包问题<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <details class="note"><summary><a href="">「01背包」</a></summary><p>一个背包有一定的承重cap，有N件物品，每件都有自己的价值，记录在数组v中，也都有自己的重量，记录在数组w中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。给定物品的重量w价值v及物品数n和承重cap。请返回最大总价值。</p>
 <p>测试样例： [1,2,3],[1,2,3],3,6</p>
 <p>返回：6</p>
@@ -1351,7 +1283,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 </details>
-<h3 id="_3">正方形<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_2">正方形<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <details class="note"><summary><a href="">「Leetcode 221. 最大正方形」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1458,7 +1390,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 </details>
-<h3 id="_4">编辑距离<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_3">编辑距离<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <details class="note"><summary><a href="">「Leetcode 72. 编辑距离」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1487,26 +1419,12 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
 <span class="cm">给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。</span>
 <span class="cm">你可以对一个单词进行如下三种操作：</span>
 <span class="cm">插入一个字符</span>
 <span class="cm">删除一个字符</span>
 <span class="cm">替换一个字符</span>
-
-<span class="cm">输入：word1 = &quot;horse&quot;, word2 = &quot;ros&quot;</span>
-<span class="cm">输出：3</span>
-<span class="cm">解释：</span>
-<span class="cm">horse -&gt; rorse (将 &#39;h&#39; 替换为 &#39;r&#39;)</span>
-<span class="cm">rorse -&gt; rose (删除 &#39;r&#39;)</span>
-<span class="cm">rose -&gt; ros (删除 &#39;e&#39;)</span>
 <span class="cm">*/</span>
 <span class="kt">int</span> <span class="nf">minDistance</span><span class="p">(</span><span class="n">string</span> <span class="n">word1</span><span class="p">,</span> <span class="n">string</span> <span class="n">word2</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">string</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">word1</span><span class="p">,</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">word2</span><span class="p">;</span>
@@ -1621,7 +1539,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 </details>
-<h3 id="_5">最长公共子序列<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_4">最长公共子序列<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <details class="note"><summary><a href="">「Leetcode 1143. 最长公共子序列」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1798,7 +1716,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 </details>
-<h3 id="_6">最长公共子串<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_5">最长公共子串<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <details class="note"><summary><a href="">「Leetcode 718. 最长重复子数组」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
