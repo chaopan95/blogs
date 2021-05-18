@@ -183,7 +183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../intro/" class="md-nav__link">
         介绍
       </a>
     </li>
@@ -276,13 +276,6 @@
   
     <nav class="md-nav" aria-label="连续子数组最大和、最大积">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#leetcode-152" class="md-nav__link">
-    Leetcode 152. 乘积最大子数组
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#leetcode-1186" class="md-nav__link">
@@ -512,6 +505,45 @@
   
 
           
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      <label class="md-nav__link" for="__nav_2_3">
+        字符串
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="字符串" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          字符串
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../string/match/" class="md-nav__link">
+        匹配
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -556,13 +588,6 @@
   
     <nav class="md-nav" aria-label="连续子数组最大和、最大积">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#leetcode-152" class="md-nav__link">
-    Leetcode 152. 乘积最大子数组
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#leetcode-1186" class="md-nav__link">
@@ -802,10 +827,10 @@
                 <h2 id="1">1. 理论基础<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
 <p>动态规划（Dynamic programming，简称 DP）将愿问题拆分成若干子问题（子问题有重叠），通过分别求解子问题，得到愿问题解的一种算法。</p>
 <h3 id="_1">连续子数组最大和、最大积<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<details class="note" open="open"><summary><a href="https://leetcode-cn.com/problems/maximum-subarray/">「Leetcode 53. 最大子序和」</a></summary><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
-Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
-Output: 6
-Explanation: [4,-1,2,1] has the largest sum = 6.</p>
+<details class="note" open="open"><summary><a href="https://leetcode-cn.com/problems/maximum-subarray/">「Leetcode 53. 最大子序和」</a></summary><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<p>Input: nums = [-2,1,-3,4,-1,2,1,-5,4]</p>
+<p>Output: 6</p>
+<p>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
 </details>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -828,9 +853,9 @@ Explanation: [4,-1,2,1] has the largest sum = 6.</p>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<details class="note"><summary><a href="">「最大和的子数组」</a></summary><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
-Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
-Output: [4,-1,2,1]</p>
+<details class="note"><summary><a href="">「最大和的子数组」</a></summary><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<p>Input: nums = [-2,1,-3,4,-1,2,1,-5,4]</p>
+<p>Output: [4,-1,2,1]</p>
 </details>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -885,7 +910,10 @@ Output: [4,-1,2,1]</p>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<h4 id="leetcode-152">Leetcode 152. 乘积最大子数组<a class="headerlink" href="#leetcode-152" title="Permanent link">&para;</a></h4>
+<details class="note" open="open"><summary><a href="">「Leetcode 152. 乘积最大子数组」</a></summary><p>Input: nums = [2,3,-2,4]</p>
+<p>Output: 6</p>
+<p>Explanation: [2,3] has the largest product 6.</p>
+</details>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -896,17 +924,7 @@ Output: [4,-1,2,1]</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: nums = [2,3,-2,4]</span>
-<span class="cm">Output: 6</span>
-<span class="cm">Explanation: [2,3] has the largest product 6.</span>
-<span class="cm">*/</span>
-<span class="kt">int</span> <span class="nf">maxProduct</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maxProduct</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
     <span class="kt">int</span> <span class="n">minF</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxF</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -2335,6 +2353,20 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
           </div>
         </a>
       
+      
+        <a href="../string/match/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              匹配
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

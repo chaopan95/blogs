@@ -67,7 +67,9 @@ markdown_extensions:
 
 # Contents
 nav:
-    - 介绍: index.md
+    - 介绍: intro.md
     - 算法:
         - 剑指offer: algo/jsoffer.md
         - 动态规划: algo/动态规划.md
+        - 字符串:
+            - 匹配: algo/string/match.md
