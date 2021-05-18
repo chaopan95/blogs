@@ -451,29 +451,50 @@
                   <h1>匹配</h1>
                 
                 <h2 id="1-kmp">1. KMP<a class="headerlink" href="#1-kmp" title="Permanent link">&para;</a></h2>
-<p>KMP讲求从左到右依次匹配，当出现误匹配的字符时，将模式串P向右移动若干距离。KMP借助P的前缀（历史匹配信息）构建next数组。将P前缀中与失配字符前最大重合的位置对齐。P中的第一个字符发生失配时，对应的下一个位置应该是-1，表示将整个P移动到失配字符的下一个位置。
-$$
+<p>KMP讲求从左到右依次匹配，当出现误匹配的字符时，将模式串P向右移动若干距离。KMP借助P的前缀（历史匹配信息）构建next数组。将P前缀中与失配字符前最大重合的位置对齐。P中的第一个字符发生失配时，对应的下一个位置应该是-1，表示将整个P移动到失配字符的下一个位置。</p>
+<div>
+<div class="MathJax_Preview">
 \begin{matrix}
-a &amp; c &amp; e &amp; a &amp; c &amp; {\color{Red} e} &amp; a &amp; f &amp; d &amp; b &amp; e \
-a &amp; c &amp; e &amp; a &amp; c &amp; {\color{Blue} f} \
-&amp; &amp; &amp; &amp; &amp; \downarrow \
+a &amp; c &amp; e &amp; a &amp; c &amp; {\color{Red} e} &amp; a &amp; f &amp; d &amp; b &amp; e \\
+a &amp; c &amp; e &amp; a &amp; c &amp; {\color{Blue} f} \\
+&amp; &amp; &amp; &amp; &amp; \downarrow \\
 &amp; &amp; &amp; a &amp; c &amp; e &amp; a &amp; c &amp; f
 \end{matrix}
-$$
-为了更加高效地移动P，next数组表示地下一个位置应当尽可能地小
-$$
+</div>
+<script type="math/tex; mode=display">
 \begin{matrix}
-a &amp; c &amp; f &amp; a &amp; c &amp; {\color{Red} e} &amp; a &amp; f &amp; d &amp; b &amp; e \
-a &amp; c &amp; f &amp; a &amp; c &amp; {\color{Blue} f} \
-&amp; &amp; &amp; &amp; \downarrow &amp; &amp; &amp; \
-&amp; &amp; &amp; a &amp; c &amp; {\color{Blue} f} &amp; a &amp; c &amp; f \
-&amp; &amp; &amp; &amp; \downarrow &amp; &amp; &amp; \
+a & c & e & a & c & {\color{Red} e} & a & f & d & b & e \\
+a & c & e & a & c & {\color{Blue} f} \\
+& & & & & \downarrow \\
+& & & a & c & e & a & c & f
+\end{matrix}
+</script>
+</div>
+<p>为了更加高效地移动P，next数组表示地下一个位置应当尽可能地小</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+a &amp; c &amp; f &amp; a &amp; c &amp; {\color{Red} e} &amp; a &amp; f &amp; d &amp; b &amp; e \\
+a &amp; c &amp; f &amp; a &amp; c &amp; {\color{Blue} f} \\
+&amp; &amp; &amp; &amp; \downarrow &amp; &amp; &amp; \\
+&amp; &amp; &amp; a &amp; c &amp; {\color{Blue} f} &amp; a &amp; c &amp; f \\
+&amp; &amp; &amp; &amp; \downarrow &amp; &amp; &amp; \\
 &amp; &amp; &amp; &amp; &amp; &amp; a &amp; c &amp; f &amp; a &amp; c &amp; f
 \end{matrix}
-$$
-空间复杂度：<span><span class="MathJax_Preview">O(m)</span><script type="math/tex">O(m)</script></span>, 最坏时间复杂度：<span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span>，m是P的长度，n是T的长度</p>
-<details class="note"><summary><a href="">「Leetcode 28. 实现 strStr()」</a></summary></details>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+a & c & f & a & c & {\color{Red} e} & a & f & d & b & e \\
+a & c & f & a & c & {\color{Blue} f} \\
+& & & & \downarrow & & & \\
+& & & a & c & {\color{Blue} f} & a & c & f \\
+& & & & \downarrow & & & \\
+& & & & & & a & c & f & a & c & f
+\end{matrix}
+</script>
+</div>
+<p>空间复杂度：<span><span class="MathJax_Preview">O(m)</span><script type="math/tex">O(m)</script></span>, 最坏时间复杂度：<span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span>，m是P的长度，n是T的长度</p>
+<details class="note"><summary><a href="">「Leetcode 28. 实现 strStr()」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -550,8 +571,8 @@ $$
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<details class="note"><summary><a href="">「Leetcode 214. 最短回文串」</a></summary></details>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</details>
+<details class="note"><summary><a href="">「Leetcode 214. 最短回文串」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -628,6 +649,7 @@ $$
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+</details>
 <h2 id="2-boyer-moore">2. Boyer-Moore<a class="headerlink" href="#2-boyer-moore" title="Permanent link">&para;</a></h2>
 <h3 id="21">2.1 、坏字符<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
 <p>当模式串P与文本串T在某以位置pos发生不匹配时，T[pos]叫做坏字符。</p>
