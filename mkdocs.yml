@@ -70,4 +70,4 @@ nav:
     - 介绍: index.md
     - 算法:
         - 剑指offer: algo/jsoffer.md
-        - 动态规划: algo/basic.md
+        - 动态规划: algo/动态规划.md
