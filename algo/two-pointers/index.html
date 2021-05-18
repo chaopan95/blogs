@@ -409,8 +409,7 @@
                   <h1>双指针</h1>
                 
                 <h2 id="_1">相关题目<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<details class="note"><summary><a href="">「Leetcode 3. 无重复字符的最长子串」</a></summary></details>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<details class="note"><summary><a href="">「Leetcode 3. 无重复字符的最长子串」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -455,8 +454,8 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<details class="note"><summary><a href="">「Leetcode 15. 三数之和」</a></summary></details>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+</details>
+<details class="note"><summary><a href="">「Leetcode 15. 三数之和」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -517,33 +516,11 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<details class="note"><summary><a href="https://leetcode-cn.com/problems/maximum-subarray/">「Leetcode 53. 最大子序和」</a></summary><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+</details>
+<details class="note"><summary><a href="">「Leetcode 16. 最接近的三数之和」</a></summary><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
 <p>Input: nums = [-2,1,-3,4,-1,2,1,-5,4]</p>
 <p>Output: 6</p>
 <p>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maxSubArray</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-    <span class="kt">int</span> <span class="n">maxSum</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mf">1l</span><span class="n">l</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">),</span> <span class="n">curSum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">curSum</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="n">curSum</span> <span class="o">+=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
-        <span class="k">else</span> <span class="p">{</span> <span class="n">curSum</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">curSum</span> <span class="o">&gt;</span> <span class="n">maxSum</span><span class="p">)</span> <span class="p">{</span> <span class="n">maxSum</span> <span class="o">=</span> <span class="n">curSum</span><span class="p">;</span> <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">maxSum</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-</details>
-<details class="note"><summary><a href="">「Leetcode 16. 最接近的三数之和」</a></summary></details>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -595,6 +572,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+</details>
                 
               
               
