@@ -1,15 +1,14 @@
 ## 相关题目
 ??? note "[「Leetcode 3. 无重复字符的最长子串」]()"
-
-    ```cpp
-    /*
     给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
 
-    示例 1:
     输入: s = "abcabcbb"
+    
     输出: 3 
+    
     解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
-    */
+
+    ```cpp
     int lengthOfLongestSubstring(string s) {
         int n = int(s.length());
         if (n == 0) { return 0; }
@@ -27,15 +26,11 @@
     ```
 
 ??? note "[「Leetcode 15. 三数之和」]()"
-
-    ```cpp
-    /*
-    给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素
-    a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的
-    三元组。
+    给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
 
     注意：答案中不可以包含重复的三元组。
-    */
+
+    ```cpp
     vector<vector<int>> threeSum(vector<int>& nums) {
         int n = int(nums.size());
         vector<vector<int>> ans;
@@ -62,20 +57,9 @@
     ```
 
 ??? note "[「Leetcode 16. 最接近的三数之和」]()"
-    给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
-
-    Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
-
-    Output: 6
-
-    Explanation: [4,-1,2,1] has the largest sum = 6.
+    给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。
 
     ```cpp
-    /*
-    给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三
-    个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在
-    唯一答案。
-    */
     int threeSumClosest(vector<int>& nums, int target) {
         int n = int(nums.size()), res = 0, diff = (1ll << 31) - 1;
         if (n < 3) { return 0; }
