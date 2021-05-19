@@ -634,10 +634,16 @@
 <p>如果一个问题具有以下两个要素，则可以通过动态规划的方法求解</p>
 <ul>
 <li>
-<p>最优子结构（optimal structure）</p>
+<p><code>最优子结构（optimal structure）</code></p>
+<ul>
+<li>原问题的解是可以由子问题得到的（递推或者递归），反之，不能称之为具有最优子结构</li>
+</ul>
 </li>
 <li>
-<p>重叠子问题（overlap subproblem）</p>
+<p><code>重叠子问题（overlap subproblem）</code></p>
+<ul>
+<li>当某些子问题被重复遍历（或者原问题被分解成多个相同的子问题）时，这种情况称为重叠子问题</li>
+</ul>
 </li>
 </ul>
 <h2 id="3">3. 计算步骤<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
@@ -1312,6 +1318,7 @@
 <div class="MathJax_Preview">
 \text{dp[ i ][ j ] = }
 \begin{cases}
+0, &amp;\quad \text{i == len(A) or j == len(B)} \\
 \text{dp[ i + 1 ][ j + 1] + 1}, &amp;\quad \text{A[ i ] == B[ j ]} \\
 \max(\text{dp[i + 1][ j ], dp[ i ][ j + 1 ]}), &amp; \quad \text{otherwise}
 \end{cases}
@@ -1319,6 +1326,7 @@
 <script type="math/tex; mode=display">
 \text{dp[ i ][ j ] = }
 \begin{cases}
+0, &\quad \text{i == len(A) or j == len(B)} \\
 \text{dp[ i + 1 ][ j + 1] + 1}, &\quad \text{A[ i ] == B[ j ]} \\
 \max(\text{dp[i + 1][ j ], dp[ i ][ j + 1 ]}), & \quad \text{otherwise}
 \end{cases}
