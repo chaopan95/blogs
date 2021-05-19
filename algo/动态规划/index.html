@@ -920,7 +920,7 @@
 </div>
 <h3 id="62">6.2 具有最大和的连续子数组<a class="headerlink" href="#62" title="Permanent link">&para;</a></h3>
 <p>给定一个整数数组nums，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回这个子数组。例如：nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]，最大和的字数组为[4, -1, 2, 1]，最大和为6</p>
-<details class="note"><summary><a href="https://leetcode-cn.com/problems/maximum-subarray/">「Leetcode 53. 最大子序和」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<details class="note"><summary><a href="">「代码」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -969,9 +969,10 @@
 </td></tr></table>
 </details>
 <p>类似题目</p>
-<details class="note"><summary><a href="">「Leetcode 152. 乘积最大子数组」</a></summary><p>Input: nums = [2,3,-2,4]</p>
-<p>Output: 6</p>
-<p>Explanation: [2,3] has the largest product 6.</p>
+<details class="note"><summary><a href="https://leetcode-cn.com/problems/maximum-product-subarray/">「Leetcode 152. 乘积最大子数组」</a></summary><p>给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。</p>
+<p>输入: [2,3,-2,4]</p>
+<p>输出: 6</p>
+<p>解释: 子数组 [2,3] 有最大乘积 6。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -996,7 +997,22 @@
 </code></pre></div>
 </td></tr></table>
 </details>
-<details class="note"><summary><a href="">「Leetcode 1186. 删除一次得到子数组最大和」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<details class="note"><summary><a href="https://leetcode-cn.com/problems/maximum-subarray-sum-with-one-deletion/">「Leetcode 1186. 删除一次得到子数组最大和」</a></summary><p>给你一个整数数组，返回它的某个 非空 子数组（连续元素）在执行一次可选的删除操作后，所能得到的最大元素总和。换句话说，你可以从原数组中选出一个子数组，并可以决定要不要从中删除一个元素（只能删一次哦），（删除后）子数组中至少应当有一个元素，然后该子数组（剩下）的元素总和是所有子数组之中最大的。注意，删除一个元素后，子数组 不能为空。</p>
+<p>请看示例：</p>
+<p>示例 1：</p>
+<p>输入：arr = [1,-2,0,3]</p>
+<p>输出：4</p>
+<p>解释：我们可以选出 [1, -2, 0, 3]，然后删掉 -2，这样得到 [1, 0, 3]，和最大。</p>
+<p>示例 2：</p>
+<p>输入：arr = [1,-2,-2,3]</p>
+<p>输出：3</p>
+<p>解释：我们直接选出 [3]，这就是最大和。</p>
+<p>示例 3：</p>
+<p>输入：arr = [-1,-1,-1,-1]</p>
+<p>输出：-1</p>
+<p>解释：最后得到的子数组不能为空，所以我们不能选择 [-1] 并从中删去 -1 来得到 0。</p>
+<p>我们应该直接选择 [-1]，或者选择 [-1, -1] 再从中删去一个 -1。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1012,59 +1028,7 @@
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">给你一个整数数组，返回它的某个 非空 子数组（连续元素）在执行一次可选的删除操作后，所能得到</span>
-<span class="cm">的最大元素总和。</span>
-
-<span class="cm">换句话说，你可以从原数组中选出一个子数组，并可以决定要不要从中删除一个元素（只能删一次哦），</span>
-<span class="cm">（删除后）子数组中至少应当有一个元素，然后该子数组（剩下）的元素总和是所有子数组之中最大的。</span>
-
-<span class="cm">注意，删除一个元素后，子数组 不能为空。</span>
-
-<span class="cm">请看示例：</span>
-<span class="cm">示例 1：</span>
-<span class="cm">输入：arr = [1,-2,0,3]</span>
-<span class="cm">输出：4</span>
-<span class="cm">解释：我们可以选出 [1, -2, 0, 3]，然后删掉 -2，这样得到 [1, 0, 3]，和最大。</span>
-
-<span class="cm">示例 2：</span>
-<span class="cm">输入：arr = [1,-2,-2,3]</span>
-<span class="cm">输出：3</span>
-<span class="cm">解释：我们直接选出 [3]，这就是最大和。</span>
-
-<span class="cm">示例 3：</span>
-<span class="cm">输入：arr = [-1,-1,-1,-1]</span>
-<span class="cm">输出：-1</span>
-<span class="cm">解释：最后得到的子数组不能为空，所以我们不能选择 [-1] 并从中删去 -1 来得到 0。</span>
-<span class="cm">    我们应该直接选择 [-1]，或者选择 [-1, -1] 再从中删去一个 -1。</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
     <span class="kt">int</span> <span class="n">maximumSum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">arr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
@@ -1084,7 +1048,8 @@
 </code></pre></div>
 </td></tr></table>
 </details>
-<details class="note"><summary><a href="">「最长01等量子串」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<details class="note"><summary><a href="">「最长01等量子串」</a></summary><p>给定一个只包含0和1的字符串如"0010011001001010110"，求其最长子串，这个子串中0和1的个数相等</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1107,9 +1072,7 @@
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">getLongest01SubstrLen</span><span class="p">(</span><span class="n">string</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//str = &quot;0010011001001010110&quot;, ans = 16</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">getLongest01SubstrLen</span><span class="p">(</span><span class="n">string</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">str</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
     <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">dict</span><span class="p">;</span>
