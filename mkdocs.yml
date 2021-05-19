@@ -70,7 +70,7 @@ nav:
     - 介绍: intro.md
     - 算法:
         - 剑指offer: algo/jsoffer.md
-        - 动态规划: algo/动态规划.md
+        - 动态规划: algo/dp.md
         - 双指针: algo/two-pointers.md
     - 数据结构:
         - 字符串:
