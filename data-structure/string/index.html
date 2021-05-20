@@ -13,21 +13,21 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/string/match/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/string/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.4">
     
     
       
-        <title>匹配 - 个人博客</title>
+        <title>字符串 - 个人博客</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.bde7dde4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bde7dde4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ef6f36e2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
         
           
           
@@ -65,7 +65,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="red">
   
     
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-kmp" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -84,7 +84,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="个人博客" class="md-header__button md-logo" aria-label="个人博客" data-md-component="logo">
+    <a href="../.." title="个人博客" class="md-header__button md-logo" aria-label="个人博客" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              匹配
+              字符串
             
           </span>
         </div>
@@ -164,7 +164,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="个人博客" class="md-nav__button md-logo" aria-label="个人博客" data-md-component="logo">
+    <a href="../.." title="个人博客" class="md-nav__button md-logo" aria-label="个人博客" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -183,7 +183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         介绍
       </a>
     </li>
@@ -219,7 +219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/jsoffer/" class="md-nav__link">
+      <a href="../../algo/jsoffer/" class="md-nav__link">
         剑指offer
       </a>
     </li>
@@ -231,7 +231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp/" class="md-nav__link">
+      <a href="../../algo/dp/" class="md-nav__link">
         动态规划
       </a>
     </li>
@@ -243,7 +243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/two-pointers/" class="md-nav__link">
+      <a href="../../algo/two-pointers/" class="md-nav__link">
         双指针
       </a>
     </li>
@@ -288,29 +288,6 @@
     
   
   
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
-      
-      <label class="md-nav__link" for="__nav_3_1">
-        字符串
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="字符串" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_1">
-          <span class="md-nav__icon md-icon"></span>
-          字符串
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-    
-  
-  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -318,12 +295,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          匹配
+          字符串
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        匹配
+        字符串
       </a>
       
         
@@ -339,37 +316,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-kmp" class="md-nav__link">
-    1. KMP
+  <a href="#_1" class="md-nav__link">
+    匹配
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-boyer-moore" class="md-nav__link">
-    2. Boyer-Moore
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Boyer-Moore">
+    <nav class="md-nav" aria-label="匹配">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
-    2.1. 坏字符
+  <a href="#kmp" class="md-nav__link">
+    KMP
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#22" class="md-nav__link">
-    2.2. 好后缀
+  <a href="#boyer-moore" class="md-nav__link">
+    Boyer-Moore
+  </a>
+  
+    <nav class="md-nav" aria-label="Boyer-Moore">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    坏字符
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    2.3. 坏字符与好后缀组合
+  <a href="#_3" class="md-nav__link">
+    好后缀
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    坏字符与好后缀组合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rabin-karp" class="md-nav__link">
+    Rabin-Karp
   </a>
   
 </li>
@@ -379,23 +376,10 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#3-rabin-karp" class="md-nav__link">
-    3. Rabin-Karp
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -430,37 +414,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-kmp" class="md-nav__link">
-    1. KMP
+  <a href="#_1" class="md-nav__link">
+    匹配
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-boyer-moore" class="md-nav__link">
-    2. Boyer-Moore
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Boyer-Moore">
+    <nav class="md-nav" aria-label="匹配">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
-    2.1. 坏字符
+  <a href="#kmp" class="md-nav__link">
+    KMP
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#22" class="md-nav__link">
-    2.2. 好后缀
+  <a href="#boyer-moore" class="md-nav__link">
+    Boyer-Moore
+  </a>
+  
+    <nav class="md-nav" aria-label="Boyer-Moore">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    坏字符
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
-    2.3. 坏字符与好后缀组合
+  <a href="#_3" class="md-nav__link">
+    好后缀
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    坏字符与好后缀组合
   </a>
   
 </li>
@@ -469,11 +461,16 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-rabin-karp" class="md-nav__link">
-    3. Rabin-Karp
+        
+          <li class="md-nav__item">
+  <a href="#rabin-karp" class="md-nav__link">
+    Rabin-Karp
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -490,9 +487,10 @@
               
                 
                 
-                  <h1>匹配</h1>
+                  <h1>字符串</h1>
                 
-                <h2 id="1-kmp">1. KMP<a class="headerlink" href="#1-kmp" title="Permanent link">&para;</a></h2>
+                <h2 id="_1">匹配<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="kmp">KMP<a class="headerlink" href="#kmp" title="Permanent link">&para;</a></h3>
 <p>KMP讲求从左到右依次匹配，当出现误匹配的字符时，将模式串P向右移动若干距离。KMP借助P的前缀（历史匹配信息）构建next数组。将P前缀中与失配字符前最大重合的位置对齐。P中的第一个字符发生失配时，对应的下一个位置应该是-1，表示将整个P移动到失配字符的下一个位置。</p>
 <div>
 <div class="MathJax_Preview">
@@ -692,8 +690,8 @@ a & c & f & a & c & {\color{Blue} f} \\
 </code></pre></div>
 </td></tr></table>
 </details>
-<h2 id="2-boyer-moore">2. Boyer-Moore<a class="headerlink" href="#2-boyer-moore" title="Permanent link">&para;</a></h2>
-<h3 id="21">2.1. 坏字符<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<h3 id="boyer-moore">Boyer-Moore<a class="headerlink" href="#boyer-moore" title="Permanent link">&para;</a></h3>
+<h4 id="_2">坏字符<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>当模式串P与文本串T在某以位置pos发生不匹配时，T[pos]叫做坏字符。</p>
 <p>1.1 坏字符哈希表的构造，一遍扫描将P中的字符位置保存在字典中，key为字符本身，value为字符在P中的位置。</p>
 <p>1.2 当坏字符不在模式串中，将模式串全部移动到坏字符后一位</p>
@@ -754,9 +752,11 @@ a & c & {\color{Blue} d} \\
 </script>
 </div>
 <p>为了避免这种情况，BM还需要好后缀规则。</p>
-<h3 id="22">2.2. 好后缀<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
-<p>因为T与P的匹配是从左到右（移动方向一直是向右），当出现坏字符时，P的后半部分（如果有）一定是匹配好的，这部分叫做好后缀。
-2.2.1 好后缀在P的前缀中出现，将P的好后缀匹配的前缀部分与T对齐</p>
+<h4 id="_3">好后缀<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>因为T与P的匹配是从左到右（移动方向一直是向右），当出现坏字符时，P的后半部分（如果有）一定是匹配好的，这部分叫做好后缀。</p>
+<ul>
+<li>好后缀在P的前缀中出现，将P的好后缀匹配的前缀部分与T对齐</li>
+</ul>
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
@@ -775,7 +775,9 @@ a & e & f & {\color{Blue} c} & {\color{Green} e} & {\color{Green} f} \\
 \end{matrix}
 </script>
 </div>
-<p>2.2.2 好后缀的部分（后缀）在P的前缀中出现，将部分后缀（P前缀中的）与T对齐</p>
+<ul>
+<li>好后缀的部分（后缀）在P的前缀中出现，将部分后缀（P前缀中的）与T对齐</li>
+</ul>
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
@@ -794,7 +796,9 @@ a & e & {\color{Blue} f} & {\color{Green} c} & {\color{Green} e} & {\color{Green
 \end{matrix}
 </script>
 </div>
-<p>2.2.3 好后缀在P的前缀中没有出现，将P整体移动lenP（P的长度）</p>
+<ul>
+<li>好后缀在P的前缀中没有出现，将P整体移动lenP（P的长度）</li>
+</ul>
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
@@ -813,7 +817,9 @@ a & c & {\color{Red} f} & {\color{Green} a} & {\color{Green} f} & d & b & e & c 
 \end{matrix}
 </script>
 </div>
-<p>2.2.4 好后缀的构造</p>
+<ul>
+<li>好后缀的构造</li>
+</ul>
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
@@ -851,7 +857,7 @@ a & c & {\color{Red} f} & {\color{Green} a} & {\color{Green} f} & d & b & e & c 
 \end{aligned}
 </script>
 </div>
-<h3 id="23">2.3. 坏字符与好后缀组合<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<h4 id="_4">坏字符与好后缀组合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>分别计算两种规则下移动的距离，取较大者。空间复杂度：<span><span class="MathJax_Preview">O(m + \Sigma)</span><script type="math/tex">O(m + \Sigma)</script></span>；时间复杂度：最好情况下<span><span class="MathJax_Preview">O(\frac{n}{m})</span><script type="math/tex">O(\frac{n}{m})</script></span>，最差情况下<span><span class="MathJax_Preview">O(n+m)</span><script type="math/tex">O(n+m)</script></span></p>
 <details class="note"><summary><a href="">「BoyerMoore」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1037,7 +1043,7 @@ a & c & {\color{Red} f} & {\color{Green} a} & {\color{Green} f} & d & b & e & c 
 </code></pre></div>
 </td></tr></table>
 </details>
-<h2 id="3-rabin-karp">3. Rabin-Karp<a class="headerlink" href="#3-rabin-karp" title="Permanent link">&para;</a></h2>
+<h3 id="rabin-karp">Rabin-Karp<a class="headerlink" href="#rabin-karp" title="Permanent link">&para;</a></h3>
 <p>利用哈希的方法，将字符串转化成一个数。由此，两字符串之间的比较转化为两数字的比较。如果出现散列冲突，逐一比较两字符串是否相等。</p>
 <details class="note"><summary><a href="">「Rabin-Karp」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1133,7 +1139,7 @@ a & c & {\color{Red} f} & {\color{Green} a} & {\color{Green} f} & d & b & e & c 
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../../../algo/two-pointers/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../../algo/two-pointers/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1173,10 +1179,10 @@ a & c & {\color{Red} f} & {\color{Green} a} & {\color{Green} f} & d & b & e & c 
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.4fa0e4ee.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.4fa0e4ee.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.1d3bfcf1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1d3bfcf1.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
