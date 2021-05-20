@@ -304,14 +304,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    具有最大和的连续子数组
+  <a href="#m" class="md-nav__link">
+    M个子数组的最大和
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     最长公共子序列
   </a>
   
@@ -319,14 +319,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     子序列连续
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     子序列不连续
   </a>
   
@@ -338,14 +338,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     背包问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     正方形
   </a>
   
@@ -526,14 +526,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    具有最大和的连续子数组
+  <a href="#m" class="md-nav__link">
+    M个子数组的最大和
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     最长公共子序列
   </a>
   
@@ -541,14 +541,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     子序列连续
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     子序列不连续
   </a>
   
@@ -560,14 +560,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     背包问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     正方形
   </a>
   
@@ -1000,9 +1000,65 @@
 </code></pre></div>
 </td></tr></table>
 </details>
-<h2 id="_7">具有最大和的连续子数组<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>给定一个整数数组nums，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回这个子数组。例如：nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]，最大和的字数组为[4, -1, 2, 1]，最大和为6</p>
-<details class="note"><summary><a href="">「代码」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<h2 id="m">M个子数组的最大和<a class="headerlink" href="#m" title="Permanent link">&para;</a></h2>
+<p>给定一个整数数组nums和一个正整数M，返回nums数组中M个连续子数组的元素最大和</p>
+<p>例如：nums = [-1, 4, -2, 3, -2, 3]，M = 2，最大和为8 = [ 4 ] + [3, -2, 3]</p>
+<p>dp[ i ][ j ]表示，前j个元素在i个子数组中的最大和，其中nums[ j ]落在第i个子数组（1 &lt;= i &lt;= M，i &lt;= j &lt;= n）</p>
+<p>状态转移</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ]} = \max
+\begin{cases}
+\text{dp[ i ][j - 1] + nums[ i - 1 ]} \\
+\max_{t \in [i-1, j)}(\text{dp[i - 1][t] + nums[i - 1]})
+\end{cases}, \text{ where } 1 \leq i \leq M \quad i \leq j \leq n
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ]} = \max
+\begin{cases}
+\text{dp[ i ][j - 1] + nums[ i - 1 ]} \\
+\max_{t \in [i-1, j)}(\text{dp[i - 1][t] + nums[i - 1]})
+\end{cases}, \text{ where } 1 \leq i \leq M \quad i \leq j \leq n
+</script>
+</div>
+<p>注意到当前状态dp[ i ][ j ]只与dp[ i ][j - 1]、dp[i - 1][t]两个状态相关，因为可以使用O(n)的空间，pre[ j ]表示上一层的状态，cur[ j ]表示当前状态</p>
+<p>s$
+\begin{aligned}
+&amp; \text{cur[ j ] = dp[ i ][j - 1] + nums[ i - 1 ]} \
+&amp; \text{pre[ j ] = \text{dp[i - 1][t] + nums[i - 1]}}
+\end{aligned}
+$$</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maxMSum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">M</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">maxSum</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">cur</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pre</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">M</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">maxSum</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cur</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">pre</span><span class="p">[</span><span class="n">j</span><span class="mi">-1</span><span class="p">],</span> <span class="n">cur</span><span class="p">[</span><span class="n">j</span><span class="mi">-1</span><span class="p">])</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="mi">-1</span><span class="p">];</span>
+            <span class="n">pre</span><span class="p">[</span><span class="n">j</span><span class="mi">-1</span><span class="p">]</span> <span class="o">=</span> <span class="n">maxSum</span><span class="p">;</span>
+            <span class="n">maxSum</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">maxSum</span><span class="p">,</span> <span class="n">cur</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="n">pre</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">maxSum</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">maxSum</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>当M = 1时
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1048,8 +1104,7 @@
     <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-</td></tr></table>
-</details>
+</td></tr></table></p>
 <blockquote>
 <p>相似题目</p>
 </blockquote>
@@ -1183,8 +1238,8 @@
 </code></pre></div>
 </td></tr></table>
 </details>
-<h2 id="_8">最长公共子序列<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<h3 id="_9">子序列连续<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h2 id="_7">最长公共子序列<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">子序列连续<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>给定两个序列（数组或字符串）A = [1, 2, 3, 2, 1]， B = [3, 2, 1, 4, 7]，那么这两者的最长公共部分是[3, 2, 1]，长度为3</p>
 <p>设dp[i][j]为A[i: ]和B[j: ]两个数组的最长公共部分的长度，也就是状态，一共n*m个。因为要求子数组是连续的，所以当前状态只会与下一个（或上一个）状态相关，由此可以写出状态转移方程。</p>
 <div>
@@ -1285,7 +1340,7 @@
 </code></pre></div>
 </td></tr></table>
 </details>
-<h3 id="_10">子序列不连续<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_9">子序列不连续<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>当子序列不要求连续时，依然可以用dp[i][j]表示A[i: ]和B[j: ]两个数组的最长公共部分的长度，但是状态的转移方程发生改变</p>
 <div>
 <div class="MathJax_Preview">
@@ -1431,7 +1486,7 @@
 </code></pre></div>
 </td></tr></table>
 </details>
-<h2 id="_11">背包问题<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="_10">背包问题<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <details class="note"><summary><a href="">「01背包」</a></summary><p>一个背包有一定的承重cap，有N件物品，每件都有自己的价值，记录在数组v中，也都有自己的重量，记录在数组w中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。给定物品的重量w价值v及物品数n和承重cap。请返回最大总价值。</p>
 <p>测试样例： [1,2,3],[1,2,3],3,6</p>
 <p>返回：6</p>
@@ -1578,7 +1633,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 </details>
-<h2 id="_12">正方形<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="_11">正方形<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <details class="note"><summary><a href="">「Leetcode 221. 最大正方形」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
