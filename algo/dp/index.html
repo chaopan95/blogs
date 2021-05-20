@@ -1574,19 +1574,19 @@
 <h3 id="_12">股票价格的跨度<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>给定一个股票价格的序列stocks = [100, 80, 60, 70, 60, 75, 85], 求其每一天的股票跨度（从i天开始向前计数，股票价格小于等于当前价格），输出结果[1, 1, 1, 2, 1, 4, 6]</p>
 <p><strong>分析</strong></p>
-<p>按照题意，可以写出一个<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>的算法，但是这样会超时。我们可以观察到，对于某一天的股票stocks[ i ]，必然会逐个与i之前的元素比较，终于碰到一个比它大的或者没有，这时，我们将这个股票价格的跨度记录下来，对于下一个股价stocks[i + 1]</p>
+<p>按照题意，可以写出一个 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span> 的算法，但是这样会超时。我们可以观察到，对于某一天的股票 stocks[ i ]，必然会逐个与i之前的元素比较，终于碰到一个比它大的或者没有，这时，我们将这个股票价格的跨度记录下来，对于下一个股价 stocks[i + 1]</p>
 <div>
 <div class="MathJax_Preview">
-\text{count[i + 1]} =
+\text{count[ stocks[i + 1] ]} =
 \begin{cases}
-\text{count[ i ]} + 1, &amp; \quad \text{stocks[ i + 1 ]} \geq \text{stocks[ i ]} \\
+\text{count[ stocks[ i ] ]} + 1, &amp; \quad \text{stocks[ i + 1 ]} \geq \text{stocks[ i ]} \\
 1, &amp; \quad \text{otherwise}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{count[i + 1]} =
+\text{count[ stocks[i + 1] ]} =
 \begin{cases}
-\text{count[ i ]} + 1, & \quad \text{stocks[ i + 1 ]} \geq \text{stocks[ i ]} \\
+\text{count[ stocks[ i ] ]} + 1, & \quad \text{stocks[ i + 1 ]} \geq \text{stocks[ i ]} \\
 1, & \quad \text{otherwise}
 \end{cases}
 </script>
