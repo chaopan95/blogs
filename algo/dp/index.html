@@ -1022,12 +1022,20 @@
 </script>
 </div>
 <p>注意到当前状态dp[ i ][ j ]只与dp[ i ][j - 1]、dp[i - 1][t]两个状态相关，因为可以使用O(n)的空间，pre[ j ]表示上一层的状态，cur[ j ]表示当前状态</p>
-<p>s$
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
-&amp; \text{cur[ j ] = dp[ i ][j - 1] + nums[ i - 1 ]} \
+&amp; \text{cur[ j ] = dp[ i ][j - 1] + nums[ i - 1 ]} \\
 &amp; \text{pre[ j ] = \text{dp[i - 1][t] + nums[i - 1]}}
 \end{aligned}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{cur[ j ] = dp[ i ][j - 1] + nums[ i - 1 ]} \\
+& \text{pre[ j ] = \text{dp[i - 1][t] + nums[i - 1]}}
+\end{aligned}
+</script>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
