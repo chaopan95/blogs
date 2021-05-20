@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
-     <loc>https://chaopan95.github.io/blogs/intro/</loc>
-     <lastmod>2021-05-19</lastmod>
+     <loc>https://chaopan95.github.io/blogs/</loc>
+     <lastmod>2021-05-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://chaopan95.github.io/blogs/algo/jsoffer/</loc>
-     <lastmod>2021-05-19</lastmod>
+     <lastmod>2021-05-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://chaopan95.github.io/blogs/algo/dp/</loc>
-     <lastmod>2021-05-19</lastmod>
+     <lastmod>2021-05-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://chaopan95.github.io/blogs/algo/two-pointers/</loc>
-     <lastmod>2021-05-19</lastmod>
+     <lastmod>2021-05-20</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://chaopan95.github.io/blogs/data-structure/string/match/</loc>
-     <lastmod>2021-05-19</lastmod>
+     <lastmod>2021-05-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

@@ -180,7 +180,7 @@ $$
 \end{cases}
 $$
 
-> 相似题目
+**相似题目**
 ??? note "[「牛客题霸-算法篇 35. 最小编辑代价」](https://www.nowcoder.com/practice/05fed41805ae4394ab6607d0d745c8e4?tpId=196&tqId=37134&rp=1&ru=%2Fta%2Fjob-code-total&qru=%2Fta%2Fjob-code-total%2Fquestion-ranking&tab=answerKey)"
 
     ```cpp
@@ -229,38 +229,77 @@ $$
     }
     ```
 
-## 具有最大和的连续子数组
-给定一个整数数组nums，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回这个子数组。例如：nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]，最大和的字数组为[4, -1, 2, 1]，最大和为6
+## M个子数组的最大和
+给定一个整数数组nums和一个正整数M，返回nums数组中M个连续子数组的元素最大和
 
-??? note "[「代码」]()"
+例如：nums = [-1, 4, -2, 3, -2, 3]，M = 2，最大和为8 = [ 4 ] + [3, -2, 3]
 
-    ```cpp
-    vector<int> getMaxSumEpisode(vector<int> nums) {
-        int n = int(nums.size());
-        vector<int> ans;
-        if (n == 0) { return ans; }
-        int maxSum = -(1ll << 31), curSum = 0;
-        int left = 0, right = 0, begin = 0;
-        for (int i = 0; i < n; i++) {
-            if (curSum >= 0) { curSum += nums[i]; }
-            else {
-                curSum = nums[i];
-                begin = i;
-            }
-            if (maxSum < curSum) {
-                maxSum = curSum;
-                left = begin;
-                right = i;
-            }
+dp[ i ][ j ]表示，前j个元素在i个子数组中的最大和，其中nums[ j ]落在第i个子数组（1 <= i <= M，i <= j <= n）
+
+状态转移
+
+$$
+\text{dp[ i ][ j ]} = \max
+\begin{cases}
+\text{dp[ i ][j - 1] + nums[ i - 1 ]} \\
+\max_{t \in [i-1, j)}(\text{dp[i - 1][t] + nums[i - 1]})
+\end{cases}, \text{ where } 1 \leq i \leq M \quad i \leq j \leq n
+$$
+
+注意到当前状态dp[ i ][ j ]只与dp[ i ][j - 1]、dp[i - 1][ t ]两个状态相关，因为可以使用O(n)的空间，pre[ j ]表示上一层的状态，cur[ j ]表示当前状态
+
+$$
+\begin{aligned}
+& \text{cur[ j ] = dp[ i ][j - 1] + nums[ i - 1 ]} \\
+& \text{pre[ j ] = dp[i - 1][t] + nums[i - 1]}
+\end{aligned}
+$$
+
+```cpp
+int maxMSum(vector<int> nums, int M) {
+    int n = (int)nums.size(), maxSum = INT_MIN;
+    vector<int> cur(n+1, 0), pre(n+1, 0);
+    for (int i = 1; i <= M; i++) {
+        maxSum = INT_MIN;
+        for (int j = i; j <= n; j++) {
+            cur[j] = max(pre[j-1], cur[j-1]) + nums[j-1];
+            pre[j-1] = maxSum;
+            maxSum = max(maxSum, cur[j]);
         }
-        for (int i = left; i <= right; i++) {
-            ans.push_back(nums[i]);
-        }
-        return ans;
+        pre[n] = maxSum;
     }
-    ```
+    return maxSum;
+}
+```
 
-> 相似题目
+当M = 1时
+```cpp
+vector<int> getMaxSumEpisode(vector<int> nums) {
+    int n = int(nums.size());
+    vector<int> ans;
+    if (n == 0) { return ans; }
+    int maxSum = -(1ll << 31), curSum = 0;
+    int left = 0, right = 0, begin = 0;
+    for (int i = 0; i < n; i++) {
+        if (curSum >= 0) { curSum += nums[i]; }
+        else {
+            curSum = nums[i];
+            begin = i;
+        }
+        if (maxSum < curSum) {
+            maxSum = curSum;
+            left = begin;
+            right = i;
+        }
+    }
+    for (int i = left; i <= right; i++) {
+        ans.push_back(nums[i]);
+    }
+    return ans;
+}
+```
+
+**相似题目**
 ??? note "[「Leetcode 152. 乘积最大子数组」](https://leetcode-cn.com/problems/maximum-product-subarray/)"
     给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。
 
@@ -381,7 +420,7 @@ $$
 
 在状态转移过程，记录最大长度的大小以及最大长度的位置，最终可输出最长子数组
 
-> 相似题目
+**相似题目**
 ??? note "[「牛客题霸-算法篇 127. 最长公共子串」](https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac?tpId=196&tqId=37132&rp=1&ru=%2Fta%2Fjob-code-total&qru=%2Fta%2Fjob-code-total%2Fquestion-ranking&tab=answerKey)"
 
     ```cpp
@@ -507,6 +546,95 @@ while (i < m && j < n) {
         return 0;
     }
     ```
+
+## 股票买卖
+### 一次交易
+给定一个数组prices，它的第i个元素 prices[i] 表示一支给定股票第 i 天的价格。你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。
+
+输入：[7, 1, 5, 3, 6, 4] 输出：5
+
+解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
+
+**分析**
+
+我们的目标是求最大利润 = 卖出时的价格 - 买入时的价格，那么针对每一天i，我们都可以得到一个这一天的最大利润
+
+$$
+\text{maxProfit[ i ] = stocks[ i ] - } \min_{j \in [0, i)} \text{stocks[ j ]}
+$$
+
+很容易可以写出一个$O(n^{2})$时间复杂度的方法。其实我们可以观察到，对于每一个i，我们重复求解i之前的最小股票价格，这一步是冗余的，因为如果我们知道了[0, i)的最小值x，那么[0, i]的最小值 a‘ = min(a, stocks[ i ])，从而避免了重复遍历。于是我们有一个高效的算法
+
+```cpp
+int minPrice = INT_MAX, maxProfit = INT_MIN;
+for (int stock : stocks) {
+    minPrice = min(minPrice, stock);
+    maxProfit = max(maxProfit, stock - minPrice);
+}
+return maxProfit;
+```
+
+### 多次交易
+对于一只股票的，允许多次交易（买入、卖出为一次交易），未卖出股票时不允许买入，买入和卖出不在同一天。求最大收益。
+
+对于某一天 i ，我们会有两种状态：持有股票和不持有股票，那么我们可以设 dp[ i ][ 0 ] 表示 i 天不持有股票的最大受益，dp[ i ][ 1 ] 表示 i 天持有股票的最大收益。
+
+$$
+\begin{aligned}
+& \text{dp[ i ][ 0 ] = } \max(\text{dp[i - 1][ 0 ], dp[i - 1][ 1 ] + prices[ i ]}) \\
+& \text{dp[ i ][ 1 ] = } \max(\text{dp[i - 1][ 0 ] - prices[ i ], dp[i - 1][ 1 ]})
+\end{aligned}
+$$
+
+我们注意到，第 i 天的两种状态只与第 i-1 天的两种状态有关系，因此我们可以对时间复杂度进行优化。最后一天，不持有股票的收益一定高于持有股票的收益。
+
+```cpp
+int n = (int)prices.size();
+int dp0 = 0, dp1 = -prices[0];
+for (int i = 1; i < n; i++) {
+    int tmp0 = max(dp0, dp1 + prices[i]);
+    int tmp1 = max(dp0 - prices[i], dp1);
+    dp0 = tmp0;
+    dp1 = tmp1;
+}
+return dp0;
+```
+时间复杂度$O(n)$，空间复杂度$O(1)$
+
+### 股票价格的跨度
+给定一个股票价格的序列stocks = [100, 80, 60, 70, 60, 75, 85], 求其每一天的股票跨度（从i天开始向前计数，股票价格小于等于当前价格），输出结果[1, 1, 1, 2, 1, 4, 6]
+
+**分析**
+
+按照题意，可以写出一个 $O(n^{2})$ 的算法，但是这样会超时。我们可以观察到，对于某一天的股票 stocks[ i ]，必然会逐个与i之前的元素比较，终于碰到一个比它大的或者没有，这时，我们将这个股票价格的跨度记录下来，对于下一个股价 stocks[i + 1]
+
+$$
+\text{count[ stocks[i + 1] ]} =
+\begin{cases}
+\text{count[ stocks[ i ] ]} + 1, & \quad \text{stocks[ i + 1 ]} \geq \text{stocks[ i ]} \\
+1, & \quad \text{otherwise}
+\end{cases}
+$$
+
+单调栈适合解决此类问题
+
+```cpp
+stack<int> stk, cnt;
+vector<int> ans;
+for (int s : stocks) {
+    int num = 1;
+    while (!stk.empty() && stk.top() <= s) {
+        num += cnt.top();
+        cnt.pop();
+        stk.pop();
+    }
+    ans.emplace_back(num);
+    cnt.push(num);
+    stk.push(s);
+}
+return ans;
+```
+
 
 ## 背包问题
 ??? note "[「01背包」]()"
