@@ -73,5 +73,4 @@ nav:
         - 动态规划: algo/dp.md
         - 双指针: algo/two-pointers.md
     - 数据结构:
-        - 字符串:
-            - 匹配: data-structure/string/match.md
+        - 字符串: data-structure/string.md
