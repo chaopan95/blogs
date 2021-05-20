@@ -339,13 +339,33 @@
       
         <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
+    股票买卖
+  </a>
+  
+    <nav class="md-nav" aria-label="股票买卖">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    只交易一次
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
     背包问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     正方形
   </a>
   
@@ -561,13 +581,33 @@
       
         <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
+    股票买卖
+  </a>
+  
+    <nav class="md-nav" aria-label="股票买卖">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    只交易一次
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
     背包问题
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     正方形
   </a>
   
@@ -909,9 +949,7 @@
 \end{cases}
 </script>
 </div>
-<blockquote>
-<p>相似题目</p>
-</blockquote>
+<p><strong>相似题目</strong></p>
 <details class="note"><summary><a href="https://www.nowcoder.com/practice/05fed41805ae4394ab6607d0d745c8e4?tpId=196&amp;tqId=37134&amp;rp=1&amp;ru=%2Fta%2Fjob-code-total&amp;qru=%2Fta%2Fjob-code-total%2Fquestion-ranking&amp;tab=answerKey">「牛客题霸-算法篇 35. 最小编辑代价」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1113,9 +1151,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table></p>
-<blockquote>
-<p>相似题目</p>
-</blockquote>
+<p><strong>相似题目</strong></p>
 <details class="note"><summary><a href="https://leetcode-cn.com/problems/maximum-product-subarray/">「Leetcode 152. 乘积最大子数组」</a></summary><p>给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。</p>
 <p>输入: [2,3,-2,4]</p>
 <p>输出: 6</p>
@@ -1267,9 +1303,7 @@
 </script>
 </div>
 <p>在状态转移过程，记录最大长度的大小以及最大长度的位置，最终可输出最长子数组</p>
-<blockquote>
-<p>相似题目</p>
-</blockquote>
+<p><strong>相似题目</strong></p>
 <details class="note"><summary><a href="https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac?tpId=196&amp;tqId=37132&amp;rp=1&amp;ru=%2Fta%2Fjob-code-total&amp;qru=%2Fta%2Fjob-code-total%2Fquestion-ranking&amp;tab=answerKey">「牛客题霸-算法篇 127. 最长公共子串」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1494,7 +1528,13 @@
 </code></pre></div>
 </td></tr></table>
 </details>
-<h2 id="_10">背包问题<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_10">股票买卖<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="_11">只交易一次<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>给定一个数组prices，它的第i个元素 prices[i] 表示一支给定股票第 i 天的价格。你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。</p>
+<p>输入：[7, 1, 5, 3, 6, 4] 输出：5</p>
+<p>解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</p>
+<p>我们的目标是求</p>
+<h2 id="_12">背包问题<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <details class="note"><summary><a href="">「01背包」</a></summary><p>一个背包有一定的承重cap，有N件物品，每件都有自己的价值，记录在数组v中，也都有自己的重量，记录在数组w中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。给定物品的重量w价值v及物品数n和承重cap。请返回最大总价值。</p>
 <p>测试样例： [1,2,3],[1,2,3],3,6</p>
 <p>返回：6</p>
@@ -1641,7 +1681,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 </details>
-<h2 id="_11">正方形<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="_13">正方形<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <details class="note"><summary><a href="">「Leetcode 221. 最大正方形」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
