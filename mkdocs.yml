@@ -72,6 +72,7 @@ nav:
         - 剑指offer: algo/jsoffer.md
         - 动态规划: algo/dp.md
         - 双指针: algo/two-pointers.md
+        - 搜索: algo/search.md
     - 数据结构:
         - 字符串: data-structure/string.md
     - 机器学习:
