@@ -360,6 +360,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    至多k次交易
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     股票价格的跨度
   </a>
@@ -650,6 +657,13 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     多次交易
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    至多k次交易
   </a>
   
 </li>
@@ -1369,7 +1383,7 @@
 \end{cases}
 </script>
 </div>
-<p>在状态转移过程，记录最大长度的大小以及最大长度的位置，最终可输出最长子数组</p>
+<p>在状态转移过程，记录最大长度的大小以及最大长度的位置，最终可输出最长子数组。</p>
 <p><strong>相似题目</strong></p>
 <details class="note"><summary><a href="https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac?tpId=196&amp;tqId=37132&amp;rp=1&amp;ru=%2Fta%2Fjob-code-total&amp;qru=%2Fta%2Fjob-code-total%2Fquestion-ranking&amp;tab=answerKey">「牛客题霸-算法篇 127. 最长公共子串」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1600,7 +1614,7 @@
 <p>给定一个数组prices，它的第i个元素 prices[i] 表示一支给定股票第 i 天的价格。你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。</p>
 <p>输入：[7, 1, 5, 3, 6, 4] 输出：5</p>
 <p>解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</p>
-<p><strong>分析</strong></p>
+<p><strong>「分析」</strong></p>
 <p>我们的目标是求最大利润 = 卖出时的价格 - 买入时的价格，那么针对每一天i，我们都可以得到一个这一天的最大利润</p>
 <div>
 <div class="MathJax_Preview">
@@ -1611,7 +1625,7 @@
 </script>
 </div>
 <p>很容易可以写出一个<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>时间复杂度的方法。其实我们可以观察到，对于每一个i，我们重复求解i之前的最小股票价格，这一步是冗余的，因为如果我们知道了[0, i)的最小值x，那么[0, i]的最小值 a‘ = min(a, stocks[ i ])，从而避免了重复遍历。于是我们有一个高效的算法</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1624,8 +1638,10 @@
 <span class="k">return</span> <span class="n">maxProfit</span><span class="p">;</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
 <h3 id="_12">多次交易<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>对于一只股票的，允许多次交易（买入、卖出为一次交易），未卖出股票时不允许买入，买入和卖出不在同一天。求最大收益。</p>
+<p><strong>「分析」</strong></p>
 <p>对于某一天 i ，我们会有两种状态：持有股票和不持有股票，那么我们可以设 dp[ i ][ 0 ] 表示 i 天不持有股票的最大受益，dp[ i ][ 1 ] 表示 i 天持有股票的最大收益。</p>
 <div>
 <div class="MathJax_Preview">
@@ -1662,9 +1678,77 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h3 id="k">至多k次交易<a class="headerlink" href="#k" title="Permanent link">&para;</a></h3>
+<p>对于一只股票，允许最多k次交易（买入和卖出为一次交易），求其最大的利润。</p>
+<p><strong>「分析」</strong></p>
+<p>因为题目要求持有股票时不能再买入，那么对于任意一天 i ，只有两种情况：这一天有股票和这一天没有股票。再根据交易的次数，设 dp[ i ][ j ][ 0 ] 为第 i 天处于第 j 次交易期间且这一天结束后未持有股票，dp[ i ][ j ][ 1 ] 为第 i 天处于第 j 次交易且这一天结束后持有股票。我们可以写出状态转移方程</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{dp[ i ][ j ][ 0 ] = } \max(\text{dp[i - 1][ j ][ 0 ], dp[i - 1][ j ][ 1 ] + prices[ i ]}) \\
+&amp; \text{dp[ i ][ j ][ 1 ] = } \max(\text{dp[i - 1][j - 1][ 0 ] - prices[ i ], dp[i - 1][ j ][ 1 ]})
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{dp[ i ][ j ][ 0 ] = } \max(\text{dp[i - 1][ j ][ 0 ], dp[i - 1][ j ][ 1 ] + prices[ i ]}) \\
+& \text{dp[ i ][ j ][ 1 ] = } \max(\text{dp[i - 1][j - 1][ 0 ] - prices[ i ], dp[i - 1][ j ][ 1 ]})
+\end{aligned}
+</script>
+</div>
+<p>对于 dp[ i ][ j ][ 0 ] 这一天未持有股票，那么可能的状态来源是(1) i-1 这一天也未持有股票，或者(2) i-1这一天持有股票而在 i 这一天卖出，那么这一天持有的股票一定是第 j 次交易产生的。同样地，对于 dp[ i ][ j ][ 1 ] 这一天持有股票，可能的状态来源是(1) i-1 这天未持有而 i 这一天买入股票并且 i-1 属于第 j-1 次交易或者（1）i-1这一天持有股票，直接过渡而来。i = 0 表示的是第一天的股价，对于第 j = 1, 2, ..., k 次交易，如果在 i = 0 处发生卖出，dp[ 0 ][ j ][ 1 ] = -prices[ 0 ]。最终的利润和发生在最后一天不持有股票中的某一个 j 值，即</p>
+<div>
+<div class="MathJax_Preview">
+\text{target} = \max_{j \in {1, 2, ..., k}} \text{dp[n - 1][ j ][ 0 ]}
+</div>
+<script type="math/tex; mode=display">
+\text{target} = \max_{j \in {1, 2, ..., k}} \text{dp[n - 1][ j ][ 0 ]}
+</script>
+</div>
+<p>我们还可以发现，第 i 天的状态只与第 i-1天的状态有关系，因为在空间上可以优化。设 dp0[ j ] 表示第 j 次交易未持有股票的最大利润，dp1[ j ] 表示第 j 次交易持有股票的最大利润</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{dp0[ j ] = } \max(\text{dp0[ j ], dp1[ j ] + prices[ i ]}) \\
+&amp; \text{dp1[ j ] = } \max(\text{dp0[j - 1] - prices[ i ], dp1[ j ]})
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{dp0[ j ] = } \max(\text{dp0[ j ], dp1[ j ] + prices[ i ]}) \\
+& \text{dp1[ j ] = } \max(\text{dp0[j - 1] - prices[ i ], dp1[ j ]})
+\end{aligned}
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maxProfit</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">prices</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">prices</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">dp0</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">dp1</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dp0</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">dp1</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="n">dp1</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">[</span><span class="n">j</span><span class="mi">-1</span><span class="p">]</span> <span class="o">-</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dp1</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">*</span><span class="n">max_element</span><span class="p">(</span><span class="n">dp0</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">dp0</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(nk)</span><script type="math/tex">O(nk)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(k)</span><script type="math/tex">O(k)</script></span></p>
 <h3 id="_13">股票价格的跨度<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>给定一个股票价格的序列stocks = [100, 80, 60, 70, 60, 75, 85], 求其每一天的股票跨度（从i天开始向前计数，股票价格小于等于当前价格），输出结果[1, 1, 1, 2, 1, 4, 6]</p>
-<p><strong>分析</strong></p>
+<p><strong>「分析」</strong></p>
 <p>按照题意，可以写出一个 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span> 的算法，但是这样会超时。我们可以观察到，对于某一天的股票 stocks[ i ]，必然会逐个与i之前的元素比较，终于碰到一个比它大的或者没有，这时，我们将这个股票价格的跨度记录下来，对于下一个股价 stocks[i + 1]</p>
 <div>
 <div class="MathJax_Preview">
@@ -1683,7 +1767,7 @@
 </script>
 </div>
 <p>单调栈适合解决此类问题</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1712,6 +1796,7 @@
 <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
 <h2 id="_14">背包问题<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
 <details class="note"><summary><a href="">「01背包」</a></summary><p>一个背包有一定的承重cap，有N件物品，每件都有自己的价值，记录在数组v中，也都有自己的重量，记录在数组w中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。给定物品的重量w价值v及物品数n和承重cap。请返回最大总价值。</p>
 <p>测试样例： [1,2,3],[1,2,3],3,6</p>
