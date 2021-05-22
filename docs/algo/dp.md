@@ -649,6 +649,46 @@ int maxProfit(int k, vector<int>& prices) {
 ```
 时间复杂度$O(nk)$，空间复杂度$O(k)$
 
+### 带有冷冻期的交易
+对于一只股票，允许多次交易（买入和卖出为一次交易），但是每一次交易完成后的下一天为冷冻期，不能购买股票，求其最大的利润。
+
+**「分析」**
+
+对于第 i 天结束，我们会出现三种状态：（1）这一天结束后准备进入未持有股票且不会处于冷冻期的状态，（2）这一天结束准备进入未持有股票但是处于冷冻期的状态，（3）这一天结束会进入持有股票的状态
+
+dp[ i ][ 0 ] 表示状态（1），前一天 i-1 的状态可能是（1）和（2）；dp[ i ][ 1 ] 表示状态（2），前一天的状态一定是（3），并且在第 i 天卖出股票，因为只有这样才会进入冷冻期；dp[ i ][ 2 ] 表示状态（3），前一天的可能状态是（1）和（3），因为第 i 天结束是要进入持有股票的状态，那么这一天不可能是冷冻期。
+
+$$
+\begin{aligned}
+& \text{dp[ i ][ 0 ] = } \max(\text{dp[i - 1][ 0 ], dp[i - 1][ 1 ]}) \\
+& \text{dp[ i ][ 1 ] = dp[i - 1][ 2 ] + prices[ i ]} \\
+& \text{dp[ i ][ 2 ] = } \max(dp[i - 1][ 0 ] - prices[ i ], dp[i - 1][ 2 ])
+\end{aligned}
+$$
+
+我们观察到，第 i 天的状态只会与前一天的状态有关，因此，我们只需要保留前一天的状态即可。
+
+$$
+\begin{aligned}
+& \text{dp0 } \leftarrow \max(\text{dp0, dp1}) \\
+& \text{dp1 } \leftarrow \text{dp2 + prices[i]} \\
+& \text{dp2 } \leftarrow \max(\text{dp0 - prices[ i ], dp2})
+\end{aligned}
+$$
+
+```cpp
+int n = (int)prices.size();
+if (n == 0) { return 0; }
+int dp0 = 0, dp1 = 0, dp2 = -prices[0];
+for (int i = 1; i < n; i++) {
+    dp2 = max(dp0 - prices[i], dp2);
+    dp0 = max(dp0, dp1);
+    dp1 = dp2 + prices[i];
+}
+return max(dp0, dp1);
+```
+时间复杂度$O(n)$，空间复杂度$O(1)$
+
 ### 股票价格的跨度
 给定一个股票价格的序列stocks = [100, 80, 60, 70, 60, 75, 85], 求其每一天的股票跨度（从i天开始向前计数，股票价格小于等于当前价格），输出结果[1, 1, 1, 2, 1, 4, 6]
 
