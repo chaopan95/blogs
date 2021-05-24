@@ -7142,20 +7142,35 @@ Each column must contain the digits 1-9 without repetition.
 Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
 Note:
 A Sudoku board (partially filled) could be valid but is not necessarily solvable.
-Only the filled cells need to be validated according to the mentioned rules.
-$$
+Only the filled cells need to be validated according to the mentioned rules.</p>
+<div>
+<div class="MathJax_Preview">
 \begin{bmatrix}
-5 &amp; 3 &amp; . &amp; . &amp; 7 &amp; . &amp; . &amp; . &amp; . \
-6 &amp; . &amp; . &amp; 1 &amp; 9 &amp; 5 &amp; . &amp; . &amp; . \
-. &amp; 9 &amp; 8 &amp; . &amp; . &amp; . &amp; . &amp; 6 &amp; . \
-8 &amp; . &amp; . &amp; . &amp; 6 &amp; . &amp; . &amp; . &amp; 3 \
-4 &amp; . &amp; . &amp; 8 &amp; . &amp; 3 &amp; . &amp; . &amp; 1 \
-7 &amp; . &amp; . &amp; . &amp; 2 &amp; . &amp; . &amp; . &amp; 6 \
-. &amp; 6 &amp; . &amp; . &amp; . &amp; . &amp; 2 &amp; 8 &amp; . \
-. &amp; . &amp; . &amp; 4 &amp; 1 &amp; 9 &amp; . &amp; . &amp; 5 \
+5 &amp; 3 &amp; . &amp; . &amp; 7 &amp; . &amp; . &amp; . &amp; . \\
+6 &amp; . &amp; . &amp; 1 &amp; 9 &amp; 5 &amp; . &amp; . &amp; . \\
+. &amp; 9 &amp; 8 &amp; . &amp; . &amp; . &amp; . &amp; 6 &amp; . \\
+8 &amp; . &amp; . &amp; . &amp; 6 &amp; . &amp; . &amp; . &amp; 3 \\
+4 &amp; . &amp; . &amp; 8 &amp; . &amp; 3 &amp; . &amp; . &amp; 1 \\
+7 &amp; . &amp; . &amp; . &amp; 2 &amp; . &amp; . &amp; . &amp; 6 \\
+. &amp; 6 &amp; . &amp; . &amp; . &amp; . &amp; 2 &amp; 8 &amp; . \\
+. &amp; . &amp; . &amp; 4 &amp; 1 &amp; 9 &amp; . &amp; . &amp; 5 \\
 . &amp; . &amp; . &amp; . &amp; 8 &amp; . &amp; . &amp; 7 &amp; 9
 \end{bmatrix}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+5 & 3 & . & . & 7 & . & . & . & . \\
+6 & . & . & 1 & 9 & 5 & . & . & . \\
+. & 9 & 8 & . & . & . & . & 6 & . \\
+8 & . & . & . & 6 & . & . & . & 3 \\
+4 & . & . & 8 & . & 3 & . & . & 1 \\
+7 & . & . & . & 2 & . & . & . & 6 \\
+. & 6 & . & . & . & . & 2 & 8 & . \\
+. & . & . & 4 & 1 & 9 & . & . & 5 \\
+. & . & . & . & 8 & . & . & 7 & 9
+\end{bmatrix}
+</script>
+</div>
 <p>Example:
 Input: board = 
 [["5","3",".",".","7",".",".",".","."]
@@ -7477,18 +7492,31 @@ Output: 2</p>
 Output: 1</p>
 <p>Follow up:
 Your algorithm should run in O(n) time and uses constant extra space.</p>
-<p>Solution:
-$$
+<p>Solution:</p>
+<div>
+<div class="MathJax_Preview">
 \begin{matrix}
-3 &amp; 4 &amp; -1 &amp; 1 \
- &amp; &amp; \Downarrow &amp; \
-3 &amp; 4 &amp; 5 &amp; 1 \
- &amp; &amp; \Downarrow &amp; \
-3 &amp; 4 &amp; -5 &amp; 1 \
-3 &amp; 4 &amp; -5 &amp; -1 \
+3 &amp; 4 &amp; -1 &amp; 1 \\
+ &amp; &amp; \Downarrow &amp; \\
+3 &amp; 4 &amp; 5 &amp; 1 \\
+ &amp; &amp; \Downarrow &amp; \\
+3 &amp; 4 &amp; -5 &amp; 1 \\
+3 &amp; 4 &amp; -5 &amp; -1 \\
 -3 &amp; 4 &amp; -5 &amp; -1
 \end{matrix}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+3 & 4 & -1 & 1 \\
+ & & \Downarrow & \\
+3 & 4 & 5 & 1 \\
+ & & \Downarrow & \\
+3 & 4 & -5 & 1 \\
+3 & 4 & -5 & -1 \\
+-3 & 4 & -5 & -1
+\end{matrix}
+</script>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -10678,17 +10706,29 @@ $$</p>
 </code></pre></div>
 </td></tr></table>
 <h2 id="0096-unique-binary-search-trees">0096. Unique Binary Search Trees<a class="headerlink" href="#0096-unique-binary-search-trees" title="Permanent link">&para;</a></h2>
-<p>Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.
-$$
+<p>Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.</p>
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
 &amp; C_{n} =
 \begin{cases}
-1, &amp;\quad n = 0 \
+1, &amp;\quad n = 0 \\
 \frac{2(2n+1)}{n+2} C_{n-1}, &amp;\quad n = 1, 2, 3, ...
-\end{cases} \
+\end{cases} \\
 &amp; C_{n} = \frac{(2n)!}{(n+1)! n!}
 \end{aligned}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& C_{n} =
+\begin{cases}
+1, &\quad n = 0 \\
+\frac{2(2n+1)}{n+2} C_{n-1}, &\quad n = 1, 2, 3, ...
+\end{cases} \\
+& C_{n} = \frac{(2n)!}{(n+1)! n!}
+\end{aligned}
+</script>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
