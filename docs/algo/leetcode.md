@@ -113,6 +113,7 @@ This problem requires a time complexity in O(log(m+n)), which determines that we
 
 $\bigstar$ Cut two sorted arrays
 In fact, median is a statistique term, which means a value in middle position. If we want acquire a median value in one sorted array, it is easy to take the value in middlle position.
+
 $$
 \begin{matrix}
  & &  & & \text{cut} & &  & &  \\
@@ -133,7 +134,9 @@ $$
 
 For example, the cutting line split an array into two parts with same size, l1 and r1 are left value and right value of cut postion.
 Left example is odd array, l1 = r1 = 3, while right example is even array, l1 = 3, r1 = 4.
+
 Similarly, we can generalize this to two arrays. If we can find such a cut for two arrays that the number of left cut and the number of right cut are equal, we can determine a median value for the 2 arrays. For example, we determine cut position k1, k2 for A, B respectively.
+
 $$
 \begin{matrix}
  & & & \text{cut} & & & \\
@@ -155,8 +158,10 @@ l_{2} \text{ = 4, } r_{2} \text{ = 4} \\
 $$
 
 $\bigstar$ Unify odd and even number
+
 According to traditional way, we have to treat case-by-case: it is different to calculate median value for odd array and even array.
 In order to conquer this problem, we introuce a virtual placeholder. For example, an original array A is 1 2 3 4 5 and we insert a virtual placeholder # into A, which becomes A' = #1#2#3#4#5#. We see, lenghth of the original array is 5, while length of the new array is 5*2+1. If we cut A' at position 4(5th character from left). With this method, it's easy to get value in the original. Cut position c = 4
+
 $$
 \begin{aligned}
 &
@@ -173,6 +178,7 @@ $$
 $$
 
 If cut position for A' is in first # or last #, it will cause a overflow problem.
+
 $$
 \begin{matrix}
  & & & &  & & \text{cut} & & & & &  & \\
@@ -190,6 +196,7 @@ l_{1} \text{ = 3, } r_{1} \text{ = 6} \\
 l_{2} \text{ = 1, } r_{2} \text{ = 4} \\
 \end{matrix}
 $$
+
 As the example shows, if cut position at first #, left = min(A[0], B[0]), while cut position at last #, right = max(A[-1], B[-1]).
 
 ```cpp
@@ -1589,6 +1596,7 @@ Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without
 Note:
 A Sudoku board (partially filled) could be valid but is not necessarily solvable.
 Only the filled cells need to be validated according to the mentioned rules.
+
 $$
 \begin{bmatrix}
 5 & 3 & . & . & 7 & . & . & . & . \\
@@ -1848,6 +1856,7 @@ Follow up:
 Your algorithm should run in O(n) time and uses constant extra space.
 
 Solution:
+
 $$
 \begin{matrix}
 3 & 4 & -1 & 1 \\
@@ -3599,6 +3608,7 @@ public:
 
 ## 0096. Unique Binary Search Trees
 Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.
+
 $$
 \begin{aligned}
 & C_{n} =

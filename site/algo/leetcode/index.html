@@ -4877,82 +4877,157 @@ The median is (2 + 3)/2 = 2.5</p>
 <p>Solution:
 This problem requires a time complexity in O(log(m+n)), which determines that we cannot merge sort the twos arrays then get a median value because of o(m+n). A faisible solution is to find k-th value in two sorted arrays based on binary search.</p>
 <p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> Cut two sorted arrays
-In fact, median is a statistique term, which means a value in middle position. If we want acquire a median value in one sorted array, it is easy to take the value in middlle position.
-$$
+In fact, median is a statistique term, which means a value in middle position. If we want acquire a median value in one sorted array, it is easy to take the value in middlle position.</p>
+<div>
+<div class="MathJax_Preview">
 \begin{matrix}
- &amp; &amp;  &amp; &amp; \text{cut} &amp; &amp;  &amp; &amp;  \
- &amp; &amp;  &amp; &amp; \Downarrow &amp; &amp;  &amp; &amp;  \
-1 &amp; &amp; 2 &amp; &amp; 3 &amp; &amp; 4 &amp; &amp; 5 \
- &amp; &amp;  &amp; &amp; \Uparrow &amp; &amp;  &amp; &amp;  \
+ &amp; &amp;  &amp; &amp; \text{cut} &amp; &amp;  &amp; &amp;  \\
+ &amp; &amp;  &amp; &amp; \Downarrow &amp; &amp;  &amp; &amp;  \\
+1 &amp; &amp; 2 &amp; &amp; 3 &amp; &amp; 4 &amp; &amp; 5 \\
+ &amp; &amp;  &amp; &amp; \Uparrow &amp; &amp;  &amp; &amp;  \\
  &amp; &amp;  &amp; &amp; \text{cut} &amp; &amp;  &amp; &amp;
 \end{matrix}
 \quad \quad \quad \text{or} \quad \quad \quad
 \begin{matrix}
- &amp; &amp;  &amp; &amp;  &amp; \text{cut} &amp;  &amp; &amp;  &amp; &amp; \
- &amp; &amp;  &amp; &amp;  &amp; \Downarrow &amp;  &amp; &amp;  &amp; &amp; \
-1 &amp; &amp; 2 &amp; &amp; 3 &amp; &amp; 4 &amp; &amp; 5 &amp; &amp; 6\
- &amp; &amp;  &amp; &amp;  &amp; \Uparrow &amp;  &amp; &amp;  &amp; &amp; \
+ &amp; &amp;  &amp; &amp;  &amp; \text{cut} &amp;  &amp; &amp;  &amp; &amp; \\
+ &amp; &amp;  &amp; &amp;  &amp; \Downarrow &amp;  &amp; &amp;  &amp; &amp; \\
+1 &amp; &amp; 2 &amp; &amp; 3 &amp; &amp; 4 &amp; &amp; 5 &amp; &amp; 6\\
+ &amp; &amp;  &amp; &amp;  &amp; \Uparrow &amp;  &amp; &amp;  &amp; &amp; \\
  &amp; &amp;  &amp; &amp;  &amp; \text{cut} &amp;  &amp; &amp;  &amp; &amp;
 \end{matrix} \quad
-$$</p>
-<p>For example, the cutting line split an array into two parts with same size, l1 and r1 are left value and right value of cut postion.
-Left example is odd array, l1 = r1 = 3, while right example is even array, l1 = 3, r1 = 4.
-Similarly, we can generalize this to two arrays. If we can find such a cut for two arrays that the number of left cut and the number of right cut are equal, we can determine a median value for the 2 arrays. For example, we determine cut position k1, k2 for A, B respectively.
-$$
+</div>
+<script type="math/tex; mode=display">
 \begin{matrix}
- &amp; &amp; &amp; \text{cut} &amp; &amp; &amp; \
- &amp; &amp; &amp; \Downarrow &amp; &amp; &amp; \
-1 &amp; &amp; 3 &amp; &amp; 5 &amp; &amp; 7\
-\
- &amp; 2 &amp; &amp; 4 &amp; &amp; 6 \
- &amp; &amp; &amp; \Uparrow &amp; &amp; \
+ & &  & & \text{cut} & &  & &  \\
+ & &  & & \Downarrow & &  & &  \\
+1 & & 2 & & 3 & & 4 & & 5 \\
+ & &  & & \Uparrow & &  & &  \\
+ & &  & & \text{cut} & &  & &
+\end{matrix}
+\quad \quad \quad \text{or} \quad \quad \quad
+\begin{matrix}
+ & &  & &  & \text{cut} &  & &  & & \\
+ & &  & &  & \Downarrow &  & &  & & \\
+1 & & 2 & & 3 & & 4 & & 5 & & 6\\
+ & &  & &  & \Uparrow &  & &  & & \\
+ & &  & &  & \text{cut} &  & &  & &
+\end{matrix} \quad
+</script>
+</div>
+<p>For example, the cutting line split an array into two parts with same size, l1 and r1 are left value and right value of cut postion.
+Left example is odd array, l1 = r1 = 3, while right example is even array, l1 = 3, r1 = 4.</p>
+<p>Similarly, we can generalize this to two arrays. If we can find such a cut for two arrays that the number of left cut and the number of right cut are equal, we can determine a median value for the 2 arrays. For example, we determine cut position k1, k2 for A, B respectively.</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+ &amp; &amp; &amp; \text{cut} &amp; &amp; &amp; \\
+ &amp; &amp; &amp; \Downarrow &amp; &amp; &amp; \\
+1 &amp; &amp; 3 &amp; &amp; 5 &amp; &amp; 7\\
+\\
+ &amp; 2 &amp; &amp; 4 &amp; &amp; 6 \\
+ &amp; &amp; &amp; \Uparrow &amp; &amp; \\
  &amp; &amp; &amp; \text{cut} &amp; &amp; &amp;
 \end{matrix}
 \quad \quad
 \begin{matrix}
-l_{1} \text{ = 3, } r_{1} \text{ = 5} \
-\
-l_{2} \text{ = 4, } r_{2} \text{ = 4} \
+l_{1} \text{ = 3, } r_{1} \text{ = 5} \\
+\\
+l_{2} \text{ = 4, } r_{2} \text{ = 4} \\
 \end{matrix}
 \Rightarrow
 \text{Median} = \frac{\max(l_{1}, l_{2}) + \min(r_{1}, r_{2})}{2} = 4
-$$</p>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> Unify odd and even number
-According to traditional way, we have to treat case-by-case: it is different to calculate median value for odd array and even array.
-In order to conquer this problem, we introuce a virtual placeholder. For example, an original array A is 1 2 3 4 5 and we insert a virtual placeholder # into A, which becomes A' = #1#2#3#4#5#. We see, lenghth of the original array is 5, while length of the new array is 5*2+1. If we cut A' at position 4(5<sup>th</sup> character from left). With this method, it's easy to get value in the original. Cut position c = 4
-$$
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+ & & & \text{cut} & & & \\
+ & & & \Downarrow & & & \\
+1 & & 3 & & 5 & & 7\\
+\\
+ & 2 & & 4 & & 6 \\
+ & & & \Uparrow & & \\
+ & & & \text{cut} & & &
+\end{matrix}
+\quad \quad
+\begin{matrix}
+l_{1} \text{ = 3, } r_{1} \text{ = 5} \\
+\\
+l_{2} \text{ = 4, } r_{2} \text{ = 4} \\
+\end{matrix}
+\Rightarrow
+\text{Median} = \frac{\max(l_{1}, l_{2}) + \min(r_{1}, r_{2})}{2} = 4
+</script>
+</div>
+<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> Unify odd and even number</p>
+<p>According to traditional way, we have to treat case-by-case: it is different to calculate median value for odd array and even array.
+In order to conquer this problem, we introuce a virtual placeholder. For example, an original array A is 1 2 3 4 5 and we insert a virtual placeholder # into A, which becomes A' = #1#2#3#4#5#. We see, lenghth of the original array is 5, while length of the new array is 5*2+1. If we cut A' at position 4(5<sup>th</sup> character from left). With this method, it's easy to get value in the original. Cut position c = 4</p>
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
 &amp;
 \begin{matrix}
- &amp; &amp; &amp; &amp; \text{cut} &amp; &amp; &amp; &amp; &amp; \
- &amp; &amp; &amp; &amp; \Downarrow &amp; &amp; &amp; &amp; &amp; \
-# &amp; 1 &amp; # &amp; 2 &amp; # &amp; 3 &amp; # &amp; 4 &amp; # &amp; 5 &amp; # \
- &amp; &amp; &amp; &amp; \Uparrow &amp; &amp; &amp; &amp; &amp; \
+ &amp; &amp; &amp; &amp; \text{cut} &amp; &amp; &amp; &amp; &amp; \\
+ &amp; &amp; &amp; &amp; \Downarrow &amp; &amp; &amp; &amp; &amp; \\
+\# &amp; 1 &amp; \# &amp; 2 &amp; \# &amp; 3 &amp; \# &amp; 4 &amp; \# &amp; 5 &amp; \# \\
+ &amp; &amp; &amp; &amp; \Uparrow &amp; &amp; &amp; &amp; &amp; \\
  &amp; &amp; &amp; &amp; \text{cut} &amp; &amp; &amp; &amp; &amp;
-\end{matrix} \
-&amp; l_{1} = A[\frac{c-1}{2}] = A[1] = 2 \
+\end{matrix} \\
+&amp; l_{1} = A[\frac{c-1}{2}] = A[1] = 2 \\
 &amp; r_{1} = A[\frac{c}{2}] = A[2] = 3
 \end{aligned}
-$$</p>
-<p>If cut position for A' is in first # or last #, it will cause a overflow problem.
-$$
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&
 \begin{matrix}
- &amp; &amp; &amp; &amp;  &amp; &amp; \text{cut} &amp; &amp; &amp; &amp; &amp;  &amp; \
- &amp; &amp; &amp; &amp;  &amp; &amp; \Downarrow &amp; &amp; &amp; &amp; &amp;  &amp; \
-# &amp; 1 &amp; # &amp; 2 &amp; #  &amp; 3 &amp; # &amp; &amp; &amp; &amp; &amp; &amp; \
-\
- &amp; &amp; &amp; &amp; &amp; &amp; # &amp; 4 &amp; # &amp; 5 &amp; # &amp; 6 &amp; # \
- &amp; &amp; &amp; &amp;  &amp; &amp; \Uparrow &amp; &amp; &amp; &amp; &amp;  &amp; \
+ & & & & \text{cut} & & & & & \\
+ & & & & \Downarrow & & & & & \\
+\# & 1 & \# & 2 & \# & 3 & \# & 4 & \# & 5 & \# \\
+ & & & & \Uparrow & & & & & \\
+ & & & & \text{cut} & & & & &
+\end{matrix} \\
+& l_{1} = A[\frac{c-1}{2}] = A[1] = 2 \\
+& r_{1} = A[\frac{c}{2}] = A[2] = 3
+\end{aligned}
+</script>
+</div>
+<p>If cut position for A' is in first # or last #, it will cause a overflow problem.</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+ &amp; &amp; &amp; &amp;  &amp; &amp; \text{cut} &amp; &amp; &amp; &amp; &amp;  &amp; \\
+ &amp; &amp; &amp; &amp;  &amp; &amp; \Downarrow &amp; &amp; &amp; &amp; &amp;  &amp; \\
+\# &amp; 1 &amp; \# &amp; 2 &amp; \#  &amp; 3 &amp; \# &amp; &amp; &amp; &amp; &amp; &amp; \\
+\\
+ &amp; &amp; &amp; &amp; &amp; &amp; \# &amp; 4 &amp; \# &amp; 5 &amp; \# &amp; 6 &amp; \# \\
+ &amp; &amp; &amp; &amp;  &amp; &amp; \Uparrow &amp; &amp; &amp; &amp; &amp;  &amp; \\
  &amp; &amp; &amp; &amp;  &amp; &amp; \text{cut} &amp; &amp; &amp; &amp; &amp;  &amp;
 \end{matrix}
 \quad \quad
 \begin{matrix}
-l_{1} \text{ = 3, } r_{1} \text{ = 6} \
-\
-l_{2} \text{ = 1, } r_{2} \text{ = 4} \
+l_{1} \text{ = 3, } r_{1} \text{ = 6} \\
+\\
+l_{2} \text{ = 1, } r_{2} \text{ = 4} \\
 \end{matrix}
-$$
-As the example shows, if cut position at first #, left = min(A[0], B[0]), while cut position at last #, right = max(A[-1], B[-1]).</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+ & & & &  & & \text{cut} & & & & &  & \\
+ & & & &  & & \Downarrow & & & & &  & \\
+\# & 1 & \# & 2 & \#  & 3 & \# & & & & & & \\
+\\
+ & & & & & & \# & 4 & \# & 5 & \# & 6 & \# \\
+ & & & &  & & \Uparrow & & & & &  & \\
+ & & & &  & & \text{cut} & & & & &  &
+\end{matrix}
+\quad \quad
+\begin{matrix}
+l_{1} \text{ = 3, } r_{1} \text{ = 6} \\
+\\
+l_{2} \text{ = 1, } r_{2} \text{ = 4} \\
+\end{matrix}
+</script>
+</div>
+<p>As the example shows, if cut position at first #, left = min(A[0], B[0]), while cut position at last #, right = max(A[-1], B[-1]).</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -7067,20 +7142,35 @@ Each column must contain the digits 1-9 without repetition.
 Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
 Note:
 A Sudoku board (partially filled) could be valid but is not necessarily solvable.
-Only the filled cells need to be validated according to the mentioned rules.
-$$
+Only the filled cells need to be validated according to the mentioned rules.</p>
+<div>
+<div class="MathJax_Preview">
 \begin{bmatrix}
-5 &amp; 3 &amp; . &amp; . &amp; 7 &amp; . &amp; . &amp; . &amp; . \
-6 &amp; . &amp; . &amp; 1 &amp; 9 &amp; 5 &amp; . &amp; . &amp; . \
-. &amp; 9 &amp; 8 &amp; . &amp; . &amp; . &amp; . &amp; 6 &amp; . \
-8 &amp; . &amp; . &amp; . &amp; 6 &amp; . &amp; . &amp; . &amp; 3 \
-4 &amp; . &amp; . &amp; 8 &amp; . &amp; 3 &amp; . &amp; . &amp; 1 \
-7 &amp; . &amp; . &amp; . &amp; 2 &amp; . &amp; . &amp; . &amp; 6 \
-. &amp; 6 &amp; . &amp; . &amp; . &amp; . &amp; 2 &amp; 8 &amp; . \
-. &amp; . &amp; . &amp; 4 &amp; 1 &amp; 9 &amp; . &amp; . &amp; 5 \
+5 &amp; 3 &amp; . &amp; . &amp; 7 &amp; . &amp; . &amp; . &amp; . \\
+6 &amp; . &amp; . &amp; 1 &amp; 9 &amp; 5 &amp; . &amp; . &amp; . \\
+. &amp; 9 &amp; 8 &amp; . &amp; . &amp; . &amp; . &amp; 6 &amp; . \\
+8 &amp; . &amp; . &amp; . &amp; 6 &amp; . &amp; . &amp; . &amp; 3 \\
+4 &amp; . &amp; . &amp; 8 &amp; . &amp; 3 &amp; . &amp; . &amp; 1 \\
+7 &amp; . &amp; . &amp; . &amp; 2 &amp; . &amp; . &amp; . &amp; 6 \\
+. &amp; 6 &amp; . &amp; . &amp; . &amp; . &amp; 2 &amp; 8 &amp; . \\
+. &amp; . &amp; . &amp; 4 &amp; 1 &amp; 9 &amp; . &amp; . &amp; 5 \\
 . &amp; . &amp; . &amp; . &amp; 8 &amp; . &amp; . &amp; 7 &amp; 9
 \end{bmatrix}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+5 & 3 & . & . & 7 & . & . & . & . \\
+6 & . & . & 1 & 9 & 5 & . & . & . \\
+. & 9 & 8 & . & . & . & . & 6 & . \\
+8 & . & . & . & 6 & . & . & . & 3 \\
+4 & . & . & 8 & . & 3 & . & . & 1 \\
+7 & . & . & . & 2 & . & . & . & 6 \\
+. & 6 & . & . & . & . & 2 & 8 & . \\
+. & . & . & 4 & 1 & 9 & . & . & 5 \\
+. & . & . & . & 8 & . & . & 7 & 9
+\end{bmatrix}
+</script>
+</div>
 <p>Example:
 Input: board = 
 [["5","3",".",".","7",".",".",".","."]
@@ -7402,18 +7492,31 @@ Output: 2</p>
 Output: 1</p>
 <p>Follow up:
 Your algorithm should run in O(n) time and uses constant extra space.</p>
-<p>Solution:
-$$
+<p>Solution:</p>
+<div>
+<div class="MathJax_Preview">
 \begin{matrix}
-3 &amp; 4 &amp; -1 &amp; 1 \
- &amp; &amp; \Downarrow &amp; \
-3 &amp; 4 &amp; 5 &amp; 1 \
- &amp; &amp; \Downarrow &amp; \
-3 &amp; 4 &amp; -5 &amp; 1 \
-3 &amp; 4 &amp; -5 &amp; -1 \
+3 &amp; 4 &amp; -1 &amp; 1 \\
+ &amp; &amp; \Downarrow &amp; \\
+3 &amp; 4 &amp; 5 &amp; 1 \\
+ &amp; &amp; \Downarrow &amp; \\
+3 &amp; 4 &amp; -5 &amp; 1 \\
+3 &amp; 4 &amp; -5 &amp; -1 \\
 -3 &amp; 4 &amp; -5 &amp; -1
 \end{matrix}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+3 & 4 & -1 & 1 \\
+ & & \Downarrow & \\
+3 & 4 & 5 & 1 \\
+ & & \Downarrow & \\
+3 & 4 & -5 & 1 \\
+3 & 4 & -5 & -1 \\
+-3 & 4 & -5 & -1
+\end{matrix}
+</script>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -10603,17 +10706,29 @@ $$</p>
 </code></pre></div>
 </td></tr></table>
 <h2 id="0096-unique-binary-search-trees">0096. Unique Binary Search Trees<a class="headerlink" href="#0096-unique-binary-search-trees" title="Permanent link">&para;</a></h2>
-<p>Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.
-$$
+<p>Given an integer n, return the number of structurally unique BST's (binary search trees) which has exactly n nodes of unique values from 1 to n.</p>
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
 &amp; C_{n} =
 \begin{cases}
-1, &amp;\quad n = 0 \
+1, &amp;\quad n = 0 \\
 \frac{2(2n+1)}{n+2} C_{n-1}, &amp;\quad n = 1, 2, 3, ...
-\end{cases} \
+\end{cases} \\
 &amp; C_{n} = \frac{(2n)!}{(n+1)! n!}
 \end{aligned}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& C_{n} =
+\begin{cases}
+1, &\quad n = 0 \\
+\frac{2(2n+1)}{n+2} C_{n-1}, &\quad n = 1, 2, 3, ...
+\end{cases} \\
+& C_{n} = \frac{(2n)!}{(n+1)! n!}
+\end{aligned}
+</script>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
