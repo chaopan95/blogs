@@ -428,6 +428,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    删除回文串的最小次数
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -765,6 +772,13 @@
           <li class="md-nav__item">
   <a href="#_17" class="md-nav__link">
     删除子串的最小操作数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    删除回文串的最小次数
   </a>
   
 </li>
@@ -2736,7 +2750,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 \end{cases}
 </script>
 </div>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2771,7 +2785,82 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">n</span><span class="mi">-1</span><span class="p">];</span>
 </code></pre></div>
 </td></tr></table>
-<p>时间复杂度<span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span></p>
+时间复杂度<span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span></p>
+<h3 id="_18">删除回文串的最小次数<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>给定一个字符串如“aabc”，每一次删除一个回文子串，直到字符串为空，求最小删除次数。</p>
+<p><strong>「分析」</strong></p>
+<p>设 dp[ i ][ j ] 为字符串 s[i : j] 的最小删除次数。任何一个字符都会面临下面的两种情况</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\text{case 1: } &amp; \text{axxxx} \\
+\text{case 2: } &amp; \text{axxaxxx}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\text{case 1: } & \text{axxxx} \\
+\text{case 2: } & \text{axxaxxx}
+\end{matrix}
+</script>
+</div>
+<p>case 1 只删除一个字符，case 2 删除一个区间的字符</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ]} =
+\begin{cases}
+\text{1}, &amp; \quad i == j \\
+\max(\text{dp[i + 1][ j ] + 1, dp[i + 2][ j ] + 1}), &amp; \quad \text{s[ i ] == s[i + 1]} \\
+\max_{k \in [i + 2, j]} (\text{dp[i + 1][k - 1] + dp[k + 1][ j ]}), &amp; \quad \text{s[ i ] == s[ k ]}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ]} =
+\begin{cases}
+\text{1}, & \quad i == j \\
+\max(\text{dp[i + 1][ j ] + 1, dp[i + 2][ j ] + 1}), & \quad \text{s[ i ] == s[i + 1]} \\
+\max_{k \in [i + 2, j]} (\text{dp[i + 1][k - 1] + dp[k + 1][ j ]}), & \quad \text{s[ i ] == s[ k ]}
+\end{cases}
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<span class="n">dp</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">j</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="mi">-1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">n</span><span class="mi">-1</span><span class="p">];</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span></p>
                 
               
               
