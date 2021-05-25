@@ -820,7 +820,7 @@
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，其中 n 是正负样本的数目和</p>
 <p><strong>「分桶降低复杂度」</strong></p>
-<p>概率的范围是 [0, 1]，因此可以使用分桶方法统计每一个样本预测值落在哪个桶内（区间）。我们使用两个 hist 用来统计预测值落在某个桶内的个数。我们的目标是求概率对，假设 预测值为 0.8 的正样本有 10 个，那么低于 0.8 的负样本总数乘以 10 即为这一预测值的概率对，此外，我们还应该计算预测值等于 0.8 的负样本数如 8，这种情况下，正负样本概率相等，需要取一半，即 8 * 10 / 2。</p>
+<p>概率的范围是 [0, 1]，因此可以使用分桶方法统计每一个样本预测值落在哪个桶内（区间）。我们使用两个 hist 用来统计预测值落在某个桶内的个数。我们的目标是求概率对，假设预测值为 0.8 的正样本有 10 个，那么低于 0.8 的负样本总数乘以 10 即为这一预测值的概率对，此外，我们还应该计算预测值等于 0.8 的负样本数，假设为 8，这种情况下，此时正负样本概率相等，需要取一半，即 8 * 10 / 2。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
