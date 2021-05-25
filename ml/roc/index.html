@@ -640,9 +640,7 @@
 <p>假设我们的分类器是一个随机分类器，对正负样本的划分概率是一样的，那么这个分类器的 AUC 就是0.5。</p>
 <p>AUC 不受划分正负样本的阈值影响，也不受正负样本的不均影响，但是只适合二分类的问题。</p>
 <h3 id="_4">计算方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<ul>
-<li>正负样本对</li>
-</ul>
+<p><strong>「正负样本对」</strong></p>
 <p>我们可以根据AUC的物理含义求解，穷举所有的正负样本对，然后计算正样本的预测值大于负样本预测值的概率。</p>
 <div>
 <div class="MathJax_Preview">
@@ -723,7 +721,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(n_{1}, n_{0})</span><script type="math/tex">O(n_{1}, n_{0})</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n_{1} + n_{0})</span><script type="math/tex">O(n_{1} + n_{0})</script></span>，其中 <span><span class="MathJax_Preview">n_{1}</span><script type="math/tex">n_{1}</script></span> 和 <span><span class="MathJax_Preview">n_{0}</span><script type="math/tex">n_{0}</script></span> 分别是正负样本的数目</p>
+时间复杂度 <span><span class="MathJax_Preview">O(n_{1} n_{0})</span><script type="math/tex">O(n_{1} n_{0})</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n_{1} + n_{0})</span><script type="math/tex">O(n_{1} + n_{0})</script></span>，其中 <span><span class="MathJax_Preview">n_{1}</span><script type="math/tex">n_{1}</script></span> 和 <span><span class="MathJax_Preview">n_{0}</span><script type="math/tex">n_{0}</script></span> 分别是正负样本的数目</p>
 <p><strong>「排序降低复杂度」</strong></p>
 <p>将预测值按照从小到大的顺序排列，可使用如下公式</p>
 <div>
