@@ -638,7 +638,7 @@
 </script>
 </div>
 <p>假设我们的分类器是一个随机分类器，对正负样本的划分概率是一样的，那么这个分类器的 AUC 就是0.5。</p>
-<p>AUC 不受划分正负样本的阈值影响，也不受正负样本的不均影响，但是只适合与二分类的问题。</p>
+<p>AUC 不受划分正负样本的阈值影响，也不受正负样本的不均影响，但是只适合二分类的问题。</p>
 <h3 id="_4">计算方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>正负样本对</li>
@@ -723,14 +723,19 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(n_{1} n_{0}})</span><script type="math/tex">O(n_{1} n_{0}})</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n_{1} + n_{0}})</span><script type="math/tex">O(n_{1} + n_{0}})</script></span>，其中 <span><span class="MathJax_Preview">O(n_{1}</span><script type="math/tex">O(n_{1}</script></span> 和 <span><span class="MathJax_Preview">O(n_{0}</span><script type="math/tex">O(n_{0}</script></span> 分别是正负样本的数目</p>
+时间复杂度 <span><span class="MathJax_Preview">O(n_{1}, n_{0})</span><script type="math/tex">O(n_{1}, n_{0})</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n_{1} + n_{0})</span><script type="math/tex">O(n_{1} + n_{0})</script></span>，其中 <span><span class="MathJax_Preview">n_{1}</span><script type="math/tex">n_{1}</script></span> 和 <span><span class="MathJax_Preview">n_{0}</span><script type="math/tex">n_{0}</script></span> 分别是正负样本的数目</p>
 <p><strong>「排序降低复杂度」</strong></p>
-<p>将预测值按照从小到大的顺序排列，可使用如下公式
-$$
-\text{AUC} = \frac{\sum_{i \in {+}} \text{rank}<em>{i} - \frac{n</em>{\text{positive}} \times (n_{\text{positive}}+1)}{2}}{n_{\text{positive}} \times n_{\text{negative}}}
-$$</p>
+<p>将预测值按照从小到大的顺序排列，可使用如下公式</p>
+<div>
+<div class="MathJax_Preview">
+\text{AUC} = \frac{\sum_{i \in \{+\}} \text{rank}_{i} - \frac{n_{\text{positive}} \times (n_{\text{positive}}+1)}{2}}{n_{\text{positive}} \times n_{\text{negative}}}
+</div>
+<script type="math/tex; mode=display">
+\text{AUC} = \frac{\sum_{i \in \{+\}} \text{rank}_{i} - \frac{n_{\text{positive}} \times (n_{\text{positive}}+1)}{2}}{n_{\text{positive}} \times n_{\text{negative}}}
+</script>
+</div>
 <p>我们只需要计算正样本在排序后的列表里面的序号（秩），从 1 开始。如果出现正负样本具有相同的预测分值，那么需要求这些正负样本的平均秩乘以同分值中正样本的个数。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -762,16 +767,24 @@ $$</p>
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="nf">auc2</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">predict</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">label</span><span class="p">)</span> <span class="p">{</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="nf">auc2</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">predict</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">label</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">data</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">predict</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">data</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">{</span><span class="n">predict</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="p">[</span><span class="n">i</span><span class="p">]});</span>
     <span class="p">}</span>
-    <span class="n">sort</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">data</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="p">[](</span><span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">.</span><span class="n">first</span> <span class="o">||</span> <span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">==</span> <span class="n">y</span><span class="p">.</span><span class="n">first</span> <span class="o">&amp;&amp;</span> <span class="n">x</span><span class="p">.</span><span class="n">second</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">data</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="p">[](</span><span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span>
+                                      <span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">.</span><span class="n">first</span> <span class="o">||</span> <span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">==</span> <span class="n">y</span><span class="p">.</span><span class="n">first</span> <span class="o">&amp;&amp;</span>
+                                     <span class="n">x</span><span class="p">.</span><span class="n">second</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
     <span class="p">});</span>
-    <span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rankPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rankNeg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">numPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">numNeg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">totPosSam</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rankPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rankNeg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">numPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">numNeg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">totPosSam</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">double</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">double</span> <span class="n">lastScore</span> <span class="o">=</span> <span class="mf">-0.1</span><span class="p">;</span>
     <span class="c1">// 最后添加一个数对标志结束，不参与计算</span>
@@ -780,7 +793,8 @@ $$</p>
         <span class="n">row</span><span class="o">++</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">lastScore</span> <span class="o">!=</span> <span class="n">d</span><span class="p">.</span><span class="n">first</span> <span class="o">&amp;&amp;</span> <span class="n">row</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">lastScore</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
-            <span class="n">cnt</span> <span class="o">+=</span> <span class="kt">double</span><span class="p">(</span><span class="n">rankPos</span> <span class="o">+</span> <span class="n">rankNeg</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">numPos</span> <span class="o">+</span> <span class="n">numNeg</span><span class="p">)</span> <span class="o">*</span> <span class="n">numPos</span><span class="p">;</span>
+            <span class="n">cnt</span> <span class="o">+=</span> <span class="kt">double</span><span class="p">(</span><span class="n">rankPos</span> <span class="o">+</span> <span class="n">rankNeg</span><span class="p">)</span> <span class="o">/</span>
+                   <span class="p">(</span><span class="n">numPos</span> <span class="o">+</span> <span class="n">numNeg</span><span class="p">)</span> <span class="o">*</span> <span class="n">numPos</span><span class="p">;</span>
             <span class="n">rankPos</span> <span class="o">=</span> <span class="n">rankNeg</span> <span class="o">=</span> <span class="n">numPos</span> <span class="o">=</span> <span class="n">numNeg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">second</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
@@ -793,10 +807,12 @@ $$</p>
             <span class="n">numNeg</span><span class="o">++</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">-</span> <span class="n">totPosSam</span> <span class="o">*</span> <span class="p">(</span><span class="n">totPosSam</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">totPosSam</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">totPosSam</span><span class="p">));</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">-</span> <span class="n">totPosSam</span> <span class="o">*</span> <span class="p">(</span><span class="n">totPosSam</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">/</span>
+            <span class="p">(</span><span class="n">totPosSam</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">totPosSam</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，其中 n 是正负样本的数目和</p>
 <p><strong>「分桶降低复杂度」</strong></p>
 <p>概率的范围是 [0, 1]，因此可以使用分桶方法统计每一个样本预测值落在哪个桶内（区间）。我们使用两个 hist 用来统计预测值落在某个桶内的个数。我们的目标是求概率对，假设 预测值为 0.8 的正样本有 10 个，那么低于 0.8 的负样本总数乘以 10 即为这一预测值的概率对，此外，我们还应该计算预测值等于 0.8 的负样本数如 8，这种情况下，正负样本概率相等，需要取一半，即 8 * 10 / 2。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -852,7 +868,7 @@ $$</p>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<p>如果我们对每一个预测值设置一个桶，最后的结果是精确的，但是，如果数据量过大。选择一个区间桶更为高效。</p>
+<p>时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，其中 n 是正负样本的数目和</p>
                 
               
               
