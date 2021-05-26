@@ -305,6 +305,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#bfs" class="md-nav__link">
+    BFS
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -482,6 +489,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#bfs" class="md-nav__link">
+    BFS
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -501,7 +515,8 @@
 <p><strong>「简介」</strong>
 深度优先搜索（Depth Ffirst Search）是一种检索方法，优先搜索某一节点的子节点，如果可以搜索到目标，即停止或将结果保存起来；反之，回溯到分叉处，依次遍历下一个节点。</p>
 <h3 id="_1">全排列<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p><strong>「序列元素不重复」</strong>对一个序列如 [1, 2, 3] ,元素互不相同，求其全排列</p>
+<p><strong>「序列元素不重复」</strong></p>
+<p>对一个序列如 [1, 2, 3] ,元素互不相同，求其全排列</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -543,7 +558,8 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<p><strong>「序列元素有重复」</strong>对一个序列如 [3, 3, 0, 3] ，元素有重复，求其全排列</p>
+<p><strong>「序列元素有重复」</strong></p>
+<p>对一个序列如 [3, 3, 0, 3] ，元素有重复，求其全排列</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -600,6 +616,161 @@
     <span class="n">dfs</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vis</span><span class="p">,</span> <span class="n">arr</span><span class="p">);</span>
     <span class="k">delete</span> <span class="p">[]</span><span class="n">vis</span><span class="p">;</span>
     <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="bfs">BFS<a class="headerlink" href="#bfs" title="Permanent link">&para;</a></h2>
+<p><strong>「简介」</strong>
+宽度优先搜索（Breadth Ffirst Search）是一种检索方法，优先搜索某一节点的所有直接邻居节点，一般而言，BFS 适用于求解最短长度的问题。在求解过程中，我们通常依赖 queue 这一数据结构。</p>
+<p>BFS 有单向和双向两种方式，本质上没有区别，但双向在时间效率上具有优势。</p>
+<p>例如，现有一张地图，由 0 和 1 组成，每次移动可以朝上、下、左、右、上左、上右、下左和下右这八个方向移动一格，并只允许落入 0 的格子，求从左上角到右下角的最短距离，如果不能到达，返回 -1。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+{\color{Red} 0} &amp; {\color{Red} 0} &amp; {\color{Red} 0} &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 1 &amp; {\color{Red} 0} &amp; 1 \\
+0 &amp; {\color{Red} 0} &amp; {\color{Red} 0} &amp; 1 &amp; 1 \\
+{\color{Red} 0} &amp; 1 &amp; 1 &amp; 1 &amp; 0 \\
+1 &amp; {\color{Red} 0} &amp; {\color{Red} 0} &amp; {\color{Red} 0} &amp; {\color{Red} 0}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+{\color{Red} 0} & {\color{Red} 0} & {\color{Red} 0} & 0 & 1 \\
+0 & 1 & 1 & {\color{Red} 0} & 1 \\
+0 & {\color{Red} 0} & {\color{Red} 0} & 1 & 1 \\
+{\color{Red} 0} & 1 & 1 & 1 & 0 \\
+1 & {\color{Red} 0} & {\color{Red} 0} & {\color{Red} 0} & {\color{Red} 0}
+\end{matrix}
+</script>
+</div>
+<p>最短的长度是 11。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">shortestPathBinaryMatrix</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">grid</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">nRow</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">grid</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">nRow</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">nRow</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">nCol</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">direction</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">-1</span><span class="p">},</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">-1</span><span class="p">},</span> <span class="p">{</span><span class="mi">-1</span><span class="p">,</span> <span class="mi">-1</span><span class="p">},</span> <span class="p">{</span><span class="mi">-1</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="mi">-1</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="p">};</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">||</span> <span class="n">grid</span><span class="p">[</span><span class="n">nRow</span><span class="mi">-1</span><span class="p">][</span><span class="n">nCol</span><span class="mi">-1</span><span class="p">])</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">;</span>
+    <span class="n">q1</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">});</span>
+    <span class="n">q2</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">nRow</span><span class="mi">-1</span><span class="p">,</span> <span class="n">nCol</span><span class="mi">-1</span><span class="p">});</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q1</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">q2</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">size1</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">q1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">size1</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">q1</span><span class="p">.</span><span class="n">front</span><span class="p">()[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">q1</span><span class="p">.</span><span class="n">front</span><span class="p">()[</span><span class="mi">1</span><span class="p">];</span>
+            <span class="n">q1</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">continue</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">d</span> <span class="p">:</span> <span class="n">direction</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+                <span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">nx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="n">nRow</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="n">nCol</span> <span class="o">||</span>
+                    <span class="n">grid</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">grid</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">continue</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="n">q1</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">ans</span><span class="o">++</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">size2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">q2</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">size2</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">q2</span><span class="p">.</span><span class="n">front</span><span class="p">()[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">q2</span><span class="p">.</span><span class="n">front</span><span class="p">()[</span><span class="mi">1</span><span class="p">];</span>
+            <span class="n">q2</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">continue</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">grid</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">d</span> <span class="p">:</span> <span class="n">direction</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+                <span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">nx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="n">nRow</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="n">nCol</span> <span class="o">||</span>
+                    <span class="n">grid</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">grid</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">continue</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="n">q2</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">ans</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
