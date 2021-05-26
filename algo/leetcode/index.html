@@ -5587,35 +5587,7 @@ Only the filled cells need to be validated according to the mentioned rules.</p>
 \end{bmatrix}
 </script>
 </div>
-<p>Example:
-Input: board = 
-[["5","3",".",".","7",".",".",".","."]
-,["6",".",".","1","9","5",".",".","."]
-,[".","9","8",".",".",".",".","6","."]
-,["8",".",".",".","6",".",".",".","3"]
-,["4",".",".","8",".","3",".",".","1"]
-,["7",".",".",".","2",".",".",".","6"]
-,[".","6",".",".",".",".","2","8","."]
-,[".",".",".","4","1","9",".",".","5"]
-,[".",".",".",".","8",".",".","7","9"]]
-Output: true</p>
-<p>Input: board = 
-[["8","3",".",".","7",".",".",".","."]
-,["6",".",".","1","9","5",".",".","."]
-,[".","9","8",".",".",".",".","6","."]
-,["8",".",".",".","6",".",".",".","3"]
-,["4",".",".","8",".","3",".",".","1"]
-,["7",".",".",".","2",".",".",".","6"]
-,[".","6",".",".",".",".","2","8","."]
-,[".",".",".","4","1","9",".",".","5"]
-,[".",".",".",".","8",".",".","7","9"]]
-Output: false
-Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.</p>
-<p>Constraints:
-board.length == 9
-board[i].length == 9
-board[i][j] is a digit or '.'.</p>
-<p>Solution:</p>
+<p>Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -5715,33 +5687,6 @@ $$
 {\color{Red} 3} &amp; {\color{Red} 4} &amp; {\color{Red} 5} &amp; {\color{Red} 2} &amp; 8 &amp; {\color{Red} 6} &amp; {\color{Red} 1} &amp; 7 &amp; 9
 \end{bmatrix}
 $$</p>
-<p>Example:
-Input: board =
-[["5","3",".",".","7",".",".",".","."],
-["6",".",".","1","9","5",".",".","."],
-[".","9","8",".",".",".",".","6","."],
-["8",".",".",".","6",".",".",".","3"],
-["4",".",".","8",".","3",".",".","1"],
-["7",".",".",".","2",".",".",".","6"],
-[".","6",".",".",".",".","2","8","."],
-[".",".",".","4","1","9",".",".","5"],
-[".",".",".",".","8",".",".","7","9"]]
-Output:
-[["5","3","4","6","7","8","9","1","2"],
-["6","7","2","1","9","5","3","4","8"],
-["1","9","8","3","4","2","5","6","7"],
-["8","5","9","7","6","1","4","2","3"],
-["4","2","6","8","5","3","7","9","1"],
-["7","1","3","9","2","4","8","5","6"],
-["9","6","1","5","3","7","2","8","4"],
-["2","8","7","4","1","9","6","3","5"],
-["3","4","5","2","8","6","1","7","9"]]</p>
-<p>Constraints:
-board.length == 9
-board[i].length == 9
-board[i][j] is a digit or '.'.
-It is guaranteed that the input board has only one solution.</p>
-<p>Solution:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
