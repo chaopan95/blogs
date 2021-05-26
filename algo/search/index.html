@@ -624,6 +624,27 @@
 宽度优先搜索（Breadth Ffirst Search）是一种检索方法，优先搜索某一节点的所有直接邻居节点，一般而言，BFS 适用于求解最短长度的问题。在求解过程中，我们通常依赖 queue 这一数据结构。</p>
 <p>BFS 有单向和双向两种方式，本质上没有区别，但双向在时间效率上具有优势。</p>
 <p>例如，现有一张地图，由 0 和 1 组成，每次移动可以朝上、下、左、右、上左、上右、下左和下右这八个方向移动一格，并只允许落入 0 的格子，求从左上角到右下角的最短距离，如果不能到达，返回 -1。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+{\color{Red} 0} &amp; {\color{Red} 0} &amp; {\color{Red} 0} &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 1 &amp; {\color{Red} 0} &amp; 1 \\
+0 &amp; {\color{Red} 0} &amp; {\color{Red} 0} &amp; 1 &amp; 1 \\
+{\color{Red} 0} &amp; 1 &amp; 1 &amp; 1 &amp; 0 \\
+1 &amp; {\color{Red} 0} &amp; {\color{Red} 0} &amp; {\color{Red} 0} &amp; {\color{Red} 0}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+{\color{Red} 0} & {\color{Red} 0} & {\color{Red} 0} & 0 & 1 \\
+0 & 1 & 1 & {\color{Red} 0} & 1 \\
+0 & {\color{Red} 0} & {\color{Red} 0} & 1 & 1 \\
+{\color{Red} 0} & 1 & 1 & 1 & 0 \\
+1 & {\color{Red} 0} & {\color{Red} 0} & {\color{Red} 0} & {\color{Red} 0}
+\end{matrix}
+</script>
+</div>
+<p>最短的长度是 11。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
