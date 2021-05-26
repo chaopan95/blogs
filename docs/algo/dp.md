@@ -926,237 +926,164 @@ return ans;
     };
     ```
 
-## 棋盘形DP
-??? note "[「Leetcode 62. 不同路径」]()"
+## 路径问题
+### 无障碍到达终点的路径条数
+一个机器人在 $m \times n$ 的网格的左上角，每次只能向下或者向右移动一格，求到达终点的路径条数。
 
-    $$
-    \begin{aligned}
-    & dp[i][1] = 1, \quad i = 1, 2, ..., m \\
-    & dp[1][j] = 1, \quad j = 1, 2, ..., n \\
-    & dp[i][j] = dp[i-1][j] + dp[i][j-1], \quad i = 2, 3, ..., m \quad j = 2, 3, ..., n
-    \end{aligned}
-    $$
+$$
+\begin{matrix}
+\text{start} & \cdot & \cdot & \cdot & \cdot & \cdot \\
+\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+\cdot & \cdot & \cdot & \cdot & \cdot & \cdot \\
+\cdot & \cdot & \cdot & \cdot & \cdot & \text{end}
+\end{matrix}
+$$
 
-    ```cpp
-    /*
-    一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。
+**「分析」**
 
-    机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。
+对于任意一个网格（i， j），能够到达这个网格只有两个位置即（i-1，j）和（i，j+1）。我们可以设 dp[ i ][ j ] 为从（0，0）到（i，j）的路径条数，写出状态转移方程。注意到，从左上角到右下角的路径条数与从右下角到左上角的路径条数是等价的。
 
-    问总共有多少条不同的路径？
+$$
+\begin{aligned}
+& dp[i][1] = 1, \quad i = 1, 2, ..., m \\
+& dp[1][j] = 1, \quad j = 1, 2, ..., n \\
+& dp[i][j] = dp[i-1][j] + dp[i][j-1], \quad i = 2, 3, ..., m \quad j = 2, 3, ..., n
+\end{aligned}
+$$
 
-    Input: m = 3, n = 2
-    Output: 3
-    Explanation:
-    From the top-left corner, there are a total of 3 ways to reach the
-    bottom-right corner:
-    1. Right -> Down -> Down
-    2. Down -> Down -> Right
-    3. Down -> Right -> Down
-    */
-    int uniquePaths(int m, int n) {
-        int **dp = new int *[m];
-        for (int i = 0; i < m; i++) { dp[i] = new int [n]{}; }
-        for (int i = 0; i < m; i++) { dp[i][0] = 1; }
-        for (int j = 0; j < n; j++) { dp[0][j] = 1; }
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                dp[i][j] = dp[i-1][j] + dp[i][j-1];
-            }
+我们可以发现，当前网格只与上方网格和左边网格有关，那么空间复杂度可以进一步优化。
+
+```cpp
+int uniquePaths(int m, int n) {
+    vector<int> next(n+1, 0), cur(n+1, 0);
+    next[n-1] = 1;
+    for (int i = m - 1; i >= 0; i--) {
+        for (int j = n - 1; j >= 0; j--) {
+            next[j] += cur[j] + next[j+1];
         }
-        int ans = dp[m-1][n-1];
-        for (int i = 0; i < m; i++) { delete []dp[i]; }
-        delete []dp;
-        return ans;
+        cur = next;
+        next = vector<int>(n+1, 0);
     }
-    ```
+    return cur[0];
+}
+```
 
-??? note "[「Leetcode 63. 不同路径II」]()"
+### 有障碍到达终点的路径条数
+一个机器人在 $m \times n$ 的网格的左上角，每次只能向下或者向右移动一格，但是某些网格有障碍，机器人不能到达这些障碍所在网格，求到达终点的路径条数。
 
-    ```cpp
-    /*
-    一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
+$$
+\begin{matrix}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{matrix}
+$$
 
-    机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
+**「分析」**
 
-    现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？
+同样地，设 dp[ i ][ j ] 为（0，0）到（i，j）之间地有效路径条数，其状态转移方程如下
 
-    Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
-    Output: 2
-    Explanation: There is one obstacle in the middle of the 3x3 grid above.
-    There are two ways to reach the bottom-right corner:
-    1. Right -> Right -> Down -> Down
-    2. Down -> Down -> Right -> Right
-    */
-    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
-        vector<vector<int>> mat = obstacleGrid;
-        int m = int(mat.size());
-        if (m == 0) { return 0; }
-        int n = int(mat[0].size());
-        if (n == 0) { return 0; }
-        int **dp = new int *[m];
-        for (int i = 0; i < m; i++) { dp[i] = new int [n]{}; }
-        if (mat[0][0]) { return 0; }
-        dp[0][0] = 1;
-        for (int i = 1; i < m; i++) {
-            if (mat[i][0]) { dp[i][0] = 0; }
-            else { dp[i][0] = dp[i-1][0]; }
-        }
+$$
+\text{dp[ i ][ j ]} =
+\begin{cases}
+0, & \quad \text{grid[ i ][ j ] == 1} \\
+\text{dp[i + 1][ j ] + dp[ i ][j + 1]}, & \quad \text{otherwise}
+\end{cases}
+$$
+
+```cpp
+int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+    int m = int(obstacleGrid.size());
+    if (m == 0) { return 0; }
+    int n = int(obstacleGrid[0].size());
+    if (n == 0) { return 0; }
+    vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+    if (obstacleGrid[0][0]) { return 0; }
+    dp[0][0] = 1;
+    for (int i = 1; i < m; i++) {
+        dp[i][0] = dp[i-1][0] * (1 - obstacleGrid[i][0]);
+    }
+    for (int j = 1; j < n; j++) {
+        dp[0][j] = dp[0][j-1] * (1 - obstacleGrid[0][j]);
+    }
+    for (int i = 1; i < m; i++) {
         for (int j = 1; j < n; j++) {
-            if (mat[0][j]) { dp[0][j] = 0; }
-            else { dp[0][j] = dp[0][j-1]; }
+            dp[i][j] = (dp[i-1][j] + dp[i][j-1]) *
+                        (1 - obstacleGrid[i][j]);
         }
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                if (mat[i][j]) { dp[i][j] = 0; }
-                else { dp[i][j] = dp[i-1][j] + dp[i][j-1]; }
-            }
+    }
+    return dp[m-1][n-1];
+}
+```
+
+### 最小路径和
+一个包含非负整数的 $m \times n$ 的网格，找出一条从左上角到右下角的路径，使得这条路径上的数字和最小。
+
+**「分析」**
+
+设 dp[ i ][ j ] 为从（0，0）到（i，j）最小路径和，其状态转移方程如下
+
+$$
+\text{dp[ i ][ j ]} = \max(\text{dp[i - 1][ j ], dp[ i ][j - 1]}) + \text{grid[ i ][ j ]}
+$$
+
+```cpp
+int minPathSum(vector<vector<int>>& grid) {
+    int m = int(grid.size());
+    if (m == 0) { return 0; }
+    int n = int(grid[0].size());
+    if (n == 0) { return 0; }
+    vector<vector<int>> dp(m+1, vector<int>(n+1, INT_MAX));
+    dp[m][n-1] = dp[m-1][n] = 0;
+    for (int i = m - 1; i >= 0; i--) {
+        for (int j = n - 1; j >= 0; j--) {
+            dp[i][j] = min(dp[i+1][j], dp[i][j+1]) + grid[i][j];
         }
-        int ans = dp[m-1][n-1];
-        for (int i = 0; i < m; i++) { delete []dp[i]; }
-        delete []dp;
-        return ans;
     }
-    ```
+    return dp[0][0];
+}
+```
 
-??? note "[「Leetcode 63. 最小路径和」]()"
+### 停在原地的方案数
+有一个长度为 arrLen 的数组，开始有一个指针在索引 0 处。每一步操作中，你可以将指针向左或向右移动 1 步，或者停在原地（指针不能被移动到数组范围外）。求在恰好执行 steps 次操作以后，指针仍然指向索引 0 处的方案数。例如 steps = 3, arrLen = 2，那么 3 步后，总共有 4 种不同的方法可以停在索引 0 处。 分别是：
 
-    ```cpp
-    /*
-    给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角
-    到右下角的路径，使得路径上的数字总和为最小。
-    说明：每次只能向下或者向右移动一步。
+向右，向左，不动
 
-    1 3 1
-    1 5 1
-    4 2 1
-    Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
-    Output: 7
-    Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
-    */
-    int minPathSum(vector<vector<int>>& grid) {
-        int m = int(grid.size());
-        if (m == 0) { return 0; }
-        int n = int(grid[0].size());
-        if (n == 0) { return 0; }
-        int **dp = new int *[m];
-        for (int i = 0; i < m; i++) { dp[i] = new int [n]{}; }
-        dp[0][0] = grid[0][0];
-        for (int i = 1; i < m; i++) { dp[i][0] = dp[i-1][0] + grid[i][0]; }
-        for (int j = 1; j < n; j++) { dp[0][j] = dp[0][j-1] + grid[0][j]; }
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                dp[i][j] = min(dp[i-1][j], dp[i][j-1]) + grid[i][j];
-            }
+不动，向右，向左
+
+向右，不动，向左
+
+不动，不动，不动
+
+**「分析」**
+
+设 dp[ k ][ i ] 为经过 k 步后跳到第 i 个位置时的方法数，状态转移如下
+
+$$
+\text{dp[ k ][ i ] = dp[k - 1][i - 1] + dp[k - 1][ i ] + dp[k - 1][i + 1]}
+$$
+
+可以观察到，状态转移只会发生在相邻两步和相邻的位置，那么可以使用两个一位数组代替二维数组
+
+```cpp
+int numWays(int steps, int arrLen) {
+    const int MOD = 1000000007;
+    int n = min(arrLen, steps / 2 + 1);
+    vector<int> dp(n, 0);
+    dp[0] = 1;
+    while (steps--) {
+        vector<int> tmp = dp;
+        for (int i = 0; i < n; i++) {
+            long a = i == 0 ? 0 : tmp[i - 1];
+            long b = i == n - 1 ? 0 : tmp[i + 1];
+            long c = tmp[i];
+            dp[i] = (a + b + c) % MOD;
         }
-        int ans = dp[m-1][n-1];
-        for (int i = 0; i < m; i++) { delete []dp[i]; }
-        delete []dp;
-        return ans;
     }
-    ```
+    return dp[0];
+}
+```
 
-??? note "[「程序员代码面试指南 17. 机器人达到指定位置方法数」]()"
-
-    ```cpp
-    /*
-    题目描述
-    假设有排成一行的N个位置，记为1~N，开始时机器人在M位置，机器人可以往左或者往右走，
-    如果机器人在1位置，那么下一步机器人只能走到2位置，如果机器人在N位置，那么下一步机
-    器人只能走到N-1位置。规定机器人只能走k步，最终能来到P位置的方法有多少种。由于方
-    案数可能比较大，所以答案需要对1e9+7取模。
-    输入描述:
-    输出包括一行四个正整数N（2<=N<=5000）、M(1<=M<=N)、K(1<=K<=5000)、P(1<=P<=N)。
-    输出描述:
-    输出一个整数，代表最终走到P的方法数对10^9+7取模后的值。
-    示例1
-    输入
-    复制
-    5 2 3 3
-    输出
-    复制
-    3
-    说明
-    1).2->1,1->2,2->3
-    2).2->3,3->2,2->3
-    3).2->3,3->4,4->3
-    */
-    #include<iostream>
-    #include<vector>
-    using namespace std;
-
-    int moveRobot(int N, int M, int K, int P) {
-        const int MOD = 1000000007;
-        vector<vector<int>> dp(N+2, vector<int>(2, 0));
-        dp[M][0] = 1;
-        while (K--) {
-            for (int i = 1; i <= N; i++) {
-                dp[i][1] = (dp[i-1][0] + dp[i+1][0]) % MOD;
-            }
-            for (int i = 1; i <= N; i++) {
-                dp[i][0] = dp[i][1];
-            }
-        }
-        return dp[P][1];
-    }
-
-
-    int main(int argc, const char *argv[]) {
-        int N = 5, M = 2, K = 3, P = 3;
-        scanf("%d %d %d %d", &N, &M, &K, &P);
-        printf("%d\n", moveRobot(N, M, K, P));
-        return 0;
-    }
-    ```
-
-??? note "[「Leetcode 1269. 停在原地的方案数」]()"
-
-    ```cpp
-    /*
-    有一个长度为 arrLen 的数组，开始有一个指针在索引 0 处。
-    每一步操作中，你可以将指针向左或向右移动 1 步，或者停在原地
-    （指针不能被移动到数组范围外）。
-    给你两个整数 steps 和 arrLen ，请你计算并返回：在恰好执行
-    steps 次操作以后，指针仍然指向索引 0 处的方案数。
-    由于答案可能会很大，请返回方案数 模 10^9 + 7 后的结果。
-
-    示例 1：
-    输入：steps = 3, arrLen = 2
-    输出：4
-    解释：3 步后，总共有 4 种不同的方法可以停在索引 0 处。
-    向右，向左，不动
-    不动，向右，向左
-    向右，不动，向左
-    不动，不动，不动
-
-    示例  2
-    输入：steps = 2, arrLen = 4
-    输出：2
-    解释：2 步后，总共有 2 种不同的方法可以停在索引 0 处。
-    向右，向左
-    不动，不动
-
-    示例 3：
-    输入：steps = 4, arrLen = 2
-    输出：8
-    */
-    int numWays(int steps, int arrLen) {
-        const int MOD = 1000000007;
-        int n = min(arrLen, steps / 2 + 1);
-        vector<int> dp(n, 0);
-        dp[0] = 1;
-        while (steps--) {
-            vector<int> tmp = dp;
-            for (int i = 0; i < n; i++) {
-                long a = i == 0 ? 0 : tmp[i - 1];
-                long b = i == n - 1 ? 0 : tmp[i + 1];
-                long c = tmp[i];
-                dp[i] = (a + b + c) % MOD;
-            }
-        }
-        return dp[0];
-    }
-    ```
 
 ## 区间形DP
 ### 删除子串的最小操作数
