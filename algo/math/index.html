@@ -711,16 +711,16 @@
 <p><strong>「原码」</strong>第一位是符号位，其余表示值</p>
 <div>
 <div class="MathJax_Preview">
-\begin{aligned}
-&amp; \text{[ +1 ]}_{\text{原}} &amp;= \text{0000 0001} \\
-&amp; \text{[ -1 ]}_{\text{原}} &amp;= \text{1000 0001}
-\end{aligned}
+\begin{matrix}
+\text{[ +1 ]}_{\text{原}} &amp;= \text{0000 0001} \\
+\text{[ -1 ]}_{\text{原}} &amp;= \text{1000 0001}
+\end{matrix}
 </div>
 <script type="math/tex; mode=display">
-\begin{aligned}
-& \text{[ +1 ]}_{\text{原}} &= \text{0000 0001} \\
-& \text{[ -1 ]}_{\text{原}} &= \text{1000 0001}
-\end{aligned}
+\begin{matrix}
+\text{[ +1 ]}_{\text{原}} &= \text{0000 0001} \\
+\text{[ -1 ]}_{\text{原}} &= \text{1000 0001}
+\end{matrix}
 </script>
 </div>
 <p>8 位二进制原码的可以表示的范围是 [1111 111, 0111 111] 即 [-127, 127]</p>
@@ -728,32 +728,32 @@
 <p>正数的反码是其本身，负数的反码是符号位不变，其余位置逐个取反。</p>
 <div>
 <div class="MathJax_Preview">
-\begin{aligned}
-&amp; \text{[ +1 ]} &amp;= \text{[0000 0001]}_{\text{原}} &amp;= \text{[0000 0001]}_{\text{反}} \\
-&amp; \text{[ -1 ]} &amp;= \text{[1000 0001]}_{\text{原}} &amp;= \text{[1111 1110]}_{\text{反}}
-\end{aligned}
+\begin{matrix}
+\text{[ +1 ]} &amp;= \text{[0000 0001]}_{\text{原}} &amp;= \text{[0000 0001]}_{\text{反}} \\
+\text{[ -1 ]} &amp;= \text{[1000 0001]}_{\text{原}} &amp;= \text{[1111 1110]}_{\text{反}}
+\end{matrix}
 </div>
 <script type="math/tex; mode=display">
-\begin{aligned}
-& \text{[ +1 ]} &= \text{[0000 0001]}_{\text{原}} &= \text{[0000 0001]}_{\text{反}} \\
-& \text{[ -1 ]} &= \text{[1000 0001]}_{\text{原}} &= \text{[1111 1110]}_{\text{反}}
-\end{aligned}
+\begin{matrix}
+\text{[ +1 ]} &= \text{[0000 0001]}_{\text{原}} &= \text{[0000 0001]}_{\text{反}} \\
+\text{[ -1 ]} &= \text{[1000 0001]}_{\text{原}} &= \text{[1111 1110]}_{\text{反}}
+\end{matrix}
 </script>
 </div>
 <p><strong>「补码」</strong></p>
 <p>正数的补码是其本身，负数的补码在其反码的最后一位加 1。</p>
 <div>
 <div class="MathJax_Preview">
-\begin{aligned}
-&amp; \text{[ +1 ]} &amp;= \text{[0000 0001]}_{\text{原}} &amp;= \text{[0000 0001]}_{\text{反}} &amp;= \text{[0000 0001]}_{\text{补}} \\
-&amp; \text{[ -1 ]} &amp;= \text{[1000 0001]}_{\text{原}} &amp;= \text{[1111 1110]}_{\text{反}} &amp;= \text{[1111 1111]}_{\text{补}}
-\end{aligned}
+\begin{matrix}
+\text{[ +1 ]} &amp;= \text{[0000 0001]}_{\text{原}} &amp;= \text{[0000 0001]}_{\text{反}} &amp;= \text{[0000 0001]}_{\text{补}} \\
+\text{[ -1 ]} &amp;= \text{[1000 0001]}_{\text{原}} &amp;= \text{[1111 1110]}_{\text{反}} &amp;= \text{[1111 1111]}_{\text{补}}
+\end{matrix}
 </div>
 <script type="math/tex; mode=display">
-\begin{aligned}
-& \text{[ +1 ]} &= \text{[0000 0001]}_{\text{原}} &= \text{[0000 0001]}_{\text{反}} &= \text{[0000 0001]}_{\text{补}} \\
-& \text{[ -1 ]} &= \text{[1000 0001]}_{\text{原}} &= \text{[1111 1110]}_{\text{反}} &= \text{[1111 1111]}_{\text{补}}
-\end{aligned}
+\begin{matrix}
+\text{[ +1 ]} &= \text{[0000 0001]}_{\text{原}} &= \text{[0000 0001]}_{\text{反}} &= \text{[0000 0001]}_{\text{补}} \\
+\text{[ -1 ]} &= \text{[1000 0001]}_{\text{原}} &= \text{[1111 1110]}_{\text{反}} &= \text{[1111 1111]}_{\text{补}}
+\end{matrix}
 </script>
 </div>
 <p><strong>「引入反码的原因」</strong></p>
