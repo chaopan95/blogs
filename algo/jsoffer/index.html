@@ -317,13 +317,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-1" class="md-nav__link">
-    11. 二进制中1的个数*
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#12" class="md-nav__link">
     12. 数值的整数次方
   </a>
@@ -1038,13 +1031,6 @@
         <li class="md-nav__item">
   <a href="#10" class="md-nav__link">
     10. 矩形覆盖
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-1" class="md-nav__link">
-    11. 二进制中1的个数*
   </a>
   
 </li>
@@ -1908,34 +1894,6 @@ f(n) =
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">t2</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="11-1">11. 二进制中1的个数*<a class="headerlink" href="#11-1" title="Permanent link">&para;</a></h2>
-<p>题目描述：输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
-Solution：8 &amp; 7 = 1000 &amp; 0111 = 00000 = 0</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="err">：</span>
-     <span class="kt">int</span>  <span class="n">NumberOf1</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-         <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-         <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-         <span class="p">{</span>
-             <span class="n">n</span> <span class="o">&amp;=</span> <span class="n">n</span><span class="mi">-1</span><span class="p">;</span>
-             <span class="n">res</span><span class="o">++</span><span class="p">;</span>
-         <span class="p">}</span>
-         <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
-     <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
 </td></tr></table>
