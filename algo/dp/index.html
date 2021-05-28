@@ -442,6 +442,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    杨辉三角路径最小和
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -456,14 +463,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     删除子串的最小操作数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     删除回文串的最小次数
   </a>
   
@@ -836,6 +843,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    杨辉三角路径最小和
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -850,14 +864,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     删除子串的最小操作数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     删除回文串的最小次数
   </a>
   
@@ -2406,7 +2420,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </script>
 </div>
 <p>我们可以发现，当前网格只与上方网格和左边网格有关，那么空间复杂度可以进一步优化。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2431,6 +2445,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(m \times n)</span><script type="math/tex">O(m \times n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
 <h3 id="_19">有障碍到达终点的路径条数<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>一个机器人在 <span><span class="MathJax_Preview">m \times n</span><script type="math/tex">m \times n</script></span> 的网格的左上角，每次只能向下或者向右移动一格，但是某些网格有障碍，机器人不能到达这些障碍所在网格，求到达终点的路径条数。</p>
 <div>
@@ -2467,7 +2482,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 \end{cases}
 </script>
 </div>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2512,6 +2527,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(m \times n)</span><script type="math/tex">O(m \times n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
 <h3 id="_20">最小路径和<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <p>一个包含非负整数的 <span><span class="MathJax_Preview">m \times n</span><script type="math/tex">m \times n</script></span> 的网格，找出一条从左上角到右下角的路径，使得这条路径上的数字和最小。</p>
 <p><strong>「分析」</strong></p>
@@ -2524,7 +2540,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 \text{dp[ i ][ j ]} = \max(\text{dp[i - 1][ j ], dp[ i ][j - 1]}) + \text{grid[ i ][ j ]}
 </script>
 </div>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2553,6 +2569,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(m \times n)</span><script type="math/tex">O(m \times n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
 <h3 id="_21">停在原地的方案数<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p>有一个长度为 arrLen 的数组，开始有一个指针在索引 0 处。每一步操作中，你可以将指针向左或向右移动 1 步，或者停在原地（指针不能被移动到数组范围外）。求在恰好执行 steps 次操作以后，指针仍然指向索引 0 处的方案数。例如 steps = 3, arrLen = 2，那么 3 步后，总共有 4 种不同的方法可以停在索引 0 处。 分别是：</p>
 <p>向右，向左，不动</p>
@@ -2570,7 +2587,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </script>
 </div>
 <p>可以观察到，状态转移只会发生在相邻两步和相邻的位置，那么可以使用两个一位数组代替二维数组</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2603,8 +2620,68 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(steps \times arrLen)</span><script type="math/tex">O(steps \times arrLen)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(arrLen)</span><script type="math/tex">O(arrLen)</script></span></p>
+<h3 id="_22">杨辉三角路径最小和<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>给定一个三角形，找出自顶向下的最小路径和，每一步只能移动到下一行，且与当前节点相邻的节点</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+&amp; &amp; &amp; 1 \\
+&amp; &amp; &amp; \wedge \\
+&amp; &amp; 3 &amp; &amp; 4 \\
+&amp; &amp; \wedge &amp; &amp; \wedge \\
+&amp; 6 &amp; &amp; 5 &amp; &amp; 7 \\
+&amp; \wedge &amp; &amp; \wedge &amp; &amp; \wedge \\
+4 &amp; &amp; 1 &amp; &amp; 8 &amp; &amp; 3
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+& & & 1 \\
+& & & \wedge \\
+& & 3 & & 4 \\
+& & \wedge & & \wedge \\
+& 6 & & 5 & & 7 \\
+& \wedge & & \wedge & & \wedge \\
+4 & & 1 & & 8 & & 3
+\end{matrix}
+</script>
+</div>
+<p><strong>「分析」</strong></p>
+<p>每一个内节点（非顶点），与上一层的两个节点相连，每一个边界节点（非顶点），与上一层的一个节点相连。设 dp[ i ][ j ] 表示从顶点到（i，j）点的最小路径和，状态转移方程如下</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ]} = \max(\text{dp[i + 1][ j ], dp[i + 1][j + 1]}), \quad i = 0, 1, \cdots, n - 2
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ]} = \max(\text{dp[i + 1][ j ], dp[i + 1][j + 1]}), \quad i = 0, 1, \cdots, n - 2
+</script>
+</div>
+<p>我们可以由上到下写动态规划的方程，也可以反过来递推。我们观察到当前层只与下一层的两个两个状态相关，因此只需要 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span> 的空间即可，但如果由下到上递推的话，我们可以借助传入矩阵，不必开辟额外的空间（本题较为特殊）。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="kt">int</span> <span class="nf">minimumTotal</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">triangle</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">triangle</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">triangle</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">triangle</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">triangle</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">triangle</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">triangle</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+    <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>，空间复杂度<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
 <h2 id="dp_1">区间形DP<a class="headerlink" href="#dp_1" title="Permanent link">&para;</a></h2>
-<h3 id="_22">删除子串的最小操作数<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<h3 id="_23">删除子串的最小操作数<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <p>给定一个字符串如“aaabbcbaa”，每一次可以删除一个由同一字符组成的子串，删除后剩余部分自动拼接。重复进行直到字符串为空，求最小的删除次数。举例如下：</p>
 <div>
 <div class="MathJax_Preview">
@@ -2680,7 +2757,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span></p>
-<h3 id="_23">删除回文串的最小次数<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h3 id="_24">删除回文串的最小次数<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p>给定一个字符串如“aabc”，每一次删除一个回文子串，直到字符串为空，求最小删除次数。</p>
 <p><strong>「分析」</strong></p>
 <p>设 dp[ i ][ j ] 为字符串 s[i : j] 的最小删除次数。任何一个字符都会面临下面的两种情况</p>
