@@ -394,8 +394,21 @@
       
         <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
-    正方形
+    子矩阵
   </a>
+  
+    <nav class="md-nav" aria-label="子矩阵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    最大正方形
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -407,7 +420,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     路径问题
   </a>
   
@@ -415,35 +428,35 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     无障碍到达终点的路径条数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     有障碍到达终点的路径条数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     最小路径和
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_22" class="md-nav__link">
     停在原地的方案数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     杨辉三角路径最小和
   </a>
   
@@ -463,14 +476,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     删除子串的最小操作数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     删除回文串的最小次数
   </a>
   
@@ -795,8 +808,21 @@
       
         <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
-    正方形
+    子矩阵
   </a>
+  
+    <nav class="md-nav" aria-label="子矩阵">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    最大正方形
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -808,7 +834,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     路径问题
   </a>
   
@@ -816,35 +842,35 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     无障碍到达终点的路径条数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     有障碍到达终点的路径条数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     最小路径和
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
+  <a href="#_22" class="md-nav__link">
     停在原地的方案数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     杨辉三角路径最小和
   </a>
   
@@ -864,14 +890,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     删除子串的最小操作数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     删除回文串的最小次数
   </a>
   
@@ -2176,8 +2202,47 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 </details>
-<h2 id="_16">正方形<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
-<details class="note"><summary><a href="">「Leetcode 221. 最大正方形」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<h2 id="_16">子矩阵<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<h3 id="_17">最大正方形<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>给定一个由 0 和 1 构成的矩阵，求最大的全 1 子正方形。例如</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; {\color{Red} 1} &amp; {\color{Red} 1} &amp; 1 \\
+1 &amp; 1 &amp; {\color{Red} 1} &amp; {\color{Red} 1} &amp; 1 \\
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 0
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+1 & 0 & 1 & 0 & 0 \\
+1 & 0 & {\color{Red} 1} & {\color{Red} 1} & 1 \\
+1 & 1 & {\color{Red} 1} & {\color{Red} 1} & 1 \\
+1 & 0 & 0 & 1 & 0
+\end{matrix}
+</script>
+</div>
+<p>最大面积为 4。</p>
+<p><strong>「分析」</strong></p>
+<p>设 dp[ i ][ j ] 为（i，j）到（nRow，nCol）的最大正方形变长，其状态转移矩阵如下：</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ]} =
+\begin{cases}
+\max(\text{dp[i + 1][ j ], dp[ i ][j + 1], dp[i + 1][j + 1]}) + 1, &amp; \quad \text{grid[ i ][ j ] == 1} \\
+0, &amp; \quad \text{otherwise}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ]} =
+\begin{cases}
+\max(\text{dp[i + 1][ j ], dp[ i ][j + 1], dp[i + 1][j + 1]}) + 1, & \quad \text{grid[ i ][ j ] == 1} \\
+0, & \quad \text{otherwise}
+\end{cases}
+</script>
+</div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2194,23 +2259,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">1 0 1 0 0</span>
-<span class="cm">1 0 1 1 1</span>
-<span class="cm">1 1 1 1 1</span>
-<span class="cm">1 0 0 1 0</span>
-
-<span class="cm">输出4</span>
-<span class="cm">*/</span>
-<span class="kt">int</span> <span class="nf">maximalSquare</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&gt;&amp;</span> <span class="n">matrix</span><span class="p">)</span> <span class="p">{</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maximalSquare</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&gt;&amp;</span> <span class="n">matrix</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">nRow</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">matrix</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">nRow</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
     <span class="kt">int</span> <span class="n">nCol</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
@@ -2230,7 +2279,6 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</details>
 <details class="note"><summary><a href="">「Leetcode 1277. 统计全为 1 的正方形子矩阵」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2380,8 +2428,8 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 </details>
-<h2 id="_17">路径问题<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
-<h3 id="_18">无障碍到达终点的路径条数<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h2 id="_18">路径问题<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<h3 id="_19">无障碍到达终点的路径条数<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>一个机器人在 <span><span class="MathJax_Preview">m \times n</span><script type="math/tex">m \times n</script></span> 的网格的左上角，每次只能向下或者向右移动一格，求到达终点的路径条数。</p>
 <div>
 <div class="MathJax_Preview">
@@ -2446,7 +2494,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(m \times n)</span><script type="math/tex">O(m \times n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
-<h3 id="_19">有障碍到达终点的路径条数<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h3 id="_20">有障碍到达终点的路径条数<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <p>一个机器人在 <span><span class="MathJax_Preview">m \times n</span><script type="math/tex">m \times n</script></span> 的网格的左上角，每次只能向下或者向右移动一格，但是某些网格有障碍，机器人不能到达这些障碍所在网格，求到达终点的路径条数。</p>
 <div>
 <div class="MathJax_Preview">
@@ -2524,7 +2572,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(m \times n)</span><script type="math/tex">O(m \times n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
-<h3 id="_20">最小路径和<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<h3 id="_21">最小路径和<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p>一个包含非负整数的 <span><span class="MathJax_Preview">m \times n</span><script type="math/tex">m \times n</script></span> 的网格，找出一条从左上角到右下角的路径，使得这条路径上的数字和最小。</p>
 <p><strong>「分析」</strong></p>
 <p>设 dp[ i ][ j ] 为从（0，0）到（i，j）最小路径和，其状态转移方程如下</p>
@@ -2568,7 +2616,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(m \times n)</span><script type="math/tex">O(m \times n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
-<h3 id="_21">停在原地的方案数<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<h3 id="_22">停在原地的方案数<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p>有一个长度为 arrLen 的数组，开始有一个指针在索引 0 处。每一步操作中，你可以将指针向左或向右移动 1 步，或者停在原地（指针不能被移动到数组范围外）。求在恰好执行 steps 次操作以后，指针仍然指向索引 0 处的方案数。例如 steps = 3, arrLen = 2，那么 3 步后，总共有 4 种不同的方法可以停在索引 0 处。 分别是：</p>
 <p>向右，向左，不动</p>
 <p>不动，向右，向左</p>
@@ -2619,7 +2667,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(k \times n)</span><script type="math/tex">O(k \times n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，k 为移动的步数，n 为数组的长度。</p>
-<h3 id="_22">杨辉三角路径最小和<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<h3 id="_23">杨辉三角路径最小和<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <p>给定一个三角形，找出自顶向下的最小路径和，每一步只能移动到下一行，且与当前节点相邻的节点</p>
 <div>
 <div class="MathJax_Preview">
@@ -2683,7 +2731,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>，空间复杂度<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
 <h2 id="dp_1">区间形DP<a class="headerlink" href="#dp_1" title="Permanent link">&para;</a></h2>
-<h3 id="_23">删除子串的最小操作数<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h3 id="_24">删除子串的最小操作数<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p>给定一个字符串如“aaabbcbaa”，每一次可以删除一个由同一字符组成的子串，删除后剩余部分自动拼接。重复进行直到字符串为空，求最小的删除次数。举例如下：</p>
 <div>
 <div class="MathJax_Preview">
@@ -2759,7 +2807,7 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span></p>
-<h3 id="_24">删除回文串的最小次数<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h3 id="_25">删除回文串的最小次数<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <p>给定一个字符串如“aabc”，每一次删除一个回文子串，直到字符串为空，求最小删除次数。</p>
 <p><strong>「分析」</strong></p>
 <p>设 dp[ i ][ j ] 为字符串 s[i : j] 的最小删除次数。任何一个字符都会面临下面的两种情况</p>
