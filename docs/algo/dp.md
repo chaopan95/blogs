@@ -811,67 +811,83 @@ return ans;
     };
     ```
 
-## 正方形
-??? note "[「Leetcode 221. 最大正方形」]()"
+## 子矩阵
+### 最大正方形
+给定一个由 0 和 1 构成的矩阵，求最大的全 1 子正方形。例如
 
-    ```cpp
-    /*
-    1 0 1 0 0
-    1 0 1 1 1
-    1 1 1 1 1
-    1 0 0 1 0
+$$
+\begin{matrix}
+1 & 0 & 1 & 0 & 0 \\
+1 & 0 & {\color{Red} 1} & {\color{Red} 1} & 1 \\
+1 & 1 & {\color{Red} 1} & {\color{Red} 1} & 1 \\
+1 & 0 & 0 & 1 & 0
+\end{matrix}
+$$
 
-    输出4
-    */
-    int maximalSquare(vector<vector<char>>& matrix) {
-        int nRow = (int)matrix.size();
-        if (nRow == 0) { return 0; }
-        int nCol = (int)matrix[0].size();
-        if (nCol == 0) { return 0; }
-        vector<vector<int>> dp(nRow + 1, vector<int> (nCol + 1, 0));
-        int ans = 0;
-        for (int i = nRow - 1; i >= 0; i--) {
-            for (int j = nCol - 1; j >= 0; j--) {
-                if (matrix[i][j] == '1') {
-                    dp[i][j] = min(dp[i+1][j],
-                                min(dp[i][j+1], dp[i+1][j+1])) + 1;
-                }
-                ans = max(ans, dp[i][j] * dp[i][j]);
-            }
+最大面积为 4。
+
+**「分析」**
+
+设 dp[ i ][ j ] 为（i，j）到（nRow，nCol）的最大正方形边长，其状态转移矩阵如下：
+
+$$
+\text{dp[ i ][ j ]} =
+\begin{cases}
+\max(\text{dp[i + 1][ j ], dp[ i ][j + 1], dp[i + 1][j + 1]}) + 1, & \quad \text{grid[ i ][ j ] == 1} \\
+0, & \quad \text{otherwise}
+\end{cases}
+$$
+
+```cpp
+vector<int> dp(nCol + 1, 0);
+int ans = 0;
+for (int i = nRow - 1; i >= 0; i--) {
+    vector<int> tmp = dp;
+    for (int j = nCol - 1; j >= 0; j--) {
+        dp[j] = 0;
+        if (matrix[i][j] == '1') {
+            dp[j] = min(tmp[j], min(dp[j+1], tmp[j+1])) + 1;
         }
-        return ans;
+        ans = max(ans, dp[j] * dp[j]);
     }
-    ```
+}
+return ans;
+```
+时间复杂度$O(m \times n)$，空间复杂度$O(n)$
 
-??? note "[「Leetcode 1277. 统计全为 1 的正方形子矩阵」]()"
+### 统计全为 1 的正方形子矩阵
+给定一个由 0 和 1 组成的矩阵，现在统计出所有只由 1 构成的子方阵的个数。
 
-    ```cpp
-    /*
-    0 1 1 1
-    1 1 1 1
-    0 1 1 1
+$$
+\begin{matrix}
+0 & 1 & 1 & 1 \\
+1 & 1 & 1 & 1 \\
+0 & 1 & 1 & 1
+\end{matrix}
+$$
 
-    输出15
-    */
-    int countSquares(vector<vector<int>>& matrix) {
-        int nRow = (int)matrix.size();
-        if (nRow == 0) { return 0; }
-        int nCol = (int)matrix[0].size();
-        if (nCol == 0) { return 0; }
-        vector<vector<int>> dp(nRow + 1, vector<int>(nCol + 1, 0));
-        int ans = 0;
-        for (int i = nRow - 1; i >= 0; i--) {
-            for (int j = nCol - 1; j >= 0; j--) {
-                if (matrix[i][j]) {
-                    dp[i][j] = min(dp[i+1][j],
-                                min(dp[i][j+1], dp[i+1][j+1])) + 1;
-                }
-                ans += dp[i][j];
-            }
+矩阵中共有 15 个子方阵（10 个 $1 \times 1$，4 个 $2 \times 2$，1 个 $3 \times 3$）
+
+**「分析」**
+
+同上一题目，设 dp[ i ][ j ] 为（i，j）到（nRow，nCol）的最大正方形边长，用一个整型变量，在遍历过程中，记录每一个边长大于 1 的正方形，即统计全 1 正方形的个数。
+
+```cpp
+vector<int> dp(nCol + 1, 0);
+int ans = 0;
+for (int i = nRow - 1; i >= 0; i--) {
+    vector<int> tmp = dp;
+    for (int j = nCol - 1; j >= 0; j--) {
+        dp[j] = 0;
+        if (matrix[i][j]) {
+            dp[j] = min(tmp[j], min(dp[j+1], tmp[j+1])) + 1;
         }
-        return ans;
+        ans += dp[j];
     }
-    ```
+}
+return ans;
+```
+时间复杂度$O(m \times n)$，空间复杂度$O(n)$
 
 ## 序列型DP
 ??? note "[「Leetcode 740. 删除并获得点数」]()"
@@ -954,19 +970,18 @@ $$
 我们可以发现，当前网格只与上方网格和左边网格有关，那么空间复杂度可以进一步优化。
 
 ```cpp
-int uniquePaths(int m, int n) {
-    vector<int> next(n+1, 0), cur(n+1, 0);
-    next[n-1] = 1;
-    for (int i = m - 1; i >= 0; i--) {
-        for (int j = n - 1; j >= 0; j--) {
-            next[j] += cur[j] + next[j+1];
-        }
-        cur = next;
-        next = vector<int>(n+1, 0);
+vector<int> next(n+1, 0), cur(n+1, 0);
+next[n-1] = 1;
+for (int i = m - 1; i >= 0; i--) {
+    for (int j = n - 1; j >= 0; j--) {
+        next[j] += cur[j] + next[j+1];
     }
-    return cur[0];
+    cur = next;
+    next = vector<int>(n+1, 0);
 }
+return cur[0];
 ```
+时间复杂度$O(m \times n)$，空间复杂度$O(n)$
 
 ### 有障碍到达终点的路径条数
 一个机器人在 $m \times n$ 的网格的左上角，每次只能向下或者向右移动一格，但是某些网格有障碍，机器人不能到达这些障碍所在网格，求到达终点的路径条数。
@@ -992,29 +1007,22 @@ $$
 $$
 
 ```cpp
-int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
-    int m = int(obstacleGrid.size());
-    if (m == 0) { return 0; }
-    int n = int(obstacleGrid[0].size());
-    if (n == 0) { return 0; }
-    vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
-    if (obstacleGrid[0][0]) { return 0; }
-    dp[0][0] = 1;
-    for (int i = 1; i < m; i++) {
-        dp[i][0] = dp[i-1][0] * (1 - obstacleGrid[i][0]);
-    }
-    for (int j = 1; j < n; j++) {
-        dp[0][j] = dp[0][j-1] * (1 - obstacleGrid[0][j]);
-    }
-    for (int i = 1; i < m; i++) {
-        for (int j = 1; j < n; j++) {
-            dp[i][j] = (dp[i-1][j] + dp[i][j-1]) *
-                        (1 - obstacleGrid[i][j]);
-        }
-    }
-    return dp[m-1][n-1];
+vector<int> dp(n, 0);
+if (grid[0][0]) { return 0; }
+dp[0] = 1;
+for (int j = 1; j < n; j++) {
+    dp[j] = dp[j-1] * (1 - grid[0][j]);
 }
+for (int i = 1; i < m; i++) {
+    vector<int> pre = dp;
+    dp[0] = pre[0] * (1 - grid[i][0]);
+    for (int j = 1; j < n; j++) {
+        dp[j] = (pre[j] + dp[j-1]) * (1 - grid[i][j]);
+    }
+}
+return dp[n-1];
 ```
+时间复杂度$O(m \times n)$，空间复杂度$O(n)$
 
 ### 最小路径和
 一个包含非负整数的 $m \times n$ 的网格，找出一条从左上角到右下角的路径，使得这条路径上的数字和最小。
@@ -1028,21 +1036,17 @@ $$
 $$
 
 ```cpp
-int minPathSum(vector<vector<int>>& grid) {
-    int m = int(grid.size());
-    if (m == 0) { return 0; }
-    int n = int(grid[0].size());
-    if (n == 0) { return 0; }
-    vector<vector<int>> dp(m+1, vector<int>(n+1, INT_MAX));
-    dp[m][n-1] = dp[m-1][n] = 0;
-    for (int i = m - 1; i >= 0; i--) {
-        for (int j = n - 1; j >= 0; j--) {
-            dp[i][j] = min(dp[i+1][j], dp[i][j+1]) + grid[i][j];
-        }
+vector<int> dp(n+1, INT_MAX);
+dp[n-1] = 0;
+for (int i = m - 1; i >= 0; i--) {
+    vector<int> tmp = dp;
+    for (int j = n - 1; j >= 0; j--) {
+        dp[j] = min(tmp[j], dp[j+1]) + grid[i][j];
     }
-    return dp[0][0];
 }
+return dp[0];
 ```
+时间复杂度$O(m \times n)$，空间复杂度$O(n)$
 
 ### 停在原地的方案数
 有一个长度为 arrLen 的数组，开始有一个指针在索引 0 处。每一步操作中，你可以将指针向左或向右移动 1 步，或者停在原地（指针不能被移动到数组范围外）。求在恰好执行 steps 次操作以后，指针仍然指向索引 0 处的方案数。例如 steps = 3, arrLen = 2，那么 3 步后，总共有 4 种不同的方法可以停在索引 0 处。 分别是：
@@ -1066,24 +1070,59 @@ $$
 可以观察到，状态转移只会发生在相邻两步和相邻的位置，那么可以使用两个一位数组代替二维数组
 
 ```cpp
-int numWays(int steps, int arrLen) {
-    const int MOD = 1000000007;
-    int n = min(arrLen, steps / 2 + 1);
-    vector<int> dp(n, 0);
-    dp[0] = 1;
-    while (steps--) {
-        vector<int> tmp = dp;
-        for (int i = 0; i < n; i++) {
-            long a = i == 0 ? 0 : tmp[i - 1];
-            long b = i == n - 1 ? 0 : tmp[i + 1];
-            long c = tmp[i];
-            dp[i] = (a + b + c) % MOD;
-        }
+const int MOD = 1000000007;
+int n = min(arrLen, steps / 2 + 1);
+vector<int> dp(n, 0);
+dp[0] = 1;
+while (steps--) {
+    vector<int> tmp = dp;
+    for (int i = 0; i < n; i++) {
+        long a = i == 0 ? 0 : tmp[i - 1];
+        long b = i == n - 1 ? 0 : tmp[i + 1];
+        long c = tmp[i];
+        dp[i] = (a + b + c) % MOD;
     }
-    return dp[0];
 }
+return dp[0];
 ```
+时间复杂度$O(k \times n)$，空间复杂度$O(n)$，k 为移动的步数，n 为数组的长度。
 
+### 杨辉三角路径最小和
+给定一个三角形，找出自顶向下的最小路径和，每一步只能移动到下一行，且与当前节点相邻的节点
+
+$$
+\begin{matrix}
+& & & 1 \\
+& & & \wedge \\
+& & 3 & & 4 \\
+& & \wedge & & \wedge \\
+& 6 & & 5 & & 7 \\
+& \wedge & & \wedge & & \wedge \\
+4 & & 1 & & 8 & & 3
+\end{matrix}
+$$
+
+**「分析」**
+
+每一个内节点（非顶点），与上一层的两个节点相连，每一个边界节点（非顶点），与上一层的一个节点相连。设 dp[ i ][ j ] 表示从顶点到（i，j）点的最小路径和，状态转移方程如下
+
+$$
+\text{dp[ i ][ j ]} = \max(\text{dp[i + 1][ j ], dp[i + 1][j + 1]}), \quad i = 0, 1, \cdots, n - 2
+$$
+
+我们可以由上到下写动态规划的方程，也可以反过来递推。我们观察到当前层只与下一层的两个两个状态相关，因此只需要 $O(n)$ 的空间即可，但如果由下到上递推的话，我们可以借助传入矩阵，不必开辟额外的空间（本题较为特殊）。
+
+```cpp
+for (int i = n - 2; i >= 0; i--) {
+    for (int j = 0; j <= i; j++) {
+        triangle[i][j] = min(triangle[i+1][j],
+                                triangle[i+1][j+1]) +
+                            triangle[i][j];
+    }
+}
+return triangle[0][0];
+```
+时间复杂度$O(n^{2})$，空间复杂度$O(1)$
 
 ## 区间形DP
 ### 删除子串的最小操作数
