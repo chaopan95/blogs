@@ -235,25 +235,6 @@ public：
 };
 ```
 
-## 11. 二进制中1的个数*
-题目描述：输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
-Solution：8 & 7 = 1000 & 0111 = 00000 = 0
-
-```C++
-class Solution {
-public：
-     int  NumberOf1(int n) {
-         int res = 0;
-         while(n)
-         {
-             n &= n-1;
-             res++;
-         }
-         return res;
-     }
-};
-```
-
 ## 12. 数值的整数次方
 题目描述：给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。保证base和exponent不同时为0。
 
