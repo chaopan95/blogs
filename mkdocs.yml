@@ -73,6 +73,7 @@ nav:
         - 动态规划: algo/dp.md
         - 双指针: algo/two-pointers.md
         - 搜索: algo/search.md
+        - 前缀和: algo/prefix-sum.md
         - 数学: algo/math.md
         - Leetcode: algo/leetcode.md
     - 数据结构:
