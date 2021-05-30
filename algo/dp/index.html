@@ -414,6 +414,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    最大边长全为 0 的正方形
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -843,6 +850,13 @@
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     统计全为 1 的正方形子矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    最大边长全为 0 的正方形
   </a>
   
 </li>
@@ -2345,6 +2359,113 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 </code></pre></div>
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(m \times n)</span><script type="math/tex">O(m \times n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+<h3 id="0">最大边长全为 0 的正方形<a class="headerlink" href="#0" title="Permanent link">&para;</a></h3>
+<p>给定一个由 0 和 1 组成的方阵，先求一个最大的子方阵，其四个边长全部由 0 构成，内部元素无要求。返回结果是一个数组，形如 {r, c, len}，其中 r 最小，如果 r 相等的情况下，取 c 最小的解。如下例子</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+1 &amp; 0 &amp; 1 \\
+{\color{Red} 0} &amp; {\color{Red} 0} &amp; 1 \\
+{\color{Red} 0} &amp; {\color{Red} 0} &amp; 1
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+1 & 0 & 1 \\
+{\color{Red} 0} & {\color{Red} 0} & 1 \\
+{\color{Red} 0} & {\color{Red} 0} & 1
+\end{matrix}
+</script>
+</div>
+<p><strong>「分析」</strong>
+设 dpRight[ i ][ j ] 为（i，j）向右连续为 0 的最大长度，dpDown[ i ][ j ] 为（i，j）向下连续为 0 的最大长度。其状态转移方程如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+\text{dpRight[ i ][ j ] = dpDown[ i ][ j ] = 0}, &amp;\text{matrix[ i ][ j ] == 1} \\
+\begin{cases}
+\text{dpRight[ i ][ j ] = dpRight[ i ][j + 1] + 1} \\
+\text{dpDown[ i ][ j ] = dpDown[i + 1][ j ] + 1}
+\end{cases}, &amp; \text{matrix[ i ][ j ] == 0}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+\text{dpRight[ i ][ j ] = dpDown[ i ][ j ] = 0}, &\text{matrix[ i ][ j ] == 1} \\
+\begin{cases}
+\text{dpRight[ i ][ j ] = dpRight[ i ][j + 1] + 1} \\
+\text{dpDown[ i ][ j ] = dpDown[i + 1][ j ] + 1}
+\end{cases}, & \text{matrix[ i ][ j ] == 0}
+\end{cases}
+</script>
+</div>
+<p>但是一个矩阵有四条边，所有需要考虑从（i，j）过渡到（i+len-1，j+len-1）。那么如何确定边长 len 呢？</p>
+<div>
+<div class="MathJax_Preview">
+\text{len = } \min(\text{dpRight[ i ][ j ], dpDown[ i ][ j ]})
+</div>
+<script type="math/tex; mode=display">
+\text{len = } \min(\text{dpRight[ i ][ j ], dpDown[ i ][ j ]})
+</script>
+</div>
+<p>进而确定了左下方和右上方的点 (i+len-1，j)、（i，j+len-1）。紧接着，从左下点向右 len - 1 个单位或者从右上点向下 len - 1 个单位都会到达（i+len-1，j+len-1），只需要确定是否存在这样的 len。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">findSquare</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">matrix</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span> <span class="p">{</span><span class="mi">-1</span><span class="p">,</span> <span class="mi">-1</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">matrix</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ans</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">dpRight</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">dpDown</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">dpRight</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dpDown</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="n">dpRight</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dpRight</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="n">dpDown</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dpDown</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">dpRight</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">dpDown</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+                <span class="k">while</span> <span class="p">(</span><span class="n">len</span> <span class="o">&gt;=</span> <span class="n">ans</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">dpRight</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">len</span><span class="mi">-1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">len</span> <span class="o">&amp;&amp;</span>
+                        <span class="n">dpDown</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="n">len</span><span class="mi">-1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">ans</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">len</span><span class="p">};</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="n">len</span><span class="o">--</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">-1</span> <span class="o">&amp;&amp;</span> <span class="n">ans</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">-1</span> <span class="o">?</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">{}</span> <span class="o">:</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="dp">序列型DP<a class="headerlink" href="#dp" title="Permanent link">&para;</a></h2>
 <details class="note"><summary><a href="">「Leetcode 740. 删除并获得点数」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
