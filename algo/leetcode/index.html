@@ -1253,13 +1253,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0344-reverse-string" class="md-nav__link">
-    0344. Reverse String
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#0354-russian-doll-envelopes" class="md-nav__link">
     0354. Russian Doll Envelopes*
   </a>
@@ -2627,13 +2620,6 @@
         <li class="md-nav__item">
   <a href="#0343-integer-break" class="md-nav__link">
     0343. Integer Break
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0344-reverse-string" class="md-nav__link">
-    0344. Reverse String
   </a>
   
 </li>
@@ -13349,38 +13335,6 @@ Both the left and right subtrees must also be binary search trees.</p>
         <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
         <span class="k">delete</span> <span class="p">[]</span><span class="n">dp</span><span class="p">;</span>
         <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="0344-reverse-string">0344. Reverse String<a class="headerlink" href="#0344-reverse-string" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;]</span>
-<span class="cm">Output: [&quot;o&quot;,&quot;l&quot;,&quot;l&quot;,&quot;e&quot;,&quot;h&quot;]</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">void</span> <span class="n">reverseString</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">swap</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">n</span><span class="mi">-1</span><span class="o">-</span><span class="n">i</span><span class="p">]);</span>
-        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
