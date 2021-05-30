@@ -2337,7 +2337,7 @@
 时间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
 <h2 id="_19">背包问题<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
 <h3 id="01">01背包<a class="headerlink" href="#01" title="Permanent link">&para;</a></h3>
-<p>一个背包有一定的承重cap，有N件物品，每件都有自己的价值，记录在数组v中，也都有自己的重量，记录在数组w中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。给定物品的重量w价值v及物品数n和承重cap。请返回最大总价值。例如，</p>
+<p>一个背包有一定的承重 W，有N件物品，每件都有自己的价值，记录在数组 v 中，也都有自己的重量，记录在数组 w 中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。例如，</p>
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
@@ -2365,7 +2365,7 @@
 \text{dp[ i ][ j ]} = \max(\text{dp[i - 1]][ j ], dp[i - 1][j - w[ i ]]} + v[ i ])
 </script>
 </div>
-<p>(1)如果第 i 件物品没有被选中，那么前 i-1 件物品的重量就是 j；（2）如果第 i 件物品被选中了，那么前 i-1 件物品的重量就是 j-v[ i ]，这里可以认为，第 i 件物品被加入后，总重量将会达到 j，那么加入之前的重量自然就等于 j-v[ i ]。当然，在计算的时候需要判定，当前的总重量 j 是否大于第 i 件物品的重量。</p>
+<p>(1)如果第 i 件物品没有被选中，那么前 i - 1 件物品的重量就是 j；（2）如果第 i 件物品被选中了，那么前 i - 1 件物品的重量就是 j - v[ i ]，这里可以认为，第 i 件物品被加入后，总重量将会达到 j，那么加入之前的重量自然就等于 j - v[ i ]。当然，在计算的时候需要判定，当前的总重量 j 是否大于第 i 件物品的重量。</p>
 <p>因为状态的转移只发生在相邻物品之间，所以空间复杂度得以优化。</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
