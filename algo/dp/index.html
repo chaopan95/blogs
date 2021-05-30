@@ -424,6 +424,19 @@
     背包问题
   </a>
   
+    <nav class="md-nav" aria-label="背包问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01背包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -897,6 +910,19 @@
   <a href="#_19" class="md-nav__link">
     背包问题
   </a>
+  
+    <nav class="md-nav" aria-label="背包问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01背包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2310,27 +2336,38 @@
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
 <h2 id="_19">背包问题<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
-<details class="note"><summary><a href="">「01背包」</a></summary><p>一个背包有一定的承重cap，有N件物品，每件都有自己的价值，记录在数组v中，也都有自己的重量，记录在数组w中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。给定物品的重量w价值v及物品数n和承重cap。请返回最大总价值。</p>
-<p>测试样例： [1,2,3],[1,2,3],3,6</p>
-<p>返回：6</p>
-<p>动态规划：dp[i][j]表示前i件物品在最大重量j的条件下的价值</p>
+<h3 id="01">01背包<a class="headerlink" href="#01" title="Permanent link">&para;</a></h3>
+<p>一个背包有一定的承重cap，有N件物品，每件都有自己的价值，记录在数组v中，也都有自己的重量，记录在数组w中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。给定物品的重量w价值v及物品数n和承重cap。请返回最大总价值。例如，</p>
 <div>
 <div class="MathJax_Preview">
-dp[i][j] =\max
-\begin{cases}
-dp[i-1]][j], &amp;\quad \text{we don't put i-th item in our bag} \\
-dp[i-1][j - w[i-1]], &amp;\quad \text{otherwise, but } j &gt; w[i-1], i = 1, 2, ..., N
-\end{cases}
+\begin{aligned}
+&amp; \text{v = [1, 2, 3]} \\
+&amp; \text{w = [1, 2, 4]} \\
+&amp; \text{W = 6}
+\end{aligned}
 </div>
 <script type="math/tex; mode=display">
-dp[i][j] =\max
-\begin{cases}
-dp[i-1]][j], &\quad \text{we don't put i-th item in our bag} \\
-dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
-\end{cases}
+\begin{aligned}
+& \text{v = [1, 2, 3]} \\
+& \text{w = [1, 2, 4]} \\
+& \text{W = 6}
+\end{aligned}
 </script>
 </div>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p>最大的价值为 5。</p>
+<p><strong>「分析」</strong></p>
+<p>设 dp[ i ][ j ] 为前 i 件物品在不超过 j 的重量下的最大价值。此时的状态只会有两个：（1）第 i 件物品没有被选中，（2）第 i 件物品被选中。状态转移方程如下：</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ]} = \max(\text{dp[i - 1]][ j ], dp[i - 1][j - w[ i ]]} + v[ i ])
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ]} = \max(\text{dp[i - 1]][ j ], dp[i - 1][j - w[ i ]]} + v[ i ])
+</script>
+</div>
+<p>(1)如果第 i 件物品没有被选中，那么前 i-1 件物品的重量就是 j；（2）如果第 i 件物品被选中了，那么前 i-1 件物品的重量就是 j-v[ i ]，这里可以认为，第 i 件物品被加入后，总重量将会达到 j，那么加入之前的重量自然就等于 j-v[ i ]。当然，在计算的时候需要判定，当前的总重量 j 是否大于第 i 件物品的重量。</p>
+<p>因为状态的转移只发生在相邻物品之间，所以空间复杂度得以优化。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2339,45 +2376,19 @@ dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/* *</span>
-<span class="cm">* v[]: value for each item</span>
-<span class="cm">* w[]: weight for each item</span>
-<span class="cm">* W: capacity limit</span>
-<span class="cm">* N: number of item</span>
-<span class="cm">*/</span>
-<span class="kt">int</span> <span class="nf">knapsack</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">w</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">W</span><span class="p">,</span> <span class="kt">int</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="o">**</span><span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span> <span class="o">*</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span> <span class="p">[</span><span class="n">W</span><span class="o">+</span><span class="mi">1</span><span class="p">]{};</span> <span class="p">}</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">W</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">])</span> <span class="p">{</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">][</span><span class="n">j</span><span class="p">];</span> <span class="p">}</span>
-            <span class="k">else</span> <span class="p">{</span>
-                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]);</span>
-            <span class="p">}</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">knapsack01</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">w</span><span class="p">,</span> <span class="kt">int</span> <span class="n">W</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">W</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">W</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">W</span><span class="p">];</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="k">delete</span> <span class="p">[]</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
-    <span class="k">delete</span> <span class="p">[]</span><span class="n">dp</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">W</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</details>
+时间复杂度<span><span class="MathJax_Preview">O(N \times W)</span><script type="math/tex">O(N \times W)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(W)</span><script type="math/tex">O(W)</script></span>，N 为物品的数目，W 为限定的重量</p>
 <details class="note"><summary><a href="">「Leetcode 416. 分割等和子集」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
