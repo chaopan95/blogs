@@ -2199,9 +2199,9 @@
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
 <h3 id="_17">成环<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>同样一个非负数组表示房屋内的金额，但是数组的收尾是相连的，求此时的最大金额</p>
+<p>同样一个非负数组表示房屋内的金额，但是数组的首尾是相连的，求此时的最大金额</p>
 <p><strong>「分析」</strong></p>
-<p>数组成环的状态下，首位元素至少有一个不会被盗窃，那么我们可以将分成两种情况：（1）不选择首元素，（2）不选择尾元素。由此，将一个成环问题转换成两个成排问题，各自的解法如上。</p>
+<p>数组成环的状态下，首尾元素至少有一个不会被盗窃，那么我们可以将分成两种情况：（1）不选择首元素，（2）不选择尾元素。由此，将一个成环问题转换成两个成排问题，各自的解法如上。</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2239,9 +2239,9 @@
 <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+时间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
 <h3 id="_18">成树<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>这次的房屋排列成一颗二叉树，相邻的无房无能同时被盗窃，求最大金额。</p>
+<p>这次的房屋排列成一颗二叉树，相邻的房屋不能同时被盗窃，求最大金额。</p>
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
@@ -2264,22 +2264,30 @@
 </div>
 <p>最大金额是 10。</p>
 <p><strong>「分析」</strong></p>
-<p>构成一颗二叉树的情况下，当前节点只与左右自孩子相关联（自底向上遍历），设 f[ root ] 为当前节点不盗窃， t[ root ] 为当前节点被盗窃，其状态转移方程如下</p>
+<p>构成一颗二叉树的情况下，当前节点只与左右孩子相关联（自底向上遍历），设 f[ root ] 为当前节点不盗窃， t[ root ] 为当前节点被盗窃，其状态转移方程如下</p>
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
 &amp; \text{t[ root ] = } \max(\text{f[ root} \rightarrow \text{right ], f[ root} \rightarrow \text{left ]}) + \text{root} \rightarrow \text{val} \\
-&amp; \text{f[ root ] = } \max(\text{f[ root } \rightarrow \text{ left ], t[ root } \rightarrow \text{ left ]}) + \max(\text{f[ root } \rightarrow \text{ right ], t[ root } \rightarrow \text{ right ]})
+&amp; 
+\begin{aligned}
+\text{f[ root ] = } &amp; \max(\text{f[ root } \rightarrow \text{ left ], t[ root } \rightarrow \text{ left ]}) \\
+&amp; + \max(\text{f[ root } \rightarrow \text{ right ], t[ root } \rightarrow \text{ right ]})
+\end{aligned}
 \end{aligned}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
 & \text{t[ root ] = } \max(\text{f[ root} \rightarrow \text{right ], f[ root} \rightarrow \text{left ]}) + \text{root} \rightarrow \text{val} \\
-& \text{f[ root ] = } \max(\text{f[ root } \rightarrow \text{ left ], t[ root } \rightarrow \text{ left ]}) + \max(\text{f[ root } \rightarrow \text{ right ], t[ root } \rightarrow \text{ right ]})
+& 
+\begin{aligned}
+\text{f[ root ] = } & \max(\text{f[ root } \rightarrow \text{ left ], t[ root } \rightarrow \text{ left ]}) \\
+& + \max(\text{f[ root } \rightarrow \text{ right ], t[ root } \rightarrow \text{ right ]})
+\end{aligned}
 \end{aligned}
 </script>
 </div>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2300,6 +2308,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
 <h2 id="_19">背包问题<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
 <details class="note"><summary><a href="">「01背包」</a></summary><p>一个背包有一定的承重cap，有N件物品，每件都有自己的价值，记录在数组v中，也都有自己的重量，记录在数组w中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。给定物品的重量w价值v及物品数n和承重cap。请返回最大总价值。</p>
 <p>测试样例： [1,2,3],[1,2,3],3,6</p>
