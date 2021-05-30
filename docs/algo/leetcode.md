@@ -4615,31 +4615,6 @@ public:
 };
 ```
 
-## 0198. House Robber
-```cpp
-/*
-Input: nums = [2,7,9,3,1]
-Output: 12
-Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and
-rob house 5 (money = 1). Total amount you can rob = 2 + 9 + 1 = 12.
-*/class Solution {
-public:
-    int rob(vector<int>& nums) {
-        int n = int(nums.size());
-        if (n == 0) { return 0; }
-        vector<vector<int>> dp(n, vector<int>(2, 0));
-        dp[0][1] = nums[0];
-        for (int i = 1; i < n; i++)
-        {
-            dp[i][0] = max(dp[i-1][0], dp[i-1][1]);
-            dp[i][1] = dp[i-1][0] + nums[i];
-        }
-        return max(dp[n-1][0], dp[n-1][1]);
-    }
-};
-
-```
-
 ## 0199. Binary Tree Right Side View
 ```cpp
 /*
@@ -4841,43 +4816,6 @@ public:
         collect(board, str, nRow, nCol, i, j+1, len+1, maxLen, hash, res, vis);
         str.pop_back();
         vis[i*nCol+j] = false;
-    }
-};
-```
-
-## 0213. House Robber II*
-```cpp
-/*
-Input: nums = [2,3,2]
-Output: 3
-Explanation: You cannot rob house 1 (money = 2) and
-then rob house 3 (money = 2), because they are
-adjacent houses
-*/
-class Solution {
-public:
-    int rob(vector<int>& nums) {
-        int n = int(nums.size());
-        if (n == 0) { return 0; }
-        if (n == 1) { return nums[0]; }
-        int dp0 = 0, dp1 = nums[0];
-        for (int i = 1; i < n - 1; i++) {
-            int _dp0 = max(dp0, dp1);
-            int _dp1 = dp0 + nums[i];
-            dp0 = _dp0;
-            dp1 = _dp1;
-        }
-        int ans = max(dp0, dp1);
-        dp0 = 0;
-        dp1 = nums[1];
-        for (int i = 2; i < n; i++) {
-            int _dp0 = max(dp0, dp1);
-            int _dp1 = dp0 + nums[i];
-            dp0 = _dp0;
-            dp1 = _dp1;
-        }
-        ans = max(ans, max(dp0, dp1));
-        return ans;
     }
 };
 ```
@@ -5797,31 +5735,6 @@ public:
 };
 ```
 
-## 0337. House Robber III*
-```cpp
-/*
-            2
-        /       \
-       1         3
-      /
-     4
-max = 3 + 4 = 7
-*/
-class Solution {
-public:
-    unordered_map<TreeNode*, int> t, f;
-    int rob(TreeNode* root) {
-        if (root == nullptr) { return 0; }
-        rob(root->left);
-        rob(root->right);
-        t[root] = f[root->left] + f[root->right] + root->val;
-        f[root] = max(f[root->left], t[root->left]) +
-                  max(f[root->right], t[root->right]);
-        return max(t[root], f[root]);
-    }
-};
-```
-
 ## 0338. Counting Bits
 ```cpp
 /*
@@ -5932,25 +5845,6 @@ public:
         int ans = dp[n];
         delete []dp;
         return ans;
-    }
-};
-```
-
-## 0344. Reverse String
-```cpp
-/*
-Input: ["h","e","l","l","o"]
-Output: ["o","l","l","e","h"]
-*/
-class Solution {
-public:
-    void reverseString(vector<char>& s) {
-        int n = int(s.size());
-        if (n == 0) { return; }
-        for (int i = 0; i < n/2; i++)
-        {
-            swap(s[i], s[n-1-i]);
-        }
     }
 };
 ```

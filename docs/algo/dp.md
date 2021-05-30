@@ -724,6 +724,105 @@ return ans;
 ```
 时间复杂度$O(n)$，空间复杂度$O(n)$
 
+## 打家劫舍
+### 成排
+给定一个非负整数数组表示房屋内的金额，一个小偷可以偷取若干房屋内的所有金钱，但是偷窃的房屋不能相邻，求可以获得最大金额数目。
+
+**「分析」**
+
+设 dp[ i ][ 0 ] 表示第 i 个房屋没有被盗窃，dp[ i ][ 1 ] 为第 i 个房屋被盗窃
+
+$$
+\begin{aligned}
+& \text{dp[ i ][ 0 ]} = \max(\text{dp[i - 1][ 0 ], dp[i - 1][ 1 ]}) \\
+& \text{dp[ i ][ 1 ]} = \text{dp[i - 1][ 0 ] + A[ i ]}
+\end{aligned}
+$$
+
+```cpp
+int dp0 = 0, dp1 = nums[0];
+for (int i = 1; i < n; i++) {
+    int _dp0 = max(dp0, dp1);
+    dp1 = dp0 + nums[i];
+    dp0 = _dp0;
+}
+return max(dp0, dp1);
+```
+时间复杂度$O(n)$，空间复杂度$O(1)$
+
+### 成环
+同样一个非负数组表示房屋内的金额，但是数组的首尾是相连的，求此时的最大金额
+
+**「分析」**
+
+数组成环的状态下，首尾元素至少有一个不会被盗窃，那么我们可以将分成两种情况：（1）不选择首元素，（2）不选择尾元素。由此，将一个成环问题转换成两个成排问题，各自的解法如上。
+
+```cpp
+int dp0 = 0, dp1 = nums[0];
+for (int i = 1; i < n - 1; i++) {
+    int _dp0 = max(dp0, dp1);
+    int _dp1 = dp0 + nums[i];
+    dp0 = _dp0;
+    dp1 = _dp1;
+}
+int ans = max(dp0, dp1);
+dp0 = 0;
+dp1 = nums[1];
+for (int i = 2; i < n; i++) {
+    int _dp0 = max(dp0, dp1);
+    int _dp1 = dp0 + nums[i];
+    dp0 = _dp0;
+    dp1 = _dp1;
+}
+ans = max(ans, max(dp0, dp1));
+return ans;
+```
+时间复杂度$O(n)$，空间复杂度$O(1)$
+
+### 成树
+这次的房屋排列成一颗二叉树，相邻的房屋不能同时被盗窃，求最大金额。
+
+$$
+\begin{matrix}
+& & & & & 3 \\
+& & & & & \wedge \\
+& & & 4 & & & & & 5 \\
+& & & \wedge & & & & & \wedge \\
+& & 1 & & 3 & & & 2 & & 1
+\end{matrix}
+$$
+
+最大金额是 10。
+
+**「分析」**
+
+构成一颗二叉树的情况下，当前节点只与左右孩子相关联（自底向上遍历），设 f[ root ] 为当前节点不盗窃， t[ root ] 为当前节点被盗窃，其状态转移方程如下
+
+$$
+\begin{aligned}
+& \text{t[ root ] = } \max(\text{f[ root} \rightarrow \text{right ], f[ root} \rightarrow \text{left ]}) + \text{root} \rightarrow \text{val} \\
+& 
+\begin{aligned}
+\text{f[ root ] = } & \max(\text{f[ root } \rightarrow \text{ left ], t[ root } \rightarrow \text{ left ]}) \\
+& + \max(\text{f[ root } \rightarrow \text{ right ], t[ root } \rightarrow \text{ right ]})
+\end{aligned}
+\end{aligned}
+$$
+
+```cpp
+unordered_map<TreeNode*, int> t, f;
+int rob(TreeNode* root) {
+    if (root == nullptr) { return 0; }
+    rob(root->left);
+    rob(root->right);
+    t[root] = f[root->left] + f[root->right] + root->val;
+    f[root] = max(f[root->left], t[root->left]) +
+              max(f[root->right], t[root->right]);
+    return max(t[root], f[root]);
+}
+```
+时间复杂度$O(n)$，空间复杂度$O(n)$
+
 ## 背包问题
 ??? note "[「01背包」]()"
     一个背包有一定的承重cap，有N件物品，每件都有自己的价值，记录在数组v中，也都有自己的重量，记录在数组w中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。给定物品的重量w价值v及物品数n和承重cap。请返回最大总价值。
@@ -888,6 +987,71 @@ for (int i = nRow - 1; i >= 0; i--) {
 return ans;
 ```
 时间复杂度$O(m \times n)$，空间复杂度$O(n)$
+
+### 最大边长全为 0 的正方形
+给定一个由 0 和 1 组成的方阵，先求一个最大的子方阵，其四个边长全部由 0 构成，内部元素无要求。返回结果是一个数组，形如 {r, c, len}，其中 r 最小，如果 r 相等的情况下，取 c 最小的解。如下例子
+
+$$
+\begin{matrix}
+{\color{Red} 0} & {\color{Red} 0} & {\color{Red} 0} & 1 \\
+{\color{Red} 0} & 1 & {\color{Red} 0} & 1 \\
+{\color{Red} 0} & {\color{Red} 0} & {\color{Red} 0} & 1 \\
+1 & 0 & 0 & 0
+\end{matrix}
+$$
+
+**「分析」**
+设 dpRight[ i ][ j ] 为（i，j）向右连续为 0 的最大长度，dpDown[ i ][ j ] 为（i，j）向下连续为 0 的最大长度。其状态转移方程如下
+
+$$
+\begin{cases}
+\text{dpRight[ i ][ j ] = dpDown[ i ][ j ] = 0}, &\text{matrix[ i ][ j ] == 1} \\
+\begin{cases}
+\text{dpRight[ i ][ j ] = dpRight[ i ][j + 1] + 1} \\
+\text{dpDown[ i ][ j ] = dpDown[i + 1][ j ] + 1}
+\end{cases}, & \text{matrix[ i ][ j ] == 0}
+\end{cases}
+$$
+
+但是一个矩阵有四条边，所有需要考虑从（i，j）过渡到（i+len-1，j+len-1）。那么如何确定边长 len 呢？
+
+$$
+\text{len = } \min(\text{dpRight[ i ][ j ], dpDown[ i ][ j ]})
+$$
+
+进而确定了左下方和右上方的点 (i+len-1，j)、（i，j+len-1）。紧接着，从左下点向右 len - 1 个单位或者从右上点向下 len - 1 个单位都会到达（i+len-1，j+len-1），只需要确定是否存在这样的 len。
+
+```cpp
+vector<int> findSquare(vector<vector<int>>& matrix) {
+    vector<int> ans {-1, -1, 0};
+    int n = (int)matrix.size();
+    if (n == 0) { return ans; }
+    vector<vector<int>> dpRight(n+1, vector<int>(n+1, 0));
+    vector<vector<int>> dpDown(n+1, vector<int>(n+1, 0));
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = n - 1; j >= 0; j--) {
+            if (matrix[i][j] == 1) {
+                dpRight[i][j] = dpDown[i][j] = 0;
+            }
+            else {
+                dpRight[i][j] = dpRight[i][j + 1] + 1;
+                dpDown[i][j] = dpDown[i + 1][j] + 1;
+                int len = min(dpRight[i][j], dpDown[i][j]);
+                while (len >= ans[2]) {
+                    if (dpRight[i+len-1][j] >= len &&
+                        dpDown[i][j+len-1] >= len) {
+                        ans = {i, j, len};
+                        break;
+                    }
+                    len--;
+                }
+            }
+        }
+    }
+    return ans[0] == -1 && ans[1] == -1 ? vector<int> {} : ans;
+}
+```
+
 
 ## 序列型DP
 ??? note "[「Leetcode 740. 删除并获得点数」]()"
