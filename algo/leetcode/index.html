@@ -1092,13 +1092,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0217-contains-duplicate" class="md-nav__link">
-    0217. Contains Duplicate
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#0219-contains-duplicate-ii" class="md-nav__link">
     0219. Contains Duplicate II
   </a>
@@ -1449,29 +1442,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0867-transpose-matrix" class="md-nav__link">
-    0867. Transpose Matrix
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0896-monotonic-array" class="md-nav__link">
-    0896. Monotonic Array
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#0897-increasing-order-search-tree" class="md-nav__link">
     0897. Increasing Order Search Tree*
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0912-sort-an-array" class="md-nav__link">
-    0912. Sort an Array
   </a>
   
 </li>
@@ -1535,27 +1507,6 @@
         <li class="md-nav__item">
   <a href="#1585-check-if-string-is-transformable-with-substring-sort-operations" class="md-nav__link">
     1585. Check If String Is Transformable With Substring Sort Operations*
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1603-design-parking-system" class="md-nav__link">
-    1603. Design Parking System
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1748-sum-of-unique-elements" class="md-nav__link">
-    1748. Sum of Unique Elements
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1848" class="md-nav__link">
-    1848. 到目标元素的最小距离
   </a>
   
 </li>
@@ -2464,13 +2415,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0217-contains-duplicate" class="md-nav__link">
-    0217. Contains Duplicate
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#0219-contains-duplicate-ii" class="md-nav__link">
     0219. Contains Duplicate II
   </a>
@@ -2821,29 +2765,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0867-transpose-matrix" class="md-nav__link">
-    0867. Transpose Matrix
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0896-monotonic-array" class="md-nav__link">
-    0896. Monotonic Array
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#0897-increasing-order-search-tree" class="md-nav__link">
     0897. Increasing Order Search Tree*
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0912-sort-an-array" class="md-nav__link">
-    0912. Sort an Array
   </a>
   
 </li>
@@ -2907,27 +2830,6 @@
         <li class="md-nav__item">
   <a href="#1585-check-if-string-is-transformable-with-substring-sort-operations" class="md-nav__link">
     1585. Check If String Is Transformable With Substring Sort Operations*
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1603-design-parking-system" class="md-nav__link">
-    1603. Design Parking System
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1748-sum-of-unique-elements" class="md-nav__link">
-    1748. Sum of Unique Elements
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1848" class="md-nav__link">
-    1848. 到目标元素的最小距离
   </a>
   
 </li>
@@ -11557,38 +11459,6 @@ Both the left and right subtrees must also be binary search trees.</p>
 <span class="p">};</span>
 </code></pre></div>
 </td></tr></table>
-<h2 id="0217-contains-duplicate">0217. Contains Duplicate<a class="headerlink" href="#0217-contains-duplicate" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: nums = [1,2,3,4]</span>
-<span class="cm">Output: false</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">bool</span> <span class="n">containsDuplicate</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">hash</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="nl">ele</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">hash</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">ele</span><span class="p">)</span> <span class="o">!=</span> <span class="n">hash</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
-            <span class="n">hash</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">ele</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
 <h2 id="0219-contains-duplicate-ii">0219. Contains Duplicate II<a class="headerlink" href="#0219-contains-duplicate-ii" title="Permanent link">&para;</a></h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -15483,92 +15353,6 @@ Both the left and right subtrees must also be binary search trees.</p>
 <span class="p">};</span>
 </code></pre></div>
 </td></tr></table>
-<h2 id="0867-transpose-matrix">0867. Transpose Matrix<a class="headerlink" href="#0867-transpose-matrix" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]</span>
-<span class="cm">Output: [[1,4,7],[2,5,8],[3,6,9]]</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">transpose</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">matrix</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">matrix</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">matrix</span><span class="p">;</span> <span class="p">}</span>
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span><span class="p">());</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">matrix</span><span class="p">;</span> <span class="p">}</span>
-        <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">ans</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">ans</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="0896-monotonic-array">0896. Monotonic Array<a class="headerlink" href="#0896-monotonic-array" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: [1,2,2,3]</span>
-<span class="cm">Output: true</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">bool</span> <span class="n">isMonotonic</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">A</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
-        <span class="kt">bool</span> <span class="n">isIncrease</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span> <span class="n">isDecrease</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">])</span> <span class="p">{</span> <span class="n">isIncrease</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">])</span> <span class="p">{</span> <span class="n">isDecrease</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">isIncrease</span> <span class="o">&amp;&amp;</span> <span class="n">isDecrease</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
 <h2 id="0897-increasing-order-search-tree">0897. Increasing Order Search Tree*<a class="headerlink" href="#0897-increasing-order-search-tree" title="Permanent link">&para;</a></h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -15624,64 +15408,6 @@ Both the left and right subtrees must also be binary search trees.</p>
             <span class="k">else</span> <span class="p">{</span> <span class="n">head</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> <span class="p">}</span>
             <span class="n">last</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
             <span class="n">inOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">last</span><span class="p">,</span> <span class="n">head</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="0912-sort-an-array">0912. Sort an Array<a class="headerlink" href="#0912-sort-an-array" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: nums = [5,2,3,1]</span>
-<span class="cm">Output: [1,2,3,5]</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">sortArray</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-        <span class="n">quickSort</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="mi">-1</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">nums</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="kt">void</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">e</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">&lt;</span> <span class="n">e</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
-            <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span> <span class="n">j</span><span class="o">--</span><span class="p">;</span> <span class="p">}</span>
-                <span class="n">swap</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
-                <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span> <span class="p">}</span>
-                <span class="n">swap</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
-            <span class="p">}</span>
-            <span class="n">quickSort</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">i</span><span class="mi">-1</span><span class="p">);</span>
-            <span class="n">quickSort</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
@@ -16243,188 +15969,6 @@ s and t only contain digits from '0' to '9'.</p>
             <span class="n">count</span><span class="p">[</span><span class="n">digit</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="1603-design-parking-system">1603. Design Parking System<a class="headerlink" href="#1603-design-parking-system" title="Permanent link">&para;</a></h2>
-<p>ParkingSystem(int big, int medium, int small) Initializes object of the ParkingSystem class. The number of slots for each parking space are given as part of the constructor. bool addCar(int carType) Checks whether there is a parking space of carType for the car that wants to get into the parking lot. carType can be of three kinds: big, medium, or small, which are represented by 1, 2, and 3 respectively. A car can only park in a parking space of its carType. If there is no space available, return false, else park the car in that size space and return true.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ParkingSystem</span> <span class="p">{</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">park</span><span class="p">;</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">ParkingSystem</span><span class="p">(</span><span class="kt">int</span> <span class="n">big</span><span class="p">,</span> <span class="kt">int</span> <span class="n">medium</span><span class="p">,</span> <span class="kt">int</span> <span class="n">small</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">park</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">park</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">big</span><span class="p">;</span>
-        <span class="n">park</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">medium</span><span class="p">;</span>
-        <span class="n">park</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">small</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kt">bool</span> <span class="n">addCar</span><span class="p">(</span><span class="kt">int</span> <span class="n">carType</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">park</span><span class="p">[</span><span class="n">carType</span><span class="mi">-1</span><span class="p">])</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
-        <span class="n">park</span><span class="p">[</span><span class="n">carType</span><span class="mi">-1</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
-        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-
-<span class="cm">/**</span>
-<span class="cm"> * Your ParkingSystem object will be instantiated and called as such:</span>
-<span class="cm"> * ParkingSystem* obj = new ParkingSystem(big, medium, small);</span>
-<span class="cm"> * bool param_1 = obj-&gt;addCar(carType);</span>
-<span class="cm"> */</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="1748-sum-of-unique-elements">1748. Sum of Unique Elements<a class="headerlink" href="#1748-sum-of-unique-elements" title="Permanent link">&para;</a></h2>
-<p>You are given an integer array nums. The unique elements of an array are the elements that appear exactly once in the array. Return the sum of all the unique elements of nums.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: nums = [1,2,3,2]</span>
-<span class="cm">Output: 4</span>
-<span class="cm">Explanation: The unique elements are [1,3], and the sum is 4.</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">int</span> <span class="n">sumOfUnique</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;</span> <span class="n">dict</span><span class="p">;</span>
-        <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">bool</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">iter</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">ele</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">iter</span> <span class="o">=</span> <span class="n">dict</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">ele</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">iter</span> <span class="o">==</span> <span class="n">dict</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
-            <span class="p">{</span>
-                <span class="n">ans</span> <span class="o">+=</span> <span class="n">ele</span><span class="p">;</span>
-                <span class="n">dict</span><span class="p">[</span><span class="n">ele</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">dict</span><span class="p">[</span><span class="n">ele</span><span class="p">])</span>
-            <span class="p">{</span>
-                <span class="n">dict</span><span class="p">[</span><span class="n">ele</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-                <span class="n">ans</span> <span class="o">-=</span> <span class="n">ele</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="1848">1848. 到目标元素的最小距离<a class="headerlink" href="#1848" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">给你一个整数数组 nums （下标 从 0 开始 计数）以及两个整数 target 和 start ，</span>
-<span class="cm">请你找出一个下标 i ，满足 nums[i] == target 且 abs(i - start) 最小化 。</span>
-<span class="cm">注意：abs(x) 表示 x 的绝对值。</span>
-
-<span class="cm">返回 abs(i - start) 。</span>
-
-<span class="cm">题目数据保证 target 存在于 nums 中。</span>
-
-<span class="cm">示例 1：</span>
-<span class="cm">输入：nums = [1,2,3,4,5], target = 5, start = 3</span>
-<span class="cm">输出：1</span>
-<span class="cm">解释：nums[4] = 5 是唯一一个等于 target 的值，所以答案是 abs(4 - 3) = 1 。</span>
-
-<span class="cm">示例 2：</span>
-<span class="cm">输入：nums = [1], target = 1, start = 0</span>
-<span class="cm">输出：0</span>
-<span class="cm">解释：nums[0] = 1 是唯一一个等于 target 的值，所以答案是 abs(0 - 0) = 1 。</span>
-
-<span class="cm">示例 3：</span>
-<span class="cm">输入：nums = [1,1,1,1,1,1,1,1,1,1], target = 1, start = 0</span>
-<span class="cm">输出：0</span>
-<span class="cm">解释：nums 中的每个值都是 1 ，但 nums[0] 使 abs(i - start) 的结果得以最小化，</span>
-<span class="cm">所以答案是 abs(0 - 0) = 0 。</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">int</span> <span class="n">getMinDistance</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">,</span> <span class="kt">int</span> <span class="n">start</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span> <span class="o">&amp;&amp;</span> <span class="n">ans</span> <span class="o">&gt;</span> <span class="n">abs</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span> <span class="p">{</span>
-                <span class="n">ans</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
