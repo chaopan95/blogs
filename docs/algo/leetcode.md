@@ -4886,25 +4886,6 @@ public:
 };
 ```
 
-## 0217. Contains Duplicate
-```cpp
-/*
-Input: nums = [1,2,3,4]
-Output: false
-*/
-class Solution {
-public:
-    bool containsDuplicate(vector<int>& nums) {
-        set<int> hash;
-        for (const int &ele : nums) {
-            if (hash.find(ele) != hash.end()) { return true; }
-            hash.insert(ele);
-        }
-        return false;
-    }
-};
-```
-
 ## 0219. Contains Duplicate II
 ```cpp
 /*
@@ -7008,55 +6989,6 @@ public:
 };
 ```
 
-## 0867. Transpose Matrix
-```cpp
-/*
-Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-Output: [[1,4,7],[2,5,8],[3,6,9]]
-*/
-class Solution {
-public:
-    vector<vector<int>> transpose(vector<vector<int>>& matrix) {
-        int m = int(matrix.size());
-        if (m == 0) { return matrix; }
-        int n = int(matrix[0].size());
-        if (n == 0) { return matrix; }
-        vector<vector<int>> ans(n, vector<int>(m, 0));
-        for (int i = 0; i < m; i++)
-        {
-            for (int j = 0; j < n; j++)
-            {
-                ans[j][i] = matrix[i][j];
-            }
-        }
-        return ans;
-    }
-};
-```
-
-## 0896. Monotonic Array
-```cpp
-/*
-Input: [1,2,2,3]
-Output: true
-*/
-class Solution {
-public:
-    bool isMonotonic(vector<int>& A) {
-        int n = int(A.size());
-        if (n == 1) { return true; }
-        bool isIncrease = false, isDecrease = false;
-        for (int i = 1; i < n; i++)
-        {
-            if (A[i] > A[i-1]) { isIncrease = true; }
-            if (A[i] < A[i-1]) { isDecrease = true; }
-            if (isIncrease && isDecrease) { return false; }
-        }
-        return true;
-    }
-};
-```
-
 ## 0897. Increasing Order Search Tree*
 ```cpp
 /*
@@ -7085,38 +7017,6 @@ public:
             else { head = root; }
             last = root;
             inOrder(root->right, last, head);
-        }
-    }
-};
-```
-
-## 0912. Sort an Array
-```cpp
-/*
-Input: nums = [5,2,3,1]
-Output: [1,2,3,5]
-*/
-class Solution {
-public:
-    vector<int> sortArray(vector<int>& nums) {
-        int n = int(nums.size());
-        quickSort(nums, 0, n-1);
-        return nums;
-    }
-    void quickSort(vector<int> &nums, int b, int e)
-    {
-        if (b < e)
-        {
-            int i = b, j = e;
-            while (i < j)
-            {
-                while (i < j && nums[i] <= nums[j]) { j--; }
-                swap(nums[i], nums[j]);
-                while (i < j && nums[i] <= nums[j]) { i++; }
-                swap(nums[i], nums[j]);
-            }
-            quickSort(nums, b, i-1);
-            quickSort(nums, j+1, e);
         }
     }
 };
@@ -7448,109 +7348,6 @@ public:
             count[digit]++;
         }
         return true;
-    }
-};
-```
-
-## 1603. Design Parking System
-ParkingSystem(int big, int medium, int small) Initializes object of the ParkingSystem class. The number of slots for each parking space are given as part of the constructor. bool addCar(int carType) Checks whether there is a parking space of carType for the car that wants to get into the parking lot. carType can be of three kinds: big, medium, or small, which are represented by 1, 2, and 3 respectively. A car can only park in a parking space of its carType. If there is no space available, return false, else park the car in that size space and return true.
-
-```cpp
-class ParkingSystem {
-    vector<int> park;
-public:
-    ParkingSystem(int big, int medium, int small) {
-        park.resize(3, 0);
-        park[0] = big;
-        park[1] = medium;
-        park[2] = small;
-    }
-    
-    bool addCar(int carType) {
-        if (!park[carType-1]) { return false; }
-        park[carType-1]--;
-        return true;
-    }
-};
-
-/**
- * Your ParkingSystem object will be instantiated and called as such:
- * ParkingSystem* obj = new ParkingSystem(big, medium, small);
- * bool param_1 = obj->addCar(carType);
- */
-```
-
-## 1748. Sum of Unique Elements
-You are given an integer array nums. The unique elements of an array are the elements that appear exactly once in the array. Return the sum of all the unique elements of nums.
-
-```cpp
-/*
-Input: nums = [1,2,3,2]
-Output: 4
-Explanation: The unique elements are [1,3], and the sum is 4.
-*/
-class Solution {
-public:
-    int sumOfUnique(vector<int>& nums) {
-        int ans = 0;
-        unordered_map<int, bool> dict;
-        unordered_map<int, bool>::iterator iter;
-        for (int ele : nums)
-        {
-            iter = dict.find(ele);
-            if (iter == dict.end())
-            {
-                ans += ele;
-                dict[ele] = true;
-            }
-            else if (dict[ele])
-            {
-                dict[ele] = false;
-                ans -= ele;
-            }
-        }
-        return ans;
-    }
-};
-```
-
-## 1848. 到目标元素的最小距离
-```cpp
-/*
-给你一个整数数组 nums （下标 从 0 开始 计数）以及两个整数 target 和 start ，
-请你找出一个下标 i ，满足 nums[i] == target 且 abs(i - start) 最小化 。
-注意：abs(x) 表示 x 的绝对值。
-
-返回 abs(i - start) 。
-
-题目数据保证 target 存在于 nums 中。
-
-示例 1：
-输入：nums = [1,2,3,4,5], target = 5, start = 3
-输出：1
-解释：nums[4] = 5 是唯一一个等于 target 的值，所以答案是 abs(4 - 3) = 1 。
-
-示例 2：
-输入：nums = [1], target = 1, start = 0
-输出：0
-解释：nums[0] = 1 是唯一一个等于 target 的值，所以答案是 abs(0 - 0) = 1 。
-
-示例 3：
-输入：nums = [1,1,1,1,1,1,1,1,1,1], target = 1, start = 0
-输出：0
-解释：nums 中的每个值都是 1 ，但 nums[0] 使 abs(i - start) 的结果得以最小化，
-所以答案是 abs(0 - 0) = 0 。
-*/
-class Solution {
-public:
-    int getMinDistance(vector<int>& nums, int target, int start) {
-        int n = (int)nums.size(), ans = INT_MAX;
-        for (int i = 0; i < n; i++) {
-            if (nums[i] == target && ans > abs(i - start)) {
-                ans = abs(i - start);
-            }
-        }
-        return ans;
     }
 };
 ```
