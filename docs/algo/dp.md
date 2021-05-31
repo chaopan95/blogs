@@ -824,48 +824,44 @@ int rob(TreeNode* root) {
 时间复杂度$O(n)$，空间复杂度$O(n)$
 
 ## 背包问题
-??? note "[「01背包」]()"
-    一个背包有一定的承重cap，有N件物品，每件都有自己的价值，记录在数组v中，也都有自己的重量，记录在数组w中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。给定物品的重量w价值v及物品数n和承重cap。请返回最大总价值。
+### 01背包
+一个背包有一定的承重 W，有N件物品，每件都有自己的价值，记录在数组 v 中，也都有自己的重量，记录在数组 w 中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。例如，
 
-    测试样例： [1,2,3],[1,2,3],3,6
-    
-    返回：6
+$$
+\begin{aligned}
+& \text{v = [1, 2, 3]} \\
+& \text{w = [1, 2, 4]} \\
+& \text{W = 6}
+\end{aligned}
+$$
 
-    动态规划：dp[i][j]表示前i件物品在最大重量j的条件下的价值
+最大的价值为 5。
 
-    $$
-    dp[i][j] =\max
-    \begin{cases}
-    dp[i-1]][j], &\quad \text{we don't put i-th item in our bag} \\
-    dp[i-1][j - w[i-1]], &\quad \text{otherwise, but } j > w[i-1], i = 1, 2, ..., N
-    \end{cases}
-    $$
+**「分析」**
 
-    ```cpp
-    /* *
-    * v[]: value for each item
-    * w[]: weight for each item
-    * W: capacity limit
-    * N: number of item
-    */
-    int knapsack(int v[], int w[], int W, int N) {
-        int **dp = new int *[N+1];
-        for (int i = 0; i <= N; i++) { dp[i] = new int [W+1]{}; }
-        for (int i = 1; i <= N; i++)
-        {
-            for (int j = 1; j <= W; j++) {
-                if (j < w[i-1]) { dp[i][j] = dp[i-1][j]; }
-                else {
-                    dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i-1]] + v[i-1]);
-                }
-            }
+设 dp[ i ][ j ] 为前 i 件物品在不超过 j 的重量下的最大价值。此时的状态只会有两个：（1）第 i 件物品没有被选中，（2）第 i 件物品被选中。状态转移方程如下：
+
+$$
+\text{dp[ i ][ j ]} = \max(\text{dp[i - 1]][ j ], dp[i - 1][j - w[ i ]]} + v[ i ])
+$$
+
+（1）如果第 i 件物品没有被选中，那么前 i - 1 件物品的重量就是 j；（2）如果第 i 件物品被选中了，那么前 i - 1 件物品的重量就是 j - v[ i ]，这里可以认为，第 i 件物品被加入后，总重量将会达到 j，那么加入之前的重量自然就等于 j - v[ i ]。当然，在计算的时候需要判定，当前的总重量 j 是否大于第 i 件物品的重量。
+
+因为状态的转移只发生在相邻物品之间，所以空间复杂度得以优化。
+
+```cpp
+int knapsack01(vector<int> v, vector<int> w, int W) {
+    int N = (int)v.size();
+    vector<int> dp(W+1, 0);
+    for (int i = 0; i < N; i++) {
+        for (int j = W; j >= w[i]; j--) {
+            dp[j] = max(dp[j], dp[j-w[i]] + v[i]);
         }
-        int res = dp[N][W];
-        for (int i = 0; i <= N; i++) { delete []dp[i]; }
-        delete []dp;
-        return res;
     }
-    ```
+    return dp[W];
+}
+```
+时间复杂度$O(N \times W)$，空间复杂度$O(W)$，N 为物品的数目，W 为限定的重量
 
 ??? note "[「Leetcode 416. 分割等和子集」]()"
 
