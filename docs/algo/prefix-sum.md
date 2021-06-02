@@ -69,3 +69,69 @@ for (int tot = nRow - 1; tot >= 0; tot--) {
 return ans;
 ```
 时间复杂度$O(m^{2}n)$，空间复杂度$O(mn)$，m 为矩阵的行数，n 为矩阵的列数
+
+## 连续的子数组和
+给定一个数组 nums 如 [23, 2, 4, 6, 7] 和一个整数 k 如 6，先判断这个数组是否存在一个连续子数组，其和是 k 的整数倍。这里要求子数组的长度至少为 2。
+
+**「分析」**
+
+前缀和对 k 的余数 + 哈希表
+
+存在这样一个关系，如果两个数对同一个数 k 取余的值相同，那么这两个值的差值一定是这个 k 的整数倍。
+
+```cpp
+int n = (int)nums.size();
+if (n < 2) { return false; }
+unordered_map<int, int> dict;
+int sum = 0;
+dict[0] = -1;
+for (int i = 0; i < n; i++) {
+    sum += nums[i];
+    int remainder = sum % k;
+    if (dict.count(remainder)) {
+        if (i - dict[remainder] >= 2) {
+            return true;
+        }
+    }
+    else {
+        dict[remainder] = i;
+    }
+}
+return false;
+```
+
+## 最长01等量子串
+给定一个只包含0和1的字符串如"0010011001001010110"，求其最长子串，这个子串中0和1的个数相等，给出的例子有一个最大长度为 16 的 01 子串
+
+**「分析」**
+
+前缀和 + 哈希表
+
+我们按照顺序遍历字符串，计算当前时刻的 01 个数差别，并将这差值保存在一个哈希表值，如果后续再次出现相同的差值，那么我们就可以快速的计算出这两个索引之间的距离，并且这两个索引之间的子串一定是 01 等长的。需要注意的是，不要遗忘空字符串。
+
+```cpp
+int getLongest01SubstrLen(string str) {
+    int len = 0, n = (int)str.length();
+    vector<int> dp(n+1, 0);
+    unordered_map<int, int> dict;
+    dict[0] = n;
+    int pos = n;
+    for (int i = n - 1; i >= 0; i--) {
+        if (str[i] == '0') {
+            dp[i] = dp[i+1] + 1;
+        }
+        else {
+            dp[i] = dp[i+1] - 1;
+        }
+        if (dict.find(dp[i]) != dict.end()) {
+            len = max(len, dict[dp[i]] - i);
+            pos = i;
+        }
+        else {
+            dict[dp[i]] = i;
+        }
+    }
+    printf("maxLenSubstr = %s\n", str.substr(pos, len).c_str());
+    return len;
+}
+```

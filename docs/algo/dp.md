@@ -374,36 +374,6 @@ vector<int> getMaxSumEpisode(vector<int> nums) {
     };
     ```
 
-??? note "[「最长01等量子串」]()"
-    给定一个只包含0和1的字符串如"0010011001001010110"，求其最长子串，这个子串中0和1的个数相等
-
-    ```cpp
-    int getLongest01SubstrLen(string str) {
-        int len = 0, n = (int)str.length();
-        vector<int> dp(n+1, 0);
-        unordered_map<int, int> dict;
-        dict[0] = n;
-        int pos = n;
-        for (int i = n - 1; i >= 0; i--) {
-            if (str[i] == '0') {
-                dp[i] = dp[i+1] + 1;
-            }
-            else {
-                dp[i] = dp[i+1] - 1;
-            }
-            if (dict.find(dp[i]) != dict.end()) {
-                len = max(len, dict[dp[i]] - i);
-                pos = i;
-            }
-            else {
-                dict[dp[i]] = i;
-            }
-        }
-        printf("maxLenSubstr = %s\n", str.substr(pos, len).c_str());
-        return len;
-    }
-    ```
-
 ## 最长公共子序列
 ### 子序列连续
 给定两个序列（数组或字符串）A = [1, 2, 3, 2, 1]， B = [3, 2, 1, 4, 7]，那么这两者的最长公共部分是[3, 2, 1]，长度为3
