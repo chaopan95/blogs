@@ -499,7 +499,7 @@
 <p>给定一个方阵 <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span>，将其按照顺时针的方向旋转 90˚。要求使用常数空间。</p>
 <p><strong>「分析」</strong></p>
 <p>直接按照题意进行模拟，我们注意到一次旋转 90˚ 相当于所有的元素顺时针转动一次，例如 (0, 0) -&gt; (0, n-1) -&gt; (n-1, n-1) -&gt; (n-1, 0) -&gt; (0, 0)。并且，对于同一个外圈的元素均是如此。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -526,6 +526,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>，空间复杂度<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
                 
               
               
