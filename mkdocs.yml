@@ -75,6 +75,7 @@ nav:
         - 搜索: algo/search.md
         - 前缀和: algo/prefix-sum.md
         - 数学: algo/math.md
+        - 矩阵: algo/matrix.md
         - Leetcode: algo/leetcode.md
     - 数据结构:
         - 字符串: data-structure/string.md
