@@ -153,3 +153,4 @@ int findCircleNum(vector<vector<int>>& isConnected) {
     return ans;
 }
 ```
+时间复杂度 $O(n^{2} \log n)$，空间复杂度 $O(n)$
