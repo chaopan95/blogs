@@ -582,8 +582,8 @@
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
     <span class="n">ListNode</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-    <span class="n">ListNode</span><span class="p">()</span><span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{}</span>
-    <span class="n">ListNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span><span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">ListNode</span><span class="p">()</span><span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">ListNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span><span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span> <span class="p">{}</span>
     <span class="n">ListNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">next</span><span class="p">)</span><span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="n">next</span><span class="p">)</span> <span class="p">{}</span>
 <span class="p">};</span>
 </code></pre></div>
@@ -595,7 +595,7 @@
 \begin{matrix}
 1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 \\
 &amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow 10 \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow &amp; 10 \\
 &amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow \\
 &amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7
 \end{matrix}
@@ -604,7 +604,7 @@
 \begin{matrix}
 1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 \\
 & & & & & & & \searrow \\
-& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow 10 \\
+& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow & 10 \\
 & & & & & & & \nearrow \\
 & & 5 & \rightarrow & 6 & \rightarrow & 7
 \end{matrix}
@@ -612,7 +612,131 @@
 </div>
 <p><strong>「分析」</strong></p>
 <p>朴素的方法是将这两个链表用栈保存起来，比对最后一个结点，如果不相同，则必定不相交，如果相等，反向遍历即可找到第一个相交的结点。但是我们可以使用常数空间的算法。问题的难点在于两个链表的长度不一致，但是这两个链表的长度和是一定的，即我们先遍历链表 pHead1 再遍历链表 pHead2 与先遍历 pHead2 再遍历 pHead1 的长度是一样的。那么，如果两个链表是在某个结点相交的，按照上述的遍历方法，两个指针一定在相交的结点相会。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p>首先，初始状态下，两个指针分别处于两个链表的头结点</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+p_{1} \\
+\Downarrow \\
+1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow 10 \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow \\
+&amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7 \\
+&amp; &amp; \Uparrow \\
+&amp; &amp; p_{2}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+p_{1} \\
+\Downarrow \\
+1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 \\
+& & & & & & & \searrow \\
+& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow 10 \\
+& & & & & & & \nearrow \\
+& & 5 & \rightarrow & 6 & \rightarrow & 7 \\
+& & \Uparrow \\
+& & p_{2}
+\end{matrix}
+</script>
+</div>
+<p><span><span class="MathJax_Preview">p_{1}</span><script type="math/tex">p_{1}</script></span> 和 <span><span class="MathJax_Preview">p_{2}</span><script type="math/tex">p_{2}</script></span> 同时向后移动直到某一个率先到达末结点。本例中，<span><span class="MathJax_Preview">p_{2}</span><script type="math/tex">p_{2}</script></span> 先到末结点，转而从 pHead1 的头结点开始遍历。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 &amp; &amp; &amp; &amp; &amp; &amp; p_{1} \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow &amp; &amp; &amp; &amp; &amp; \Downarrow \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow &amp; 10 \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow &amp; &amp; &amp; &amp; &amp; &amp; \Uparrow \\
+&amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7 &amp; &amp; &amp; &amp; &amp; &amp; &amp; p_{2}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 & & & & & & p_{1} \\
+& & & & & & & \searrow & & & & & \Downarrow \\
+& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow & 10 \\
+& & & & & & & \nearrow & & & & & & \Uparrow \\
+& & 5 & \rightarrow & 6 & \rightarrow & 7 & & & & & & & p_{2}
+\end{matrix}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+p_{2} \\
+\Downarrow \\
+1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 &amp; &amp; &amp; &amp; &amp; &amp; &amp; p_{1} \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow &amp; &amp; &amp; &amp; &amp; &amp; \Downarrow \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow &amp; 10 \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow \\
+&amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+p_{2} \\
+\Downarrow \\
+1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 & & & & & & & p_{1} \\
+& & & & & & & \searrow & & & & & & \Downarrow \\
+& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow & 10 \\
+& & & & & & & \nearrow \\
+& & 5 & \rightarrow & 6 & \rightarrow & 7
+\end{matrix}
+</script>
+</div>
+<p>同样地，<span><span class="MathJax_Preview">p_{1}</span><script type="math/tex">p_{1}</script></span> 也会到达末结点，转而从 phead2 的头结点开始遍历。这个时候我们就会发现，<span><span class="MathJax_Preview">p_{1}</span><script type="math/tex">p_{1}</script></span> 和 <span><span class="MathJax_Preview">p_{2}</span><script type="math/tex">p_{2}</script></span> 处在相同位置，这意味着它们可以同时达到各自的尾结点。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+&amp; &amp; p_{2} \\
+&amp; &amp; \Downarrow \\
+1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow 10 \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow \\
+&amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7 \\
+&amp; &amp; \Uparrow \\
+&amp; &amp; p_{1}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+& & p_{2} \\
+& & \Downarrow \\
+1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 \\
+& & & & & & & \searrow \\
+& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow 10 \\
+& & & & & & & \nearrow \\
+& & 5 & \rightarrow & 6 & \rightarrow & 7 \\
+& & \Uparrow \\
+& & p_{1}
+\end{matrix}
+</script>
+</div>
+<p>最终可以找到相交位置处的结点</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 &amp; &amp; p_{2} \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow &amp; \Downarrow \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow 10 \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow &amp; \Uparrow \\
+&amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7 &amp; &amp; p_{1}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 & & p_{2} \\
+& & & & & & & \searrow & \Downarrow \\
+& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow 10 \\
+& & & & & & & \nearrow & \Uparrow \\
+& & 5 & \rightarrow & 6 & \rightarrow & 7 & & p_{1}
+\end{matrix}
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -645,6 +769,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
                 
               
               
