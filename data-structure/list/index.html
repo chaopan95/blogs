@@ -548,7 +548,7 @@
                   <h1>链表</h1>
                 
                 <h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>链表是一种寻位访问的数据结构，以指针的方式，将两个数据连接起来。存储空间上通常是不连续的，增删的时间复杂度为 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，查找的时间复杂度为 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>。通常而言，链表有如下几种</p>
+<p>链表是一种寻位访问的数据结构，以指针的方式，将两块数据连接起来。存储空间上通常是不连续的，增删的时间复杂度为 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，查找的时间复杂度为 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>。通常而言，链表有如下几种</p>
 <ul>
 <li>
 <p>单链表</p>
@@ -611,7 +611,7 @@
 </script>
 </div>
 <p><strong>「分析」</strong></p>
-<p>朴素的方法是将这两个链表用栈保存起来，比对最后一个结点，如果不相同，则必定不相交，如果相等，反向遍历即可找到第一个相交的结点。但是我们可以使用常数空间的算法。问题的难点在于两个链表的长度不一致，但是这两个链表的长度和是一定的，即我们先遍历链表 pHead1 再遍历链表 pHead2 与先遍历 pHead2 再遍历 pHead1 的长度是一样的。那么，如果两个链表是在某个结点相交的，按照上述的遍历方法，两个指针一定在相交的结点相会。</p>
+<p>朴素的方法是将这两个链表用栈保存起来，比对最后一个结点，如果不相同，则必定不相交，如果相同，反向遍历栈即可找到第一个相交的结点。但是常数空间的算法是存在的。问题的难点在于两个链表的长度不一致，但是这两个链表的长度和是一定的，即我们先遍历链表 pHead1 再遍历链表 pHead2 与先遍历 pHead2 再遍历 pHead1 的长度是一样的。那么，如果两个链表是在某个结点相交的，按照上述的遍历方法，两个指针一定在相交的结点相会。</p>
 <p>首先，初始状态下，两个指针分别处于两个链表的头结点</p>
 <div>
 <div class="MathJax_Preview">
