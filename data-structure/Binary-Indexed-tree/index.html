@@ -461,8 +461,21 @@
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    题目
+  </a>
+  
+    <nav class="md-nav" aria-label="题目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     统计右侧小于当前元素的个数
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -607,8 +620,21 @@
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    题目
+  </a>
+  
+    <nav class="md-nav" aria-label="题目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     统计右侧小于当前元素的个数
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -741,7 +767,8 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<h2 id="_6">统计右侧小于当前元素的个数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_6">题目<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">统计右侧小于当前元素的个数<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>给定一个数组，如 nums = [5, 2, 6, 1, 1]，返回一个等长的数组，cnt = [3, 2, 2, 0, 0]。cnt[ i ] 表示在 (i : ] 范围内比 nums[ i ] 小的个数。</p>
 <p><strong>「分析」</strong></p>
 <p>朴素的算法是 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span> 的时间复杂度，两层循环，但是容易超时。题意要求是求当前元素对应的统计值，很自然地我们会想到桶排：由后向前将数组中的元素放到桶中，这里的桶指的是排列后数组。但是，这样做依然不能减小时间复杂度。题目要求是统计个数，本质上是求和，区别在于每次更新操作时，只会 +1 。那么，我们可以使用树状数组求解。</p>
