@@ -408,27 +408,40 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    原理
+  </a>
+  
+    <nav class="md-nav" aria-label="原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     初始化
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     查找
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     合并
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     题目
   </a>
   
@@ -436,7 +449,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     朋友圈问题
   </a>
   
@@ -559,27 +572,40 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    原理
+  </a>
+  
+    <nav class="md-nav" aria-label="原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     初始化
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     查找
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     合并
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     题目
   </a>
   
@@ -587,7 +613,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     朋友圈问题
   </a>
   
@@ -624,7 +650,8 @@
 </li>
 </ul>
 <p>我们通常使用一个数组 <strong>fa[ x ]</strong>，下标 x 代表某一个结点，fa[ x ] 表示这个结点的父结点。</p>
-<h2 id="_2">初始化<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">初始化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>起始状态，每一个结点都是自成一个集合</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -633,7 +660,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<h2 id="_3">查找<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">查找<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>我们希望在这一步可以快速地找到当前结点的根结点</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -691,7 +718,7 @@
 \end{matrix}
 </script>
 </div>
-<h2 id="_4">合并<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">合并<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>由于某些约束，两个原本不相交的集合发生了联系，这个时候，需要将其中的一个集合合并到另一个集合中。</p>
 <div>
 <div class="MathJax_Preview">
@@ -769,8 +796,8 @@
 </code></pre></div>
 </td></tr></table>
 <p>当然，除了按照深度合并，我们也可以按照树的结点数目合并。因为树的结点数目和深度不总会出现的同一侧（即一个集合的结点数目多且深度大），我们通常选择其中一个作为合并的依据。</p>
-<h2 id="_5">题目<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<h3 id="_6">朋友圈问题<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h2 id="_6">题目<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">朋友圈问题<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>给定一个 <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span> 的矩阵 friends，friends[ i ][ j ] = 1 表示 i 和 j 为朋友，反之，表示非朋友，根据这个矩阵找出当前这 n 个人中有几个朋友圈。例如，A 与 B 是朋友，B 与 C 是朋友，那么A、B、C 是一个朋友圈的，即便是A 与 C 不是朋友。</p>
 <p><strong>「分析」</strong></p>
 <p>这是典型的并查集问题，我们需要将每一个人初始化为一个朋友圈，如果两人是朋友就将这两人所在的集合合并，最终只需要统计 fa[ i ] == i 的个数即可。</p>
