@@ -415,6 +415,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    朋友圈问题
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -534,6 +541,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    朋友圈问题
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -559,7 +573,7 @@
 <p>合并（Union）：将两个不同的集合合并在一起</p>
 </li>
 </ul>
-<p>我们通常使用一个数组 <strong>fa[ x ]</strong>，下标 x 代表某一个结点，<strong>fa[ x ]</strong> 表示这个结点的父结点。</p>
+<p>我们通常使用一个数组 <strong>fa[ x ]</strong>，下标 x 代表某一个结点，fa[ x ] 表示这个结点的父结点。</p>
 <h2 id="_2">初始化<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>起始状态，每一个结点都是自成一个集合</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -629,6 +643,40 @@
 </div>
 <h2 id="_4">合并<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>由于某些约束，两个原本不相交的集合发生了联系，这个时候，需要将其中的一个集合合并到另一个集合中。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Blue} 1} \\
+&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \uparrow \\
+&amp; &amp; {\color{Red} 2} &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Blue} 3} \\
+&amp; \nearrow &amp; &amp; \nwarrow &amp; &amp; &amp; &amp; &amp; \nearrow &amp; &amp; &amp; \nwarrow \\
+{\color{Red} 4} &amp; &amp; &amp; &amp; {\color{Red} 5} &amp; &amp; &amp; {\color{Blue} 6} &amp; &amp; &amp; &amp; &amp; {\color{Blue} 7} \\
+\end{matrix} \Rightarrow
+\begin{matrix}
+&amp; &amp; &amp; &amp; &amp; {\color{Blue} 1} \\
+&amp; &amp; &amp; \nearrow &amp; &amp; &amp; &amp; &amp; \nwarrow \\
+&amp; &amp; {\color{Red} 2} &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Blue} 3} \\
+&amp; \nearrow &amp; &amp; \nwarrow &amp; &amp; &amp; &amp; &amp; \nearrow &amp; &amp; &amp; \nwarrow \\
+{\color{Red} 4} &amp; &amp; &amp; &amp; {\color{Red} 5} &amp; &amp; &amp; {\color{Blue} 6} &amp; &amp; &amp; &amp; &amp; {\color{Blue} 7} \\
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+& & & & & & & & & {\color{Blue} 1} \\
+& & & & & & & & & \uparrow \\
+& & {\color{Red} 2} & & & & & & & {\color{Blue} 3} \\
+& \nearrow & & \nwarrow & & & & & \nearrow & & & \nwarrow \\
+{\color{Red} 4} & & & & {\color{Red} 5} & & & {\color{Blue} 6} & & & & & {\color{Blue} 7} \\
+\end{matrix} \Rightarrow
+\begin{matrix}
+& & & & & {\color{Blue} 1} \\
+& & & \nearrow & & & & & \nwarrow \\
+& & {\color{Red} 2} & & & & & & & {\color{Blue} 3} \\
+& \nearrow & & \nwarrow & & & & & \nearrow & & & \nwarrow \\
+{\color{Red} 4} & & & & {\color{Red} 5} & & & {\color{Blue} 6} & & & & & {\color{Blue} 7} \\
+\end{matrix}
+</script>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Union</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
@@ -636,7 +684,124 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<p>这里我们处理地比较简单，将其中一个集合的根结点当作另一个集合的根结点的孩子。如果我们考虑将深度小的树合并到深度较大的树下，查询效率会提高。</p>
+<p>这里我们处理地比较简单，将其中一个集合的根结点当作另一个集合的根结点的孩子。如果我们考虑将深度小的树合并到深度较大的树下，查询效率会提高。这种方法我们称之为<strong>按秩合并</strong>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">unify</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">fx</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">fy</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dep</span><span class="p">[</span><span class="n">fx</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dep</span><span class="p">[</span><span class="n">fy</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">fa</span><span class="p">[</span><span class="n">fx</span><span class="p">]</span> <span class="o">=</span> <span class="n">fy</span><span class="p">;</span>
+        <span class="n">dep</span><span class="p">[</span><span class="n">fy</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dep</span><span class="p">[</span><span class="n">fy</span><span class="p">],</span> <span class="n">dep</span><span class="p">[</span><span class="n">fx</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="n">fa</span><span class="p">[</span><span class="n">fy</span><span class="p">]</span> <span class="o">=</span> <span class="n">fx</span><span class="p">;</span>
+        <span class="n">dep</span><span class="p">[</span><span class="n">fx</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dep</span><span class="p">[</span><span class="n">fx</span><span class="p">],</span> <span class="n">dep</span><span class="p">[</span><span class="n">fy</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>当然，除了按照深度合并，我们也可以按照树的结点数目合并。因为树的结点数目和深度不总会出现的同一侧（即一个集合的结点数目多且深度大），我们通常选择其中一个作为合并的依据。</p>
+<h2 id="_5">朋友圈问题<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>给定一个 <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span> 的矩阵 friends，friends[ i ][ j ] = 1 表示 i 和 j 为朋友，反之，表示非朋友，根据这个矩阵找出当前这 n 个人中有几个朋友圈。例如，A 与 B 是朋友，B 与 C 是朋友，那么A、B、C 是一个朋友圈的，即便是A 与 C 不是朋友。</p>
+<p><strong>「分析」</strong></p>
+<p>这是典型的并查集问题，我们需要将每一个人初始化为一个朋友圈，如果两人是朋友就将这两人所在的集合合并，最终只需要统计 fa[ i ] == i 的个数即可。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">fa</span><span class="p">,</span> <span class="n">dep</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span>
+        <span class="n">dep</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">dep</span><span class="p">[</span><span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">unify</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">fx</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">fy</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dep</span><span class="p">[</span><span class="n">fx</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dep</span><span class="p">[</span><span class="n">fy</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">fa</span><span class="p">[</span><span class="n">fx</span><span class="p">]</span> <span class="o">=</span> <span class="n">fy</span><span class="p">;</span>
+        <span class="n">dep</span><span class="p">[</span><span class="n">fy</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dep</span><span class="p">[</span><span class="n">fy</span><span class="p">],</span> <span class="n">dep</span><span class="p">[</span><span class="n">fx</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="n">fa</span><span class="p">[</span><span class="n">fy</span><span class="p">]</span> <span class="o">=</span> <span class="n">fx</span><span class="p">;</span>
+        <span class="n">dep</span><span class="p">[</span><span class="n">fx</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dep</span><span class="p">[</span><span class="n">fx</span><span class="p">],</span> <span class="n">dep</span><span class="p">[</span><span class="n">fy</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">findCircleNum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">isConnected</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">isConnected</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">n</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">fa</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">dep</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">isConnected</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">unify</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ans</span> <span class="o">+=</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">fa</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
                 
               
               
