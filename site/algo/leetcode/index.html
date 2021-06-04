@@ -1013,13 +1013,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0160-intersection-of-two-linked-lists" class="md-nav__link">
-    0160. Intersection of Two Linked Lists*
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#0173-binary-search-tree-iterator" class="md-nav__link">
     0173. Binary Search Tree Iterator
   </a>
@@ -2355,13 +2348,6 @@
         <li class="md-nav__item">
   <a href="#0155-min-stack" class="md-nav__link">
     0155. Min Stack
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0160-intersection-of-two-linked-lists" class="md-nav__link">
-    0160. Intersection of Two Linked Lists*
   </a>
   
 </li>
@@ -10583,78 +10569,6 @@ Both the left and right subtrees must also be binary search trees.</p>
 <span class="cm"> * int param_3 = obj-&gt;top();</span>
 <span class="cm"> * int param_4 = obj-&gt;getMin();</span>
 <span class="cm"> */</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="0160-intersection-of-two-linked-lists">0160. Intersection of Two Linked Lists*<a class="headerlink" href="#0160-intersection-of-two-linked-lists" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">A: 4 -&gt; 2 -&gt; 8 -&gt; 4 -&gt; 5</span>
-<span class="cm">B: 5 -&gt; 6 -&gt; 1 -&gt; 8 -&gt; 4 -&gt; 5</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">ListNode</span> <span class="o">*</span><span class="n">getIntersectionNode</span><span class="p">(</span><span class="n">ListNode</span> <span class="o">*</span><span class="n">headA</span><span class="p">,</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">headB</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">headA</span> <span class="o">==</span> <span class="k">nullptr</span> <span class="o">||</span> <span class="n">headB</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">headA</span> <span class="o">==</span> <span class="n">headB</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">headA</span><span class="p">;</span> <span class="p">}</span>
-        <span class="n">ListNode</span> <span class="o">*</span><span class="n">p1</span> <span class="o">=</span> <span class="n">headA</span><span class="p">,</span> <span class="o">*</span><span class="n">p2</span> <span class="o">=</span> <span class="n">headB</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">p2</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">p1</span><span class="p">;</span> <span class="p">}</span>
-            <span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-            <span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">headB</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">p2</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">headA</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">p2</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">p1</span><span class="p">;</span> <span class="p">}</span>
-            <span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-            <span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">headB</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">p2</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">headA</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">p2</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">p1</span><span class="p">;</span> <span class="p">}</span>
-            <span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-            <span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
 </code></pre></div>
 </td></tr></table>
 <h2 id="0173-binary-search-tree-iterator">0173. Binary Search Tree Iterator<a class="headerlink" href="#0173-binary-search-tree-iterator" title="Permanent link">&para;</a></h2>

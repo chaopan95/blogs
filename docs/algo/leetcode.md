@@ -4389,44 +4389,6 @@ public:
  */
 ```
 
-## 0160. Intersection of Two Linked Lists*
-```cpp
-/*
-A: 4 -> 2 -> 8 -> 4 -> 5
-B: 5 -> 6 -> 1 -> 8 -> 4 -> 5
-*/
-class Solution {
-public:
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        if (headA == nullptr || headB == nullptr) { return nullptr; }
-        if (headA == headB) { return headA; }
-        ListNode *p1 = headA, *p2 = headB;
-        while (p1 != nullptr && p2 != nullptr)
-        {
-            if (p1 == p2) { return p1; }
-            p1 = p1->next;
-            p2 = p2->next;
-        }
-        if (p1 == nullptr) { p1 = headB; }
-        if (p2 == nullptr) { p2 = headA; }
-        while (p1 != nullptr && p2 != nullptr)
-        {
-            if (p1 == p2) { return p1; }
-            p1 = p1->next;
-            p2 = p2->next;
-        }
-        if (p1 == nullptr) { p1 = headB; }
-        if (p2 == nullptr) { p2 = headA; }
-        while (p1 != nullptr && p2 != nullptr)
-        {
-            if (p1 == p2) { return p1; }
-            p1 = p1->next;
-            p2 = p2->next;
-        }
-        return nullptr;
-    }
-};
-```
 
 ## 0173. Binary Search Tree Iterator
 ```cpp
