@@ -429,8 +429,21 @@
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    题目
+  </a>
+  
+    <nav class="md-nav" aria-label="题目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     朋友圈问题
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -567,8 +580,21 @@
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    题目
+  </a>
+  
+    <nav class="md-nav" aria-label="题目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     朋友圈问题
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -743,7 +769,8 @@
 </code></pre></div>
 </td></tr></table>
 <p>当然，除了按照深度合并，我们也可以按照树的结点数目合并。因为树的结点数目和深度不总会出现的同一侧（即一个集合的结点数目多且深度大），我们通常选择其中一个作为合并的依据。</p>
-<h2 id="_5">朋友圈问题<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_5">题目<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">朋友圈问题<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>给定一个 <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span> 的矩阵 friends，friends[ i ][ j ] = 1 表示 i 和 j 为朋友，反之，表示非朋友，根据这个矩阵找出当前这 n 个人中有几个朋友圈。例如，A 与 B 是朋友，B 与 C 是朋友，那么A、B、C 是一个朋友圈的，即便是A 与 C 不是朋友。</p>
 <p><strong>「分析」</strong></p>
 <p>这是典型的并查集问题，我们需要将每一个人初始化为一个朋友圈，如果两人是朋友就将这两人所在的集合合并，最终只需要统计 fa[ i ] == i 的个数即可。</p>
