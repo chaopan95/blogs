@@ -78,6 +78,7 @@ nav:
         - 矩阵: algo/matrix.md
         - Leetcode: algo/leetcode.md
     - 数据结构:
+        - 链表: data-structure/list.md
         - 字符串: data-structure/string.md
         - 并查集: data-structure/unionset.md
     - 机器学习:
