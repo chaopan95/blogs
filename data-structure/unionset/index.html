@@ -582,6 +582,7 @@
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
+\begin{matrix}
 &amp; &amp; &amp; &amp; &amp; &amp; 1 \\
 &amp; &amp; &amp; &amp; \nearrow &amp; &amp; &amp; &amp; &amp; \nwarrow \\
 &amp; &amp; &amp; 2 &amp; &amp; &amp; &amp; &amp; &amp; &amp; 3 \\
@@ -589,8 +590,10 @@
 &amp; 4 &amp; &amp; &amp; &amp; 5 &amp; &amp; &amp; 6 &amp; &amp; &amp; &amp; &amp; 7 \\
 &amp; &amp; &amp; &amp; \nearrow &amp; &amp; \nwarrow \\
 &amp; &amp; &amp; 8 &amp; &amp; &amp; &amp; 9 
-\end{matrix}
-\quad \Rightarrow \quad
+\end{matrix} \\
+\\
+\Downarrow \text{路径压缩} \\
+\\
 \begin{matrix}
 &amp; &amp; 9 &amp; &amp; &amp; 2 &amp; &amp; &amp; 3\\
 &amp; &amp; &amp; \searrow &amp; &amp; \downarrow &amp; &amp; \swarrow \\
@@ -598,8 +601,10 @@
 &amp; &amp; &amp; \nearrow &amp;&amp; \uparrow &amp; &amp; \nwarrow \\
 &amp; &amp; 7 &amp; &amp; &amp; 6 &amp; &amp; &amp; 5
 \end{matrix}
+\end{matrix}
 </div>
 <script type="math/tex; mode=display">
+\begin{matrix}
 \begin{matrix}
 & & & & & & 1 \\
 & & & & \nearrow & & & & & \nwarrow \\
@@ -608,8 +613,10 @@
 & 4 & & & & 5 & & & 6 & & & & & 7 \\
 & & & & \nearrow & & \nwarrow \\
 & & & 8 & & & & 9 
-\end{matrix}
-\quad \Rightarrow \quad
+\end{matrix} \\
+\\
+\Downarrow \text{路径压缩} \\
+\\
 \begin{matrix}
 & & 9 & & & 2 & & & 3\\
 & & & \searrow & & \downarrow & & \swarrow \\
@@ -617,10 +624,11 @@
 & & & \nearrow && \uparrow & & \nwarrow \\
 & & 7 & & & 6 & & & 5
 \end{matrix}
+\end{matrix}
 </script>
 </div>
 <h2 id="_4">合并<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>由于某些约束，两个原本不相交的集合发生了联系，这个时候，需要叫其中的一个集合合并到另一个集合中。</p>
+<p>由于某些约束，两个原本不相交的集合发生了联系，这个时候，需要将其中的一个集合合并到另一个集合中。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Union</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
