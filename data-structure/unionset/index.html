@@ -646,12 +646,16 @@
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
+\begin{matrix}
 &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Blue} 1} \\
 &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \uparrow \\
 &amp; &amp; {\color{Red} 2} &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Blue} 3} \\
 &amp; \nearrow &amp; &amp; \nwarrow &amp; &amp; &amp; &amp; &amp; \nearrow &amp; &amp; &amp; \nwarrow \\
 {\color{Red} 4} &amp; &amp; &amp; &amp; {\color{Red} 5} &amp; &amp; &amp; {\color{Blue} 6} &amp; &amp; &amp; &amp; &amp; {\color{Blue} 7} \\
-\end{matrix} \Rightarrow
+\end{matrix} \\
+\\
+\Downarrow \text{合并}
+\\
 \begin{matrix}
 &amp; &amp; &amp; &amp; &amp; {\color{Blue} 1} \\
 &amp; &amp; &amp; \nearrow &amp; &amp; &amp; &amp; &amp; \nwarrow \\
@@ -659,21 +663,27 @@
 &amp; \nearrow &amp; &amp; \nwarrow &amp; &amp; &amp; &amp; &amp; \nearrow &amp; &amp; &amp; \nwarrow \\
 {\color{Red} 4} &amp; &amp; &amp; &amp; {\color{Red} 5} &amp; &amp; &amp; {\color{Blue} 6} &amp; &amp; &amp; &amp; &amp; {\color{Blue} 7} \\
 \end{matrix}
+\end{matrix}
 </div>
 <script type="math/tex; mode=display">
+\begin{matrix}
 \begin{matrix}
 & & & & & & & & & {\color{Blue} 1} \\
 & & & & & & & & & \uparrow \\
 & & {\color{Red} 2} & & & & & & & {\color{Blue} 3} \\
 & \nearrow & & \nwarrow & & & & & \nearrow & & & \nwarrow \\
 {\color{Red} 4} & & & & {\color{Red} 5} & & & {\color{Blue} 6} & & & & & {\color{Blue} 7} \\
-\end{matrix} \Rightarrow
+\end{matrix} \\
+\\
+\Downarrow \text{合并}
+\\
 \begin{matrix}
 & & & & & {\color{Blue} 1} \\
 & & & \nearrow & & & & & \nwarrow \\
 & & {\color{Red} 2} & & & & & & & {\color{Blue} 3} \\
 & \nearrow & & \nwarrow & & & & & \nearrow & & & \nwarrow \\
 {\color{Red} 4} & & & & {\color{Red} 5} & & & {\color{Blue} 6} & & & & & {\color{Blue} 7} \\
+\end{matrix}
 \end{matrix}
 </script>
 </div>
