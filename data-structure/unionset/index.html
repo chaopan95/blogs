@@ -723,7 +723,7 @@
 <p>给定一个 <span><span class="MathJax_Preview">n \times n</span><script type="math/tex">n \times n</script></span> 的矩阵 friends，friends[ i ][ j ] = 1 表示 i 和 j 为朋友，反之，表示非朋友，根据这个矩阵找出当前这 n 个人中有几个朋友圈。例如，A 与 B 是朋友，B 与 C 是朋友，那么A、B、C 是一个朋友圈的，即便是A 与 C 不是朋友。</p>
 <p><strong>「分析」</strong></p>
 <p>这是典型的并查集问题，我们需要将每一个人初始化为一个朋友圈，如果两人是朋友就将这两人所在的集合合并，最终只需要统计 fa[ i ] == i 的个数即可。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -812,6 +812,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(n^{2} \log n)</span><script type="math/tex">O(n^{2} \log n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
                 
               
               
