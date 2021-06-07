@@ -1,0 +1,1031 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="算法">
+      
+      
+      
+        <meta name="author" content="潘超">
+      
+      
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/algo/dp/stocks/">
+      
+      <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.4">
+    
+    
+      
+        <title>股票买卖 - 个人博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700%7CFira+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Fira Sans";--md-code-font-family:"Fira Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-124485594-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="个人博客" class="md-header__button md-logo" aria-label="个人博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              股票买卖
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="个人博客" class="md-nav__button md-logo" aria-label="个人博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人博客
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        介绍
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        算法
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="算法" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jsoffer/" class="md-nav__link">
+        剑指offer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        动态规划
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="动态规划" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          动态规划
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basis/" class="md-nav__link">
+        基础
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knapsack/" class="md-nav__link">
+        背包问题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../path/" class="md-nav__link">
+        路径问题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matrix/" class="md-nav__link">
+        矩阵问题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          股票买卖
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        股票买卖
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一次交易
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    多次交易
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    至多k次交易
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    带有冷冻期的交易
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    股票价格的跨度
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lcs/" class="md-nav__link">
+        最长公共子序列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edit-distance/" class="md-nav__link">
+        编辑距离
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rob/" class="md-nav__link">
+        打家劫舍
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../two-pointers/" class="md-nav__link">
+        双指针
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../search/" class="md-nav__link">
+        搜索
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prefix-sum/" class="md-nav__link">
+        前缀和
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/" class="md-nav__link">
+        数学
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../matrix/" class="md-nav__link">
+        矩阵
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../leetcode/" class="md-nav__link">
+        Leetcode
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        数据结构
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据结构" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          数据结构
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-structure/list/" class="md-nav__link">
+        链表
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-structure/string/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-structure/unionset/" class="md-nav__link">
+        并查集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-structure/Binary-Indexed-tree/" class="md-nav__link">
+        树状数组
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        机器学习
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="机器学习" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          机器学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ml/decision-tree/" class="md-nav__link">
+        决策树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ml/roc/" class="md-nav__link">
+        ROC
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一次交易
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    多次交易
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    至多k次交易
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    带有冷冻期的交易
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    股票价格的跨度
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>股票买卖</h1>
+                
+                <h2 id="_1">一次交易<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>给定一个数组prices，它的第i个元素 prices[i] 表示一支给定股票第 i 天的价格。你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。</p>
+<p>输入：[7, 1, 5, 3, 6, 4] 输出：5</p>
+<p>解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</p>
+<p><strong>「分析」</strong></p>
+<p>我们的目标是求最大利润 = 卖出时的价格 - 买入时的价格，那么针对每一天i，我们都可以得到一个这一天的最大利润</p>
+<div>
+<div class="MathJax_Preview">
+\text{maxProfit[ i ] = stocks[ i ] - } \min_{j \in [0, i)} \text{stocks[ j ]}
+</div>
+<script type="math/tex; mode=display">
+\text{maxProfit[ i ] = stocks[ i ] - } \min_{j \in [0, i)} \text{stocks[ j ]}
+</script>
+</div>
+<p>很容易可以写出一个<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>时间复杂度的方法。其实我们可以观察到，对于每一个i，我们重复求解i之前的最小股票价格，这一步是冗余的，因为如果我们知道了[0, i)的最小值x，那么[0, i]的最小值 a‘ = min(a, stocks[ i ])，从而避免了重复遍历。于是我们有一个高效的算法</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">minPrice</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">,</span> <span class="n">maxProfit</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">stock</span> <span class="p">:</span> <span class="n">stocks</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">minPrice</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">minPrice</span><span class="p">,</span> <span class="n">stock</span><span class="p">);</span>
+    <span class="n">maxProfit</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">maxProfit</span><span class="p">,</span> <span class="n">stock</span> <span class="o">-</span> <span class="n">minPrice</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="n">maxProfit</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h2 id="_2">多次交易<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>对于一只股票的，允许多次交易（买入、卖出为一次交易），未卖出股票时不允许买入，买入和卖出不在同一天。求最大收益。</p>
+<p><strong>「分析」</strong></p>
+<p>对于某一天 i ，我们会有两种状态：持有股票和不持有股票，那么我们可以设 dp[ i ][ 0 ] 表示 i 天不持有股票的最大受益，dp[ i ][ 1 ] 表示 i 天持有股票的最大收益。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{dp[ i ][ 0 ] = } \max(\text{dp[i - 1][ 0 ], dp[i - 1][ 1 ] + prices[ i ]}) \\
+&amp; \text{dp[ i ][ 1 ] = } \max(\text{dp[i - 1][ 0 ] - prices[ i ], dp[i - 1][ 1 ]})
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{dp[ i ][ 0 ] = } \max(\text{dp[i - 1][ 0 ], dp[i - 1][ 1 ] + prices[ i ]}) \\
+& \text{dp[ i ][ 1 ] = } \max(\text{dp[i - 1][ 0 ] - prices[ i ], dp[i - 1][ 1 ]})
+\end{aligned}
+</script>
+</div>
+<p>我们注意到，第 i 天的两种状态只与第 i-1 天的两种状态有关系，因此我们可以对时间复杂度进行优化。最后一天，不持有股票的收益一定高于持有股票的收益。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">prices</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="kt">int</span> <span class="n">dp0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dp1</span> <span class="o">=</span> <span class="o">-</span><span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">tmp0</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span> <span class="o">+</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="kt">int</span> <span class="n">tmp1</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span> <span class="o">-</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dp1</span><span class="p">);</span>
+    <span class="n">dp0</span> <span class="o">=</span> <span class="n">tmp0</span><span class="p">;</span>
+    <span class="n">dp1</span> <span class="o">=</span> <span class="n">tmp1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="n">dp0</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h2 id="k">至多k次交易<a class="headerlink" href="#k" title="Permanent link">&para;</a></h2>
+<p>对于一只股票，允许最多k次交易（买入和卖出为一次交易），求其最大的利润。</p>
+<p><strong>「分析」</strong></p>
+<p>因为题目要求持有股票时不能再买入，那么对于任意一天 i ，只有两种情况：这一天有股票和这一天没有股票。再根据交易的次数，设 dp[ i ][ j ][ 0 ] 为第 i 天处于第 j 次交易期间且这一天结束后未持有股票，dp[ i ][ j ][ 1 ] 为第 i 天处于第 j 次交易且这一天结束后持有股票。我们可以写出状态转移方程</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{dp[ i ][ j ][ 0 ] = } \max(\text{dp[i - 1][ j ][ 0 ], dp[i - 1][ j ][ 1 ] + prices[ i ]}) \\
+&amp; \text{dp[ i ][ j ][ 1 ] = } \max(\text{dp[i - 1][j - 1][ 0 ] - prices[ i ], dp[i - 1][ j ][ 1 ]})
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{dp[ i ][ j ][ 0 ] = } \max(\text{dp[i - 1][ j ][ 0 ], dp[i - 1][ j ][ 1 ] + prices[ i ]}) \\
+& \text{dp[ i ][ j ][ 1 ] = } \max(\text{dp[i - 1][j - 1][ 0 ] - prices[ i ], dp[i - 1][ j ][ 1 ]})
+\end{aligned}
+</script>
+</div>
+<p>对于 dp[ i ][ j ][ 0 ] 这一天未持有股票，那么可能的状态来源是(1) i-1 这一天也未持有股票，或者(2) i-1这一天持有股票而在 i 这一天卖出，那么这一天持有的股票一定是第 j 次交易产生的。同样地，对于 dp[ i ][ j ][ 1 ] 这一天持有股票，可能的状态来源是(1) i-1 这天未持有而 i 这一天买入股票并且 i-1 属于第 j-1 次交易或者（1）i-1这一天持有股票，直接过渡而来。i = 0 表示的是第一天的股价，对于第 j = 1, 2, ..., k 次交易，如果在 i = 0 处发生卖出，dp[ 0 ][ j ][ 1 ] = -prices[ 0 ]。最终的利润和发生在最后一天不持有股票中的某一个 j 值，即</p>
+<div>
+<div class="MathJax_Preview">
+\text{target} = \max_{j \in {1, 2, ..., k}} \text{dp[n - 1][ j ][ 0 ]}
+</div>
+<script type="math/tex; mode=display">
+\text{target} = \max_{j \in {1, 2, ..., k}} \text{dp[n - 1][ j ][ 0 ]}
+</script>
+</div>
+<p>我们还可以发现，第 i 天的状态只与第 i-1天的状态有关系，因为在空间上可以优化。设 dp0[ j ] 表示第 j 次交易未持有股票的最大利润，dp1[ j ] 表示第 j 次交易持有股票的最大利润</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{dp0[ j ] = } \max(\text{dp0[ j ], dp1[ j ] + prices[ i ]}) \\
+&amp; \text{dp1[ j ] = } \max(\text{dp0[j - 1] - prices[ i ], dp1[ j ]})
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{dp0[ j ] = } \max(\text{dp0[ j ], dp1[ j ] + prices[ i ]}) \\
+& \text{dp1[ j ] = } \max(\text{dp0[j - 1] - prices[ i ], dp1[ j ]})
+\end{aligned}
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maxProfit</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">prices</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">prices</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">dp0</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">dp1</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dp0</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">dp1</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="n">dp1</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">[</span><span class="n">j</span><span class="mi">-1</span><span class="p">]</span> <span class="o">-</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dp1</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">*</span><span class="n">max_element</span><span class="p">(</span><span class="n">dp0</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">dp0</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(nk)</span><script type="math/tex">O(nk)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(k)</span><script type="math/tex">O(k)</script></span></p>
+<h2 id="_3">带有冷冻期的交易<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>对于一只股票，允许多次交易（买入和卖出为一次交易），但是每一次交易完成后的下一天为冷冻期，不能购买股票，求其最大的利润。</p>
+<p><strong>「分析」</strong></p>
+<p>对于第 i 天结束，我们会出现三种状态：（1）这一天结束后准备进入未持有股票且不会处于冷冻期的状态，（2）这一天结束准备进入未持有股票但是处于冷冻期的状态，（3）这一天结束会进入持有股票的状态</p>
+<p>dp[ i ][ 0 ] 表示状态（1），前一天 i-1 的状态可能是（1）和（2）；dp[ i ][ 1 ] 表示状态（2），前一天的状态一定是（3），并且在第 i 天卖出股票，因为只有这样才会进入冷冻期；dp[ i ][ 2 ] 表示状态（3），前一天的可能状态是（1）和（3），因为第 i 天结束是要进入持有股票的状态，那么这一天不可能是冷冻期。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{dp[ i ][ 0 ] = } \max(\text{dp[i - 1][ 0 ], dp[i - 1][ 1 ]}) \\
+&amp; \text{dp[ i ][ 1 ] = dp[i - 1][ 2 ] + prices[ i ]} \\
+&amp; \text{dp[ i ][ 2 ] = } \max(dp[i - 1][ 0 ] - prices[ i ], dp[i - 1][ 2 ])
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{dp[ i ][ 0 ] = } \max(\text{dp[i - 1][ 0 ], dp[i - 1][ 1 ]}) \\
+& \text{dp[ i ][ 1 ] = dp[i - 1][ 2 ] + prices[ i ]} \\
+& \text{dp[ i ][ 2 ] = } \max(dp[i - 1][ 0 ] - prices[ i ], dp[i - 1][ 2 ])
+\end{aligned}
+</script>
+</div>
+<p>我们观察到，第 i 天的状态只会与前一天的状态有关，因此，我们只需要保留前一天的状态即可。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{dp0 } \leftarrow \max(\text{dp0, dp1}) \\
+&amp; \text{dp1 } \leftarrow \text{dp2 + prices[i]} \\
+&amp; \text{dp2 } \leftarrow \max(\text{dp0 - prices[ i ], dp2})
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{dp0 } \leftarrow \max(\text{dp0, dp1}) \\
+& \text{dp1 } \leftarrow \text{dp2 + prices[i]} \\
+& \text{dp2 } \leftarrow \max(\text{dp0 - prices[ i ], dp2})
+\end{aligned}
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">prices</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+<span class="kt">int</span> <span class="n">dp0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dp1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dp2</span> <span class="o">=</span> <span class="o">-</span><span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">dp2</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span> <span class="o">-</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dp2</span><span class="p">);</span>
+    <span class="n">dp0</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span><span class="p">);</span>
+    <span class="n">dp1</span> <span class="o">=</span> <span class="n">dp2</span> <span class="o">+</span> <span class="n">prices</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h2 id="_4">股票价格的跨度<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>给定一个股票价格的序列stocks = [100, 80, 60, 70, 60, 75, 85], 求其每一天的股票跨度（从i天开始向前计数，股票价格小于等于当前价格），输出结果[1, 1, 1, 2, 1, 4, 6]</p>
+<p><strong>「分析」</strong></p>
+<p>按照题意，可以写出一个 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span> 的算法，但是这样会超时。我们可以观察到，对于某一天的股票 stocks[ i ]，必然会逐个与i之前的元素比较，终于碰到一个比它大的或者没有，这时，我们将这个股票价格的跨度记录下来，对于下一个股价 stocks[i + 1]</p>
+<div>
+<div class="MathJax_Preview">
+\text{count[ stocks[i + 1] ]} =
+\begin{cases}
+\text{count[ stocks[ i ] ]} + 1, &amp; \quad \text{stocks[ i + 1 ]} \geq \text{stocks[ i ]} \\
+1, &amp; \quad \text{otherwise}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\text{count[ stocks[i + 1] ]} =
+\begin{cases}
+\text{count[ stocks[ i ] ]} + 1, & \quad \text{stocks[ i + 1 ]} \geq \text{stocks[ i ]} \\
+1, & \quad \text{otherwise}
+\end{cases}
+</script>
+</div>
+<p>单调栈适合解决此类问题</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">stk</span><span class="p">,</span> <span class="n">cnt</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">s</span> <span class="p">:</span> <span class="n">stocks</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">stk</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">num</span> <span class="o">+=</span> <span class="n">cnt</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+        <span class="n">cnt</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">ans</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+    <span class="n">cnt</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+    <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../matrix/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              矩阵问题
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../lcs/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              最长公共子序列
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Chao PAN
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.4fa0e4ee.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1d3bfcf1.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

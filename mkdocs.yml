@@ -70,7 +70,15 @@ nav:
     - 介绍: index.md
     - 算法:
         - 剑指offer: algo/jsoffer.md
-        - 动态规划: algo/dp.md
+        - 动态规划:
+            - 基础: algo/dp/basis.md
+            - 背包问题: algo/dp/knapsack.md
+            - 路径问题: algo/dp/path.md
+            - 矩阵问题: algo/dp/matrix.md
+            - 股票买卖: algo/dp/stocks.md
+            - 最长公共子序列: algo/dp/lcs.md
+            - 编辑距离: algo/dp/edit-distance.md
+            - 打家劫舍: algo/dp/rob.md
         - 双指针: algo/two-pointers.md
         - 搜索: algo/search.md
         - 前缀和: algo/prefix-sum.md
