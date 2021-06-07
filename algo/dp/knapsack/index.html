@@ -301,6 +301,26 @@
     01背包
   </a>
   
+    <nav class="md-nav" aria-label="01背包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    目标和
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    分割等和子集
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -627,6 +647,26 @@
     01背包
   </a>
   
+    <nav class="md-nav" aria-label="01背包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    目标和
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    分割等和子集
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -697,7 +737,102 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(N \times W)</span><script type="math/tex">O(N \times W)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(W)</span><script type="math/tex">O(W)</script></span>，N 为物品的数目，W 为限定的重量</p>
-<details class="note"><summary><a href="">「Leetcode 416. 分割等和子集」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<h3 id="_1">目标和<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>给定一个非负数组, 如 nums = [1, 1, 1, 1, 1] 和一个目标值 target = 3。对于数组中的每一个数值，我们可以在其前方放置一个运算符 + 或者 - 来构成一个计算表达式，试问这样的表达式结果恰好为 target 的个数为多少？</p>
+<p><strong>「分析」</strong></p>
+<p>题意可以被解释为，将一个数组分成两组，其中一组全部为标志为正数，另一组标志为负数，这样求和后结果为 target。本题是 01 背包问题求方案数问题。假设数组和为 sum，正数组的和为 pos，负数组的和为 neg（绝对值），可以得到如下关系</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{pos + neg = sum} \\
+&amp; \text{pos - neg = target}
+\end{aligned} \Rightarrow
+2 \times \text{pos = sum - target}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{pos + neg = sum} \\
+& \text{pos - neg = target}
+\end{aligned} \Rightarrow
+2 \times \text{pos = sum - target}
+</script>
+</div>
+<p>所以，sum 必须比 target 大，并且 sum - targte 必须是偶数。</p>
+<p>设 dp[ i ][ j ] 为后 i 个数中求和等于 j 的方案数目。状态转移方程如下：</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ]} = 
+\begin{cases}
+\text{dp[i + 1][ j ]}, &amp; \quad \text{j} &lt; \text{nums[ i ]} \\
+\text{dp[i + 1][ j ] + dp[i + 1][j - nums[ i ]]}, &amp;\quad \text{j} \geq \text{nums[ i ]}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ]} = 
+\begin{cases}
+\text{dp[i + 1][ j ]}, & \quad \text{j} < \text{nums[ i ]} \\
+\text{dp[i + 1][ j ] + dp[i + 1][j - nums[ i ]]}, &\quad \text{j} \geq \text{nums[ i ]}
+\end{cases}
+</script>
+</div>
+<p>关注边界条件</p>
+<p>如果 j = 0，即负数和的绝对值为 0，表明我们应该不选取任何元素，因此 dp[ i ][ 0 ] = 1，这里 i 从 0 到 n - 1。当 i == n，即当前数组没有元素，只有 j == 0 时，方案数目才为 1。如果从后向前递推，最终的答案是 dp[ 0 ][ target ]。优化后的空间复杂度可以是线性。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">findTargetSumWays</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">target</span> <span class="o">&gt;</span> <span class="n">sum</span> <span class="o">||</span> <span class="p">(</span><span class="n">sum</span> <span class="o">+</span> <span class="n">target</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">neg</span> <span class="o">=</span> <span class="p">(</span><span class="n">sum</span> <span class="o">+</span> <span class="n">target</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">neg</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">dp</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">neg</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">tmp</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">num</span><span class="p">];</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">neg</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(target \times n)</span><script type="math/tex">O(target \times n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(target)</span><script type="math/tex">O(target)</script></span>，这里 target 是目标值大小，n 是数组长度。</p>
+<h3 id="_2">分割等和子集<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>给定一个正整数构成的数组，如 nums = [1, 5, 11, 5]，判断能否将此数组分割成两个数组（不要求连续），使两个子数组的和相等。给出的例子是可以的，[1, 5, 5] 和 [ 11 ]</p>
+<p><strong>「分析」</strong></p>
+<p>按照题意，我们将一个数组分成两个部分，可以理解成选取若干个数，其和是原数组和的一半。因此，可以将此题转换成 01 背包问题。设 dp[ i ][ j ] 表示后 i 个元素中选取某几个值，其和是否等于 j。如果原数组的和 sum 是奇数，那么直接返回 false，因为两个相等数的和一定是偶数。状态转移方程如下</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ]} = 
+\begin{cases}
+\text{dp[i + 1][ j ]}, &amp;\quad \text{j} &lt; \text{nums[ i ]} \\
+\text{dp[i + 1][ j ] or dp[i + 1][j - nums[ i ]]}, &amp;\quad \text{j} \geq \text{nums[ i ]}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ]} = 
+\begin{cases}
+\text{dp[i + 1][ j ]}, &\quad \text{j} < \text{nums[ i ]} \\
+\text{dp[i + 1][ j ] or dp[i + 1][j - nums[ i ]]}, &\quad \text{j} \geq \text{nums[ i ]}
+\end{cases}
+</script>
+</div>
+<p>考虑边界条件，当 j == 0 时，说明两个数组均为空，那么整个数组应该为空，对应的 i == n （从后往前递推）。最后的答案应该为 dp[ 0 ][ sum / 2 ]。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -713,68 +848,56 @@
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">给你一个 只包含正整数 的 非空 数组 nums 。请你判断是否可以将这个数组分割</span>
-<span class="cm">成两个子集，使得两个子集的元素和相等。</span>
-
-<span class="cm">示例 1：</span>
-<span class="cm">输入：nums = [1,5,11,5]</span>
-<span class="cm">输出：true</span>
-<span class="cm">解释：数组可以分割成 [1, 5, 5] 和 [11] 。</span>
-
-<span class="cm">示例 2：</span>
-<span class="cm">输入：nums = [1,2,3,5]</span>
-<span class="cm">输出：false</span>
-<span class="cm">解释：数组不能分割成两个元素和相等的子集。</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">bool</span> <span class="n">canPartition</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
-        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
-        <span class="kt">int</span> <span class="n">target</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="kt">bool</span> <span class="o">*</span><span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">bool</span> <span class="p">[</span><span class="n">target</span><span class="o">+</span><span class="mi">1</span><span class="p">]{};</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">target</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span> <span class="p">}</span>
-                <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
-                <span class="k">else</span> <span class="p">{</span>
-                    <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">||</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
-                <span class="p">}</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">canPartition</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">sum</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">sum</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">sum</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">||</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
             <span class="p">}</span>
         <span class="p">}</span>
-        <span class="kt">bool</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">target</span><span class="p">];</span>
-        <span class="k">delete</span> <span class="p">[]</span><span class="n">dp</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">sum</span><span class="p">];</span>
+<span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</details>
+<p>空间优化后的代码</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">canPartition</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">sum</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="o">*</span><span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">bool</span> <span class="p">[</span><span class="n">sum</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]{};</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">sum</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">num</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">||</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">num</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">sum</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(sum \times n)</span><script type="math/tex">O(sum \times n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(sum)</span><script type="math/tex">O(sum)</script></span>，这里 sum 是原数组的和的一半，n 是数组长度。</p>
                 
               
               
