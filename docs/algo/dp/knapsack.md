@@ -52,21 +52,19 @@ $$
 2 \times \text{pos = sum - target}
 $$
 
-所以，sum 必须比 target 大，并且 sum - targte 必须是偶数。
+所以，sum 必须不小于 target，并且 sum - targte 必须是偶数。
 
 设 dp[ i ][ j ] 为后 i 个数中求和等于 j 的方案数目。状态转移方程如下：
 
 $$
 \text{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, & \quad \text{j} < \text{nums[ i ]} \\
-\text{dp[i + 1][ j ] + dp[i + 1][j - nums[ i ]]}, &\quad \text{j} \geq \text{nums[ i ]}
+\text{dp[i + 1][ j ]}, & \quad \text{j } < \text{nums[ i ]} \\
+\text{dp[i + 1][ j ] + dp[i + 1][j - nums[ i ]]}, &\quad \text{j } \geq \text{nums[ i ]}
 \end{cases}
 $$
 
-关注边界条件
-
-如果 j = 0，即负数和的绝对值为 0，表明我们应该不选取任何元素，因此 dp[ i ][ 0 ] = 1，这里 i 从 0 到 n - 1。当 i == n，即当前数组没有元素，只有 j == 0 时，方案数目才为 1。如果从后向前递推，最终的答案是 dp[ 0 ][ target ]。优化后的空间复杂度可以是线性。
+关注边界条件：如果 j = 0，即负数和的绝对值为 0，表明我们应该不选取任何元素，因此 dp[ i ][ 0 ] = 1，这里 i 从 0 到 n - 1。当 i == n，即当前数组没有元素，只有 j == 0 时，方案数目才为 1。如果从后向前递推，最终的答案是 dp[ 0 ][ target ]。优化后的空间复杂度可以是线性。
 
 ```cpp
 int findTargetSumWays(vector<int>& nums, int target) {
@@ -77,10 +75,8 @@ int findTargetSumWays(vector<int>& nums, int target) {
     vector<int> dp(neg + 1, 0);
     dp[0] = 1;
     for (int num : nums) {
-        vector<int> tmp = dp;
-        for (int j = 0; j <= neg; j++) {
-            dp[j] = tmp[j];
-            if (j >= num) { dp[j] += tmp[j - num]; }
+        for (int j = neg; j >= num; j--) {
+            dp[j] += dp[j - num];
         }
     }
     return dp[neg];
@@ -89,7 +85,7 @@ int findTargetSumWays(vector<int>& nums, int target) {
 时间复杂度 $O(target \times n)$，空间复杂度 $O(target)$，这里 target 是目标值大小，n 是数组长度。
 
 ### 分割等和子集
-给定一个正整数构成的数组，如 nums = [1, 5, 11, 5]，判断能否将此数组分割成两个数组（不要求连续），使两个子数组的和相等。给出的例子是可以的，[1, 5, 5] 和 [ 11 ]
+给定一个正整数构成的数组，如 nums = [1, 5, 11, 5]，判断能否将此数组分割成两个数组（不要求连续），使两个子数组的和相等。给出的例子可以被分成 [1, 5, 5] 和 [ 11 ]
 
 **「分析」**
 
@@ -98,8 +94,8 @@ int findTargetSumWays(vector<int>& nums, int target) {
 $$
 \text{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, &\quad \text{j} < \text{nums[ i ]} \\
-\text{dp[i + 1][ j ] or dp[i + 1][j - nums[ i ]]}, &\quad \text{j} \geq \text{nums[ i ]}
+\text{dp[i + 1][ j ]}, &\quad \text{j } < \text{nums[ i ]} \\
+\text{dp[i + 1][ j ] or dp[i + 1][j - nums[ i ]]}, &\quad \text{j } \geq \text{nums[ i ]}
 \end{cases}
 $$
 
