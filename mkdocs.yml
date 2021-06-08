@@ -87,6 +87,9 @@ nav:
         - Leetcode: algo/leetcode.md
     - 数据结构:
         - 链表: data-structure/list.md
+        - 树:
+            - 基础: data-structure/tree/basis.md
+            - 二叉树: data-structure/tree/binary-tree.md
         - 字符串: data-structure/string.md
         - 并查集: data-structure/unionset.md
         - 树状数组: data-structure/binary-indexed-tree.md
