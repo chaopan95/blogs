@@ -89,7 +89,8 @@ nav:
         - 链表: data-structure/list.md
         - 字符串: data-structure/string.md
         - 并查集: data-structure/unionset.md
-        - 树状数组: data-structure/Binary-Indexed-tree.md
+        - 树状数组: data-structure/binary-indexed-tree.md
+        - 线段树: data-structure/segment-tree.md
     - 机器学习:
         - 决策树: ml/decision-tree.md
         - ROC: ml/roc.md
