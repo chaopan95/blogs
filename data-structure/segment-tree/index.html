@@ -556,22 +556,22 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     查询
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     更新
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -695,22 +695,22 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     查询
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     更新
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -758,7 +758,7 @@
 &amp; 2 &amp; &amp; {\color{Red} 3} \\
 &amp; \wedge \\
 {\color{Red} 4} &amp; &amp; {\color{Red} 5} \\
-\end{matrix} \text{3、4、5 是叶子结点}
+\end{matrix} \quad \text{3、4、5 是叶子结点}
 </div>
 <script type="math/tex; mode=display">
 \begin{matrix}
@@ -767,7 +767,7 @@
 & 2 & & {\color{Red} 3} \\
 & \wedge \\
 {\color{Red} 4} & & {\color{Red} 5} \\
-\end{matrix} \text{3、4、5 是叶子结点}
+\end{matrix} \quad \text{3、4、5 是叶子结点}
 </script>
 </div>
 <div>
@@ -778,7 +778,7 @@
 &amp; 2 &amp; &amp; &amp; &amp; 3 \\
 &amp; \wedge &amp; &amp; &amp; &amp; \wedge \\
 {\color{Red} 4} &amp; &amp; {\color{Red} 5} &amp; &amp; {\color{Red} 6} &amp; &amp; {\color{Red} 7}
-\end{matrix} \text{4、5、6、7 是叶子结点}
+\end{matrix} \quad \text{4、5、6、7 是叶子结点}
 </div>
 <script type="math/tex; mode=display">
 \begin{matrix}
@@ -787,7 +787,7 @@
 & 2 & & & & 3 \\
 & \wedge & & & & \wedge \\
 {\color{Red} 4} & & {\color{Red} 5} & & {\color{Red} 6} & & {\color{Red} 7}
-\end{matrix} \text{4、5、6、7 是叶子结点}
+\end{matrix} \quad \text{4、5、6、7 是叶子结点}
 </script>
 </div>
 <p>完满二叉树的叶子结点个数与非叶子结点个数有一个关系</p>
@@ -822,7 +822,7 @@ n_{\text{leaves}} = n_{non-leaves} + 1
 </code></pre></div>
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
-<h2 id="_4">查询<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_4">查询<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>线段树每一个非叶子结点都表示一个区间信息，以区间和为例，根结点表示整个区间和。理想情况下，我们希望直接返回一个区间的和，但往往给出的区间边界不是恰好对应一个非叶子结点，这个时候，我们需要将要求的区间分割，求每一个子区间的和，即可得到最终结果。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -857,7 +857,7 @@ n_{\text{leaves}} = n_{non-leaves} + 1
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<h2 id="_5">更新<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_5">更新<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>当原数组的一个或若干个数值发生改变时，对应的区间信息也要发生变化，从叶子结点开始更新路径上的所有的结点。以区间和为例</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
