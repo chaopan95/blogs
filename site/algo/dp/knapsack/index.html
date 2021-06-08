@@ -318,6 +318,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    最后一块石头的重量
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -727,6 +734,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    最后一块石头的重量
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -956,6 +970,85 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(sum \times n)</span><script type="math/tex">O(sum \times n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(sum)</span><script type="math/tex">O(sum)</script></span>，这里 sum 是原数组的和的一半，n 是数组长度。</p>
+<h3 id="_3">最后一块石头的重量<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>给定一个数组 stones = [2, 7, 4, 1, 8, 1] 表示一组石头的重量。从当前的石头里任取两个，质量是 x 和 y，如果两块质量相等即 x = y，那么这两块石头被移除；反之，移除较小的那一块，并且较大的那一块变成这两块质量的差值（绝对值）。重复这个过程，直到剩余一块或者无剩余，求剩余的最小质量是多少。</p>
+<p><strong>「分析」</strong></p>
+<p>我们可以原数组分割成两组 + 和 -，我们用 + 这一组减去 - 这一组，所得结果的最小值是最终结果，这样问题转化成 01 背包问题。设 neg 为 - 这一组的和，pos 为 + 这一组的和。满足下列方程组</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{pos + neg = sum} \\
+&amp; \text{pos - neg = res}
+\end{aligned} \quad \Rightarrow \quad 2 \times \text{neg = sum - res}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{pos + neg = sum} \\
+& \text{pos - neg = res}
+\end{aligned} \quad \Rightarrow \quad 2 \times \text{neg = sum - res}
+</script>
+</div>
+<p>那么我们可以得知</p>
+<div>
+<div class="MathJax_Preview">
+0 \leq \text{neg} \leq \left \lfloor \frac{\text{sum}}{2} \right \rfloor
+</div>
+<script type="math/tex; mode=display">
+0 \leq \text{neg} \leq \left \lfloor \frac{\text{sum}}{2} \right \rfloor
+</script>
+</div>
+<p>因此，我们可以理解成，从原数组中选取若干个值，其和等于 neg，并且使得</p>
+<div>
+<div class="MathJax_Preview">
+\arg \min_{\text{neg}} \text{(sum} - \text{neg} \times \text{2)}
+</div>
+<script type="math/tex; mode=display">
+\arg \min_{\text{neg}} \text{(sum} - \text{neg} \times \text{2)}
+</script>
+</div>
+<p>设 dp[ i ][ j ] 表示后 i 个数字中选取若干个，它们的和在不超过 j 的情况下最大值是多少。状态转移方程为</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ]} = 
+\begin{cases}
+\text{dp[i + 1][ j ]}, &amp;\quad \text{j } &lt; \text{stones[ i ]} \\
+\max(\text{dp[i + 1][ j ], dp[i + 1][j - stones[ i ]] + stones[ i ]]}), &amp;\quad \text{j } \geq \text{stones[ i ]}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ]} = 
+\begin{cases}
+\text{dp[i + 1][ j ]}, &\quad \text{j } < \text{stones[ i ]} \\
+\max(\text{dp[i + 1][ j ], dp[i + 1][j - stones[ i ]] + stones[ i ]]}), &\quad \text{j } \geq \text{stones[ i ]}
+\end{cases}
+</script>
+</div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">lastStoneWeightII</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">stones</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">stone</span> <span class="p">:</span> <span class="n">stones</span><span class="p">)</span> <span class="p">{</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">stone</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">tar</span> <span class="o">=</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">tar</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">stone</span> <span class="p">:</span> <span class="n">stones</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">tar</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">stone</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">stone</span><span class="p">]</span> <span class="o">+</span> <span class="n">stone</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">sum</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dp</span><span class="p">[</span><span class="n">tar</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>时间复杂度 <span><span class="MathJax_Preview">O(tar \times n)</span><script type="math/tex">O(tar \times n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(tar)</span><script type="math/tex">O(tar)</script></span>，这里 tar 是原数组的和的一半，n 是数组长度。</p>
                 
               
               

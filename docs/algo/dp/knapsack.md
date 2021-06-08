@@ -140,3 +140,56 @@ bool canPartition(vector<int>& nums) {
 }
 ```
 时间复杂度 $O(sum \times n)$，空间复杂度 $O(sum)$，这里 sum 是原数组的和的一半，n 是数组长度。
+
+### 最后一块石头的重量
+给定一个数组 stones = [2, 7, 4, 1, 8, 1] 表示一组石头的重量。从当前的石头里任取两个，质量是 x 和 y，如果两块质量相等即 x = y，那么这两块石头被移除；反之，移除较小的那一块，并且较大的那一块变成这两块质量的差值（绝对值）。重复这个过程，直到剩余一块或者无剩余，求剩余的最小质量是多少。
+
+**「分析」**
+
+我们可以原数组分割成两组 + 和 -，我们用 + 这一组减去 - 这一组，所得结果的最小值是最终结果，这样问题转化成 01 背包问题。设 neg 为 - 这一组的和，pos 为 + 这一组的和。满足下列方程组
+
+$$
+\begin{aligned}
+& \text{pos + neg = sum} \\
+& \text{pos - neg = res}
+\end{aligned} \quad \Rightarrow \quad 2 \times \text{neg = sum - res}
+$$
+
+那么我们可以得知
+
+$$
+0 \leq \text{neg} \leq \left \lfloor \frac{\text{sum}}{2} \right \rfloor
+$$
+
+因此，我们可以理解成，从原数组中选取若干个值，其和等于 neg，并且使得
+
+$$
+\arg \min_{\text{neg}} \text{(sum} - \text{neg} \times \text{2)}
+$$
+
+设 dp[ i ][ j ] 表示后 i 个数字中选取若干个，它们的和在不超过 j 的情况下最大值是多少。状态转移方程为
+
+$$
+\text{dp[ i ][ j ]} = 
+\begin{cases}
+\text{dp[i + 1][ j ]}, &\quad \text{j } < \text{stones[ i ]} \\
+\max(\text{dp[i + 1][ j ], dp[i + 1][j - stones[ i ]] + stones[ i ]]}), &\quad \text{j } \geq \text{stones[ i ]}
+\end{cases}
+$$
+
+```cpp
+int lastStoneWeightII(vector<int>& stones) {
+    int sum = 0;
+    for (int stone : stones) { sum += stone; }
+    int tar = (sum >> 1);
+    vector<int> dp(tar + 1, 0);
+    for (int stone : stones) {
+        for (int j = tar; j >= stone; j--) {
+            dp[j] = max(dp[j], dp[j - stone] + stone);
+        }
+    }
+    return sum - 2 * dp[tar];
+}
+```
+
+时间复杂度 $O(tar \times n)$，空间复杂度 $O(tar)$，这里 tar 是原数组的和的一半，n 是数组长度。
