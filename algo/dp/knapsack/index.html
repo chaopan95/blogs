@@ -849,16 +849,16 @@
 </div>
 <p>最大的价值为 5。</p>
 <p><strong>「分析」</strong></p>
-<p>设 dp[ i ][ j ] 为前 i 件物品在背包容量为 j 下的最大价值。此时的状态只会有两个：（1）第 i 件物品没有被选中，（2）第 i 件物品被选中。状态转移方程如下：</p>
+<p>设 dp[ i ][ j ] 为从第 i 件物品到最后一件物品在背包容量为 j 下的最大价值。此时的状态只会有两个：（1）第 i 件物品没有被选中，（2）第 i 件物品被选中。状态转移方程如下：</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ]} = \max(\text{dp[i - 1]][ j ], dp[i - 1][j - w[ i ]]} + v[ i ])
+\text{dp[ i ][ j ]} = \max(\text{dp[i + 1]][ j ], dp[i + 1][j - w[ i ]]} + v[ i ])
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ]} = \max(\text{dp[i - 1]][ j ], dp[i - 1][j - w[ i ]]} + v[ i ])
+\text{dp[ i ][ j ]} = \max(\text{dp[i + 1]][ j ], dp[i + 1][j - w[ i ]]} + v[ i ])
 </script>
 </div>
-<p>（1）如果第 i 件物品没有被选中，那么前 i - 1 件物品的重量就是 j；（2）如果第 i 件物品被选中了，那么前 i - 1 件物品的重量就是 j - w[ i ]，这里可以认为，第 i 件物品被加入后，总重量将会达到 j，那么加入之前的重量自然就等于 j - w[ i ]。当然，在计算的时候需要判定，当前的总重量 j 是否大于第 i 件物品的重量。</p>
+<p>（1）如果第 i 件物品没有被选中，那么第 i + 1 到最后一件物品的重量就是 j；（2）如果第 i 件物品被选中了，那么第 i + 1 到最后一件物品的重量就是 j - w[ i ]，这里可以认为，第 i 件物品被加入后，总重量将会达到 j，那么加入之前的重量自然就等于 j - w[ i ]。当然，在计算的时候需要判定，当前的总重量 j 是否大于第 i 件物品的重量。</p>
 <p><strong>「线性空间」</strong></p>
 <p>因为状态的转移只发生在相邻物品之间，所以空间复杂度得以优化，但用一维的空间时，应对容量 w 进行<strong>倒序遍历</strong>。</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -908,7 +908,7 @@
 </script>
 </div>
 <p>所以，sum 必须不小于 target，并且 sum - targte 必须是偶数。</p>
-<p>设 dp[ i ][ j ] 为后 i 个数中求和等于 j 的方案数目。状态转移方程如下：</p>
+<p>设 dp[ i ][ j ] 为从第 i 个数到最后一个数中求和等于 j 的方案数目。状态转移方程如下：</p>
 <div>
 <div class="MathJax_Preview">
 \text{dp[ i ][ j ]} = 
@@ -959,7 +959,7 @@
 <h3 id="_2">分割等和子集<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>给定一个正整数构成的数组，如 nums = [1, 5, 11, 5]，判断能否将此数组分割成两个数组（不要求连续），使两个子数组的和相等。给出的例子可以被分成 [1, 5, 5] 和 [ 11 ]</p>
 <p><strong>「分析」</strong></p>
-<p>按照题意，我们将一个数组分成两个部分，可以理解成选取若干个数，其和是原数组和的一半。因此，可以将此题转换成 01 背包问题。设 dp[ i ][ j ] 表示后 i 个元素中选取某几个值，其和是否等于 j。如果原数组的和 sum 是奇数，那么直接返回 false，因为两个相等数的和一定是偶数。状态转移方程如下</p>
+<p>按照题意，我们将一个数组分成两个部分，可以理解成选取若干个数，其和是原数组和的一半。因此，可以将此题转换成 01 背包问题。设 dp[ i ][ j ] 为从第 i 个元素到最后一个元素中选取某几个值，其和是否等于 j。如果原数组的和 sum 是奇数，那么直接返回 false，因为两个相等数的和一定是偶数。状态转移方程如下</p>
 <div>
 <div class="MathJax_Preview">
 \text{dp[ i ][ j ]} = 
@@ -1079,7 +1079,7 @@
 \arg \min_{\text{neg}} \text{(sum} - \text{neg} \times \text{2)}
 </script>
 </div>
-<p>设 dp[ i ][ j ] 表示后 i 个数字中选取若干个，它们的和在不超过 j 的情况下最大值是多少。状态转移方程为</p>
+<p>设 dp[ i ][ j ] 为从第 i 个数字到最后一个数字中选取若干个，它们的和在不超过 j 的情况下最大值是多少。状态转移方程为</p>
 <div>
 <div class="MathJax_Preview">
 \text{dp[ i ][ j ]} = 
@@ -1252,7 +1252,7 @@
 <h2 id="_5">完全背包<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>一个背包承重总量是 W，有 N 种物品，每一件有自己的价值 <span><span class="MathJax_Preview">v_{i}</span><script type="math/tex">v_{i}</script></span> 和 重量 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span>，每一种类的物品无限供应，试问在不超过背包承重总量下，背包的价值最大。</p>
 <p><strong>「分析」</strong></p>
-<p>完全背包问题种，每一件物品的供应是无限的，但因为背包承重总量有限，可以放入的数目依然有限 <span><span class="MathJax_Preview">0 \leq c_{i} \leq \frac{W}{w_{i}}</span><script type="math/tex">0 \leq c_{i} \leq \frac{W}{w_{i}}</script></span>，那么我们依然可以设 dp[ i ][ j ] 为前 i 件物品中选取若干件，在重量和不超过 j 的情况下最大价值。</p>
+<p>完全背包问题种，每一件物品的供应是无限的，但因为背包承重总量有限，可以放入的数目依然有限 <span><span class="MathJax_Preview">0 \leq c_{i} \leq \frac{W}{w_{i}}</span><script type="math/tex">0 \leq c_{i} \leq \frac{W}{w_{i}}</script></span>，那么我们依然可以设 dp[ i ][ j ] 为从第 i 件物品到最后一件物品中选取若干件，在重量和不超过 j 的情况下最大价值。</p>
 <div>
 <div class="MathJax_Preview">
 \text{dp[ i ][ j ]} =
@@ -1392,22 +1392,22 @@
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(n \times amount)</span><script type="math/tex">O(n \times amount)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(amount)</span><script type="math/tex">O(amount)</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
 <h3 id="ii">换零钱 II<a class="headerlink" href="#ii" title="Permanent link">&para;</a></h3>
-<p>同上题背景，需要求能够组合出的零钱方案数目</p>
+<p>同上题背景，求能够组合出给定金额的零钱方案数目</p>
 <p><strong>「分析」</strong></p>
 <p>设 dp[ i ][ j ] 从第 i 个到最后一个硬币中选取若干个组成金额是 j 的方案数目</p>
 <div>
 <div class="MathJax_Preview">
 \text{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, &amp;\quad \text{j} &lt; \text{coins[ i ]} \\
-\text{dp[i + 1][ j ] + dp[ i ][j - coins[ i ]]}, &amp;\quad \text{j} \geq \text{coins[ i ]}
+\text{dp[i + 1][ j ]}, &amp;\quad \text{j } &lt; \text{coins[ i ]} \\
+\text{dp[i + 1][ j ] + dp[ i ][j - coins[ i ]]}, &amp;\quad \text{j } \geq \text{coins[ i ]}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
 \text{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, &\quad \text{j} < \text{coins[ i ]} \\
-\text{dp[i + 1][ j ] + dp[ i ][j - coins[ i ]]}, &\quad \text{j} \geq \text{coins[ i ]}
+\text{dp[i + 1][ j ]}, &\quad \text{j } < \text{coins[ i ]} \\
+\text{dp[i + 1][ j ] + dp[ i ][j - coins[ i ]]}, &\quad \text{j } \geq \text{coins[ i ]}
 \end{cases}
 </script>
 </div>
@@ -1432,7 +1432,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(n \times amount)</span><script type="math/tex">O(n \times amount)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(amount)</span><script type="math/tex">O(amount)</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
+时间复杂度 <span><span class="MathJax_Preview">O(\text{n} \times \text{amount})</span><script type="math/tex">O(\text{n} \times \text{amount})</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(\text{amount})</span><script type="math/tex">O(\text{amount})</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
                 
               
               
