@@ -325,13 +325,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    盈利计划
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     完全背包
   </a>
   
@@ -339,7 +346,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     换零钱
   </a>
   
@@ -761,13 +768,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    盈利计划
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     完全背包
   </a>
   
@@ -775,7 +789,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     换零钱
   </a>
   
@@ -1063,7 +1077,7 @@
 \end{cases}
 </script>
 </div>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1088,8 +1102,81 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<p>时间复杂度 <span><span class="MathJax_Preview">O(tar \times n)</span><script type="math/tex">O(tar \times n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(tar)</span><script type="math/tex">O(tar)</script></span>，这里 tar 是原数组的和的一半，n 是数组长度。</p>
-<h2 id="_4">完全背包<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+时间复杂度 <span><span class="MathJax_Preview">O(tar \times n)</span><script type="math/tex">O(tar \times n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(tar)</span><script type="math/tex">O(tar)</script></span>，这里 tar 是原数组的和的一半，n 是数组长度。</p>
+<h3 id="_4">盈利计划<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>给定一个整数 n 代表人数，minProfit 代表最低盈利额，一串工作需要的人数 group = [2, 2]，每项工作对应的利润 profit = [2, 3]。要求实现最低盈利额，并且投入的人数和不能超过 n，这样的分配方案数目有多少个？</p>
+<p><strong>「分析」</strong></p>
+<p>在 01 背包问题的基础上，本题增加了最低盈利额的限制。设 dp[ i ][ j ][ k ] 为从 i 开始的工作中选取某些工作投入人力，在不超过 j 的个数且盈利额不低于 k 的情况下，方案数目。状态转移方程如下</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ][ k ]} =
+\begin{cases}
+\text{dp[i + 1][ j ][ k ]}, &amp;\quad \text{j } &lt; \text{group[ i ]} \\
+\text{dp[i + 1][ j ][ k ] + dp[i + 1][j - group[ i ]][max(0, k - profit[ i ])]}, &amp;\quad \text{j } \geq \text{group[ i ]}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ][ k ]} =
+\begin{cases}
+\text{dp[i + 1][ j ][ k ]}, &\quad \text{j } < \text{group[ i ]} \\
+\text{dp[i + 1][ j ][ k ] + dp[i + 1][j - group[ i ]][max(0, k - profit[ i ])]}, &\quad \text{j } \geq \text{group[ i ]}
+\end{cases}
+</script>
+</div>
+<p>边界条件 dp[ len ][ 0 ][ 0 ] = 1，表明不选任何工作时，投入的人数是 0，最低的盈利额也是 0，此时也是满足条件的一种方案。进一步，我们会发现，当 k = 0 即最低盈利额为 0，那么不论 i 和 j 为何值，dp[ i ][ j ][ 0 ] 均为 1。</p>
+<p>k - profit[ i ] 为负数，说明第 i 个工作的利润本身就超过 minProfit，这就意味着，在选择第 i 个工作前，最低盈利可以为 0，这个时候只要投入的人数不超过 j - group[ i ]，都被视为满足要求的方案。相反，如果我们约束 <span><span class="MathJax_Preview">\text{k} \geq \text{profit[ i ]}</span><script type="math/tex">\text{k} \geq \text{profit[ i ]}</script></span>，我们最终得到的结果是<strong>恰好等于 minProfit</strong>的方案数，因为 k - profit[ i ] 只会转移到第三维成为 0 的状态。</p>
+<p>最终的答案是考察所有的工作且满足最低盈利额的条件下，对投入的人数遍历</p>
+<div>
+<div class="MathJax_Preview">
+\text{ans} = \sum_{j = 0}^{n} \text{dp[ 0 ][ j ][ minProfit ]}
+</div>
+<script type="math/tex; mode=display">
+\text{ans} = \sum_{j = 0}^{n} \text{dp[ 0 ][ j ][ minProfit ]}
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">profitableSchemes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">minProfit</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">group</span><span class="p">,</span>
+                      <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">profit</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">group</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">MOD</span> <span class="o">=</span> <span class="mi">1000000007</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">minProfit</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">group</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">minProfit</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">group</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="n">profit</span><span class="p">[</span><span class="n">i</span><span class="p">])];</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">%=</span> <span class="n">MOD</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ans</span> <span class="o">+=</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">minProfit</span><span class="p">];</span>
+        <span class="n">ans</span> <span class="o">%=</span> <span class="n">MOD</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(len \times n \times minProfit)</span><script type="math/tex">O(len \times n \times minProfit)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n \times minProfit)</span><script type="math/tex">O(n \times minProfit)</script></span>，这里 len 是工作的个数 / 利润数组的长度，n 是总人数，minProfit 是最低盈利额。</p>
+<h2 id="_5">完全背包<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>一个背包承重总量是 W，有 N 种物品，每一件有自己的价值 <span><span class="MathJax_Preview">v_{i}</span><script type="math/tex">v_{i}</script></span> 和 重量 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span>，每一种类的物品无限供应，试问在不超过背包承重总量下，背包的价值最大。</p>
 <p><strong>「分析」</strong></p>
 <p>完全背包问题种，每一件物品的供应是无限的，但因为背包承重总量有限，可以放入的数目依然有限 <span><span class="MathJax_Preview">0 \leq c_{i} \leq \frac{W}{w_{i}}</span><script type="math/tex">0 \leq c_{i} \leq \frac{W}{w_{i}}</script></span>，那么我们依然可以设 dp[ i ][ j ] 为前 i 件物品中选取若干件，在重量和不超过 j 的情况下最大价值。</p>
@@ -1175,7 +1262,7 @@
 </code></pre></div>
 </td></tr></table>
 <p>这里与 01 背包的代码只有一行不同，即 j 的遍历方向上。完全背包问题是有小到大遍历，因为某一件物品可以被多次放入；反而 01 背包问题对任一件物品最多只允许放入一次。</p>
-<h3 id="_5">换零钱<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">换零钱<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
                 
               
               
