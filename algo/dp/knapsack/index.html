@@ -844,7 +844,7 @@
 \text{dp[ i ][ j ]} = \max(\text{dp[i - 1]][ j ], dp[i - 1][j - w[ i ]]} + v[ i ])
 </script>
 </div>
-<p>（1）如果第 i 件物品没有被选中，那么前 i - 1 件物品的重量就是 j；（2）如果第 i 件物品被选中了，那么前 i - 1 件物品的重量就是 j - v[ i ]，这里可以认为，第 i 件物品被加入后，总重量将会达到 j，那么加入之前的重量自然就等于 j - v[ i ]。当然，在计算的时候需要判定，当前的总重量 j 是否大于第 i 件物品的重量。</p>
+<p>（1）如果第 i 件物品没有被选中，那么前 i - 1 件物品的重量就是 j；（2）如果第 i 件物品被选中了，那么前 i - 1 件物品的重量就是 j - w[ i ]，这里可以认为，第 i 件物品被加入后，总重量将会达到 j，那么加入之前的重量自然就等于 j - w[ i ]。当然，在计算的时候需要判定，当前的总重量 j 是否大于第 i 件物品的重量。</p>
 <p><strong>「线性空间」</strong></p>
 <p>因为状态的转移只发生在相邻物品之间，所以空间复杂度得以优化，但用一维的空间时，应对容量 w 进行<strong>倒序遍历</strong>。</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -871,12 +871,12 @@
 时间复杂度 <span><span class="MathJax_Preview">O(N \times W)</span><script type="math/tex">O(N \times W)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(W)</span><script type="math/tex">O(W)</script></span>，N 为物品的数目，W 为限定的重量</p>
 <p><strong>「初始化细节」</strong></p>
 <p>一个容量为 W 的背包，有两种不同的要求：（1）背包要被装满和（2）背包可以不满。这两种的初始化是不同的。</p>
-<p>对于（1），dp[ 0 ] 被设置为 0，dp[1 : W] 被设置为 <span><span class="MathJax_Preview">-\infty</span><script type="math/tex">-\infty</script></span>；对于（2），dp[0 : W] 都为 0。可以这样理解，条件（1）要求背包装满，那么 W = 0 是满足的，因为空背包的容量就是 0，但是一旦背包的容量不是 0，那么未装任何物品（空载）是不符合背包装满的要求，<span><span class="MathJax_Preview">-\infty</span><script type="math/tex">-\infty</script></span> 表示无合法的解；反观条件（2），空载对于任何大小的 W 都是一个合法解，因此空载的价值就是 0。</p>
+<p>对于（1），dp[ 0 ] 被设置为 0，dp[1 : W] 被设置为 <span><span class="MathJax_Preview">-\infty</span><script type="math/tex">-\infty</script></span>；对于（2），dp[0 : W] 都为 0。可以这样理解，条件（1）要求背包装满，那么 W = 0 是满足的，因为空背包的容量就是 0，但是一旦背包的容量不是 0，那么未装任何物品（空载）是不符合背包装满的要求，<span><span class="MathJax_Preview">-\infty</span><script type="math/tex">-\infty</script></span> 表示无合法的解；反观条件（2），空载对于任意的 W 都是一个合法解，因此空载背包的价值就是 0。</p>
 <p>这里举一个例子，v = [4, 3, 7, 5]，w = [2, 3, 5, 7]，W = 9。如果要求装满背包，结果是 9；反之是 11。</p>
 <h3 id="_1">目标和<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>给定一个非负数组, 如 nums = [1, 1, 1, 1, 1] 和一个目标值 target = 3。对于数组中的每一个数值，我们可以在其前方放置一个运算符 + 或者 - 来构成一个计算表达式，试问这样的表达式结果恰好为 target 的个数为多少？</p>
 <p><strong>「分析」</strong></p>
-<p>题意可以被解释为，将一个数组分成两组，其中一组全部为标志为正数，另一组标志为负数，这样求和后结果为 target。本题是 01 背包问题求方案数问题。假设数组和为 sum，正数组的和为 pos，负数组的和为 neg（绝对值），可以得到如下关系</p>
+<p>题意可以被解释为，将一个数组分成两组，其中一组全部为标志为正数，另一组标志为负数，这样求和结果为 target。本题是 01 背包问题求方案数问题。假设数组和为 sum，正数组的和为 pos，负数组的和为 neg（绝对值），可以得到如下关系</p>
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
@@ -1147,7 +1147,7 @@
 </script>
 </div>
 <p>边界条件 dp[ len ][ 0 ][ 0 ] = 1，表明不选任何工作时，投入的人数是 0，最低的盈利额也是 0，此时也是满足条件的一种方案。进一步，我们会发现，当 k = 0 即最低盈利额为 0，那么不论 i 和 j 为何值，dp[ i ][ j ][ 0 ] 均为 1。</p>
-<p>k - profit[ i ] 为负数，说明第 i 个工作的利润本身就超过 minProfit，这就意味着，在选择第 i 个工作前，最低盈利可以为 0，这个时候只要投入的人数不超过 j - group[ i ]，都被视为满足要求的方案。相反，如果我们约束 <span><span class="MathJax_Preview">\text{k} \geq \text{profit[ i ]}</span><script type="math/tex">\text{k} \geq \text{profit[ i ]}</script></span>，我们最终得到的结果是<strong>恰好等于 minProfit</strong>的方案数，因为 k - profit[ i ] 只会转移到第三维成为 0 的状态。</p>
+<p><span><span class="MathJax_Preview">\text{k - profit[ i ]}</span><script type="math/tex">\text{k - profit[ i ]}</script></span> 为负数，说明第 i 个工作的利润本身就超过 minProfit，这就意味着，在选择第 i 个工作前，最低盈利可以为 0，这个时候只要投入的人数不超过 j - group[ i ]，都被视为满足要求的方案。相反，如果我们约束 <span><span class="MathJax_Preview">\text{k} \geq \text{profit[ i ]}</span><script type="math/tex">\text{k} \geq \text{profit[ i ]}</script></span>，我们最终得到的结果是<strong>恰好等于 minProfit</strong>的方案数，因为 k - profit[ i ] 只会转移到第三维成为 0 的状态。</p>
 <p>最终的答案是考察所有的工作且满足最低盈利额的条件下，对投入的人数遍历</p>
 <div>
 <div class="MathJax_Preview">
