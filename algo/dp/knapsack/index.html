@@ -835,7 +835,7 @@
 </div>
 <p>最大的价值为 5。</p>
 <p><strong>「分析」</strong></p>
-<p>设 dp[ i ][ j ] 为前 i 件物品在不超过 j 的重量下的最大价值。此时的状态只会有两个：（1）第 i 件物品没有被选中，（2）第 i 件物品被选中。状态转移方程如下：</p>
+<p>设 dp[ i ][ j ] 为前 i 件物品在背包容量为 j 下的最大价值。此时的状态只会有两个：（1）第 i 件物品没有被选中，（2）第 i 件物品被选中。状态转移方程如下：</p>
 <div>
 <div class="MathJax_Preview">
 \text{dp[ i ][ j ]} = \max(\text{dp[i - 1]][ j ], dp[i - 1][j - w[ i ]]} + v[ i ])
@@ -845,7 +845,8 @@
 </script>
 </div>
 <p>（1）如果第 i 件物品没有被选中，那么前 i - 1 件物品的重量就是 j；（2）如果第 i 件物品被选中了，那么前 i - 1 件物品的重量就是 j - v[ i ]，这里可以认为，第 i 件物品被加入后，总重量将会达到 j，那么加入之前的重量自然就等于 j - v[ i ]。当然，在计算的时候需要判定，当前的总重量 j 是否大于第 i 件物品的重量。</p>
-<p>因为状态的转移只发生在相邻物品之间，所以空间复杂度得以优化。</p>
+<p><strong>「线性空间」</strong></p>
+<p>因为状态的转移只发生在相邻物品之间，所以空间复杂度得以优化，但用一维的空间时，应对容量 w 进行<strong>倒序遍历</strong>。</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -868,6 +869,10 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(N \times W)</span><script type="math/tex">O(N \times W)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(W)</span><script type="math/tex">O(W)</script></span>，N 为物品的数目，W 为限定的重量</p>
+<p><strong>「初始化细节」</strong></p>
+<p>一个容量为 W 的背包，有两种不同的要求：（1）背包要被装满和（2）背包可以不满。这两种的初始化是不同的。</p>
+<p>对于（1），dp[ 0 ] 被设置为 0，dp[1 : W] 被设置为 <span><span class="MathJax_Preview">-\infty</span><script type="math/tex">-\infty</script></span>；对于（2），dp[0 : W] 都为 0。可以这样理解，条件（1）要求背包装满，那么 W = 0 是满足的，因为空背包的容量就是 0，但是一旦背包的容量不是 0，那么未装任何物品（空载）是不符合背包装满的要求，<span><span class="MathJax_Preview">-\infty</span><script type="math/tex">-\infty</script></span> 表示无合法的解；反观条件（2），空载对于任何大小的 W 都是一个合法解，因此空载的价值就是 0。</p>
+<p>这里举一个例子，v = [4, 3, 7, 5]，w = [2, 3, 5, 7]，W = 9。如果要求装满背包，结果是 9；反之是 11。</p>
 <h3 id="_1">目标和<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>给定一个非负数组, 如 nums = [1, 1, 1, 1, 1] 和一个目标值 target = 3。对于数组中的每一个数值，我们可以在其前方放置一个运算符 + 或者 - 来构成一个计算表达式，试问这样的表达式结果恰好为 target 的个数为多少？</p>
 <p><strong>「分析」</strong></p>
@@ -878,14 +883,14 @@
 &amp; \text{pos + neg = sum} \\
 &amp; \text{pos - neg = target}
 \end{aligned} \Rightarrow
-2 \times \text{pos = sum - target}
+2 \times \text{neg = sum - target}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
 & \text{pos + neg = sum} \\
 & \text{pos - neg = target}
 \end{aligned} \Rightarrow
-2 \times \text{pos = sum - target}
+2 \times \text{neg = sum - target}
 </script>
 </div>
 <p>所以，sum 必须不小于 target，并且 sum - targte 必须是偶数。</p>
@@ -923,8 +928,8 @@
 <span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">findTargetSumWays</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span> <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">target</span> <span class="o">&gt;</span> <span class="n">sum</span> <span class="o">||</span> <span class="p">(</span><span class="n">sum</span> <span class="o">+</span> <span class="n">target</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
-    <span class="kt">int</span> <span class="n">neg</span> <span class="o">=</span> <span class="p">(</span><span class="n">sum</span> <span class="o">+</span> <span class="n">target</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">target</span> <span class="o">&gt;</span> <span class="n">sum</span> <span class="o">||</span> <span class="p">(</span><span class="n">sum</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">neg</span> <span class="o">=</span> <span class="p">(</span><span class="n">sum</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">neg</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
     <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
@@ -1066,14 +1071,24 @@
 \text{dp[ i ][ j ]} = 
 \begin{cases}
 \text{dp[i + 1][ j ]}, &amp;\quad \text{j } &lt; \text{stones[ i ]} \\
-\max(\text{dp[i + 1][ j ], dp[i + 1][j - stones[ i ]] + stones[ i ]]}), &amp;\quad \text{j } \geq \text{stones[ i ]}
+\max
+\begin{cases}
+\text{dp[i + 1][ j ]} \\
+\text{dp[i + 1][j - stones[ i ]] + stones[ i ]]}
+\end{cases}
+, &amp;\quad \text{j } \geq \text{stones[ i ]}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
 \text{dp[ i ][ j ]} = 
 \begin{cases}
 \text{dp[i + 1][ j ]}, &\quad \text{j } < \text{stones[ i ]} \\
-\max(\text{dp[i + 1][ j ], dp[i + 1][j - stones[ i ]] + stones[ i ]]}), &\quad \text{j } \geq \text{stones[ i ]}
+\max
+\begin{cases}
+\text{dp[i + 1][ j ]} \\
+\text{dp[i + 1][j - stones[ i ]] + stones[ i ]]}
+\end{cases}
+, &\quad \text{j } \geq \text{stones[ i ]}
 \end{cases}
 </script>
 </div>
@@ -1106,7 +1121,7 @@
 <h3 id="_4">盈利计划<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>给定一个整数 n 代表人数，minProfit 代表最低盈利额，一串工作需要的人数 group = [2, 2]，每项工作对应的利润 profit = [2, 3]。要求实现最低盈利额，并且投入的人数和不能超过 n，这样的分配方案数目有多少个？</p>
 <p><strong>「分析」</strong></p>
-<p>在 01 背包问题的基础上，本题增加了最低盈利额的限制。设 dp[ i ][ j ][ k ] 为从 i 开始的工作中选取某些工作投入人力，在不超过 j 的个数且盈利额不低于 k 的情况下，方案数目。状态转移方程如下</p>
+<p>在 01 背包问题的基础上，本题增加了最低盈利额的限制。设 dp[ i ][ j ][ k ] 为从 i 开始的工作中选取某些工作投入人力，在恰好 j 个人且盈利额不低于 k 的情况下，方案数目。状态转移方程如下</p>
 <div>
 <div class="MathJax_Preview">
 \text{dp[ i ][ j ][ k ]} =
@@ -1184,6 +1199,42 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(len \times n \times minProfit)</span><script type="math/tex">O(len \times n \times minProfit)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n \times minProfit)</span><script type="math/tex">O(n \times minProfit)</script></span>，这里 len 是工作的个数 / 利润数组的长度，n 是总人数，minProfit 是最低盈利额。</p>
+<p>这个题目也可以定义成 dp[ i ][ j ][ k ] 从第 i 个工作到最后一个工作中选取某几个，在投入不超过 j 个人且利润不低于 k 的条件下的方案数目。对应的初始化应该改成 dp[ i ][ j ][ 0 ] = 1，最后的结果是 dp[ 0 ][ n ][ minProfit ]。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">profitableSchemes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">minProfit</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">group</span><span class="p">,</span>
+                      <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">profit</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">group</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">MOD</span> <span class="o">=</span> <span class="mi">1000000007</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">minProfit</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">group</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span>  <span class="o">=</span> <span class="n">minProfit</span><span class="p">;</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">group</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="n">profit</span><span class="p">[</span><span class="n">i</span><span class="p">])];</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">%=</span> <span class="n">MOD</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">minProfit</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="_5">完全背包<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>一个背包承重总量是 W，有 N 种物品，每一件有自己的价值 <span><span class="MathJax_Preview">v_{i}</span><script type="math/tex">v_{i}</script></span> 和 重量 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span>，每一种类的物品无限供应，试问在不超过背包承重总量下，背包的价值最大。</p>
 <p><strong>「分析」</strong></p>
