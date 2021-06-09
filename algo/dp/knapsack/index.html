@@ -1112,14 +1112,22 @@
 \text{dp[ i ][ j ][ k ]} =
 \begin{cases}
 \text{dp[i + 1][ j ][ k ]}, &amp;\quad \text{j } &lt; \text{group[ i ]} \\
-\text{dp[i + 1][ j ][ k ] + dp[i + 1][j - group[ i ]][max(0, k - profit[ i ])]}, &amp;\quad \text{j } \geq \text{group[ i ]}
+\begin{aligned}
+&amp; \text{dp[i + 1][ j ][ k ]} + \\
+&amp; \text{dp[i + 1][j - group[ i ]][max(0, k - profit[ i ])]}
+\end{aligned}
+, &amp;\quad \text{j } \geq \text{group[ i ]}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
 \text{dp[ i ][ j ][ k ]} =
 \begin{cases}
 \text{dp[i + 1][ j ][ k ]}, &\quad \text{j } < \text{group[ i ]} \\
-\text{dp[i + 1][ j ][ k ] + dp[i + 1][j - group[ i ]][max(0, k - profit[ i ])]}, &\quad \text{j } \geq \text{group[ i ]}
+\begin{aligned}
+& \text{dp[i + 1][ j ][ k ]} + \\
+& \text{dp[i + 1][j - group[ i ]][max(0, k - profit[ i ])]}
+\end{aligned}
+, &\quad \text{j } \geq \text{group[ i ]}
 \end{cases}
 </script>
 </div>
