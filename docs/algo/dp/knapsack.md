@@ -1,4 +1,4 @@
-## 01背包
+## 01 背包
 一个背包有一定的承重 W，有N件物品，每件都有自己的价值，记录在数组 v 中，也都有自己的重量，记录在数组 w 中，每件物品只能选择要装入背包还是不装入背包，要求在不超过背包承重的前提下，选出物品的总价值最大。例如，
 
 $$
@@ -193,3 +193,61 @@ int lastStoneWeightII(vector<int>& stones) {
 ```
 
 时间复杂度 $O(tar \times n)$，空间复杂度 $O(tar)$，这里 tar 是原数组的和的一半，n 是数组长度。
+
+## 完全背包
+一个背包承重总量是 W，有 N 种物品，每一件有自己的价值 $v_{i}$ 和 重量 $w_{i}$，每一种类的物品无限供应，试问在不超过背包承重总量下，背包的价值最大。
+
+**「分析」**
+
+完全背包问题种，每一件物品的供应是无限的，但因为背包承重总量有限，可以放入的数目依然有限 $0 \leq c_{i} \leq \frac{W}{w_{i}}$，那么我们依然可以设 dp[ i ][ j ] 为前 i 件物品中选取若干件，在重量和不超过 j 的情况下最大价值。
+
+$$
+\text{dp[ i ][ j ]} =
+\begin{cases}
+\text{dp[i + 1][ j ]}, &\quad \text{j } < \text{w[ i ]} \\
+\max
+\begin{cases}
+\text{dp[i + 1][ j ]} \\
+\text{dp[i + 1][j - w[ i ]] + v[ i ]} \\
+\text{dp[ i ][j - w[ i ]] + v[ i ]}
+\end{cases}, &\quad \text{j } \geq \text{w[ i ]}
+\end{cases}
+$$
+
+```cpp
+int completeKnapsack(vector<int> v, vector<int> w, int W) {
+    int n = (int)v.size();
+    vector<vector<int>> dp(n + 1, vector<int>(W + 1, 0));
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = 0; j <= W; j++) {
+            dp[i][j] = dp[i + 1][j];
+            if (j >= w[i]) {
+                dp[i][j] = max(dp[i][j], max(dp[i + 1][j - w[i]],
+                                             dp[i][j - w[i]]) + v[i]);
+            }
+        }
+    }
+    return dp[0][W];
+}
+```
+
+空间上进行优化
+
+```cpp
+int completeKnapsack(vector<int> v, vector<int> w, int W) {
+    int n = (int)v.size();
+    vector<int> dp(W + 1, 0);
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = w[i]; j <= W; j++) {
+            if (j >= w[i]) {
+                dp[j] = max(dp[j], dp[j - w[i]] + v[i]);
+            }
+        }
+    }
+    return dp[W];
+}
+```
+
+这里与 01 背包的代码只有一行不同，即 j 的遍历方向上。完全背包问题是有小到大遍历，因为某一件物品可以被多次放入；反而 01 背包问题对任一件物品最多只允许放入一次。
+
+### 换零钱
