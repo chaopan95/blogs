@@ -346,8 +346,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    换零钱
+  <a href="#i" class="md-nav__link">
+    换零钱 I
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii" class="md-nav__link">
+    换零钱 II
   </a>
   
 </li>
@@ -789,8 +796,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    换零钱
+  <a href="#i" class="md-nav__link">
+    换零钱 I
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii" class="md-nav__link">
+    换零钱 II
   </a>
   
 </li>
@@ -1247,7 +1261,6 @@
 \max
 \begin{cases}
 \text{dp[i + 1][ j ]} \\
-\text{dp[i + 1][j - w[ i ]] + v[ i ]} \\
 \text{dp[ i ][j - w[ i ]] + v[ i ]}
 \end{cases}, &amp;\quad \text{j } \geq \text{w[ i ]}
 \end{cases}
@@ -1259,12 +1272,12 @@
 \max
 \begin{cases}
 \text{dp[i + 1][ j ]} \\
-\text{dp[i + 1][j - w[ i ]] + v[ i ]} \\
 \text{dp[ i ][j - w[ i ]] + v[ i ]}
 \end{cases}, &\quad \text{j } \geq \text{w[ i ]}
 \end{cases}
 </script>
 </div>
+<p>在 01 背包问题中，dp[ i ][ j ] 是由 dp[i + 1][j - w[ i ]] + v[ i ] 转移而来，表达了首次将第 i 件物品加入到背包中。但是在完全背包问题里，每一件物品是可以多次放入的，那么 dp[ i ][j - w[ i ]] + v[ i ] 就已经包含了 dp[i + 1][j - w[ i ]] + v[ i ]。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1295,6 +1308,14 @@
 </code></pre></div>
 </td></tr></table>
 <p>空间上进行优化</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ j ]} = \max(\text{dp[i + 1][ j ], dp[ i ][j - w[ i ]] + v[ i ]})
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ j ]} = \max(\text{dp[i + 1][ j ], dp[ i ][j - w[ i ]] + v[ i ]})
+</script>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1317,7 +1338,7 @@
 </code></pre></div>
 </td></tr></table>
 <p>这里与 01 背包的代码只有一行不同，即 j 的遍历方向上。完全背包问题是有小到大遍历，因为某一件物品可以被多次放入；反而 01 背包问题对任一件物品最多只允许放入一次。</p>
-<h3 id="_6">换零钱<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="i">换零钱 I<a class="headerlink" href="#i" title="Permanent link">&para;</a></h3>
 <p>给定一组硬币的面值 coins = [186, 419, 83, 408] 和一个总量 amount = 6249，试问用最少的硬币个数可以组成这个 amount。如果不能找到零钱组合，返回 -1。</p>
 <p><strong>「分析」</strong></p>
 <p>本题可以被理解成完全背包问题，每一枚硬币的价值为 1，求最小的价值。设 dp[ i ][ j ] 从第 i 个到最后一个硬币中选取若干个构成 j 数额的最少硬币个数。状态转移方程如下</p>
@@ -1329,8 +1350,7 @@
 \max
 \begin{cases}
 \text{dp[i + 1][ j ]} \\
-\text{dp[ i ][j - coins[ i ]] + 1} \\
-\text{dp[i + 1][j - coins[ i ]] + 1}
+\text{dp[ i ][j - coins[ i ]] + 1}
 \end{cases}
 , &amp;\quad \text{j } \geq \text{coins[ i ]}
 \end{cases}
@@ -1342,15 +1362,14 @@
 \max
 \begin{cases}
 \text{dp[i + 1][ j ]} \\
-\text{dp[ i ][j - coins[ i ]] + 1} \\
-\text{dp[i + 1][j - coins[ i ]] + 1}
+\text{dp[ i ][j - coins[ i ]] + 1}
 \end{cases}
 , &\quad \text{j } \geq \text{coins[ i ]}
 \end{cases}
 </script>
 </div>
 <p>因为求解的是最小个数，那么数组初始化成最大值，这里可以使用 amount + 1 作为最大值，因为，最小的零钱是 1。那么最多的硬币个数也不会超过 amount。当 anount = 0 时，我们不需要任何硬币，即 0。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1371,6 +1390,49 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(n \times amount)</span><script type="math/tex">O(n \times amount)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(amount)</span><script type="math/tex">O(amount)</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
+<h3 id="ii">换零钱 II<a class="headerlink" href="#ii" title="Permanent link">&para;</a></h3>
+<p>同上题背景，需要求能够组合出的零钱方案数目</p>
+<p><strong>「分析」</strong></p>
+<p>设 dp[ i ][ j ] 从第 i 个到最后一个硬币中选取若干个组成金额是 j 的方案数目</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ]} = 
+\begin{cases}
+\text{dp[i + 1][ j ]}, &amp;\quad \text{j} &lt; \text{coins[ i ]} \\
+\text{dp[i + 1][ j ] + dp[ i ][j - coins[ i ]]}, &amp;\quad \text{j} \geq \text{coins[ i ]}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ]} = 
+\begin{cases}
+\text{dp[i + 1][ j ]}, &\quad \text{j} < \text{coins[ i ]} \\
+\text{dp[i + 1][ j ] + dp[ i ][j - coins[ i ]]}, &\quad \text{j} \geq \text{coins[ i ]}
+\end{cases}
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">change</span><span class="p">(</span><span class="kt">int</span> <span class="n">amount</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">coins</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">amount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">coin</span> <span class="p">:</span> <span class="n">coins</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">coin</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">amount</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">coin</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">amount</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(n \times amount)</span><script type="math/tex">O(n \times amount)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(amount)</span><script type="math/tex">O(amount)</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
                 
               
               
