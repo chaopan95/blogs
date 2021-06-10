@@ -95,5 +95,5 @@ nav:
         - 树状数组: data-structure/binary-indexed-tree.md
         - 线段树: data-structure/segment-tree.md
     - 机器学习:
-        - 决策树: ml/decision-tree.md
-        - ROC: ml/roc.md
+        - 决策树: machine-learning/decision-tree.md
+        - ROC: machine-learning/roc.md
