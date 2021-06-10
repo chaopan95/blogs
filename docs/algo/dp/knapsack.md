@@ -39,6 +39,35 @@ int knapsack01(vector<int> v, vector<int> w, int W) {
 ```
 时间复杂度 $O(N \times W)$，空间复杂度 $O(W)$，N 为物品的数目，W 为限定的重量
 
+**「重组最优解」**
+
+除了得到最终的总价值，我们也希望获知背包的方案，即挑选哪些物品放入背包中。在这一步，我们需要二维数组记录每一步的迭代。因为某一件物品只有两种选择，加入背包和不加入背包，并且，当前的物品只与后（前）一件物品有关系，我们只需要知道 dp[ i ][ j ] 是等于 dp[i + 1][ j ] 还是等于 dp[i + 1][j - w[ i ]] + v[ i ]。如果是后者，说明第 i 件物品被放入，反之，则未被放入。我们只需要记录哪些物品被放入即可，同时更新 j。
+
+```cpp
+int knapsack(vector<int> w, vector<int> v, int W) {
+    int n = (int)w.size();
+    vector<vector<int>> G(n + 1, vector<int>(W + 1, 0));
+    vector<int> dp(W + 1, 0);
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = W; j >= w[i]; j--) {
+            dp[j] = max(dp[j], dp[j - w[i]] + v[i]);
+        }
+        G[i] = dp;
+    }
+    vector<int> idx;
+    for (int i = 0, j = W; i < n && j >= 0; i++) {
+        if (G[i][j] == G[i + 1][j - w[i]] + v[i]) {
+            idx.emplace_back(i);
+            j -= w[i];
+        }
+    }
+    for (int id : idx) {
+        printf("w[%d]=%d\n", id, w[id]);
+    }
+    return dp[W];
+}
+```
+
 **「初始化细节」**
 
 一个容量为 W 的背包，有两种不同的要求：（1）背包要被装满和（2）背包可以不满。这两种的初始化是不同的。
