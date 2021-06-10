@@ -911,7 +911,7 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(N \times W)</span><script type="math/tex">O(N \times W)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(W)</span><script type="math/tex">O(W)</script></span>，N 为物品的数目，W 为限定的重量</p>
-<p><strong>「重组最优解」</strong></p>
+<p><strong>「重构最优解」</strong></p>
 <p>除了得到最终的总价值，我们也希望获知背包的方案，即挑选哪些物品放入背包中。在这一步，我们需要二维数组记录每一步的迭代。因为某一件物品只有两种选择，加入背包和不加入背包，并且，当前的物品只与后（前）一件物品有关系，我们只需要知道 dp[ i ][ j ] 是等于 dp[i + 1][ j ] 还是等于 dp[i + 1][j - w[ i ]] + v[ i ]。如果是后者，说明第 i 件物品被放入，反之，则未被放入。我们只需要记录哪些物品被放入即可，同时更新 j。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
