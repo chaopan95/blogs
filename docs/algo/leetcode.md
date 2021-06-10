@@ -5373,40 +5373,6 @@ public:
 };
 ```
 
-## 0279. Perfect Squares
-```cpp
-/*
-Input: n = 12
-Output: 3
-Explanation: 12 = 4 + 4 + 4.
-*/
-class Solution {
-public:
-    int numSquares(int n) {
-        if (n < 1) { return 0; }
-        int *dp = new int [n+1]{};
-        dp[1] = 1;
-        for (int i = 2; i <= n; i++)
-        {
-            if (i * i <= n) { dp[i * i] = 1; }
-            if (dp[i]) { continue; }
-            int min = INT_MAX;
-            for (int j = 1; j <= i/2; j++)
-            {
-                if (min > dp[j] + dp[i-j])
-                {
-                    min = dp[j] + dp[i-j];
-                }
-            }
-            dp[i] = min;
-        }
-        int ans = dp[n];
-        delete []dp;
-        return ans;
-    }
-};
-```
-
 ## 0300. Longest Increasing Subsequence*
 ```cpp
 /*
@@ -5650,30 +5616,6 @@ public:
             }
         }
         return numNull == 0;
-    }
-};
-```
-
-## 0322. Coin Change*
-```cpp
-/*
-Input: coins = [186, 419, 83, 408], amount = 6249
-Output: 20
-*/
-class Solution {
-public:
-    int coinChange(vector<int>& coins, int amount) {
-        vector<int> dp(amount+1, 0);
-        for (int s = 1; s <= amount; s++) {
-            int MIN = amount + 1;
-            for (const int &coin : coins) {
-                if (s >= coin) {
-                    MIN = min(MIN, dp[s - coin] + 1);
-                }
-            }
-            dp[s] = MIN;
-        }
-        return dp[amount] < amount + 1 ? dp[amount] : -1;
     }
 };
 ```
@@ -5949,41 +5891,6 @@ public:
             else { i--; }
         }
         return ans;
-    }
-};
-```
-
-## 0377. Combination Sum IV*
-```cpp
-/*
-Input: nums = [1,2,3], target = 4
-Output: 7
-Explanation:
-The possible combination ways are:
-(1, 1, 1, 1)
-(1, 1, 2)
-(1, 2, 1)
-(1, 3)
-(2, 1, 1)
-(2, 2)
-(3, 1)
-Note that different sequences are counted as different combinations.
-*/
-class Solution {
-public:
-    int combinationSum4(vector<int>& nums, int target) {
-        int n = (int)nums.size();
-        if (n == 0) { return 0; }
-        vector<int> dp(target+1, 0);
-        dp[0] = 1;
-        for (int i = 1; i <= target; i++) {
-            for (int &ele : nums) {
-                if (i >= ele && dp[i - ele] <= INT_MAX - dp[i]) {
-                    dp[i] += dp[i - ele];
-                }
-            }
-        }
-        return dp[target];
     }
 };
 ```
