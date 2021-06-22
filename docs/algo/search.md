@@ -42,7 +42,7 @@ void dfs(vector<vector<int>> &ans, vector<int> &nums,
         return;
     }
     for (int i = 0; i < n; i++) {
-        if (vis[i] || (i > 0 && nums[i] == nums[i-1] && !vis[i-1])) {
+        if (vis[i] || (i > 0 && nums[i] == nums[i-1] && vis[i-1])) {
             continue;
         }
         vis[i] = true;
