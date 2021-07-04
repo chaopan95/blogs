@@ -3,13 +3,9 @@ site_name: 个人博客
 site_description: 算法
 site_author: 潘超
 site_url: https://chaopan95.github.io/blogs/
-strict: true
 
 # Copyright
 copyright: 'Copyright &copy; 2021 Chao PAN'
-google_analytics:
-  - 'UA-124485594-1'
-  - 'auto'
 
 # theme
 theme:
