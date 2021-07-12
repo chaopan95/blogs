@@ -302,3 +302,23 @@ int totalHammingDistance(vector<int>& nums) {
     return ans;
 }
 ```
+
+## 阶乘
+### 阶乘尾数0的个数
+计算 n 的阶乘有多少个尾0。
+
+**「分析」**
+
+一个数的尾0个数代表能够对 10 取余数的次数。10 = 2 * 5，因此是求 2 和 5 整除的个数，并且被 5 整除的个数是少于被 2 整除的个数。
+
+```cpp
+int trailingZeroes(int n) {
+    int ans = 0;
+    while (n >= 5) {
+        n /= 5;
+        ans += n;
+    }
+    return ans;
+}
+```
+时间复杂度：$O(\log n)$，空间复杂度：$O(1)$
