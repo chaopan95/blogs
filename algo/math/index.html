@@ -505,6 +505,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    阶乘
+  </a>
+  
+    <nav class="md-nav" aria-label="阶乘">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    阶乘尾数0的个数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -827,6 +847,26 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     汉明距离
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    阶乘
+  </a>
+  
+    <nav class="md-nav" aria-label="阶乘">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    阶乘尾数0的个数
   </a>
   
 </li>
@@ -1339,6 +1379,29 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+<h2 id="_8">阶乘<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="0">阶乘尾数0的个数<a class="headerlink" href="#0" title="Permanent link">&para;</a></h3>
+<p>计算 n 的阶乘有多少个尾0。</p>
+<p><strong>「分析」</strong></p>
+<p>一个数的尾0个数代表能够对 10 取余数的次数。10 = 2 * 5，因此是对 2 和 5 求商。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">trailingZeroes</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">n</span> <span class="o">/=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="n">ans</span> <span class="o">+=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
                 
               
               
