@@ -76,6 +76,7 @@ nav:
             - 编辑距离: algo/dp/edit-distance.md
             - 打家劫舍: algo/dp/rob.md
         - 贪心: algo/greedy.md
+        - 二分查找: algo/binary-search.md
         - 双指针: algo/two-pointers.md
         - 搜索: algo/search.md
         - 前缀和: algo/prefix-sum.md
