@@ -13,14 +13,14 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/segment-tree/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/algo/binary-search/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>线段树 - 个人博客</title>
+        <title>二分法 - 个人博客</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              线段树
+              二分法
             
           </span>
         </div>
@@ -194,12 +194,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         算法
@@ -217,7 +219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/jsoffer/" class="md-nav__link">
+      <a href="../jsoffer/" class="md-nav__link">
         剑指offer
       </a>
     </li>
@@ -250,7 +252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/basis/" class="md-nav__link">
+      <a href="../dp/basis/" class="md-nav__link">
         基础
       </a>
     </li>
@@ -262,7 +264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/knapsack/" class="md-nav__link">
+      <a href="../dp/knapsack/" class="md-nav__link">
         背包问题
       </a>
     </li>
@@ -274,7 +276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/path/" class="md-nav__link">
+      <a href="../dp/path/" class="md-nav__link">
         路径问题
       </a>
     </li>
@@ -286,7 +288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/matrix/" class="md-nav__link">
+      <a href="../dp/matrix/" class="md-nav__link">
         矩阵问题
       </a>
     </li>
@@ -298,7 +300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/stocks/" class="md-nav__link">
+      <a href="../dp/stocks/" class="md-nav__link">
         股票买卖
       </a>
     </li>
@@ -310,7 +312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/lcs/" class="md-nav__link">
+      <a href="../dp/lcs/" class="md-nav__link">
         最长公共子序列
       </a>
     </li>
@@ -322,7 +324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/edit-distance/" class="md-nav__link">
+      <a href="../dp/edit-distance/" class="md-nav__link">
         编辑距离
       </a>
     </li>
@@ -334,7 +336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/rob/" class="md-nav__link">
+      <a href="../dp/rob/" class="md-nav__link">
         打家劫舍
       </a>
     </li>
@@ -352,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/greedy/" class="md-nav__link">
+      <a href="../greedy/" class="md-nav__link">
         贪心
       </a>
     </li>
@@ -362,11 +364,74 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../algo/binary-search/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          二分法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         二分法
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    二分查找
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    题目
+  </a>
+  
+    <nav class="md-nav" aria-label="题目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lower_bound-upper_bound" class="md-nav__link">
+    实现lower_bound 和 upper_bound
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    绝对值之和
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -376,7 +441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/two-pointers/" class="md-nav__link">
+      <a href="../two-pointers/" class="md-nav__link">
         双指针
       </a>
     </li>
@@ -388,7 +453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/search/" class="md-nav__link">
+      <a href="../search/" class="md-nav__link">
         搜索
       </a>
     </li>
@@ -400,7 +465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/prefix-sum/" class="md-nav__link">
+      <a href="../prefix-sum/" class="md-nav__link">
         前缀和
       </a>
     </li>
@@ -412,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/math/" class="md-nav__link">
+      <a href="../math/" class="md-nav__link">
         数学
       </a>
     </li>
@@ -424,7 +489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/matrix/" class="md-nav__link">
+      <a href="../matrix/" class="md-nav__link">
         矩阵
       </a>
     </li>
@@ -436,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/leetcode/" class="md-nav__link">
+      <a href="../leetcode/" class="md-nav__link">
         Leetcode
       </a>
     </li>
@@ -455,14 +520,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
         数据结构
@@ -480,7 +543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../list/" class="md-nav__link">
+      <a href="../../data-structure/list/" class="md-nav__link">
         链表
       </a>
     </li>
@@ -513,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tree/basis/" class="md-nav__link">
+      <a href="../../data-structure/tree/basis/" class="md-nav__link">
         基础
       </a>
     </li>
@@ -525,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tree/binary-tree/" class="md-nav__link">
+      <a href="../../data-structure/tree/binary-tree/" class="md-nav__link">
         二叉树
       </a>
     </li>
@@ -543,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../string/" class="md-nav__link">
+      <a href="../../data-structure/string/" class="md-nav__link">
         字符串
       </a>
     </li>
@@ -555,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../unionset/" class="md-nav__link">
+      <a href="../../data-structure/unionset/" class="md-nav__link">
         并查集
       </a>
     </li>
@@ -567,7 +630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../binary-indexed-tree/" class="md-nav__link">
+      <a href="../../data-structure/binary-indexed-tree/" class="md-nav__link">
         树状数组
       </a>
     </li>
@@ -577,88 +640,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          线段树
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../data-structure/segment-tree/" class="md-nav__link">
         线段树
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    原理
-  </a>
-  
-    <nav class="md-nav" aria-label="原理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    建树
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    查询
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    更新
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    题目
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -748,49 +734,35 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    简介
+    二分查找
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    原理
+    题目
   </a>
   
-    <nav class="md-nav" aria-label="原理">
+    <nav class="md-nav" aria-label="题目">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#lower_bound-upper_bound" class="md-nav__link">
+    实现lower_bound 和 upper_bound
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    建树
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    查询
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    更新
+    绝对值之和
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    题目
-  </a>
   
 </li>
       
@@ -807,98 +779,13 @@
               
                 
                 
-                  <h1>线段树</h1>
+                  <h1>二分法</h1>
                 
-                <h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>线段树是一种高效地维护区间信息（和、最大值、最小值等）的一种树形结构。线段树有两个主要的接口</p>
-<ul>
-<li>
-<p>查询（query），例如求区间和</p>
-</li>
-<li>
-<p>更新（update），更新某一位置的值，对应的所有区间和将被更新</p>
-</li>
-</ul>
-<p>两者的时间复杂度均为 <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>。</p>
-<h2 id="_2">原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="_3">建树<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>线段树与最小堆类似，以二叉树来建立，承载的形式是一个数组。但是，线段树的根结点对应的索引是 1；线段树是一颗完满二叉树（full binary tree），每一个非叶子结点都有两个孩子结点，最后一层靠左排列。</p>
-<p>叶子结点是奇数</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-&amp; &amp; 1 \\
-&amp; &amp; \wedge \\
-&amp; 2 &amp; &amp; {\color{Red} 3} \\
-&amp; \wedge \\
-{\color{Red} 4} &amp; &amp; {\color{Red} 5} \\
-\end{matrix} \quad \quad \quad \text{3、4、5 是叶子结点}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-& & 1 \\
-& & \wedge \\
-& 2 & & {\color{Red} 3} \\
-& \wedge \\
-{\color{Red} 4} & & {\color{Red} 5} \\
-\end{matrix} \quad \quad \quad \text{3、4、5 是叶子结点}
-</script>
-</div>
-<p>叶子结点是偶数</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-&amp; &amp; &amp; 1 \\
-&amp; &amp; &amp; \wedge \\
-&amp; 2 &amp; &amp; &amp; &amp; 3 \\
-&amp; \wedge &amp; &amp; &amp; &amp; \wedge \\
-{\color{Red} 4} &amp; &amp; {\color{Red} 5} &amp; &amp; {\color{Red} 6} &amp; &amp; {\color{Red} 7}
-\end{matrix} \quad \quad \quad \text{4、5、6、7 是叶子结点}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-& & & 1 \\
-& & & \wedge \\
-& 2 & & & & 3 \\
-& \wedge & & & & \wedge \\
-{\color{Red} 4} & & {\color{Red} 5} & & {\color{Red} 6} & & {\color{Red} 7}
-\end{matrix} \quad \quad \quad \text{4、5、6、7 是叶子结点}
-</script>
-</div>
-<p>完满二叉树的叶子结点个数与非叶子结点个数有一个关系</p>
-<div>
-<div class="MathJax_Preview">
-n_{\text{leaves}} = n_{non-leaves} + 1
-</div>
-<script type="math/tex; mode=display">
-n_{\text{leaves}} = n_{non-leaves} + 1
-</script>
-</div>
-<p>因此，线段树将原数组的每一个值都放在叶子结点上，自底向上地建树。</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
-<h3 id="_4">查询<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>线段树每一个非叶子结点都表示一个区间信息，以区间和为例，根结点表示整个区间和。理想情况下，我们希望直接返回一个区间的和，但往往给出的区间边界不是恰好对应一个非叶子结点，这个时候，我们需要将要求的区间分割，求每一个子区间的和，即可得到最终结果。</p>
+                <h2 id="_1">二分查找<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>二分查找时一种高效的查找算法，它要求查找的数组是（局部）有序的，每次可以查找后，利用单调性，缩小一半的查找范围。</p>
+<h2 id="_2">题目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="lower_bound-upper_bound">实现lower_bound 和 upper_bound<a class="headerlink" href="#lower_bound-upper_bound" title="Permanent link">&para;</a></h3>
+<p>lower_bound() 查找 nums 数组中第一个不小于 target 的下标（如果不存在，返回下标为 n，即数组的长度）；upper_bound(nums, target) 查找 nums 数组中第一个大于 target 的数值下标（如果不存在，同上）。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -914,44 +801,110 @@ n_{\text{leaves}} = n_{non-leaves} + 1
 13
 14
 15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">sumRange</span><span class="p">(</span><span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">left</span> <span class="o">+=</span> <span class="n">n</span><span class="p">;</span>
-    <span class="n">right</span> <span class="o">+=</span> <span class="n">n</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">sum</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">left</span><span class="o">++</span><span class="p">];</span>
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">lower_bound</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">sum</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">right</span><span class="o">--</span><span class="p">];</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="n">left</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="n">right</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">upper_bound</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="_5">更新<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>当原数组的一个或若干个数值发生改变时，对应的区间信息也要发生变化，从叶子结点开始更新路径上的所有的结点。以区间和为例</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">index</span> <span class="o">+=</span> <span class="n">n</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">val</span> <span class="o">-</span> <span class="n">A</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">A</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">+=</span> <span class="n">diff</span><span class="p">;</span>
-        <span class="n">index</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+<h3 id="_3">绝对值之和<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>给定两个数组 nums1 = [1, 28, 21] 和 nums2 = [9, 21, 20]，可以将 nums1 中的某一个值用另一个值替换，也可以不用替换，求两个数组相对位置的差的绝对值之和。上述例子的结果是 9。</p>
+<p><strong>「分析」</strong></p>
+<p>差的绝对值之和计算方式如下：</p>
+<div>
+<div class="MathJax_Preview">
+\text{sum} = \sum_{i = 0}^{n-1} \left \| \text{nums1[ i ] - nums2[ i ]} \right \| 
+</div>
+<script type="math/tex; mode=display">
+\text{sum} = \sum_{i = 0}^{n-1} \left \| \text{nums1[ i ] - nums2[ i ]} \right \| 
+</script>
+</div>
+<p>假设我们在 i 这个位置上发生变动</p>
+<div>
+<div class="MathJax_Preview">
+\arg \min_{i \in [0, n)} -\left \| \text{nums1[ i ] - nums2[ i ]} \right \| + \left \| \text{nums1[ j ] - nums2[ i ]} \right \| 
+</div>
+<script type="math/tex; mode=display">
+\arg \min_{i \in [0, n)} -\left \| \text{nums1[ i ] - nums2[ i ]} \right \| + \left \| \text{nums1[ j ] - nums2[ i ]} \right \| 
+</script>
+</div>
+<p>这里，j 是 [0, n) 中的任意一个值。我们希望找到一个 i 使得上式最小。我们使用二分查找的方式，找到最靠近 nums2[ i ] 的 j，需要将 nums1 排序。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">minAbsoluteSumDiff</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums1</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">mod</span> <span class="o">=</span> <span class="mi">1000000007</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums1</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">diff</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">nums1</span><span class="p">;</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">arr</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ans</span> <span class="o">+=</span> <span class="n">abs</span><span class="p">(</span><span class="n">nums1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">nums2</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="n">ans</span> <span class="o">%=</span> <span class="n">mod</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">chut</span> <span class="o">=</span> <span class="o">-</span><span class="n">abs</span><span class="p">(</span><span class="n">nums1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">nums2</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="kt">size_t</span> <span class="n">a</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span>
+                            <span class="n">lower_bound</span><span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">arr</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">nums2</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">chut</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">nums2</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">chut</span> <span class="o">+</span> <span class="n">nums2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">arr</span><span class="p">[</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">ans</span> <span class="o">+</span> <span class="n">diff</span> <span class="o">+</span> <span class="n">mod</span><span class="p">)</span> <span class="o">%</span> <span class="n">mod</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<h2 id="_6">题目<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+时间复杂度：<span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
                 
               
               
@@ -971,7 +924,7 @@ n_{\text{leaves}} = n_{non-leaves} + 1
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../binary-indexed-tree/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 树状数组" rel="prev">
+        <a href="../greedy/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 贪心" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -980,20 +933,20 @@ n_{\text{leaves}} = n_{non-leaves} + 1
               <span class="md-footer__direction">
                 上一页
               </span>
-              树状数组
+              贪心
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../machine-learning/decision-tree/" class="md-footer__link md-footer__link--next" aria-label="下一页: 决策树" rel="next">
+        <a href="../two-pointers/" class="md-footer__link md-footer__link--next" aria-label="下一页: 双指针" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              决策树
+              双指针
             </div>
           </div>
           <div class="md-footer__button md-icon">
