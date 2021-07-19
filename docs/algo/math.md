@@ -322,3 +322,39 @@ int trailingZeroes(int n) {
 }
 ```
 时间复杂度：$O(\log n)$，空间复杂度：$O(1)$
+
+
+## 数字
+### 统计某个数字的出现个数
+给定一个非负数 n 和一个 1 - 9 的数字 digit，统计 1 - n 所有数字中 digit 出现的次数。例如 n = 13，digit = 1，包含 1 的数字有：1、10、11、12、13，1 出现了 6 次。
+
+**「分析」**
+
+这是一个数学题目，以 n = 2593，digit = 5 为例
+
+| 位 | 商 | 余数 | digit = '5' 个数 |
+| :----: | :----: | :----: | :----: |
+| 个位 i = 1 | Quotient = 2593 / (10 * i) = 259 | Mod = 2593 % (10 * i) = 3 |  259 * i + (3 > 5) * i = 259 |
+| 个位 i = 10 | Quotient = 2593 / (10 * i) = 25 | Mod = 2593 % (10 * i) = 93 |  25 * i + (9 > 5) * i = 260 |
+| 个位 i = 100 | Quotient = 2593 / (10 * i) = 2 | Mod = 2593 % (10 * i) = 593 |  2 * i + (5 == 5) * (93 + 1) = 294 |
+| 个位 i = 1000 | Quotient = 2593 / (10 * i) = 0 | Mod = 2593 % (10 * i) = 2593 |  0 * i + (2 > 5) * i = 0 |
+
+总计 '5' 的个数： 259 + 260 + 294 = 813.
+
+```cpp
+int countDigitOne(int n, int digit = 1) {
+    int ans = 0;
+    for (unsigned int i = 1; i <= n; i *= 10) {
+        int quo = n / (10ll * i), mod = n % (10ll * i);
+        ans += quo * i;
+        if (mod / i > digit) {
+            ans += i;
+        }
+        else if (mod / i == digit) {
+            ans += mod % i + 1;
+        }
+    }
+    return ans;
+}
+```
+时间复杂度：$O(\log n)$，空间复杂度：$O(1)$
