@@ -418,6 +418,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    增加 k 后高频元素出现的次数
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -775,6 +782,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    增加 k 后高频元素出现的次数
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -800,7 +814,7 @@
 <h2 id="_2">题目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="_3">分配人员<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>公司有 2n 个应聘者参加面试，可以选择A、B其中一处，先给出一个二维数组 costs =[[259, 770], [448, 54], [926, 667], [184, 139], [840, 118], [577, 469]] 表示应聘者去A、B两处的费用，现在需要平均分别 2n 个人到 A、B 两处，试问，最小的成本是多少？</p>
-<p>「分析」</p>
+<p><strong>「分析」</strong></p>
 <p>考虑 2n 个人都去 B 时，总的费用是 <span><span class="MathJax_Preview">\sum_{i = 1}^{n} \text{costs[ i ][ 1 ]}</span><script type="math/tex">\sum_{i = 1}^{n} \text{costs[ i ][ 1 ]}</script></span>。此时，我们需要选择 n 个人放到 A 处，那么如何选择呢？我们注意到，如果将一个人从 B 放到 A，那么对应的总成本变化量是 <span><span class="MathJax_Preview">\text{costs[ i ][ 0 ] - costs[ i ][ 1 ]}</span><script type="math/tex">\text{costs[ i ][ 0 ] - costs[ i ][ 1 ]}</script></span>，刚好对应着成本A - B，那么对于 n 个人，我们希望选择前 n 个最小差值。假设说，我们有一个解，不是差值的前 n 个，那么我们总可以找到一个更小的差值，使得总的费用变小，这就是贪心的思想。</p>
 <p>这里，我们用了排序的方法，但是实际上，我们只需要找到中间的某一个值，使得前 n 个差值均小雨后 n 个差值。改进的快排能够实现此功能。</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -869,7 +883,7 @@
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，其中 n 是应聘者的总人数。</p>
 <h3 id="_4">买雪糕<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>给定一个长度为 n 的数组 costs = [1, 3, 2, 4, 1] 表示雪糕的价格，以及一个整数 coins = 7 表示持有的金额，试问，我们可以买多少支雪糕？</p>
-<p>「分析」</p>
+<p><strong>「分析」</strong></p>
 <p>将雪糕的价格从小到大排序，求累计花费不超过给定金额的雪糕数目。为什么这样是正确的？排序后的雪糕价格：</p>
 <div>
 <div class="MathJax_Preview">
@@ -904,7 +918,7 @@ c_{0} \leq c_{1} \leq ... \leq c_{k} \leq ... \leq c_{n-1}
 时间复杂度：<span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，其中 n 是雪糕的数目。</p>
 <h3 id="x-y">由 X 到 Y 的最少操作数<a class="headerlink" href="#x-y" title="Permanent link">&para;</a></h3>
 <p>给定两个正数 X 和 Y，只能将 X 加倍或者将 X 减去一，试问经过多少次上述操作，可以把 X 变成 Y？</p>
-<p>「分析」</p>
+<p><strong>「分析」</strong></p>
 <p>如果 X &gt;= Y，那么只能执行减一操作；反之，执行加倍操作快速逼近 Y ，在执行减一操作。但是在计算过程中，考虑到数据范围问题，我们倾向使用逆向思维，即将 Y 减半或者加一变成 X。注意到，当 Y 为奇数时，只能执行加一操作。</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -936,6 +950,54 @@ c_{0} \leq c_{1} \leq ... \leq c_{k} \leq ... \leq c_{n-1}
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(\log y)</span><script type="math/tex">O(\log y)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>。</p>
+<h3 id="k">增加 k 后高频元素出现的次数<a class="headerlink" href="#k" title="Permanent link">&para;</a></h3>
+<p>给定一个数组 nums = [1, 2, 4] 和一个整数 k = 5，每次允许选数组中的一个数加一，最多执行 k 次。试问，这样的操作后，数组中的最高频元素出现的次数是多少？上述例子的结果是 3。</p>
+<p><strong>「分析」</strong></p>
+<p>【加一】操作是单向行为，即只有将较小的数【加一】才有意义，并且，越靠近目标的数【加一】的次数越少，这符合了【贪心】的思想。因此，解题办法是【排序】+【二分查找】+【前缀和】，我们将数组排序后，相同的值靠在一起。任意一个可行解必然满足这样一个特征：它是一个区间 [l, r] 这个区间的所有值都会变成 nums[ r ]，我们想找最高频的元素出现的次数，也就是 [l, r] 这个区间的长度，自然地希望这个区间越长越好。但是，这个区间需要满足一个要求，【加一】的操作次数不超过 k，那么如何计算【加一】操作数呢？答案是【前缀和】，即【加一】操作数等于【操作后的区间和】减去【操作前的区间和】。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maxFrequency</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">nums</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span><span class="o">&gt;</span> <span class="n">sum</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">((</span><span class="kt">long</span><span class="p">)(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">sum</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">sum</span><span class="p">[</span><span class="n">m</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">l</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
                 
               
               

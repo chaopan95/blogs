@@ -537,6 +537,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    数字
+  </a>
+  
+    <nav class="md-nav" aria-label="数字">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    统计某个数字的出现个数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -879,6 +899,26 @@
           <li class="md-nav__item">
   <a href="#0" class="md-nav__link">
     阶乘尾数0的个数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    数字
+  </a>
+  
+    <nav class="md-nav" aria-label="数字">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    统计某个数字的出现个数
   </a>
   
 </li>
@@ -1408,6 +1448,78 @@
     <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">n</span> <span class="o">/=</span> <span class="mi">5</span><span class="p">;</span>
         <span class="n">ans</span> <span class="o">+=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h2 id="_9">数字<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="_10">统计某个数字的出现个数<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>给定一个非负数 n 和一个 1 - 9 的数字 digit，统计 1 - n 所有数字中 digit 出现的次数。例如 n = 13，digit = 1，包含 1 的数字有：1、10、11、12、13，1 出现了 6 次。</p>
+<p><strong>「分析」</strong></p>
+<p>这是一个数学题目，以 n = 2593，digit = 5 为例</p>
+<table>
+<thead>
+<tr>
+<th align="center">位</th>
+<th align="center">商</th>
+<th align="center">余数</th>
+<th align="center">digit = '5' 个数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">个位 i = 1</td>
+<td align="center">Quotient = 2593 / (10 * i) = 259</td>
+<td align="center">Mod = 2593 % (10 * i) = 3</td>
+<td align="center">259 * i + (3 &gt; 5) * i = 259</td>
+</tr>
+<tr>
+<td align="center">个位 i = 10</td>
+<td align="center">Quotient = 2593 / (10 * i) = 25</td>
+<td align="center">Mod = 2593 % (10 * i) = 93</td>
+<td align="center">25 * i + (9 &gt; 5) * i = 260</td>
+</tr>
+<tr>
+<td align="center">个位 i = 100</td>
+<td align="center">Quotient = 2593 / (10 * i) = 2</td>
+<td align="center">Mod = 2593 % (10 * i) = 593</td>
+<td align="center">2 * i + (5 == 5) * (93 + 1) = 294</td>
+</tr>
+<tr>
+<td align="center">个位 i = 1000</td>
+<td align="center">Quotient = 2593 / (10 * i) = 0</td>
+<td align="center">Mod = 2593 % (10 * i) = 2593</td>
+<td align="center">0 * i + (2 &gt; 5) * i = 0</td>
+</tr>
+</tbody>
+</table>
+<p>总计 '5' 的个数： 259 + 260 + 294 = 813.</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">countDigitOne</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">digit</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">*=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">quo</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10ll</span> <span class="o">*</span> <span class="n">i</span><span class="p">),</span> <span class="n">mod</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="p">(</span><span class="mi">10ll</span> <span class="o">*</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">ans</span> <span class="o">+=</span> <span class="n">quo</span> <span class="o">*</span> <span class="n">i</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">mod</span> <span class="o">/</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">digit</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ans</span> <span class="o">+=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">mod</span> <span class="o">/</span> <span class="n">i</span> <span class="o">==</span> <span class="n">digit</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ans</span> <span class="o">+=</span> <span class="n">mod</span> <span class="o">%</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
 <span class="p">}</span>
