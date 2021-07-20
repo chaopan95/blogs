@@ -130,3 +130,61 @@ int maxFrequency(vector<int>& nums, int k) {
 }
 ```
 时间复杂度：$O(n \log n)$，空间复杂度：$O(n)$
+
+### 两数和的最小值
+给定一个长度位偶数的数组 nums = [3, 5, 4, 2, 4, 6]，将数组内的元素两两配对，并计算两者和，试问所有的配对和的最小值是多少？
+
+**「分析」**
+
+我们希望得到最小和，那么优先选择最小值和最大值配对，这符合【贪心】的想法。并且我们可以证明，有序的四个数：a、b、c、d，只有 （a + d）、(b + c) 这样的组合具有最小和。那么，对于 2n 个元素，最优配对如下
+
+$$
+s = \min \{x_{1}+x_{2n}, x_{2}+x_{xn-1}, \cdots, x_{n}+x_{n+1}\}
+$$
+
+假设我们调整两个值 $x_{i}$, $x_{j}$ 的位置，得到一个新的解 s‘，利用上面的 a、b、c、d 的证明姐结果，可知新解 s' 一定是不优于 s 的。
+
+```cpp
+int minPairSum(vector<int>& nums) {
+    int ans = INT_MIN, n = (int)nums.size();
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < n / 2; i++) {
+        ans = max(ans, nums[i] + nums[n - 1 - i]);
+    }
+    return ans;
+}
+```
+
+### 在 D 天内完成运输
+给定一个数组 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 和一个整数 D = 5，要求在 D 天内将这些货物运输，求每一天能够运输量的最小值。
+
+```cpp
+int shipWithinDays(vector<int>& weights, int days) {
+    int l = 0, r = 0;
+    for (int w : weights) {
+        l = max(l, w);
+        r += w;
+    }
+    while (l < r) {
+        int m = (l + r) >> 1;
+        int ds = 1, tot = 0;
+        for (int w : weights) {
+            if (w + tot > m) {
+                tot = w;
+                ds++;
+            }
+            else {
+                tot += w;
+            }
+        }
+        if (ds > days) {
+            l = m + 1;
+        }
+        else {
+            r = m;
+        }
+    }
+    return l;
+}
+```
+时间复杂度：$O(n \log(sum - max))$，空间复杂度：$O(1)$，sum 是数组的和，max 是数组的最大值

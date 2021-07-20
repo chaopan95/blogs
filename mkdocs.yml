@@ -68,6 +68,7 @@ nav:
         - 剑指offer: algo/jsoffer.md
         - 动态规划:
             - 基础: algo/dp/basis.md
+            - 划分区间: algo/dp/segment.md
             - 背包问题: algo/dp/knapsack.md
             - 路径问题: algo/dp/path.md
             - 矩阵问题: algo/dp/matrix.md
