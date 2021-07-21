@@ -131,3 +131,26 @@ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
 }
 ```
 时间复杂度 $O(n)$，空间复杂度 $O(1)$
+
+
+## 链表的中心节点
+给定一个单链表，返回链表的中心节点，如果链表的结点个数是偶数，则返回靠后位置的结点。
+
+**「分析」**
+
+使用【快慢指针】方法
+
+```cpp
+ListNode* middleNode(ListNode* head) {
+ListNode *p1 = head, *p2 = head;
+while (p2 != nullptr) {
+p2 = p2->next;
+if (p2 == nullptr) {
+return p1;
+}
+p2 = p2->next;
+p1 = p1->next;
+}
+return p1;
+}
+```
