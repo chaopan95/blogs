@@ -135,3 +135,33 @@ int getLongest01SubstrLen(string str) {
     return len;
 }
 ```
+
+## 统计等量连续 01 的连续子字符
+给定一个字符 s = '00110011'，求 s 的所有连续子字符串中，‘0’ 和 ’1‘ 的数量相等并且 ‘0’ 和 ‘1’ 连续的个数。
+
+**「分析」**
+
+与统计 01 等量的连续子字符串不同，本题要求所有的子字符串中的 ‘0’ 和 ‘1’ 也要连续，即 ‘0101’ 虽然等量，但是所有的 ‘0’ 和所有的 ‘1’ 并非连续。一个解决办法是：将同类的字符分块统计后累加相邻两块内容。
+
+```cpp
+int countBinarySubstrings(string s) {
+    int ans = 0, n = (int)s.length();
+    int cnt = 0, last = 0;
+    char lastChar = ' ';
+    for (int i = 0; i < n; i++) {
+        if (lastChar == s[i]) {
+            cnt++;
+        }
+        else {
+            ans += min(last, cnt);
+            last = cnt;
+            cnt = 1;
+            lastChar = s[i];
+        }
+    }
+    ans += min(last, cnt);
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$
+
