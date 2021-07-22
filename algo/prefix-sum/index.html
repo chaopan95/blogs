@@ -475,6 +475,19 @@
     最长01等量子串
   </a>
   
+    <nav class="md-nav" aria-label="最长01等量子串">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01_1" class="md-nav__link">
+    统计等量连续 01 的连续子字符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -778,6 +791,19 @@
     最长01等量子串
   </a>
   
+    <nav class="md-nav" aria-label="最长01等量子串">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#01_1" class="md-nav__link">
+    统计等量连续 01 的连续子字符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -999,6 +1025,48 @@ j \\
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+<h3 id="01_1">统计等量连续 01 的连续子字符<a class="headerlink" href="#01_1" title="Permanent link">&para;</a></h3>
+<p>给定一个字符 s = '00110011'，求 s 的所有连续子字符串中，‘0’ 和 ’1‘ 的数量相等并且 ‘0’ 和 ‘1’ 连续的个数。</p>
+<p><strong>「分析」</strong></p>
+<p>与统计 01 等量的连续子字符串不同，本题要求所有的子字符串中的 ‘0’ 和 ‘1’ 也要连续，即 ‘0101’ 虽然等量，但是所有的 ‘0’ 和所有的 ‘1’ 并非连续。一个解决办法是：将同类的字符分块统计后累加相邻两块内容。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">countBinarySubstrings</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">lastChar</span> <span class="o">=</span> <span class="sc">&#39; &#39;</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">lastChar</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">ans</span> <span class="o">+=</span> <span class="n">min</span><span class="p">(</span><span class="n">last</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+            <span class="n">last</span> <span class="o">=</span> <span class="n">cnt</span><span class="p">;</span>
+            <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">lastChar</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">ans</span> <span class="o">+=</span> <span class="n">min</span><span class="p">(</span><span class="n">last</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
                 
               
               
