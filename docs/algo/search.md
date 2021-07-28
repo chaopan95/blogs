@@ -66,6 +66,55 @@ vector<vector<int>> permuteUnique(vector<int>& nums) {
 }
 ```
 
+### 二叉树某一节点所有距离为 k 的节点
+给定一棵二叉树和节点 target，求所有的距离 target 为 k 的节点。这里的距离指的是边的个数
+
+**「分析」**
+
+如果二叉树的节点包含了父节点的信息，直接 dfs 遍历；如果不包含父节点信息，则先用哈希表保存每一个节点的父节点，再用 dfs 搜索。注意遍历时保存已经访问的节点。
+
+```cpp
+unordered_map<TreeNode*, TreeNode*> par;
+unordered_set<TreeNode*> vis;
+void findParNode(TreeNode *root) {
+    if (root != nullptr) {
+        if (root->left != nullptr) {
+            par[root->left] = root;
+        }
+        if (root->right != nullptr) {
+            par[root->right] = root;
+        }
+        findParNode(root->left);
+        findParNode(root->right);
+    }
+}
+void dfs(TreeNode *curNode, int k, vector<int> &ans) {
+    if (curNode == nullptr || vis.count(curNode)) {
+        return;
+    }
+    if (k == 0) {
+        ans.emplace_back(curNode->val);
+        return;
+    }
+    vis.insert(curNode);
+    dfs(par[curNode], k-1, ans);
+    dfs(curNode->left, k-1, ans);
+    dfs(curNode->right, k-1, ans);
+}
+vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+    vector<int> ans;
+    if (root == nullptr) {
+        return ans;
+    }
+    par[root] = nullptr;
+    findParNode(root);
+    dfs(target, k, ans);
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$
+
+
 ## BFS
 **「简介」**
 宽度优先搜索（Breadth Ffirst Search）是一种检索方法，优先搜索某一节点的所有直接邻居节点，一般而言，BFS 适用于求解最短长度的问题。在求解过程中，我们通常依赖 queue 这一数据结构。

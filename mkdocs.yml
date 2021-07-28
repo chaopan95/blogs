@@ -70,6 +70,7 @@ nav:
             - 基础: algo/dp/basis.md
             - 划分区间: algo/dp/segment.md
             - 背包问题: algo/dp/knapsack.md
+            - 最长递增子序列: algo/dp/lis.md
             - 路径问题: algo/dp/path.md
             - 矩阵问题: algo/dp/matrix.md
             - 股票买卖: algo/dp/stocks.md
