@@ -114,6 +114,48 @@ vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(n)$
 
+### 我能赢游戏
+给定两个正整数 a = 10，b = 11，两个玩家，每人依次出一个数字（1 - a之间），累加和先到 b 的获胜，试问，先手能赢么？
+
+**「分析」**
+
+【状态压缩+ DFS记忆优化】
+
+```cpp
+unordered_map<int, bool> memo;
+bool dfs(int n, int m, int state) {
+    if (memo.count(state)) {
+        return memo[state];
+    }
+    for (int i = 1; i <= n; i++) {
+        if (state & (1 << i)) { continue; }
+        if (i >= m) {
+            memo[state | (1 << i)] = true;
+            return true;
+        }
+        else {
+            bool oppo_win = dfs(n, m - i, state | (1 << i));
+            if (!oppo_win) {
+                memo[state] = true;
+                return true;
+            }
+        }
+    }
+    memo[state] = false;
+    return false;
+}
+bool canIWin(int maxChoosableInteger, int desiredTotal) {
+    if (maxChoosableInteger >= desiredTotal) {
+        return true;
+    }
+    if ((1 + maxChoosableInteger) * maxChoosableInteger < 2 * desiredTotal) {
+        return false;
+    }
+    bool ans = dfs(maxChoosableInteger, desiredTotal, 0);
+    return ans;
+}
+```
+
 
 ## BFS
 **「简介」**

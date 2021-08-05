@@ -57,6 +57,58 @@ int LCM(int a, int b) {
 }
 ```
 
+## 裴蜀定理
+两个整数a、b，设 d 是它们的最大公约数，那么 ax + by = m 有整数解（x，y）的充要条件是 m 是 d 的整数倍。当 m = 1时，a 与 b 互质。
+
+推广到一组整数 $\{a_{1}, a_{2}, \cdots, a_{n}\}$，d 是它们的最大公约数，方程 $\sum_{i = 1}^{n} a_{i} x_{i} = m$ 有整数解 $(x_{1}, x_{2}, \cdots, x_{n})$ 的充要条件是 m 是 d 的整数倍。
+
+```cpp
+int get_gcd(int x, int y) {
+    while (x != 0 && y != 0) {
+        if (abs(x) > abs(y)) {
+            x = x % y;
+        }
+        else {
+            y = y % x;
+        }
+    }
+    return x + y;
+}
+
+bool isGoodArray(vector<int>& nums) {
+    if (nums.empty()) {
+        return false;
+    }
+    int gcd = nums[0];
+    for (int num : nums) {
+        gcd = get_gcd(gcd, num);
+    }
+    return gcd == 1;
+}
+```
+
+### 水壶问题
+给定两个水壶，容量是 a 和 b，现有不限供应的水，请问能否用这两个水壶量出恰好容量为 c 的水？
+
+```cpp
+bool canMeasureWater(int jug1Capacity, int jug2Capacity, int targetCapacity) {
+    if (jug1Capacity + jug2Capacity < targetCapacity) {
+        return false;
+    }
+    while (jug1Capacity != 0 && jug2Capacity != 0) {
+        if (jug1Capacity > jug2Capacity) {
+            jug1Capacity %= jug2Capacity;
+        }
+        else {
+            jug2Capacity %= jug1Capacity;
+        }
+    }
+    return targetCapacity % (jug1Capacity + jug2Capacity) == 0;
+}
+```
+时间复杂度：$O(\log \max(jug1Capacity, jug2Capacity))$，空间复杂度：$O(1)$
+
+
 ## 位运算
 ### 原码 反码 补码
 **「原码」**
@@ -358,3 +410,74 @@ int countDigitOne(int n, int digit = 1) {
 }
 ```
 时间复杂度：$O(\log n)$，空间复杂度：$O(1)$
+
+
+## 绝对值
+### 绝对值差的最大和
+给定两个数组 arr1 = [1, -2, -5, 0, 10], arr2 = [0, -2, -1, -7, -4]，求下式的最大值
+
+$$
+\max_{i, j \in [0, n)} \left | i - j \right | + \left | \text{A[ i ]} - \text{A[ j ]} \right | + \left | \text{B[ i ]} - \text{B[ j ]} \right |
+$$
+
+**「分析」**
+
+如果求 |A[ i ] - A[ j ]| 的最大值，我们很容易的知道等价于 max(A) - min(A) 。同样地对于三个绝对值
+
+$$
+\begin{aligned}
+& \text{A[ i ] - A[ j ] + B[ i ] - B[ j ] + i - j} = \text{(A[ i ] + B[ i ] + i) - (A[ j ] + B[ j ] + j)} \\
+& \text{A[ i ] - A[ j ] + B[ i ] - B[ j ] - i + j} = \text{(A[ i ] + B[ i ] - i) - (A[ j ] + B[ j ] - j)} \\
+& \text{A[ i ] - A[ j ] - B[ i ] + B[ j ] + i - j} = \text{(A[ i ] - B[ i ] + i) - (A[ j ] - B[ j ] + j)} \\
+& \text{A[ i ] - A[ j ] - B[ i ] + B[ j ] - i + j} = \text{(A[ i ] - B[ i ] - i) - (A[ j ] - B[ j ] + j)} \\
+& \text{- A[ i ] + A[ j ] + B[ i ] - B[ j ] + i - j} = \text{(- A[ i ] + B[ i ] + i) - (- A[ j ] + B[ j ] + j)} \\
+& \text{- A[ i ] + A[ j ] + B[ i ] - B[ j ] - i + j} = \text{(- A[ i ] + B[ i ] - i) - (- A[ j ] + B[ j ] - j)} \\
+& \text{- A[ i ] + A[ j ] - B[ i ] + B[ j ] + i - j} = \text{(- A[ i ] - B[ i ] + i) - (- A[ j ] - B[ j ] + j)} \\
+& \text{- A[ i ] + A[ j ] - B[ i ] + B[ j ] - i + j} = \text{(- A[ i ] - B[ i ] - i) - (- A[ j ] - B[ j ] + j)} 
+\end{aligned}
+$$
+
+因此可以将上式子归纳成
+
+$$
+\begin{aligned}
+& p = \text{A[ i ] + B[ i ] + i} \\
+& Q = \text{A[ i ] + B[ i ] - i} \\
+& M = \text{A[ i ] - B[ i ] + i} \\
+& N = \text{A[ i ] - B[ i ] - i}
+\end{aligned}
+$$
+
+最终的结果为
+
+$$
+\max
+\begin{cases}
+\max(P) - \min(P) \\
+\max(Q) - \min(Q) \\
+\max(M) - \min(M) \\
+\max(N) - \min(N)
+\end{cases}
+$$
+
+```cpp
+int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {
+    int n = (int)arr1.size(), ans = 0;
+    vector<vector<int>> max_min(4, vector<int> {INT_MIN, INT_MAX});
+    for (int i = 0; i < n; i++) {
+        max_min[0][0] = max(max_min[0][0], arr1[i] + arr2[i] + i);
+        max_min[0][1] = min(max_min[0][1], arr1[i] + arr2[i] + i);
+        max_min[1][0] = max(max_min[1][0], arr1[i] + arr2[i] - i);
+        max_min[1][1] = min(max_min[1][1], arr1[i] + arr2[i] - i);
+        max_min[2][0] = max(max_min[2][0], arr1[i] - arr2[i] + i);
+        max_min[2][1] = min(max_min[2][1], arr1[i] - arr2[i] + i);
+        max_min[3][0] = max(max_min[3][0], arr1[i] - arr2[i] - i);
+        max_min[3][1] = min(max_min[3][1], arr1[i] - arr2[i] - i);
+    }
+    for (int i = 0; i < 4; i++) {
+        ans = max(ans, max_min[i][0] - max_min[i][1]);
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$
