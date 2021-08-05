@@ -601,6 +601,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    绝对值
+  </a>
+  
+    <nav class="md-nav" aria-label="绝对值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    绝对值差的最大和
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -983,6 +1003,26 @@
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     统计某个数字的出现个数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    绝对值
+  </a>
+  
+    <nav class="md-nav" aria-label="绝对值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    绝对值差的最大和
   </a>
   
 </li>
@@ -1670,6 +1710,123 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h2 id="_13">绝对值<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="_14">绝对值差的最大和<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>给定两个数组 arr1 = [1, -2, -5, 0, 10], arr2 = [0, -2, -1, -7, -4]，求下式的最大值</p>
+<div>
+<div class="MathJax_Preview">
+\max_{i, j \in [0, n)} \left | i - j \right | + \left | \text{A[ i ]} - \text{A[ j ]} \right | + \left | \text{B[ i ]} - \text{B[ j ]} \right |
+</div>
+<script type="math/tex; mode=display">
+\max_{i, j \in [0, n)} \left | i - j \right | + \left | \text{A[ i ]} - \text{A[ j ]} \right | + \left | \text{B[ i ]} - \text{B[ j ]} \right |
+</script>
+</div>
+<p><strong>「分析」</strong></p>
+<p>如果求 |A[ i ] - A[ j ]| 的最大值，我们很容易的知道等价于 max(A) - min(A) 。同样地对于三个绝对值</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{A[ i ] - A[ j ] + B[ i ] - B[ j ] + i - j} = \text{(A[ i ] + B[ i ] + i) - (A[ j ] + B[ j ] + j)} \\
+&amp; \text{A[ i ] - A[ j ] + B[ i ] - B[ j ] - i + j} = \text{(A[ i ] + B[ i ] - i) - (A[ j ] + B[ j ] - j)} \\
+&amp; \text{A[ i ] - A[ j ] - B[ i ] + B[ j ] + i - j} = \text{(A[ i ] - B[ i ] + i) - (A[ j ] - B[ j ] + j)} \\
+&amp; \text{A[ i ] - A[ j ] - B[ i ] + B[ j ] - i + j} = \text{(A[ i ] - B[ i ] - i) - (A[ j ] - B[ j ] + j)} \\
+&amp; \text{- A[ i ] + A[ j ] + B[ i ] - B[ j ] + i - j} = \text{(- A[ i ] + B[ i ] + i) - (- A[ j ] + B[ j ] + j)} \\
+&amp; \text{- A[ i ] + A[ j ] + B[ i ] - B[ j ] - i + j} = \text{(- A[ i ] + B[ i ] - i) - (- A[ j ] + B[ j ] - j)} \\
+&amp; \text{- A[ i ] + A[ j ] - B[ i ] + B[ j ] + i - j} = \text{(- A[ i ] - B[ i ] + i) - (- A[ j ] - B[ j ] + j)} \\
+&amp; \text{- A[ i ] + A[ j ] - B[ i ] + B[ j ] - i + j} = \text{(- A[ i ] - B[ i ] - i) - (- A[ j ] - B[ j ] + j)} 
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{A[ i ] - A[ j ] + B[ i ] - B[ j ] + i - j} = \text{(A[ i ] + B[ i ] + i) - (A[ j ] + B[ j ] + j)} \\
+& \text{A[ i ] - A[ j ] + B[ i ] - B[ j ] - i + j} = \text{(A[ i ] + B[ i ] - i) - (A[ j ] + B[ j ] - j)} \\
+& \text{A[ i ] - A[ j ] - B[ i ] + B[ j ] + i - j} = \text{(A[ i ] - B[ i ] + i) - (A[ j ] - B[ j ] + j)} \\
+& \text{A[ i ] - A[ j ] - B[ i ] + B[ j ] - i + j} = \text{(A[ i ] - B[ i ] - i) - (A[ j ] - B[ j ] + j)} \\
+& \text{- A[ i ] + A[ j ] + B[ i ] - B[ j ] + i - j} = \text{(- A[ i ] + B[ i ] + i) - (- A[ j ] + B[ j ] + j)} \\
+& \text{- A[ i ] + A[ j ] + B[ i ] - B[ j ] - i + j} = \text{(- A[ i ] + B[ i ] - i) - (- A[ j ] + B[ j ] - j)} \\
+& \text{- A[ i ] + A[ j ] - B[ i ] + B[ j ] + i - j} = \text{(- A[ i ] - B[ i ] + i) - (- A[ j ] - B[ j ] + j)} \\
+& \text{- A[ i ] + A[ j ] - B[ i ] + B[ j ] - i + j} = \text{(- A[ i ] - B[ i ] - i) - (- A[ j ] - B[ j ] + j)} 
+\end{aligned}
+</script>
+</div>
+<p>因此可以将上式子归纳成</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; p = \text{A[ i ] + B[ i ] + i} \\
+&amp; Q = \text{A[ i ] + B[ i ] - i} \\
+&amp; M = \text{A[ i ] - B[ i ] + i} \\
+&amp; N = \text{A[ i ] - B[ i ] - i}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& p = \text{A[ i ] + B[ i ] + i} \\
+& Q = \text{A[ i ] + B[ i ] - i} \\
+& M = \text{A[ i ] - B[ i ] + i} \\
+& N = \text{A[ i ] - B[ i ] - i}
+\end{aligned}
+</script>
+</div>
+<p>最终的结果为</p>
+<div>
+<div class="MathJax_Preview">
+\max
+\begin{cases}
+\max(P) - \min(P) \\
+\max(Q) - \min(Q) \\
+\max(M) - \min(M) \\
+\max(N) - \min(N)
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\max
+\begin{cases}
+\max(P) - \min(P) \\
+\max(Q) - \min(Q) \\
+\max(M) - \min(M) \\
+\max(N) - \min(N)
+\end{cases}
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maxAbsValExpr</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">arr1</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">arr2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">arr1</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">max_min</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">{</span><span class="n">INT_MIN</span><span class="p">,</span> <span class="n">INT_MAX</span><span class="p">});</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">max_min</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">max_min</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">max_min</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">max_min</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">max_min</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">max_min</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">max_min</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">max_min</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">max_min</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">max_min</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">max_min</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">max_min</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">max_min</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">max_min</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">max_min</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">max_min</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">max_min</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">max_min</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
                 
               
               
