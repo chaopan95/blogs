@@ -1142,7 +1142,7 @@
 <h3 id="_8">访问所有节点的最短路径<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>给定一个无向连通图 G，找到一条最短的路径，满足所有的即节点都被访问到。例如，graph = [[1, 2, 3], [ 0 ], [ 0 ], [ 0 ]]，graph[ i ] 表示与 i 相邻的节点列表，最短路径是 1 -&gt; 0 -&gt; 2 -&gt; 0 -&gt; 3，长度是 4</p>
 <p><strong>「分析」</strong></p>
-<p>【状态压缩 + BFS搜索】，设置一个三月组 (u, mask, dist) 表示节点编号、已访问节点的压缩状态、当前节点的距离。</p>
+<p>【状态压缩 + BFS搜索】，设置一个三元组 (u, mask, dist) 表示节点编号、已访问节点的压缩状态、当前节点的距离。</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
