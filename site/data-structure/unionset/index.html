@@ -663,6 +663,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    访问所有节点的最短路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    按照公因数分群
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -835,6 +849,20 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     朋友圈问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    访问所有节点的最短路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    按照公因数分群
   </a>
   
 </li>
@@ -1111,6 +1139,146 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(n^{2} \log n)</span><script type="math/tex">O(n^{2} \log n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+<h3 id="_8">访问所有节点的最短路径<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>给定一个无向连通图 G，找到一条最短的路径，满足所有的即节点都被访问到。例如，graph = [[1, 2, 3], [ 0 ], [ 0 ], [ 0 ]]，graph[ i ] 表示与 i 相邻的节点列表，最短路径是 1 -&gt; 0 -&gt; 2 -&gt; 0 -&gt; 3，长度是 4</p>
+<p><strong>「分析」</strong></p>
+<p>【状态压缩 + BFS搜索】，设置一个三元组 (u, mask, dist) 表示节点编号、已访问节点的压缩状态、当前节点的距离。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">shortestPathLength</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">graph</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">graph</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">q</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="o">**</span><span class="n">vis</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">bool</span> <span class="o">*</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">bool</span> <span class="p">[</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">]{};</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">});</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">tpl</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">tpl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="n">tpl</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">i</span> <span class="p">:</span> <span class="n">graph</span><span class="p">[</span><span class="n">tpl</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">tpl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">mask</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">i</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">tpl</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">delete</span> <span class="p">[]</span><span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">delete</span> <span class="p">[]</span><span class="n">vis</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(2^{n} n^{2})</span><script type="math/tex">O(2^{n} n^{2})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n 2^{n})</span><script type="math/tex">O(n 2^{n})</script></span></p>
+<h3 id="_9">按照公因数分群<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>给定一个数组 nums = [20, 50, 9, 63]，如果两个数有大于 1 的公因数，这两个数属于同一个群，群成员数目最多是多少？给出的例子是 2。</p>
+<p><strong>「分析」</strong></p>
+<p>【因子分解 + 并查集】。将每一个数与其质因子划分到同一个群，nums 中的数可以通过共同的质因子连接。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">fa</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">?</span> <span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="o">:</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">unify</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fa</span><span class="p">[</span><span class="n">find</span><span class="p">(</span><span class="n">y</span><span class="p">)]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">largestComponentSize</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="o">*</span><span class="n">max_element</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">nums</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="n">fa</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">prime</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">prime</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">sqrt</span><span class="p">(</span><span class="n">num</span><span class="p">);</span> <span class="n">prime</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">prime</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">unify</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">prime</span><span class="p">);</span>
+                <span class="n">unify</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">num</span> <span class="o">/</span> <span class="n">prime</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">cnt</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cnt</span><span class="p">[</span><span class="n">find</span><span class="p">(</span><span class="n">num</span><span class="p">)]</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">*</span><span class="n">max_element</span><span class="p">(</span><span class="n">cnt</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">cnt</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n \sqrt{n})</span><script type="math/tex">O(n \sqrt{n})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，其中 n 是 nums 列表中的最大值。</p>
                 
               
               
