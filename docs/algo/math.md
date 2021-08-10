@@ -481,3 +481,108 @@ int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {
 }
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(1)$
+
+
+## 丑数
+如果一个整数，它的质因子只在 2、3、5 之中，那么就是丑数。如 15 = 3 * 5
+
+### 丑数 I
+判断是否是丑数
+
+```cpp
+bool isUgly(int n) {
+    if (n <= 0) { return false; }
+    while (n % 2 == 0) { n /= 2; }
+    while (n % 3 == 0) { n /= 3; }
+    while (n % 5 == 0) { n /= 5; }
+    return n == 1;
+}
+```
+时间复杂度：$O(1)$，空间复杂度：$O(1)$
+
+### 丑数 II
+求第 n 个丑数 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数
+
+```cpp
+int nthUglyNumber(int n) {
+    if (n == 0) { return 1; }
+    vector<int> dp(n, 0);
+    int f2 = 0, f3 = 0, f5 = 0;
+    dp[0] = 1;
+    for (int i = 1; i < n; i++) {
+        dp[i] = min(dp[f2] * 2, min(dp[f3] *3, dp[f5] * 5));
+        if (dp[i] == dp[f2] * 2) { f2++; }
+        if (dp[i] == dp[f3] * 3) { f3++; }
+        if (dp[i] == dp[f5] * 5) { f5++; }
+    }
+    return dp[n - 1];
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$
+
+### 丑数 III
+给定一个质数数组 primes = [2, 7, 13, 19]，求第 n 个超级丑数，满足所有的质因子都在这个 primes 数组中。
+
+```cpp
+int nthSuperUglyNumber(int n, vector<int>& primes) {
+    int m = (int)primes.size();
+    vector<int> dp(n, 0), f(m, 0);
+    dp[0] = 1;
+    for (int i = 1; i < n; i++) {
+        int minVal = INT_MAX;
+        for (int j = 0; j < m; j++) {
+            minVal = min(minVal, dp[f[j]] * primes[j]);
+        }
+        dp[i] = minVal;
+        for (int j = 0; j < m; j++) {
+            if (dp[f[j]] * primes[j] == dp[i]) { f[j]++; }
+        }
+    }
+    return dp[n - 1];
+}
+```
+时间复杂度：$O(nm)$，空间复杂度：$O(m)$，m 是 primes 的长度
+
+### 丑数 IV
+给定四个整数，n = 1000000000, a = 2, b = 217983653, c = 336916467，求第 n 个数，这个数可以整除 a、b、c其中的一个或多个。
+
+**「分析」**
+
+[1, X] 之间，有多少个数可以被 a e.g. 整除？答案是：$\left \lfloor \frac{X}{a} \right \rfloor$，那么对于 a、b、c 三个除数而言，[1, X] 区间中符合条件的个数是
+
+$$
+\begin{aligned}
+\text{ans} =& \left \lfloor \frac{X}{a} \right \rfloor + \left \lfloor \frac{X}{b} \right \rfloor + \left \lfloor \frac{X}{c} \right \rfloor \\
+&- \left \lfloor \frac{X}{\text{LCM}(a, b)} \right \rfloor - \left \lfloor \frac{X}{\text{LCM}(a, c)} \right \rfloor \\
+&- \left \lfloor \frac{X}{\text{LCM}(b, c)} \right \rfloor + \left \lfloor \frac{X}{\text{LCM}(a, b, c)} \right \rfloor
+\end{aligned}
+$$
+
+```cpp
+long lcm(int a, int b) {
+    long mul = (long)a * b;
+    while (a != 0 && b != 0) {
+        if (a > b) { a %= b; }
+        else { b %= a; }
+    }
+    return mul / (a + b);
+}
+
+int nthUglyNumber(int n, int a, int b, int c) {
+    long ab = lcm(a, b), bc = lcm(b, c), ac = lcm(a, c);
+    long abc = lcm(ab, c), l = 0, r = INT_MAX;
+    while (l < r) {
+        long m = (l + r) >> 1;
+        long res = m / a + m / b + m / c - m / ab -
+                   m / ac - m / bc + m / abc;
+        if (res < n) {
+            l = m + 1;
+        }
+        else {
+            r = m;
+        }
+    }
+    return (int)l;
+}
+```
+时间复杂度：$O(\log INT_MAX)$，空间复杂度：$O(1)$
