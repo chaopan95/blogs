@@ -586,3 +586,82 @@ int nthUglyNumber(int n, int a, int b, int c) {
 }
 ```
 时间复杂度：$O(\log INT_MAX)$，空间复杂度：$O(1)$
+
+
+## 摩尔投票法
+摩尔投票法是一种时间复杂度$O(N)$，空间复杂度$O(1)$的算法，用来找到一个数组的多数元素。这里的多数，可以是超过整个数组长度的一半，也可以是超过整个数组的1/3。
+
+算法的思想是用一个元素与另一个元素抵消。
+
+### 找到超过一半的元素
+
+```cpp
+int majorityElement(vector<int>& nums) {
+    int n = int(nums.size());
+    int count = 0, maj = -1;
+    for (int num : nums)
+    {
+        if (count == 0)
+        {
+            maj = num;
+            count = 1;
+            continue;
+        }
+        if (num == maj) { count++; }
+        else { count--; }
+    }
+    return maj;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$
+
+### 找到超过三分之一的元素（们）
+
+```cpp
+vector<int> majorityElement(vector<int>& nums) {
+    vector<int> ans;
+    if (nums.empty()) { return ans; }
+    int cddt1 = nums[0], cddt2 = nums[0], cnt1 = 0, cnt2 = 0;
+    for (int num : nums) {
+        if (cddt1 == num) {
+            cnt1++;
+            continue;
+        }
+        if (cddt2 == num) {
+            cnt2++;
+            continue;
+        }
+        if (cnt1 == 0) {
+            cnt1++;
+            cddt1 = num;
+            continue;
+        }
+        if (cnt2 == 0) {
+            cnt2++;
+            cddt2 = num;
+            continue;
+        }
+        cnt1--;
+        cnt2--;
+    }
+
+    cnt1 = 0;
+    cnt2 = 0;
+    for (int num : nums) {
+        if (cddt1 == num) {
+            cnt1++;
+        }
+        else if (cddt2 == num) {
+            cnt2++;
+        }
+    }
+    if (cnt1 > nums.size() / 3) {
+        ans.emplace_back(cddt1);
+    }
+    if (cnt2 > nums.size() / 3) {
+        ans.emplace_back(cddt2);
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$
