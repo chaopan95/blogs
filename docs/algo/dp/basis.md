@@ -180,3 +180,63 @@ for (int i = n - 2; i >= 0; i--) {
 return dp[0][n-1];
 ```
 时间复杂度 $O(n^{3})$，空间复杂度 $O(n^{2})$
+
+
+## 优美序列
+给定一个正整数 n，如果将 1 - n 形成一个排列 seq，且在 i 位置上满足 i % seq[ i ] == 0 或 seq[ i ] % i == 0，我们称之为一个【优美序列】。试问对于 n 而言，总共有多少个【优美序列】。
+
+**「分析」**
+
+【回溯】能不能产生一个新的序列，主要看某一个位置 i 和这个位置对应的数值是否整除。我们可以逐个位置填充 1 - n 的元素，如果能得到一个完整的序列，则总结果加一。
+
+```cpp
+vector<vector<int>> next;
+int dfs(bool *vis, int idx, int n) {
+    if (idx == n + 1) {
+        return 1;
+    }
+    int ans = 0;
+    for (int ele : next[idx]) {
+        if (vis[ele]) { continue; }
+        vis[ele] = true;
+        ans += dfs(vis, idx + 1, n);
+        vis[ele] = false;
+    }
+    return ans;
+}
+int countArrangement(int n) {
+    bool *vis = new bool [n + 1] {};
+    next.resize(n + 1, vector<int> {});
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            if (i % j == 0 || j % i == 0) {
+                next[i].emplace_back(j);
+            }
+        }
+    }
+    int ans = dfs(vis, 1, n);
+    delete []vis;
+    return ans;
+}
+```
+时间复杂度：$O(n!)$，空间复杂度：$O(n^{2})$
+
+【状态压缩 + 动态规划】形成一个序列，必然有某些元素先被填充，剩下的元素后被填充，那么我们可以用一个 32-bit 的整数表示这样的序列，这就叫【状态压缩】。
+
+```cpp
+int countArrangement(int n) {
+    vector<int> dp(1 << n, 0);
+    dp[0] = 1;
+    for (int mask = 1; mask < (1 << n); mask++) {
+        int numOf1 = __builtin_popcount(mask);
+        for (int j = 0; j < n; j++) {
+            if ((mask & (1 << j)) &&
+                (numOf1 % (j + 1) == 0 || (j + 1) % numOf1 == 0)) {
+                dp[mask] += dp[mask ^ (1 << j)];
+            }
+        }
+    }
+    return dp[(1 << n) - 1];
+}
+```
+时间复杂度：$O(n 2^{n})$，空间复杂度：$O(2^{n}})$

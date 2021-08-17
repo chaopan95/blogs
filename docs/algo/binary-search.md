@@ -77,3 +77,34 @@ int minAbsoluteSumDiff(vector<int>& nums1, vector<int>& nums2) {
 }
 ```
 时间复杂度：$O(n \log n)$，空间复杂度：$O(n)$
+
+### 找到乘法表中第 k 小的数
+给定三个整数 m、n、k 表示乘法口诀 $m \times n$ 中第 k 小的数字。例如，m = 3，n = 2，k = 2 则返回 2。
+
+**「分析」**
+
+【二分法】。二分查找是确定最终的返回值，内层遍历每一列确定个数。
+
+```cpp
+int findKthNumber(int m, int n, int k) {
+    int l = 1, r = m * n + 1;
+    if (m < n) {
+        swap(m, n);
+    }
+    while (l < r) {
+        int t = (l + r) >> 1;
+        int cnt = 0;
+        for (int i = 1; i <= n; i++) {
+            cnt += min(t / i, m);
+        }
+        if (cnt < k) {
+            l = t + 1;
+        }
+        else {
+            r = t;
+        }
+    }
+    return l;
+}
+```
+时间复杂度：$O(n \log (mn))$，空间复杂度：$O(1)$
