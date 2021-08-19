@@ -1082,10 +1082,10 @@
 </ul>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ][ 0 ]]} = \sum_{k \in \{0, 1, 2\}} \text{dp[ i ][ j ][ 0 ]] + dp[i - 1][ j ][ k ]]}
+\text{dp[ i ][ j ][ 0 ]} = \sum_{k \in \{0, 1, 2\}} \text{dp[ i ][ j ][ 0 ] + dp[i - 1][ j ][ k ]}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ][ 0 ]]} = \sum_{k \in \{0, 1, 2\}} \text{dp[ i ][ j ][ 0 ]] + dp[i - 1][ j ][ k ]]}
+\text{dp[ i ][ j ][ 0 ]} = \sum_{k \in \{0, 1, 2\}} \text{dp[ i ][ j ][ 0 ] + dp[i - 1][ j ][ k ]}
 </script>
 </div>
 <ul>
@@ -1093,10 +1093,10 @@
 </ul>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ 1 ][ 0 ]]} = \text{dp[ i ][ 1 ][ 0 ]] + dp[i - 1][ 0 ][ k ]]}
+\text{dp[ i ][ 1 ][ 0 ]} = \text{dp[ i ][ 1 ][ 0 ] + dp[i - 1][ 0 ][ k ]}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ 1 ][ 0 ]]} = \text{dp[ i ][ 1 ][ 0 ]] + dp[i - 1][ 0 ][ k ]]}
+\text{dp[ i ][ 1 ][ 0 ]} = \text{dp[ i ][ 1 ][ 0 ] + dp[i - 1][ 0 ][ k ]}
 </script>
 </div>
 <ul>
@@ -1104,35 +1104,60 @@
 </ul>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ][ k ]]} = \sum_{k \in \{1, 2\}} \text{dp[ i ][ j ][ k ]] + dp[i - 1][ j ][k - 1]]}
+\text{dp[ i ][ j ][ k ]} = \sum_{k \in \{1, 2\}} \text{dp[ i ][ j ][ k ] + dp[i - 1][ j ][k - 1]}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ][ k ]]} = \sum_{k \in \{1, 2\}} \text{dp[ i ][ j ][ k ]] + dp[i - 1][ j ][k - 1]]}
+\text{dp[ i ][ j ][ k ]} = \sum_{k \in \{1, 2\}} \text{dp[ i ][ j ][ k ] + dp[i - 1][ j ][k - 1]}
 </script>
 </div>
-<p>总共 6 个状态，整理如下
-$$
+<p>总共 6 个状态，整理如下</p>
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
-&amp; dp00 = dp00 + dp01 + dp02 \
-&amp; dp01 = dp00 \
-&amp; dp02 = dp01 \
-&amp; dp10 = dp00 + dp01 + dp02 + dp10 + dp11 + dp12 \
-&amp; dp11 = dp10 \
-&amp; dp12 = dp11
+&amp; \text{dp00 = dp00 + dp01 + dp02} \\
+&amp; \text{dp01 = dp00} \\
+&amp; \text{dp02 = dp01} \\
+&amp; \text{dp10 = dp00 + dp01 + dp02 + dp10 + dp11 + dp12} \\
+&amp; \text{dp11 = dp10} \\
+&amp; \text{dp12 = dp11}
 \end{aligned}
-$$</p>
-<p>状态转移矩阵
-$$
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{dp00 = dp00 + dp01 + dp02} \\
+& \text{dp01 = dp00} \\
+& \text{dp02 = dp01} \\
+& \text{dp10 = dp00 + dp01 + dp02 + dp10 + dp11 + dp12} \\
+& \text{dp11 = dp10} \\
+& \text{dp12 = dp11}
+\end{aligned}
+</script>
+</div>
+<p>状态转移矩阵</p>
+<div>
+<div class="MathJax_Preview">
 \text{dp} =
 \begin{bmatrix}
-\text{dp00} \
-\text{dp01} \
-\text{dp02} \
-\text{dp10} \
-\text{dp11} \
+\text{dp00} \\
+\text{dp01} \\
+\text{dp02} \\
+\text{dp10} \\
+\text{dp11} \\
 \text{dp12}
 \end{pmatrix}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\text{dp} =
+\begin{bmatrix}
+\text{dp00} \\
+\text{dp01} \\
+\text{dp02} \\
+\text{dp10} \\
+\text{dp11} \\
+\text{dp12}
+\end{pmatrix}
+</script>
+</div>
 <div>
 <div class="MathJax_Preview">
 M =
