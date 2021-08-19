@@ -1136,30 +1136,6 @@
 <p>状态转移矩阵</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp} =
-\begin{bmatrix}
-\text{dp00} \\
-\text{dp01} \\
-\text{dp02} \\
-\text{dp10} \\
-\text{dp11} \\
-\text{dp12}
-\end{pmatrix}
-</div>
-<script type="math/tex; mode=display">
-\text{dp} =
-\begin{bmatrix}
-\text{dp00} \\
-\text{dp01} \\
-\text{dp02} \\
-\text{dp10} \\
-\text{dp11} \\
-\text{dp12}
-\end{pmatrix}
-</script>
-</div>
-<div>
-<div class="MathJax_Preview">
 M =
 \begin{bmatrix}
 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
@@ -1168,7 +1144,16 @@ M =
 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\
 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0
-\end{bmatrix}
+\end{bmatrix} \quad
+\text{dp} =
+\begin{bmatrix}
+\text{dp00} \\
+\text{dp01} \\
+\text{dp02} \\
+\text{dp10} \\
+\text{dp11} \\
+\text{dp12}
+\end{pmatrix}
 </div>
 <script type="math/tex; mode=display">
 M =
@@ -1179,15 +1164,24 @@ M =
 0 & 0 & 0 & 1 & 1 & 0 \\
 0 & 0 & 0 & 1 & 0 & 1 \\
 0 & 0 & 0 & 1 & 0 & 0
-\end{bmatrix}
+\end{bmatrix} \quad
+\text{dp} =
+\begin{bmatrix}
+\text{dp00} \\
+\text{dp01} \\
+\text{dp02} \\
+\text{dp10} \\
+\text{dp11} \\
+\text{dp12}
+\end{pmatrix}
 </script>
 </div>
 <div>
 <div class="MathJax_Preview">
-\text{dpNew} = \text{M dpOld} = M^{n} \text{ dp}
+\text{dpNew} = \text{M dpOld} = M^{n} \text{ dpOld}
 </div>
 <script type="math/tex; mode=display">
-\text{dpNew} = \text{M dpOld} = M^{n} \text{ dp}
+\text{dpNew} = \text{M dpOld} = M^{n} \text{ dpOld}
 </script>
 </div>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
