@@ -355,6 +355,27 @@ int totalHammingDistance(vector<int>& nums) {
 }
 ```
 
+### 不使用加减运算符求两数之和
+给定两个整数a、b，在不使用 +、- 的情况下，求 a + b
+
+**「分析」**
+
+将 a、b转化为二进制数值进行运算
+
+```cpp
+int getSum(int a, int b) {
+    while (true) {
+        unsigned pos = unsigned(a & b);
+        if (pos == 0) { break; }
+        a ^= b;
+        b = pos << 1;
+    }
+    return a ^ b;
+}
+```
+时间复杂度：$O(\log \min(\left \| a \right \|, \left \| b \right \|))$，空间复杂度：$O(1)$
+
+
 ## 阶乘
 ### 阶乘尾数0的个数
 计算 n 的阶乘有多少个尾0。

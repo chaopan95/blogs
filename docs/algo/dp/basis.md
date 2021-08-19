@@ -87,6 +87,161 @@
     };
     ```
 
+### 出勤方案数
+给定一个正整数 n，表示天数。一个学生每天的出勤状态是：缺勤（A）、迟到（L）、出勤（P），如果在 n 天中，他能获得出勤奖励的条件是：（1）不超过 1 次缺勤，（2）连续迟到天数不超过 2 天，试问这样的出勤方式有多少种？
+
+**「分析」**
+
+设 dp[ i ][ j ][ k ] 表示前 i 天有 j 次缺勤（A）且以连续 k 个迟到（L）为结尾的出勤方案数目。因为最多缺勤一次，所以 $j \in \{0, 1\}$；最多连续两次迟到，$k \in \{0, 1, 2\}$。初始状态 dp[ 0 ][ 0 ][ 0 ] = 1。
+
+* 当第 i 天是 P 时，结尾的连续 L 个数清零
+
+$$
+\text{dp[ i ][ j ][ 0 ]} = \sum_{k \in \{0, 1, 2\}} \text{dp[ i ][ j ][ 0 ] + dp[i - 1][ j ][ k ]}
+$$
+
+* 当第 i 天是 A 时，结尾的连续 L 个数清零，且上一个的状态一定是 0 个 A
+
+$$
+\text{dp[ i ][ 1 ][ 0 ]} = \text{dp[ i ][ 1 ][ 0 ] + dp[i - 1][ 0 ][ k ]}
+$$
+
+* 当第 i 天是 L 时，结尾的连续 L 个数加一
+
+$$
+\text{dp[ i ][ j ][ k ]} = \sum_{k \in \{1, 2\}} \text{dp[ i ][ j ][ k ] + dp[i - 1][ j ][k - 1]}
+$$
+
+总共 6 个状态，整理如下
+
+$$
+\begin{aligned}
+& \text{dp00 = dp00 + dp01 + dp02} \\
+& \text{dp01 = dp00} \\
+& \text{dp02 = dp01} \\
+& \text{dp10 = dp00 + dp01 + dp02 + dp10 + dp11 + dp12} \\
+& \text{dp11 = dp10} \\
+& \text{dp12 = dp11}
+\end{aligned}
+$$
+
+状态转移矩阵
+
+$$
+M =
+\begin{bmatrix}
+1 & 1 & 0 & 1 & 0 & 1 \\
+1 & 0 & 1 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 1 & 0 \\
+0 & 0 & 0 & 1 & 0 & 1 \\
+0 & 0 & 0 & 1 & 0 & 0
+\end{bmatrix} \quad
+\text{dp} =
+\begin{bmatrix}
+\text{dp00} \\
+\text{dp01} \\
+\text{dp02} \\
+\text{dp10} \\
+\text{dp11} \\
+\text{dp12}
+\end{bmatrix}
+$$
+
+$$
+\text{dpNew} = \text{M dpOld} = M^{n} \text{ dpOld}
+$$
+
+```cpp
+int checkRecord(int n) {
+    vector<vector<vector<int>>> dp(n + 1, vector<vector<int>>
+                                   (2, vector<int> (3, 0)));
+    dp[0][0][0] = 1;
+    const int mod = 1000000007;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 0; j <= 1; j++) {
+            for (int k = 0; k <= 2; k++) {
+                dp[i][j][0] = (dp[i][j][0] + dp[i - 1][j][k]) % mod;
+            }
+        }
+        
+        for (int k = 0; k <= 2; k++) {
+            dp[i][1][0] = (dp[i][1][0] + dp[i - 1][0][k]) % mod;
+        }
+        
+        for (int j = 0; j <= 1; j++) {
+            for (int k = 1; k <= 2; k++) {
+                dp[i][j][k] = (dp[i][j][k] + dp[i - 1][j][k - 1]) % mod;
+            }
+        }
+    }
+    int ans = 0;
+    for (int j = 0; j <= 1; j++) {
+        for (int k = 0; k <= 2; k++) {
+            ans = (ans + dp[n][j][k]) % mod;
+        }
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)，$空间复杂度：$O(n)$
+
+使用快速幂降低时间复杂度。
+
+```cpp
+const int mod = 1000000007;
+
+vector<vector<int>> multiply(vector<vector<int>> a,
+                             vector<vector<int>> b) {
+    vector<vector<int>> ans(6, vector<int> (6, 0));
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {
+            for (int k = 0; k < 6; k++) {
+                ans[i][j] = (ans[i][j] + (long)a[i][k] * b[k][j]) % mod;
+            }
+        }
+    }
+    return ans;
+}
+
+vector<vector<int>> nMultiply(vector<vector<int>> M, int n) {
+    vector<vector<int>> ans {
+        {1, 0, 0, 0, 0, 0},
+        {0, 1, 0, 0, 0, 0},
+        {0, 0, 1, 0, 0, 0},
+        {0, 0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 1, 0},
+        {0, 0, 0, 0, 0, 1}
+    };
+    while (n) {
+        if (n & 1) {
+            ans = multiply(ans, M);
+        }
+        M = multiply(M, M);
+        n >>= 1;
+    }
+    return ans;
+}
+
+int checkRecord(int n) {
+    int ans = 0;
+    vector<vector<int>> M {
+        {1, 1, 0, 1, 0, 0},
+        {1, 0, 1, 1, 0, 0},
+        {1, 0, 0, 1, 0, 0},
+        {0, 0, 0, 1, 1, 0},
+        {0, 0, 0, 1, 0, 1},
+        {0, 0, 0, 1, 0, 0}
+    };
+    M = nMultiply(M, n);
+    for (int j = 0; j < 6; j++) {
+        ans = (ans + M[0][j]) % mod;
+    }
+    return ans;
+}
+```
+时间复杂度：$O(\log n)，$空间复杂度：$O(1)$
+
 ## 区间形DP
 ### 删除子串的最小操作数
 给定一个字符串如“aaabbcbaa”，每一次可以删除一个由同一字符组成的子串，删除后剩余部分自动拼接。重复进行直到字符串为空，求最小的删除次数。举例如下：
@@ -240,3 +395,5 @@ int countArrangement(int n) {
 }
 ```
 时间复杂度：$O(n 2^{n})$，空间复杂度：$O(2^{n}})$
+
+
