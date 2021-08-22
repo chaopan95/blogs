@@ -20,7 +20,7 @@
     
     
       
-        <title>单调站 - 个人博客</title>
+        <title>单调栈 - 个人博客</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              单调站
+              单调栈
             
           </span>
         </div>
@@ -524,12 +524,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          单调站
+          单调栈
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        单调站
+        单调栈
       </a>
       
         
@@ -775,7 +775,7 @@
               
                 
                 
-                  <h1>单调站</h1>
+                  <h1>单调栈</h1>
                 
                 <h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>单调栈是一种特殊的数据结构，栈内元素值（严格）单调变化。</p>
@@ -813,7 +813,8 @@ i = \arg \min_{i \in [0, n - 1)} \text{s[ i ]} \geq \text{s[i + 1]}
 19
 20
 21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">string</span> <span class="nf">removeDuplicateLetters</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">string</span> <span class="nf">removeDuplicateLetters</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">string</span> <span class="n">ans</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">cnt</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
     <span class="kt">bool</span> <span class="o">*</span><span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">bool</span> <span class="p">[</span><span class="mi">26</span><span class="p">]{};</span>
@@ -823,7 +824,8 @@ i = \arg \min_{i \in [0, n - 1)} \text{s[ i ]} \geq \text{s[i + 1]}
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">in</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">])</span> <span class="p">{</span>
-            <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">ans</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">ans</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">cnt</span><span class="p">[</span><span class="n">ans</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">])</span> <span class="p">{</span>
+            <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">ans</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">ans</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span>
+                   <span class="n">cnt</span><span class="p">[</span><span class="n">ans</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">])</span> <span class="p">{</span>
                 <span class="n">in</span><span class="p">[</span><span class="n">ans</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
                 <span class="n">ans</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
             <span class="p">}</span>
