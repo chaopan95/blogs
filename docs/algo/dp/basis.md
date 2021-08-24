@@ -337,7 +337,7 @@ return dp[0][n-1];
 时间复杂度 $O(n^{3})$，空间复杂度 $O(n^{2})$
 
 
-## 优美序列
+### 优美序列
 给定一个正整数 n，如果将 1 - n 形成一个排列 seq，且在 i 位置上满足 i % seq[ i ] == 0 或 seq[ i ] % i == 0，我们称之为一个【优美序列】。试问对于 n 而言，总共有多少个【优美序列】。
 
 **「分析」**
@@ -394,6 +394,48 @@ int countArrangement(int n) {
     return dp[(1 << n) - 1];
 }
 ```
-时间复杂度：$O(n 2^{n})$，空间复杂度：$O(2^{n}})$
+时间复杂度：$O(n 2^{n})$，空间复杂度：$O(2^{n})$
 
 
+### 至多 k 次中转的最低价格
+给一定一个航班列表 flights = [[0, 1, 100], [1, 2, 100], [0, 2, 500]]，表示从 i 到 j 的单向航班的价格，试问至多 k 次中转，从 src 到 dst 的最低价格是多少？
+
+**「分析」**
+
+【动态规划】设 dp[ t ][ i ] 为从 src 经过 t 次中转到 i 的最低价格，状态转移方程如下
+
+$$
+\text{dp[ t ][ i ]} = \min_{(j, i) \in E} \text{dp[t - 1][ j ] + cost[ j ][ i ]}
+$$
+
+初始状态
+
+$$
+\text{dp[ 0 ][ i ]} =
+\begin{cases}
+0, &\quad i = \text{dst} \\
+\text{INF}, &\quad i \neq \text{dst}
+\end{cases}
+$$
+
+```cpp
+int findCheapestPrice(int n, vector<vector<int>>& flights,
+                      int src, int dst, int k) {
+    int MAX = 10000 * n + 1;
+    vector<vector<int>> dp(k + 2, vector<int>(n, MAX));
+    dp[0][src] = 0;
+    for (int t = 1; t <= k + 1; t++) {
+        for (auto flight : flights) {
+            dp[t][flight[1]] = min(dp[t][flight[1]],
+                                   dp[t-1][flight[0]] +
+                                   flight[2]);
+        }
+    }
+    int ans = MAX;
+    for (int t = 0; t <= k + 1; t++) {
+        ans = min(ans, dp[t][dst]);
+    }
+    return ans == MAX ? -1 : ans;
+}
+```
+时间复杂度：$O(km)$，空间复杂度：$O(kn)$，其中 m 是航班列表的长度，n 是节点的个数
