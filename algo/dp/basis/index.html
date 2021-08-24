@@ -359,15 +359,22 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     优美序列
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    至多 k 次中转的最低价格
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -902,15 +909,22 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     优美序列
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    至多 k 次中转的最低价格
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1513,7 +1527,7 @@ M =
 </code></pre></div>
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span></p>
-<h2 id="_9">优美序列<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="_9">优美序列<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>给定一个正整数 n，如果将 1 - n 形成一个排列 seq，且在 i 位置上满足 i % seq[ i ] == 0 或 seq[ i ] % i == 0，我们称之为一个【优美序列】。试问对于 n 而言，总共有多少个【优美序列】。</p>
 <p><strong>「分析」</strong></p>
 <p>【回溯】能不能产生一个新的序列，主要看某一个位置 i 和这个位置对应的数值是否整除。我们可以逐个位置填充 1 - n 的元素，如果能得到一个完整的序列，则总结果加一。</p>
@@ -1606,6 +1620,73 @@ M =
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n 2^{n})</span><script type="math/tex">O(n 2^{n})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(2^{n}})</span><script type="math/tex">O(2^{n}})</script></span></p>
+<h3 id="k">至多 k 次中转的最低价格<a class="headerlink" href="#k" title="Permanent link">&para;</a></h3>
+<p>给一定一个航班列表 flights = [[0, 1, 100], [1, 2, 100], [0, 2, 500]]，表示从 i 到 j 的单向航班的价格，试问至多 k 次中转，从 src 到 dst 的最低价格是多少？</p>
+<p><strong>「分析」</strong></p>
+<p>【动态规划】设 dp[ t ][ i ] 为从 src 经过 t 次中转到 i 的最低价格，状态转移方程如下</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ t ][ i ]} = \min_{(j, i) \in E} \text{dp[t - 1][ j ] + cost[ j ][ i ]}
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ t ][ i ]} = \min_{(j, i) \in E} \text{dp[t - 1][ j ] + cost[ j ][ i ]}
+</script>
+</div>
+<p>初始状态</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ 0 ][ i ]} =
+\begin{cases}
+0, &amp;\quad i = \text{dst} \\
+\text{INF}, &amp;\quad i \neq \text{dst}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ 0 ][ i ]} =
+\begin{cases}
+0, &\quad i = \text{dst} \\
+\text{INF}, &\quad i \neq \text{dst}
+\end{cases}
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">findCheapestPrice</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">flights</span><span class="p">,</span>
+                      <span class="kt">int</span> <span class="n">src</span><span class="p">,</span> <span class="kt">int</span> <span class="n">dst</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">MAX</span> <span class="o">=</span> <span class="mi">10000</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">MAX</span><span class="p">));</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">src</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">t</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">flight</span> <span class="p">:</span> <span class="n">flights</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">flight</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">flight</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                                   <span class="n">dp</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">flight</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span>
+                                   <span class="n">flight</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">MAX</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">t</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">dp</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">dst</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span> <span class="o">==</span> <span class="n">MAX</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(km)</span><script type="math/tex">O(km)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(kn)</span><script type="math/tex">O(kn)</script></span>，其中 m 是航班列表的长度，n 是节点的个数</p>
                 
               
               
