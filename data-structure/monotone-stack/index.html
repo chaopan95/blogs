@@ -558,6 +558,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    判断二叉搜索树的先序遍历
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -665,6 +672,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../priority-queue/" class="md-nav__link">
+        优先队列
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -762,6 +781,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    判断二叉搜索树的先序遍历
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -840,6 +866,38 @@ i = \arg \min_{i \in [0, n - 1)} \text{s[ i ]} \geq \text{s[i + 1]}
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(\Sigma)</span><script type="math/tex">O(\Sigma)</script></span>，这里的 <span><span class="MathJax_Preview">\Sigma</span><script type="math/tex">\Sigma</script></span> 指的是字符的集合，本题是 26。</p>
+<h2 id="_3">判断二叉搜索树的先序遍历<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>给定一个二叉搜索树的遍历序列，判断是否是先序遍历序列</p>
+<p><strong>「分析」</strong></p>
+<p>【单调栈】先序遍历满足 根节点 - 左子树 - 右子树 这样的结构，并且以递归的方式呈现，即左右子树也会有类似的结构。从左到右依次遍历，我们发现，以第一个大于根节点的元素为分界线，左侧的均小于根节点，右侧的均大于根节点。于是，我们把小于根节点的元素都加入到栈中，直到遇到大于栈顶的元素，一次把栈内的元素弹出。此外，我们需要保存根节点的大小，用于比较右子树的值。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">verifyPreorder</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">preorder</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">stk</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">MIN</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">val</span> <span class="p">:</span> <span class="n">preorder</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">val</span> <span class="o">&lt;</span> <span class="n">MIN</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">stk</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">stk</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">MIN</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">back</span><span class="p">();</span>
+            <span class="n">stk</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">stk</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
                 
               
               
