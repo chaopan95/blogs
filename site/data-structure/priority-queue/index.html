@@ -13,21 +13,21 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/tree/basis/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/priority-queue/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>基础 - 个人博客</title>
+        <title>优先队列 - 个人博客</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -63,7 +63,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="red">
   
     
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -82,7 +82,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="个人博客" class="md-header__button md-logo" aria-label="个人博客" data-md-component="logo">
+    <a href="../.." title="个人博客" class="md-header__button md-logo" aria-label="个人博客" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              基础
+              优先队列
             
           </span>
         </div>
@@ -162,7 +162,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="个人博客" class="md-nav__button md-logo" aria-label="个人博客" data-md-component="logo">
+    <a href="../.." title="个人博客" class="md-nav__button md-logo" aria-label="个人博客" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -181,7 +181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         介绍
       </a>
     </li>
@@ -217,7 +217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/jsoffer/" class="md-nav__link">
+      <a href="../../algo/jsoffer/" class="md-nav__link">
         剑指offer
       </a>
     </li>
@@ -250,7 +250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp/basis/" class="md-nav__link">
+      <a href="../../algo/dp/basis/" class="md-nav__link">
         基础
       </a>
     </li>
@@ -262,7 +262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp/segment/" class="md-nav__link">
+      <a href="../../algo/dp/segment/" class="md-nav__link">
         划分区间
       </a>
     </li>
@@ -274,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp/knapsack/" class="md-nav__link">
+      <a href="../../algo/dp/knapsack/" class="md-nav__link">
         背包问题
       </a>
     </li>
@@ -286,7 +286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp/lis/" class="md-nav__link">
+      <a href="../../algo/dp/lis/" class="md-nav__link">
         最长递增子序列
       </a>
     </li>
@@ -298,7 +298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp/path/" class="md-nav__link">
+      <a href="../../algo/dp/path/" class="md-nav__link">
         路径问题
       </a>
     </li>
@@ -310,7 +310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp/matrix/" class="md-nav__link">
+      <a href="../../algo/dp/matrix/" class="md-nav__link">
         矩阵问题
       </a>
     </li>
@@ -322,7 +322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp/stocks/" class="md-nav__link">
+      <a href="../../algo/dp/stocks/" class="md-nav__link">
         股票买卖
       </a>
     </li>
@@ -334,7 +334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp/lcs/" class="md-nav__link">
+      <a href="../../algo/dp/lcs/" class="md-nav__link">
         最长公共子序列
       </a>
     </li>
@@ -346,7 +346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp/edit-distance/" class="md-nav__link">
+      <a href="../../algo/dp/edit-distance/" class="md-nav__link">
         编辑距离
       </a>
     </li>
@@ -358,7 +358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/dp/rob/" class="md-nav__link">
+      <a href="../../algo/dp/rob/" class="md-nav__link">
         打家劫舍
       </a>
     </li>
@@ -376,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/greedy/" class="md-nav__link">
+      <a href="../../algo/greedy/" class="md-nav__link">
         贪心
       </a>
     </li>
@@ -388,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/binary-search/" class="md-nav__link">
+      <a href="../../algo/binary-search/" class="md-nav__link">
         二分查找
       </a>
     </li>
@@ -400,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/two-pointers/" class="md-nav__link">
+      <a href="../../algo/two-pointers/" class="md-nav__link">
         双指针
       </a>
     </li>
@@ -412,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/search/" class="md-nav__link">
+      <a href="../../algo/search/" class="md-nav__link">
         搜索
       </a>
     </li>
@@ -424,7 +424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/prefix-sum/" class="md-nav__link">
+      <a href="../../algo/prefix-sum/" class="md-nav__link">
         前缀和
       </a>
     </li>
@@ -436,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/math/" class="md-nav__link">
+      <a href="../../algo/math/" class="md-nav__link">
         数学
       </a>
     </li>
@@ -448,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/matrix/" class="md-nav__link">
+      <a href="../../algo/matrix/" class="md-nav__link">
         矩阵
       </a>
     </li>
@@ -460,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algo/leetcode/" class="md-nav__link">
+      <a href="../../algo/leetcode/" class="md-nav__link">
         Leetcode
       </a>
     </li>
@@ -504,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../list/" class="md-nav__link">
+      <a href="../list/" class="md-nav__link">
         链表
       </a>
     </li>
@@ -516,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../monotone-stack/" class="md-nav__link">
+      <a href="../monotone-stack/" class="md-nav__link">
         单调栈
       </a>
     </li>
@@ -526,14 +526,12 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
       
       <label class="md-nav__link" for="__nav_3_3">
         树
@@ -549,6 +547,84 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="../tree/basis/" class="md-nav__link">
+        基础
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tree/binary-tree/" class="md-nav__link">
+        二叉树
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../string/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unionset/" class="md-nav__link">
+        并查集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../binary-indexed-tree/" class="md-nav__link">
+        树状数组
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../segment-tree/" class="md-nav__link">
+        线段树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -559,12 +635,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          基础
+          优先队列
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        基础
+        优先队列
       </a>
       
         
@@ -588,14 +664,7 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    术语
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    种类
+    会议室的个数
   </a>
   
 </li>
@@ -604,84 +673,6 @@
   
 </nav>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../binary-tree/" class="md-nav__link">
-        二叉树
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../string/" class="md-nav__link">
-        字符串
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../unionset/" class="md-nav__link">
-        并查集
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../binary-indexed-tree/" class="md-nav__link">
-        树状数组
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../segment-tree/" class="md-nav__link">
-        线段树
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../priority-queue/" class="md-nav__link">
-        优先队列
-      </a>
     </li>
   
 
@@ -721,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/decision-tree/" class="md-nav__link">
+      <a href="../../machine-learning/decision-tree/" class="md-nav__link">
         决策树
       </a>
     </li>
@@ -733,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/roc/" class="md-nav__link">
+      <a href="../../machine-learning/roc/" class="md-nav__link">
         ROC
       </a>
     </li>
@@ -778,14 +769,7 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    术语
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    种类
+    会议室的个数
   </a>
   
 </li>
@@ -803,61 +787,38 @@
               
                 
                 
-                  <h1>基础</h1>
+                  <h1>优先队列</h1>
                 
                 <h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>树是一种非线性（可退化成线性）的数据结构，由顶点和边组成，不存在任何环。没有任何结点的树叫做空树。</p>
-<h2 id="_2">术语<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>根结点</p>
-</li>
-<li>
-<p>孩子结点</p>
-</li>
-<li>
-<p>父结点</p>
-</li>
-<li>
-<p>兄弟结点：同一个父结点的孩子结点</p>
-</li>
-<li>
-<p>祖先：从根结点到该结点的父结点这条路径上的所有结点</p>
-</li>
-<li>
-<p>子孙：以该结点为根结点的所有结点</p>
-</li>
-<li>
-<p>叶子结点：没有孩子结点或孩子结点为 null 的结点</p>
-</li>
-<li>
-<p>度：与结点相连接的边数，分为出度和入度</p>
-</li>
-<li>
-<p>深度：根结点到叶子结点的路径上结点的个数</p>
-</li>
-<li>
-<p>高度：根结点到叶子结点的路径上边的个数</p>
-</li>
-</ul>
-<h2 id="_3">种类<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>二叉树</p>
-</li>
-<li>
-<p>多叉树</p>
-</li>
-<li>
-<p>平衡树</p>
-</li>
-<li>
-<p>B-树</p>
-</li>
-<li>
-<p>红黑树</p>
-</li>
-</ul>
+<p>优先队列是一种特殊的数据结构，通常以数组的形式，按照当前所有元素的一个特性，e.g. 最大值、最小值等等。</p>
+<h2 id="_2">会议室的个数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>给定一个会议时间列表 intervals = [[1, 13], [13, 15], [6, 9]]，intervals[ i ] 表示一个会议的开始结束时间，试问为了避免会议冲突，至少需要准备多少个会议室？</p>
+<p><strong>「分析」</strong></p>
+<p>【优先队列】将 intervals 按照会议开始时间排序，逐个判断当前会议是否与之前的会议有冲突，如果都有冲突，那么会议室加一。利用【优先队列】优化上述算法，因为我们判断一个当前会议是否需要单独开一个会议室，只需要检查，当前会议的开始时间 t1 与之前所有会议的最早结束时间 t2 做对比。如果 t1 仍高于 t2，那么当前会议与之前的都有冲突；反之，我们将当前会议替换最早结束的会议。最后优先队列中存在会议个数就是需要开设的会议室个数。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">minMeetingRooms</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">intervals</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">intervals</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">intervals</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">pq</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="nl">interval</span> <span class="p">:</span> <span class="n">intervals</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pq</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">pq</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">pq</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
                 
               
               
@@ -877,7 +838,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../monotone-stack/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 单调栈" rel="prev">
+        <a href="../segment-tree/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 线段树" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -886,20 +847,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              单调栈
+              线段树
             </div>
           </div>
         </a>
       
       
         
-        <a href="../binary-tree/" class="md-footer__link md-footer__link--next" aria-label="下一页: 二叉树" rel="next">
+        <a href="../../machine-learning/decision-tree/" class="md-footer__link md-footer__link--next" aria-label="下一页: 决策树" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              二叉树
+              决策树
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -932,10 +893,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

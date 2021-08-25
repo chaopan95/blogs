@@ -95,6 +95,7 @@ nav:
         - 并查集: data-structure/unionset.md
         - 树状数组: data-structure/binary-indexed-tree.md
         - 线段树: data-structure/segment-tree.md
+        - 优先队列: data-structure/priority-queue.md
     - 机器学习:
         - 决策树: machine-learning/decision-tree.md
         - ROC: machine-learning/roc.md

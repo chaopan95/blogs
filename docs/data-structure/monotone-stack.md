@@ -40,3 +40,28 @@ string removeDuplicateLetters(string s) {
 }
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(\Sigma)$，这里的 $\Sigma$ 指的是字符的集合，本题是 26。
+
+
+## 判断二叉搜索树的先序遍历
+给定一个二叉搜索树的遍历序列，判断是否是先序遍历序列
+
+**「分析」**
+
+【单调栈】先序遍历满足 根节点 - 左子树 - 右子树 这样的结构，并且以递归的方式呈现，即左右子树也会有类似的结构。从左到右依次遍历，我们发现，以第一个大于根节点的元素为分界线，左侧的均小于根节点，右侧的均大于根节点。于是，我们把小于根节点的元素都加入到栈中，直到遇到大于栈顶的元素，一次把栈内的元素弹出。此外，我们需要保存根节点的大小，用于比较右子树的值。
+
+```cpp
+bool verifyPreorder(vector<int>& preorder) {
+    vector<int> stk;
+    int MIN = INT_MIN;
+    for (auto val : preorder) {
+        if (val < MIN) { return false; }
+        while (!stk.empty() && stk.back() < val) {
+            MIN = stk.back();
+            stk.pop_back();
+        }
+        stk.emplace_back(val);
+    }
+    return true;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$
