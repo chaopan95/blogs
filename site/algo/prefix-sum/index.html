@@ -496,6 +496,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    航班预定统计
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -830,6 +837,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    航班预定统计
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1091,6 +1105,58 @@ j \\
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h2 id="_4">航班预定统计<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>给定一个列表 bookings = [[1, 2, 10], [2, 3, 20], [2, 5, 25]] 表示从 i 到 j 的航班预定人数，另给一个整数 n 表示航班数（从 1 开始），求每一航班的预定人数之和。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\text{flight num} &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
+\text{booking 1} &amp; 10 &amp; 10 \\
+\text{booking 2} &amp; &amp; 20 &amp; 20 \\
+\text{booking 3} &amp; &amp; 25 &amp; 25 &amp; 25 &amp; 25 \\
+\text{total sum} &amp; 10 &amp; 55 &amp; 45 &amp; 25 &amp; 25
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\text{flight num} & 1 & 2 & 3 & 4 & 5 \\
+\text{booking 1} & 10 & 10 \\
+\text{booking 2} & & 20 & 20 \\
+\text{booking 3} & & 25 & 25 & 25 & 25 \\
+\text{total sum} & 10 & 55 & 45 & 25 & 25
+\end{matrix}
+</script>
+</div>
+<p><strong>「分析」</strong></p>
+<p>【差分 + 前缀和】 一个数组的【差分】和【前缀和】互为逆运算，题目中给出了一个条预定信息 [i, j, booking]，那么在 [i, j] 针对这个区间求差分，只有第 i 个位置是 booking，其他位置是 0，但是为了避免无限制累加，在第 j+1 的位置需要【减去】booking。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">corpFlightBookings</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">bookings</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">booking</span> <span class="p">:</span> <span class="n">bookings</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ans</span><span class="p">[</span><span class="n">booking</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">booking</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">booking</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ans</span><span class="p">[</span><span class="n">booking</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">-=</span> <span class="n">booking</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ans</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，其中 n 是航班数，m 是预定数</p>
                 
               
               

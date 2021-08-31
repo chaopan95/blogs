@@ -188,3 +188,26 @@ int shipWithinDays(vector<int>& weights, int days) {
 }
 ```
 时间复杂度：$O(n \log(sum - max))$，空间复杂度：$O(1)$，sum 是数组的和，max 是数组的最大值
+
+### 最小的船数
+给定一个人员体重的列表 people = [3, 5, 3, 4] 和一个整数 limit = 5，一艘船一次最多载两个人，并且重量和不超过 limit，试问最小需要多少艘船？
+
+**「分析」**
+
+【排序 + 贪心】尽可能的让一艘船载两个人，从体重大的人开始遍历，如果能遇到一个轻的人，就把他加入到船上。
+
+```cpp
+int numRescueBoats(vector<int>& people, int limit) {
+    int ans = 0, l = 0, r = (int)people.size() - 1;
+    sort(people.begin(), people.end());
+    while (l < r) {
+        if (people[l] + people[r] <= limit) {
+            l++;
+        }
+        ans++;
+        r--;
+    }
+    return ans + (l == r);
+}
+```
+时间复杂度：$O(n \log n)$，空间复杂度：$O(1)$

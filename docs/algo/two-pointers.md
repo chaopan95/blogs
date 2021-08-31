@@ -1,83 +1,89 @@
-## 相关题目
-??? note "[「Leetcode 3. 无重复字符的最长子串」]()"
-    给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+## 基础
+双指针是一种$O(n)$时间复杂度的算法，通常配合排序算法和哈希表一起使用。
 
-    输入: s = "abcabcbb"
-    
-    输出: 3 
-    
-    解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+## 三数之和小于 target 的个数
+给定一个列表 nums = [0, 1, -2, 3] 和一个整数 target = 2，从 nums 中找出三个下标 $0 \leq i < j < k < n$ 满足对应的元素之和小于 target，试问这样的组合数是多少？
 
-    ```cpp
-    int lengthOfLongestSubstring(string s) {
-        int n = int(s.length());
-        if (n == 0) { return 0; }
-        int i = 0, j = 0, maxLen = 0;
-        unordered_set<char> hash;
-        while (j < n) {
-            if (hash.count(s[j])) { hash.erase(s[i++]); }
+**「分析」**
+
+【双指针】将 nums 排序，外层循环控制 i，内层循环控制 j、k，当 nums[ i ] + nums[ j ] + nums[ k ] < target 时，所有的 (j, k] 也都满足
+
+```cpp
+int threeSumSmaller(vector<int>& nums, int target) {
+    int n = (int)nums.size(), ans = 0;
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < n; i++) {
+        int j = i + 1, k = n - 1;
+        while (j < k) {
+            if (nums[i] + nums[j] + nums[k] < target) {
+                ans += k - j;
+                j++;
+            }
             else {
-                hash.insert(s[j++]);
-                maxLen = max(maxLen, j - i);
+                k--;
             }
         }
-        return maxLen;
     }
-    ```
+    return ans;
+}
+```
+时间复杂度：$O(n^{2})$，空间复杂度：$O(1)$
 
-??? note "[「Leetcode 15. 三数之和」]()"
-    给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
+## 无重复字符的最长子串
+给定一个字符串 s = "abcabcbb"，请你找出其中不含有重复字符的最长子串的长度。
 
-    注意：答案中不可以包含重复的三元组。
+**「分析」**
 
-    ```cpp
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        int n = int(nums.size());
-        vector<vector<int>> ans;
-        if (n < 3) { return ans; }
-        sort(nums.begin(), nums.end());
-        for (int i = 0; i < n - 2; i++) {
-            int j = i + 1, k = n - 1;
-            while (j < k) {
-                int sum = nums[i] + nums[j] + nums[k];
-                if (sum < 0) { j++; }
-                else if (sum > 0) { k--; }
-                else {
-                    while (i < k && nums[i] == nums[i+1]) { i++; }
-                    while (j < k && nums[j] == nums[j+1]) { j++; }
-                    while (j < k && nums[k] == nums[k-1]) { k--; }
-                    ans.push_back({nums[i], nums[j], nums[k]});
-                    j++;
-                    k--;
-                }
+【双指针 + 哈希去重】
+
+```cpp
+int lengthOfLongestSubstring(string s) {
+    int n = int(s.length());
+    if (n == 0) { return 0; }
+    int i = 0, j = 0, maxLen = 0;
+    unordered_set<char> hash;
+    while (j < n) {
+        if (hash.count(s[j])) { hash.erase(s[i++]); }
+        else {
+            hash.insert(s[j++]);
+            maxLen = max(maxLen, j - i);
+        }
+    }
+    return maxLen;
+}
+```
+时间复杂度：$O(n})$，空间复杂度：$O(n)$
+
+## 三数之和
+给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。答案中不可以包含重复的三元组。
+
+**「分析」**
+
+【双指针 + 排序】
+
+```cpp
+vector<vector<int>> threeSum(vector<int>& nums) {
+    int n = int(nums.size());
+    vector<vector<int>> ans;
+    if (n < 3) { return ans; }
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < n - 2; i++) {
+        int j = i + 1, k = n - 1;
+        while (j < k) {
+            int sum = nums[i] + nums[j] + nums[k];
+            if (sum < 0) { j++; }
+            else if (sum > 0) { k--; }
+            else {
+                while (i < k && nums[i] == nums[i+1]) { i++; }
+                while (j < k && nums[j] == nums[j+1]) { j++; }
+                while (j < k && nums[k] == nums[k-1]) { k--; }
+                ans.push_back({nums[i], nums[j], nums[k]});
+                j++;
+                k--;
             }
         }
-        return ans;
     }
-    ```
-
-??? note "[「Leetcode 16. 最接近的三数之和」]()"
-    给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。
-
-    ```cpp
-    int threeSumClosest(vector<int>& nums, int target) {
-        int n = int(nums.size()), res = 0, diff = (1ll << 31) - 1;
-        if (n < 3) { return 0; }
-        sort(nums.begin(), nums.end());
-        for (int i = 0; i <= n-3; i++) {
-            int j = i + 1, k = n - 1;
-            while (j < k) {
-                int sum = nums[i] + nums[j] + nums[k];
-                if (abs(sum - target) < diff)
-                {
-                    diff = abs(sum - target);
-                    res = sum;
-                }
-                if (sum < target) { j++; }
-                else if (sum > target) { k--; }
-                else { return target; }
-            }
-        }
-        return res;
-    }
-    ```
+    return ans;
+}
+```
+时间复杂度：$O(n^{2})$，空间复杂度：$O(1)$

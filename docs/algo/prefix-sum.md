@@ -165,3 +165,36 @@ int countBinarySubstrings(string s) {
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(1)$
 
+## 航班预定统计
+给定一个列表 bookings = [[1, 2, 10], [2, 3, 20], [2, 5, 25]] 表示从 i 到 j 的航班预定人数，另给一个整数 n 表示航班数（从 1 开始），求每一航班的预定人数之和。
+
+$$
+\begin{matrix}
+\text{flight num} & 1 & 2 & 3 & 4 & 5 \\
+\text{booking 1} & 10 & 10 \\
+\text{booking 2} & & 20 & 20 \\
+\text{booking 3} & & 25 & 25 & 25 & 25 \\
+\text{total sum} & 10 & 55 & 45 & 25 & 25
+\end{matrix}
+$$
+
+**「分析」**
+
+【差分 + 前缀和】 一个数组的【差分】和【前缀和】互为逆运算，题目中给出了一个条预定信息 [i, j, booking]，那么在 [i, j] 针对这个区间求差分，只有第 i 个位置是 booking，其他位置是 0，但是为了避免无限制累加，在第 j+1 的位置需要【减去】booking。
+
+```cpp
+vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
+    vector<int> ans(n, 0);
+    for (auto booking : bookings) {
+        ans[booking[0] - 1] += booking[2];
+        if (booking[1] < n) {
+            ans[booking[1]] -= booking[2];
+        }
+    }
+    for (int i = 1; i < n; i++) {
+        ans[i] += ans[i - 1];
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n + m)$，空间复杂度：$O(1)$，其中 n 是航班数，m 是预定数

@@ -432,7 +432,28 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    相关题目
+    基础
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#target" class="md-nav__link">
+    三数之和小于 target 的个数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    无重复字符的最长子串
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    三数之和
   </a>
   
 </li>
@@ -755,7 +776,28 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    相关题目
+    基础
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#target" class="md-nav__link">
+    三数之和小于 target 的个数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    无重复字符的最长子串
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    三数之和
   </a>
   
 </li>
@@ -775,12 +817,53 @@
                 
                   <h1>双指针</h1>
                 
-                <h2 id="_1">相关题目<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<details class="note"><summary><a href="">「Leetcode 3. 无重复字符的最长子串」</a></summary><p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
-<p>输入: s = "abcabcbb"</p>
-<p>输出: 3 </p>
-<p>解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+                <h2 id="_1">基础<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>双指针是一种<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>时间复杂度的算法，通常配合排序算法和哈希表一起使用。</p>
+<h2 id="target">三数之和小于 target 的个数<a class="headerlink" href="#target" title="Permanent link">&para;</a></h2>
+<p>给定一个列表 nums = [0, 1, -2, 3] 和一个整数 target = 2，从 nums 中找出三个下标 <span><span class="MathJax_Preview">0 \leq i &lt; j &lt; k &lt; n</span><script type="math/tex">0 \leq i < j < k < n</script></span> 满足对应的元素之和小于 target，试问这样的组合数是多少？</p>
+<p><strong>「分析」</strong></p>
+<p>【双指针】将 nums 排序，外层循环控制 i，内层循环控制 j、k，当 nums[ i ] + nums[ j ] + nums[ k ] &lt; target 时，所有的 (j, k] 也都满足</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">threeSumSmaller</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">nums</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">ans</span> <span class="o">+=</span> <span class="n">k</span> <span class="o">-</span> <span class="n">j</span><span class="p">;</span>
+                <span class="n">j</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="n">k</span><span class="o">--</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h2 id="_2">无重复字符的最长子串<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>给定一个字符串 s = "abcabcbb"，请你找出其中不含有重复字符的最长子串的长度。</p>
+<p><strong>「分析」</strong></p>
+<p>【双指针 + 哈希去重】</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -809,10 +892,12 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</details>
-<details class="note"><summary><a href="">「Leetcode 15. 三数之和」</a></summary><p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。</p>
-<p>注意：答案中不可以包含重复的三元组。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+时间复杂度：<span><span class="MathJax_Preview">O(n})</span><script type="math/tex">O(n})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+<h2 id="_3">三数之和<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。答案中不可以包含重复的三元组。</p>
+<p><strong>「分析」</strong></p>
+<p>【双指针 + 排序】</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -859,50 +944,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</details>
-<details class="note"><summary><a href="">「Leetcode 16. 最接近的三数之和」</a></summary><p>给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">threeSumClosest</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()),</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1ll</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
-    <span class="n">sort</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">nums</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">-</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">sum</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">diff</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">diff</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">sum</span> <span class="o">-</span> <span class="n">target</span><span class="p">);</span>
-                <span class="n">res</span> <span class="o">=</span> <span class="n">sum</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span> <span class="n">j</span><span class="o">++</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span> <span class="n">k</span><span class="o">--</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="n">target</span><span class="p">;</span> <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-</details>
+时间复杂度：<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
                 
               
               
