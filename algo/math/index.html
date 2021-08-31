@@ -696,6 +696,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    编码
+  </a>
+  
+    <nav class="md-nav" aria-label="编码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    格雷编码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1197,6 +1217,26 @@
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     找到超过三分之一的元素（们）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    编码
+  </a>
+  
+    <nav class="md-nav" aria-label="编码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    格雷编码
   </a>
   
 </li>
@@ -2308,6 +2348,53 @@
     <span class="p">}</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">cnt2</span> <span class="o">&gt;</span> <span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">ans</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">cddt2</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h2 id="_20">编码<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<h3 id="_21">格雷编码<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>格雷编码是一个二进制数字系统，在该系统中，两个连续的数值仅有一个位数的差异。给定一个代表编码总位数的非负整数 n，打印其格雷编码序列。即使有多个不同答案，你也只需要返回其中一种。格雷编码序列必须以 0 开头。例如 n = 2，会得到 4 个编码</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+00 &amp; \rightarrow &amp; 0 \\
+01 &amp; \rightarrow &amp; 1 \\
+11 &amp; \rightarrow &amp; 3 \\
+10 &amp; \rightarrow &amp; 2
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+00 & \rightarrow & 0 \\
+01 & \rightarrow & 1 \\
+11 & \rightarrow & 3 \\
+10 & \rightarrow & 2
+\end{matrix}
+</script>
+</div>
+<p><strong>「分析」</strong></p>
+<p>格雷编码的公式</p>
+<div>
+<div class="MathJax_Preview">
+\text{GrayCode}(i) = i \text{ XOR } \left \lfloor \frac{i}{2} \right \rfloor
+</div>
+<script type="math/tex; mode=display">
+\text{GrayCode}(i) = i \text{ XOR } \left \lfloor \frac{i}{2} \right \rfloor
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">grayCode</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">n</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ans</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">^</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
 <span class="p">}</span>
