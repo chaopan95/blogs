@@ -56,11 +56,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/dag/</loc>
-         <lastmod>2021-09-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://chaopan95.github.io/blogs/algo/dp/edit-distance/</loc>
          <lastmod>2021-09-07</lastmod>
          <changefreq>daily</changefreq>
@@ -102,6 +97,11 @@
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/algo/dp/segment/</loc>
+         <lastmod>2021-09-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chaopan95.github.io/blogs/algo/dp/sequence/</loc>
          <lastmod>2021-09-07</lastmod>
          <changefreq>daily</changefreq>
     </url>

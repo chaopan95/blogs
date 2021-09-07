@@ -370,8 +370,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/dag/" class="md-nav__link">
-        无向图型
+      <a href="../../algo/dp/sequence/" class="md-nav__link">
+        序列型
       </a>
     </li>
   
@@ -720,7 +720,7 @@
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
-    按共因子排序数组
+    按公因子排序数组
   </a>
   
 </li>
@@ -922,7 +922,7 @@
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
-    按共因子排序数组
+    按公因子排序数组
   </a>
   
 </li>
@@ -1265,7 +1265,7 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n \sqrt{n})</span><script type="math/tex">O(n \sqrt{n})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，其中 n 是 nums 列表中的最大值。</p>
-<h3 id="_9">按共因子排序数组<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_9">按公因子排序数组<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>给定一个数组 nums = [7, 21, 3]，如果两个元素的共因子大于 1，那么我们可以将其交换，试问，能否最终得到一个排序数组？</p>
 <p><strong>「分析」</strong></p>
 <p>【并查集】如果 a 和 b 可交换，b 和 c 可交换，那么 a 和 c 可交换。因此，同一个集合的元素任意交换，即可得到一个排序数组。我们借助一个数与它的所有因子，构造并查集，这样避免 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span> 的时间复杂度。最终，我们用排序好的数组与为排序的数组逐一比较，如果两个数字不属于同一个集合，那么 nums 是不能有序的。</p>
