@@ -13,14 +13,14 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/algo/dp/rob/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/algo/dp/interval/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>打家劫舍 - 个人博客</title>
+        <title>区间型 - 个人博客</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              打家劫舍
+              区间型
             
           </span>
         </div>
@@ -360,61 +360,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          打家劫舍
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../rob/" class="md-nav__link">
         打家劫舍
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    成排
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    成环
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    成树
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -434,11 +384,54 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../interval/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          区间型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         区间型
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    删除子串的最小操作数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    删除回文串的最小次数
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -807,21 +800,14 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    成排
+    删除子串的最小操作数
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    成环
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    成树
+    删除回文串的最小次数
   </a>
   
 </li>
@@ -839,46 +825,121 @@
               
                 
                 
-                  <h1>打家劫舍</h1>
+                  <h1>区间型</h1>
                 
-                <h2 id="_1">成排<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>给定一个非负整数数组表示房屋内的金额，一个小偷可以偷取若干房屋内的所有金钱，但是偷窃的房屋不能相邻，求可以获得最大金额数目。</p>
-<p><strong>「分析」</strong></p>
-<p>设 dp[ i ][ 0 ] 表示第 i 个房屋没有被盗窃，dp[ i ][ 1 ] 为第 i 个房屋被盗窃</p>
+                <h2 id="_1">删除子串的最小操作数<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>给定一个字符串如“aaabbcbaa”，每一次可以删除一个由同一字符组成的子串，删除后剩余部分自动拼接。重复进行直到字符串为空，求最小的删除次数。举例如下：</p>
 <div>
 <div class="MathJax_Preview">
-\begin{aligned}
-&amp; \text{dp[ i ][ 0 ]} = \max(\text{dp[i - 1][ 0 ], dp[i - 1][ 1 ]}) \\
-&amp; \text{dp[ i ][ 1 ]} = \text{dp[i - 1][ 0 ] + A[ i ]}
-\end{aligned}
+\begin{matrix}
+&amp; aaabb\underline{c}baa \\
+&amp; \downarrow \\
+&amp; aaa\underline{bbb}aa \\
+&amp; \downarrow \\
+&amp; \underline{aaaaa}
+\end{matrix}
 </div>
 <script type="math/tex; mode=display">
-\begin{aligned}
-& \text{dp[ i ][ 0 ]} = \max(\text{dp[i - 1][ 0 ], dp[i - 1][ 1 ]}) \\
-& \text{dp[ i ][ 1 ]} = \text{dp[i - 1][ 0 ] + A[ i ]}
-\end{aligned}
+\begin{matrix}
+& aaabb\underline{c}baa \\
+& \downarrow \\
+& aaa\underline{bbb}aa \\
+& \downarrow \\
+& \underline{aaaaa}
+\end{matrix}
 </script>
 </div>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">dp0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dp1</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">_dp0</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span><span class="p">);</span>
-    <span class="n">dp1</span> <span class="o">=</span> <span class="n">dp0</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-    <span class="n">dp0</span> <span class="o">=</span> <span class="n">_dp0</span><span class="p">;</span>
+<p><strong>「分析」</strong></p>
+<p>设 dp[ i ][ j ] 为字符串 s[i : j] 删除有相同字符组成的子串的最小次数。如果两端的字符相同，那么状态跳转到 s[i : j - 1]；如果两端字符串不想等，那么我们寻找一个最佳切分点 k ，使切分出来的两段和最小。特别地，对于每一个单字符，最小切割次数是 1 。</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ]} =
+\begin{cases}
+\text{dp[ i ][j - 1]}, &amp; \quad \text{s[ i ] == s[ j ]} \\
+\min_{k \in [i, j)}(\text{dp[ i ][ k ] + dp[k + 1][ j ]}), &amp; \quad \text{otherwise}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ]} =
+\begin{cases}
+\text{dp[ i ][j - 1]}, & \quad \text{s[ i ] == s[ j ]} \\
+\min_{k \in [i, j)}(\text{dp[ i ][ k ] + dp[k + 1][ j ]}), & \quad \text{otherwise}
+\end{cases}
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">_min</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">_min</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">_min</span><span class="p">,</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+            <span class="p">}</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">_min</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
-<span class="k">return</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span><span class="p">);</span>
+<span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
-<h2 id="_2">成环<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>同样一个非负数组表示房屋内的金额，但是数组的首尾是相连的，求此时的最大金额</p>
+时间复杂度 <span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span></p>
+<h2 id="_2">删除回文串的最小次数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>给定一个字符串如“aabc”，每一次删除一个回文子串，直到字符串为空，求最小删除次数。</p>
 <p><strong>「分析」</strong></p>
-<p>数组成环的状态下，首尾元素至少有一个不会被盗窃，那么我们可以将分成两种情况：（1）不选择首元素，（2）不选择尾元素。由此，将一个成环问题转换成两个成排问题，各自的解法如上。</p>
+<p>设 dp[ i ][ j ] 为字符串 s[i : j] 的最小删除次数。任何一个字符都会面临下面的两种情况</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\text{case 1: } &amp; {\color{Red} a}xxxx \\
+\text{case 2: } &amp; {\color{Red} a}xx{\color{Red} a}xxx
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\text{case 1: } & {\color{Red} a}xxxx \\
+\text{case 2: } & {\color{Red} a}xx{\color{Red} a}xxx
+\end{matrix}
+</script>
+</div>
+<p>case 1 只删除一个字符，case 2 删除一个区间的字符</p>
+<div>
+<div class="MathJax_Preview">
+\text{dp[ i ][ j ]} =
+\begin{cases}
+\text{1}, &amp; \quad i == j \\
+\max(\text{dp[i + 1][ j ] + 1, dp[i + 2][ j ] + 1}), &amp; \quad \text{s[ i ] == s[i + 1]} \\
+\max_{k \in [i + 2, j]} (\text{dp[i + 1][k - 1] + dp[k + 1][ j ]}), &amp; \quad \text{s[ i ] == s[ k ]}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\text{dp[ i ][ j ]} =
+\begin{cases}
+\text{1}, & \quad i == j \\
+\max(\text{dp[i + 1][ j ] + 1, dp[i + 2][ j ] + 1}), & \quad \text{s[ i ] == s[i + 1]} \\
+\max_{k \in [i + 2, j]} (\text{dp[i + 1][k - 1] + dp[k + 1][ j ]}), & \quad \text{s[ i ] == s[ k ]}
+\end{cases}
+</script>
+</div>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -896,96 +957,27 @@
 15
 16
 17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">dp0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dp1</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">_dp0</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">_dp1</span> <span class="o">=</span> <span class="n">dp0</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-    <span class="n">dp0</span> <span class="o">=</span> <span class="n">_dp0</span><span class="p">;</span>
-    <span class="n">dp1</span> <span class="o">=</span> <span class="n">_dp1</span><span class="p">;</span>
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<span class="n">dp</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">j</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
-<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span><span class="p">);</span>
-<span class="n">dp0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="n">dp1</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">_dp0</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">_dp1</span> <span class="o">=</span> <span class="n">dp0</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-    <span class="n">dp0</span> <span class="o">=</span> <span class="n">_dp0</span><span class="p">;</span>
-    <span class="n">dp1</span> <span class="o">=</span> <span class="n">_dp1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="n">ans</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span><span class="p">));</span>
-<span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
-<h2 id="_3">成树<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>这次的房屋排列成一颗二叉树，相邻的房屋不能同时被盗窃，求最大金额。</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-&amp; &amp; &amp; &amp; &amp; 3 \\
-&amp; &amp; &amp; &amp; &amp; \wedge \\
-&amp; &amp; &amp; 4 &amp; &amp; &amp; &amp; &amp; 5 \\
-&amp; &amp; &amp; \wedge &amp; &amp; &amp; &amp; &amp; \wedge \\
-&amp; &amp; 1 &amp; &amp; 3 &amp; &amp; &amp; 2 &amp; &amp; 1
-\end{matrix}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-& & & & & 3 \\
-& & & & & \wedge \\
-& & & 4 & & & & & 5 \\
-& & & \wedge & & & & & \wedge \\
-& & 1 & & 3 & & & 2 & & 1
-\end{matrix}
-</script>
-</div>
-<p>最大金额是 10。</p>
-<p><strong>「分析」</strong></p>
-<p>构成一颗二叉树的情况下，当前节点只与左右孩子相关联（自底向上遍历），设 f[ root ] 为当前节点不盗窃， t[ root ] 为当前节点被盗窃，其状态转移方程如下</p>
-<div>
-<div class="MathJax_Preview">
-\begin{aligned}
-&amp; \text{t[ root ] = } \max(\text{f[ root} \rightarrow \text{right ], f[ root} \rightarrow \text{left ]}) + \text{root} \rightarrow \text{val} \\
-&amp; 
-\begin{aligned}
-\text{f[ root ] = } &amp; \max(\text{f[ root } \rightarrow \text{ left ], t[ root } \rightarrow \text{ left ]}) \\
-&amp; + \max(\text{f[ root } \rightarrow \text{ right ], t[ root } \rightarrow \text{ right ]})
-\end{aligned}
-\end{aligned}
-</div>
-<script type="math/tex; mode=display">
-\begin{aligned}
-& \text{t[ root ] = } \max(\text{f[ root} \rightarrow \text{right ], f[ root} \rightarrow \text{left ]}) + \text{root} \rightarrow \text{val} \\
-& 
-\begin{aligned}
-\text{f[ root ] = } & \max(\text{f[ root } \rightarrow \text{ left ], t[ root } \rightarrow \text{ left ]}) \\
-& + \max(\text{f[ root } \rightarrow \text{ right ], t[ root } \rightarrow \text{ right ]})
-\end{aligned}
-\end{aligned}
-</script>
-</div>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">;</span>
-<span class="kt">int</span> <span class="nf">rob</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
-    <span class="n">rob</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
-    <span class="n">rob</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
-    <span class="n">t</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">]</span> <span class="o">+</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
-    <span class="n">f</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">])</span> <span class="o">+</span>
-              <span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">]);</span>
-    <span class="k">return</span> <span class="n">max</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">root</span><span class="p">],</span> <span class="n">f</span><span class="p">[</span><span class="n">root</span><span class="p">]);</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+时间复杂度 <span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span></p>
                 
               
               
@@ -1005,7 +997,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../edit-distance/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 编辑距离" rel="prev">
+        <a href="../dag/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 无向图型" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1014,20 +1006,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              编辑距离
+              无向图型
             </div>
           </div>
         </a>
       
       
         
-        <a href="../dag/" class="md-footer__link md-footer__link--next" aria-label="下一页: 无向图型" rel="next">
+        <a href="../../greedy/" class="md-footer__link md-footer__link--next" aria-label="下一页: 贪心" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              无向图型
+              贪心
             </div>
           </div>
           <div class="md-footer__button md-icon">
