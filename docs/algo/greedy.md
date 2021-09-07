@@ -211,3 +211,43 @@ int numRescueBoats(vector<int>& people, int limit) {
 }
 ```
 时间复杂度：$O(n \log n)$，空间复杂度：$O(1)$
+
+### 均分数字
+给定一个列表 nums = [1, 0, 5]，每次可以选若干个位置，将数字减一，然后对相邻的一个位置加一，如下
+
+$$
+\begin{matrix}
+\text{1st: } & 1 & & 0 & \leftarrow & 5 & & \Rightarrow & & 1 & & 1 & & 4 \\
+\text{2nd: } & 1 & \leftarrow & 1 & \leftarrow & 4 & & \Rightarrow & & 2 & & 1 & & 3 \\
+\text{3rd: } & 2 & \leftarrow & 1 & \leftarrow & 3 & & \Rightarrow & & 2 & & 2 & & 2 \\
+\end{matrix}
+$$
+
+**「分析」**
+
+【贪心】先判断数值之和能否被数组长度整除。如果可以的话，每一个数减去平均值，每一个位置如果是正数 k，那么意味着，最少 k 次【减一】，如果是负数，最少 k 次【加一】，并且如果出现连续几个正数或者负数，这意味着，【减一】或者【加一】需要传递到后面的位置，例如 [1, 1, -1, -1] 和 [1, -1, -1, 1] 是不同的，前者需要 2 次，而后者需要 1 次，这是因为 [1, 1] 毗邻出现。
+
+```cpp
+int findMinMoves(vector<int>& machines) {
+    int sum = 0, cnt = 0;
+    for (int m : machines) {
+        sum += m;
+        cnt++;
+    }
+    if (sum % cnt != 0) {
+            return -1;
+    }
+    int ans = 0, avg = sum / cnt;
+    for (int &m : machines) {
+        m -= avg;
+    }
+    int presum = 0;
+    for (int m : machines) {
+        presum += m;
+        ans = max(ans, max(abs(presum), m));
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$
+

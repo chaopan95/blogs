@@ -243,3 +243,49 @@ int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
     return -1;
 }
 ```
+
+
+### 访问所有节点的最短路径
+给定一个无向连通图 G，找到一条最短的路径，满足所有的即节点都被访问到。例如，graph = [[1, 2, 3], [ 0 ], [ 0 ], [ 0 ]]，graph[ i ] 表示与 i 相邻的节点列表，最短路径是 1 -> 0 -> 2 -> 0 -> 3，长度是 4
+
+**「分析」**
+
+【状态压缩 + BFS搜索】，设置一个三元组 (u, mask, dist) 表示节点编号、已访问节点的压缩状态、当前节点的距离。
+
+```cpp
+int shortestPathLength(vector<vector<int>>& graph) {
+    int n = (int)graph.size(), ans = 0;
+    queue<vector<int>> q;
+    bool **vis = new bool *[n];
+    for (int i = 0; i < n; i++) {
+        vis[i] = new bool [1 << n]{};
+    }
+
+    for (int i = 0; i < n; i++) {
+        vis[i][1 << i] = true;
+        q.push({i, 1 << i, 0});
+    }
+    while (!q.empty()) {
+        auto tpl = q.front();
+        q.pop();
+        if (tpl[1] == (1 << n) - 1) {
+            ans = tpl[2];
+            break;
+        }
+        for (int i : graph[tpl[0]]) {
+            int mask = tpl[1] | (1 << i);
+            if (!vis[i][mask]) {
+                vis[i][mask] = true;
+                q.push({i, mask, tpl[2] + 1});
+            }
+        }
+    }
+    
+    for (int i = 0; i < n; i++) {
+        delete []vis[i];
+    }
+    delete []vis;
+    return ans;
+}
+```
+时间复杂度：$O(2^{n} n^{2})$，空间复杂度：$O(n 2^{n})$

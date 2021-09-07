@@ -77,6 +77,8 @@ nav:
             - 最长公共子序列: algo/dp/lcs.md
             - 编辑距离: algo/dp/edit-distance.md
             - 打家劫舍: algo/dp/rob.md
+            - 序列型: algo/dp/sequence.md
+            - 区间型: algo/dp/interval.md
         - 贪心: algo/greedy.md
         - 二分查找: algo/binary-search.md
         - 双指针: algo/two-pointers.md
@@ -87,6 +89,7 @@ nav:
         - Leetcode: algo/leetcode.md
     - 数据结构:
         - 链表: data-structure/list.md
+        - 栈 & 队列: data-structure/stack-queue.md
         - 单调栈: data-structure/monotone-stack.md
         - 树:
             - 基础: data-structure/tree/basis.md

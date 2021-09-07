@@ -13,14 +13,14 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/machine-learning/decision-tree/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/stack-queue/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>决策树 - 个人博客</title>
+        <title>栈 & 队列 - 个人博客</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#id3" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              决策树
+              栈 & 队列
             
           </span>
         </div>
@@ -503,12 +503,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       <label class="md-nav__link" for="__nav_3">
         数据结构
@@ -526,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/list/" class="md-nav__link">
+      <a href="../list/" class="md-nav__link">
         链表
       </a>
     </li>
@@ -536,11 +538,67 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../data-structure/stack-queue/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          栈 & 队列
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         栈 & 队列
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    栈
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    队列
+  </a>
+  
+    <nav class="md-nav" aria-label="队列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    用队列实现栈
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -550,7 +608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/monotone-stack/" class="md-nav__link">
+      <a href="../monotone-stack/" class="md-nav__link">
         单调栈
       </a>
     </li>
@@ -583,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/tree/basis/" class="md-nav__link">
+      <a href="../tree/basis/" class="md-nav__link">
         基础
       </a>
     </li>
@@ -595,7 +653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/tree/binary-tree/" class="md-nav__link">
+      <a href="../tree/binary-tree/" class="md-nav__link">
         二叉树
       </a>
     </li>
@@ -613,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/string/" class="md-nav__link">
+      <a href="../string/" class="md-nav__link">
         字符串
       </a>
     </li>
@@ -625,7 +683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/unionset/" class="md-nav__link">
+      <a href="../unionset/" class="md-nav__link">
         并查集
       </a>
     </li>
@@ -637,7 +695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/binary-indexed-tree/" class="md-nav__link">
+      <a href="../binary-indexed-tree/" class="md-nav__link">
         树状数组
       </a>
     </li>
@@ -649,7 +707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/segment-tree/" class="md-nav__link">
+      <a href="../segment-tree/" class="md-nav__link">
         线段树
       </a>
     </li>
@@ -661,7 +719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/priority-queue/" class="md-nav__link">
+      <a href="../priority-queue/" class="md-nav__link">
         优先队列
       </a>
     </li>
@@ -680,14 +738,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       <label class="md-nav__link" for="__nav_4">
         机器学习
@@ -703,81 +759,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          决策树
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../machine-learning/decision-tree/" class="md-nav__link">
         决策树
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#id3" class="md-nav__link">
-    ID3
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#c45" class="md-nav__link">
-    C4.5
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cart" class="md-nav__link">
-    CART
-  </a>
-  
-    <nav class="md-nav" aria-label="CART">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    分类树
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    决策树
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -787,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../roc/" class="md-nav__link">
+      <a href="../../machine-learning/roc/" class="md-nav__link">
         ROC
       </a>
     </li>
@@ -824,37 +810,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#id3" class="md-nav__link">
-    ID3
+  <a href="#_1" class="md-nav__link">
+    栈
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#c45" class="md-nav__link">
-    C4.5
+  <a href="#_2" class="md-nav__link">
+    队列
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cart" class="md-nav__link">
-    CART
-  </a>
-  
-    <nav class="md-nav" aria-label="CART">
+    <nav class="md-nav" aria-label="队列">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    分类树
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    决策树
+  <a href="#_3" class="md-nav__link">
+    用队列实现栈
   </a>
   
 </li>
@@ -877,55 +849,86 @@
               
                 
                 
-                  <h1>决策树</h1>
+                  <h1>栈 & 队列</h1>
                 
-                <h2 id="id3">ID3<a class="headerlink" href="#id3" title="Permanent link">&para;</a></h2>
-<div>
-<div class="MathJax_Preview">
-\begin{aligned}
-&amp; H(p) = -\sum_{i=1}^{N} p_{i} \log p_{i} \\
-&amp; H(D) = -\sum_{k=1}^{K} \frac{C_{k}}{D} \log \frac{C_{k}}{D} \\
-&amp; H(D \mid A) = \sum_{i=1}^{N} \frac{D_{i}}{D} H(D_{i}) = -\sum_{i=1}^{N} \frac{D_{i}}{D} \sum_{k=1}^{K} \frac{D_{ik}}{D_{i}} \log \frac{D_{ik}}{D_{i}} \\
-&amp; g(D, A) = H(D) - H(D \mid A)
-\end{aligned}
-</div>
-<script type="math/tex; mode=display">
-\begin{aligned}
-& H(p) = -\sum_{i=1}^{N} p_{i} \log p_{i} \\
-& H(D) = -\sum_{k=1}^{K} \frac{C_{k}}{D} \log \frac{C_{k}}{D} \\
-& H(D \mid A) = \sum_{i=1}^{N} \frac{D_{i}}{D} H(D_{i}) = -\sum_{i=1}^{N} \frac{D_{i}}{D} \sum_{k=1}^{K} \frac{D_{ik}}{D_{i}} \log \frac{D_{ik}}{D_{i}} \\
-& g(D, A) = H(D) - H(D \mid A)
-\end{aligned}
-</script>
-</div>
-<h2 id="c45">C4.5<a class="headerlink" href="#c45" title="Permanent link">&para;</a></h2>
-<div>
-<div class="MathJax_Preview">g_{R}(D, A) = \frac{H(D) - H(D \mid A)}{H(D)}</div>
-<script type="math/tex; mode=display">g_{R}(D, A) = \frac{H(D) - H(D \mid A)}{H(D)}</script>
-</div>
-<h2 id="cart">CART<a class="headerlink" href="#cart" title="Permanent link">&para;</a></h2>
-<h3 id="_1">分类树<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<div>
-<div class="MathJax_Preview">
-\begin{aligned}
-&amp; \text{Gini}(p) = \sum_{k=1}^{K} p_{k} (1 - p_{k}) = 1 - \sum_{k=1}^{K} p_{k}^{2} \\
-&amp; \text{Gini}(p) = 2p(1-p) \\
-&amp; \text{Gini}(D) = 1 - \sum_{k=1}^{K} (\frac{C_{k}}{D})^{2} \\
-&amp; D_{1} = \{(x, y) \in D \mid A(x) = a\}, \quad D_{2} = D - D_{1} \\
-&amp; \text{Gini}(D, A) = \frac{D_{1}}{D} \text{Gini}(D_{1}) + \frac{D_{2}}{D} \text{Gini}(D_{2})
-\end{aligned}
-</div>
-<script type="math/tex; mode=display">
-\begin{aligned}
-& \text{Gini}(p) = \sum_{k=1}^{K} p_{k} (1 - p_{k}) = 1 - \sum_{k=1}^{K} p_{k}^{2} \\
-& \text{Gini}(p) = 2p(1-p) \\
-& \text{Gini}(D) = 1 - \sum_{k=1}^{K} (\frac{C_{k}}{D})^{2} \\
-& D_{1} = \{(x, y) \in D \mid A(x) = a\}, \quad D_{2} = D - D_{1} \\
-& \text{Gini}(D, A) = \frac{D_{1}}{D} \text{Gini}(D_{1}) + \frac{D_{2}}{D} \text{Gini}(D_{2})
-\end{aligned}
-</script>
-</div>
-<h3 id="_2">决策树<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+                <h2 id="_1">栈<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>栈是一种具有【先进后出】特性的数据结构，通常于辅助实现非递归算法，如DFS。</p>
+<h2 id="_2">队列<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>队列是一种具有【先进先出】特性的数据结构，用于实现BFS算法。</p>
+<h3 id="_3">用队列实现栈<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>只用一个队列实现栈的功能：压入、弹出、取栈顶元素</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyStack</span> <span class="p">{</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="cm">/** Initialize your data structure here. */</span>
+    <span class="n">MyStack</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="cm">/** Push element x onto stack. */</span>
+    <span class="kt">void</span> <span class="n">push</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">q</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
+            <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="cm">/** Removes the element on top of the stack and returns that element. */</span>
+    <span class="kt">int</span> <span class="n">pop</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+        <span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/** Get the top element. */</span>
+    <span class="kt">int</span> <span class="n">top</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="cm">/** Returns whether the stack is empty. */</span>
+    <span class="kt">bool</span> <span class="n">empty</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：push 是 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，top 和 pop 都是 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
                 
               
               
@@ -945,7 +948,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../data-structure/priority-queue/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 优先队列" rel="prev">
+        <a href="../list/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 链表" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -954,20 +957,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              优先队列
+              链表
             </div>
           </div>
         </a>
       
       
         
-        <a href="../roc/" class="md-footer__link md-footer__link--next" aria-label="下一页: ROC" rel="next">
+        <a href="../monotone-stack/" class="md-footer__link md-footer__link--next" aria-label="下一页: 单调栈" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              ROC
+              单调栈
             </div>
           </div>
           <div class="md-footer__button md-icon">

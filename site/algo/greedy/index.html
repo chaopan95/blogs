@@ -367,6 +367,30 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dp/sequence/" class="md-nav__link">
+        序列型
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dp/interval/" class="md-nav__link">
+        区间型
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -466,6 +490,13 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     最小的船数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    均分数字
   </a>
   
 </li>
@@ -614,6 +645,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../data-structure/stack-queue/" class="md-nav__link">
+        栈 & 队列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../data-structure/monotone-stack/" class="md-nav__link">
         单调栈
       </a>
@@ -629,14 +672,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
       
-      <label class="md-nav__link" for="__nav_3_3">
+      <label class="md-nav__link" for="__nav_3_4">
         树
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="树" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_3">
+        <label class="md-nav__title" for="__nav_3_4">
           <span class="md-nav__icon md-icon"></span>
           树
         </label>
@@ -875,6 +918,13 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     最小的船数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    均分数字
   </a>
   
 </li>
@@ -1206,6 +1256,68 @@ s = \min \{x_{1}+x_{2n}, x_{2}+x_{xn-1}, \cdots, x_{n}+x_{n+1}\}
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h3 id="_7">均分数字<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>给定一个列表 nums = [1, 0, 5]，每次可以选若干个位置，将数字减一，然后对相邻的一个位置加一，如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\text{1st: } &amp; 1 &amp; &amp; 0 &amp; \leftarrow &amp; 5 &amp; &amp; \Rightarrow &amp; &amp; 1 &amp; &amp; 1 &amp; &amp; 4 \\
+\text{2nd: } &amp; 1 &amp; \leftarrow &amp; 1 &amp; \leftarrow &amp; 4 &amp; &amp; \Rightarrow &amp; &amp; 2 &amp; &amp; 1 &amp; &amp; 3 \\
+\text{3rd: } &amp; 2 &amp; \leftarrow &amp; 1 &amp; \leftarrow &amp; 3 &amp; &amp; \Rightarrow &amp; &amp; 2 &amp; &amp; 2 &amp; &amp; 2 \\
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\text{1st: } & 1 & & 0 & \leftarrow & 5 & & \Rightarrow & & 1 & & 1 & & 4 \\
+\text{2nd: } & 1 & \leftarrow & 1 & \leftarrow & 4 & & \Rightarrow & & 2 & & 1 & & 3 \\
+\text{3rd: } & 2 & \leftarrow & 1 & \leftarrow & 3 & & \Rightarrow & & 2 & & 2 & & 2 \\
+\end{matrix}
+</script>
+</div>
+<p><strong>「分析」</strong></p>
+<p>【贪心】先判断数值之和能否被数组长度整除。如果可以的话，每一个数减去平均值，每一个位置如果是正数 k，那么意味着，最少 k 次【减一】，如果是负数，最少 k 次【加一】，并且如果出现连续几个正数或者负数，这意味着，【减一】或者【加一】需要传递到后面的位置，例如 [1, 1, -1, -1] 和 [1, -1, -1, 1] 是不同的，前者需要 2 次，而后者需要 1 次，这是因为 [1, 1] 毗邻出现。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">findMinMoves</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">machines</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">m</span> <span class="p">:</span> <span class="n">machines</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">m</span><span class="p">;</span>
+        <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">%</span> <span class="n">cnt</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">avg</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="n">cnt</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="nl">m</span> <span class="p">:</span> <span class="n">machines</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">m</span> <span class="o">-=</span> <span class="n">avg</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">presum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">m</span> <span class="p">:</span> <span class="n">machines</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">presum</span> <span class="o">+=</span> <span class="n">m</span><span class="p">;</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">max</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">presum</span><span class="p">),</span> <span class="n">m</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
                 
               
               
@@ -1225,7 +1337,7 @@ s = \min \{x_{1}+x_{2n}, x_{2}+x_{xn-1}, \cdots, x_{n}+x_{n+1}\}
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../dp/rob/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 打家劫舍" rel="prev">
+        <a href="../dp/interval/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 区间型" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1234,7 +1346,7 @@ s = \min \{x_{1}+x_{2n}, x_{2}+x_{xn-1}, \cdots, x_{n}+x_{n+1}\}
               <span class="md-footer__direction">
                 上一页
               </span>
-              打家劫舍
+              区间型
             </div>
           </div>
         </a>

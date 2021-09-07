@@ -157,50 +157,6 @@ int findCircleNum(vector<vector<int>>& isConnected) {
 ```
 时间复杂度 $O(n^{2} \log n)$，空间复杂度 $O(n)$
 
-### 访问所有节点的最短路径
-给定一个无向连通图 G，找到一条最短的路径，满足所有的即节点都被访问到。例如，graph = [[1, 2, 3], [ 0 ], [ 0 ], [ 0 ]]，graph[ i ] 表示与 i 相邻的节点列表，最短路径是 1 -> 0 -> 2 -> 0 -> 3，长度是 4
-
-**「分析」**
-
-【状态压缩 + BFS搜索】，设置一个三元组 (u, mask, dist) 表示节点编号、已访问节点的压缩状态、当前节点的距离。
-
-```cpp
-int shortestPathLength(vector<vector<int>>& graph) {
-    int n = (int)graph.size(), ans = 0;
-    queue<vector<int>> q;
-    bool **vis = new bool *[n];
-    for (int i = 0; i < n; i++) {
-        vis[i] = new bool [1 << n]{};
-    }
-
-    for (int i = 0; i < n; i++) {
-        vis[i][1 << i] = true;
-        q.push({i, 1 << i, 0});
-    }
-    while (!q.empty()) {
-        auto tpl = q.front();
-        q.pop();
-        if (tpl[1] == (1 << n) - 1) {
-            ans = tpl[2];
-            break;
-        }
-        for (int i : graph[tpl[0]]) {
-            int mask = tpl[1] | (1 << i);
-            if (!vis[i][mask]) {
-                vis[i][mask] = true;
-                q.push({i, mask, tpl[2] + 1});
-            }
-        }
-    }
-    
-    for (int i = 0; i < n; i++) {
-        delete []vis[i];
-    }
-    delete []vis;
-    return ans;
-}
-```
-时间复杂度：$O(2^{n} n^{2})$，空间复杂度：$O(n 2^{n})$
 
 ### 按照公因数分群
 给定一个数组 nums = [20, 50, 9, 63]，如果两个数有大于 1 的公因数，这两个数属于同一个群，群成员数目最多是多少？给出的例子是 2。
@@ -242,3 +198,49 @@ int largestComponentSize(vector<int>& nums) {
 }
 ```
 时间复杂度：$O(n \sqrt{n})$，空间复杂度：$O(n)$，其中 n 是 nums 列表中的最大值。
+
+
+### 按公因子排序数组
+给定一个数组 nums = [7, 21, 3]，如果两个元素的共因子大于 1，那么我们可以将其交换，试问，能否最终得到一个排序数组？
+
+**「分析」**
+
+【并查集】如果 a 和 b 可交换，b 和 c 可交换，那么 a 和 c 可交换。因此，同一个集合的元素任意交换，即可得到一个排序数组。我们借助一个数与它的所有因子，构造并查集，这样避免 $O(n^{2})$ 的时间复杂度。最终，我们用排序好的数组与为排序的数组逐一比较，如果两个数字不属于同一个集合，那么 nums 是不能有序的。
+
+```cpp
+vector<int> fa;
+
+int find(int x) {
+    return x != fa[x] ? fa[x] = find(fa[x]) : x;
+}
+
+void unify(int x, int y) {
+    fa[find(y)] = find(x);
+}
+
+bool gcdSort(vector<int>& nums) {
+    int n = *max_element(nums.begin(), nums.end()) + 1;
+    fa.resize(n);
+    for (int i = 0; i < n; i++) {
+        fa[i] = i;
+    }
+    for (int num : nums) {
+        for (int prime = 2; prime <= (int)sqrt(num); prime++) {
+            if (num % prime == 0) {
+                unify(num, prime);
+                unify(num, num / prime);
+            }
+        }
+    }
+    vector<int> sortedNums = nums;
+    sort(sortedNums.begin(), sortedNums.end());
+    for (int i = 0; i < (int)nums.size(); i++) {
+        if (nums[i] == sortedNums[i]) { continue; }
+        if (find(nums[i]) != find(sortedNums[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+```
+时间复杂度：$O(m \sqrt{m})$，空间复杂度：$O(m)$，其中 m 是 nums 中的最大值

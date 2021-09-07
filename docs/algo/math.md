@@ -686,3 +686,36 @@ vector<int> majorityElement(vector<int>& nums) {
 }
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(1)$
+
+
+## 编码
+### 格雷编码
+格雷编码是一个二进制数字系统，在该系统中，两个连续的数值仅有一个位数的差异。给定一个代表编码总位数的非负整数 n，打印其格雷编码序列。即使有多个不同答案，你也只需要返回其中一种。格雷编码序列必须以 0 开头。例如 n = 2，会得到 4 个编码
+
+$$
+\begin{matrix}
+00 & \rightarrow & 0 \\
+01 & \rightarrow & 1 \\
+11 & \rightarrow & 3 \\
+10 & \rightarrow & 2
+\end{matrix}
+$$
+
+**「分析」**
+
+格雷编码的公式
+
+$$
+\text{GrayCode}(i) = i \text{ XOR } \left \lfloor \frac{i}{2} \right \rfloor
+$$
+
+```cpp
+vector<int> grayCode(int n) {
+    vector<int> ans(1 << n, 0);
+    for (int i = 1; i < (1 << n); i++) {
+        ans[i] = i ^ (i >> 1);
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$
