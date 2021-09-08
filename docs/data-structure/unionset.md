@@ -244,3 +244,38 @@ bool gcdSort(vector<int>& nums) {
 }
 ```
 时间复杂度：$O(m \sqrt{m})$，空间复杂度：$O(m)$，其中 m 是 nums 中的最大值
+
+### 情侣牵手
+给定一个列表 row = [5, 4, 2, 6, 3, 1, 0, 7]，表示 N 对情侣，(2 * i, 2 * i + 1) 是情侣，有些情侣没有相邻坐在一起，我们可以任意调换两个人的座位，来使得情侣坐到一起。试问，最少调换多少次座位？
+
+**「分析」**
+
+【并查集】2i 和 2i + 1，是一对情侣，属于一个集合。如果有人坐错了位置，如三对情侣 a1 b1 c2 b2 a2 c1，我们需调整两次才能回归正常。我们统计所有的坐错位置的情侣集合，然后情侣数减去连通分量数目即为答案。
+
+```cpp
+vector<int> fa;
+
+int find(int x) {
+    return x == fa[x] ? x : fa[x] = find(fa[x]);
+}
+
+void unify(int x, int y) {
+    fa[find(y)] = find(x);
+}
+
+int minSwapsCouples(vector<int>& row) {
+    int n = (int)row.size() / 2, cnt = 0;
+    fa.resize(n);
+    for (int i = 0; i < n; i++) {
+        fa[i] = i;
+    }
+    for (int i = 0; i < n; i++) {
+        unify(row[2 * i] / 2, row[2 * i + 1] / 2);
+    }
+    for (int i = 0; i < n; i++) {
+        cnt += (i == find(i));
+    }
+    return n - cnt;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$

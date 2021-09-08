@@ -251,3 +251,40 @@ int findMinMoves(vector<int>& machines) {
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(1)$
 
+### IPO
+给你 n 个项目。对于每个项目 i ，它都有一个纯利润 profits[i] ，和启动该项目需要的最小资本 capital[i] 。最初，你的资本为 w 。当你完成一个项目时，你将获得纯利润，且利润将被添加到你的总资本中。总而言之，从给定项目中选择 最多 k 个不同项目的列表，以 最大化最终资本 ，并输出最终可获得的最多资本。
+
+如k = 2, w = 0, profits = [1,2,3], capital = [0,1,1]
+
+输出：4
+
+解释：由于你的初始资本为 0，你仅可以从 0 号项目开始。在完成后，你将获得 1 的利润，你的总资本将变为 1。此时你可以选择开始 1 号或 2 号项目。由于你最多可以选择两个项目，所以你需要完成 2 号项目以获得最大的资本。因此，输出最后最大化的资本，为 0 + 1 + 3 = 4。
+
+**「分析」**
+
+【贪心 + 大顶堆】因为 w 一直在变换，我门排除了动态规划的可能性。题目的意思是，每次从所有不超过 w 的项目中选择最大的收益的那个，然后更新 w，这就是【贪心】的思想。
+
+```cpp
+int findMaximizedCapital(int k, int w,
+                         vector<int>& profits,
+                         vector<int>& capital) {
+    priority_queue<int, vector<int>, less<int>> pq;
+    vector<vector<int>> cp;
+    int n = (int)profits.size();
+    for (int i = 0; i < n; i++) {
+        cp.emplace_back(vector<int>{capital[i],
+                                    profits[i]});
+    }
+    sort(cp.begin(), cp.end());
+    for (int i = 0, j = 0; i < k; i++) {
+        for (; j < n && cp[j][0] <= w; j++) {
+            pq.push(cp[j][1]);
+        }
+        if (pq.empty()) { break; }
+        w += pq.top();
+        pq.pop();
+    }
+    return w;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$
