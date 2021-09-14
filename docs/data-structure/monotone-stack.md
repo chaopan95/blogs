@@ -65,3 +65,29 @@ bool verifyPreorder(vector<int>& preorder) {
 }
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(n)$
+
+## 移除 k 个字符后的最小值
+给定一个只包含数字的字符串 num = “10200” 和一个整数 k = 1，删除 k 个字符，使得剩下的数字值最小，结果不包含前置 0.
+
+**「分析」**
+
+【单调栈】考虑删除一个字符的情况，以 “14235” 为例，只有删除 “4” 时，得到的值最小，我们发现删除的字符要比它的后一个字符大，并且被删除的字符位置尽可能靠前。如果每次扫描删除一个，总共需要 $O(kn)$ 的时间复杂度，我们使用【单调栈】来优化。
+
+```cpp
+string removeKdigits(string num, int k) {
+    string ans = "";
+    for (char ch : num) {
+        while (k && !ans.empty() && ans.back() > ch) {
+            ans.pop_back();
+            k--;
+        }
+        if (ans.empty() && ch == '0') { continue; }
+        ans.push_back(ch);
+    }
+    while (k-- && !ans.empty()) {
+        ans.pop_back();
+    }
+    return ans.empty() ? "0" : ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$

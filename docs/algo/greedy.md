@@ -288,3 +288,52 @@ int findMaximizedCapital(int k, int w,
 }
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(n)$
+
+### 完成任务的最小初始能量
+给出一个任务列表 tasks = [[1, 2],[2, 4],[4, 8]]，表示一个任务的所需要的能量和开启这项任务的能量，如任务1需要能量值 2 才能启动，完成后，扣除能量值 1.试问，最少要准备多少能量值，才能完成所有任务（可以无序）？
+
+**「分析」**
+
+【排序 + 贪心】任意两个任务，t1 和 t2，t1[ 1 ] - t1[ 0 ] > t2[ 1 ] - t2[ 0 ]，如果先完成 t1 后完成 t2，那么 t1 的差值有一部可以给 t2[ 1 ]，反过来，先完成 t2，对 t1 额外补充更多的能量。因此我们选择对 tasks 按照【所需能量值 - 消耗能量值】排序
+
+```cpp
+int minimumEffort(vector<vector<int>>& tasks) {
+    int ans = 0;
+    sort(tasks.begin(), tasks.end(), [](const vector<int> a,
+                                        const vector<int> b){
+        return a[1] - a[0] < b[1] - b[0];
+    });
+    for (auto task : tasks) {
+        if (ans + task[0] < task[1]) {
+            ans = task[1];
+        }
+        else {
+            ans += task[0];
+        }
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n \log n)$，空间复杂度：$O(1)$
+
+### 最小差值
+给定一个数组 nums = [1, 3, 6] 和一个整数 k = 3，对数组中的每个元素【加k】或者【减k】，试问，最终的新数组的最大值与最小值之差的最小是多少？例子对应的结果是 3
+
+**「分析」**
+
+【排序 + 贪心】对数组进行排序后，有一个位置 i 满足，i 及其左侧的数值【加k】，i 右侧的数【减k】。并且，min(nums[ 0 ] + k, nums[i + 1] - k) 形成下界，max(nums[ i ] + k, nums[n - 1] - k) 形成下界
+
+```cpp
+int smallestRangeII(vector<int>& nums, int k) {
+    int n = (int)nums.size();
+    sort(nums.begin(), nums.end());
+    int ans = nums[n - 1] - nums[0];
+    for (int i = 0; i < n - 1; i++) {
+        int hi = max(nums[i] + k, nums[n - 1] - k);
+        int lo = min(nums[0] + k, nums[i + 1] - k);
+        ans = min(ans, hi - lo);
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n \log n)$，空间复杂度：$O(1)$

@@ -375,6 +375,27 @@ int getSum(int a, int b) {
 ```
 时间复杂度：$O(\log \min(\left \| a \right \|, \left \| b \right \|))$，空间复杂度：$O(1)$
 
+### 按位与后的异或和
+给定两个数组 A = [1, 2, 3] 和 B = [5, 6]，A 和 B 的元素两两按位与，得到的结果形成一个 len(A) * len(B) 的数组，求这个数组元素的异或和。
+
+**「分析」**
+
+【位运算】假设最后的结果有 m 位，在所有的按位与结果中，第 k 位上，必须有奇数个 1，最终答案的第 k 位才会是 1。因为 len(A) * len(B) 是奇数，那么 len(A) 和 len(B) 都是奇数，所有 A 和 B 的异或和的第 k 位必须是 1。
+
+```cpp
+int getXORSum(vector<int>& arr1, vector<int>& arr2) {
+    int sum1 = 0, sum2 = 0;
+    for (int num : arr1) {
+        sum1 ^= num;
+    }
+    for (int num : arr2) {
+        sum2 ^= num;
+    }
+    return sum1 & sum2;
+}
+```
+时间复杂度：$O(n + m)$，空间复杂度：$O(1)$
+
 
 ## 阶乘
 ### 阶乘尾数0的个数

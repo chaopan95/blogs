@@ -601,6 +601,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    移除 k 个字符后的最小值
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -824,6 +831,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    移除 k 个字符后的最小值
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -930,6 +944,42 @@ i = \arg \min_{i \in [0, n - 1)} \text{s[ i ]} \geq \text{s[i + 1]}
         <span class="n">stk</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+<h2 id="k">移除 k 个字符后的最小值<a class="headerlink" href="#k" title="Permanent link">&para;</a></h2>
+<p>给定一个只包含数字的字符串 num = “10200” 和一个整数 k = 1，删除 k 个字符，使得剩下的数字值最小，结果不包含前置 0.</p>
+<p><strong>「分析」</strong></p>
+<p>【单调栈】考虑删除一个字符的情况，以 “14235” 为例，只有删除 “4” 时，得到的值最小，我们发现删除的字符要比它的后一个字符大，并且被删除的字符位置尽可能靠前。如果每次扫描删除一个，总共需要 <span><span class="MathJax_Preview">O(kn)</span><script type="math/tex">O(kn)</script></span> 的时间复杂度，我们使用【单调栈】来优化。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">string</span> <span class="nf">removeKdigits</span><span class="p">(</span><span class="n">string</span> <span class="n">num</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">string</span> <span class="n">ans</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="nl">ch</span> <span class="p">:</span> <span class="n">num</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">k</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">ans</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">ans</span><span class="p">.</span><span class="n">back</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">ch</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ans</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+            <span class="n">k</span><span class="o">--</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ans</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">ch</span> <span class="o">==</span> <span class="sc">&#39;0&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="k">continue</span><span class="p">;</span> <span class="p">}</span>
+        <span class="n">ans</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">k</span><span class="o">--</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">ans</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">ans</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">?</span> <span class="s">&quot;0&quot;</span> <span class="o">:</span> <span class="n">ans</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
