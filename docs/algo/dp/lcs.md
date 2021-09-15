@@ -139,3 +139,46 @@ while (i < m && j < n) {
         return 0;
     }
     ```
+
+### 交错字符
+给定三个字符串 s1 = “aabcc”， s2 = “dbbca”。s3 = “aadbbcbcac”，判断 s3 是否由 s1 和 s2 交错形成，即 s1 和 s2 是 s3 的子序列且无重叠。
+
+**「分析」**
+
+【动态规划】如果使用【双指针】求解本题的话，我们会得到错误结果，因为，【双指针】会贪心地找到最先遇到的相同字符。也就是说，本问题的子问题有重叠，所有使用【动态规划】。设 dp[ i ][ j ] 表示 s1 的前 i 个字符与 s2 的前 j 个字符是否形成 s3 的前 i + j 个字符。
+
+$$
+\begin{aligned}
+\text{dp[ i ][ j ]} =& (\text{dp[i - 1][ j ] and s1[ i ] == s3[i + j]}) \\
+& \text{or } (\text{dp[ i ][j - 1] and s2[ j ] == s3[i + j]})
+\end{aligned}
+$$
+
+```cpp
+bool isInterleave(string s1, string s2, string s3) {
+    int n1 = (int)s1.length(), n2 = (int)s2.length(), n3 = (int)s3.length();
+    if (n1 + n2 != n3) { return false; }
+    bool **dp = new bool *[n1 + 1];
+    for (int i = 0; i <= n1; i++) {
+        dp[i] = new bool [n2 + 1]{};
+    }
+    dp[0][0] = true;
+    for (int i = 0; i <= n1; i++) {
+        for (int j = 0; j <= n2; j++) {
+            if (i > 0) {
+                dp[i][j] |= dp[i - 1][j] && s1[i - 1] == s3[i + j - 1];
+            }
+            if (j > 0) {
+                dp[i][j] |= dp[i][j - 1] && s2[j - 1] == s3[i + j - 1];
+            }
+        }
+    }
+    bool ans = dp[n1][n2];
+    for (int i = 0; i <= n1; i++) {
+        delete []dp[i];
+    }
+    delete []dp;
+    return ans;
+}
+```
+时间复杂度：$O(n_{1} n_{2})$，空间复杂度：$O(n_{1} n_{2})$
