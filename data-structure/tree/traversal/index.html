@@ -13,14 +13,14 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/tree/basis/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/tree/traversal/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>基础 - 个人博客</title>
+        <title>遍历 - 个人博客</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              基础
+              遍历
             
           </span>
         </div>
@@ -585,61 +585,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          基础
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../basis/" class="md-nav__link">
         基础
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    术语
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    种类
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -659,11 +609,67 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../traversal/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          遍历
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         遍历
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    遍历
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    层序遍历
+  </a>
+  
+    <nav class="md-nav" aria-label="层序遍历">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    填充二叉树的 next 指针
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -819,22 +825,28 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    简介
+    遍历
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    术语
+    层序遍历
+  </a>
+  
+    <nav class="md-nav" aria-label="层序遍历">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    填充二叉树的 next 指针
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    种类
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -851,61 +863,168 @@
               
                 
                 
-                  <h1>基础</h1>
+                  <h1>遍历</h1>
                 
-                <h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>树是一种非线性（可退化成线性）的数据结构，由顶点和边组成，不存在任何环。没有任何结点的树叫做空树。</p>
-<h2 id="_2">术语<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>根结点</p>
-</li>
-<li>
-<p>孩子结点</p>
-</li>
-<li>
-<p>父结点</p>
-</li>
-<li>
-<p>兄弟结点：同一个父结点的孩子结点</p>
-</li>
-<li>
-<p>祖先：从根结点到该结点的父结点这条路径上的所有结点</p>
-</li>
-<li>
-<p>子孙：以该结点为根结点的所有结点</p>
-</li>
-<li>
-<p>叶子结点：没有孩子结点或孩子结点为 null 的结点</p>
-</li>
-<li>
-<p>度：与结点相连接的边数，分为出度和入度</p>
-</li>
-<li>
-<p>深度：根结点到叶子结点的路径上结点的个数</p>
-</li>
-<li>
-<p>高度：根结点到叶子结点的路径上边的个数</p>
-</li>
-</ul>
-<h2 id="_3">种类<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>二叉树</p>
-</li>
-<li>
-<p>多叉树</p>
-</li>
-<li>
-<p>平衡树</p>
-</li>
-<li>
-<p>B-树</p>
-</li>
-<li>
-<p>红黑树</p>
-</li>
-</ul>
+                <h2 id="_1">遍历<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>遍历是对二叉树的所有节点做一次无重复的访问。</p>
+<h2 id="_2">层序遍历<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>层序遍历通常使用【队列】作为辅助数据结构。</p>
+<h3 id="next">填充二叉树的 next 指针<a class="headerlink" href="#next" title="Permanent link">&para;</a></h3>
+<p>给定一棵二叉树，每一个节点除了 left 和 right 指针，还有一个指向同层右侧 next 指针，初始为 nullptr，实现一个算法，填充 next。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+&amp; &amp; &amp; &amp; 1 \\
+&amp; &amp; &amp; \swarrow &amp; &amp; \searrow \\
+&amp; &amp; 2 &amp; &amp; {\color{Red} \Rightarrow} &amp; &amp; 3 \\
+&amp; \swarrow &amp; &amp; \searrow &amp; &amp; &amp; &amp; \searrow \\
+4 &amp; &amp; {\color{Red} \Rightarrow} &amp; &amp;  5  &amp; &amp; {\color{Red} \Rightarrow} &amp; &amp; 6
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+& & & & 1 \\
+& & & \swarrow & & \searrow \\
+& & 2 & & {\color{Red} \Rightarrow} & & 3 \\
+& \swarrow & & \searrow & & & & \searrow \\
+4 & & {\color{Red} \Rightarrow} & &  5  & & {\color{Red} \Rightarrow} & & 6
+\end{matrix}
+</script>
+</div>
+<p><strong>「分析」</strong></p>
+<p>【层序遍历】利用 next 指针，无需 queue 辅助空间 。假设当前节点是 cur，cur-&gt;left（如果存在）指向 cur-&gt;right 或者 cur-&gt;next-&gt;left / right（找到 cu 的r第一个 left 或 right 不空的 next）。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Node</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">Node</span><span class="o">*</span> <span class="n">left</span><span class="p">;</span>
+    <span class="n">Node</span><span class="o">*</span> <span class="n">right</span><span class="p">;</span>
+    <span class="n">Node</span><span class="o">*</span> <span class="n">next</span><span class="p">;</span>
+
+    <span class="n">Node</span><span class="p">()</span> <span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">left</span><span class="p">(</span><span class="nb">NULL</span><span class="p">),</span> <span class="n">right</span><span class="p">(</span><span class="nb">NULL</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="n">Node</span><span class="p">(</span><span class="kt">int</span> <span class="n">_val</span><span class="p">)</span> <span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="n">_val</span><span class="p">),</span> <span class="n">left</span><span class="p">(</span><span class="nb">NULL</span><span class="p">),</span> <span class="n">right</span><span class="p">(</span><span class="nb">NULL</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="n">Node</span><span class="p">(</span><span class="kt">int</span> <span class="n">_val</span><span class="p">,</span> <span class="n">Node</span><span class="o">*</span> <span class="n">_left</span><span class="p">,</span> <span class="n">Node</span><span class="o">*</span> <span class="n">_right</span><span class="p">,</span> <span class="n">Node</span><span class="o">*</span> <span class="n">_next</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="n">_val</span><span class="p">),</span> <span class="n">left</span><span class="p">(</span><span class="n">_left</span><span class="p">),</span> <span class="n">right</span><span class="p">(</span><span class="n">_right</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="n">_next</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="n">Node</span><span class="o">*</span> <span class="nf">connect</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">nextFirst</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="o">*</span><span class="n">cur</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">cur</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Node</span> <span class="o">*</span><span class="n">left</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="o">*</span><span class="n">right</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="o">*</span><span class="n">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">left</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">right</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">nextFirst</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">nextFirst</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">nextFirst</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">nextFirst</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">next</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">left</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">left</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">right</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">left</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">left</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">right</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">next</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">nextFirst</span><span class="p">;</span>
+            <span class="n">nextFirst</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">next</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">root</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
                 
               
               
@@ -925,7 +1044,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../monotone-stack/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 单调栈" rel="prev">
+        <a href="../binary-tree/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 二叉树" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -934,20 +1053,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              单调栈
+              二叉树
             </div>
           </div>
         </a>
       
       
         
-        <a href="../binary-tree/" class="md-footer__link md-footer__link--next" aria-label="下一页: 二叉树" rel="next">
+        <a href="../../string/" class="md-footer__link md-footer__link--next" aria-label="下一页: 字符串" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              二叉树
+              字符串
             </div>
           </div>
           <div class="md-footer__button md-icon">
