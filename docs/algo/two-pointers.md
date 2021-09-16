@@ -1,6 +1,39 @@
 ## 基础
 双指针是一种$O(n)$时间复杂度的算法，通常配合排序算法和哈希表一起使用。
 
+## 接雨水
+给定一个数组 height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]，表示地阶的高度，试问能接到最多的雨水量是多少？给出的例子对应答案是 6。
+
+**「分析」**
+
+【双指针】每一个位置能否接到雨水，取决于左右两侧的高度是否均大于当前位置的高度。
+
+```cpp
+int trap(vector<int>& height) {
+    int ans = 0, n = int(height.size());
+    if (n < 3) { return ans; }
+    int i = 0, j = n-1;
+    int leftMax = 0, rightMax = 0;
+    while (i < j)
+    {
+        if (height[i] < height[j])
+        {
+            if (height[i] >= leftMax) { leftMax = height[i]; }
+            else { ans += leftMax - height[i]; }
+            i++;
+        }
+        else
+        {
+            if (height[j] >= rightMax) { rightMax = height[j]; }
+            else { ans += rightMax - height[j]; }
+            j--;
+        }
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$
+
 ## 三数之和小于 target 的个数
 给定一个列表 nums = [0, 1, -2, 3] 和一个整数 target = 2，从 nums 中找出三个下标 $0 \leq i < j < k < n$ 满足对应的元素之和小于 target，试问这样的组合数是多少？
 

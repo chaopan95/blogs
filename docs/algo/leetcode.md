@@ -294,75 +294,6 @@ public:
 };
 ```
 
-## 0008. String to Integer (atoi)
-Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.
-
-The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
-
-If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
-
-If no valid conversion could be performed, a zero value is returned.
-
-Note:
-Only the space character ' ' is considered as whitespace character.
-Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [$-2^{31}$,  $2^{31}$−1]. If the numerical value is out of the range of representable values, INT_MAX ($2^{31}$ − 1) or INT_MIN (-$2^{31}$) is returned.
-
-Example:
-Input: "42"
-Output: 42
-
-Example 2:
-Input: "   -42"
-Output: -42
-Explanation: The first non-whitespace character is '-', which is the minus sign. Then take as many numerical digits as possible, which gets 42.
-
-Example 3:
-Input: "4193 with words"
-Output: 4193
-Explanation: Conversion stops at digit '3' as the next character is not a numerical digit.
-
-Example 4:
-Input: "words and 987"
-Output: 0
-Explanation: The first non-whitespace character is 'w', which is not a numerical digit or a +/- sign. Therefore no valid conversion could be performed.
-
-Example 5:
-Input: "-91283472332"
-Output: -2147483648
-Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer. Thefore INT_MIN (−$2^{31}$) is returned.
-
-Solution:
-
-```cpp
-class Solution {
-public:
-    int myAtoi(string s) {
-        int n = int(s.length());
-        if (n == 0) { return 0; }
-        bool isNeg = false;
-        long res = 0;
-        int pos = 0;
-        while (s[pos] == ' ') { pos++; }
-        if (s[pos] == '-') { isNeg = true; }
-        else if (s[pos] == '+') { isNeg = false; }
-        else if (s[pos] >= '0' && s[pos] <= '9') { res += s[pos] - '0'; }
-        else { return 0; }
-        for (++pos; pos < n; pos++)
-        {
-            if (s[pos] < '0' || s[pos] > '9') { break; }
-            res = res * 10 + s[pos] - '0';
-            if (res >= (1ll << 31))
-            {
-                if (isNeg) { return -(1ll << 31); }
-                else { return (1ll << 31) - 1; }
-            }
-        }
-        if (isNeg) { return -res; }
-        return res;
-    }
-};
-```
-
 ## 0010. Regular Expression Matching*
 Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
 
@@ -620,84 +551,6 @@ public:
 };
 ```
 
-## 0020. Valid Parentheses
-```cpp
-/*
-Input: s = "()"
-Output: true
-
-Input: s = "()[]{}"
-Output: true
-
-Input: s = "(]"
-Output: false
-
-Input: s = "([)]"
-Output: false
-
-Input: s = "{[]}"
-Output: true
-*/
-class Solution {
-public:
-    bool isValid(string s) {
-        int n = int(s.length());
-        stack<char> st;
-        for (int i = 0; i < n; i++)
-        {
-            if (s[i] == '[' || s[i] == '{' || s[i] == '(')
-            {
-                st.push(s[i]);
-            }
-            else if ((s[i] == ')' && !st.empty() && st.top() == '(') ||
-                     (s[i] == ']' && !st.empty() && st.top() == '[') ||
-                     (s[i] == '}' && !st.empty() && st.top() == '{'))
-            {
-                st.pop();
-            }
-            else { return false; }
-        }
-        return st.empty();
-    }
-};
-```
-
-## 0021. Merge Two Sorted Lists
-```cpp
-/*
-Input: 1->2->4, 1->3->4
-Output: 1->1->2->3->4->4
-*/
-class Solution {
-public:
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        if (l1 == nullptr) { return l2; }
-        if (l2 == nullptr) { return l1; }
-        ListNode *head = new ListNode(0);
-        ListNode *curNode = head;
-        while (l1 != nullptr && l2 != nullptr)
-        {
-            if (l1->val < l2->val)
-            {
-                curNode->next = l1;
-                l1 = l1->next;
-            }
-            else
-            {
-                curNode->next = l2;
-                l2 = l2->next;
-            }
-            curNode = curNode->next;
-        }
-        if (l1 != nullptr) { curNode->next = l1; }
-        if (l2 != nullptr) { curNode->next = l2; }
-        curNode = head->next;
-        delete head;
-        return curNode;
-    }
-};
-```
-
 ## 0022. Generate Parentheses
 ```cpp
 /*
@@ -732,42 +585,6 @@ public:
             append(res, str+'(', n, idx+1, nLeft+1, nRight);
         }
         append(res, str+')', n, idx+1, nLeft, nRight+1);
-    }
-};
-```
-
-## 0023. Merge k Sorted Lists
-```cpp
-/*
-Input: lists = [[1,4,5],[1,3,4],[2,6]]
-Output: [1,1,2,3,4,4,5,6]
-*/
-class Solution {
-public:
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
-        int n = int(lists.size());
-        if (n == 0) { return nullptr; }
-        ListNode *pre = new ListNode(0), *head = pre, *cur = pre;
-        while (true)
-        {
-            int idx = -1, min = (1ll << 31) - 1;
-            for (int i = 0; i < n; i++)
-            {
-                if (lists[i] == nullptr) { continue; }
-                if (lists[i]->val < min)
-                {
-                    idx = i;
-                    min = lists[i]->val;
-                }
-            }
-            if (idx == -1) { break; }
-            cur->next = lists[idx];
-            lists[idx] = lists[idx]->next;
-            cur = cur->next;
-        }
-        head = pre->next;
-        delete pre;
-        return head;
     }
 };
 ```
@@ -845,48 +662,6 @@ public:
         head = pre->next;
         delete pre;
         return head;
-    }
-};
-```
-
-## 0026. Remove Duplicates from Sorted Array
-```cpp
-/*
-Given nums = [0,0,1,1,1,2,2,3,3,4]
-Your function should return length = 5
-*/
-class Solution {
-public:
-    int removeDuplicates(vector<int>& nums) {
-        int n = int(nums.size());
-        if (n < 2) { return n; }
-        int len = 1;
-        for (int i = 1; i < n; i++)
-        {
-            if (nums[i] == nums[i-1]) { continue; }
-            nums[len++] = nums[i];
-        }
-        return len;
-    }
-};
-```
-
-## 0027. Remove Element
-```cpp
-/*
-Given nums = [0,1,2,2,3,0,4,2], val = 2,
-Your function should return length = 5, 
-*/
-class Solution {
-public:
-    int removeElement(vector<int>& nums, int val) {
-        int n = int(nums.size()), len = 0;
-        if (n == 0) { return 0; }
-        for (int i = 0; i < n; i++)
-        {
-            if (nums[i] != val) { nums[len++] = nums[i]; }
-        }
-        return len;
     }
 };
 ```
@@ -1330,60 +1105,6 @@ public:
 };
 ```
 
-## 0038. Count and Say
-The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
-countAndSay(1) = "1"
-countAndSay(n) is the way you would "say" the digit string from countAndSay(n-1), which is then converted into a different digit string.
-To determine how you "say" a digit string, split it into the minimal number of groups so that each group is a contiguous section all of the same character. Then for each group, say the number of characters, then say the character. To convert the saying into a digit string, replace the counts with a number and concatenate every saying.
-
-Example:
-Input: n = 1
-Output: "1"
-Explanation: This is the base case.
-
-Input: n = 4
-Output: "1211"
-Explanation:
-countAndSay(1) = "1"
-countAndSay(2) = say "1" = one 1 = "11"
-countAndSay(3) = say "11" = two 1's = "21"
-countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
-
-Constraints:
-1 <= n <= 30
-
-Solution:
-
-```cpp
-class Solution {
-public:
-    string countAndSay(int n) {
-        string res = "1";
-        if (n == 1) { return res; }
-        for (int i = 2; i <= n; i++)
-        {
-            string cur = "";
-            res.push_back('0');
-            int len = int(res.length()), count = 1;
-            char ch = res[0];
-            for (int i = 1; i < len; i++)
-            {
-                if (res[i] == res[i-1]) { count++; }
-                else
-                {
-                    cur += to_string(count);
-                    cur.push_back(ch);
-                    count = 1;
-                    ch = res[i];
-                }
-            }
-            res = cur;
-        }
-        return res;
-    }
-};
-```
-
 ## 0041. First Missing Positive*
 Given an unsorted integer array, find the smallest missing positive integer.
 
@@ -1436,43 +1157,6 @@ public:
             if (nums[i] > 0) { return i + 1; }
         }
         return n + 1;
-    }
-};
-```
-
-## 0042. Trapping Rain Water*
-```cpp
-/*
-Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
-Output: 6
-Explanation: The above elevation map (black section) is
-represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this
-case, 6 units of rain water (blue section) are being
-trapped.
-*/
-class Solution {
-public:
-    int trap(vector<int>& height) {
-        int ans = 0, n = int(height.size());
-        if (n < 3) { return ans; }
-        int i = 0, j = n-1;
-        int leftMax = 0, rightMax = 0;
-        while (i < j)
-        {
-            if (height[i] < height[j])
-            {
-                if (height[i] >= leftMax) { leftMax = height[i]; }
-                else { ans += leftMax - height[i]; }
-                i++;
-            }
-            else
-            {
-                if (height[j] >= rightMax) { rightMax = height[j]; }
-                else { ans += rightMax - height[j]; }
-                j--;
-            }
-        }
-        return ans;
     }
 };
 ```
