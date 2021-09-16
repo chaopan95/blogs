@@ -918,34 +918,28 @@
 19
 20
 21
-22
-23
-24
-25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">int</span> <span class="n">trap</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">height</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">height</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ans</span><span class="p">;</span> <span class="p">}</span>
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">leftMax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rightMax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span>
+22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">trap</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">height</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">height</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ans</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">leftMax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rightMax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">height</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
         <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">height</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-            <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">leftMax</span><span class="p">)</span> <span class="p">{</span> <span class="n">leftMax</span> <span class="o">=</span> <span class="n">height</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
-                <span class="k">else</span> <span class="p">{</span> <span class="n">ans</span> <span class="o">+=</span> <span class="n">leftMax</span> <span class="o">-</span> <span class="n">height</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
-                <span class="n">i</span><span class="o">++</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="k">else</span>
-            <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">rightMax</span><span class="p">)</span> <span class="p">{</span> <span class="n">rightMax</span> <span class="o">=</span> <span class="n">height</span><span class="p">[</span><span class="n">j</span><span class="p">];</span> <span class="p">}</span>
-                <span class="k">else</span> <span class="p">{</span> <span class="n">ans</span> <span class="o">+=</span> <span class="n">rightMax</span> <span class="o">-</span> <span class="n">height</span><span class="p">[</span><span class="n">j</span><span class="p">];</span> <span class="p">}</span>
-                <span class="n">j</span><span class="o">--</span><span class="p">;</span>
-            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">leftMax</span><span class="p">)</span> <span class="p">{</span> <span class="n">leftMax</span> <span class="o">=</span> <span class="n">height</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span> <span class="n">ans</span> <span class="o">+=</span> <span class="n">leftMax</span> <span class="o">-</span> <span class="n">height</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
+            <span class="n">i</span><span class="o">++</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">rightMax</span><span class="p">)</span> <span class="p">{</span> <span class="n">rightMax</span> <span class="o">=</span> <span class="n">height</span><span class="p">[</span><span class="n">j</span><span class="p">];</span> <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span> <span class="n">ans</span> <span class="o">+=</span> <span class="n">rightMax</span> <span class="o">-</span> <span class="n">height</span><span class="p">[</span><span class="n">j</span><span class="p">];</span> <span class="p">}</span>
+            <span class="n">j</span><span class="o">--</span><span class="p">;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">};</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
