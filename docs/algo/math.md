@@ -397,6 +397,48 @@ int getXORSum(vector<int>& arr1, vector<int>& arr2) {
 时间复杂度：$O(n + m)$，空间复杂度：$O(1)$
 
 
+## 取模
+一个公式：(A * B) % k = ((A % k) * (B % k)) % k
+
+### 幂指数取模
+给定一个整数 a = 2 和 一个数组 b = [1, 0] 表示幂为 10，求 $a^{b}$ 对 1337 取模。
+
+**「分析」**
+
+以给出的 a 和 b 为例
+
+$$
+a^{b} = 2^{[1, 0]} = (2^{[1]})^{10} \cdot 2^{0}
+$$
+
+```cpp
+int mod = 1337;
+
+int pow(int a, int p) {
+    int ans = 1;
+    while (p > 0) {
+        if (p & 1) {
+            ans = ((ans % mod) * (a % mod)) % mod;
+        }
+        p >>= 1;
+        a = ((a % mod) * (a % mod)) % mod;
+    }
+    return ans;
+}
+
+int superPow(int a, vector<int>& b) {
+    if (b.empty()) {
+        return 1;
+    }
+    int res1 = pow(a, b.back());
+    b.pop_back();
+    int res2 = pow(superPow(a, b), 10);
+    return ((res1 % mod) * (res2 % mod)) % mod;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$，n 是 b 的长度
+
+
 ## 阶乘
 ### 阶乘尾数0的个数
 计算 n 的阶乘有多少个尾0。
