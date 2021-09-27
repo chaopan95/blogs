@@ -606,6 +606,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    数组中出现一次的数字 I
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii" class="md-nav__link">
+    数组中出现一次的数字 II
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -700,14 +714,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#i" class="md-nav__link">
+  <a href="#i_1" class="md-nav__link">
     丑数 I
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ii" class="md-nav__link">
+  <a href="#ii_1" class="md-nav__link">
     丑数 II
   </a>
   
@@ -1187,6 +1201,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    数组中出现一次的数字 I
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ii" class="md-nav__link">
+    数组中出现一次的数字 II
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1281,14 +1309,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#i" class="md-nav__link">
+  <a href="#i_1" class="md-nav__link">
     丑数 I
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ii" class="md-nav__link">
+  <a href="#ii_1" class="md-nav__link">
     丑数 II
   </a>
   
@@ -1993,6 +2021,78 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h3 id="i">数组中出现一次的数字 I<a class="headerlink" href="#i" title="Permanent link">&para;</a></h3>
+<p>给定一个数组 nums = [1, 2, 2, 3] 只有两个数组出现 1 次，其余都出现两次，求这个两个数字</p>
+<p><strong>「分析」</strong></p>
+<p>【异或运算】两个相同的数异或结果是 0。根据整个数组的异或和 res 的最高位来区分数组中的两个单次出现的数字。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">singleNumbers</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">XOR</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">XOR</span> <span class="o">^=</span> <span class="n">num</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">XOR</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pos</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">XOR</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">(</span><span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="n">pos</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="o">?</span> <span class="n">a</span> <span class="o">^=</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">b</span> <span class="o">^=</span> <span class="n">num</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">{</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：$$(1)</p>
+<h3 id="ii">数组中出现一次的数字 II<a class="headerlink" href="#ii" title="Permanent link">&para;</a></h3>
+<p>给定一个数组 nums = [4, 3, 3, 3]，只有一个数字出现一次，其余都出现三次，用线性的时间复杂度和常数的空间复杂度，找到这个数字。</p>
+<p><strong>「分析」</strong></p>
+<p>【位运算】每一位上的 1 的数目一定是 3 的倍数加一。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">singleNumber</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">bits</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">(</span><span class="mi">1l</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">num</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">bits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;&gt;</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ans</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">bits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
 <h2 id="_12">取模<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <p>一个公式：(A * B) % k = ((A % k) * (B % k)) % k</p>
 <h3 id="_13">幂指数取模<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
@@ -2269,7 +2369,7 @@ a^{b} = 2^{[1, 0]} = (2^{[1]})^{10} \cdot 2^{0}
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
 <h2 id="_19">丑数<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
 <p>如果一个整数，它的质因子只在 2、3、5 之中，那么就是丑数。如 15 = 3 * 5</p>
-<h3 id="i">丑数 I<a class="headerlink" href="#i" title="Permanent link">&para;</a></h3>
+<h3 id="i_1">丑数 I<a class="headerlink" href="#i_1" title="Permanent link">&para;</a></h3>
 <p>判断是否是丑数</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -2287,7 +2387,7 @@ a^{b} = 2^{[1, 0]} = (2^{[1]})^{10} \cdot 2^{0}
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
-<h3 id="ii">丑数 II<a class="headerlink" href="#ii" title="Permanent link">&para;</a></h3>
+<h3 id="ii_1">丑数 II<a class="headerlink" href="#ii_1" title="Permanent link">&para;</a></h3>
 <p>求第 n 个丑数 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
