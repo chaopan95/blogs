@@ -156,6 +156,43 @@ bool canIWin(int maxChoosableInteger, int desiredTotal) {
 }
 ```
 
+### 找路
+给定一个二维数组 obstacleGrid = [[0, 0, 0], [0, 1, 0], [0, 0, 0]] 表示一个网格，其中 1 为障碍，不能通过。开始位置是左上角，结束位置是右下角。返回一条可行的路径（如果存在）。
+
+**「分析」**
+
+【DFS + 剪枝】一旦找到一条路径即返回。
+
+```cpp
+bool dfs(vector<vector<int>> &grid, int n, int m, int i, int j,
+         vector<vector<int>> &ans) {
+    if (i == n || j == m || grid[i][j] == 1) {
+        return false;
+    }
+    grid[i][j] = 1;
+    ans.emplace_back(vector<int> {i, j});
+    if (i == n - 1 && j == m - 1) {
+        return true;
+    }
+    if (dfs(grid, n, m, i + 1, j, ans)) {
+        return true;
+    }
+    if (dfs(grid, n, m, i, j + 1, ans)) {
+        return true;
+    }
+    ans.pop_back();
+    return false;
+}
+
+vector<vector<int>> pathWithObstacles(vector<vector<int>>& obstacleGrid) {
+    vector<vector<int>> ans;
+    int n = (int)obstacleGrid.size(), m = (int)obstacleGrid[0].size();
+    dfs(obstacleGrid, n, m, 0, 0, ans);
+    return ans;
+}
+```
+时间复杂度：$O(nm)$，空间复杂度：$O(nm)$
+
 
 ## BFS
 **「简介」**

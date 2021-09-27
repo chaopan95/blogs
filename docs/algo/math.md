@@ -396,6 +396,58 @@ int getXORSum(vector<int>& arr1, vector<int>& arr2) {
 ```
 时间复杂度：$O(n + m)$，空间复杂度：$O(1)$
 
+### 数组中出现一次的数字 I
+给定一个数组 nums = [1, 2, 2, 3] 只有两个数组出现 1 次，其余都出现两次，求这个两个数字
+
+**「分析」**
+
+【异或运算】两个相同的数异或结果是 0。根据整个数组的异或和 res 的最高位来区分数组中的两个单次出现的数字。
+
+```cpp
+vector<int> singleNumbers(vector<int>& nums) {
+    vector<int> ans;
+    int XOR = 0;
+    for (int num : nums) {
+        XOR ^= num;
+    }
+    int pos = 0;
+    while (XOR >> 1) {
+        pos++;
+        XOR >>= 1;
+    }
+    int a = 0, b = 0;
+    for (int num : nums) {
+        (num >> pos) & 1 ? a ^= num : b ^= num;
+    }
+    return vector<int> {a, b};
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$$(1)
+
+### 数组中出现一次的数字 II
+给定一个数组 nums = [4, 3, 3, 3]，只有一个数字出现一次，其余都出现三次，用线性的时间复杂度和常数的空间复杂度，找到这个数字。
+
+**「分析」**
+
+【位运算】每一位上的 1 的数目一定是 3 的倍数加一。
+
+```cpp
+int singleNumber(vector<int>& nums) {
+    int ans = 0;
+    vector<int> bits(32, 0);
+    for (int num : nums) {
+        for (int i = 0; (1l << i) <= num && i < 32; i++) {
+            bits[i] += (num >> i) & 1;
+        }
+    }
+    for (int i = 0; i < 32; i++) {
+        ans |= (1 << i) * (bits[i] % 3);
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$
+
 
 ## 取模
 一个公式：(A * B) % k = ((A % k) * (B % k)) % k
