@@ -1669,10 +1669,10 @@ f_{0}
 <p>【动态规划】假设长度为 n - 1 的圆圈最后剩下的数字是 x，那么长度为 n 的圆圈剩下的元素是从 x 开始的第 m 个元素，因为我们只需要从 n - 1 的状态多走一步即可到达 n。</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ n ] = (m + dp[n - 1])} % n
+\text{dp[ n ] = (m + dp[n - 1]) mod n}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ n ] = (m + dp[n - 1])} % n
+\text{dp[ n ] = (m + dp[n - 1]) mod n}
 </script>
 </div>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
