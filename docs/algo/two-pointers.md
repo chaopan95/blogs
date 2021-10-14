@@ -1,6 +1,7 @@
 ## 基础
 双指针是一种$O(n)$时间复杂度的算法，通常配合排序算法和哈希表一起使用。
 
+
 ## 接雨水
 给定一个数组 height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]，表示地阶的高度，试问能接到最多的雨水量是多少？给出的例子对应答案是 6。
 
@@ -34,6 +35,7 @@ int trap(vector<int>& height) {
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(1)$
 
+
 ## 三数之和小于 target 的个数
 给定一个列表 nums = [0, 1, -2, 3] 和一个整数 target = 2，从 nums 中找出三个下标 $0 \leq i < j < k < n$ 满足对应的元素之和小于 target，试问这样的组合数是多少？
 
@@ -62,6 +64,7 @@ int threeSumSmaller(vector<int>& nums, int target) {
 ```
 时间复杂度：$O(n^{2})$，空间复杂度：$O(1)$
 
+
 ## 无重复字符的最长子串
 给定一个字符串 s = "abcabcbb"，请你找出其中不含有重复字符的最长子串的长度。
 
@@ -86,6 +89,7 @@ int lengthOfLongestSubstring(string s) {
 }
 ```
 时间复杂度：$O(n})$，空间复杂度：$O(n)$
+
 
 ## 三数之和
 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。答案中不可以包含重复的三元组。
@@ -120,3 +124,26 @@ vector<vector<int>> threeSum(vector<int>& nums) {
 }
 ```
 时间复杂度：$O(n^{2})$，空间复杂度：$O(1)$
+
+
+## 乘积小于 k 的连续子数组个数
+给定一个正整数数组 nums = [10, 5, 2, 6] 和一个整数 k，求所有连续子数组乘积小于 k 的个数
+
+**「分析」**
+
+【双指针】如果一个长度为 n 的连续数组乘积小于 k，那么满足条件的子数组个数是 $\frac{n(n + 1)}{2}$，因此，我们用 i、j 两个指针，i 每次向右移动一个单位，满足子数组的个数就加【i - j + 1】
+
+```cpp
+int numSubarrayProductLessThanK(vector<int>& nums, int k) {
+    int n = (int)nums.size(), prod = 1, ans = 0;
+    for (int i = 0, j = 0; i < n; i++) {
+        prod *= nums[i];
+        while (j <= i && prod >= k) {
+            prod /= nums[j++];
+        }
+        ans += i - j + 1;
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$
