@@ -96,6 +96,7 @@ nav:
             - 基础: data-structure/tree/basis.md
             - 二叉树: data-structure/tree/binary-tree.md
             - 遍历: data-structure/tree/traversal.md
+            - 前缀树: data-structure/tree/prefix-tree.md
         - 字符串: data-structure/string.md
         - 并查集: data-structure/unionset.md
         - 树状数组: data-structure/binary-indexed-tree.md

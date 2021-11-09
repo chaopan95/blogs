@@ -148,3 +148,43 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 }
 ```
 时间复杂度：$O(\log n)$，空间复杂度：$O(1)$
+
+### 二叉树序列化与反序列化
+
+```cpp
+class Codec {
+public:
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        if (root == nullptr) {
+            return "#,";
+        }
+        string str = to_string(root->val) + ",";
+        str += serialize(root->left) + serialize(root->right);
+        return str;
+    }
+
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        return deserialization(data);
+    }
+    TreeNode* deserialization(string &data) {
+        if (data.empty()) { return nullptr; }
+        if (data.front() == '#') {
+            data.erase(data.begin());
+            data.erase(data.begin());
+            return nullptr;
+        }
+        string val = "";
+        while (data.front() != ',') {
+            val.push_back(data.front());
+            data.erase(data.begin());
+        }
+        data.erase(data.begin());
+        TreeNode *root = new TreeNode(stoi(val));
+        root->left = deserialization(data);
+        root->right = deserialization(data);
+        return root;
+    }
+};
+```
