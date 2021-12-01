@@ -793,6 +793,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    信息论
+  </a>
+  
+    <nav class="md-nav" aria-label="信息论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    可怜的小猪
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1391,6 +1411,26 @@
           <li class="md-nav__item">
   <a href="#_24" class="md-nav__link">
     格雷编码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    信息论
+  </a>
+  
+    <nav class="md-nav" aria-label="信息论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    可怜的小猪
   </a>
   
 </li>
@@ -2715,6 +2755,43 @@ a^{b} = 2^{[1, 0]} = (2^{[1]})^{10} \cdot 2^{0}
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h2 id="_25">信息论<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
+<h3 id="_26">可怜的小猪<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>有 buckets 桶液体，其中 正好 有一桶含有毒药，其余装的都是水。它们从外观看起来都一样。为了弄清楚哪只水桶含有毒药，你可以喂一些猪喝，通过观察猪是否会死进行判断。不幸的是，你只有 minutesToTest 分钟时间来确定哪桶液体是有毒的。</p>
+<p>喂猪的规则如下：</p>
+<p>选择若干活猪进行喂养</p>
+<p>可以允许小猪同时饮用任意数量的桶中的水，并且该过程不需要时间。</p>
+<p>小猪喝完水后，必须有 minutesToDie 分钟的冷却时间。在这段时间里，你只能观察，而不允许继续喂猪。</p>
+<p>过了 minutesToDie 分钟后，所有喝到毒药的猪都会死去，其他所有猪都会活下来。</p>
+<p>重复这一过程，直到时间用完。</p>
+<p>给你桶的数目 buckets ，minutesToDie 和 minutesToTest ，返回在规定时间内判断哪个桶有毒所需的 最小 猪数。</p>
+<p><strong>「分析」</strong></p>
+<p>设 m 个小猪，实验轮数 n = <span><span class="MathJax_Preview">\left \lfloor \frac{\text{minutesToTest}}{\text{minutesToDie}} \right \rfloor</span><script type="math/tex">\left \lfloor \frac{\text{minutesToTest}}{\text{minutesToDie}} \right \rfloor</script></span>，那么对一个小猪而言，从实验开始到实验结束一共有 (1 + n) 个状态。这里的 1 指的是初始状态，之后每一轮实验都会有一个状态。因此 buckets 个桶确定有一个是毒药，所以，毒药的状态数是 buckets。因此，</p>
+<div>
+<div class="MathJax_Preview">
+(n + 1)^{m} \geq \text{buckets}
+</div>
+<script type="math/tex; mode=display">
+(n + 1)^{m} \geq \text{buckets}
+</script>
+</div>
+<p>可以解出来 m 的最小值</p>
+<div>
+<div class="MathJax_Preview">
+m = \left \lceil \log_{n + 1}\text{buckets} \right \rceil
+</div>
+<script type="math/tex; mode=display">
+m = \left \lceil \log_{n + 1}\text{buckets} \right \rceil
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">poorPigs</span><span class="p">(</span><span class="kt">int</span> <span class="n">buckets</span><span class="p">,</span> <span class="kt">int</span> <span class="n">minutesToDie</span><span class="p">,</span> <span class="kt">int</span> <span class="n">minutesToTest</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">ceil</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">buckets</span><span class="p">)</span> <span class="o">/</span> <span class="n">log</span><span class="p">(</span><span class="n">minutesToTest</span> <span class="o">/</span> <span class="n">minutesToDie</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
                 
               
               
