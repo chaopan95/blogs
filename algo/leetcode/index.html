@@ -1199,20 +1199,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0227-basic-calculator-ii" class="md-nav__link">
-    0227. Basic Calculator II
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0230-kth-smallest-element-in-a-bst" class="md-nav__link">
-    0230. Kth Smallest Element in a BST
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#0232-implement-queue-using-stacks" class="md-nav__link">
     0232. Implement Queue using Stacks
   </a>
@@ -1229,13 +1215,6 @@
         <li class="md-nav__item">
   <a href="#0239-sliding-window-maximum" class="md-nav__link">
     0239. Sliding Window Maximum
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0257-binary-tree-paths" class="md-nav__link">
-    0257. Binary Tree Paths
   </a>
   
 </li>
@@ -2527,20 +2506,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0227-basic-calculator-ii" class="md-nav__link">
-    0227. Basic Calculator II
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0230-kth-smallest-element-in-a-bst" class="md-nav__link">
-    0230. Kth Smallest Element in a BST
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#0232-implement-queue-using-stacks" class="md-nav__link">
     0232. Implement Queue using Stacks
   </a>
@@ -2557,13 +2522,6 @@
         <li class="md-nav__item">
   <a href="#0239-sliding-window-maximum" class="md-nav__link">
     0239. Sliding Window Maximum
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0257-binary-tree-paths" class="md-nav__link">
-    0257. Binary Tree Paths
   </a>
   
 </li>
@@ -10556,193 +10514,6 @@ Both the left and right subtrees must also be binary search trees.</p>
 <span class="p">};</span>
 </code></pre></div>
 </td></tr></table>
-<h2 id="0227-basic-calculator-ii">0227. Basic Calculator II<a class="headerlink" href="#0227-basic-calculator-ii" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: s = &quot; 3+5 / 2 &quot;</span>
-<span class="cm">Output: 5</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-   <span class="kt">int</span> <span class="n">calculate</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">sn</span><span class="p">;</span>
-        <span class="n">stack</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">so</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()),</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-        <span class="kt">long</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39; &#39;</span><span class="p">)</span> <span class="p">{</span> <span class="n">i</span><span class="o">--</span><span class="p">;</span> <span class="k">continue</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;*&#39;</span> <span class="o">||</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="n">so</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span> <span class="p">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;+&#39;</span> <span class="o">||</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">so</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">so</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;*&#39;</span> <span class="o">||</span> <span class="n">so</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;/&#39;</span><span class="p">))</span>
-                <span class="p">{</span>
-                    <span class="kt">int</span> <span class="n">n1</span> <span class="o">=</span> <span class="n">sn</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-                    <span class="n">sn</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-                    <span class="kt">int</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">sn</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-                    <span class="n">sn</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">so</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;*&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="n">n1</span> <span class="o">*=</span> <span class="n">n2</span><span class="p">;</span> <span class="p">}</span>
-                    <span class="k">else</span> <span class="p">{</span> <span class="n">n1</span> <span class="o">/=</span> <span class="n">n2</span><span class="p">;</span> <span class="p">}</span>
-                    <span class="n">sn</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">n1</span><span class="p">);</span>
-                    <span class="n">so</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-                <span class="p">}</span>
-                <span class="n">so</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-            <span class="p">}</span>
-            <span class="k">else</span>
-            <span class="p">{</span>
-                <span class="kt">long</span> <span class="n">times</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-                <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="sc">&#39;0&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="sc">&#39;9&#39;</span><span class="p">)</span>
-                <span class="p">{</span>
-                    <span class="n">num</span> <span class="o">+=</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">times</span><span class="p">;</span>
-                    <span class="n">times</span> <span class="o">*=</span> <span class="mi">10</span><span class="p">;</span>
-                    <span class="n">i</span><span class="o">--</span><span class="p">;</span>
-                <span class="p">}</span>
-                <span class="n">sn</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="kt">int</span><span class="p">(</span><span class="n">num</span><span class="p">));</span>
-                <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-                <span class="k">continue</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="n">i</span><span class="o">--</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">so</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
-        <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">n1</span> <span class="o">=</span> <span class="n">sn</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-            <span class="n">sn</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">sn</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
-            <span class="p">{</span>
-                <span class="n">sn</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">n1</span><span class="p">);</span>
-                <span class="k">break</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="kt">int</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">sn</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-            <span class="n">sn</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">so</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;+&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="n">n1</span> <span class="o">+=</span> <span class="n">n2</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">so</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="n">n1</span> <span class="o">-=</span> <span class="n">n2</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">so</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;*&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="n">n1</span> <span class="o">*=</span> <span class="n">n2</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">so</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="n">n1</span> <span class="o">/=</span> <span class="n">n2</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">else</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">&quot;wrong operator %c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">so</span><span class="p">.</span><span class="n">top</span><span class="p">());</span> <span class="p">}</span>
-            <span class="n">so</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-            <span class="n">sn</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">n1</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">so</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">so</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="o">-</span><span class="n">sn</span><span class="p">.</span><span class="n">top</span><span class="p">();</span> <span class="p">}</span>
-        <span class="k">return</span> <span class="n">sn</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="0230-kth-smallest-element-in-a-bst">0230. Kth Smallest Element in a BST<a class="headerlink" href="#0230-kth-smallest-element-in-a-bst" title="Permanent link">&para;</a></h2>
-<p>Given the root of a binary search tree, and an integer k, return the kth (1-indexed) smallest element in the tree.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">     3</span>
-<span class="cm">   /   \</span>
-<span class="cm">  1     4</span>
-<span class="cm">   \</span>
-<span class="cm">    2</span>
-<span class="cm">k = 1, kth min = 1</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">int</span> <span class="n">kthSmallest</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">k</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">kthSmallest</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">left</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span> <span class="p">}</span>
-            <span class="n">k</span><span class="o">--</span><span class="p">;</span>
-            <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">kthSmallest</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">right</span><span class="p">;</span> <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
 <h2 id="0232-implement-queue-using-stacks">0232. Implement Queue using Stacks<a class="headerlink" href="#0232-implement-queue-using-stacks" title="Permanent link">&para;</a></h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -11039,83 +10810,6 @@ Both the left and right subtrees must also be binary search trees.</p>
             <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="n">pq</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">);</span> <span class="p">}</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="0257-binary-tree-paths">0257. Binary Tree Paths<a class="headerlink" href="#0257-binary-tree-paths" title="Permanent link">&para;</a></h2>
-<p>Given a binary tree, return all root-to-leaf paths. Note: A leaf is a node with no children.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input:</span>
-<span class="cm">   1</span>
-<span class="cm"> /   \</span>
-<span class="cm">2     3</span>
-<span class="cm"> \</span>
-<span class="cm">  5</span>
-<span class="cm">Output: [&quot;1-&gt;2-&gt;5&quot;, &quot;1-&gt;3&quot;]</span>
-<span class="cm">Explanation: All root-to-leaf paths are: 1-&gt;2-&gt;5, 1-&gt;3</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">binaryTreePaths</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">arr</span><span class="p">;</span>
-        <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ans</span><span class="p">;</span> <span class="p">}</span>
-        <span class="n">getPaths</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="n">arr</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="kt">void</span> <span class="n">getPaths</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">ans</span><span class="p">,</span>
-                  <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">arr</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">string</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">ele</span> <span class="p">:</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span> <span class="n">str</span> <span class="o">+=</span> <span class="n">to_string</span><span class="p">(</span><span class="n">ele</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;-&gt;&quot;</span><span class="p">;</span> <span class="p">}</span>
-            <span class="n">str</span> <span class="o">+=</span> <span class="n">to_string</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
-            <span class="n">ans</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">arr</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
-        <span class="n">getPaths</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="n">arr</span><span class="p">);</span>
-        <span class="n">getPaths</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="n">arr</span><span class="p">);</span>
-        <span class="n">arr</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
