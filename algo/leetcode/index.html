@@ -1073,22 +1073,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0150-evaluate-reverse-polish-notation" class="md-nav__link">
-    0150. Evaluate Reverse Polish Notation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#0151-reverse-words-in-a-string" class="md-nav__link">
     0151. Reverse Words in a String
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0153-find-minimum-in-rotated-sorted-array" class="md-nav__link">
-    0153. Find Minimum in Rotated Sorted Array
   </a>
   
 </li>
@@ -1152,13 +1138,6 @@
         <li class="md-nav__item">
   <a href="#0200-number-of-islands" class="md-nav__link">
     0200. Number of Islands
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0201-bitwise-and-of-numbers-range" class="md-nav__link">
-    0201. Bitwise AND of Numbers Range*
   </a>
   
 </li>
@@ -2422,22 +2401,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0150-evaluate-reverse-polish-notation" class="md-nav__link">
-    0150. Evaluate Reverse Polish Notation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#0151-reverse-words-in-a-string" class="md-nav__link">
     0151. Reverse Words in a String
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0153-find-minimum-in-rotated-sorted-array" class="md-nav__link">
-    0153. Find Minimum in Rotated Sorted Array
   </a>
   
 </li>
@@ -2501,13 +2466,6 @@
         <li class="md-nav__item">
   <a href="#0200-number-of-islands" class="md-nav__link">
     0200. Number of Islands
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0201-bitwise-and-of-numbers-range" class="md-nav__link">
-    0201. Bitwise AND of Numbers Range*
   </a>
   
 </li>
@@ -9216,148 +9174,6 @@ Both the left and right subtrees must also be binary search trees.</p>
 <span class="p">};</span>
 </code></pre></div>
 </td></tr></table>
-<h2 id="0150-evaluate-reverse-polish-notation">0150. Evaluate Reverse Polish Notation<a class="headerlink" href="#0150-evaluate-reverse-polish-notation" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: tokens = [</span>
-<span class="cm">    &quot;10&quot;,&quot;6&quot;,&quot;9&quot;,&quot;3&quot;,&quot;+&quot;,&quot;-11&quot;,&quot;*&quot;,&quot;/&quot;,&quot;*&quot;,&quot;17&quot;,&quot;+&quot;,&quot;5&quot;,&quot;+&quot;    </span>
-<span class="cm">]</span>
-<span class="cm">Output: 22</span>
-<span class="cm">Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5</span>
-<span class="cm">= ((10 * (6 / (12 * -11))) + 17) + 5</span>
-<span class="cm">= ((10 * (6 / -132)) + 17) + 5</span>
-<span class="cm">= ((10 * 0) + 17) + 5</span>
-<span class="cm">= (0 + 17) + 5</span>
-<span class="cm">= 17 + 5</span>
-<span class="cm">= 22</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">int</span> <span class="n">evalRPN</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;&amp;</span> <span class="n">tokens</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">stk</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">num2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">string</span> <span class="o">&amp;</span><span class="nl">token</span> <span class="p">:</span> <span class="n">tokens</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">token</span> <span class="o">==</span> <span class="s">&quot;+&quot;</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">num2</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-                <span class="n">num1</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">token</span> <span class="o">==</span> <span class="s">&quot;-&quot;</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">num2</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-                <span class="n">num1</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">num1</span> <span class="o">-</span> <span class="n">num2</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">token</span> <span class="o">==</span> <span class="s">&quot;*&quot;</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">num2</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-                <span class="n">num1</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">num1</span> <span class="o">*</span> <span class="n">num2</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">token</span> <span class="o">==</span> <span class="s">&quot;/&quot;</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">num2</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-                <span class="n">num1</span> <span class="o">=</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
-                <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="k">else</span> <span class="p">{</span> <span class="n">stk</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">stringToInt</span><span class="p">(</span><span class="n">token</span><span class="p">));</span> <span class="p">}</span>
-
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">stk</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="kt">int</span> <span class="n">stringToInt</span><span class="p">(</span><span class="n">string</span> <span class="n">num</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">length</span><span class="p">());</span>
-        <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="n">ans</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="n">ans</span> <span class="o">=</span> <span class="o">-</span><span class="n">ans</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
 <h2 id="0151-reverse-words-in-a-string">0151. Reverse Words in a String<a class="headerlink" href="#0151-reverse-words-in-a-string" title="Permanent link">&para;</a></h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -9432,44 +9248,6 @@ Both the left and right subtrees must also be binary search trees.</p>
         <span class="p">}</span>
         <span class="n">str</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
         <span class="k">return</span> <span class="n">str</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="0153-find-minimum-in-rotated-sorted-array">0153. Find Minimum in Rotated Sorted Array<a class="headerlink" href="#0153-find-minimum-in-rotated-sorted-array" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: nums = [3,4,5,1,2]</span>
-<span class="cm">Output: 1</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">int</span> <span class="n">findMin</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">())</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">r</span><span class="p">])</span> <span class="p">{</span> <span class="k">return</span> <span class="n">nums</span><span class="p">[</span><span class="n">l</span><span class="p">];</span> <span class="p">}</span>
-            <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">l</span><span class="p">])</span> <span class="p">{</span> <span class="n">l</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">else</span> <span class="p">{</span> <span class="n">r</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span> <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">nums</span><span class="p">[</span><span class="n">r</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
@@ -10133,36 +9911,6 @@ Both the left and right subtrees must also be binary search trees.</p>
         <span class="kt">bool</span> <span class="n">l</span> <span class="o">=</span> <span class="n">isIsland</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">nRow</span><span class="p">,</span> <span class="n">nCol</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
         <span class="kt">bool</span> <span class="n">r</span> <span class="o">=</span> <span class="n">isIsland</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">nRow</span><span class="p">,</span> <span class="n">nCol</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
         <span class="k">return</span> <span class="n">res</span> <span class="o">||</span> <span class="n">u</span> <span class="o">||</span> <span class="n">d</span> <span class="o">||</span> <span class="n">l</span> <span class="o">||</span> <span class="n">r</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="0201-bitwise-and-of-numbers-range">0201. Bitwise AND of Numbers Range*<a class="headerlink" href="#0201-bitwise-and-of-numbers-range" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: left = 5, right = 7</span>
-<span class="cm">Output: 4</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">int</span> <span class="n">rangeBitwiseAnd</span><span class="p">(</span><span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">right</span> <span class="o">&amp;=</span> <span class="n">right</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">right</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
