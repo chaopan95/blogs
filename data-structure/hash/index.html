@@ -13,14 +13,14 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/segment-tree/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/hash/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>线段树 - 个人博客</title>
+        <title>哈希表 - 个人博客</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              线段树
+              哈希表
             
           </span>
         </div>
@@ -685,6 +685,30 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="../segment-tree/" class="md-nav__link">
+        线段树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../priority-queue/" class="md-nav__link">
+        优先队列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -695,12 +719,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          线段树
+          哈希表
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        线段树
+        哈希表
       </a>
       
         
@@ -724,29 +748,15 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    原理
+    题目
   </a>
   
-    <nav class="md-nav" aria-label="原理">
+    <nav class="md-nav" aria-label="题目">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    建树
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    查询
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    更新
+    数组中重复的数据
   </a>
   
 </li>
@@ -756,41 +766,10 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    题目
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../priority-queue/" class="md-nav__link">
-        优先队列
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../hash/" class="md-nav__link">
-        哈希表
-      </a>
     </li>
   
 
@@ -887,42 +866,21 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    原理
+    题目
   </a>
   
-    <nav class="md-nav" aria-label="原理">
+    <nav class="md-nav" aria-label="题目">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    建树
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    查询
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    更新
+    数组中重复的数据
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    题目
-  </a>
   
 </li>
       
@@ -939,74 +897,15 @@
               
                 
                 
-                  <h1>线段树</h1>
+                  <h1>哈希表</h1>
                 
                 <h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>线段树是一种高效地维护区间信息（和、最大值、最小值等）的一种树形结构。线段树有两个主要的接口</p>
-<ul>
-<li>
-<p>查询（query），例如求区间和</p>
-</li>
-<li>
-<p>更新（update），更新某一位置的值，对应的所有区间和将被更新</p>
-</li>
-</ul>
-<p>两者的时间复杂度均为 <span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>。</p>
-<h2 id="_2">原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="_3">建树<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>线段树与最小堆类似，以二叉树来建立，承载的形式是一个数组。但是，线段树的根结点对应的索引是 1；线段树是一颗完满二叉树（full binary tree），每一个非叶子结点都有两个孩子结点，最后一层靠左排列。</p>
-<p>叶子结点是奇数</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-&amp; &amp; 1 \\
-&amp; &amp; \wedge \\
-&amp; 2 &amp; &amp; {\color{Red} 3} \\
-&amp; \wedge \\
-{\color{Red} 4} &amp; &amp; {\color{Red} 5} \\
-\end{matrix} \quad \quad \quad \text{3、4、5 是叶子结点}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-& & 1 \\
-& & \wedge \\
-& 2 & & {\color{Red} 3} \\
-& \wedge \\
-{\color{Red} 4} & & {\color{Red} 5} \\
-\end{matrix} \quad \quad \quad \text{3、4、5 是叶子结点}
-</script>
-</div>
-<p>叶子结点是偶数</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-&amp; &amp; &amp; 1 \\
-&amp; &amp; &amp; \wedge \\
-&amp; 2 &amp; &amp; &amp; &amp; 3 \\
-&amp; \wedge &amp; &amp; &amp; &amp; \wedge \\
-{\color{Red} 4} &amp; &amp; {\color{Red} 5} &amp; &amp; {\color{Red} 6} &amp; &amp; {\color{Red} 7}
-\end{matrix} \quad \quad \quad \text{4、5、6、7 是叶子结点}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-& & & 1 \\
-& & & \wedge \\
-& 2 & & & & 3 \\
-& \wedge & & & & \wedge \\
-{\color{Red} 4} & & {\color{Red} 5} & & {\color{Red} 6} & & {\color{Red} 7}
-\end{matrix} \quad \quad \quad \text{4、5、6、7 是叶子结点}
-</script>
-</div>
-<p>完满二叉树的叶子结点个数与非叶子结点个数有一个关系</p>
-<div>
-<div class="MathJax_Preview">
-n_{\text{leaves}} = n_{non-leaves} + 1
-</div>
-<script type="math/tex; mode=display">
-n_{\text{leaves}} = n_{non-leaves} + 1
-</script>
-</div>
-<p>因此，线段树将原数组的每一个值都放在叶子结点上，自底向上地建树。</p>
+<p>哈希表是一种时间复杂度为 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> 的数据结构</p>
+<h2 id="_2">题目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">数组中重复的数据<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>给出一个长度为 n 的数组，每一个元素的值位于 [1, n]，他们出现的次数为 1 次或 2 次，请找出所有的出现 2 次的元素。线性时间和常数空间。</p>
+<p><strong>「分析」</strong></p>
+<p>【原地哈希】每一个值都位于 [1, n]，那么这些值就可以成为元素下标，相同的值对应相同的下标。我们第一次访问的数据元素改写成相反数，如果遇到相同的下标，此时对应的值就是负数。</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1016,74 +915,21 @@ n_{\text{leaves}} = n_{non-leaves} + 1
  7
  8
  9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
-<h3 id="_4">查询<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>线段树每一个非叶子结点都表示一个区间信息，以区间和为例，根结点表示整个区间和。理想情况下，我们希望直接返回一个区间的和，但往往给出的区间边界不是恰好对应一个非叶子结点，这个时候，我们需要将要求的区间分割，求每一个子区间的和，即可得到最终结果。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
 10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">sumRange</span><span class="p">(</span><span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">left</span> <span class="o">+=</span> <span class="n">n</span><span class="p">;</span>
-    <span class="n">right</span> <span class="o">+=</span> <span class="n">n</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">sum</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">left</span><span class="o">++</span><span class="p">];</span>
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">findDuplicates</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">abs</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ans</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">num</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">nums</span><span class="p">[</span><span class="n">abs</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">sum</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">right</span><span class="o">--</span><span class="p">];</span>
-        <span class="p">}</span>
-        <span class="n">left</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="n">right</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="_5">更新<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>当原数组的一个或若干个数值发生改变时，对应的区间信息也要发生变化，从叶子结点开始更新路径上的所有的结点。以区间和为例</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">index</span> <span class="o">+=</span> <span class="n">n</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">val</span> <span class="o">-</span> <span class="n">A</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">A</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">+=</span> <span class="n">diff</span><span class="p">;</span>
-        <span class="n">index</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="_6">题目<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
                 
               
               
@@ -1103,7 +949,7 @@ n_{\text{leaves}} = n_{non-leaves} + 1
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../binary-indexed-tree/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 树状数组" rel="prev">
+        <a href="../priority-queue/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 优先队列" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1112,20 +958,20 @@ n_{\text{leaves}} = n_{non-leaves} + 1
               <span class="md-footer__direction">
                 上一页
               </span>
-              树状数组
+              优先队列
             </div>
           </div>
         </a>
       
       
         
-        <a href="../priority-queue/" class="md-footer__link md-footer__link--next" aria-label="下一页: 优先队列" rel="next">
+        <a href="../../machine-learning/decision-tree/" class="md-footer__link md-footer__link--next" aria-label="下一页: 决策树" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              优先队列
+              决策树
             </div>
           </div>
           <div class="md-footer__button md-icon">
