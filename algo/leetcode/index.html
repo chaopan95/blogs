@@ -1318,13 +1318,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#0415-add-strings" class="md-nav__link">
-    0415. Add Strings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#0470-implement-rand10-using-rand7" class="md-nav__link">
     0470. Implement Rand10() Using Rand7()*
   </a>
@@ -2618,13 +2611,6 @@
         <li class="md-nav__item">
   <a href="#0407-ii" class="md-nav__link">
     0407. 接雨水 II*
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#0415-add-strings" class="md-nav__link">
-    0415. Add Strings
   </a>
   
 </li>
@@ -11849,102 +11835,6 @@ Both the left and right subtrees must also be binary search trees.</p>
             <span class="k">delete</span> <span class="p">[]</span><span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
         <span class="p">}</span>
         <span class="k">delete</span> <span class="p">[]</span><span class="n">vis</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="0415-add-strings">0415. Add Strings<a class="headerlink" href="#0415-add-strings" title="Permanent link">&para;</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Input: num1 = &quot;456&quot;, num2 = &quot;77&quot;</span>
-<span class="cm">Output: &quot;533&quot;</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">string</span> <span class="n">addStrings</span><span class="p">(</span><span class="n">string</span> <span class="n">num1</span><span class="p">,</span> <span class="n">string</span> <span class="n">num2</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">string</span> <span class="n">ans</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">len1</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">num1</span><span class="p">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">len2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">num2</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">len1</span> <span class="o">&lt;</span> <span class="n">len2</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">swap</span><span class="p">(</span><span class="n">len1</span><span class="p">,</span> <span class="n">len2</span><span class="p">);</span>
-            <span class="n">swap</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">len1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">len2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">num1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">num2</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">res</span><span class="p">;</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-                <span class="n">sum</span> <span class="o">-=</span> <span class="mi">10</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="kt">char</span> <span class="n">sumChar</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-            <span class="n">ans</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sumChar</span><span class="p">);</span>
-            <span class="n">i</span><span class="o">--</span><span class="p">;</span>
-            <span class="n">j</span><span class="o">--</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">num1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">res</span><span class="p">;</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-                <span class="n">sum</span> <span class="o">-=</span> <span class="mi">10</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="kt">char</span> <span class="n">sumChar</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
-            <span class="n">ans</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sumChar</span><span class="p">);</span>
-            <span class="n">i</span><span class="o">--</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="p">{</span> <span class="n">ans</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="sc">&#39;1&#39;</span><span class="p">);</span> <span class="p">}</span>
         <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
