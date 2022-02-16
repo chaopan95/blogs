@@ -13,14 +13,14 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/list/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/data-structure/monotone-queue/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>链表 - 个人博客</title>
+        <title>单调队 - 个人博客</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              链表
+              单调队
             
           </span>
         </div>
@@ -538,68 +538,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          链表
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../list/" class="md-nav__link">
         链表
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    链表结点设计
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    找出两个链表的相交结点
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    链表的中心节点
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -631,11 +574,54 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../monotone-queue/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          单调队
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         单调队
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    和至少为 K 的最短子数组
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -878,22 +864,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    链表结点设计
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    找出两个链表的相交结点
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    链表的中心节点
+  <a href="#k" class="md-nav__link">
+    和至少为 K 的最短子数组
   </a>
   
 </li>
@@ -911,197 +883,14 @@
               
                 
                 
-                  <h1>链表</h1>
+                  <h1>单调队</h1>
                 
                 <h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>链表是一种寻位访问的数据结构，以指针的方式，将两块数据连接起来。存储空间上通常是不连续的，增删的时间复杂度为 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，查找的时间复杂度为 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>。通常而言，链表有如下几种</p>
-<ul>
-<li>
-<p>单链表</p>
-</li>
-<li>
-<p>双链表</p>
-</li>
-<li>
-<p>循环链表</p>
-</li>
-</ul>
-<h2 id="_2">链表结点设计<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>结点包含两个部分：</p>
-<ul>
-<li>
-<p>数据域</p>
-</li>
-<li>
-<p>指针域</p>
-</li>
-</ul>
-<p>对单链表而言，其结点的定义方式如下</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="n">ListNode</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
-    <span class="n">ListNode</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
-    <span class="n">ListNode</span><span class="p">()</span><span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span> <span class="p">{}</span>
-    <span class="n">ListNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span><span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span> <span class="p">{}</span>
-    <span class="n">ListNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">next</span><span class="p">)</span><span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="n">next</span><span class="p">)</span> <span class="p">{}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="_3">找出两个链表的相交结点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>给定两个链表A、B，找出两者相交的结点，如果不相交，返回为空指针。</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow &amp; 10 \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow \\
-&amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7
-\end{matrix}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 \\
-& & & & & & & \searrow \\
-& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow & 10 \\
-& & & & & & & \nearrow \\
-& & 5 & \rightarrow & 6 & \rightarrow & 7
-\end{matrix}
-</script>
-</div>
+<p>单调队列是一种特殊的队列，特点是队列内的元素相对有序。</p>
+<h2 id="k">和至少为 K 的最短子数组<a class="headerlink" href="#k" title="Permanent link">&para;</a></h2>
+<p>给定一个数组 nums = [2, -1, 2] 和一个整数 k = 3，求子数组的和大于等于 k 的最小长度是多少？</p>
 <p><strong>「分析」</strong></p>
-<p>朴素的方法是将这两个链表用栈保存起来，比对最后一个结点，如果不相同，则必定不相交，如果相同，反向遍历栈即可找到第一个相交的结点。但是常数空间的算法是存在的。问题的难点在于两个链表的长度不一致，但是这两个链表的长度和是一定的，即我们先遍历链表 pHead1 再遍历链表 pHead2 与先遍历 pHead2 再遍历 pHead1 的长度是一样的。那么，如果两个链表是在某个结点相交的，按照上述的遍历方法，两个指针一定在相交的结点相会。</p>
-<p>首先，初始状态下，两个指针分别处于两个链表的头结点</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-p_{1} \\
-\Downarrow \\
-1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow 10 \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow \\
-&amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7 \\
-&amp; &amp; \Uparrow \\
-&amp; &amp; p_{2}
-\end{matrix}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-p_{1} \\
-\Downarrow \\
-1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 \\
-& & & & & & & \searrow \\
-& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow 10 \\
-& & & & & & & \nearrow \\
-& & 5 & \rightarrow & 6 & \rightarrow & 7 \\
-& & \Uparrow \\
-& & p_{2}
-\end{matrix}
-</script>
-</div>
-<p><span><span class="MathJax_Preview">p_{1}</span><script type="math/tex">p_{1}</script></span> 和 <span><span class="MathJax_Preview">p_{2}</span><script type="math/tex">p_{2}</script></span> 同时向后移动直到某一个率先到达末结点。本例中，<span><span class="MathJax_Preview">p_{2}</span><script type="math/tex">p_{2}</script></span> 先到末结点，转而从 pHead1 的头结点开始遍历。</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 &amp; &amp; &amp; &amp; &amp; &amp; p_{1} \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow &amp; &amp; &amp; &amp; &amp; \Downarrow \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow &amp; 10 \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow &amp; &amp; &amp; &amp; &amp; &amp; \Uparrow \\
-&amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7 &amp; &amp; &amp; &amp; &amp; &amp; &amp; p_{2}
-\end{matrix}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 & & & & & & p_{1} \\
-& & & & & & & \searrow & & & & & \Downarrow \\
-& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow & 10 \\
-& & & & & & & \nearrow & & & & & & \Uparrow \\
-& & 5 & \rightarrow & 6 & \rightarrow & 7 & & & & & & & p_{2}
-\end{matrix}
-</script>
-</div>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-p_{2} \\
-\Downarrow \\
-1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 &amp; &amp; &amp; &amp; &amp; &amp; &amp; p_{1} \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow &amp; &amp; &amp; &amp; &amp; &amp; \Downarrow \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow &amp; 10 \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow \\
-&amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7
-\end{matrix}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-p_{2} \\
-\Downarrow \\
-1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 & & & & & & & p_{1} \\
-& & & & & & & \searrow & & & & & & \Downarrow \\
-& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow & 10 \\
-& & & & & & & \nearrow \\
-& & 5 & \rightarrow & 6 & \rightarrow & 7
-\end{matrix}
-</script>
-</div>
-<p>同样地，<span><span class="MathJax_Preview">p_{1}</span><script type="math/tex">p_{1}</script></span> 也会到达末结点，转而从 phead2 的头结点开始遍历。这个时候我们就会发现，<span><span class="MathJax_Preview">p_{1}</span><script type="math/tex">p_{1}</script></span> 和 <span><span class="MathJax_Preview">p_{2}</span><script type="math/tex">p_{2}</script></span> 处在相同位置，这意味着它们可以同时达到各自的尾结点。</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-&amp; &amp; p_{2} \\
-&amp; &amp; \Downarrow \\
-1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow 10 \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow \\
-&amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7 \\
-&amp; &amp; \Uparrow \\
-&amp; &amp; p_{1}
-\end{matrix}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-& & p_{2} \\
-& & \Downarrow \\
-1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 \\
-& & & & & & & \searrow \\
-& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow 10 \\
-& & & & & & & \nearrow \\
-& & 5 & \rightarrow & 6 & \rightarrow & 7 \\
-& & \Uparrow \\
-& & p_{1}
-\end{matrix}
-</script>
-</div>
-<p>最终可以找到相交位置处的结点</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-1 &amp; \rightarrow &amp; 2 &amp; \rightarrow &amp; 3 &amp; \rightarrow &amp; 4 &amp; &amp; p_{2} \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \searrow &amp; \Downarrow \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; {\color{Red} 8} &amp; \rightarrow &amp; 9 &amp; \rightarrow 10 \\
-&amp; &amp; &amp; &amp; &amp; &amp; &amp; \nearrow &amp; \Uparrow \\
-&amp; &amp; 5 &amp; \rightarrow &amp; 6 &amp; \rightarrow &amp; 7 &amp; &amp; p_{1}
-\end{matrix}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-1 & \rightarrow & 2 & \rightarrow & 3 & \rightarrow & 4 & & p_{2} \\
-& & & & & & & \searrow & \Downarrow \\
-& & & & & & & & {\color{Red} 8} & \rightarrow & 9 & \rightarrow 10 \\
-& & & & & & & \nearrow & \Uparrow \\
-& & 5 & \rightarrow & 6 & \rightarrow & 7 & & p_{1}
-\end{matrix}
-</script>
-</div>
+<p>【前缀和 + 单调队列】假设子数组的头索引为 i，尾索引是 j，那么对于固定的 j，我们希望在满足 presum[ j ] - presum[ i ] &gt;= k 时的最大 i，于是，我们发现，i 和 j 是有序的，并且 presum[ i ] 和 presum[ j ] 也是有序的。因此，我们希望借助一种数据结构存储 i。需要满足：1）给定一个 j，当确定 i 满足连续和的要求时，将 i 移除，此时对于大于 j 的索引 k，满足 presum[ k ] - presum[ i ] &gt;= k 时，k - i &lt; j - i 一定成立；2）将 j 加入到这个数据结构中，需要保证有序。这样的结构是单调队列</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1117,54 +906,31 @@ p_{2} \\
 13
 14
 15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ListNode</span> <span class="o">*</span><span class="nf">getIntersectionNode</span><span class="p">(</span><span class="n">ListNode</span> <span class="o">*</span><span class="n">headA</span><span class="p">,</span> <span class="n">ListNode</span> <span class="o">*</span><span class="n">headB</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">headA</span> <span class="o">==</span> <span class="k">nullptr</span> <span class="o">||</span> <span class="n">headB</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span>
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">shortestSubarray</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span><span class="o">&gt;</span> <span class="n">presum</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">presum</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">presum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
     <span class="p">}</span>
-    <span class="n">ListNode</span> <span class="o">*</span><span class="n">p1</span> <span class="o">=</span> <span class="n">headA</span><span class="p">,</span> <span class="o">*</span><span class="n">p2</span> <span class="o">=</span> <span class="n">headB</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="k">nullptr</span> <span class="o">&amp;&amp;</span> <span class="n">p2</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">p1</span><span class="p">;</span> <span class="p">}</span>
-            <span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-            <span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+    <span class="n">deque</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">dq</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">presum</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">dq</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">presum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">presum</span><span class="p">[</span><span class="n">dq</span><span class="p">.</span><span class="n">front</span><span class="p">()]</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">dq</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
+            <span class="n">dq</span><span class="p">.</span><span class="n">pop_front</span><span class="p">();</span>
         <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">p1</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">headB</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">p2</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">headA</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">dq</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">presum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">presum</span><span class="p">[</span><span class="n">dq</span><span class="p">.</span><span class="n">back</span><span class="p">()])</span> <span class="p">{</span>
+            <span class="n">dq</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">dq</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">ans</span> <span class="o">==</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="n">ans</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
-<h2 id="_4">链表的中心节点<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>给定一个单链表，返回链表的中心节点，如果链表的结点个数是偶数，则返回靠后位置的结点。</p>
-<p><strong>「分析」</strong></p>
-<p>使用【快慢指针】方法</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span> <span class="nf">middleNode</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span>
-<span class="n">ListNode</span> <span class="o">*</span><span class="n">p1</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">p2</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">p2</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">p2</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">return</span> <span class="n">p1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-<span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">return</span> <span class="n">p1</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
                 
               
               
@@ -1184,7 +950,7 @@ p_{2} \\
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../algo/leetcode/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Leetcode" rel="prev">
+        <a href="../monotone-stack/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 单调栈" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1193,20 +959,20 @@ p_{2} \\
               <span class="md-footer__direction">
                 上一页
               </span>
-              Leetcode
+              单调栈
             </div>
           </div>
         </a>
       
       
         
-        <a href="../stack-queue/" class="md-footer__link md-footer__link--next" aria-label="下一页: 栈 &amp; 队列" rel="next">
+        <a href="../tree/basis/" class="md-footer__link md-footer__link--next" aria-label="下一页: 基础" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              栈 & 队列
+              基础
             </div>
           </div>
           <div class="md-footer__button md-icon">
