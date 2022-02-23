@@ -773,6 +773,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#o1" class="md-nav__link">
+    全 O(1) 结构
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -891,6 +898,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#o1" class="md-nav__link">
+    全 O(1) 结构
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -942,6 +956,208 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
+<h3 id="o1">全 O(1) 结构<a class="headerlink" href="#o1" title="Permanent link">&para;</a></h3>
+<p>设一个数据结构，可以在平均时间复杂度 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> 下实现如下功能：</p>
+<p>1）对字符串 key 计数加一</p>
+<p>2）对字符串 key 计数减一，如果减为 0，删除这个字符串</p>
+<p>3）返回当前计数最大的任意一个字符串</p>
+<p>4）返回当前计数最小的任意一个字符串</p>
+<p><strong>「分析」</strong></p>
+<p>【哈希表 + 双向链表】</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="n">BiListNode</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">BiListNode</span> <span class="o">*</span><span class="n">prev</span><span class="p">,</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+    <span class="n">BiListNode</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="o">:</span> <span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">prev</span><span class="p">(</span><span class="k">nullptr</span><span class="p">),</span> <span class="n">next</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">AllOne</span> <span class="p">{</span>
+    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">str2int</span><span class="p">;</span>
+    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">BiListNode</span><span class="o">*&gt;</span> <span class="n">int2node</span><span class="p">;</span>
+    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;&gt;</span> <span class="n">int2str</span><span class="p">;</span>
+    <span class="n">BiListNode</span> <span class="o">*</span><span class="n">head</span><span class="p">,</span> <span class="o">*</span><span class="n">tail</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">AllOne</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BiListNode</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BiListNode</span><span class="p">(</span><span class="n">INT_MAX</span><span class="p">);</span>
+        <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">tail</span><span class="p">;</span>
+        <span class="n">tail</span><span class="o">-&gt;</span><span class="n">prev</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">deleteNode</span><span class="p">(</span><span class="n">BiListNode</span> <span class="o">*</span><span class="n">prev</span><span class="p">,</span> <span class="n">BiListNode</span> <span class="o">*</span><span class="n">cur</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span><span class="p">;</span>
+        <span class="k">delete</span> <span class="n">cur</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">addNode</span><span class="p">(</span><span class="n">BiListNode</span> <span class="o">*</span><span class="n">prev</span><span class="p">,</span> <span class="n">BiListNode</span> <span class="o">*</span><span class="n">cur</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+        <span class="n">cur</span><span class="o">-&gt;</span><span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span><span class="p">;</span>
+        <span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">prev</span> <span class="o">=</span> <span class="n">cur</span><span class="p">;</span>
+        <span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">cur</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">inc</span><span class="p">(</span><span class="n">string</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">str2int</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">key</span><span class="p">))</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">str2int</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+            <span class="n">str2int</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">int2str</span><span class="p">[</span><span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">].</span><span class="n">emplace</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">int2node</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">BiListNode</span> <span class="o">*</span><span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BiListNode</span><span class="p">(</span><span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+                <span class="n">addNode</span><span class="p">(</span><span class="n">int2node</span><span class="p">[</span><span class="n">cnt</span><span class="p">],</span> <span class="n">node</span><span class="p">);</span>
+                <span class="n">int2node</span><span class="p">[</span><span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">int2str</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">erase</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">int2str</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">int2str</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">cnt</span><span class="p">);</span>
+                <span class="n">deleteNode</span><span class="p">(</span><span class="n">int2node</span><span class="p">[</span><span class="n">cnt</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">prev</span><span class="p">,</span> <span class="n">int2node</span><span class="p">[</span><span class="n">cnt</span><span class="p">]);</span>
+                <span class="n">int2node</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">cnt</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">str2int</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">int2str</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">emplace</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">int2node</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">BiListNode</span> <span class="o">*</span><span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BiListNode</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+                <span class="n">addNode</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">node</span><span class="p">);</span>
+                <span class="n">int2node</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">dec</span><span class="p">(</span><span class="n">string</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">str2int</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">str2int</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">str2int</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+            <span class="n">int2str</span><span class="p">[</span><span class="n">cnt</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">emplace</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">int2node</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">cnt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">BiListNode</span> <span class="o">*</span><span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BiListNode</span><span class="p">(</span><span class="n">cnt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+                <span class="n">addNode</span><span class="p">(</span><span class="n">int2node</span><span class="p">[</span><span class="n">cnt</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">prev</span><span class="p">,</span> <span class="n">node</span><span class="p">);</span>
+                <span class="n">int2node</span><span class="p">[</span><span class="n">cnt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">int2str</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">erase</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">int2str</span><span class="p">[</span><span class="n">cnt</span><span class="p">].</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">int2str</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">cnt</span><span class="p">);</span>
+            <span class="n">deleteNode</span><span class="p">(</span><span class="n">int2node</span><span class="p">[</span><span class="n">cnt</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">prev</span><span class="p">,</span> <span class="n">int2node</span><span class="p">[</span><span class="n">cnt</span><span class="p">]);</span>
+            <span class="n">int2node</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">cnt</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">string</span> <span class="n">getMaxKey</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">int2node</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="n">tail</span><span class="o">-&gt;</span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="n">int2str</span><span class="p">[</span><span class="n">val</span><span class="p">].</span><span class="n">begin</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">string</span> <span class="n">getMinKey</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">int2node</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="n">int2str</span><span class="p">[</span><span class="n">val</span><span class="p">].</span><span class="n">begin</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂福：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
                 
               
               
