@@ -448,12 +448,14 @@ int coinChange(int amount, vector<int>& coins) {
 int combinationSum41(vector<int>& coins, int amount) {
     vector<unsigned int> dp(amount + 1, 0);
     dp[0] = 1;
-    for (int coin : coins) {
-        for (int j = coin; j <= amount; j++) {
-            dp[j] += dp[j - coin];
+    for (int i = 0; i <= amount; i++) {
+        for (int coin : coins) {
+            if (i >= coin) {
+                dp[i] += dp[i - coin];
+            }
         }
     }
-    return (int)dp[amount];
+    return dp[amount];
 }
 ```
 时间复杂度 $O(n \times amount)$，空间复杂度 $O(amount)$，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。

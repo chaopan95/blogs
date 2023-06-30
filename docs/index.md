@@ -1,7 +1,3 @@
-# Welcome to MkDocs
-
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
 ## Commands
 
 * `mkdocs new [dir-name]` - Create a new project.
@@ -15,3 +11,5 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
     docs/
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files.
+
+mkdocs gh-deploy

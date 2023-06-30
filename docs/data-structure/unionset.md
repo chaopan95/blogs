@@ -279,3 +279,40 @@ int minSwapsCouples(vector<int>& row) {
 }
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(n)$
+
+### 二分图
+给定一个图 graph = [[1, 2], [0, 3], [0], [1]]，第 i 行就是节点 i 相连接的节点号码 （i 从 0 开始），判断能否将所有节点分成两个集合，同一个集合的节点没有相邻的边。
+
+**「分析」**
+
+【并查集】如果节点 i 的相邻节点为 neighbors，那么 i 与 neighbor 中的每一个节点不属于同一个集合，由此推出，neighbor 中的所有节点在同一个集合
+
+```cpp
+vector<int> fa;
+
+int find(int x) {
+    return x == fa[x] ? x : fa[x] = find(fa[x]);
+}
+
+void unify(int x, int y) {
+    fa[find(y)] = find(x);
+}
+
+bool isBipartite(vector<vector<int>>& graph) {
+    size_t n = graph.size();
+    fa.resize(n);
+    for (int i = 0; i < n; i++) {
+        fa[i] = i;
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j : graph[i]) {
+            if (find(i) == find(j)) {
+                return false;
+            }
+            unify(graph[i][0], j);
+        }
+    }
+    return true;
+}
+```
+时间复杂度：$O(n^{2} \log n)$，空间复杂度：$O(n)$

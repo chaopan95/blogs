@@ -3572,80 +3572,6 @@ public:
 };
 ```
 
-## 0150. Evaluate Reverse Polish Notation
-```cpp
-/*
-Input: tokens = [
-    "10","6","9","3","+","-11","*","/","*","17","+","5","+"    
-]
-Output: 22
-Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
-= ((10 * (6 / (12 * -11))) + 17) + 5
-= ((10 * (6 / -132)) + 17) + 5
-= ((10 * 0) + 17) + 5
-= (0 + 17) + 5
-= 17 + 5
-= 22
-*/
-class Solution {
-public:
-    int evalRPN(vector<string>& tokens) {
-        stack<int> stk;
-        int num1 = 0, num2 = 0;
-        for (string &token : tokens)
-        {
-            if (token == "+")
-            {
-                num2 = stk.top();
-                stk.pop();
-                num1 = stk.top();
-                stk.pop();
-                stk.push(num1 + num2);
-            }
-            else if (token == "-")
-            {
-                num2 = stk.top();
-                stk.pop();
-                num1 = stk.top();
-                stk.pop();
-                stk.push(num1 - num2);
-            }
-            else if (token == "*")
-            {
-                num2 = stk.top();
-                stk.pop();
-                num1 = stk.top();
-                stk.pop();
-                stk.push(num1 * num2);
-            }
-            else if (token == "/")
-            {
-                num2 = stk.top();
-                stk.pop();
-                num1 = stk.top();
-                stk.pop();
-                stk.push(num1 / num2);
-            }
-            else { stk.push(stringToInt(token)); }
-            
-        }
-        return stk.top();
-    }
-    int stringToInt(string num)
-    {
-        int n = int(num.length());
-        int ans = 0;
-        if (num[0] != '-') { ans = num[0] - '0'; }
-        for (int i = 1; i < n; i++)
-        {
-            ans = ans * 10 + (num[i] - '0');
-        }
-        if (num[0] == '-') { ans = -ans; }
-        return ans;
-    }
-};
-```
-
 ## 0151. Reverse Words in a String
 ```cpp
 /*
@@ -3684,28 +3610,6 @@ public:
         }
         str.resize(n);
         return str;
-    }
-};
-```
-
-## 0153. Find Minimum in Rotated Sorted Array
-```cpp
-/*
-Input: nums = [3,4,5,1,2]
-Output: 1
-*/
-class Solution {
-public:
-    int findMin(vector<int>& nums) {
-        int l = 0, r = int(nums.size()) - 1;
-        while (l <= r)
-        {
-            if (nums[l] < nums[r]) { return nums[l]; }
-            int m = (l + r) >> 1;
-            if (nums[m] >= nums[l]) { l = m + 1; }
-            else { r = m; }
-        }
-        return nums[r];
     }
 };
 ```
@@ -4071,24 +3975,6 @@ public:
 };
 ```
 
-## 0201. Bitwise AND of Numbers Range*
-```cpp
-/*
-Input: left = 5, right = 7
-Output: 4
-*/
-class Solution {
-public:
-    int rangeBitwiseAnd(int left, int right) {
-        while (left < right)
-        {
-            right &= right - 1;
-        }
-        return right;
-    }
-};
-```
-
 ## 0209. Minimum Size Subarray Sum
 Given an array of positive integers nums and a positive integer target, return the minimal length of a contiguous subarray [numsl, numsl+1, ..., numsr-1, numsr] of which the sum is greater than or equal to target. If there is no such subarray, return 0 instead.
 
@@ -4435,107 +4321,6 @@ public:
 };
 ```
 
-## 0227. Basic Calculator II
-```cpp
-/*
-Input: s = " 3+5 / 2 "
-Output: 5
-*/
-class Solution {
-public:
-   int calculate(string s) {
-        stack<int> sn;
-        stack<char> so;
-        int n = int(s.length()), i = n-1;
-        long num = 0;
-        while (i >= 0)
-        {
-            if (s[i] == ' ') { i--; continue; }
-            if (s[i] == '*' || s[i] == '/') { so.push(s[i]); }
-            else if (s[i] == '+' || s[i] == '-')
-            {
-                while (!so.empty() && (so.top() == '*' || so.top() == '/'))
-                {
-                    int n1 = sn.top();
-                    sn.pop();
-                    int n2 = sn.top();
-                    sn.pop();
-                    if (so.top() == '*') { n1 *= n2; }
-                    else { n1 /= n2; }
-                    sn.push(n1);
-                    so.pop();
-                }
-                so.push(s[i]);
-            }
-            else
-            {
-                long times = 1;
-                while (i >= 0 && s[i] >= '0' && s[i] <= '9')
-                {
-                    num += (s[i] - '0') * times;
-                    times *= 10;
-                    i--;
-                }
-                sn.push(int(num));
-                num = 0;
-                continue;
-            }
-            i--;
-        }
-        while (!so.empty())
-        {
-            int n1 = sn.top();
-            sn.pop();
-            if (sn.empty())
-            {
-                sn.push(n1);
-                break;
-            }
-            int n2 = sn.top();
-            sn.pop();
-            if (so.top() == '+') { n1 += n2; }
-            else if (so.top() == '-') { n1 -= n2; }
-            else if (so.top() == '*') { n1 *= n2; }
-            else if (so.top() == '/') { n1 /= n2; }
-            else { printf("wrong operator %c\n", so.top()); }
-            so.pop();
-            sn.push(n1);
-        }
-        if (!so.empty() && so.top() == '-') { return -sn.top(); }
-        return sn.top();
-    }
-};
-```
-
-## 0230. Kth Smallest Element in a BST
-Given the root of a binary search tree, and an integer k, return the kth (1-indexed) smallest element in the tree.
-
-```cpp
-/*
-     3
-   /   \
-  1     4
-   \
-    2
-k = 1, kth min = 1
-*/
-class Solution {
-public:
-    int kthSmallest(TreeNode* root, int &k) {
-        if (root != nullptr)
-        {
-            int left = kthSmallest(root->left, k);
-            if (left >= 0) { return left; }
-            if (k == 1) { return root->val; }
-            k--;
-            int right = kthSmallest(root->right, k);
-            if (right >= 0) { return right; }
-        }
-        return -1;
-    }
-};
-```
-
 ## 0232. Implement Queue using Stacks
 ```cpp
 /*
@@ -4695,49 +4480,6 @@ public:
 };
 ```
 
-## 0257. Binary Tree Paths
-Given a binary tree, return all root-to-leaf paths. Note: A leaf is a node with no children.
-
-```cpp
-/*
-Input:
-   1
- /   \
-2     3
- \
-  5
-Output: ["1->2->5", "1->3"]
-Explanation: All root-to-leaf paths are: 1->2->5, 1->3
-*/
-class Solution {
-public:
-    vector<string> binaryTreePaths(TreeNode* root) {
-        vector<int> arr;
-        vector<string> ans;
-        if (root == nullptr) { return ans; }
-        getPaths(root, ans, arr);
-        return ans;
-    }
-    void getPaths(TreeNode* root, vector<string> &ans,
-                  vector<int> &arr)
-    {
-        if (root == nullptr) { return; }
-        if (root->left == nullptr && root->right == nullptr)
-        {
-            string str = "";
-            for (int ele : arr) { str += to_string(ele) + "->"; }
-            str += to_string(root->val);
-            ans.emplace_back(str);
-            return;
-        }
-        arr.emplace_back(root->val);
-        getPaths(root->left, ans, arr);
-        getPaths(root->right, ans, arr);
-        arr.pop_back();
-    }
-};
-```
-
 ## 0263. Ugly Number
 ```cpp
 /*
@@ -4786,94 +4528,6 @@ public:
         return ans;
     }
 };
-```
-
-## 0303. Range Sum Query - Immutable
-```cpp
-/*
-Input
-["NumArray", "sumRange", "sumRange", "sumRange"]
-[[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]
-Output
-[null, 1, -1, -3]
-
-Explanation
-NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);
-numArray.sumRange(0, 2); // return 1 ((-2) + 0 + 3)
-numArray.sumRange(2, 5); // return -1 (3 + (-5) + 2 + (-1)) 
-numArray.sumRange(0, 5); // return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
-*/
-class NumArray {
-    vector<int> arr;
-public:
-    NumArray(vector<int>& nums) {
-        int n = int(nums.size());
-        arr.resize(n + 1);
-        for (int i = 0; i < n; i++)
-        {
-            arr[i+1] = arr[i] + nums[i];
-        }
-    }
-    
-    int sumRange(int i, int j) {
-        return arr[j+1] - arr[i];
-    }
-};
-
-/**
- * Your NumArray object will be instantiated and called as such:
- * NumArray* obj = new NumArray(nums);
- * int param_1 = obj->sumRange(i,j);
- */
-```
-
-## 0304. Range Sum Query 2D - Immutable*
-```cpp
-/*
-Given matrix = [
-  [3, 0, 1, 4, 2],
-  [5, 6, 3, 2, 1],
-  [1, 2, 0, 1, 5],
-  [4, 1, 0, 1, 7],
-  [1, 0, 3, 0, 5]
-]
-
-sumRegion(2, 1, 4, 3) -> 8
-sumRegion(1, 1, 2, 2) -> 11
-sumRegion(1, 2, 2, 4) -> 12
-*/
-class NumMatrix {
-    vector<vector<int>> accum;
-public:
-    NumMatrix(vector<vector<int>>& matrix) {
-        int nRow = int(matrix.size());
-        if (nRow == 0) { return; }
-        int nCol = int(matrix[0].size());
-        if (nCol == 0) { return; }
-        accum.resize(nRow, vector<int> (nCol+1, 0));
-        for (int i = 0; i < nRow; i++)
-        {
-            for (int j = 0; j < nCol; j++)
-            {
-                accum[i][j+1] = accum[i][j] + matrix[i][j];
-            }
-        }
-    }
-    int sumRegion(int row1, int col1, int row2, int col2) {
-        int ans = 0;
-        for (int i = row1; i <= row2; i++)
-        {
-            ans += accum[i][col2+1] - accum[i][col1];
-        }
-        return ans;
-    }
-};
-
-/**
- * Your NumMatrix object will be instantiated and called as such:
- * NumMatrix* obj = new NumMatrix(matrix);
- * int param_1 = obj->sumRegion(row1,col1,row2,col2);
- */
 ```
 
 ## 0312. Burst Balloons*
@@ -5391,57 +5045,6 @@ public:
             delete []vis[i];
         }
         delete []vis;
-        return ans;
-    }
-};
-```
-
-## 0415. Add Strings
-```cpp
-/*
-Input: num1 = "456", num2 = "77"
-Output: "533"
-*/
-class Solution {
-public:
-    string addStrings(string num1, string num2) {
-        string ans = "";
-        int len1 = (int)num1.length(), len2 = (int)num2.length();
-        if (len1 < len2)
-        {
-            swap(len1, len2);
-            swap(num1, num2);
-        }
-        int i = len1 - 1, j = len2 - 1;
-        int res = 0;
-        while (j >= 0)
-        {
-            int sum = (num1[i] - '0') + (num2[j] - '0') + res;
-            res = 0;
-            if (sum >= 10)
-            {
-                res = 1;
-                sum -= 10;
-            }
-            char sumChar = sum + '0';
-            ans.insert(0, 1, sumChar);
-            i--;
-            j--;
-        }
-        while (i >= 0)
-        {
-            int sum = (num1[i] - '0') + res;
-            res = 0;
-            if (sum >= 10)
-            {
-                res = 1;
-                sum -= 10;
-            }
-            char sumChar = sum + '0';
-            ans.insert(0, 1, sumChar);
-            i--;
-        }
-        if (res) { ans.insert(0, 1, '1'); }
         return ans;
     }
 };

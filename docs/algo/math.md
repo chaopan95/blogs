@@ -355,6 +355,30 @@ int totalHammingDistance(vector<int>& nums) {
 }
 ```
 
+### 区间按位与
+给定一个区间 [left, right] 求这个区间所有值的按位与，包括端点值。
+
+**「分析」**
+
+【Brian Kernighan 算法】对于 [left, right] 区间内的所有值，按照题意结果应为
+
+$$
+\text{res = left & left+1 &} \cdots \text{& right-1 & right}
+$$
+
+两个数按位与的结果势必不超过两数中较小的那个，因此，我们可以从右端点开始不断求两相邻数的按位与
+
+```cpp
+int rangeBitwiseAnd(int left, int right) {
+    while (left < right) {
+        right &= right - 1;
+    }
+    return right;
+}
+```
+时间复杂度：$O(\log (right - left))$，空间复杂度：$O(1)$
+
+
 ### 不使用加减运算符求两数之和
 给定两个整数a、b，在不使用 +、- 的情况下，求 a + b
 
@@ -834,3 +858,43 @@ vector<int> grayCode(int n) {
 }
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(1)$
+
+
+## 信息论
+### 可怜的小猪
+有 buckets 桶液体，其中 正好 有一桶含有毒药，其余装的都是水。它们从外观看起来都一样。为了弄清楚哪只水桶含有毒药，你可以喂一些猪喝，通过观察猪是否会死进行判断。不幸的是，你只有 minutesToTest 分钟时间来确定哪桶液体是有毒的。
+
+喂猪的规则如下：
+
+选择若干活猪进行喂养
+
+可以允许小猪同时饮用任意数量的桶中的水，并且该过程不需要时间。
+
+小猪喝完水后，必须有 minutesToDie 分钟的冷却时间。在这段时间里，你只能观察，而不允许继续喂猪。
+
+过了 minutesToDie 分钟后，所有喝到毒药的猪都会死去，其他所有猪都会活下来。
+
+重复这一过程，直到时间用完。
+
+给你桶的数目 buckets ，minutesToDie 和 minutesToTest ，返回在规定时间内判断哪个桶有毒所需的 最小 猪数。
+
+**「分析」**
+
+设 m 个小猪，实验轮数 n = $\left \lfloor \frac{\text{minutesToTest}}{\text{minutesToDie}} \right \rfloor$，那么对一个小猪而言，从实验开始到实验结束一共有 (1 + n) 个状态。这里的 1 指的是初始状态，之后每一轮实验都会有一个状态。因此 buckets 个桶确定有一个是毒药，所以，毒药的状态数是 buckets。因此，
+
+$$
+(n + 1)^{m} \geq \text{buckets}
+$$
+
+可以解出来 m 的最小值
+
+$$
+m = \left \lceil \log_{n + 1}\text{buckets} \right \rceil
+$$
+
+```cpp
+int poorPigs(int buckets, int minutesToDie, int minutesToTest) {
+    return ceil(log(buckets) / log(minutesToTest / minutesToDie + 1));
+}
+```
+时间复杂度：$O(1)$，空间复杂度：$O(1)$

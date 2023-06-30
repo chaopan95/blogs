@@ -485,3 +485,38 @@ vector<double> dicesProbability(int n) {
 }
 ```
 时间复杂度：$O(n^{2})$，空间复杂度：$O(n)$
+
+
+## 获得最多答题分数
+给定一个二维列表 questions = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]] 表示一系列的题目，questions[ i ] = [score, skipNum]，即如果作答第 i 题，将获得对应的分数 score，但是接下来需要跳过 skipNum 个题目；当然，第 i 道题目也可以选择不作答，试问，最多可以获得的分数是多少？
+
+**「分析」**
+
+【动态规划】设 dp[ i ] 为处于第 i 题时，可以获得的最大分数，**从后向前**遍历
+
+$$
+\text{dp[ i ]} =
+\begin{cases}
+\text{max ( dp[i + 1], dp[i + questions[ i ][ 1 ]] + questions[ i ][ 0 ]}, & \quad \text{i + questions[ i ][ 1 ] + 1} \geq n \\
+\text{max ( dp[i + 1], questions[ i ][ 0 ])}, & \quad \text{otherwise}
+\end{cases}
+$$
+
+```cpp
+long long mostPoints(vector<vector<int>>& questions) {
+    typedef long long ll;
+    int n = (int)questions.size();
+    vector<ll> dp(n, 0);
+    dp[n - 1] = questions[n - 1][0];
+    for (int i = n - 2; i >= 0; i--) {
+        dp[i] = dp[i + 1];
+        if (i + questions[i][1] >= n) {
+            dp[i] = max(dp[i], (ll)questions[i][0]);
+        } else {
+            dp[i] = max(dp[i], questions[i][0] + dp[i + questions[i][1]]);
+        }
+    }
+    return dp[0];
+}
+```
+时间复杂度：$O(n)$， 空间复杂度：$O(n)$

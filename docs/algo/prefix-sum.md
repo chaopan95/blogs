@@ -198,3 +198,48 @@ vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
 }
 ```
 时间复杂度：$O(n + m)$，空间复杂度：$O(1)$，其中 n 是航班数，m 是预定数
+
+## 分割数组的最多方案数
+给你一个下标从 0 开始且长度为 n 的整数数组 nums 。分割 数组 nums 的方案数定义为符合以下两个条件的 pivot 数目：
+
+1) 1 <= pivot < n
+
+2) nums[0] + nums[1] + ... + nums[pivot - 1] == nums[pivot] + nums[pivot + 1] + ... + nums[n - 1] 同时给你一个整数 k 。你可以将 nums 中 一个 元素变为 k 或 不改变 数组。
+
+请你返回在 至多 改变一个元素的前提下，最多 有多少种方法 分割 nums 使得上述两个条件都满足。
+
+**「分析」**
+
+【前缀和 + 左右哈希】假设一个数组的和为 tot，从某一个位置将数组切分，使得左右两部分的和相等，那么 tot 一定是一个偶数，并且这个位置的前缀和是 tot / 2，因此，我们用一个哈希表记录所有前缀和出现的次数。针对替换元素的情况，如果第 i 个元素被替换，那么数值的变化量是 d = k - nums[ i ]，此时，切分点 j 的位置有两种：1）在 i 的左侧，presum[ j ] + d = tot - presum[ j ]，得 presum[ j ] = (tot + d) / 2；2）j 在 i 的右侧（包含），presum[ j ] = tot + d - presum[ j ]，得 presum[ j ] = (tot - d) / 2。因此，我们枚举 nums 中的每一个 num，用两个哈希表，记录 num 左右两侧的前缀和的个数。
+
+```cpp
+int waysToPartition(vector<int>& nums, int k) {
+    int ans = 0;
+    long tot = 0, sum = 0;
+    unordered_map<int, int> cnt_left, cnt_right;
+    for (int num : nums) {
+        tot += num;
+        cnt_right[tot]++;
+    }
+    cnt_right[tot]--;
+    if (tot % 2 == 0) {
+        ans = cnt_right[tot / 2];
+    }
+    for (int i = 0; i < nums.size(); i++) {
+        sum += nums[i];
+        int d = k - nums[i];
+        int left = 0, right = 0;
+        if ((tot + d) % 2 == 0) {
+            left = cnt_left[(tot + d) / 2];
+        }
+        if ((tot - d) % 2 == 0) {
+            right = cnt_right[(tot - d) / 2];
+        }
+        ans = max(ans, left + right);
+        cnt_left[sum]++;
+        cnt_right[sum]--;
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$

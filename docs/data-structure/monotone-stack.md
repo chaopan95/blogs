@@ -1,6 +1,103 @@
 ## 简介
 单调栈是一种特殊的数据结构，栈内元素值（严格）单调变化。
 
+单调栈适用于求解「Next Greater Number」这一类问题
+给定一个序列 e.g. {1,3,4,2}，求每一个数字右侧第一个比自己大的数字，如果没有返回-1，模板如下
+```cpp
+vector<int> nextGreaterNumber(vector<int>& nums) {
+    vector<int> ans(nums.size(), -1), stk;
+    for (int i = 0; i < nums.size(); i++) {
+        while (!stk.empty() && nums[stk.back()] < nums[i]) {
+            ans[stk.back()] = nums[i];
+            stk.pop_back();
+        }
+        stk.emplace_back(i);
+    }
+    return ans;
+}
+```
+时间复杂度 $O(n)$，空间复杂度 $O(n)$
+
+进一步，如果是循环数组（某一位置的元素从右侧开始查找为数组尾后，继续从数组头查找）时，只需要这个数组后面拼接自己即可，模板如下
+```cpp
+vector<int> nextGreaterNumber(vector<int>& nums) {
+    vector<int> ans(nums.size(), -1), stk;
+    for (int i = 0; i < nums.size() * 2; i++) {
+        int j = i % nums.size();
+        while (!stk.empty() && nums[stk.back()] < nums[j]) {
+            ans[stk.back()] = nums[j];
+            stk.pop_back();
+        }
+        stk.emplace_back(j);
+    }
+    return ans;
+}
+```
+时间复杂度 $O(n)$，空间复杂度 $O(n)$
+
+## 最长正值区间
+给定一个序列e.g.[1,3,-2,-4,1]，请找出最大的一个子区间，使得这个区间元素的和为正数
+
+「分析」
+容易想到「二分+滑动窗口」的方法，这里「二分」导致错误的原因是：正值区间的长度不是单调的，即无法根据一个中间值，确定下一步进入到左区间还是右区间。
+本题的方法是「前缀和+单调栈」，「前缀和」求解区间和(i, j)，我们希望这个区间|j - i|可以最大。如果固定区间的左端点i，要使|j - i|尽可能的大，就要求j对应的数字比i对应的数字大，也就是说找到最后一个j
+$$\text{presum}[j_{\text{max}}] - \text{presum}[i] \geq 0$$
+
+可以利用「单调栈」实现，只要对「Next Greater Number」略加改动即可
+
+```cpp
+int longest_postive_value_interval(vector<int>& nums) {
+    vector<int> presum(nums.size() + 1), stk {0};
+    for (int i = 0; i < nums.size(); i++) {
+        presum[i + 1] = presum[i];
+        if (nums[i] > 8) {
+            presum[i + 1] += 1;
+        } else {
+            presum[i + 1] += -1;
+        }
+        if (presum[stk.back()] > presum[i + 1]) {
+            stk.emplace_back(i + 1);
+        }
+    }
+    int ans = 0;
+    for (int i = (int)presum.size() - 1; i > 0; i--) {
+        while (!stk.empty() && presum[stk.back()] < presum[i]) {
+            ans = max(ans, i - stk.back());
+            stk.pop_back();
+        }
+    }
+    return ans;
+}
+```
+时间复杂度 $O(n)$，空间复杂度 $O(n)$
+
+## 下下个更大的元素
+给定一个序列[2,4,0,9,6]，请找出每个元素右侧第二个大于自身的元素
+
+「分析」
+一个「单调栈」可以决解「Next Greater Number」，两个单调栈可以解决「Next Next Greater Number」。我们有两个「单调栈」s1、s2筛选出来更小的栈定元素。
+
+```cpp
+vector<int> nextNextGreaterNumber(vector<int>& nums) {
+    vector<int> ans(nums.size(), -1), s1, s2;
+    for (int i = 0; i < nums.size(); i++) {
+        while (!s2.empty() && nums[s2.back()] < nums[i]) {
+            ans[s2.back()] = nums[i];
+            s2.pop_back();
+        }
+        int j = (int)s1.size() - 1;
+        while (j >= 0 && nums[s1[j]] < nums[i]) {
+            j--;
+        }
+        s2.insert(s2.end(), s1.begin() + (j + 1), s1.end());
+        s1.resize(j + 1);
+        s1.emplace_back(i);
+    }
+    return ans;
+}
+```
+时间复杂度 $O(n)$，空间复杂度 $O(n)$
+
 ## 去重复字母
 给定一个字符串 s，将 s 中的所有重复字母去掉，返回一个不改变原字符串内字母相对位置且字典序最小的无重复字符串。如 s = cbacdcbc -> s' = acdb
 

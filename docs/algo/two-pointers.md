@@ -88,7 +88,7 @@ int lengthOfLongestSubstring(string s) {
     return maxLen;
 }
 ```
-时间复杂度：$O(n})$，空间复杂度：$O(n)$
+时间复杂度：$O(n)$，空间复杂度：$O(n)$
 
 
 ## 三数之和
@@ -142,6 +142,33 @@ int numSubarrayProductLessThanK(vector<int>& nums, int k) {
             prod /= nums[j++];
         }
         ans += i - j + 1;
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$
+
+
+## 最多连续 1 的个数
+给定一个只包含 0 和 1 的数组 nusm = [1,1,1,0,0,0,1,1,1,1,0]，如果最多 k 次将 0 变成 1，试问，数组中连续 1 子串最大长度是多少
+
+**「分析」**
+
+【双指针】
+
+```cpp
+int longestOnes(vector<int>& nums, int k) {
+    int ans = 0;
+    for (int i = 0, j = 0, cnt = 0; j < nums.size() && i < nums.size(); ) {
+        if (nums[j] == 1) {
+            j++;
+        } else if (cnt < k) {
+            cnt++;
+            j++;
+        } else {
+            cnt -= nums[i++] == 0;
+        }
+        ans = max(ans, j - i);
     }
     return ans;
 }

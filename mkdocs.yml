@@ -92,6 +92,7 @@ nav:
         - 链表: data-structure/list.md
         - 栈 & 队列: data-structure/stack-queue.md
         - 单调栈: data-structure/monotone-stack.md
+        - 单调队: data-structure/monotone-queue.md
         - 树:
             - 基础: data-structure/tree/basis.md
             - 二叉树: data-structure/tree/binary-tree.md
@@ -102,6 +103,7 @@ nav:
         - 树状数组: data-structure/binary-indexed-tree.md
         - 线段树: data-structure/segment-tree.md
         - 优先队列: data-structure/priority-queue.md
+        - 哈希表: data-structure/hash.md
     - 机器学习:
         - 决策树: machine-learning/decision-tree.md
         - ROC: machine-learning/roc.md

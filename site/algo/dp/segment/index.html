@@ -315,6 +315,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    删除一次得到子数组最大和
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -627,18 +634,30 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../data-structure/monotone-queue/" class="md-nav__link">
+        单调队
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
       
-      <label class="md-nav__link" for="__nav_3_4">
+      <label class="md-nav__link" for="__nav_3_5">
         树
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="树" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_4">
+        <label class="md-nav__title" for="__nav_3_5">
           <span class="md-nav__icon md-icon"></span>
           树
         </label>
@@ -758,6 +777,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-structure/hash/" class="md-nav__link">
+        哈希表
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -858,6 +889,13 @@
         <li class="md-nav__item">
   <a href="#m_1" class="md-nav__link">
     分割成 m 个子数组的最大和最小值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    删除一次得到子数组最大和
   </a>
   
 </li>
@@ -1019,57 +1057,6 @@
 </code></pre></div>
 </td></tr></table>
 </details>
-<details class="note"><summary><a href="https://leetcode-cn.com/problems/maximum-subarray-sum-with-one-deletion/">「Leetcode 1186. 删除一次得到子数组最大和」</a></summary><p>给你一个整数数组，返回它的某个非空子数组（连续元素）在执行一次可选的删除操作后，所能得到的最大元素总和。换句话说，你可以从原数组中选出一个子数组，并可以决定要不要从中删除一个元素（只能删一次哦），（删除后）子数组中至少应当有一个元素，然后该子数组（剩下）的元素总和是所有子数组之中最大的。注意，删除一个元素后，子数组 不能为空。</p>
-<p>请看示例：</p>
-<p>示例 1：</p>
-<p>输入：arr = [1,-2,0,3]</p>
-<p>输出：4</p>
-<p>解释：我们可以选出 [1, -2, 0, 3]，然后删掉 -2，这样得到 [1, 0, 3]，和最大。</p>
-<p>示例 2：</p>
-<p>输入：arr = [1,-2,-2,3]</p>
-<p>输出：3</p>
-<p>解释：我们直接选出 [3]，这就是最大和。</p>
-<p>示例 3：</p>
-<p>输入：arr = [-1,-1,-1,-1]</p>
-<p>输出：-1</p>
-<p>解释：最后得到的子数组不能为空，所以我们不能选择 [-1] 并从中删去 -1 来得到 0。</p>
-<p>我们应该直接选择 [-1]，或者选择 [-1, -1] 再从中删去一个 -1。</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="kt">int</span> <span class="n">maximumSum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">arr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">const</span> <span class="kt">int</span> <span class="n">minEle</span> <span class="o">=</span> <span class="o">*</span><span class="n">min_element</span><span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">arr</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
-        <span class="kt">int</span> <span class="n">dp0</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dp1</span> <span class="o">=</span> <span class="n">minEle</span><span class="p">,</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">dp0</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">int</span> <span class="n">tmp0</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-            <span class="kt">int</span> <span class="n">tmp1</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-            <span class="n">dp0</span> <span class="o">=</span> <span class="n">tmp0</span><span class="p">;</span>
-            <span class="n">dp1</span> <span class="o">=</span> <span class="n">tmp1</span><span class="p">;</span>
-            <span class="n">ans</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></div>
-</td></tr></table>
-</details>
 <h2 id="k">子数组长度不超过 k 的最大和<a class="headerlink" href="#k" title="Permanent link">&para;</a></h2>
 <p>给定一个数组 nums = [1, 15, 7, 9, 2, 5, 10] 和一个整数 k = 3，表示将数组分成若干个连续子数组，但是子数组的长度不超过 k，分割后的子数组统统变成子数组的最大值，求变化后的数组和。上例对应的答案是 [15, 15, 15, 9, 10, 10, 10]，数组和是 84。</p>
 <p><strong>「分析」</strong></p>
@@ -1220,6 +1207,51 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n \log (sum - max))</span><script type="math/tex">O(n \log (sum - max))</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，sum 表示数组的和，max 表示数组的最大值</p>
+<h2 id="_1">删除一次得到子数组最大和<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>给你一个整数数组，返回它的某个非空子数组（连续元素）在执行一次可选的删除操作后，所能得到的最大元素总和。换句话说，你可以从原数组中选出一个子数组，并可以决定要不要从中删除一个元素（只能删一次哦），（删除后）子数组中至少应当有一个元素，然后该子数组（剩下）的元素总和是所有子数组之中最大的。注意，删除一个元素后，子数组 不能为空。e.g. A = [1,-2,0,3]，最大子数组和是 4。</p>
+<p>「分析」
+设 dp[ i ][ k ] 是数组在第 i 处结尾时，恰好删掉了 k 个元素的最大子数组之和，这里 k 只能取 0 和 1。状态 dp[ i ][ 1 ] 的上游状态是 dp[i - 1][ 0 ] 和 dp[i - 1][ 1 ] + A[ i ]，表示 i - 1 时删了一个后，i 处的元素需要加上；反之则不加。状态 dp[ i ][ 0 ] 的上游状态是 dp[i - 1][ 0 ] + A[ i ] 和 A[ i ]。状态转移如下：</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; dp[i][0] = \max(dp[i-1][0], 0) + A[i] \\
+&amp; dp[i][1] = \max(dp[i-1][0], dp[i-1][1] + A[i])
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& dp[i][0] = \max(dp[i-1][0], 0) + A[i] \\
+& dp[i][1] = \max(dp[i-1][0], dp[i-1][1] + A[i])
+\end{aligned}
+</script>
+</div>
+<p>这里可能有疑问，为什么 dp[ i ][ 1 ] 不可以从 i 处单独开始呢？因为 dp[ i ][ 1 ] 表示必须删除一个元素，而题目要求一个元素时不能删除。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maximumSum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">dp0</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dp1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">dp0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dp1</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="n">dp0</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">dp0</span><span class="p">,</span> <span class="n">dp1</span><span class="p">),</span> <span class="n">ans</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
                 
               
               

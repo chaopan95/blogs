@@ -326,3 +326,77 @@ int shortestPathLength(vector<vector<int>>& graph) {
 }
 ```
 时间复杂度：$O(2^{n} n^{2})$，空间复杂度：$O(n 2^{n})$
+
+
+### 最小高度树
+树是一个无向图，其中任何两个顶点只通过一条路径连接。 换句话说，一个任何没有简单环路的连通图都是一棵树。
+
+给你一棵包含 n 个节点的树，标记为 0 到 n - 1 。给定数字 n 和一个有 n - 1 条无向边的 edges 列表（每一个边都是一对标签），其中 edges[i] = [ai, bi] 表示树中节点 ai 和 bi 之间存在一条无向边。
+
+可选择树中任何一个节点作为根。当选择节点 x 作为根节点时，设结果树的高度为 h 。在所有可能的树中，具有最小高度的树（即，min(h)）被称为 最小高度树 。
+
+请你找到所有的 最小高度树 并按 任意顺序 返回它们的根节点标签列表。
+
+树的 高度 是指根节点和叶子节点之间最长向下路径上边的数量。
+
+$$
+\begin{matrix}
+& & & 1 \\
+& & & \uparrow\\
+& & & 0 \\
+& & \swarrow & & \searrow \\
+& 2 & & & & 3
+\end{matrix}
+$$
+
+最小的高度为 1，根节点是 0
+
+**「分析」**
+
+【BFS + 拓扑排序】对于一个无向图，找到所有度为 1 的节点，在此基础上不断向内蔓延，直到最内一层的节点。
+
+```cpp
+vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
+    vector<int> ans, degree(n, 0);
+    if (n == 1) {
+        return {0};
+    }
+    unordered_map<int, vector<int>> neighbors;
+    for (vector<int> edge : edges) {
+        neighbors[edge[0]].emplace_back(edge[1]);
+        neighbors[edge[1]].emplace_back(edge[0]);
+        degree[edge[0]]++;
+        degree[edge[1]]++;
+    }
+    unordered_set<int> vis;
+    queue<int> q;
+    for (int i = 0; i < n; i++) {
+        if (degree[i] == 1) {
+            vis.emplace(i);
+            q.push(i);
+            degree[i]--;
+        }
+    }
+    while (!q.empty()) {
+        ans.clear();
+        size_t q_size = q.size();
+        for (int _ = 0; _ < q_size; _++) {
+            int front = q.front();
+            q.pop();
+            ans.emplace_back(front);
+            for (int neighbor : neighbors[front]) {
+                if (vis.count(neighbor)) {
+                    continue;
+                }
+                degree[neighbor]--;
+                if (degree[neighbor] == 1) {
+                    q.push(neighbor);
+                    vis.emplace(neighbor);
+                }
+            }
+        }
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$

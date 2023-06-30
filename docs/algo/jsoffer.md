@@ -69,34 +69,6 @@ private：
 };
 ```
 
-## 23. 二叉搜索树的后序遍历序列*
-题目描述：输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。
-
-```C++
-class Solution {
-public：
-    bool VerifySquenceOfBST(vector<int> sequence) {
-        int n = int(sequence.size());
-        if (n == 0) { return false; }
-        return isPostOrder(sequence, 0, n-1);
-    }
-    bool isPostOrder(vector<int> arr, int b, int e)
-    {
-        if (b >= e) { return true; }
-        int idx = b;
-        for (; idx <= e; idx++)
-        {
-            if (arr[idx] >= arr[e]) { break; }
-        }
-        for (int i = idx; i < e; i++)
-        {
-            if (arr[i] < arr[e]) { return false; }
-        }
-        return isPostOrder(arr, b, idx-1) && isPostOrder(arr, idx, e-1);
-    }
-};
-```
-
 ## 25. 复杂链表的复制*
 题目描述：输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针random指向一个随机节点），请对此链表进行深拷贝，并返回拷贝后的头结点。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）
 Solution：We copy each node to append itself.
@@ -193,40 +165,6 @@ public：
 };
 ```
 
-## 46. 孩子们的游戏(圆圈中最后剩下的数)
-题目描述：每年六一儿童节,牛客都会准备一些小礼物去看望孤儿院的小朋友,今年亦是如此。HF作为牛客的资深元老,自然也准备了一些小游戏。其中,有个游戏是这样的：首先,让小朋友们围成一个大圈。然后,他随机指定一个数m,让编号为0的小朋友开始报数。每次喊到m-1的那个小朋友要出列唱首歌,然后可以在礼品箱中任意的挑选礼物,并且不再回到圈中,从他的下一个小朋友开始,继续0...m-1报数....这样下去....直到剩下最后一个小朋友,可以不用表演,并且拿到牛客名贵的“名侦探柯南”典藏版(名额有限哦!!^_^)。请你试着想下,哪个小朋友会得到这份礼品呢？(注：小朋友的编号是从0到n-1)。如果没有小朋友，请返回-1。
-
-```C++
-class Solution {
-public：
-    int LastRemaining_Solution(int n, int m)
-    {
-        int i = 0, j = 0, numOut = 0, *out = new int [n]{};
-        while (numOut < n - 1)
-        {
-            while (out[i])
-            {
-                i++;
-                if (i == n) { i = 0; }
-            }
-            if (j == m-1)
-            {
-                out[i] = true;
-                numOut++;
-            }
-            i++;
-            j++;
-            if (i == n) { i = 0; }
-            if (j == m) { j = 0; }
-        }
-        int res = -1;
-        for (int i = 0; i < n; i++) { if (!out[i]) { res = i; } }
-        delete []out;
-        return res;
-    }
-};
-```
-
 ## 54. 字符流中第一个不重复的字符*
 题目描述：请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符"go"时，第一个只出现一次的字符是"g"。当从该字符流中读出前六个字符“google"时，第一个只出现一次的字符是"l"。如果当前字符流没有存在出现一次的字符，返回#字符。
 
@@ -271,94 +209,6 @@ public：
         return char(ch);
     }
 
-};
-```
-
-## 61. 序列化二叉树*
-题目描述：请实现两个函数，分别用来序列化和反序列化二叉树
-二叉树的序列化是指：把一棵二叉树按照某种遍历方式的结果以某种格式保存为字符串，从而使得内存中建立起来的二叉树可以持久保存。序列化可以基于先序、中序、后序、层序的二叉树遍历方式来进行修改，序列化的结果是一个字符串，序列化时通过 某种符号表示空节点（#），以 ！ 表示一个结点值的结束（value!）。二叉树的反序列化是指：根据某种遍历顺序得到的序列化字符串结果str，重构二叉树。例如，我们可以把一个只有根节点为1的二叉树序列化为"1,"，然后通过自己的函数来解析回这个二叉树
-
-```C++
-/*
-struct TreeNode {
-    int val;
-    struct TreeNode *left;
-    struct TreeNode *right;
-    TreeNode(int x) ：
-            val(x), left(NULL), right(NULL) {
-    }
-};
-*/
-class Solution {
-public：
-    char* Serialize(TreeNode *root) {
-        string pre = "", in = "";
-        preOrder(root, pre);
-        inOrder(root, in);
-        pre.push_back('#');
-        pre += in;
-        int n = int(pre.length());
-        char *str = new char [n+1]{};
-        for (int i = 0; i < n; i++) { str[i] = pre[i]; }
-        str[n] = '\0';
-        return str;
-    }
-    void preOrder(TreeNode* root, string &str)
-    {
-        if (root != NULL)
-        {
-            str += to_string(root->val);
-            str.push_back(',');
-            preOrder(root->left, str);
-            preOrder(root->right, str);
-        }
-    }
-    void inOrder(TreeNode* root, string &str)
-    {
-        if (root != NULL)
-        {
-            inOrder(root->left, str);
-            str += to_string(root->val);
-            str.push_back(',');
-            inOrder(root->right, str);
-        }
-    }
-    TreeNode* Deserialize(char *str) {
-        vector<int> pre, in;
-        bool isPre = true;
-        int val = 0;
-        for (int i = 0; i < strlen(str); i++)
-        {
-            if (str[i] == '#') { isPre = false; continue; }
-            if (str[i] == ',')
-            {
-                if (isPre) { pre.push_back(val); }
-                else { in.push_back(val); }
-                val = 0;
-                continue;
-            }
-            val = val * 10 + (str[i] - '0');
-        }
-        int n = int(pre.size());
-        if (n == 0) { return NULL; }
-        return constructTree(pre, in, 0, n-1, 0, n-1);
-    }
-    TreeNode* constructTree(vector<int> pre, vector<int> in,
-                            int b1, int e1, int b2, int e2)
-    {
-        if (b1 > e1 || b2 > e2) { return NULL; }
-        TreeNode *root = new TreeNode(pre[b1]);
-        int numLeft = 0;
-        for (int i = b2; i <= e2; i++, numLeft++)
-        {
-            if (in[i] == pre[b1]) { break; }
-        }
-        root->left = constructTree(pre, in, b1+1, b1+numLeft,
-                                   b2, b2+numLeft-1);
-        root->right = constructTree(pre, in, b1+numLeft+1, e1,
-                                    b2+numLeft+1, e2);
-        return root;
-    }
 };
 ```
 
