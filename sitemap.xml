@@ -116,12 +116,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/Binary-Indexed-tree/</loc>
+         <loc>https://chaopan95.github.io/blogs/data-structure/binary-indexed-tree/</loc>
+         <lastmod>2023-06-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chaopan95.github.io/blogs/data-structure/hash/</loc>
          <lastmod>2023-06-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/data-structure/list/</loc>
+         <lastmod>2023-06-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chaopan95.github.io/blogs/data-structure/monotone-queue/</loc>
          <lastmod>2023-06-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -162,6 +172,11 @@
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/data-structure/tree/binary-tree/</loc>
+         <lastmod>2023-06-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chaopan95.github.io/blogs/data-structure/tree/prefix-tree/</loc>
          <lastmod>2023-06-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
