@@ -508,13 +508,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    最多连续 1 的个数
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -653,30 +646,18 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../data-structure/monotone-queue/" class="md-nav__link">
-        单调队
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
       
-      <label class="md-nav__link" for="__nav_3_5">
+      <label class="md-nav__link" for="__nav_3_4">
         树
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="树" data-md-level="2">
-        <label class="md-nav__title" for="__nav_3_5">
+        <label class="md-nav__title" for="__nav_3_4">
           <span class="md-nav__icon md-icon"></span>
           树
         </label>
@@ -723,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/tree/prefix-tree/" class="md-nav__link">
+      <a href="../../data-structure/tree/prefix-tree.md" class="md-nav__link">
         前缀树
       </a>
     </li>
@@ -765,7 +746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/binary-indexed-tree/" class="md-nav__link">
+      <a href="../../data-structure/binary-indexed-tree.md" class="md-nav__link">
         树状数组
       </a>
     </li>
@@ -791,18 +772,6 @@
     <li class="md-nav__item">
       <a href="../../data-structure/priority-queue/" class="md-nav__link">
         优先队列
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../data-structure/hash/" class="md-nav__link">
-        哈希表
       </a>
     </li>
   
@@ -929,13 +898,6 @@
         <li class="md-nav__item">
   <a href="#k" class="md-nav__link">
     乘积小于 k 的连续子数组个数
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    最多连续 1 的个数
   </a>
   
 </li>
@@ -1080,7 +1042,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+时间复杂度：<span><span class="MathJax_Preview">O(n})</span><script type="math/tex">O(n})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
 <h2 id="_4">三数之和<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。答案中不可以包含重复的三元组。</p>
 <p><strong>「分析」</strong></p>
@@ -1155,42 +1117,6 @@
             <span class="n">prod</span> <span class="o">/=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">];</span>
         <span class="p">}</span>
         <span class="n">ans</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
-<h2 id="1">最多连续 1 的个数<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>给定一个只包含 0 和 1 的数组 nusm = [1,1,1,0,0,0,1,1,1,1,0]，如果最多 k 次将 0 变成 1，试问，数组中连续 1 子串最大长度是多少</p>
-<p><strong>「分析」</strong></p>
-<p>【双指针】</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">longestOnes</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">j</span><span class="o">++</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
-            <span class="n">j</span><span class="o">++</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="n">cnt</span> <span class="o">-=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">ans</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
 <span class="p">}</span>
