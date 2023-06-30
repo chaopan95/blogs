@@ -92,7 +92,7 @@ nav:
         - 链表: data-structure/list.md
         - 栈 & 队列: data-structure/stack-queue.md
         - 单调栈: data-structure/monotone-stack.md
-        - 单调队: data-structure/monotone-queue.md
+        - 单调队列: data-structure/monotone-queue.md
         - 树:
             - 基础: data-structure/tree/basis.md
             - 二叉树: data-structure/tree/binary-tree.md
