@@ -107,3 +107,5 @@ nav:
     - 机器学习:
         - 决策树: machine-learning/decision-tree.md
         - ROC: machine-learning/roc.md
+    - 概率&统计:
+        - 概率: probability/prob.md
