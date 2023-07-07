@@ -1105,13 +1105,21 @@ P(X = x \text{ and } Y = y) &= P(X = x \mid Y = y) P(y = y) \\
 \end{aligned}
 </script>
 </div>
-<p>满足
-$$
+<p>满足</p>
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
-&amp; \sum_{x} \sum_{y} P(X = x \text{ and } Y = y) = 1 \
+&amp; \sum_{x} \sum_{y} P(X = x \text{ and } Y = y) = 1 \\
 &amp; \int_{x} \int_{y} f_{X, Y} (x, y) dy dx = 1
 \end{aligned}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \sum_{x} \sum_{y} P(X = x \text{ and } Y = y) = 1 \\
+& \int_{x} \int_{y} f_{X, Y} (x, y) dy dx = 1
+\end{aligned}
+</script>
+</div>
 <h3 id="marginal-probability">边际概率 Marginal Probability<a class="headerlink" href="#marginal-probability" title="Permanent link">&para;</a></h3>
 <div>
 <div class="MathJax_Preview">
@@ -1174,81 +1182,173 @@ S^{2} = \frac{1}{n-1} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}
 </div>
 <h2 id="unbiased-estimate">无偏估计 Unbiased Estimate<a class="headerlink" href="#unbiased-estimate" title="Permanent link">&para;</a></h2>
 <p>假设我们想知道一个大学的学生身高，调查每一个学生不太现实（但是准确的），于是我们可以随机挑选100位同学，求一个均值。为了获得一个精确的估计，我们重复实验，然后计算样本均值，<span><span class="MathJax_Preview">\bar{X}_{2}</span><script type="math/tex">\bar{X}_{2}</script></span>, <span><span class="MathJax_Preview">\bar{X}_{3}</span><script type="math/tex">\bar{X}_{3}</script></span>, <span><span class="MathJax_Preview">\cdots</span><script type="math/tex">\cdots</script></span>, <span><span class="MathJax_Preview">\bar{X}_{k}</span><script type="math/tex">\bar{X}_{k}</script></span>。这里 <span><span class="MathJax_Preview">\bar{X}</span><script type="math/tex">\bar{X}</script></span> 就称为一个随机变量，<span><span class="MathJax_Preview">\bar{X}_{i}</span><script type="math/tex">\bar{X}_{i}</script></span> 是其可能的一个值。</p>
-<p>多次重复实验下，期望趋向于真值。样本方差如下：
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">S^{2} = \frac{1}{n} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}</span><script type="math/tex">S^{2} = \frac{1}{n} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">S^{2} = \frac{1}{n} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}</span><script type="math/tex">S^{2} = \frac{1}{n} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}</script></span></script></span></p>
-<p>有
-$$
+<p>多次重复实验下，期望趋向于真值。样本方差如下：</p>
+<div>
+<div class="MathJax_Preview">
+S^{2} = \frac{1}{n} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}
+</div>
+<script type="math/tex; mode=display">
+S^{2} = \frac{1}{n} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}
+</script>
+</div>
+<p>有</p>
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
-E(S^{2}) &amp; = E(\frac{1}{n} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) \
-&amp;  = E(\frac{1}{n} \sum_{i=1}^{n}((x_{i} - \mu) - (\bar{X} - \mu))^{2}) \
-&amp; = E(\frac{1}{n} \sum_{i=1}^{n}((x_{i} - \mu)^{2} - 2(x_{i} - \mu)(\bar{X} - \mu) + (\bar{X} - \mu)^{2})) \
-&amp; = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{1}{n}\sum_{i=1}^{n}2(x_{i} - \mu)(\bar{X} - \mu) + \frac{1}{n}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \
-&amp; = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - 2(\bar{X} - \mu)(\bar{X}- \mu) + \frac{1}{n}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \
-&amp; = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - 2(\bar{X} - \mu)(\bar{X}- \mu) + (\bar{X} - \mu)^{2}) \
-&amp; = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - (\bar{X} - \mu)^{2}) \
-&amp; = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2}) - E((\bar{X} - \mu)^{2}) \
-&amp; = Var(X) - Var(\bar{X}) \
-&amp; = \sigma^{2} - \frac{1}{n}\sigma^{2} \
+E(S^{2}) &amp; = E(\frac{1}{n} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) \\
+&amp;  = E(\frac{1}{n} \sum_{i=1}^{n}((x_{i} - \mu) - (\bar{X} - \mu))^{2}) \\
+&amp; = E(\frac{1}{n} \sum_{i=1}^{n}((x_{i} - \mu)^{2} - 2(x_{i} - \mu)(\bar{X} - \mu) + (\bar{X} - \mu)^{2})) \\
+&amp; = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{1}{n}\sum_{i=1}^{n}2(x_{i} - \mu)(\bar{X} - \mu) + \frac{1}{n}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \\
+&amp; = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - 2(\bar{X} - \mu)(\bar{X}- \mu) + \frac{1}{n}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \\
+&amp; = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - 2(\bar{X} - \mu)(\bar{X}- \mu) + (\bar{X} - \mu)^{2}) \\
+&amp; = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - (\bar{X} - \mu)^{2}) \\
+&amp; = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2}) - E((\bar{X} - \mu)^{2}) \\
+&amp; = Var(X) - Var(\bar{X}) \\
+&amp; = \sigma^{2} - \frac{1}{n}\sigma^{2} \\
 &amp; = \frac{n-1}{n}\sigma^{2} \leq \sigma^{2}
 \end{aligned}
-$$
-so,
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">E(S^{2}) = \frac{n-1}{n}\sigma^{2}</span><script type="math/tex">E(S^{2}) = \frac{n-1}{n}\sigma^{2}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">E(S^{2}) = \frac{n-1}{n}\sigma^{2}</span><script type="math/tex">E(S^{2}) = \frac{n-1}{n}\sigma^{2}</script></span></script></span></p>
-<p>如果我们处以n，样本方差会比总体方差要小，因此需要乘一个 <span><span class="MathJax_Preview">S^{2}</span><script type="math/tex">S^{2}</script></span> by <span><span class="MathJax_Preview">\frac{n}{n-1}</span><script type="math/tex">\frac{n}{n-1}</script></span> 得到无偏样本方差
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">S^{2} = \frac{n}{n-1}(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) = \frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}</span><script type="math/tex">S^{2} = \frac{n}{n-1}(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) = \frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">S^{2} = \frac{n}{n-1}(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) = \frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}</span><script type="math/tex">S^{2} = \frac{n}{n-1}(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) = \frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}</script></span></script></span></p>
-<p>因此
-$$
+</div>
+<script type="math/tex; mode=display">
 \begin{aligned}
-E(S^{2}) &amp; = E(\frac{1}{n-1} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) = E(\frac{1}{n-1} \sum_{i=1}^{n}((x_{i} - \mu) - (\bar{X} - \mu))^{2}) \
-&amp; = E(\frac{1}{n-1} \sum_{i=1}^{n}((x_{i} - \mu)^{2} - 2(x_{i} - \mu)(\bar{X} - \mu) + (\bar{X} - \mu)^{2})) \
-&amp; = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{1}{n-1}\sum_{i=1}^{n}2(x_{i} - \mu)(\bar{X} - \mu) + \frac{1}{n-1}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \
-&amp; = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{2n}{n-1}(\bar{X} - \mu)(\bar{X}- \mu) + \frac{1}{n-1}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \
-&amp; = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{2n}{n-1}(\bar{X} - \mu)(\bar{X}- \mu) + \frac{n}{n-1}(\bar{X} - \mu)^{2}) \
-&amp; = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{n}{n-1}(\bar{X} - \mu)^{2}) \
-&amp; = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2}) - E(\frac{n}{n-1}(\bar{X} - \mu)^{2}) \
-&amp; = \frac{n}{n-1}E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2}) - \frac{n}{n-1}E((\bar{X} - \mu)^{2}) \
-&amp; = \frac{n}{n-1}\sigma^{2} - \frac{n}{n-1}\frac{\sigma^{2}}{n} \
+E(S^{2}) & = E(\frac{1}{n} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) \\
+&  = E(\frac{1}{n} \sum_{i=1}^{n}((x_{i} - \mu) - (\bar{X} - \mu))^{2}) \\
+& = E(\frac{1}{n} \sum_{i=1}^{n}((x_{i} - \mu)^{2} - 2(x_{i} - \mu)(\bar{X} - \mu) + (\bar{X} - \mu)^{2})) \\
+& = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{1}{n}\sum_{i=1}^{n}2(x_{i} - \mu)(\bar{X} - \mu) + \frac{1}{n}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \\
+& = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - 2(\bar{X} - \mu)(\bar{X}- \mu) + \frac{1}{n}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \\
+& = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - 2(\bar{X} - \mu)(\bar{X}- \mu) + (\bar{X} - \mu)^{2}) \\
+& = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - (\bar{X} - \mu)^{2}) \\
+& = E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2}) - E((\bar{X} - \mu)^{2}) \\
+& = Var(X) - Var(\bar{X}) \\
+& = \sigma^{2} - \frac{1}{n}\sigma^{2} \\
+& = \frac{n-1}{n}\sigma^{2} \leq \sigma^{2}
+\end{aligned}
+</script>
+</div>
+<p>于是</p>
+<div>
+<div class="MathJax_Preview">
+E(S^{2}) = \frac{n-1}{n}\sigma^{2}
+</div>
+<script type="math/tex; mode=display">
+E(S^{2}) = \frac{n-1}{n}\sigma^{2}
+</script>
+</div>
+<p>如果我们处以n，样本方差会比总体方差要小，因此需要乘一个 <span><span class="MathJax_Preview">S^{2}</span><script type="math/tex">S^{2}</script></span> by <span><span class="MathJax_Preview">\frac{n}{n-1}</span><script type="math/tex">\frac{n}{n-1}</script></span> 得到无偏样本方差</p>
+<div>
+<div class="MathJax_Preview">
+S^{2} = \frac{n}{n-1}(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) = \frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}
+</div>
+<script type="math/tex; mode=display">
+S^{2} = \frac{n}{n-1}(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) = \frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}
+</script>
+</div>
+<p>因此</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+E(S^{2}) &amp; = E(\frac{1}{n-1} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) = E(\frac{1}{n-1} \sum_{i=1}^{n}((x_{i} - \mu) - (\bar{X} - \mu))^{2}) \\
+&amp; = E(\frac{1}{n-1} \sum_{i=1}^{n}((x_{i} - \mu)^{2} - 2(x_{i} - \mu)(\bar{X} - \mu) + (\bar{X} - \mu)^{2})) \\
+&amp; = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{1}{n-1}\sum_{i=1}^{n}2(x_{i} - \mu)(\bar{X} - \mu) + \frac{1}{n-1}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \\
+&amp; = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{2n}{n-1}(\bar{X} - \mu)(\bar{X}- \mu) + \frac{1}{n-1}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \\
+&amp; = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{2n}{n-1}(\bar{X} - \mu)(\bar{X}- \mu) + \frac{n}{n-1}(\bar{X} - \mu)^{2}) \\
+&amp; = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{n}{n-1}(\bar{X} - \mu)^{2}) \\
+&amp; = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2}) - E(\frac{n}{n-1}(\bar{X} - \mu)^{2}) \\
+&amp; = \frac{n}{n-1}E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2}) - \frac{n}{n-1}E((\bar{X} - \mu)^{2}) \\
+&amp; = \frac{n}{n-1}\sigma^{2} - \frac{n}{n-1}\frac{\sigma^{2}}{n} \\
 &amp; = \sigma^{2}
 \end{aligned}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+E(S^{2}) & = E(\frac{1}{n-1} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) = E(\frac{1}{n-1} \sum_{i=1}^{n}((x_{i} - \mu) - (\bar{X} - \mu))^{2}) \\
+& = E(\frac{1}{n-1} \sum_{i=1}^{n}((x_{i} - \mu)^{2} - 2(x_{i} - \mu)(\bar{X} - \mu) + (\bar{X} - \mu)^{2})) \\
+& = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{1}{n-1}\sum_{i=1}^{n}2(x_{i} - \mu)(\bar{X} - \mu) + \frac{1}{n-1}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \\
+& = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{2n}{n-1}(\bar{X} - \mu)(\bar{X}- \mu) + \frac{1}{n-1}\sum_{i=1}^{n}(\bar{X} - \mu)^{2}) \\
+& = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{2n}{n-1}(\bar{X} - \mu)(\bar{X}- \mu) + \frac{n}{n-1}(\bar{X} - \mu)^{2}) \\
+& = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2} - \frac{n}{n-1}(\bar{X} - \mu)^{2}) \\
+& = E(\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \mu)^{2}) - E(\frac{n}{n-1}(\bar{X} - \mu)^{2}) \\
+& = \frac{n}{n-1}E(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \mu)^{2}) - \frac{n}{n-1}E((\bar{X} - \mu)^{2}) \\
+& = \frac{n}{n-1}\sigma^{2} - \frac{n}{n-1}\frac{\sigma^{2}}{n} \\
+& = \sigma^{2}
+\end{aligned}
+</script>
+</div>
 <h3 id="covariance">协方差 Covariance<a class="headerlink" href="#covariance" title="Permanent link">&para;</a></h3>
 <div>
-<div class="MathJax_Preview">\text{Cov}(f(x), g(y)) = \text{E}[(f(x) - \text{E}[f(x)])(g(y) - \text{E}[g(y)])]</div>
-<script type="math/tex; mode=display">\text{Cov}(f(x), g(y)) = \text{E}[(f(x) - \text{E}[f(x)])(g(y) - \text{E}[g(y)])]</script>
+<div class="MathJax_Preview">
+\text{Cov}(f(x), g(y)) = \text{E}[(f(x) - \text{E}[f(x)])(g(y) - \text{E}[g(y)])]
+</div>
+<script type="math/tex; mode=display">
+\text{Cov}(f(x), g(y)) = \text{E}[(f(x) - \text{E}[f(x)])(g(y) - \text{E}[g(y)])]
+</script>
 </div>
 <h2 id="_2">题目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="_3">两人同生日的概率<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>假设有 k 个人，每一个的生日随机落入365（不考虑闰年）中的每一天。期望至少有2个人的生日是同一天的情况下，k 的最小值是多少？</p>
-<p>「分析」对任意一对人 i、j 而言，我们定一个随机变量（indicator）<span><span class="MathJax_Preview">X_{ij}</span><script type="math/tex">X_{ij}</script></span>，i 和 j 同一天的生日为 1；否则，为 0。
-$$
+<p>「分析」对任意一对人 i、j 而言，我们定一个随机变量（indicator）<span><span class="MathJax_Preview">X_{ij}</span><script type="math/tex">X_{ij}</script></span>，i 和 j 同一天的生日为 1；否则，为 0。</p>
+<div>
+<div class="MathJax_Preview">
 X_{ij} =
 \begin{cases}
-    1, \quad B_{i}=B_{j} \
+    1, \quad B_{i}=B_{j} \\
     0, \quad \text{otherwise}
 \end{cases}
-$$</p>
-<p>i 和 j 的生日是同一天的概率
-$$
-Pr[ B_{i}=B_{j} ]= \frac{1}{365}<em>\frac{1}{365}</em>365 = \frac{1}{365}
-$$</p>
-<p>期望
-$$
+</div>
+<script type="math/tex; mode=display">
+X_{ij} =
+\begin{cases}
+    1, \quad B_{i}=B_{j} \\
+    0, \quad \text{otherwise}
+\end{cases}
+</script>
+</div>
+<p>i 和 j 的生日是同一天的概率</p>
+<div>
+<div class="MathJax_Preview">
+Pr[ B_{i}=B_{j} ]= \frac{1}{365}*\frac{1}{365}*365 = \frac{1}{365}
+</div>
+<script type="math/tex; mode=display">
+Pr[ B_{i}=B_{j} ]= \frac{1}{365}*\frac{1}{365}*365 = \frac{1}{365}
+</script>
+</div>
+<p>期望</p>
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
-E[ X_{ij} ] &amp; = \sum_{i=1}<sup>{k-1}\sum_{j=i+1}</sup>{k}X_{ij}Pr[ B_{i}=B_{j} ] \
-&amp; = \frac{1}{365}{}\sum_{i=1}<sup>{k}\sum_{j=i+1}</sup>{k}X_{ij} \
-&amp; = \frac{1}{365}<em>\sum_{i=1}^{k-1}[ k-(i+1)+1 ] \
-&amp; = \frac{1}{365}</em>(\sum_{i=1}<sup>{k-1}k-\sum_{i=1}</sup>{k-1}i) \
-&amp; = \frac{1}{365}<em>[ k(k-1)-\frac{k(k-1)}{2} ] \
-&amp; = \frac{1}{365}</em>\frac{k(k-1)}{2}=1
+E[ X_{ij} ] &amp; = \sum_{i=1}^{k-1}\sum_{j=i+1}^{k}X_{ij}Pr[ B_{i}=B_{j} ] \\
+&amp; = \frac{1}{365}{}\sum_{i=1}^{k}\sum_{j=i+1}^{k}X_{ij} \\
+&amp; = \frac{1}{365}*\sum_{i=1}^{k-1}[ k-(i+1)+1 ] \\
+&amp; = \frac{1}{365}*(\sum_{i=1}^{k-1}k-\sum_{i=1}^{k-1}i) \\
+&amp; = \frac{1}{365}*[ k(k-1)-\frac{k(k-1)}{2} ] \\
+&amp; = \frac{1}{365}*\frac{k(k-1)}{2}=1
 \end{aligned}
-$$</p>
-<p>求得
-$$
+</div>
+<script type="math/tex; mode=display">
 \begin{aligned}
-&amp; k=1 \pm 27.02 \
+E[ X_{ij} ] & = \sum_{i=1}^{k-1}\sum_{j=i+1}^{k}X_{ij}Pr[ B_{i}=B_{j} ] \\
+& = \frac{1}{365}{}\sum_{i=1}^{k}\sum_{j=i+1}^{k}X_{ij} \\
+& = \frac{1}{365}*\sum_{i=1}^{k-1}[ k-(i+1)+1 ] \\
+& = \frac{1}{365}*(\sum_{i=1}^{k-1}k-\sum_{i=1}^{k-1}i) \\
+& = \frac{1}{365}*[ k(k-1)-\frac{k(k-1)}{2} ] \\
+& = \frac{1}{365}*\frac{k(k-1)}{2}=1
+\end{aligned}
+</script>
+</div>
+<p>求得</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; k=1 \pm 27.02 \\
 &amp; k = 28
 \end{aligned}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& k=1 \pm 27.02 \\
+& k = 28
+\end{aligned}
+</script>
+</div>
                 
               
               
