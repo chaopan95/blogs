@@ -1349,27 +1349,6 @@ E[ X_{ij} ] & = \sum_{i=1}^{k-1}\sum_{j=i+1}^{k}X_{ij}Pr[ B_{i}=B_{j} ] \\
 \end{aligned}
 </script>
 </div>
-<p>$$
-\documentclass{article}
-\usepackage{tikz}<br />
-\usetikzlibrary{arrows.meta}%画箭头用的包
-\begin{document} </p>
-<p>\begin{tikzpicture}[&gt;=Stealth]
-    \draw<a href="-0.5,0">-&gt;,line width=0.2pt</a>--(4.5,0);
-    \draw<a href="0,-0.5">-&gt;,line width=0.2pt</a>--(0,2.5);
-    \coordinate (a) at (0.5,1.9);
-    \coordinate (b) at (4,1.2);
-    \coordinate (a0) at (a |- 0,0); 
-    \coordinate (b0) at (b |- 0,0); 
-    \node[below] at (a0) {<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>};
-    \node[below] at (b0) {<span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>};
-    \filldraw[fill=gray!50,draw,thick] 
-        (a0)--(a)..controls(1,2.8)and(2.7,0.4)..(b)--(b0)--cycle;
-    \node[above right,outer sep=0.2cm,rounded corners,fill = green!20,draw = black,text = blue!60!red,scale = 0.6] %blue60，red40
-        at (b) {<span><span class="MathJax_Preview">\displaystyle\int_a^bf(x)dx = F(b)-F(a)</span><script type="math/tex">\displaystyle\int_a^bf(x)dx = F(b)-F(a)</script></span>};%写标注，draw边框，fill填充，scale字体大小
-\end{tikzpicture}
-\end{document} 
-$$</p>
                 
               
               
