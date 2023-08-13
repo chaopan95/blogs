@@ -68,29 +68,58 @@ vector<int> getMaxSumEpisode(vector<int> nums) {
 }
 ```
 
-**相似题目**
-??? note "[「Leetcode 152. 乘积最大子数组」](https://leetcode-cn.com/problems/maximum-product-subarray/)"
-    给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。
+## 任意子数组和的绝对值的最大值
+给定一个数组，求其子数组（连续）和的绝对值最大值。e.g. A = [-3,-5,-3,-2,-6,3,10,-10,-8,-3]，子数组和的绝对值最大为27。
 
-    输入: [2,3,-2,4]
-    
-    输出: 6
+「分析」
+绝对值最大表示为最大值或者最小值其中之一最大。可以将问题转化为求子数组的最大和+最小和。
 
-    解释: 子数组 [2,3] 有最大乘积 6。
+```cpp
+int maxAbsoluteSum(vector<int>& nums) {
+ if (nums.empty()) {
+  return 0;
+ }
+ int sum1 = 0, sum2 = 0, maxSum = INT_MIN, minSum = INT_MAX;
+ for (int num : nums) {
+  if (sum1 > 0) {
+   sum1 += num;
+  } else {
+   sum1 = num;
+  }
+  if (maxSum < sum1) {
+   maxSum = sum1;
+  }
+  if (sum2 < 0) {
+   sum2 += num;
+  } else {
+   sum2 = num;
+  }
+  if (minSum > sum2) {
+   minSum = sum2;
+  }
+ }
+ return max(maxSum, -minSum);
+}
+```
+时间复杂度 $O(n)$，空间复杂度 $O(1)$
 
-    ```cpp
-    int maxProduct(vector<int>& nums) {
-        int n = int(nums.size());
-        int minF = nums[0], maxF = nums[0], ans = nums[0];
-        for (int i = 1; i < n; i++) {
-            int _min = minF, _max = maxF;
-            minF = min(nums[i], min(_min * nums[i], _max * nums[i]));
-            maxF = max(nums[i], max(_min * nums[i], _max * nums[i]));
-            ans = max(ans, maxF);
-        }
-        return ans;
+
+## 乘积最大子数组
+给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。输入: [2,3,-2,4]。输出: 6。解释: 子数组 [2,3] 有最大乘积 6。
+
+```cpp
+int maxProduct(vector<int>& nums) {
+    int n = int(nums.size());
+    int minF = nums[0], maxF = nums[0], ans = nums[0];
+    for (int i = 1; i < n; i++) {
+        int _min = minF, _max = maxF;
+        minF = min(nums[i], min(_min * nums[i], _max * nums[i]));
+        maxF = max(nums[i], max(_min * nums[i], _max * nums[i]));
+        ans = max(ans, maxF);
     }
-    ```
+    return ans;
+}
+```
 
 ## 子数组长度不超过 k 的最大和
 给定一个数组 nums = [1, 15, 7, 9, 2, 5, 10] 和一个整数 k = 3，表示将数组分成若干个连续子数组，但是子数组的长度不超过 k，分割后的子数组统统变成子数组的最大值，求变化后的数组和。上例对应的答案是 [15, 15, 15, 9, 10, 10, 10]，数组和是 84。
