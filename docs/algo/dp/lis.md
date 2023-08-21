@@ -34,6 +34,31 @@ vector<int> LIS(vector<int>& arr) {
     return ans;
 }
 ```
+```cpp
+vector<int> lengthOfLIS(vector<int>& nums) {
+    int len = 0;
+    vector<int> dp;
+    for (int i = 0; i < nums.size(); i++) {
+        int num = nums[i];
+        if (dp.empty() || dp.back() < num) {
+            dp.emplace_back(num);
+            len++;
+        } else {
+            int l = 0, r = len;
+            while (l < r) {
+                int m = (l + r) >> 1;
+                if (dp[m] < num) {
+                    l = m + 1;
+                } else {
+                    r = m;
+                }
+            }
+            dp[l] = num;
+        }
+    }
+    return dp;
+}
+```
 时间复杂度：$O(n \log n)$，空见复杂度：$O(n)$
 
 

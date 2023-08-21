@@ -80,6 +80,7 @@ nav:
             - 序列型: algo/dp/sequence.md
             - 区间型: algo/dp/interval.md
             - 左右遍历型: algo/dp/left-right-traversal.md
+            - 数位型: algo/dp/digits.md
         - 贪心: algo/greedy.md
         - 二分查找: algo/binary-search.md
         - 双指针: algo/two-pointers.md
