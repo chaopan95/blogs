@@ -36,39 +36,6 @@ public：
 };
 ```
 
-## 05. 用两个栈实现队列
-题目描述：用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
-
-```C++
-class Solution
-{
-public：
-    void push(int node) {
-        stack1.push(node);
-    }
-
-    int pop() {
-        while (!stack1.empty())
-        {
-            stack2.push(stack1.top());
-            stack1.pop();
-        }
-        int res = stack2.top();
-        stack2.pop();
-        while(!stack2.empty())
-        {
-            stack1.push(stack2.top());
-            stack2.pop();
-        }
-        return res;
-    }
-
-private：
-    stack<int> stack1;
-    stack<int> stack2;
-};
-```
-
 ## 25. 复杂链表的复制*
 题目描述：输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针random指向一个随机节点），请对此链表进行深拷贝，并返回拷贝后的头结点。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）
 Solution：We copy each node to append itself.
