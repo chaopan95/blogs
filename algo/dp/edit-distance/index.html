@@ -385,6 +385,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#levenshtein-distance" class="md-nav__link">
+    Levenshtein distance
+  </a>
+  
+    <nav class="md-nav" aria-label="Levenshtein distance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    最小编辑代价
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -912,6 +932,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#levenshtein-distance" class="md-nav__link">
+    Levenshtein distance
+  </a>
+  
+    <nav class="md-nav" aria-label="Levenshtein distance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    最小编辑代价
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -964,7 +1004,8 @@
 <p>horse -&gt; rorse (将 'h' 替换为 'r')</p>
 <p>rorse -&gt; rose (删除 'r')</p>
 <p>rose -&gt; ros (删除 'e')</p>
-<details class="note"><summary><a href="">「Levenshtein distance的代码」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<h2 id="levenshtein-distance">Levenshtein distance<a class="headerlink" href="#levenshtein-distance" title="Permanent link">&para;</a></h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1033,42 +1074,21 @@
 67
 68
 69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">EDprocess</span><span class="p">(</span><span class="n">string</span> <span class="n">s1</span><span class="p">,</span> <span class="n">string</span> <span class="n">s2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="kt">int</span> <span class="o">**</span><span class="n">dp</span><span class="p">,</span> <span class="n">string</span> <span class="n">str</span><span class="p">)</span>
-<span class="p">{</span>
+70</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">EDprocess</span><span class="p">(</span><span class="n">string</span> <span class="n">s1</span><span class="p">,</span> <span class="n">string</span> <span class="n">s2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="kt">int</span> <span class="o">**</span><span class="n">dp</span><span class="p">,</span> <span class="n">string</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span>
-    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="p">{</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="p">(</span><span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
         <span class="n">string</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
         <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">s2</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
         <span class="n">str</span> <span class="o">=</span> <span class="n">ss</span> <span class="o">+</span> <span class="n">str</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">str</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="o">-</span><span class="n">i</span><span class="p">);</span>
         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;insert %c: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">s2</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">str</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
         <span class="n">EDprocess</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="p">{</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
         <span class="n">string</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">str</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
         <span class="n">str</span> <span class="o">=</span> <span class="n">ss</span> <span class="o">+</span> <span class="n">str</span><span class="p">.</span><span class="n">substr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">str</span><span class="p">.</span><span class="n">length</span><span class="p">()</span><span class="o">-</span><span class="n">i</span><span class="p">);</span>
         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;delete %c: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">s1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">str</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
         <span class="n">EDprocess</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">s2</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-        <span class="p">{</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">s2</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
             <span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s2</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
             <span class="n">printf</span><span class="p">(</span><span class="s">&quot;replace %c with %c: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">s1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">s2</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">str</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
         <span class="p">}</span>
@@ -1076,12 +1096,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="nf">printDP</span><span class="p">(</span><span class="n">string</span> <span class="n">s1</span><span class="p">,</span> <span class="n">string</span> <span class="n">s2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n2</span><span class="p">,</span> <span class="kt">int</span> <span class="o">**</span><span class="n">dp</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n2</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
-        <span class="p">{</span>
+<span class="kt">void</span> <span class="nf">printDP</span><span class="p">(</span><span class="n">string</span> <span class="n">s1</span><span class="p">,</span> <span class="n">string</span> <span class="n">s2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n2</span><span class="p">,</span> <span class="kt">int</span> <span class="o">**</span><span class="n">dp</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n2</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
         <span class="p">}</span>
         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
@@ -1091,18 +1108,14 @@
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;s2 = %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">s2</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
 <span class="p">}</span>
 
-<span class="kt">int</span> <span class="nf">LD</span><span class="p">(</span><span class="n">string</span> <span class="n">s1</span><span class="p">,</span> <span class="n">string</span> <span class="n">s2</span><span class="p">)</span>
-<span class="p">{</span>
+<span class="kt">int</span> <span class="nf">LD</span><span class="p">(</span><span class="n">string</span> <span class="n">s1</span><span class="p">,</span> <span class="n">string</span> <span class="n">s2</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">n1</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">s1</span><span class="p">.</span><span class="n">length</span><span class="p">()),</span> <span class="n">n2</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">s2</span><span class="p">.</span><span class="n">length</span><span class="p">());</span>
     <span class="kt">int</span> <span class="o">**</span><span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span> <span class="o">*</span><span class="p">[</span><span class="n">n1</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span> <span class="p">[</span><span class="n">n2</span><span class="o">+</span><span class="mi">1</span><span class="p">]{};</span> <span class="p">}</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n2</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
-        <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n2</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">j</span> <span class="o">?</span> <span class="nl">i</span> <span class="p">:</span> <span class="n">j</span><span class="p">;</span> <span class="p">}</span>
-            <span class="k">else</span>
-            <span class="p">{</span>
+            <span class="k">else</span> <span class="p">{</span>
                 <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
                 <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
                 <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">s2</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
@@ -1133,7 +1146,6 @@
 <span class="cm">*/</span>
 </code></pre></div>
 </td></tr></table>
-</details>
 <p>Damerau-Levenshtein distance</p>
 <div>
 <div class="MathJax_Preview">
@@ -1175,8 +1187,9 @@
 \end{cases}
 </script>
 </div>
-<p><strong>相似题目</strong></p>
-<details class="note"><summary><a href="https://www.nowcoder.com/practice/05fed41805ae4394ab6607d0d745c8e4?tpId=196&amp;tqId=37134&amp;rp=1&amp;ru=%2Fta%2Fjob-code-total&amp;qru=%2Fta%2Fjob-code-total%2Fquestion-ranking&amp;tab=answerKey">「牛客题霸-算法篇 35. 最小编辑代价」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<h3 id="_2">最小编辑代价<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>给定两个字符串str1和str2，再给定三个整数ic，dc和rc，分别代表插入、删除和替换一个字符的代价，请输出将str1编辑成str2的最小代价。如，"abc","adc",5,3,2，返回2。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1202,39 +1215,7 @@
 24
 25
 26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">题目描述</span>
-<span class="cm">给定两个字符串str1和str2，再给定三个整数ic，dc和rc，分别代表插入、</span>
-<span class="cm">删除和替换一个字符的代价，请输出将str1编辑成str2的最小代价。</span>
-<span class="cm">示例1</span>
-<span class="cm">输入</span>
-<span class="cm">&quot;abc&quot;,&quot;adc&quot;,5,3,2</span>
-<span class="cm">返回值</span>
-<span class="cm">2</span>
-
-<span class="cm">示例2</span>
-<span class="cm">输入</span>
-<span class="cm">&quot;abc&quot;,&quot;adc&quot;,5,3,100</span>
-<span class="cm">返回值</span>
-<span class="cm">8</span>
-<span class="cm">*/</span>
-<span class="cm">/**</span>
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm">* min edit cost</span>
 <span class="cm">* @param str1 string字符串 the string</span>
 <span class="cm">* @param str2 string字符串 the string</span>
@@ -1263,7 +1244,6 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</details>
                 
               
               
