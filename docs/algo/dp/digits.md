@@ -78,3 +78,144 @@ int numberOf2sInRange(int n) {
 }
 ```
 时间复杂度 $O(m^{3})$，空间复杂度 $O(m^{2})$，m 是n转化为字符串后的长度。
+
+## 不含连续1的非负整数
+给定一个正整数 n ，请你统计在 [0, n] 范围的非负整数中，有多少个整数的二进制表示中不存在 连续的 1 。例如，n = 5，在 [0, 5] 的非负整数中，只有 3 的二进制表示含有连续的1，因此答案是 5。
+
+「分析」
+将整数 n 转换成二进制的字符串形式，之后套用模版。mark 表示前一个当前构造的（二进制）数字的最后一位。
+
+```cpp
+int dfs(string &s, vector<vector<int>> &M, int mark, int i, bool isLim, bool isNum) {
+	if (i == s.length()) {
+		return isNum;
+	}
+	if (!isLim && M[i][mark] != -1) {
+		return M[i][mark];
+	}
+	int ans = 0;
+	if (!isNum) {
+		ans = dfs(s, M, 0, i + 1, false, false);
+	}
+	int up = isLim ? s[i] - '0' : 1;
+	for (int d = 1 - isNum; d <= up; d++) {
+		if (d == 1 && mark == 1) {
+			continue;
+		}
+		ans += dfs(s, M, d, i + 1, isLim && (d == up), true);
+	}
+	if (!isLim && isNum) {
+		M[i][mark] = ans;
+	}
+	return ans;
+}
+int findIntegers(int n) {
+	string s = "";
+	int tmp = n;
+	while (tmp > 0) {
+		int r = tmp % 2;
+		s.push_back(r + '0');
+		tmp >>= 1;
+	}
+	reverse(s.begin(), s.end());
+	vector<vector<int>> M(s.size(), vector<int>(2, -1));
+	return 1 + dfs(s, M, 0, 0, true, false);
+}
+```
+时间复杂度 $O(m)$，空间复杂度 $O(m)$，m 是n转化为二进制字符串后的长度。
+
+## 范围中美丽整数的数目
+给你正整数 low ，high 和 k 。如果一个数满足以下两个条件，那么它是 美丽的 ：
+
+1)偶数数位的数目与奇数数位的数目相同。
+2)这个整数可以被 k 整除。
+
+例如，low = 10, high = 20, k = 3，给定范围中有 2 个美丽数字：[12,18]
+- 12 是美丽整数，因为它有 1 个奇数数位和 1 个偶数数位，而且可以被 k = 3 整除。
+- 18 是美丽整数，因为它有 1 个奇数数位和 1 个偶数数位，而且可以被 k = 3 整除。
+
+15 不是美丽整数，因为它的奇数数位和偶数数位的数目不相等。
+
+请返回范围 [low, high] 中美丽整数的数目。
+
+「分析」
+M[i][mask][diff] 表示我们构造第 i 位数字，这个数字对 k 取余数位 mask，且数字各数位的奇偶差为 diff 时，美丽数的方案数目。
+
+```cpp
+int dfs(string &s, vector<vector<vector<int>>> &M, int mask, int diff, int i, int k, bool isLim, bool isNum) {
+	if (i == s.length()) {
+		return isNum && mask == 0 && diff == s.length();
+	}
+	if (!isLim && M[i][mask][diff] != -1) {
+		return M[i][mask][diff];
+	}
+	int ans = 0;
+	if (!isNum) {
+		ans = dfs(s, M, mask, diff, i + 1, k, false, false);
+	}
+	int up = isLim ? s[i] - '0' : 9;
+	for (int d = 1 - isNum; d <= up; d++) {
+		ans += dfs(s, M, (mask * 10 + d) % k, diff + (d % 2) * 2 - 1, i + 1, k, isLim && (d == up), true);
+	}
+	if (!isLim && isNum) {
+		M[i][mask][diff] = ans;
+	}
+	return ans;
+}
+
+int calc(int num, int k) {
+	int ans = 0;
+	string s = to_string(num);
+	vector<vector<vector<int>>> M(s.length(), vector<vector<int>> (k, vector<int>(2 * s.length() + 1, -1)));
+	ans = dfs(s, M, 0, (int)s.length(), 0, k, true, false);
+	return ans;
+}
+
+int numberOfBeautifulIntegers(int low, int high, int k) {
+	return calc(high, k) - calc(low - 1, k);
+}
+```
+时间复杂度 $O(m^{2}kD)$，空间复杂度 $O(m^{2}k)$，m 是n转化为字符串后的长度，k是余数，D=10。
+
+## 最大为 N 的数字组合
+给定一个按 非递减顺序 排列的数字数组 digits 。你可以用任意次数 digits[i] 来写的数字。例如，如果 digits = ['1','3','5']，我们可以写数字，如 '13', '551', 和 '1351315'。返回 可以生成的小于或等于给定整数 n 的正整数的个数 。
+
+「分析」
+M[i] 表示我们构造第 i 位数字时，生成符合条件的数目。
+
+```cpp
+int dfs(string &s, vector<int> &digits, vector<int> &M, int mask, int i, bool isLim, bool isNum) {
+	if (i == s.length()) {
+		return isNum;
+	}
+	if (!isLim && M[i] != -1) {
+		return M[i];
+	}
+	int ans = 0;
+	if (!isNum) {
+		ans += dfs(s, digits, M, mask, i + 1, false, false);
+	}
+	int up = isLim ? s[i] - '0' : 9;
+	for (int d : digits) {
+		if (d > up) {
+			continue;
+		}
+		ans += dfs(s, digits, M, d, i + 1, isLim && d == up, true);
+	}
+	if (!isLim && isNum) {
+		M[i] = ans;
+	}
+	return ans;
+}
+
+int atMostNGivenDigitSet(vector<string>& digits, int n) {
+	string s = to_string(n);
+	vector<int> nums;
+	for (string d : digits) {
+		nums.emplace_back(stoi(d));
+	}
+	vector<int> M(s.length(), -1);
+	return dfs(s, nums, M, 0, 0, true, false);
+}
+```
+时间复杂度 $O(mk)$，空间复杂度 $O(m)$，m 是n转换成字符串后的长度，k是digits的长度。

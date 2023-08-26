@@ -1139,29 +1139,29 @@
 23
 24
 25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maxAbsoluteSum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
- <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
- <span class="p">}</span>
- <span class="kt">int</span> <span class="n">sum1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sum2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">maxSum</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">,</span> <span class="n">minSum</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
- <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">sum1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-   <span class="n">sum1</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-   <span class="n">sum1</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">maxSum</span> <span class="o">&lt;</span> <span class="n">sum1</span><span class="p">)</span> <span class="p">{</span>
-   <span class="n">maxSum</span> <span class="o">=</span> <span class="n">sum1</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">sum2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-   <span class="n">sum2</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-   <span class="n">sum2</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">minSum</span> <span class="o">&gt;</span> <span class="n">sum2</span><span class="p">)</span> <span class="p">{</span>
-   <span class="n">minSum</span> <span class="o">=</span> <span class="n">sum2</span><span class="p">;</span>
-  <span class="p">}</span>
- <span class="p">}</span>
- <span class="k">return</span> <span class="n">max</span><span class="p">(</span><span class="n">maxSum</span><span class="p">,</span> <span class="o">-</span><span class="n">minSum</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">sum1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sum2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">maxSum</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">,</span> <span class="n">minSum</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">sum1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sum1</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">sum1</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">maxSum</span> <span class="o">&lt;</span> <span class="n">sum1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">maxSum</span> <span class="o">=</span> <span class="n">sum1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">sum2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sum2</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">sum2</span> <span class="o">=</span> <span class="n">num</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">minSum</span> <span class="o">&gt;</span> <span class="n">sum2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">minSum</span> <span class="o">=</span> <span class="n">sum2</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">max</span><span class="p">(</span><span class="n">maxSum</span><span class="p">,</span> <span class="o">-</span><span class="n">minSum</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>

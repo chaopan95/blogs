@@ -371,10 +371,23 @@
     子序列连续
   </a>
   
+    <nav class="md-nav" aria-label="子序列连续">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    最长公共子串
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     子序列不连续
   </a>
   
@@ -382,7 +395,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
+    最长公共子序列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     交错字符
   </a>
   
@@ -930,10 +950,23 @@
     子序列连续
   </a>
   
+    <nav class="md-nav" aria-label="子序列连续">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    最长公共子串
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     子序列不连续
   </a>
   
@@ -941,7 +974,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
+    最长公共子序列
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     交错字符
   </a>
   
@@ -987,8 +1027,9 @@
 </script>
 </div>
 <p>在状态转移过程，记录最大长度的大小以及最大长度的位置，最终可输出最长子数组。</p>
-<p><strong>相似题目</strong></p>
-<details class="note"><summary><a href="https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac?tpId=196&amp;tqId=37132&amp;rp=1&amp;ru=%2Fta%2Fjob-code-total&amp;qru=%2Fta%2Fjob-code-total%2Fquestion-ranking&amp;tab=answerKey">「牛客题霸-算法篇 127. 最长公共子串」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<h3 id="_2">最长公共子串<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>给定两个字符串str1和str2,输出两个字符串的最长公共子串，例如，"1AB2345CD","12345EF"的最长公共子串是"2345"。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1015,27 +1056,7 @@
 25
 26
 27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">给定两个字符串str1和str2,输出两个字符串的最长公共子串</span>
-<span class="cm">题目保证str1和str2的最长公共子串存在且唯一。</span>
-
-<span class="cm">示例1</span>
-<span class="cm">输入</span>
-<span class="cm">&quot;1AB2345CD&quot;,&quot;12345EF&quot;</span>
-<span class="cm">返回值</span>
-<span class="cm">&quot;2345&quot;</span>
-<span class="cm">*/</span>
-<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
     <span class="cm">/**</span>
 <span class="cm">    * longest common substring</span>
@@ -1065,8 +1086,7 @@
 <span class="p">};</span>
 </code></pre></div>
 </td></tr></table>
-</details>
-<h2 id="_2">子序列不连续<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_3">子序列不连续<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>当子序列不要求连续时，依然可以用dp[i][j]表示A[i: ]和B[j: ]两个数组的最长公共部分的长度，但是状态的转移方程发生改变</p>
 <div>
 <div class="MathJax_Preview">
@@ -1104,7 +1124,9 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<details class="note"><summary><a href="https://www.nowcoder.com/practice/4727c06b9ee9446cab2e859b4bb86bb8?tpId=101&amp;tqId=33099&amp;rp=1&amp;ru=%2Fta%2Fprogrammer-code-interview-guide&amp;qru=%2Fta%2Fprogrammer-code-interview-guide%2Fquestion-ranking&amp;tab=answerKey">「牛客网 程序员代码面试指南 31. 最长公共子序列」</a></summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<h3 id="_4">最长公共子序列<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>给定两个字符串str1和str2，输出连个字符串的最长公共子序列。如过最长公共子序列为空，则输出-1。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1140,39 +1162,7 @@
 34
 35
 36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">题目描述</span>
-<span class="cm">给定两个字符串str1和str2，输出连个字符串的最长公共子序列。如过最长公共子序列为空，则输出-1。</span>
-<span class="cm">输入描述:</span>
-<span class="cm">输出包括两行，第一行代表字符串str1，第二行代表str2。</span>
-<span class="cm">输出描述:</span>
-<span class="cm">输出一行，代表他们最长公共子序列。如果公共子序列的长度为空，则输出-1。</span>
-<span class="cm">示例1</span>
-<span class="cm">输入</span>
-<span class="cm">1A2C3D4B56</span>
-<span class="cm">B1D23CA45B6A</span>
-<span class="cm">输出</span>
-<span class="cm">123456</span>
-<span class="cm">说明</span>
-<span class="cm">&quot;123456&quot;和“12C4B6”都是最长公共子序列，任意输出一个。</span>
-<span class="cm">*/</span>
-<span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
@@ -1211,8 +1201,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</details>
-<h3 id="_3">交错字符<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_5">交错字符<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>给定三个字符串 s1 = “aabcc”， s2 = “dbbca”。s3 = “aadbbcbcac”，判断 s3 是否由 s1 和 s2 交错形成，即 s1 和 s2 是 s3 的子序列且无重叠。</p>
 <p><strong>「分析」</strong></p>
 <p>【动态规划】如果使用【双指针】求解本题的话，我们会得到错误结果，因为，【双指针】会贪心地找到最先遇到的相同字符。也就是说，本问题的子问题有重叠，所有使用【动态规划】。设 dp[ i ][ j ] 表示 s1 的前 i 个字符与 s2 的前 j 个字符是否形成 s3 的前 i + j 个字符。</p>

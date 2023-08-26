@@ -76,29 +76,29 @@ vector<int> getMaxSumEpisode(vector<int> nums) {
 
 ```cpp
 int maxAbsoluteSum(vector<int>& nums) {
- if (nums.empty()) {
-  return 0;
- }
- int sum1 = 0, sum2 = 0, maxSum = INT_MIN, minSum = INT_MAX;
- for (int num : nums) {
-  if (sum1 > 0) {
-   sum1 += num;
-  } else {
-   sum1 = num;
-  }
-  if (maxSum < sum1) {
-   maxSum = sum1;
-  }
-  if (sum2 < 0) {
-   sum2 += num;
-  } else {
-   sum2 = num;
-  }
-  if (minSum > sum2) {
-   minSum = sum2;
-  }
- }
- return max(maxSum, -minSum);
+    if (nums.empty()) {
+        return 0;
+    }
+    int sum1 = 0, sum2 = 0, maxSum = INT_MIN, minSum = INT_MAX;
+    for (int num : nums) {
+        if (sum1 > 0) {
+            sum1 += num;
+        } else {
+            sum1 = num;
+        }
+        if (maxSum < sum1) {
+            maxSum = sum1;
+        }
+        if (sum2 < 0) {
+            sum2 += num;
+        } else {
+            sum2 = num;
+        }
+        if (minSum > sum2) {
+            minSum = sum2;
+        }
+    }
+    return max(maxSum, -minSum);
 }
 ```
 时间复杂度 $O(n)$，空间复杂度 $O(1)$

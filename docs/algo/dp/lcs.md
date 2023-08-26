@@ -13,49 +13,39 @@ $$
 
 在状态转移过程，记录最大长度的大小以及最大长度的位置，最终可输出最长子数组。
 
-**相似题目**
-??? note "[「牛客题霸-算法篇 127. 最长公共子串」](https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac?tpId=196&tqId=37132&rp=1&ru=%2Fta%2Fjob-code-total&qru=%2Fta%2Fjob-code-total%2Fquestion-ranking&tab=answerKey)"
+### 最长公共子串
+给定两个字符串str1和str2,输出两个字符串的最长公共子串，例如，"1AB2345CD","12345EF"的最长公共子串是"2345"。
 
-    ```cpp
-    /*
-    给定两个字符串str1和str2,输出两个字符串的最长公共子串
-    题目保证str1和str2的最长公共子串存在且唯一。
-
-    示例1
-    输入
-    "1AB2345CD","12345EF"
-    返回值
-    "2345"
+```cpp
+class Solution {
+public:
+    /**
+    * longest common substring
+    * @param str1 string字符串 the string
+    * @param str2 string字符串 the string
+    * @return string字符串
     */
-    class Solution {
-    public:
-        /**
-        * longest common substring
-        * @param str1 string字符串 the string
-        * @param str2 string字符串 the string
-        * @return string字符串
-        */
-        string LCS(string str1, string str2) {
-            // write code here
-            int n1 = (int)str1.length(), n2 = (int)str2.length();
-            vector<vector<int>> dp(n1+1, vector<int> (n2+1, 0));
-            int len = 1, pos = 0;
-            for (int i = n1 - 1; i >= 0; i--) {
-                for (int j = n2 - 1; j >= 0; j--) {
-                    if (str1[i] == str2[j]) {
-                        dp[i][j] = dp[i+1][j+1] + 1;
-                        if (len < dp[i][j]) {
-                            len = dp[i][j];
-                            pos = i;
-                            
-                        }
+    string LCS(string str1, string str2) {
+        // write code here
+        int n1 = (int)str1.length(), n2 = (int)str2.length();
+        vector<vector<int>> dp(n1+1, vector<int> (n2+1, 0));
+        int len = 1, pos = 0;
+        for (int i = n1 - 1; i >= 0; i--) {
+            for (int j = n2 - 1; j >= 0; j--) {
+                if (str1[i] == str2[j]) {
+                    dp[i][j] = dp[i+1][j+1] + 1;
+                    if (len < dp[i][j]) {
+                        len = dp[i][j];
+                        pos = i;
+                        
                     }
                 }
             }
-            return str1.substr(pos, len);
         }
-    };
-    ```
+        return str1.substr(pos, len);
+    }
+};
+```
 
 ## 子序列不连续
 当子序列不要求连续时，依然可以用dp[i][j]表示A[i: ]和B[j: ]两个数组的最长公共部分的长度，但是状态的转移方程发生改变
@@ -82,63 +72,48 @@ while (i < m && j < n) {
 }
 ```
 
-??? note "[「牛客网 程序员代码面试指南 31. 最长公共子序列」](https://www.nowcoder.com/practice/4727c06b9ee9446cab2e859b4bb86bb8?tpId=101&tqId=33099&rp=1&ru=%2Fta%2Fprogrammer-code-interview-guide&qru=%2Fta%2Fprogrammer-code-interview-guide%2Fquestion-ranking&tab=answerKey)"
+### 最长公共子序列
+给定两个字符串str1和str2，输出连个字符串的最长公共子序列。如过最长公共子序列为空，则输出-1。
 
-    ```cpp
-    /*
-    题目描述
-    给定两个字符串str1和str2，输出连个字符串的最长公共子序列。如过最长公共子序列为空，则输出-1。
-    输入描述:
-    输出包括两行，第一行代表字符串str1，第二行代表str2。
-    输出描述:
-    输出一行，代表他们最长公共子序列。如果公共子序列的长度为空，则输出-1。
-    示例1
-    输入
-    1A2C3D4B56
-    B1D23CA45B6A
-    输出
-    123456
-    说明
-    "123456"和“12C4B6”都是最长公共子序列，任意输出一个。
-    */
-    #include<iostream>
-    #include<string>
-    #include<vector>
-    using namespace std;
+```cpp
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
 
-    string LCS(string s1, string s2) {
-        int n1 = (int)s1.length(), n2 = (int)s2.length();
-        vector<vector<int>> dp(n1+1, vector<int>(n2+1, 0));
-        string ans = "";
-        for (int i = n1 - 1; i >= 0; i--) {
-            for (int j = n2 - 1; j >= 0; j--) {
-                if (s1[i] == s2[j]) { dp[i][j] = dp[i+1][j+1] + 1; }
-                else { dp[i][j] = max(dp[i+1][j], dp[i][j+1]); }
-            }
+string LCS(string s1, string s2) {
+    int n1 = (int)s1.length(), n2 = (int)s2.length();
+    vector<vector<int>> dp(n1+1, vector<int>(n2+1, 0));
+    string ans = "";
+    for (int i = n1 - 1; i >= 0; i--) {
+        for (int j = n2 - 1; j >= 0; j--) {
+            if (s1[i] == s2[j]) { dp[i][j] = dp[i+1][j+1] + 1; }
+            else { dp[i][j] = max(dp[i+1][j], dp[i][j+1]); }
         }
-        int i = 0, j = 0;
-        while (i < n1 && j < n2) {
-            if (s1[i] == s2[j]) {
-                ans.push_back(s1[i]);
-                i++;
-                j++;
-            }
-            else if (dp[i+1][j] > dp[i][j+1]) {
-                i++;
-            }
-            else { j++; }
+    }
+    int i = 0, j = 0;
+    while (i < n1 && j < n2) {
+        if (s1[i] == s2[j]) {
+            ans.push_back(s1[i]);
+            i++;
+            j++;
         }
-        return dp[0][0] ? ans : "-1";
+        else if (dp[i+1][j] > dp[i][j+1]) {
+            i++;
+        }
+        else { j++; }
     }
+    return dp[0][0] ? ans : "-1";
+}
 
-    int main(int argc, const char * argv[]) {
-        // insert code here...
-        string s1 = "1A2C3D4B56", s2 = "B1D23CA45B6A";
-        cin >> s1 >> s2;
-        printf("%s\n", LCS(s1, s2).c_str());
-        return 0;
-    }
-    ```
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    string s1 = "1A2C3D4B56", s2 = "B1D23CA45B6A";
+    cin >> s1 >> s2;
+    printf("%s\n", LCS(s1, s2).c_str());
+    return 0;
+}
+```
 
 ### 交错字符
 给定三个字符串 s1 = “aabcc”， s2 = “dbbca”。s3 = “aadbbcbcac”，判断 s3 是否由 s1 和 s2 交错形成，即 s1 和 s2 是 s3 的子序列且无重叠。
