@@ -108,5 +108,7 @@ nav:
     - 机器学习:
         - 决策树: machine-learning/decision-tree.md
         - ROC: machine-learning/roc.md
-    - 概率&统计:
-        - 概率: probability/prob.md
+        - 概率图: machine-learning/pgm.md
+    - 数学:
+        - 概率&统计: math/prob-stat.md
+        - 线性代数: math/linear-algebra.md
