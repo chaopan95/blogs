@@ -108,3 +108,36 @@ int findKthNumber(int m, int n, int k) {
 }
 ```
 时间复杂度：$O(n \log (mn))$，空间复杂度：$O(1)$
+
+### 不用除法求商
+```cpp
+int divide(int dividend, int divisor) {
+    if (dividend == INT_MIN) {
+        if (divisor == -1) {
+            return INT_MAX;
+        }
+        if (divisor == 1) {
+            return INT_MIN;
+        }
+    }
+    int m = dividend, n = divisor, quo = 0;
+    if (m > 0) {
+        m = -m;
+    }
+    if (n > 0) {
+        n = -n;
+    }
+    while (m <= n) {
+        long s = n, incre = 1;
+        while ((s<<1) >= m) {
+            s <<= 1;
+            incre <<= 1;
+        }
+        quo += incre;
+        m -= s;
+    }
+    if ((dividend < 0) ^ (divisor < 0)) { quo *= -1; }
+    return quo;
+}
+```
+时间复杂度：$O(n \log (m))$，空间复杂度：$O(1)$，其中 m 是被除数
