@@ -1206,7 +1206,7 @@
 \end{bmatrix}
 </script>
 </div>
-<p>「分析」</p>
+<p><strong>「分析」</strong></p>
 <p>如果每一行选择一个元素，那么一共有 <span><span class="MathJax_Preview">m^{n}</span><script type="math/tex">m^{n}</script></span> 种可能，很难在规定时间内枚举完。注意到题目求的是第k小的组合，在这个例子里，k = 7，mat的前两行组合就有9个方案 s1, s2, ..., s9，只需要将第三行的首位加入到这9个和上，就能知道第7小的值。那么我们可以按照行遍历，每次需要将已经组合的topK，与当前行的元素两两相加，再筛选出topK小的组合。</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2

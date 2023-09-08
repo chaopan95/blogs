@@ -1291,8 +1291,8 @@
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
 <h2 id="n">排序数组内查找两数和为n的所有下标<a class="headerlink" href="#n" title="Permanent link">&para;</a></h2>
 <p>例如：nums = [2,2,2,3,3,3,4,4,4], n = 6，应当返回 [0, 6], [0, 7], [0, 8], [1, 6], [1, 7], [1, 8], [2, 6], [2, 7], [2, 8], [3, 4], [3, 5], [4, 5]</p>
-<p>「分析」
-使用双指针，注意特殊case，即连续相同的数字，需要分别找到这一段区间t1和t2，并用这两区间内的下表，两两配对，同时避免重复对，e.g. (1, 3) 和 (3, 1)。</p>
+<p><strong>「分析」</strong></p>
+<p>使用双指针，注意特殊case，即连续相同的数字，需要分别找到这一段区间t1和t2，并用这两区间内的下表，两两配对，同时避免重复对，e.g. (1, 3) 和 (3, 1)。</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
