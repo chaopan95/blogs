@@ -342,13 +342,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    数组的均值分割
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     完全背包
   </a>
   
@@ -377,7 +384,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     平方数的最小个数
   </a>
   
@@ -1040,13 +1047,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    数组的均值分割
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     完全背包
   </a>
   
@@ -1075,7 +1089,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     平方数的最小个数
   </a>
   
@@ -1568,7 +1582,86 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<h2 id="_5">完全背包<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_5">数组的均值分割<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>给定你一个整数数组 nums。我们要将 nums 数组中的每个元素移动到 A 数组 或者 B 数组中，使得 A 数组和 B 数组不为空，并且 average(A) == average(B) 。如果可以完成则返回true ， 否则返回 false 。例如， nums = [1,2,3,4,5,6,7,8]，返回 true；nums = [3,1]，返回 false。nums 的长度不超过30。</p>
+<p><strong>「分析」</strong></p>
+<p>假设nums可以被分成两个数组，那么两个字数组的均值和nums的均值是一样的</p>
+<div>
+<div class="MathJax_Preview">
+\frac{S_{A}}{n_{A}} = \frac{S_{B}}{n_{B}} = \frac{S}{n} = \text{avg}
+</div>
+<script type="math/tex; mode=display">
+\frac{S_{A}}{n_{A}} = \frac{S_{B}}{n_{B}} = \frac{S}{n} = \text{avg}
+</script>
+</div>
+<p>那么，我们可以提前检查，是否存在<span><span class="MathJax_Preview">{n_{A}}</span><script type="math/tex">{n_{A}}</script></span>能够满足上式。之后就可以把问题转化为0-1背包问题，dp[ i ][ j ][ k ] 表示前 i 个元素中，选择 j 个数字，其和是否等于 k。同时需要检查 j * sum 是否等于 k * n。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">splitArraySameAverage</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">m</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">min_val</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">num</span><span class="p">;</span>
+        <span class="n">min_val</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">min_val</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">check</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">*</span> <span class="n">i</span> <span class="o">%</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">check</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">check</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">dp</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">emplace</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">num</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">cur</span> <span class="o">*</span> <span class="n">n</span> <span class="o">==</span> <span class="n">sum</span> <span class="o">*</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">emplace</span><span class="p">(</span><span class="n">cur</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">n^{2}\sum\text{nums}</span><script type="math/tex">n^{2}\sum\text{nums}</script></span>，空间复杂度 <span><span class="MathJax_Preview">n\sum\text{nums}</span><script type="math/tex">n\sum\text{nums}</script></span>。</p>
+<h2 id="_6">完全背包<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>一个背包承重总量是 W，有 N 种物品，每一件有自己的价值 <span><span class="MathJax_Preview">v_{i}</span><script type="math/tex">v_{i}</script></span> 和 重量 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span>，每一种类的物品无限供应，试问在不超过背包承重总量下，背包的价值最大。</p>
 <p><strong>「分析」</strong></p>
 <p>完全背包问题种，每一件物品的供应是无限的，但因为背包承重总量有限，可以放入的数目依然有限 <span><span class="MathJax_Preview">0 \leq c_{i} \leq \frac{W}{w_{i}}</span><script type="math/tex">0 \leq c_{i} \leq \frac{W}{w_{i}}</script></span>，那么我们依然可以设 dp[ i ][ j ] 为从第 i 件物品到最后一件物品中选取若干件，在重量和不超过 j 的情况下最大价值。</p>
@@ -1782,7 +1875,7 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(n \times amount)</span><script type="math/tex">O(n \times amount)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(amount)</span><script type="math/tex">O(amount)</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
-<h3 id="_6">平方数的最小个数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_7">平方数的最小个数<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>给定一个正数 n = 13，它可以由若干个平方数相加而得，返回这些平方数的个数的最小值。13 = 4 + 9，即最小值为 2.</p>
 <p><strong>「分析」</strong></p>
 <p>方法 1：转化成完全背包问题，统计 1 - n 之间所有的平方数，之后按照完全背包问题的解法求值。</p>

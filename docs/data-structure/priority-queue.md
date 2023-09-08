@@ -103,3 +103,46 @@ bool isPossible(vector<int>& nums) {
 }
 ```
 时间复杂度：$O(n \log n)$，空间复杂度：$O(n)$
+
+### 有序矩阵中的第 k 个最小数组和
+给你一个 m * n 的矩阵 mat，以及一个整数 k ，矩阵中的每一行都以非递减的顺序排列。你可以从每一行中选出 1 个元素形成一个数组。返回所有可能数组中的第 k 个 最小 数组和。例如，矩阵如下，k = 7
+
+$$
+\begin{bmatrix}
+1 & 10 & 10 \\
+1 & 4 & 5 \\
+2 & 3 & 6
+\end{bmatrix}
+$$
+
+**「分析」**
+
+如果每一行选择一个元素，那么一共有 $m^{n}$ 种可能，很难在规定时间内枚举完。注意到题目求的是第k小的组合，在这个例子里，k = 7，mat的前两行组合就有9个方案 s1, s2, ..., s9，只需要将第三行的首位加入到这9个和上，就能知道第7小的值。那么我们可以按照行遍历，每次需要将已经组合的topK，与当前行的元素两两相加，再筛选出topK小的组合。
+
+```cpp
+int kthSmallest(vector<vector<int>>& mat, int k) {
+    if (mat.empty() || mat[0].empty()) {
+        return 0;
+    }
+    vector<int> nums;
+    for (int j = 0; j < mat[0].size() && j < k; j++) {
+        nums.emplace_back(mat[0][j]);
+    }
+    for (int i = 1; i < mat.size(); i++) {
+        priority_queue<int, vector<int>, greater<int>> pq;
+        for (int num : nums) {
+            for (int j = 0; j < mat[i].size(); j++) {
+                pq.push(num + mat[i][j]);
+            }
+        }
+        nums.clear();
+        for (int j = 0; j < k && !pq.empty(); j++) {
+            nums.emplace_back(pq.top());
+            pq.pop();
+        }
+    }
+    sort(nums.begin(), nums.end());
+    return nums.back();
+}
+```
+时间复杂度 $O(mkn)$，空间复杂度 $O(kn)$。

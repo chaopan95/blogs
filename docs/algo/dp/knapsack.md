@@ -312,6 +312,55 @@ int profitableSchemes(int n, int minProfit, vector<int>& group,
 }
 ```
 
+### 数组的均值分割
+给定你一个整数数组 nums。我们要将 nums 数组中的每个元素移动到 A 数组 或者 B 数组中，使得 A 数组和 B 数组不为空，并且 average(A) == average(B) 。如果可以完成则返回true ， 否则返回 false 。例如， nums = [1,2,3,4,5,6,7,8]，返回 true；nums = [3,1]，返回 false。nums 的长度不超过30。
+
+**「分析」**
+
+假设nums可以被分成两个数组，那么两个字数组的均值和nums的均值是一样的
+
+$$
+\frac{S_{A}}{n_{A}} = \frac{S_{B}}{n_{B}} = \frac{S}{n} = \text{avg}
+$$
+
+那么，我们可以提前检查，是否存在${n_{A}}$能够满足上式。之后就可以把问题转化为0-1背包问题，dp[ i ][ j ][ k ] 表示前 i 个元素中，选择 j 个数字，其和是否等于 k。同时需要检查 j * sum 是否等于 k * n。
+
+```cpp
+bool splitArraySameAverage(vector<int>& nums) {
+    int sum = 0, n = (int)nums.size(), m = n / 2;
+    int min_val = INT_MAX;
+    for (int num : nums) {
+        sum += num;
+        min_val = min(min_val, num);
+    }
+    bool check = false;
+    for (int i = 1; i <= m; i++) {
+        if (sum * i % n == 0) {
+            check = true;
+            break;
+        }
+    }
+    if (!check) {
+        return false;
+    }
+    vector<unordered_set<int>> dp(m + 1);
+    dp[0].emplace(0);
+    for (int num : nums) {
+        for (int j = m; j >= 1; j--) {
+            for (int x : dp[j - 1]) {
+                int cur = x + num;
+                if (cur * n == sum * j) {
+                    return true;
+                }
+                dp[j].emplace(cur);
+            }
+        }
+    }
+    return false;
+}
+```
+时间复杂度 $n^{2}\sum\text{nums}$，空间复杂度 $n\sum\text{nums}$。
+
 
 ## 完全背包
 一个背包承重总量是 W，有 N 种物品，每一件有自己的价值 $v_{i}$ 和 重量 $w_{i}$，每一种类的物品无限供应，试问在不超过背包承重总量下，背包的价值最大。

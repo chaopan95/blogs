@@ -174,3 +174,44 @@ int longestOnes(vector<int>& nums, int k) {
 }
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(1)$
+
+
+## 排序数组内查找两数和为n的所有下标
+例如：nums = [2,2,2,3,3,3,4,4,4], n = 6，应当返回 [0, 6], [0, 7], [0, 8], [1, 6], [1, 7], [1, 8], [2, 6], [2, 7], [2, 8], [3, 4], [3, 5], [4, 5]
+
+**「分析」**
+
+使用双指针，注意特殊case，即连续相同的数字，需要分别找到这一段区间t1和t2，并用这两区间内的下表，两两配对，同时避免重复对，e.g. (1, 3) 和 (3, 1)。
+
+```cpp
+vector<vector<int>> func(vector<int> &nums, int n) {
+    vector<vector<int>> ans;
+    int i = 0, j = (int)nums.size() - 1;
+    while (i < j) {
+        if (nums[i] + nums[j] < n) {
+            i++;
+        } else if (nums[i] + nums[j] > n) {
+            j--;
+        } else {
+            int x = i, y = j;
+            while (i <= y && nums[i] == nums[x]) {
+                i++;
+            }
+            while (x <= j && nums[j] == nums[y]) {
+                j--;
+            }
+            
+            for (int p = x; p < i; p++) {
+                for (int q = y; q > j; q--) {
+                    if (p >= q) {
+                        continue;
+                    }
+                    ans.emplace_back(vector<int> {p, q});
+                }
+            }
+        }
+    }
+    return ans;
+}
+```
+时间复杂度 $O(n^{2})$，空间复杂度 $O(1)$。
