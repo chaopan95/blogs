@@ -196,6 +196,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chaopan95.github.io/blogs/machine-learning/perceptron/</loc>
+         <lastmod>2023-09-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/pgm/</loc>
          <lastmod>2023-09-27</lastmod>
          <changefreq>daily</changefreq>
