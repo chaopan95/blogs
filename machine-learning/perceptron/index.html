@@ -1034,13 +1034,21 @@ L(w, b) = -\sum_{(x_{i}, y_{i}) \in M} y_{i}(w \cdot x_{i} + b)
 L(w, b) = -\sum_{(x_{i}, y_{i}) \in M} y_{i}(w \cdot x_{i} + b)
 </script>
 </div>
-<p>参数梯度
-$$
+<p>参数梯度</p>
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
-&amp; \frac{\partial L(w, b)}{\partial w} = -\sum_{(x_{i}, y_{i}) \in M} y_{i} x_{i} \
+&amp; \frac{\partial L(w, b)}{\partial w} = -\sum_{(x_{i}, y_{i}) \in M} y_{i} x_{i} \\
 &amp; \frac{\partial L(w, b)}{\partial b} = -\sum_{(x_{i}, y_{i}) \in M} y_{i}
 \end{aligned}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \frac{\partial L(w, b)}{\partial w} = -\sum_{(x_{i}, y_{i}) \in M} y_{i} x_{i} \\
+& \frac{\partial L(w, b)}{\partial b} = -\sum_{(x_{i}, y_{i}) \in M} y_{i}
+\end{aligned}
+</script>
+</div>
 <p>反向传播，学习率 <span><span class="MathJax_Preview">\eta \in (0, 1]</span><script type="math/tex">\eta \in (0, 1]</script></span></p>
 <div>
 <div class="MathJax_Preview">
@@ -1093,15 +1101,15 @@ $$</p>
 </script>
 </div>
 <p><strong>伪代码</strong>
-01. Input: dataset T = <span><span class="MathJax_Preview">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</span><script type="math/tex">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</script></span>
-02. Output: <span><span class="MathJax_Preview">w^{*}</span><script type="math/tex">w^{*}</script></span>, <span><span class="MathJax_Preview">b^{*}</span><script type="math/tex">b^{*}</script></span>
-03. Initialise w, b with 0
-04. While True do:
-05.   Calculate misclassified set M
-06.   If <span><span class="MathJax_Preview">M = \varnothing</span><script type="math/tex">M = \varnothing</script></span>:
-07.     break
-08.   Pick up one point form M, update w, b
-09. return w, b</p>
+Input: dataset T = <span><span class="MathJax_Preview">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</span><script type="math/tex">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</script></span>
+Output: <span><span class="MathJax_Preview">w^{*}</span><script type="math/tex">w^{*}</script></span>, <span><span class="MathJax_Preview">b^{*}</span><script type="math/tex">b^{*}</script></span>
+Initialise w, b with 0
+While True do:
+  Calculate misclassified set M
+    If <span><span class="MathJax_Preview">M = \varnothing</span><script type="math/tex">M = \varnothing</script></span>:
+      break
+      Pick up one point form M, update w, b
+return w, b</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1183,14 +1191,24 @@ k \leq (\frac{R}{\gamma})^{2}
 </script>
 </div>
 <p><strong>证明</strong>
-1）任意一个实例 <span><span class="MathJax_Preview">x_{i}</span><script type="math/tex">x_{i}</script></span> 能够被正确分类，必须满足
-$$
-y_{i} (w^{<em>} \cdot x + b^{</em>}) &gt; 0
-$$</p>
-<p>因此，我们总能找到一个 <span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span> 满足（1）
-$$
-\gamma = \min_{i = 1, 2, ..., n} y_{i} (w^{<em>} \cdot x_{i} + b^{</em>})
-$$</p>
+1）任意一个实例 <span><span class="MathJax_Preview">x_{i}</span><script type="math/tex">x_{i}</script></span> 能够被正确分类，必须满足</p>
+<div>
+<div class="MathJax_Preview">
+y_{i} (w^{*} \cdot x + b^{*}) &gt; 0
+</div>
+<script type="math/tex; mode=display">
+y_{i} (w^{*} \cdot x + b^{*}) > 0
+</script>
+</div>
+<p>因此，我们总能找到一个 <span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span> 满足（1）</p>
+<div>
+<div class="MathJax_Preview">
+\gamma = \min_{i = 1, 2, ..., n} y_{i} (w^{*} \cdot x_{i} + b^{*})
+</div>
+<script type="math/tex; mode=display">
+\gamma = \min_{i = 1, 2, ..., n} y_{i} (w^{*} \cdot x_{i} + b^{*})
+</script>
+</div>
 <p>2）假设在第k次迭代里，我们的参数更新过程如下</p>
 <div>
 <div class="MathJax_Preview">
@@ -1289,10 +1307,8 @@ w_{k} \cdot w^{*} & = (w_{k} + \eta y_{i} x_{i}) \cdot w^{*} \\
 </div>
 <h2 id="_3">评价<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>优点</code></li>
-<li>容易实现</li>
-<li><code>缺点</code></li>
-<li>不能处理非线性分裂问题，如异或XOR</li>
+<li><code>优点</code>：容易实现</li>
+<li><code>缺点</code>：不能处理非线性分裂问题，如异或XOR</li>
 </ul>
                 
               
