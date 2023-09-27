@@ -1101,15 +1101,25 @@ L(w, b) = -\sum_{(x_{i}, y_{i}) \in M} y_{i}(w \cdot x_{i} + b)
 </script>
 </div>
 <p><strong>伪代码</strong>
-Input: dataset T = <span><span class="MathJax_Preview">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</span><script type="math/tex">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</script></span>
-Output: <span><span class="MathJax_Preview">w^{*}</span><script type="math/tex">w^{*}</script></span>, <span><span class="MathJax_Preview">b^{*}</span><script type="math/tex">b^{*}</script></span>
-Initialise w, b with 0
-While True do:
-  Calculate misclassified set M
-    If <span><span class="MathJax_Preview">M = \varnothing</span><script type="math/tex">M = \varnothing</script></span>:
-      break
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Input: dataset <span class="nv">T</span> <span class="o">=</span> $<span class="se">\{</span><span class="o">(</span>x_<span class="o">{</span><span class="m">1</span><span class="o">}</span>, y_<span class="o">{</span><span class="m">1</span><span class="o">})</span>, <span class="o">(</span>x_<span class="o">{</span><span class="m">2</span><span class="o">}</span>, y_<span class="o">{</span><span class="m">2</span><span class="o">})</span>, ..., <span class="o">(</span>x_<span class="o">{</span>n<span class="o">}</span>, y_<span class="o">{</span>n<span class="o">})</span><span class="se">\}</span>$
+Output: <span class="nv">$w</span>^<span class="o">{</span>*<span class="o">}</span>$, <span class="nv">$b</span>^<span class="o">{</span>*<span class="o">}</span>$
+Initialise w, b with <span class="m">0</span>
+While True <span class="k">do</span>:
+  Calculate misclassified <span class="nb">set</span> M
+    If <span class="nv">$M</span> <span class="o">=</span> <span class="se">\v</span>arnothing$:
+      <span class="nb">break</span>
       Pick up one point form M, update w, b
-return w, b</p>
+<span class="k">return</span> w, b
+</code></pre></div>
+</td></tr></table></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
