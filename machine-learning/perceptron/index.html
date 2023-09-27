@@ -991,25 +991,49 @@
                 
                 <h2 id="_1">定义<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>感知机是一种分类模型。输入空间是 <span><span class="MathJax_Preview">X = \{x_{1}, x_{2}, ..., x_{n}\}</span><script type="math/tex">X = \{x_{1}, x_{2}, ..., x_{n}\}</script></span>，输出空间是 <span><span class="MathJax_Preview">Y = \{+1 , -1\}</span><script type="math/tex">Y = \{+1 , -1\}</script></span>。</p>
-<p>判别函数
-$$
+<p>判别函数</p>
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
-f(x_{i}) &amp;= \text{sign}(w \cdot x_{i} + b) \
+f(x_{i}) &amp;= \text{sign}(w \cdot x_{i} + b) \\
 &amp;=
 \begin{cases}
-1, \quad w \cdot x_{i} + b \geq 0 \
+1, \quad w \cdot x_{i} + b \geq 0 \\
 -1, \quad \text{else}
 \end{cases}
 \end{aligned}
-$$
-<span><span class="MathJax_Preview">W \cdot X</span><script type="math/tex">W \cdot X</script></span> 代表的是点乘</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(x_{i}) &= \text{sign}(w \cdot x_{i} + b) \\
+&=
+\begin{cases}
+1, \quad w \cdot x_{i} + b \geq 0 \\
+-1, \quad \text{else}
+\end{cases}
+\end{aligned}
+</script>
+</div>
+<p><span><span class="MathJax_Preview">W \cdot X</span><script type="math/tex">W \cdot X</script></span> 代表的是点乘</p>
 <h2 id="_2">算法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>数据集 T = <span><span class="MathJax_Preview">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</span><script type="math/tex">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</script></span>，假设一个数据点 (<span><span class="MathJax_Preview">x_{i}</span><script type="math/tex">x_{i}</script></span>, <span><span class="MathJax_Preview">y_{i}</span><script type="math/tex">y_{i}</script></span>) 被误分类了。可以用如下方法表示：
-<span><span class="MathJax_Preview"><span><span class="MathJax_Preview">y_{i} \times f(x_{i}) = y_{i} \times \text{sign}(x_{i}) = -1</span><script type="math/tex">y_{i} \times f(x_{i}) = y_{i} \times \text{sign}(x_{i}) = -1</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">y_{i} \times f(x_{i}) = y_{i} \times \text{sign}(x_{i}) = -1</span><script type="math/tex">y_{i} \times f(x_{i}) = y_{i} \times \text{sign}(x_{i}) = -1</script></span></script></span></p>
-<p>所有被误分类的点构成集合 M，损失函数为
-$$
+<p>数据集 T = <span><span class="MathJax_Preview">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</span><script type="math/tex">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</script></span>，假设一个数据点 (<span><span class="MathJax_Preview">x_{i}</span><script type="math/tex">x_{i}</script></span>, <span><span class="MathJax_Preview">y_{i}</span><script type="math/tex">y_{i}</script></span>) 被误分类了。可以用如下方法表示：</p>
+<div>
+<div class="MathJax_Preview">
+y_{i} \times f(x_{i}) = y_{i} \times \text{sign}(x_{i}) = -1
+</div>
+<script type="math/tex; mode=display">
+y_{i} \times f(x_{i}) = y_{i} \times \text{sign}(x_{i}) = -1
+</script>
+</div>
+<p>所有被误分类的点构成集合 M，损失函数为</p>
+<div>
+<div class="MathJax_Preview">
 L(w, b) = -\sum_{(x_{i}, y_{i}) \in M} y_{i}(w \cdot x_{i} + b)
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+L(w, b) = -\sum_{(x_{i}, y_{i}) \in M} y_{i}(w \cdot x_{i} + b)
+</script>
+</div>
 <p>参数梯度
 $$
 \begin{aligned}
@@ -1017,31 +1041,57 @@ $$
 &amp; \frac{\partial L(w, b)}{\partial b} = -\sum_{(x_{i}, y_{i}) \in M} y_{i}
 \end{aligned}
 $$</p>
-<p>反向传播，学习率 <span><span class="MathJax_Preview">\eta \in (0, 1]</span><script type="math/tex">\eta \in (0, 1]</script></span>
-$$
+<p>反向传播，学习率 <span><span class="MathJax_Preview">\eta \in (0, 1]</span><script type="math/tex">\eta \in (0, 1]</script></span></p>
+<div>
+<div class="MathJax_Preview">
 \begin{matrix}
 &amp; &amp; 
 \begin{aligned}
-&amp; w := w - \eta \frac{\partial L(w, b)}{\partial w} \
+&amp; w := w - \eta \frac{\partial L(w, b)}{\partial w} \\
 &amp; b := b - \eta \frac{\partial L(w, b)}{\partial b}
 \end{aligned}
-&amp; &amp; \
-&amp; &amp; \Downarrow &amp; &amp; \
+&amp; &amp; \\
+&amp; &amp; \Downarrow &amp; &amp; \\
 &amp; &amp; 
 \begin{aligned}
-&amp; w := w - \eta (-y_{i} x_{i}) \
+&amp; w := w - \eta (-y_{i} x_{i}) \\
 &amp; b := b - \eta (-y_{i})
 \end{aligned}
-&amp; &amp; \
-&amp; &amp; \Downarrow &amp; &amp; \
+&amp; &amp; \\
+&amp; &amp; \Downarrow &amp; &amp; \\
 &amp; &amp; 
 \begin{aligned}
-&amp; w := w + \eta y_{i} x_{i} \
+&amp; w := w + \eta y_{i} x_{i} \\
 &amp; b := b + \eta y_{i}
 \end{aligned}
 &amp; &amp; 
 \end{matrix}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+& & 
+\begin{aligned}
+& w := w - \eta \frac{\partial L(w, b)}{\partial w} \\
+& b := b - \eta \frac{\partial L(w, b)}{\partial b}
+\end{aligned}
+& & \\
+& & \Downarrow & & \\
+& & 
+\begin{aligned}
+& w := w - \eta (-y_{i} x_{i}) \\
+& b := b - \eta (-y_{i})
+\end{aligned}
+& & \\
+& & \Downarrow & & \\
+& & 
+\begin{aligned}
+& w := w + \eta y_{i} x_{i} \\
+& b := b + \eta y_{i}
+\end{aligned}
+& & 
+\end{matrix}
+</script>
+</div>
 <p><strong>伪代码</strong>
 01. Input: dataset T = <span><span class="MathJax_Preview">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</span><script type="math/tex">\{(x_{1}, y_{1}), (x_{2}, y_{2}), ..., (x_{n}, y_{n})\}</script></span>
 02. Output: <span><span class="MathJax_Preview">w^{*}</span><script type="math/tex">w^{*}</script></span>, <span><span class="MathJax_Preview">b^{*}</span><script type="math/tex">b^{*}</script></span>
@@ -1113,15 +1163,25 @@ $$</p>
 </td></tr></table>
 <p><strong>Novikoff定理</strong>
 假设数据集 T 是线形可分的，</p>
-<p>（1）存在一个超平面 <span><span class="MathJax_Preview">w^{*} \cdot x + b^{*} = 0</span><script type="math/tex">w^{*} \cdot x + b^{*} = 0</script></span>，使得正确区分所有的正负样本，即对所有的实例 <span><span class="MathJax_Preview">(x_{i}, y_{i}), i = 1, 2, ..., n</span><script type="math/tex">(x_{i}, y_{i}), i = 1, 2, ..., n</script></span>，存在 <span><span class="MathJax_Preview">\gamma &gt; 0</span><script type="math/tex">\gamma > 0</script></span> 使得
-$$
-y_{i} (w^{<em>} \cdot x_{i} + b^{</em>}) \geq \gamma
-$$</p>
+<p>（1）存在一个超平面 <span><span class="MathJax_Preview">w^{*} \cdot x + b^{*} = 0</span><script type="math/tex">w^{*} \cdot x + b^{*} = 0</script></span>，使得正确区分所有的正负样本，即对所有的实例 <span><span class="MathJax_Preview">(x_{i}, y_{i}), i = 1, 2, ..., n</span><script type="math/tex">(x_{i}, y_{i}), i = 1, 2, ..., n</script></span>，存在 <span><span class="MathJax_Preview">\gamma &gt; 0</span><script type="math/tex">\gamma > 0</script></span> 使得</p>
+<div>
+<div class="MathJax_Preview">
+y_{i} (w^{*} \cdot x_{i} + b^{*}) \geq \gamma
+</div>
+<script type="math/tex; mode=display">
+y_{i} (w^{*} \cdot x_{i} + b^{*}) \geq \gamma
+</script>
+</div>
 <p>（2）
-(ii) 令 <span><span class="MathJax_Preview">R = \max_{i = 1, 2, ..., n} \left \| x_{i} \right \|</span><script type="math/tex">R = \max_{i = 1, 2, ..., n} \left \| x_{i} \right \|</script></span>, 误分类的个数 k 满足
-$$
+(ii) 令 <span><span class="MathJax_Preview">R = \max_{i = 1, 2, ..., n} \left \| x_{i} \right \|</span><script type="math/tex">R = \max_{i = 1, 2, ..., n} \left \| x_{i} \right \|</script></span>, 误分类的个数 k 满足</p>
+<div>
+<div class="MathJax_Preview">
 k \leq (\frac{R}{\gamma})^{2}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+k \leq (\frac{R}{\gamma})^{2}
+</script>
+</div>
 <p><strong>证明</strong>
 1）任意一个实例 <span><span class="MathJax_Preview">x_{i}</span><script type="math/tex">x_{i}</script></span> 能够被正确分类，必须满足
 $$
@@ -1131,45 +1191,86 @@ $$</p>
 $$
 \gamma = \min_{i = 1, 2, ..., n} y_{i} (w^{<em>} \cdot x_{i} + b^{</em>})
 $$</p>
-<p>2）假设在第k次迭代里，我们的参数更新过程如下
-$$
+<p>2）假设在第k次迭代里，我们的参数更新过程如下</p>
+<div>
+<div class="MathJax_Preview">
 W_{k} =
 \begin{bmatrix}
-w_{k} \
+w_{k} \\
 b_{k} 
 \end{bmatrix} =
 \begin{bmatrix}
-w_{k-1} + \eta y_{i} x_{i} \
+w_{k-1} + \eta y_{i} x_{i} \\
 b_{k-1} + \eta y_{i}
 \end{bmatrix} =
 \begin{bmatrix}
-w_{k-1} \
+w_{k-1} \\
 b_{k-1}
 \end{bmatrix} + \eta y_{i}
 \begin{bmatrix}
-x_{i} \
+x_{i} \\
 1
 \end{bmatrix}
-$$</p>
-<p>两个不等式
-$$
+</div>
+<script type="math/tex; mode=display">
+W_{k} =
+\begin{bmatrix}
+w_{k} \\
+b_{k} 
+\end{bmatrix} =
+\begin{bmatrix}
+w_{k-1} + \eta y_{i} x_{i} \\
+b_{k-1} + \eta y_{i}
+\end{bmatrix} =
+\begin{bmatrix}
+w_{k-1} \\
+b_{k-1}
+\end{bmatrix} + \eta y_{i}
+\begin{bmatrix}
+x_{i} \\
+1
+\end{bmatrix}
+</script>
+</div>
+<p>两个不等式</p>
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
 &amp; \begin{aligned}
-w_{k} \cdot w^{<em>} &amp; = (w_{k} + \eta y_{i} x_{i}) \cdot w^{</em>} \
-&amp; \geq w_{k-1} \cdot w^{<em>} + \eta \gamma \
-&amp; \geq w_{k-2} \cdot w^{</em>} + 2 \eta \gamma \
+w_{k} \cdot w^{*} &amp; = (w_{k} + \eta y_{i} x_{i}) \cdot w^{*} \\
+&amp; \geq w_{k-1} \cdot w^{*} + \eta \gamma \\
+&amp; \geq w_{k-2} \cdot w^{*} + 2 \eta \gamma \\
 &amp; \geq k \eta \gamma
-\end{aligned} \
+\end{aligned} \\
 &amp; \begin{aligned}
-\left | w_{k} \right |^{2} &amp; = (w_{k-1} + \eta y_{i} x_{i})^{2} \
-&amp; = \left | w_{k-1} \right |^{2} + 2 w_{k-1} \eta y_{i} x_{i} + \eta^{2} \left | x_{i} \right |^{2} \
-&amp; \leq \left | w_{k-1} \right |^{2} + \eta^{2} \left | x_{i} \right |^{2} \
-&amp; \leq \left | w_{k-1} \right |^{2} + \eta^{2} R^{2} \
-&amp; \leq k \eta^{2} \left | x_{i} \right |^{2} \
+\left \| w_{k} \right \|^{2} &amp; = (w_{k-1} + \eta y_{i} x_{i})^{2} \\
+&amp; = \left \| w_{k-1} \right \|^{2} + 2 w_{k-1} \eta y_{i} x_{i} + \eta^{2} \left \| x_{i} \right \|^{2} \\
+&amp; \leq \left \| w_{k-1} \right \|^{2} + \eta^{2} \left \| x_{i} \right \|^{2} \\
+&amp; \leq \left \| w_{k-1} \right \|^{2} + \eta^{2} R^{2} \\
+&amp; \leq k \eta^{2} \left \| x_{i} \right \|^{2} \\
 &amp; \leq k \eta^{2} R^{2}
 \end{aligned}
 \end{aligned}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \begin{aligned}
+w_{k} \cdot w^{*} & = (w_{k} + \eta y_{i} x_{i}) \cdot w^{*} \\
+& \geq w_{k-1} \cdot w^{*} + \eta \gamma \\
+& \geq w_{k-2} \cdot w^{*} + 2 \eta \gamma \\
+& \geq k \eta \gamma
+\end{aligned} \\
+& \begin{aligned}
+\left \| w_{k} \right \|^{2} & = (w_{k-1} + \eta y_{i} x_{i})^{2} \\
+& = \left \| w_{k-1} \right \|^{2} + 2 w_{k-1} \eta y_{i} x_{i} + \eta^{2} \left \| x_{i} \right \|^{2} \\
+& \leq \left \| w_{k-1} \right \|^{2} + \eta^{2} \left \| x_{i} \right \|^{2} \\
+& \leq \left \| w_{k-1} \right \|^{2} + \eta^{2} R^{2} \\
+& \leq k \eta^{2} \left \| x_{i} \right \|^{2} \\
+& \leq k \eta^{2} R^{2}
+\end{aligned}
+\end{aligned}
+</script>
+</div>
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
