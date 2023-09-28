@@ -44,6 +44,25 @@ $$
 ### 方差 Variance
 $$\text{Var}(f(x)) = \text{E}[(f(x) - \text{E}[f(x)])^{2}]$$
 
+两个独立的标准正态分布 $X \sim (0, 1)$ $Y \sim (0, 1)$，两者的乘积也是服从标准正态分布
+
+$$
+E[XY] = E[x] * E[Y] = 0 * 0 = 0
+$$
+
+$$
+\begin{aligned}
+D[XY] &= E[(XY)^{2}] - (E[XY])^{2} \\
+&= E[X^{2}Y^{2}] - (E[X]E[Y])^{2} \\
+&= E[X^{2}]E[Y^{2}] - (E[X])^{2}(E[Y])^{2} \\
+&= (E[X^{2}] - (E[X])^{2})(E[Y^{2}] - (E[Y])^{2}) - 0 \\
+&= D[X]D[Y] \\
+&= 1
+\end{aligned}
+$$
+
+两个正态分布的之和也是服从正态分布 $N(\mu_{1} + \mu_{2}, \sigma_{1}^{2} + \sigma_{2}^{2})$
+
 ## 样本方差 Sample Variance
 设样本均值（sample mean）是 $\bar{X}$, 样本方差（sample variance）是 $S^{2}$, 总体均值（ensemble average）是 $\mu$, 总体方差（ensemble variance）是 $\sigma^{2}$
 

@@ -106,6 +106,7 @@ nav:
         - 优先队列: data-structure/priority-queue.md
         - 哈希表: data-structure/hash.md
     - 机器学习:
+        - 感知机: machine-learning/perceptron.md
         - 决策树: machine-learning/decision-tree.md
         - ROC: machine-learning/roc.md
         - 概率图: machine-learning/pgm.md
