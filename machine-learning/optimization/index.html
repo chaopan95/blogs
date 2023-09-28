@@ -1092,22 +1092,10 @@ L(w) = \sum_{i=1}^{n}L(w; x_{i}, y_{i}) \rightarrow \min_{w}
 L(w) = \sum_{i=1}^{n}L(w; x_{i}, y_{i}) \rightarrow \min_{w}
 </script>
 </div>
-<p>while true:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$i_{1}, i_{2}, ..., i_{m}$ = random indice between 1 ~ n
-
-$g_{t} = \frac{1}{m}\sum_{j=1}^{m}\nabla L(w^{t};x_{i_{j}},y_{i_{j}})$&lt;br&gt;
-
-$w^{t+1} = w^{t} - \eta_{t}g_{t}$&lt;br&gt;
-
-if $\left\| w^{t+1}-w^{t} \right\| \leq \epsilon$, break&lt;br&gt;&lt;br&gt;
-</code></pre></div>
-</td></tr></table>
+<p><span><span class="MathJax_Preview">i_{1}, i_{2}, ..., i_{m}</span><script type="math/tex">i_{1}, i_{2}, ..., i_{m}</script></span> = random indice between 1 ~ n</p>
+<p><span><span class="MathJax_Preview">g_{t} = \frac{1}{m}\sum_{j=1}^{m}\nabla L(w^{t};x_{i_{j}},y_{i_{j}})</span><script type="math/tex">g_{t} = \frac{1}{m}\sum_{j=1}^{m}\nabla L(w^{t};x_{i_{j}},y_{i_{j}})</script></span></p>
+<p><span><span class="MathJax_Preview">w^{t+1} = w^{t} - \eta_{t}g_{t}</span><script type="math/tex">w^{t+1} = w^{t} - \eta_{t}g_{t}</script></span></p>
+<p>if <span><span class="MathJax_Preview">\left\| w^{t+1}-w^{t} \right\| \leq \epsilon</span><script type="math/tex">\left\| w^{t+1}-w^{t} \right\| \leq \epsilon</script></span>, finish</p>
 <h2 id="_2">指数加权平局<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>指数加权平局（Exponentially Weighted Averages）是一种数据平滑的方法。公式如下：</p>
 <div>
