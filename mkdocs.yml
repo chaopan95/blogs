@@ -109,7 +109,9 @@ nav:
         - 感知机: machine-learning/perceptron.md
         - 决策树: machine-learning/decision-tree.md
         - ROC: machine-learning/roc.md
+        - 优化: machine-learning/optimization.md
         - 概率图: machine-learning/pgm.md
     - 数学:
         - 概率&统计: math/prob-stat.md
         - 线性代数: math/linear-algebra.md
+        - 图论: math/graph.md
