@@ -1115,15 +1115,25 @@
 </code></pre></div>
 </td></tr></table>
 <p>时间复杂度分析</p>
-<p>$$
+<div>
+<div class="MathJax_Preview">
 \begin{aligned}
-T(n) &amp;= 2T(\frac{n}{2}) \
-&amp;= 2 \cdot 2 T(\frac{n}{4}) \
-&amp;= 2^{\log_{2}n} \cdot T(1) \
+T(n) &amp;= 2T(\frac{n}{2}) \\
+&amp;= 2 \cdot 2 T(\frac{n}{4}) \\
+&amp;= 2^{\log_{2}n} \cdot T(1) \\
 &amp;= n
 \end{aligned}
-$$
-时间复杂度 <span><span class="MathJax_Preview">O(hi - lo)</span><script type="math/tex">O(hi - lo)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(hi - lo)</span><script type="math/tex">O(hi - lo)</script></span>。</p>
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+T(n) &= 2T(\frac{n}{2}) \\
+&= 2 \cdot 2 T(\frac{n}{4}) \\
+&= 2^{\log_{2}n} \cdot T(1) \\
+&= n
+\end{aligned}
+</script>
+</div>
+<p>时间复杂度 <span><span class="MathJax_Preview">O(hi - lo)</span><script type="math/tex">O(hi - lo)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(hi - lo)</span><script type="math/tex">O(hi - lo)</script></span>。</p>
 <h2 id="decrease-and-conquer">减治 Decrease and Conquer<a class="headerlink" href="#decrease-and-conquer" title="Permanent link">&para;</a></h2>
 <h3 id="_2">反转数组<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1147,14 +1157,14 @@ $$
 1 &amp; 4 &amp; 7 \\
 2 &amp; 5 &amp; 8 \\
 3 &amp; 6 &amp; 9
-\end{matirx}
+\end{matrix}
 </div>
 <script type="math/tex; mode=display">
 \begin{matrix}
 1 & 4 & 7 \\
 2 & 5 & 8 \\
 3 & 6 & 9
-\end{matirx}
+\end{matrix}
 </script>
 </div>
 <p>查询 5 ，返回 true</p>
