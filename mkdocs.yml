@@ -109,6 +109,7 @@ nav:
         - 感知机: machine-learning/perceptron.md
         - 决策树: machine-learning/decision-tree.md
         - ROC: machine-learning/roc.md
+        - 初始化: machine-learning/initialization.md
         - 优化: machine-learning/optimization.md
         - 概率图: machine-learning/pgm.md
     - 数学:

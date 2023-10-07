@@ -128,4 +128,3 @@ $$
 & \alpha = \frac{k}{\sqrt{\text{EpochNumber}}} \cdot \alpha_{0}
 \end{aligned}
 $$
-
