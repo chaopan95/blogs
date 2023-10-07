@@ -13,14 +13,14 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/math/linear-algebra/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/machine-learning/initialization/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>线性代数 - 个人博客</title>
+        <title>初始化 - 个人博客</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              线性代数
+              初始化
             
           </span>
         </div>
@@ -752,12 +752,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         机器学习
@@ -775,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../machine-learning/perceptron/" class="md-nav__link">
+      <a href="../perceptron/" class="md-nav__link">
         感知机
       </a>
     </li>
@@ -787,7 +789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../machine-learning/decision-tree/" class="md-nav__link">
+      <a href="../decision-tree/" class="md-nav__link">
         决策树
       </a>
     </li>
@@ -799,88 +801,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../machine-learning/roc/" class="md-nav__link">
+      <a href="../roc/" class="md-nav__link">
         ROC
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../machine-learning/initialization/" class="md-nav__link">
-        初始化
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../machine-learning/optimization/" class="md-nav__link">
-        优化
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../machine-learning/pgm/" class="md-nav__link">
-        概率图
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
-      
-      <label class="md-nav__link" for="__nav_5">
-        数学
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="数学" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
-          数学
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../prob-stat/" class="md-nav__link">
-        概率&统计
       </a>
     </li>
   
@@ -899,12 +821,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          线性代数
+          初始化
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        线性代数
+        初始化
       </a>
       
         
@@ -921,7 +843,21 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    基础
+    随机初始化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xavier" class="md-nav__link">
+    Xavier初始化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#he" class="md-nav__link">
+    He初始化
   </a>
   
 </li>
@@ -939,7 +875,85 @@
   
   
     <li class="md-nav__item">
-      <a href="../graph/" class="md-nav__link">
+      <a href="../optimization/" class="md-nav__link">
+        优化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pgm/" class="md-nav__link">
+        概率图
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        数学
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数学" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          数学
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/prob-stat/" class="md-nav__link">
+        概率&统计
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/linear-algebra/" class="md-nav__link">
+        线性代数
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/graph/" class="md-nav__link">
         图论
       </a>
     </li>
@@ -977,7 +991,21 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    基础
+    随机初始化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xavier" class="md-nav__link">
+    Xavier初始化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#he" class="md-nav__link">
+    He初始化
   </a>
   
 </li>
@@ -995,9 +1023,61 @@
               
                 
                 
-                  <h1>线性代数</h1>
+                  <h1>初始化</h1>
                 
-                <h2 id="_1">基础<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+                <h2 id="_1">随机初始化<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>如果权重初始化为0，那么每一个神经元会执行相同的计算，最终所有的神经元没有差异。所以我们需要对权重做随机初始化，这一操作叫「break symmetry」。</p>
+<h2 id="xavier">Xavier初始化<a class="headerlink" href="#xavier" title="Permanent link">&para;</a></h2>
+<p>在激活函数之前，我们做了一次全连接。因为权重是随机初始化，可以认为权重和特征的分布是独立的。</p>
+<div>
+<div class="MathJax_Preview">
+\sum_{i=1}^{n}x_{i}w_{i}
+</div>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{n}x_{i}w_{i}
+</script>
+</div>
+<p>如果，特征和参数的期望值均为0的话，最后的乘积也是0期望。即</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+&amp; E(x_{i}) = E(w_{i}) = 0 &amp; \\
+&amp; \Downarrow &amp; \\
+&amp; E(\sum_{i=1}^{n}x_{i}w_{i}) = 0 &amp;
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+& E(x_{i}) = E(w_{i}) = 0 & \\
+& \Downarrow & \\
+& E(\sum_{i=1}^{n}x_{i}w_{i}) = 0 &
+\end{matrix}
+</script>
+</div>
+<p>但这样做的结果就是方差在后续的层中增加，即</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+&amp; Var(\sum_{i=1}^{n}x_{i}w_{i}) = \sum_{i=1}^{n}Var(x_{i}w_{i}) &amp; \\
+&amp; \Downarrow &amp; \\
+&amp; Var(x_{i}w_{i}) = [ E(x_{i}) ]^{2}Var(w_{i}) + [ E(w_{i}) ]^{2}Var(x_{i}) + Var(x_{i})Var(w_{i}) &amp; \\
+&amp; \Downarrow &amp; \\
+&amp; Var(\sum_{i=1}^{n}x_{i}w_{i}) = \sum_{i=1}^{n}Var(x_{i})Var(w_{i}) = Var(x)[ nVar(w) ] &amp;
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+& Var(\sum_{i=1}^{n}x_{i}w_{i}) = \sum_{i=1}^{n}Var(x_{i}w_{i}) & \\
+& \Downarrow & \\
+& Var(x_{i}w_{i}) = [ E(x_{i}) ]^{2}Var(w_{i}) + [ E(w_{i}) ]^{2}Var(x_{i}) + Var(x_{i})Var(w_{i}) & \\
+& \Downarrow & \\
+& Var(\sum_{i=1}^{n}x_{i}w_{i}) = \sum_{i=1}^{n}Var(x_{i})Var(w_{i}) = Var(x)[ nVar(w) ] &
+\end{matrix}
+</script>
+</div>
+<p>这不利于深层网络的收敛。如果我们想 <span><span class="MathJax_Preview">nVar(w) = 1</span><script type="math/tex">nVar(w) = 1</script></span>，我们需要对随机初始化的权重分布（<span><span class="MathJax_Preview">N(0, 1)</span><script type="math/tex">N(0, 1)</script></span>）乘一个系数 <span><span class="MathJax_Preview">a = \frac{1}{\sqrt{n}}</span><script type="math/tex">a = \frac{1}{\sqrt{n}}</script></span>。Xavier初始化中乘的系数是 <span><span class="MathJax_Preview">\frac{\sqrt{2}}{\sqrt{n_{in}+n_{out}}}</span><script type="math/tex">\frac{\sqrt{2}}{\sqrt{n_{in}+n_{out}}}</script></span>。</p>
+<h2 id="he">He初始化<a class="headerlink" href="#he" title="Permanent link">&para;</a></h2>
+<p>对激活函数是ReLU，he初始化乘系数为 <span><span class="MathJax_Preview">\frac{\sqrt{2}}{\sqrt{n_{in}}}</span><script type="math/tex">\frac{\sqrt{2}}{\sqrt{n_{in}}}</script></span></p>
                 
               
               
@@ -1017,7 +1097,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../prob-stat/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 概率&amp;统计" rel="prev">
+        <a href="../roc/" class="md-footer__link md-footer__link--prev" aria-label="上一页: ROC" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1026,20 +1106,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              概率&统计
+              ROC
             </div>
           </div>
         </a>
       
       
         
-        <a href="../graph/" class="md-footer__link md-footer__link--next" aria-label="下一页: 图论" rel="next">
+        <a href="../optimization/" class="md-footer__link md-footer__link--next" aria-label="下一页: 优化" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              图论
+              优化
             </div>
           </div>
           <div class="md-footer__button md-icon">
