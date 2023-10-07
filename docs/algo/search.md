@@ -66,6 +66,102 @@ vector<vector<int>> permuteUnique(vector<int>& nums) {
 }
 ```
 
+### 组合总和
+**「只能使用一次」**
+
+给定一个数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的每个数字在每个组合中只能使用一次。解集不能包含重复的组合。 
+
+
+```cpp
+/*
+示例:
+输入: candidates = [2,5,2,1,2], target = 5,
+所求解集为:
+[
+  [1,2,2],
+  [5]
+]
+*/
+vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+    vector<vector<int>> res;
+    vector<int> arr;
+    int n = int(candidates.size());
+    if (n == 0) { return res; }
+    map<int, int> dict;
+    map<int, int>::iterator iter;
+    for (int num: candidates) {
+        iter = dict.find(num);
+        if (iter == dict.end()) { dict[num] = 1; }
+        else { dict[num]++; }
+    }
+    vector<pair<int, int>> nums;
+    int size = 0;
+    for (iter = dict.begin(); iter != dict.end(); iter++) {
+        nums.emplace_back(iter->first, iter->second);
+        size++;
+    }
+    DFS(res, arr, candidates, target, 0, size, nums);
+    return res;
+}
+void DFS(vector<vector<int>> &res, vector<int> &arr,
+          vector<int> candidates, int target, int idx,
+          int size, vector<pair<int, int>> nums) {
+    if (target <= 0 || idx >= size) {
+        if (target == 0) { res.push_back(arr); }
+        return;
+    }
+    for (int j = 1; j <= nums[idx].second; j++) {
+        for (int k = 0; k < j; k++) { arr.push_back(nums[idx].first); }
+        DFS(res, arr, candidates, target-j*nums[idx].first, idx+1, size, nums);
+        for (int k = 0; k < j; k++) { arr.pop_back(); }
+    }
+    DFS(res, arr, candidates, target, idx+1, size, nums);
+}
+```
+时间复杂度 $2^{n}$，空间复杂度 $O(n)$。
+
+
+**「无限使用」**
+
+给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的数字可以无限制重复被选取。解集不能包含重复的组合。 
+
+```cpp
+/*
+示例：
+输入：candidates = [2,3,6,7], target = 7,
+所求解集为：
+[
+  [7],
+  [2,2,3]
+]
+*/
+vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+    vector<vector<int>> res;
+    vector<int> arr;
+    int n = int(candidates.size());
+    if (n == 0) { return res; }
+    DFS(res, arr, candidates, n, target, 0);
+    return res;
+}
+void DFS(vector<vector<int>> &res, vector<int> &arr,
+          vector<int> candidates, int n, int target,
+          int idx) {
+    if (target == 0) {
+        res.push_back(arr);
+        return;
+    }
+    for (int i = idx; i < n; i++) {
+        if (target-candidates[i] >= 0) {
+            arr.push_back(candidates[i]);
+            DFS(res, arr, candidates, n, target-candidates[i], i);
+            arr.resize(arr.size()-1);
+        }
+    }
+}
+```
+时间复杂度 $2^{n}$，空间复杂度 $O(n)$。
+
+
 ### 二叉树某一节点所有距离为 k 的节点
 给定一棵二叉树和节点 target，求所有的距离 target 为 k 的节点。这里的距离指的是边的个数
 
