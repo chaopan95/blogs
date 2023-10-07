@@ -82,6 +82,7 @@ nav:
             - 左右遍历型: algo/dp/left-right-traversal.md
             - 数位型: algo/dp/digits.md
         - 贪心: algo/greedy.md
+        - 分治: algo/divide_conquer.md
         - 二分查找: algo/binary-search.md
         - 双指针: algo/two-pointers.md
         - 搜索: algo/search.md
@@ -90,6 +91,7 @@ nav:
         - 矩阵: algo/matrix.md
         - Leetcode: algo/leetcode.md
     - 数据结构:
+        - 数组: data-structure/vector.md
         - 链表: data-structure/list.md
         - 栈 & 队列: data-structure/stack-queue.md
         - 单调栈: data-structure/monotone-stack.md

@@ -174,41 +174,6 @@ int minPairSum(vector<int>& nums) {
 ```
 
 
-### 在 D 天内完成运输
-给定一个数组 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 和一个整数 D = 5，要求在 D 天内将这些货物运输，求每一天能够运输量的最小值。
-
-```cpp
-int shipWithinDays(vector<int>& weights, int days) {
-    int l = 0, r = 0;
-    for (int w : weights) {
-        l = max(l, w);
-        r += w;
-    }
-    while (l < r) {
-        int m = (l + r) >> 1;
-        int ds = 1, tot = 0;
-        for (int w : weights) {
-            if (w + tot > m) {
-                tot = w;
-                ds++;
-            }
-            else {
-                tot += w;
-            }
-        }
-        if (ds > days) {
-            l = m + 1;
-        }
-        else {
-            r = m;
-        }
-    }
-    return l;
-}
-```
-时间复杂度：$O(n \log(sum - max))$，空间复杂度：$O(1)$，sum 是数组的和，max 是数组的最大值
-
-
 ### 最小的船数
 给定一个人员体重的列表 people = [3, 5, 3, 4] 和一个整数 limit = 5，一艘船一次最多载两个人，并且重量和不超过 limit，试问最小需要多少艘船？
 

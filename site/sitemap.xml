@@ -11,6 +11,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chaopan95.github.io/blogs/algo/divide_conquer/</loc>
+         <lastmod>2023-10-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chaopan95.github.io/blogs/algo/greedy/</loc>
          <lastmod>2023-10-07</lastmod>
          <changefreq>daily</changefreq>
@@ -167,6 +172,11 @@
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/data-structure/unionset/</loc>
+         <lastmod>2023-10-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chaopan95.github.io/blogs/data-structure/vector/</loc>
          <lastmod>2023-10-07</lastmod>
          <changefreq>daily</changefreq>
     </url>
