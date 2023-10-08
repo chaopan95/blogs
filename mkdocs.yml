@@ -112,9 +112,11 @@ nav:
         - 线性回归: machine-learning/linear-regression.md
         - 感知机: machine-learning/perceptron.md
         - 决策树: machine-learning/decision-tree.md
+        - 激活函数: machine-learning/activation.md
         - ROC: machine-learning/roc.md
         - 初始化: machine-learning/initialization.md
         - 优化: machine-learning/optimization.md
+        - 归一化: machine-learning/normalization.md
         - 概率图: machine-learning/pgm.md
     - 数学:
         - 概率&统计: math/prob-stat.md
