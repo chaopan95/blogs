@@ -108,6 +108,7 @@ nav:
         - 优先队列: data-structure/priority-queue.md
         - 哈希表: data-structure/hash.md
     - 机器学习:
+        - 机器学习策略: machine-learning/ml-strategies.md
         - 感知机: machine-learning/perceptron.md
         - 决策树: machine-learning/decision-tree.md
         - ROC: machine-learning/roc.md
