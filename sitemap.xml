@@ -211,6 +211,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chaopan95.github.io/blogs/machine-learning/linear-regression/</loc>
+         <lastmod>2023-10-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/ml-strategies/</loc>
          <lastmod>2023-10-08</lastmod>
          <changefreq>daily</changefreq>
