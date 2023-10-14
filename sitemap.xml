@@ -26,11 +26,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/jsoffer/</loc>
-         <lastmod>2023-10-14</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://chaopan95.github.io/blogs/algo/leetcode/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
@@ -132,6 +127,16 @@
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/algo/dp/tree/</loc>
+         <lastmod>2023-10-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chaopan95.github.io/blogs/algo/sort/basis/</loc>
+         <lastmod>2023-10-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chaopan95.github.io/blogs/algo/sort/merge/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
