@@ -131,6 +131,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chaopan95.github.io/blogs/algo/dp/tree/</loc>
+         <lastmod>2023-10-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chaopan95.github.io/blogs/data-structure/binary-indexed-tree/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
