@@ -888,6 +888,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../logistic-regression/" class="md-nav__link">
+        逻辑回归
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../perceptron/" class="md-nav__link">
         感知机
       </a>
@@ -926,6 +938,18 @@
     <li class="md-nav__item">
       <a href="../roc/" class="md-nav__link">
         ROC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mlp/" class="md-nav__link">
+        MLP
       </a>
     </li>
   
@@ -1031,8 +1055,32 @@
   
   
     <li class="md-nav__item">
+      <a href="../regularization/" class="md-nav__link">
+        正则化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../normalization/" class="md-nav__link">
         归一化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cnn/" class="md-nav__link">
+        CNN
       </a>
     </li>
   
@@ -1306,6 +1354,7 @@ V_{t} &= \beta V_{t-1} + (1 - \beta) \theta_{t} \\
 </script>
 </div>
 <p><span><span class="MathJax_Preview">V_{t}</span><script type="math/tex">V_{t}</script></span> 是 <span><span class="MathJax_Preview">\frac{1}{1 - \beta}</span><script type="math/tex">\frac{1}{1 - \beta}</script></span> 天内的滑动平均值，例如，<span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> = 0.9，<span><span class="MathJax_Preview">\frac{1}{1 - \beta} = \frac{1}{1 - 0.98} = 50</span><script type="math/tex">\frac{1}{1 - \beta} = \frac{1}{1 - 0.98} = 50</script></span>。</p>
+<p><img alt="" src="./images/optimization1.jpg" /></p>
 <p>如果增大 <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span>，滑动平均值曲线向右偏移；减小 <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span>，曲线将会更加震荡。</p>
 <p>因为在真实值和滑动平均值之间存在偏差，我们需要做一些修正 <span><span class="MathJax_Preview">\frac{V_{t}}{1 - \beta^{t}}</span><script type="math/tex">\frac{V_{t}}{1 - \beta^{t}}</script></span></p>
 <h2 id="momentum">Momentum<a class="headerlink" href="#momentum" title="Permanent link">&para;</a></h2>
@@ -1427,13 +1476,13 @@ V_{t} &= \beta V_{t-1} + (1 - \beta) \theta_{t} \\
       
       
         
-        <a href="../normalization/" class="md-footer__link md-footer__link--next" aria-label="下一页: 归一化" rel="next">
+        <a href="../regularization/" class="md-footer__link md-footer__link--next" aria-label="下一页: 正则化" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              归一化
+              正则化
             </div>
           </div>
           <div class="md-footer__button md-icon">
