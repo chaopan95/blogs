@@ -6,12 +6,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chaopan95.github.io/blogs/algo/back-tracking/</loc>
+         <lastmod>2023-10-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chaopan95.github.io/blogs/algo/binary-search/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/divide_conquer/</loc>
+         <loc>https://chaopan95.github.io/blogs/algo/divide-conquer/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
