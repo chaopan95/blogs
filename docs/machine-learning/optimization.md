@@ -33,8 +33,8 @@ $w^{t+1} = w^{t} - \eta_{t}g_{t}$
 if $\left\| w^{t+1}-w^{t} \right\| \leq \epsilon$, finish
 
 
-## 指数加权平局
-指数加权平局（Exponentially Weighted Averages）是一种数据平滑的方法。公式如下：
+## 指数加权平均
+指数加权平均（Exponentially Weighted Averages）是一种数据平滑的方法。公式如下：
 
 $$
 \begin{aligned}
@@ -71,6 +71,8 @@ $$
 
 $V_{t}$ 是 $\frac{1}{1 - \beta}$ 天内的滑动平均值，例如，$\beta$ = 0.9，$\frac{1}{1 - \beta} = \frac{1}{1 - 0.98} = 50$。
 
+![](./images/optimization1.png)
+
 如果增大 $\beta$，滑动平均值曲线向右偏移；减小 $\beta$，曲线将会更加震荡。
 
 因为在真实值和滑动平均值之间存在偏差，我们需要做一些修正 $\frac{V_{t}}{1 - \beta^{t}}$
@@ -79,7 +81,7 @@ $V_{t}$ 是 $\frac{1}{1 - \beta}$ 天内的滑动平均值，例如，$\beta$ = 
 ## Momentum
 $\bigstar$ 动量法用来消除震荡
 $\bigstar$ $\beta$ 通常是 0.9.<br>
-$\bigstar$ 在每一个mini-batch下，我们计算 dW 和 db，之后计算指数滑动平局，并更新 W 和 b。
+$\bigstar$ 在每一个mini-batch下，我们计算 dW 和 db，之后计算指数滑动平均，并更新 W 和 b。
 
 $$
 \begin{aligned}
