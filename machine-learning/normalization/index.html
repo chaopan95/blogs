@@ -1045,13 +1045,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#gradient-checking" class="md-nav__link">
-    Gradient checking
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1200,13 +1193,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#gradient-checking" class="md-nav__link">
-    Gradient checking
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1312,35 +1298,6 @@ x_{norm} = \frac{x}{255} - 0.5
 x_{norm} = \frac{x}{255} - 0.5
 </script>
 </div>
-<h2 id="gradient-checking">Gradient checking<a class="headerlink" href="#gradient-checking" title="Permanent link">&para;</a></h2>
-<p>将参数（<span><span class="MathJax_Preview">W^{[1]}</span><script type="math/tex">W^{[1]}</script></span>, <span><span class="MathJax_Preview">b^{[1]}</span><script type="math/tex">b^{[1]}</script></span>, ..., <span><span class="MathJax_Preview">W^{[L]}</span><script type="math/tex">W^{[L]}</script></span>, <span><span class="MathJax_Preview">b^{[L]}</span><script type="math/tex">b^{[L]}</script></span>）和参数的导数（<span><span class="MathJax_Preview">dW^{[1]}</span><script type="math/tex">dW^{[1]}</script></span>, <span><span class="MathJax_Preview">db^{[1]}</span><script type="math/tex">db^{[1]}</script></span>, ..., <span><span class="MathJax_Preview">dW^{[L]}</span><script type="math/tex">dW^{[L]}</script></span>, <span><span class="MathJax_Preview">db^{[L]}</span><script type="math/tex">db^{[L]}</script></span>）取出并形成新的向量 <span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 和 <span><span class="MathJax_Preview">d\theta</span><script type="math/tex">d\theta</script></span></p>
-<div>
-<div class="MathJax_Preview">
-J(\theta) = J(\theta_{1}, \theta_{2}, ..., \theta_{n})
-</div>
-<script type="math/tex; mode=display">
-J(\theta) = J(\theta_{1}, \theta_{2}, ..., \theta_{n})
-</script>
-</div>
-<p>对每一个参数 <span><span class="MathJax_Preview">\theta_{i}</span><script type="math/tex">\theta_{i}</script></span>，我们检查</p>
-<div>
-<div class="MathJax_Preview">
-d\theta_{i}^{\text{approx}} = \frac{J(\theta_{1}, ..., \theta_{i} + \epsilon, ..., \theta_{n})-J(\theta_{1}, ..., \theta_{i} - \epsilon, ..., \theta_{n})}{2\epsilon} \approx d\theta_{i}
-</div>
-<script type="math/tex; mode=display">
-d\theta_{i}^{\text{approx}} = \frac{J(\theta_{1}, ..., \theta_{i} + \epsilon, ..., \theta_{n})-J(\theta_{1}, ..., \theta_{i} - \epsilon, ..., \theta_{n})}{2\epsilon} \approx d\theta_{i}
-</script>
-</div>
-<p>另一种形式</p>
-<div>
-<div class="MathJax_Preview">
-\frac{\left \| d\theta_{i}^{\text{approx}} - d\theta_{i} \right \|_{2}}{\left \| d\theta_{i}^{\text{approx}} \right \|_{2} + \left \| d\theta_{i} \right \|_{2}} &lt; 10^{-7}
-</div>
-<script type="math/tex; mode=display">
-\frac{\left \| d\theta_{i}^{\text{approx}} - d\theta_{i} \right \|_{2}}{\left \| d\theta_{i}^{\text{approx}} \right \|_{2} + \left \| d\theta_{i} \right \|_{2}} < 10^{-7}
-</script>
-</div>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 仅用作 debug，不用在训练阶段使用</p>
                 
               
               

@@ -1009,7 +1009,7 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    指数加权平局
+    指数加权平均
   </a>
   
 </li>
@@ -1202,7 +1202,7 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    指数加权平局
+    指数加权平均
   </a>
   
 </li>
@@ -1291,8 +1291,8 @@ L(w) = \sum_{i=1}^{n}L(w; x_{i}, y_{i}) \rightarrow \min_{w}
 <p><span><span class="MathJax_Preview">g_{t} = \frac{1}{m}\sum_{j=1}^{m}\nabla L(w^{t};x_{i_{j}},y_{i_{j}})</span><script type="math/tex">g_{t} = \frac{1}{m}\sum_{j=1}^{m}\nabla L(w^{t};x_{i_{j}},y_{i_{j}})</script></span></p>
 <p><span><span class="MathJax_Preview">w^{t+1} = w^{t} - \eta_{t}g_{t}</span><script type="math/tex">w^{t+1} = w^{t} - \eta_{t}g_{t}</script></span></p>
 <p>if <span><span class="MathJax_Preview">\left\| w^{t+1}-w^{t} \right\| \leq \epsilon</span><script type="math/tex">\left\| w^{t+1}-w^{t} \right\| \leq \epsilon</script></span>, finish</p>
-<h2 id="_2">指数加权平局<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>指数加权平局（Exponentially Weighted Averages）是一种数据平滑的方法。公式如下：</p>
+<h2 id="_2">指数加权平均<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>指数加权平均（Exponentially Weighted Averages）是一种数据平滑的方法。公式如下：</p>
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
@@ -1360,7 +1360,7 @@ V_{t} &= \beta V_{t-1} + (1 - \beta) \theta_{t} \\
 <h2 id="momentum">Momentum<a class="headerlink" href="#momentum" title="Permanent link">&para;</a></h2>
 <p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 动量法用来消除震荡
 <span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> 通常是 0.9.<br>
-<span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 在每一个mini-batch下，我们计算 dW 和 db，之后计算指数滑动平局，并更新 W 和 b。</p>
+<span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 在每一个mini-batch下，我们计算 dW 和 db，之后计算指数滑动平均，并更新 W 和 b。</p>
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
