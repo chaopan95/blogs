@@ -235,7 +235,7 @@ int lastStoneWeightII(vector<int>& stones) {
     return sum - 2 * dp[tar];
 }
 ```
-时间复杂度 $O(tar \times n)$，空间复杂度 $O(tar)$，这里 tar 是原数组的和的一半，n 是数组长度。
+时间复杂度：$O(tar \times n)$，空间复杂度：$O(tar)$，这里 tar 是原数组的和的一半，n 是数组长度。
 
 ### 盈利计划
 给定一个整数 n 代表人数，minProfit 代表最低盈利额，一串工作需要的人数 group = [2, 2]，每项工作对应的利润 profit = [2, 3]。要求实现最低盈利额，并且投入的人数和不能超过 n，这样的分配方案数目有多少个？
@@ -288,7 +288,7 @@ int profitableSchemes(int n, int minProfit, vector<int>& group,
     return ans;
 }
 ```
-时间复杂度 $O(len \times n \times minProfit)$，空间复杂度 $O(n \times minProfit)$，这里 len 是工作的个数 / 利润数组的长度，n 是总人数，minProfit 是最低盈利额。
+时间复杂度：$O(len \times n \times minProfit)$，空间复杂度：$O(n \times minProfit)$，这里 len 是工作的个数 / 利润数组的长度，n 是总人数，minProfit 是最低盈利额。
 
 这个题目也可以定义成 dp[ i ][ j ][ k ] 从第 i 个工作到最后一个工作中选取某几个，在投入不超过 j 个人且利润不低于 k 的条件下的方案数目。对应的初始化应该改成 dp[ i ][ j ][ 0 ] = 1，最后的结果是 dp[ 0 ][ n ][ minProfit ]。
 
@@ -359,7 +359,7 @@ bool splitArraySameAverage(vector<int>& nums) {
     return false;
 }
 ```
-时间复杂度 $n^{2}\sum\text{nums}$，空间复杂度 $n\sum\text{nums}$。
+时间复杂度：O($n^{2}\sum\text{nums}$)，空间复杂度：O($n\sum\text{nums}$)。
 
 
 ## 完全背包
@@ -421,6 +421,7 @@ int completeKnapsack(vector<int> v, vector<int> w, int W) {
 
 这里与 01 背包的代码只有一行不同，即 j 的遍历方向上。完全背包问题是有小到大遍历，因为某一件物品可以被多次放入；反而 01 背包问题对任一件物品最多只允许放入一次。
 
+
 ### 换零钱 I
 给定一组硬币的面值 coins = [186, 419, 83, 408] 和一个总量 amount = 6249，试问用最少的硬币个数可以组成这个 amount。如果不能找到零钱组合，返回 -1。
 
@@ -455,7 +456,8 @@ int coinChange(vector<int>& coins, int amount) {
     return dp[amount] == amount + 1 ? -1 : dp[amount];
 }
 ```
-时间复杂度 $O(n \times amount)$，空间复杂度 $O(amount)$，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。
+时间复杂度：$O(n \times amount)$，空间复杂度：$O(amount)$，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。
+
 
 ### 换零钱 II
 同上题背景，求能够组合出给定金额的零钱方案数目
@@ -484,7 +486,8 @@ int coinChange(int amount, vector<int>& coins) {
     return dp[amount];
 }
 ```
-时间复杂度 $O(\text{n} \times \text{amount})$，空间复杂度 $O(\text{amount})$，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。
+时间复杂度：$O(\text{n} \times \text{amount})$，空间复杂度：$O(\text{amount})$，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。
+
 
 ### 换零钱 III
 同上题背景，依然求方案数目，但要求硬币具有先后顺序，例如 coins = [1, 2, 3]，组成 amount = 3 的方案有 [1, 1, 1]，[1, 2]，[2, 1]，[ 3 ] 4 种，注意到 [1, 2] 和 [2, 1] 是不一样的方案。
@@ -507,7 +510,8 @@ int combinationSum41(vector<int>& coins, int amount) {
     return dp[amount];
 }
 ```
-时间复杂度 $O(n \times amount)$，空间复杂度 $O(amount)$，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。
+时间复杂度：$O(n \times amount)$，空间复杂度：$O(amount)$，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。
+
 
 ### 平方数的最小个数
 给定一个正数 n = 13，它可以由若干个平方数相加而得，返回这些平方数的个数的最小值。13 = 4 + 9，即最小值为 2.
@@ -536,7 +540,7 @@ int numSquares(int n) {
     return dp[n];
 }
 ```
-时间复杂度 $O(n \sqrt{n})$，空间复杂度 $O(n)$，其中 n 是给定的值。
+时间复杂度：$O(n \sqrt{n})$，空间复杂度：$O(n)$，其中 n 是给定的值。
 
 方法 2：设 dp[ i ] 为构成 i 的最小平方数的个数。
 
@@ -549,15 +553,12 @@ int numSquares(int n) {
     if (n < 1) { return 0; }
     int *dp = new int [n+1]{};
     dp[1] = 1;
-    for (int i = 2; i <= n; i++)
-    {
+    for (int i = 2; i <= n; i++) {
         if (i * i <= n) { dp[i * i] = 1; }
         if (dp[i]) { continue; }
         int min = INT_MAX;
-        for (int j = 1; j <= i/2; j++)
-        {
-            if (min > dp[j] + dp[i-j])
-            {
+        for (int j = 1; j <= i/2; j++) {
+            if (min > dp[j] + dp[i-j]) {
                 min = dp[j] + dp[i-j];
             }
         }
@@ -568,5 +569,4 @@ int numSquares(int n) {
     return ans;
 }
 ```
-时间复杂度 $O(n^{2})$，空间复杂度 $O(n)$，其中 n 是给定的值。
-
+时间复杂度：$O(n^{2})$，空间复杂度：$O(n)$，其中 n 是给定的值。
