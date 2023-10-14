@@ -13,21 +13,21 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/machine-learning/ml-strategies/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/algo/sort/merge/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>机器学习策略 - 个人博客</title>
+        <title>归并排序 - 个人博客</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ca7ac06f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -63,7 +63,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="red">
   
     
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -82,7 +82,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="个人博客" class="md-header__button md-logo" aria-label="个人博客" data-md-component="logo">
+    <a href="../../.." title="个人博客" class="md-header__button md-logo" aria-label="个人博客" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              机器学习策略
+              归并排序
             
           </span>
         </div>
@@ -162,7 +162,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="个人博客" class="md-nav__button md-logo" aria-label="个人博客" data-md-component="logo">
+    <a href="../../.." title="个人博客" class="md-nav__button md-logo" aria-label="个人博客" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -181,7 +181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         介绍
       </a>
     </li>
@@ -194,12 +194,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         算法
@@ -215,12 +217,14 @@
             
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
       
       <label class="md-nav__link" for="__nav_2_1">
         排序
@@ -238,7 +242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/sort/basis/" class="md-nav__link">
+      <a href="../basis/" class="md-nav__link">
         基础
       </a>
     </li>
@@ -248,11 +252,67 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../algo/sort/merge/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          归并排序
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         归并排序
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    原理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    题目
+  </a>
+  
+    <nav class="md-nav" aria-label="题目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    数组中的逆序对
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -289,7 +349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/basis/" class="md-nav__link">
+      <a href="../../dp/basis/" class="md-nav__link">
         基础
       </a>
     </li>
@@ -301,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/segment/" class="md-nav__link">
+      <a href="../../dp/segment/" class="md-nav__link">
         划分区间
       </a>
     </li>
@@ -313,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/knapsack/" class="md-nav__link">
+      <a href="../../dp/knapsack/" class="md-nav__link">
         背包问题
       </a>
     </li>
@@ -325,7 +385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/lis/" class="md-nav__link">
+      <a href="../../dp/lis/" class="md-nav__link">
         最长递增子序列
       </a>
     </li>
@@ -337,7 +397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/path/" class="md-nav__link">
+      <a href="../../dp/path/" class="md-nav__link">
         路径问题
       </a>
     </li>
@@ -349,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/matrix/" class="md-nav__link">
+      <a href="../../dp/matrix/" class="md-nav__link">
         矩阵问题
       </a>
     </li>
@@ -361,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/stocks/" class="md-nav__link">
+      <a href="../../dp/stocks/" class="md-nav__link">
         股票买卖
       </a>
     </li>
@@ -373,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/lcs/" class="md-nav__link">
+      <a href="../../dp/lcs/" class="md-nav__link">
         最长公共子序列
       </a>
     </li>
@@ -385,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/edit-distance/" class="md-nav__link">
+      <a href="../../dp/edit-distance/" class="md-nav__link">
         编辑距离
       </a>
     </li>
@@ -397,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/rob/" class="md-nav__link">
+      <a href="../../dp/rob/" class="md-nav__link">
         打家劫舍
       </a>
     </li>
@@ -409,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/sequence/" class="md-nav__link">
+      <a href="../../dp/sequence/" class="md-nav__link">
         序列型
       </a>
     </li>
@@ -421,7 +481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/interval/" class="md-nav__link">
+      <a href="../../dp/interval/" class="md-nav__link">
         区间型
       </a>
     </li>
@@ -433,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/left-right-traversal/" class="md-nav__link">
+      <a href="../../dp/left-right-traversal/" class="md-nav__link">
         左右遍历型
       </a>
     </li>
@@ -445,7 +505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/digits/" class="md-nav__link">
+      <a href="../../dp/digits/" class="md-nav__link">
         数位型
       </a>
     </li>
@@ -457,7 +517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/dp/tree/" class="md-nav__link">
+      <a href="../../dp/tree/" class="md-nav__link">
         树上型
       </a>
     </li>
@@ -475,7 +535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/greedy/" class="md-nav__link">
+      <a href="../../greedy/" class="md-nav__link">
         贪心
       </a>
     </li>
@@ -487,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/divide-conquer/" class="md-nav__link">
+      <a href="../../divide-conquer/" class="md-nav__link">
         分治
       </a>
     </li>
@@ -499,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/back-tracking/" class="md-nav__link">
+      <a href="../../back-tracking/" class="md-nav__link">
         回溯
       </a>
     </li>
@@ -511,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/binary-search/" class="md-nav__link">
+      <a href="../../binary-search/" class="md-nav__link">
         二分
       </a>
     </li>
@@ -523,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/two-pointers/" class="md-nav__link">
+      <a href="../../two-pointers/" class="md-nav__link">
         双指针
       </a>
     </li>
@@ -535,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/search/" class="md-nav__link">
+      <a href="../../search/" class="md-nav__link">
         搜索
       </a>
     </li>
@@ -547,7 +607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/prefix-sum/" class="md-nav__link">
+      <a href="../../prefix-sum/" class="md-nav__link">
         前缀和
       </a>
     </li>
@@ -559,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/math/" class="md-nav__link">
+      <a href="../../math/" class="md-nav__link">
         数学
       </a>
     </li>
@@ -571,7 +631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/matrix/" class="md-nav__link">
+      <a href="../../matrix/" class="md-nav__link">
         矩阵
       </a>
     </li>
@@ -583,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algo/leetcode/" class="md-nav__link">
+      <a href="../../leetcode/" class="md-nav__link">
         Leetcode
       </a>
     </li>
@@ -625,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/vector/" class="md-nav__link">
+      <a href="../../../data-structure/vector/" class="md-nav__link">
         数组
       </a>
     </li>
@@ -637,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/list/" class="md-nav__link">
+      <a href="../../../data-structure/list/" class="md-nav__link">
         链表
       </a>
     </li>
@@ -649,7 +709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/stack-queue/" class="md-nav__link">
+      <a href="../../../data-structure/stack-queue/" class="md-nav__link">
         栈 & 队列
       </a>
     </li>
@@ -661,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/monotone-stack/" class="md-nav__link">
+      <a href="../../../data-structure/monotone-stack/" class="md-nav__link">
         单调栈
       </a>
     </li>
@@ -673,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/monotone-queue/" class="md-nav__link">
+      <a href="../../../data-structure/monotone-queue/" class="md-nav__link">
         单调队列
       </a>
     </li>
@@ -706,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/tree/basis/" class="md-nav__link">
+      <a href="../../../data-structure/tree/basis/" class="md-nav__link">
         基础
       </a>
     </li>
@@ -718,7 +778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/tree/binary-tree/" class="md-nav__link">
+      <a href="../../../data-structure/tree/binary-tree/" class="md-nav__link">
         二叉树
       </a>
     </li>
@@ -730,7 +790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/tree/traversal/" class="md-nav__link">
+      <a href="../../../data-structure/tree/traversal/" class="md-nav__link">
         遍历
       </a>
     </li>
@@ -742,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/tree/prefix-tree/" class="md-nav__link">
+      <a href="../../../data-structure/tree/prefix-tree/" class="md-nav__link">
         前缀树
       </a>
     </li>
@@ -760,7 +820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/string/" class="md-nav__link">
+      <a href="../../../data-structure/string/" class="md-nav__link">
         字符串
       </a>
     </li>
@@ -772,7 +832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/unionset/" class="md-nav__link">
+      <a href="../../../data-structure/unionset/" class="md-nav__link">
         并查集
       </a>
     </li>
@@ -784,7 +844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/binary-indexed-tree/" class="md-nav__link">
+      <a href="../../../data-structure/binary-indexed-tree/" class="md-nav__link">
         树状数组
       </a>
     </li>
@@ -796,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/segment-tree/" class="md-nav__link">
+      <a href="../../../data-structure/segment-tree/" class="md-nav__link">
         线段树
       </a>
     </li>
@@ -808,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/priority-queue/" class="md-nav__link">
+      <a href="../../../data-structure/priority-queue/" class="md-nav__link">
         优先队列
       </a>
     </li>
@@ -820,7 +880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structure/hash/" class="md-nav__link">
+      <a href="../../../data-structure/hash/" class="md-nav__link">
         哈希表
       </a>
     </li>
@@ -839,14 +899,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       <label class="md-nav__link" for="__nav_4">
         机器学习
@@ -862,68 +920,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          机器学习策略
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../machine-learning/ml-strategies/" class="md-nav__link">
         机器学习策略
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    假设
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    交叉验证
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variance-vs-bias" class="md-nav__link">
-    Variance vs Bias
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    端到端学习
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -933,7 +934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linear-regression/" class="md-nav__link">
+      <a href="../../../machine-learning/linear-regression/" class="md-nav__link">
         线性回归
       </a>
     </li>
@@ -945,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../perceptron/" class="md-nav__link">
+      <a href="../../../machine-learning/perceptron/" class="md-nav__link">
         感知机
       </a>
     </li>
@@ -957,7 +958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../decision-tree/" class="md-nav__link">
+      <a href="../../../machine-learning/decision-tree/" class="md-nav__link">
         决策树
       </a>
     </li>
@@ -969,7 +970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../activation/" class="md-nav__link">
+      <a href="../../../machine-learning/activation/" class="md-nav__link">
         激活函数
       </a>
     </li>
@@ -981,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../roc/" class="md-nav__link">
+      <a href="../../../machine-learning/roc/" class="md-nav__link">
         ROC
       </a>
     </li>
@@ -993,7 +994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../initialization/" class="md-nav__link">
+      <a href="../../../machine-learning/initialization/" class="md-nav__link">
         初始化
       </a>
     </li>
@@ -1005,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../optimization/" class="md-nav__link">
+      <a href="../../../machine-learning/optimization/" class="md-nav__link">
         优化
       </a>
     </li>
@@ -1017,7 +1018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../normalization/" class="md-nav__link">
+      <a href="../../../machine-learning/normalization/" class="md-nav__link">
         归一化
       </a>
     </li>
@@ -1029,7 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pgm/" class="md-nav__link">
+      <a href="../../../machine-learning/pgm/" class="md-nav__link">
         概率图
       </a>
     </li>
@@ -1071,7 +1072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/prob-stat/" class="md-nav__link">
+      <a href="../../../math/prob-stat/" class="md-nav__link">
         概率&统计
       </a>
     </li>
@@ -1083,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/linear-algebra/" class="md-nav__link">
+      <a href="../../../math/linear-algebra/" class="md-nav__link">
         线性代数
       </a>
     </li>
@@ -1095,7 +1096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/graph/" class="md-nav__link">
+      <a href="../../../math/graph/" class="md-nav__link">
         图论
       </a>
     </li>
@@ -1133,29 +1134,28 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    假设
+    原理
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    交叉验证
+    题目
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variance-vs-bias" class="md-nav__link">
-    Variance vs Bias
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="题目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    端到端学习
+    数组中的逆序对
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1172,40 +1172,85 @@
               
                 
                 
-                  <h1>机器学习策略</h1>
+                  <h1>归并排序</h1>
                 
-                <h2 id="_1">假设<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 训练集、验证集和测试集服从 i.i.d 独立同分布</p>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 训练集、验证集和测试集表现均要良好，泛化能力好</p>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 训练集：验证集：测试集 = 7：3：1，对大规模数据，98：1：1</p>
-<h2 id="_2">交叉验证<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>k-折交叉验证：讲训练数据随机分成 k 份，每次选择一份作为验证集，剩下的作为训练集，重复 k 次，获得 k 次损失值，取平均。</p>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 适合于小样本</p>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 在深度学历里，验证集（holdout samples）更适合</p>
-<h2 id="variance-vs-bias">Variance vs Bias<a class="headerlink" href="#variance-vs-bias" title="Permanent link">&para;</a></h2>
-<p>高偏差也叫欠拟合（underfitting），具体指训练损失值较大；高方差也叫过拟合（overfitting），在训练数据集上低误差，但测试数据集上高误差。</p>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 避免高偏差：1）更复杂的模型，2）延长训练时间</p>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 避免高方差：1）更多的训练数据，2）正则化，3）dropout，4）降低模型复杂度</p>
-<h2 id="_3">端到端学习<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>端到端学习（End-to-end learning）将各个阶段的处理合并成一个。例如</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-&amp; \text{Audio} \rightarrow \text{Features} \rightarrow \text{Phenome} \rightarrow \rightarrow \text{Words} \rightarrow \text{Transcript} &amp; \\
-&amp; \Downarrow &amp; \\
-&amp; \text{Audio} \rightarrow \text{Transcript} &amp;
-\end{matrix}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-& \text{Audio} \rightarrow \text{Features} \rightarrow \text{Phenome} \rightarrow \rightarrow \text{Words} \rightarrow \text{Transcript} & \\
-& \Downarrow & \\
-& \text{Audio} \rightarrow \text{Transcript} &
-\end{matrix}
-</script>
-</div>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 优点：较少的人工设计模块</p>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 缺点：需要大量的数据</p>
+                <h2 id="_1">原理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>归并排序采用分治的思想，将待排序的数据分块，并在块内排好序，块之间重新组织称有序数据。</p>
+<h2 id="_2">题目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">数组中的逆序对<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>题目描述：在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007，例如输入 [1,2,3,4,5,6,7,0]，输出7</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="err">：</span>
+    <span class="kt">int</span> <span class="n">InversePairs</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">long</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">mergeSort</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">count</span> <span class="o">%</span> <span class="mi">1000000007</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">mergeSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">arr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">e</span><span class="p">,</span> <span class="kt">long</span> <span class="o">&amp;</span><span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">&gt;=</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">e</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">mergeSort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+        <span class="n">mergeSort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+        <span class="n">merge</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">merge</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">arr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">int</span> <span class="n">e</span><span class="p">,</span> <span class="kt">long</span> <span class="o">&amp;</span><span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="o">*</span><span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span> <span class="p">[</span><span class="n">e</span><span class="o">-</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">]{};</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">temp</span><span class="p">[</span><span class="n">pos</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">];</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="n">right</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">temp</span><span class="p">[</span><span class="n">pos</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">];</span>
+                <span class="n">right</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">right</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span> <span class="n">temp</span><span class="p">[</span><span class="n">pos</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">];</span> <span class="p">}</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span> <span class="n">temp</span><span class="p">[</span><span class="n">pos</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">];</span> <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">e</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">b</span><span class="p">];</span> <span class="p">}</span>
+        <span class="k">delete</span> <span class="p">[]</span><span class="n">temp</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度 <span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
                 
               
               
@@ -1225,7 +1270,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../data-structure/hash/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 哈希表" rel="prev">
+        <a href="../basis/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 基础" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1234,20 +1279,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              哈希表
+              基础
             </div>
           </div>
         </a>
       
       
         
-        <a href="../linear-regression/" class="md-footer__link md-footer__link--next" aria-label="下一页: 线性回归" rel="next">
+        <a href="../../dp/basis/" class="md-footer__link md-footer__link--next" aria-label="下一页: 基础" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              线性回归
+              基础
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1280,10 +1325,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.76f349be.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

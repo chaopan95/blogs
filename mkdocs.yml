@@ -65,7 +65,9 @@ markdown_extensions:
 nav:
     - 介绍: index.md
     - 算法:
-        - 剑指offer: algo/jsoffer.md
+        - 排序:
+            - 基础: algo/sort/basis.md
+            - 归并排序: algo/sort/merge.md
         - 动态规划:
             - 基础: algo/dp/basis.md
             - 划分区间: algo/dp/segment.md
@@ -81,9 +83,11 @@ nav:
             - 区间型: algo/dp/interval.md
             - 左右遍历型: algo/dp/left-right-traversal.md
             - 数位型: algo/dp/digits.md
+            - 树上型: algo/dp/tree.md
         - 贪心: algo/greedy.md
-        - 分治: algo/divide_conquer.md
-        - 二分查找: algo/binary-search.md
+        - 分治: algo/divide-conquer.md
+        - 回溯: algo/back-tracking.md
+        - 二分: algo/binary-search.md
         - 双指针: algo/two-pointers.md
         - 搜索: algo/search.md
         - 前缀和: algo/prefix-sum.md

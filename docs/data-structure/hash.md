@@ -138,4 +138,48 @@ public:
     }
 };
 ```
-时间复杂福：$O(1)$，空间复杂度：$O(n)$
+时间复杂度：$O(1)$，空间复杂度：$O(n)$
+
+
+### 字符流中第一个不重复的字符
+请实现一个函数用来找出字符流中第一个只出现一次的字符。例如，当从字符流中只读出前两个字符"go"时，第一个只出现一次的字符是"g"。当从该字符流中读出前六个字符“google"时，第一个只出现一次的字符是"l"。如果当前字符流没有存在出现一次的字符，返回#字符。
+
+**「分析」**
+
+用一个长为 256 的数组表示 ACSII 字符，如果重复的字符出现，把对应的位置置成 -1，最后返回最小的索引。
+
+```C++
+class Solution {
+    int *ascii;
+    int N;
+    int flow;
+public：
+    Solution() {
+        N = 256;
+        ascii = new int [N]{};
+        flow = 1;
+    }
+    ~Solution() { delete []ascii; }
+    //Insert one char from stringstream
+    void Insert(char ch) {
+        int idx = int(ch);
+        if (ascii[idx] == 0) { ascii[idx] = flow; }
+        else { ascii[idx] = -1; }
+        flow++;
+    }
+  //return the first appearence once char in current stringstream
+    char FirstAppearingOnce() {
+        int pos = flow, ch = 0;
+        for (int i = 0; i < N; i++) {
+            if (ascii[i] < 1) { continue; }
+            if (pos > ascii[i]) {
+                pos = ascii[i];
+                ch = i;
+            }
+        }
+        if (pos == flow) { return '#'; }
+        return char(ch);
+    }
+};
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$

@@ -520,3 +520,50 @@ long long mostPoints(vector<vector<int>>& questions) {
 }
 ```
 时间复杂度：$O(n)$， 空间复杂度：$O(n)$
+
+
+## 剪绳子
+题目描述：给你一根长度为n的绳子，请把绳子剪成整数长的m段（m、n都是整数，n>1并且m>1），每段绳子的长度记为k[0],k[1],...,k[m]。请问k[0]xk[1]x...xk[m]可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。
+
+示例1：输入8输出18
+
+**「分析」**
+
+设 f[ i ] 为长度 i 的绳子所能得到的最大乘积。那么，逐个单位切分成两段，找到最大的切割方案。
+
+$$
+f(n) =
+\begin{cases}
+  n, \quad 0 < n < 4 \\
+  \max_{i} f(i)f(n-i), \quad i = 1, 2, ..., \left \lfloor \frac{n}{2} \right \rfloor, \quad \text{otherwise}
+\end{cases}
+$$
+
+```C++
+class Solution {
+public：
+    int cutRope(int number) {
+        int n = number;
+        if (n < 2) { return 0; }
+        if (n == 2) { return 1; }
+        if (n == 3) { return 2; }
+        int *f = new int[n+1]{};
+        f[1] = 1;
+        f[2] = 2;
+        f[3] = 3;
+        int prod = 1;
+        for (int i = 4; i <= n; i++) {
+            int max_prod = 1;
+            for (int j = 1; j <= i/2; j++) {
+                prod = f[j] * f[i-j];
+                if (max_prod < prod) { max_prod = prod; }
+            }
+            f[i] = max_prod;
+        }
+        int res = f[n];
+        delete []f;
+        return res;
+    }
+};
+```
+时间复杂度：$O(n^{2})$， 空间复杂度：$O(n)$

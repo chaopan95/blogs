@@ -27,7 +27,8 @@ struct ListNode {
 ```
 
 
-## 反转链表
+## 题目
+### 反转链表
 ```cpp
 /*
 from 1 -> 2 -> 3 -> 4 -> 5
@@ -65,9 +66,10 @@ ListNode *reverse(ListNode *p1, ListNode *p2) {
     return p2;
 }
 ```
+时间复杂度 $O(n)$，递归版本的空间复杂度 $O(\log n)$，迭代版本的空间复杂度 $O(1)$
 
 
-## 找出两个链表的相交结点
+### 找出两个链表的相交结点
 给定两个链表A、B，找出两者相交的结点，如果不相交，返回为空指针。
 
 $$
@@ -173,7 +175,7 @@ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
 时间复杂度 $O(n)$，空间复杂度 $O(1)$
 
 
-## 链表的中心节点
+### 链表的中心节点
 给定一个单链表，返回链表的中心节点，如果链表的结点个数是偶数，则返回靠后位置的结点。
 
 **「分析」**
@@ -194,9 +196,10 @@ ListNode* middleNode(ListNode* head) {
     return p1;
 }
 ```
+时间复杂度 $O(n)$，空间复杂度 $O(1)$
 
 
-## LRU 缓存机制
+### LRU 缓存机制
 ```cpp
 /*
 运用你所掌握的数据结构，设计和实现一个LRU(最近最少使用)缓存机制 。
@@ -310,3 +313,49 @@ public:
  * obj->put(key,value);
  */
 ```
+时间复杂度 $O(1)$，空间复杂度 $O(1)$
+
+
+### 复杂链表的复制
+题目描述：输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针random指向一个随机节点），请对此链表进行深拷贝，并返回拷贝后的头结点。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）
+Solution：We copy each node to append itself.
+
+```C++
+/*
+struct RandomListNode {
+    int label;
+    struct RandomListNode *next, *random;
+    RandomListNode(int x) ：
+            label(x), next(NULL), random(NULL) {
+    }
+};
+*/
+class Solution {
+public：
+    RandomListNode* Clone(RandomListNode* pHead) {
+        if (pHead == NULL) { return NULL; }
+        RandomListNode *p1 = pHead;
+        while (p1 != NULL) {
+            RandomListNode *temp = new RandomListNode(p1->label);
+            temp->next = p1->next;
+            p1->next = temp;
+            p1 = p1->next->next;
+        }
+        p1 = pHead;
+        while (p1 != NULL) {
+            if (p1->random != NULL) { p1->next->random = p1->random->next; }
+            p1 = p1->next->next;
+        }
+        RandomListNode *head = pHead->next, *p2 = pHead->next;
+        p1 = pHead;
+        while (p1 != NULL) {
+            p1->next = p2->next;
+            if (p2->next != NULL) { p2->next = p2->next->next; }
+            p1 = p1->next;
+            p2 = p2->next;
+        }
+        return head;
+    }
+};
+```
+时间复杂度 $O(n)$，空间复杂度 $O(1)$
