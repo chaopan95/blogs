@@ -1118,11 +1118,11 @@
 </script>
 </div>
 <p>只要在红色节点处放置一个监控即可。</p>
-<p><strong>「分析」</strong>
-考虑简单的结构：一个根结点（v）和左（l）右（r）子节点，在所有节点被覆盖的条件下，有三种状态</p>
-<p>a）v 处放置一个监控时，所需要的最少数目。v、l、r 被覆盖。左右子节点的子树也需要被覆盖
-b）v 被覆盖但是不需要监控时的最少数目。此时 l 和 r 有一处放监控
-c）l 和 r 被覆盖的最小数目，此时 v 不一定被覆盖</p>
+<p><strong>「分析」</strong></p>
+<p>考虑简单的结构：一个根结点（v）和左（l）右（r）子节点，在所有节点被覆盖的条件下，有三种状态</p>
+<p>a）v 处放置一个监控时，所需要的最少数目。v、l、r 被覆盖。左右子节点的子树也需要被覆盖</p>
+<p>b）v 被覆盖但是不需要监控时的最少数目。此时 l 和 r 有一处放监控</p>
+<p>c）l 和 r 被覆盖的最小数目，此时 v 不一定被覆盖</p>
 <p>状态转移方程</p>
 <div>
 <div class="MathJax_Preview">
@@ -1163,12 +1163,10 @@ c）l 和 r 被覆盖的最小数目，此时 v 不一定被覆盖</p>
 21
 22
 23
-24
-25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="n">states</span> <span class="p">{</span>
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="n">states</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
     <span class="n">states</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span><span class="p">)</span><span class="o">:</span> <span class="n">a</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">b</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">c</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="p">{}</span>
 <span class="p">};</span>
-
 
 <span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
