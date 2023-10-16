@@ -116,6 +116,7 @@ nav:
         - 线性回归: machine-learning/linear-regression.md
         - 逻辑回归: machine-learning/logistic-regression.md
         - 感知机: machine-learning/perceptron.md
+        - 支持向量机: machine-learning/svm.md
         - 决策树: machine-learning/decision-tree.md
         - 激活函数: machine-learning/activation.md
         - ROC: machine-learning/roc.md
