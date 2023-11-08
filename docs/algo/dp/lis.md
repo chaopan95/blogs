@@ -33,8 +33,7 @@ vector<int> LIS(vector<int>& arr) {
     }
     return ans;
 }
-```
-```cpp
+
 vector<int> lengthOfLIS(vector<int>& nums) {
     int len = 0;
     vector<int> dp;
@@ -62,7 +61,8 @@ vector<int> lengthOfLIS(vector<int>& nums) {
 时间复杂度：$O(n \log n)$，空见复杂度：$O(n)$
 
 
-## 最小填充次数
+## 题目
+### 最小填充次数
 给定两个数组 target = [6, 4, 8, 1, 3, 2] 和 arr = [4, 7, 6, 2, 3, 8, 6, 1]，其中 target 内的元素各不相同，每次可以在 arr 的任意位置添加一个元素，试问最少添加多少次，使得 target 成为 arr 的一个子序列。
 
 **「分析」**
@@ -109,3 +109,42 @@ int minOperations(vector<int>& target, vector<int>& arr) {
 }
 ```
 时间复杂度：$O(m + n \log n)$，空见复杂度：$O(n)$，m 是 arr 的长度，n 是 target 的长度
+
+### 俄罗斯套娃信封问题
+给你一个二维整数数组 envelopes ，其中 envelopes[i] = [wi, hi] ，表示第 i 个信封的宽度和高度。当另一个信封的宽度和高度都比这个信封大的时候，这个信封就可以放进另一个信封里，如同俄罗斯套娃一样。请计算 最多能有多少个 信封能组成一组“俄罗斯套娃”信封（即可以把一个信封放到另一个信封里面）。注意：不允许旋转信封。
+
+例如，envelopes = [[5,4],[6,4],[6,7],[2,3]]，返回 3，及最多信封的个数为 3, 组合为: [2,3] => [5,4] => [6,7]。
+
+**「分析」**
+
+「LIS」按照一个方向排序，计算另一个方向的LIS。
+
+```cpp
+int maxEnvelopes(vector<vector<int>>& envelopes) {
+    int n = int(envelopes.size()), len = 1;
+    if (n <= 1) { return n; }
+    sort(envelopes.begin(), envelopes.end(), [](const auto& e1, const auto& e2) {
+        return e1[0] < e2[0] || (e1[0] == e2[0] && e1[1] > e2[1]);
+    });
+    vector<vector<int>> dp(n+1, vector<int>{0, 0});
+    dp[len] = envelopes[0];
+    for (int i = 1; i < n; i++) {
+        if (envelopes[i][0] > dp[len][0] && envelopes[i][1] > dp[len][1]) {
+            dp[++len] = envelopes[i];
+        } else {
+            int l = 1, r = len;
+            while (l <= r) {
+                int m = (l + r) / 2;
+                if (dp[m][0] < envelopes[i][0] && dp[m][1] < envelopes[i][1]) {
+                    l = m + 1;
+                } else {
+                    r = m - 1;
+                }
+            }
+            dp[l] = envelopes[i];
+        }
+    }
+    return len;
+}
+```
+时间复杂度：$O(n\log n)$，空间复杂度：$O(n)$。

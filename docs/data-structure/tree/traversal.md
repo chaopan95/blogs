@@ -1,8 +1,203 @@
 ## 遍历
 遍历是对二叉树的所有节点做一次无重复的访问。
 
+
+## 前序遍历
+
+```cpp
+// 迭代版
+vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> ans;
+    if (root == nullptr) { return ans; }
+    TreeNode *curNode = root;
+    stack<TreeNode*> st;
+    st.push(root);
+    while (!st.empty()) {
+        curNode = st.top();
+        st.pop();
+        ans.push_back(curNode->val);
+        if (curNode->right != nullptr) { st.push(curNode->right); }
+        if (curNode->left != nullptr) { st.push(curNode->left); }
+    }
+    return ans;
+}
+
+// 递归版
+vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> ans;
+    if (root == nullptr) { return ans; }
+    TreeNode *curNode = root;
+    stack<TreeNode*> st;
+    while (true) {
+        while (curNode != nullptr) {
+            ans.push_back(curNode->val);
+            if (curNode->right != nullptr) { st.push(curNode->right); }
+            curNode = curNode->left;
+        }
+        if (st.empty()) { break; }
+        curNode = st.top();
+        st.pop();
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(\log n)$。
+
+### 二叉树的右视图
+给定一个二叉树，从右向左看，返回看到的序列（由上及下）
+
+```cpp
+/*
+   1            <---
+ /   \
+2     3         <---
+ \     \
+  5     4       <---
+*/
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> ans;
+        if (root == nullptr) { return ans; }
+        int maxLevel = -1;
+        rightOrder(root, ans, 0, maxLevel);
+        return ans;
+    }
+    void rightOrder(TreeNode *root, vector<int> &ans, int level, int &maxLevel) {
+        if (root != nullptr) {
+            if (level > maxLevel) {
+                ans.emplace_back(root->val);
+                maxLevel = level;
+            }
+            rightOrder(root->right, ans, level+1, maxLevel);
+            rightOrder(root->left, ans, level+1, maxLevel);
+        }
+    }
+};
+```
+时间复杂度：$O(n)$，空间复杂度：$O(\log n)$。
+
+
+## 中序遍历
+
+
+## 后序遍历
+### 二叉树最近公共祖先
+
+```cpp
+/*
+                3
+            /       \
+           5         1
+         /   \     /   \
+        6     2   0     8
+             / \
+            7   4
+p = 5,  q = 1
+nearest common ancester is 3
+*/
+
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        vector<TreeNode*> t1, t2, t;
+        dfs(root, p, t1, t);
+        t.clear();
+        dfs(root, q, t2, t);
+        TreeNode *ans = nullptr;
+        for (int i = 0; i < t1.size() && i < t2.size(); i++) {
+            if (t1[i] != t2[i]) {
+                break;
+            }
+            ans = t1[i];
+        }
+        return ans;
+    }
+    void dfs(TreeNode *root, TreeNode *node, vector<TreeNode*> &res, vector<TreeNode*> &t) {
+        if (root == nullptr) { return; }
+        t.emplace_back(root);
+        if (root == node) {
+            for (auto ele : t) {
+                res.emplace_back(ele);
+            }
+            return;
+        }
+        dfs(root->left, node, res, t);
+        dfs(root->right, node, res, t);
+        t.pop_back();
+    }
+};
+```
+
+### 二叉树的直径
+给你一棵二叉树的根节点，返回该树的直径。二叉树的直径是指树中任意两个节点之间最长路径的长度。这条路径可能经过也可能不经过根节点 root 。
+
+$$
+\begin{matrix}
+& & & & & 1 \\
+& & & & \swarrow & & \searrow \\
+& & & 2 & & & & 3 \\
+& & \swarrow & & \searrow \\
+& 4 & & & & 5
+\end{matrix}
+$$
+
+返回 3。
+
+**「分析」**
+
+「后序遍历」求出每一个子树的长度。
+
+```cpp
+int getDepth(TreeNode *root, int &maxDiameter) {
+    if (root == nullptr) { return 0; }
+    int left = getDepth(root->left, maxDiameter);
+    int right = getDepth(root->right, maxDiameter);
+    maxDiameter = max(maxDiameter, left + right);
+    return max(left, right) + 1;
+}
+int diameterOfBinaryTree(TreeNode* root) {
+    int ans = 0;
+    getDepth(root, ans);
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(\log n)$。
+
+
 ## 层序遍历
 层序遍历通常使用【队列】作为辅助数据结构。
+
+```cpp
+vector<vector<int>> levelOrder(TreeNode* root) {
+    vector<vector<int>> ans;
+    vector<int> arr;
+    if (root == nullptr) { return ans; }
+    queue<TreeNode*> qTree;
+    qTree.push(root);
+    TreeNode *front = root, *last = root, *nextLast = root;
+    while(!qTree.empty()) {
+        front = qTree.front();
+        qTree.pop();
+        arr.emplace_back(front->val);
+        if (front->left != nullptr) {
+            qTree.push(front->left);
+            nextLast = front->left;
+        }
+        if (front->right != nullptr) {
+            qTree.push(front->right);
+            nextLast = front->right;
+        }
+        if (front == last) {
+            ans.emplace_back(arr);
+            arr.clear();
+            last = nextLast;
+        }
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$。
 
 ### 填充二叉树的 next 指针
 给定一棵二叉树，每一个节点除了 left 和 right 指针，还有一个指向同层右侧 next 指针，初始为 nullptr，实现一个算法，填充 next。

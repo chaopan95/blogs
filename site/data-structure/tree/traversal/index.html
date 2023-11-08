@@ -257,6 +257,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algo/sort/quick/" class="md-nav__link">
+        快速排序
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -771,6 +783,60 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    前序遍历
+  </a>
+  
+    <nav class="md-nav" aria-label="前序遍历">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    二叉树的右视图
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    中序遍历
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    后序遍历
+  </a>
+  
+    <nav class="md-nav" aria-label="后序遍历">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    二叉树最近公共祖先
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    二叉树的直径
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
     层序遍历
   </a>
   
@@ -1201,6 +1267,60 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    前序遍历
+  </a>
+  
+    <nav class="md-nav" aria-label="前序遍历">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    二叉树的右视图
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    中序遍历
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    后序遍历
+  </a>
+  
+    <nav class="md-nav" aria-label="后序遍历">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    二叉树最近公共祖先
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    二叉树的直径
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
     层序遍历
   </a>
   
@@ -1236,8 +1356,334 @@
                 
                 <h2 id="_1">遍历<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>遍历是对二叉树的所有节点做一次无重复的访问。</p>
-<h2 id="_2">层序遍历<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">前序遍历<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 迭代版</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">preorderTraversal</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ans</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">curNode</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+    <span class="n">stack</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">*&gt;</span> <span class="n">st</span><span class="p">;</span>
+    <span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">st</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">curNode</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+        <span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">ans</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span> <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 递归版</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">preorderTraversal</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ans</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">curNode</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+    <span class="n">stack</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">*&gt;</span> <span class="n">st</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">curNode</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ans</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span> <span class="p">}</span>
+            <span class="n">curNode</span> <span class="o">=</span> <span class="n">curNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span> <span class="k">break</span><span class="p">;</span> <span class="p">}</span>
+        <span class="n">curNode</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+        <span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>。</p>
+<h3 id="_3">二叉树的右视图<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>给定一个二叉树，从右向左看，返回看到的序列（由上及下）</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
+<span class="cm">   1            &lt;---</span>
+<span class="cm"> /   \</span>
+<span class="cm">2     3         &lt;---</span>
+<span class="cm"> \     \</span>
+<span class="cm">  5     4       &lt;---</span>
+<span class="cm">*/</span>
+<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">rightSideView</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ans</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">int</span> <span class="n">maxLevel</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">rightOrder</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">maxLevel</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">rightOrder</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">ans</span><span class="p">,</span> <span class="kt">int</span> <span class="n">level</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">maxLevel</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">level</span> <span class="o">&gt;</span> <span class="n">maxLevel</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">ans</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
+                <span class="n">maxLevel</span> <span class="o">=</span> <span class="n">level</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">rightOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">maxLevel</span><span class="p">);</span>
+            <span class="n">rightOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">maxLevel</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>。</p>
+<h2 id="_4">中序遍历<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">后序遍历<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">二叉树最近公共祖先<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
+<span class="cm">                3</span>
+<span class="cm">            /       \</span>
+<span class="cm">           5         1</span>
+<span class="cm">         /   \     /   \</span>
+<span class="cm">        6     2   0     8</span>
+<span class="cm">             / \</span>
+<span class="cm">            7   4</span>
+<span class="cm">p = 5,  q = 1</span>
+<span class="cm">nearest common ancester is 3</span>
+<span class="cm">*/</span>
+
+<span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">TreeNode</span><span class="o">*</span> <span class="n">lowestCommonAncestor</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">,</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="n">TreeNode</span><span class="o">*</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">vector</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">*&gt;</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t</span><span class="p">;</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+        <span class="n">t</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+        <span class="n">TreeNode</span> <span class="o">*</span><span class="n">ans</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">t1</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">t2</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">t1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">t2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="n">t1</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">dfs</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">,</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">node</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">*&gt;</span> <span class="o">&amp;</span><span class="n">res</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">*&gt;</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">;</span> <span class="p">}</span>
+        <span class="n">t</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">ele</span> <span class="p">:</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">res</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">ele</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+        <span class="n">t</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_7">二叉树的直径<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>给你一棵二叉树的根节点，返回该树的直径。二叉树的直径是指树中任意两个节点之间最长路径的长度。这条路径可能经过也可能不经过根节点 root 。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+&amp; &amp; &amp; &amp; &amp; 1 \\
+&amp; &amp; &amp; &amp; \swarrow &amp; &amp; \searrow \\
+&amp; &amp; &amp; 2 &amp; &amp; &amp; &amp; 3 \\
+&amp; &amp; \swarrow &amp; &amp; \searrow \\
+&amp; 4 &amp; &amp; &amp; &amp; 5
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+& & & & & 1 \\
+& & & & \swarrow & & \searrow \\
+& & & 2 & & & & 3 \\
+& & \swarrow & & \searrow \\
+& 4 & & & & 5
+\end{matrix}
+</script>
+</div>
+<p>返回 3。</p>
+<p><strong>「分析」</strong></p>
+<p>「后序遍历」求出每一个子树的长度。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">getDepth</span><span class="p">(</span><span class="n">TreeNode</span> <span class="o">*</span><span class="n">root</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">maxDiameter</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">getDepth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span> <span class="n">maxDiameter</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">getDepth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span> <span class="n">maxDiameter</span><span class="p">);</span>
+    <span class="n">maxDiameter</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">maxDiameter</span><span class="p">,</span> <span class="n">left</span> <span class="o">+</span> <span class="n">right</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">max</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">diameterOfBinaryTree</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">getDepth</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">ans</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>。</p>
+<h2 id="_8">层序遍历<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>层序遍历通常使用【队列】作为辅助数据结构。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">levelOrder</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">ans</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">arr</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">ans</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="o">*&gt;</span> <span class="n">qTree</span><span class="p">;</span>
+    <span class="n">qTree</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+    <span class="n">TreeNode</span> <span class="o">*</span><span class="n">front</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="o">*</span><span class="n">last</span> <span class="o">=</span> <span class="n">root</span><span class="p">,</span> <span class="o">*</span><span class="n">nextLast</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">qTree</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">front</span> <span class="o">=</span> <span class="n">qTree</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
+        <span class="n">qTree</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">arr</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">front</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">front</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">qTree</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">front</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+            <span class="n">nextLast</span> <span class="o">=</span> <span class="n">front</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">front</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">qTree</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">front</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+            <span class="n">nextLast</span> <span class="o">=</span> <span class="n">front</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">front</span> <span class="o">==</span> <span class="n">last</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ans</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
+            <span class="n">arr</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+            <span class="n">last</span> <span class="o">=</span> <span class="n">nextLast</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>。</p>
 <h3 id="next">填充二叉树的 next 指针<a class="headerlink" href="#next" title="Permanent link">&para;</a></h3>
 <p>给定一棵二叉树，每一个节点除了 left 和 right 指针，还有一个指向同层右侧 next 指针，初始为 nullptr，实现一个算法，填充 next。</p>
 <div>

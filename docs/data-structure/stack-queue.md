@@ -51,6 +51,64 @@ public:
 ```
 时间复杂度：push 和 empty 为 $O(1)$，pop 和 peak 的均摊为 $O(1)$，空间复杂度：$O(n)$。
 
+### 最小栈
+实现一个最小栈，时刻获取栈内的最小值。
+
+**「分析」**
+
+用两个vector实现。每次「入栈」时，将当前最小元素压入。
+
+```cpp
+/*
+Input
+["MinStack","push","push","push","getMin","pop","top","getMin"]
+[[],[-2],[0],[-3],[],[],[],[]]
+
+Output
+[null,null,null,null,-3,null,0,-2]
+
+Explanation
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin(); // return -3
+minStack.pop();
+minStack.top();    // return 0
+minStack.getMin(); // return -2
+*/
+class MinStack {
+    vector<int> arr1, arr2;
+public:
+    /** initialize your data structure here. */
+    MinStack() {
+
+    }
+    
+    void push(int val) {
+        arr1.emplace_back(val);
+        if (arr2.empty() || arr2.back() > val) {
+            arr2.emplace_back(val);
+        }
+        else { arr2.emplace_back(arr2.back()); }
+    }
+    
+    void pop() {
+        arr1.pop_back();
+        arr2.pop_back();
+    }
+    
+    int top() {
+        return arr1.back();
+    }
+    
+    int getMin() {
+        return arr2.back();
+    }
+};
+```
+时间复杂度：$O(1)$，空间复杂度：$O(n)$。
+
 
 ## 队列
 队列是一种具有【先进先出】特性的数据结构，用于实现BFS算法。

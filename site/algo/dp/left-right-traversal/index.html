@@ -259,6 +259,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sort/quick/" class="md-nav__link">
+        快速排序
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -474,22 +486,42 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    题目
+  </a>
+  
+    <nav class="md-nav" aria-label="题目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     分发糖果
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     最小删除次数
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     移除所有 1 的最小时间
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最多能完成排序的块
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1202,22 +1234,42 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    题目
+  </a>
+  
+    <nav class="md-nav" aria-label="题目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     分发糖果
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     最小删除次数
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     移除所有 1 的最小时间
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最多能完成排序的块
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1238,7 +1290,8 @@
                 
                 <h2 id="_1">基础<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>在某些问题里，一个位置的约束条件通常涉及到当前位置的左右两侧，这时候，我们将约束拆分，分别从左到右、从右到左遍历，最后结合预处理的结果求解。</p>
-<h2 id="_2">分发糖果<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">题目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">分发糖果<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>给定一个列表 ratings = [1, 0, 2] 表示每一个位置的分数，先要给每一个位置分发糖果，如果某一个位置 i 的评分比两侧的分数都高的话，它的糖果数目也要高于两侧的糖果数目。试问最少准备多少糖果？</p>
 <p><strong>「分析」</strong></p>
 <p>【动态规划 + 两次遍历】我们将规则拆开，从左到右遍历，比较 i 和 i - 1 的分数，记录 i 的糖果数目，再从右到左遍历，比较 i 和 i + 1 的分数，记录 i 的糖果数目，最终的数目是 max(left, right)。</p>
@@ -1290,7 +1343,7 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
-<h2 id="_3">最小删除次数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">最小删除次数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>给定一个只由 a 和 b 构成的字符串 s = "aababbab"，试问最小删除多少个字符，可以使得删除后的字符串满足所有的 a 排在 b 的前面？</p>
 <p><strong>「分析」</strong></p>
 <p>【动态规划】对于每一个位置，统计位于它之前的所有 a 和位于它之后的所有 b，最终求最大的和</p>
@@ -1322,7 +1375,7 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
-<h2 id="1">移除所有 1 的最小时间<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="1">移除所有 1 的最小时间<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <p>给定一个只有 0 和 1 的字符串 s = "01110"，每次可以从 s 的左右两端移除一个字符，花费 1 单位时间，或者移除中间的某一个字符，花费 2 单位时间。试问，移除所有 1 需要最少多少时间？</p>
 <p><strong>「分析」</strong></p>
 <p>【动态规划】因为两端移除字符，因此考虑两端 dp。设 left[ i ] 表示前 i 个字符需要花费的最少时间，right[ i ] 表示后 i 个字符需要花费最少时间。</p>
@@ -1409,6 +1462,50 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+<h3 id="_5">最多能完成排序的块<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>给定一个长度为 n 的整数数组 arr ，它表示在 [0, n - 1] 范围内的整数的排列。我们将 arr 分割成若干 块 (即分区)，并对每个块单独排序。将它们连接起来后，使得连接的结果和按升序排序后的原数组相同。返回数组能分成的最多块数量。例如，arr = [1,0,2,3,4]，返回 4，即分成 [1, 0], [2], [3], [4] 可以得到最多的块数，对每个块单独排序后，结果为 [0, 1], [2], [3], [4]。</p>
+<p><strong>「分析」</strong></p>
+<p>「动态规划」对于一个非空的数组，至少要分成一整块，这样块内排序之后，块之间有序。数组能切块的条件是，前一块内的最大元素要小于后一块的最小值。因此扫描两遍数组，第一遍保存每个位置右侧的最小值，第二遍扫描计算左侧的最大值。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">maxChunksToSorted</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">arr</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">rMin</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">rMin</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="n">back</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rMin</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">rMin</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">lMax</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">lMax</span> <span class="o">&lt;=</span> <span class="n">rMin</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">ans</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">lMax</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">lMax</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>。</p>
                 
               
               

@@ -1,6 +1,7 @@
 ## 基本概念
 二分查找时一种高效的查找算法，它要求查找的数组是（局部）有序的，每次可以查找后，利用单调性，缩小一半的查找范围。
 
+
 ## 题目
 ### 实现lower_bound 和 upper_bound
 lower_bound() 查找 nums 数组中第一个不小于 target 的下标（如果不存在，返回下标为 n，即数组的长度）；upper_bound(nums, target) 查找 nums 数组中第一个大于 target 的数值下标（如果不存在，同上）。
@@ -142,7 +143,6 @@ int divide(int dividend, int divisor) {
 ```
 时间复杂度：$O(n \log (m))$，空间复杂度：$O(1)$，其中 m 是被除数
 
-
 ### 搜索旋转排序数组
 ```cpp
 /*
@@ -179,7 +179,6 @@ int search(vector<int>& nums, int target) {
 }
 ```
 时间复杂度 $O(\log n)$，空间复杂度 $O(1)$。
-
 
 ### 搜索旋转排序数组II
 ```cpp
@@ -220,7 +219,6 @@ bool search(vector<int>& nums, int target) {
 ```
 时间复杂度 $O(n)$，空间复杂度 $O(1)$。
 
-
 ### 搜索二维矩阵
 ```cpp
 /*
@@ -248,7 +246,6 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
 }
 ```
 时间复杂度 $O(\log(nm))$，空间复杂度 $O(1)$。
-
 
 ### 在 D 天内送达包裹的能力
 传送带上的包裹必须在 D 天内从一个港口运送到另一个港口。传送带上的第 i 个包裹的重量为 weights[i]。每一天，我们都会按给出重量的顺序往传送带上装载包裹。我们装载的重量不会超过船的最大运载重量。返回能在 D 天内将传送带上的所有包裹送达的船的最低运载能力。
@@ -295,7 +292,6 @@ public:
 };
 ```
 时间复杂度 $O(n \log(W))$，空间复杂度 $O(1)$，n 是包裹个数，W 是包裹总重量。
-
 
 ### 制作 m 束花所需的最少天数
 给你一个整数数组 bloomDay，以及两个整数 m 和 k 。现需要制作 m 束花。制作花束时，需要使用花园中 相邻的 k 朵花。花园中有 n 朵花，第 i 朵花会在 bloomDay[i] 时盛开，恰好可以用于一束花中。请你返回从花园中摘 m 束花需要等待的最少的天数。如果不能摘到 m 束花则返回 -1 。
@@ -358,7 +354,6 @@ public:
 ```
 时间复杂度 $O(n \log(Tot))$，空间复杂度 $O(1)$，n 是花数，Tot 是 bloomDay 的总和。
 
-
 ### 小张刷题计划
 为了提高自己的代码能力，小张制定了 LeetCode 刷题计划，他选中了 LeetCode 题库中的 n 道题，编号从 0 到 n-1，并计划在 m 天内按照题目编号顺序刷完所有的题目（注意，小张不能用多天完成同一题）。在小张刷题计划中，小张需要用 time[i] 的时间完成编号 i 的题目。此外，小张还可以使用场外求助功能，通过询问他的好朋友小杨题目的解法，可以省去该题的做题时间。为了防止“小张刷题计划”变成“小杨刷题计划”，小张每天最多使用一次求助。我们定义 m 天中做题时间最多的一天耗时为 T（小杨完成的题目不计入做题总时间）。请你帮小张求出最小的 T是多少。
 
@@ -385,8 +380,7 @@ int minTime(vector<int>& time, int m) {
             if (t > maxT) {
                 curSum += maxT;
                 maxT = t;
-            }
-            else {
+            } else {
                 curSum += t;
             }
             if (curSum > mid) {
@@ -406,3 +400,25 @@ int minTime(vector<int>& time, int m) {
 }
 ```
 时间复杂度 $O(n \log(Tot))$，空间复杂度 $O(1)$，n 是天数，Tot 是 time 的总和。
+
+### 平方根
+给一个非负整数 x，计算 x 的平方根（不保留小数）。例如 x = 8，返回 2。
+
+**「分析」**
+
+「二分」注意边界
+
+```cpp
+int mySqrt(int x) {
+    // Binary search
+    long lo = 1, hi = x;
+    while (lo <= hi) {
+        long mi = (lo + hi) / 2;
+        if (mi * mi < x) { lo = mi + 1; }
+        else if (mi * mi > x) { hi = mi - 1; }
+        else { return int(mi); }
+    }
+    return int(hi);
+}
+```
+时间复杂度：$O(\log n)$，空间复杂度：$O(1)$。

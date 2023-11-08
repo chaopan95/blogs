@@ -47,6 +47,7 @@ public:
 };
 ```
 
+
 ## 子序列不连续
 当子序列不要求连续时，依然可以用dp[i][j]表示A[i: ]和B[j: ]两个数组的最长公共部分的长度，但是状态的转移方程发生改变
 
@@ -157,3 +158,32 @@ bool isInterleave(string s1, string s2, string s3) {
 }
 ```
 时间复杂度：$O(n_{1} n_{2})$，空间复杂度：$O(n_{1} n_{2})$
+
+### 最长回文子序列
+给你一个字符串 s ，找出其中最长的回文子序列，并返回该序列的长度。子序列定义为：不改变剩余字符顺序的情况下，删除某些字符或者不删除任何字符形成的一个序列。例如，s = "bbbab" 的最长回文子序列是 "bbbb"，返回 4。
+
+**「分析」**
+
+「动态规划」将 s 取反得到 t，问题转化为求 s 和 t 的最长公共子序列。
+
+```cpp
+int longestPalindromeSubseq(string s) {
+    if (s.empty()) {
+        return 0;
+    }
+    vector<vector<int>> dp(s.length() + 1, vector<int>(s.length() + 1, 0));
+    string t(s.begin(), s.end());
+    reverse(t.begin(), t.end());
+    for (int i = 1; i <= s.length(); i++) {
+        for (int j = 1; j <= t.length(); j++) {
+            if (s[i - 1] == t[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            } else {
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+    return dp[s.length()][t.length()];
+}
+```
+时间复杂度：$O(n^{2})$，空间复杂度：$O(n^{2})$，n 是字符串 s 的长度。

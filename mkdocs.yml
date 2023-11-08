@@ -68,6 +68,7 @@ nav:
         - 排序:
             - 基础: algo/sort/basis.md
             - 归并排序: algo/sort/merge.md
+            - 快速排序: algo/sort/quick.md
         - 动态规划:
             - 基础: algo/dp/basis.md
             - 划分区间: algo/dp/segment.md
