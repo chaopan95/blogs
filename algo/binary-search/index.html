@@ -638,6 +638,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    平方根
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1346,6 +1353,13 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     小张刷题计划
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    平方根
   </a>
   
 </li>
@@ -2066,6 +2080,34 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度 <span><span class="MathJax_Preview">O(n \log(Tot))</span><script type="math/tex">O(n \log(Tot))</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，n 是天数，Tot 是 time 的总和。</p>
+<h3 id="_8">平方根<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>给一个非负整数 x，计算 x 的平方根（不保留小数）。例如 x = 8，返回 2。</p>
+<p><strong>「分析」</strong></p>
+<p>「二分」注意边界</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">mySqrt</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Binary search</span>
+    <span class="kt">long</span> <span class="n">lo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">lo</span> <span class="o">&lt;=</span> <span class="n">hi</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">long</span> <span class="n">mi</span> <span class="o">=</span> <span class="p">(</span><span class="n">lo</span> <span class="o">+</span> <span class="n">hi</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">mi</span> <span class="o">*</span> <span class="n">mi</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="n">lo</span> <span class="o">=</span> <span class="n">mi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">mi</span> <span class="o">*</span> <span class="n">mi</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="n">hi</span> <span class="o">=</span> <span class="n">mi</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kt">int</span><span class="p">(</span><span class="n">mi</span><span class="p">);</span> <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kt">int</span><span class="p">(</span><span class="n">hi</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>。</p>
                 
               
               
