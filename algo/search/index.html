@@ -620,6 +620,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    括号生成
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -634,14 +641,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     访问所有节点的最短路径
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     最小高度树
   </a>
   
@@ -1293,6 +1300,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    括号生成
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1307,14 +1321,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     访问所有节点的最短路径
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     最小高度树
   </a>
   
@@ -1816,6 +1830,52 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(nm)</span><script type="math/tex">O(nm)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(nm)</span><script type="math/tex">O(nm)</script></span></p>
+<h3 id="_5">括号生成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。例如，n = 3，返回 ["((()))","(()())","(())()","()(())","()()()"]。</p>
+<p><strong>「分析」</strong></p>
+<p>「DFS」</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">ans</span><span class="p">,</span> <span class="n">string</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">b</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ans</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">||</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">s</span> <span class="o">+</span> <span class="s">&quot;(&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">s</span> <span class="o">+</span> <span class="s">&quot;(&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">s</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">generateParenthesis</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
+    <span class="n">dfs</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(2^{n})</span><script type="math/tex">O(2^{n})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>。</p>
 <h2 id="bfs">BFS<a class="headerlink" href="#bfs" title="Permanent link">&para;</a></h2>
 <p><strong>「简介」</strong>
 宽度优先搜索（Breadth Ffirst Search）是一种检索方法，优先搜索某一节点的所有直接邻居节点，一般而言，BFS 适用于求解最短长度的问题。在求解过程中，我们通常依赖 queue 这一数据结构。</p>
@@ -1971,7 +2031,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="_5">访问所有节点的最短路径<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">访问所有节点的最短路径<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>给定一个无向连通图 G，找到一条最短的路径，满足所有的即节点都被访问到。例如，graph = [[1, 2, 3], [ 0 ], [ 0 ], [ 0 ]]，graph[ i ] 表示与 i 相邻的节点列表，最短路径是 1 -&gt; 0 -&gt; 2 -&gt; 0 -&gt; 3，长度是 4</p>
 <p><strong>「分析」</strong></p>
 <p>【状态压缩 + BFS搜索】，设置一个三元组 (u, mask, dist) 表示节点编号、已访问节点的压缩状态、当前节点的距离。</p>
@@ -2045,7 +2105,7 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(2^{n} n^{2})</span><script type="math/tex">O(2^{n} n^{2})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n 2^{n})</span><script type="math/tex">O(n 2^{n})</script></span></p>
-<h3 id="_6">最小高度树<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_7">最小高度树<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>树是一个无向图，其中任何两个顶点只通过一条路径连接。 换句话说，一个任何没有简单环路的连通图都是一棵树。</p>
 <p>给你一棵包含 n 个节点的树，标记为 0 到 n - 1 。给定数字 n 和一个有 n - 1 条无向边的 edges 列表（每一个边都是一对标签），其中 edges[i] = [ai, bi] 表示树中节点 ai 和 bi 之间存在一条无向边。</p>
 <p>可选择树中任何一个节点作为根。当选择节点 x 作为根节点时，设结果树的高度为 h 。在所有可能的树中，具有最小高度的树（即，min(h)）被称为 最小高度树 。</p>
