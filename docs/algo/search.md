@@ -118,8 +118,7 @@ void DFS(vector<vector<int>> &res, vector<int> &arr,
     DFS(res, arr, candidates, target, idx+1, size, nums);
 }
 ```
-时间复杂度 $2^{n}$，空间复杂度 $O(n)$。
-
+时间复杂度 $O(2^{n})$，空间复杂度 $O(n)$。
 
 **「无限使用」**
 
@@ -159,8 +158,7 @@ void DFS(vector<vector<int>> &res, vector<int> &arr,
     }
 }
 ```
-时间复杂度 $2^{n}$，空间复杂度 $O(n)$。
-
+时间复杂度 $O(2^{n})$，空间复杂度 $O(n)$。
 
 ### 二叉树某一节点所有距离为 k 的节点
 给定一棵二叉树和节点 target，求所有的距离 target 为 k 的节点。这里的距离指的是边的个数
@@ -288,6 +286,37 @@ vector<vector<int>> pathWithObstacles(vector<vector<int>>& obstacleGrid) {
 }
 ```
 时间复杂度：$O(nm)$，空间复杂度：$O(nm)$
+
+### 括号生成
+数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。例如，n = 3，返回 ["((()))","(()())","(())()","()(())","()()()"]。
+
+**「分析」**
+
+「DFS」
+
+```cpp
+void dfs(vector<string> &ans, string s, int n, int a, int b) {
+    if (a == n && b == n) {
+        ans.emplace_back(s);
+        return;
+    }
+    if (a > n || b > n) {
+        return;
+    }
+    if (a == b) {
+        dfs(ans, s + "(", n, a + 1, b);
+    } else if (a > b) {
+        dfs(ans, s + "(", n, a + 1, b);
+        dfs(ans, s + ")", n, a, b + 1);
+    }
+}
+vector<string> generateParenthesis(int n) {
+    vector<string> ans;
+    dfs(ans, "", n, 0, 0);
+    return ans;
+}
+```
+时间复杂度：$O(2^{n})$，空间复杂度：$O(n)$。
 
 
 ## BFS

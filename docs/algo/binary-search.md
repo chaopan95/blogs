@@ -2,10 +2,9 @@
 二分查找时一种高效的查找算法，它要求查找的数组是（局部）有序的，每次可以查找后，利用单调性，缩小一半的查找范围。
 
 
-## 题目
-### 实现lower_bound 和 upper_bound
-lower_bound() 查找 nums 数组中第一个不小于 target 的下标（如果不存在，返回下标为 n，即数组的长度）；upper_bound(nums, target) 查找 nums 数组中第一个大于 target 的数值下标（如果不存在，同上）。
-
+## 模板
+### lower_bound
+lower_bound() 查找 nums 数组中第一个不小于 target 的下标（如果不存在，返回下标为 n，即数组的长度）。
 ```cpp
 int lower_bound(vector<int> &nums, int target) {
     int l = 0, r = (int)nums.size();
@@ -20,6 +19,12 @@ int lower_bound(vector<int> &nums, int target) {
     }
     return l;
 }
+```
+
+### upper_bound
+upper_bound(nums, target) 查找 nums 数组中第一个大于 target 的数值下标（如果不存在，同上）。
+
+```cpp
 int upper_bound(vector<int> &nums, int target) {
     int l = 0, r = (int)nums.size();
     while (l < r) {
@@ -35,6 +40,8 @@ int upper_bound(vector<int> &nums, int target) {
 }
 ```
 
+
+## 题目
 ### 绝对值之和
 给定两个数组 nums1 = [1, 28, 21] 和 nums2 = [9, 21, 20]，可以将 nums1 中的某一个值用另一个值替换，也可以不用替换，求两个数组相对位置的差的绝对值之和。上述例子的结果是 9。
 
@@ -422,3 +429,156 @@ int mySqrt(int x) {
 }
 ```
 时间复杂度：$O(\log n)$，空间复杂度：$O(1)$。
+
+### 实现幂指数
+实现 pow(x, n)，即计算 x 的整数 n 次幂函数即 $x^{n}$。
+
+**「分析」**
+
+「快速幂」
+
+```cpp
+double myPow(double x, int n) {
+    double ans = 1.0;
+    bool isNeg = true;
+    if (n > 0) {
+        isNeg = false;
+        n = -n;
+    }
+    while (n < 0) {
+        if (n % 2 != 0) {
+            ans *= x;
+        }
+        x *= x;
+        n /= 2;
+    }
+    if (isNeg) {
+        ans = 1.0 / ans;
+    }
+    return ans;
+}
+```
+时间复杂度：$O(\log n)$，空间复杂度：$O(1)$。
+
+### 寻找两个正序数组的中位数
+给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数 。算法的时间复杂度应该为 O(log (m+n)) 。例如，nums1 = [1,2], nums2 = [3,4]，返回 2.50000。
+
+**「分析」**
+
+「二分法」切割两个数组
+
+一个数组根据自身的长度的奇偶行，中位数有两种情况：
+
+$$
+\begin{matrix}
+ & &  & & \text{cut} & &  & &  \\
+ & &  & & \Downarrow & &  & &  \\
+1 & & 2 & & 3 & & 4 & & 5 \\
+ & &  & & \Uparrow & &  & &  \\
+ & &  & & \text{cut} & &  & &
+\end{matrix}
+$$
+
+$$
+\begin{matrix}
+ & &  & &  & \text{cut} &  & &  & & \\
+ & &  & &  & \Downarrow &  & &  & & \\
+1 & & 2 & & 3 & & 4 & & 5 & & 6\\
+ & &  & &  & \Uparrow &  & &  & & \\
+ & &  & &  & \text{cut} &  & &  & &
+\end{matrix}
+$$
+
+$$
+\begin{matrix}
+ & & & \text{cut} & & & \\
+ & & & \Downarrow & & & \\
+1 & & 3 & & 5 & & 7\\
+\\
+ & 2 & & 4 & & 6 \\
+ & & & \Uparrow & & \\
+ & & & \text{cut} & & &
+\end{matrix}
+\quad \quad
+\begin{matrix}
+l_{1} \text{ = 3, } r_{1} \text{ = 5} \\
+\\
+l_{2} \text{ = 4, } r_{2} \text{ = 4} \\
+\end{matrix}
+\Rightarrow
+\text{Median} = \frac{\max(l_{1}, l_{2}) + \min(r_{1}, r_{2})}{2} = 4
+$$
+
+为了统一奇偶行，这里对数组里的每个元素两侧安插一个占位符
+
+$$
+\begin{aligned}
+&
+\begin{matrix}
+ & & & & \text{cut} & & & & & \\
+ & & & & \Downarrow & & & & & \\
+\# & 1 & \# & 2 & \# & 3 & \# & 4 & \# & 5 & \# \\
+ & & & & \Uparrow & & & & & \\
+ & & & & \text{cut} & & & & &
+\end{matrix} \\
+& l_{1} = A[\frac{c-1}{2}] = A[1] = 2 \\
+& r_{1} = A[\frac{c}{2}] = A[2] = 3
+\end{aligned}
+$$
+
+$$
+\begin{matrix}
+ & & & &  & & \text{cut} & & & & &  & \\
+ & & & &  & & \Downarrow & & & & &  & \\
+\# & 1 & \# & 2 & \#  & 3 & \# & & & & & & \\
+\\
+ & & & & & & \# & 4 & \# & 5 & \# & 6 & \# \\
+ & & & &  & & \Uparrow & & & & &  & \\
+ & & & &  & & \text{cut} & & & & & &
+\end{matrix}
+\quad \quad
+\begin{matrix}
+l_{1} \text{ = 3, } r_{1} \text{ = 6} \\
+\\
+l_{2} \text{ = 1, } r_{2} \text{ = 4} \\
+\end{matrix}
+$$
+
+```cpp
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int n1 = int(nums1.size()), n2 = int(nums2.size());
+        if (n1 == 0) { return (nums2[(n2-1)/2]+nums2[n2/2])/2.0; }
+        if (n2 == 0) { return (nums1[(n1-1)/2]+nums1[n1/2])/2.0; }
+        int MAX = nums1[n1-1] > nums2[n2-1] ? nums1[n1-1] : nums2[n2-1];
+        int MIN = nums1[0] < nums2[0] ? nums1[0] : nums2[0];
+        if (n1 < n2) {
+            return findK(nums1, nums2, 0, 2*n1, n1, n2, MAX, MIN);
+        } else {
+            return findK(nums2, nums1, 0, 2*n2, n2, n1, MAX, MIN);
+        }
+    }
+    double findK(vector<int> nums1, vector<int> nums2,
+                 int b, int e, int n1, int n2,
+                 int MAX, int MIN) {
+        int l1 = 0, l2 = 0, r1 = 0, r2 = 0;
+        int k1 = (b + e) / 2, k2 = (n1 + n2 - k1);
+        if (k1 == 0) { l1 = MIN; r1 = nums1[0]; }
+        else if (k1 >= 2*n1) { l1 = nums1[n1-1]; r1 = MAX; }
+        else { l1 = nums1[(k1-1)/2]; r1 = nums1[k1/2]; }
+        if (k2 == 0) { l2 = MIN; r2 = nums2[0]; }
+        else if (k2 >= 2*n2) { l2 = nums2[n2-1]; r2 = MAX; }
+        else { l2 = nums2[(k2-1)/2]; r2 = nums2[k2/2]; }
+        if (l1 <= r2 && l2 <= r1) {
+            return ((l1>l2?l1:l2)+(r1 < r2?r1:r2))/2.0;
+        } else if (l1 > r2) {
+            return findK(nums1, nums2, b, k1-1, n1, n2, MAX, MIN);
+        }
+        else {
+            return findK(nums1, nums2, k1+1, e, n1, n2, MAX, MIN);
+        }
+    }
+};
+```
+时间复杂度：$O(\log(n + m))$，空间复杂度：$O(1)$。
