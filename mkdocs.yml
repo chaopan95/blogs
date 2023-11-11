@@ -127,6 +127,7 @@ nav:
         - 正则化: machine-learning/regularization.md
         - 归一化: machine-learning/normalization.md
         - CNN: machine-learning/cnn.md
+        - 词向量: machine-learning/embs.md
         - 概率图: machine-learning/pgm.md
     - 数学:
         - 概率&统计: math/prob-stat.md

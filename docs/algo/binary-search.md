@@ -582,3 +582,40 @@ public:
 };
 ```
 时间复杂度：$O(\log(n + m))$，空间复杂度：$O(1)$。
+
+### 寻找旋转排序数组中的最小值
+给你一个可能存在重复元素值的旋转数组 nums。请你找出并返回数组中的最小元素。
+
+**「分析」**
+
+「二分法」在最坏的情况下，时间复杂度呈线形。
+
+```cpp
+/*
+Input: nums = [2,2,2,0,1]
+Output: 0
+*/
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int n = int(nums.size());
+        int l = 0, r = n - 1;
+        while (l <= r) {
+            if (nums[l] < nums[r]) { return nums[l]; }
+            int m = (l + r) >> 1;
+            if (nums[l] == nums[r]) {
+                while (l < r && nums[l] == nums[l + 1]) { l++; }
+                while (l < r && nums[r] == nums[r - 1]) { r--; }
+                if ((l + 1 <= r && nums[l] < nums[l + 1] &&
+                     nums[r] < nums[r - 1]) || l == r) { return nums[l]; }
+                l++;
+            } else {
+                if (nums[m] >= nums[l]) { l = m + 1; }
+                else { r = m; }
+            }
+        }
+        return nums[r];
+    }
+};
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$。

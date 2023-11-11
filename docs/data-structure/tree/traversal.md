@@ -80,6 +80,51 @@ public:
 
 ## 中序遍历
 
+```cpp
+// 迭代版
+vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> res;
+    stack<TreeNode*> st;
+    TreeNode *curNode = root;
+    while (curNode != nullptr) {
+        while (curNode != nullptr) {
+            if (curNode->right != nullptr) { st.push(curNode->right); }
+            st.push(curNode);
+            curNode = curNode->left;
+        }
+        curNode = st.top();
+        st.pop();
+        while (!st.empty() && curNode->right == nullptr) {
+            res.push_back(curNode->val);
+            curNode = st.top();
+            st.pop();
+        }
+        res.push_back(curNode->val);
+        if (!st.empty()) {
+            curNode = st.top();
+            st.pop();
+        }
+        else { curNode = nullptr; }
+    }
+    return res;
+}
+
+// 递归版
+void inOrder(TreeNode* root, vector<int> &res) {
+    if (root != nullptr) {
+        inOrder(root->left, res);
+        res.push_back(root->val);
+        inOrder(root->right, res);
+    }
+}
+vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> res;
+    inOrder(root, res);
+    return res;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(\log n)$。
+
 
 ## 后序遍历
 ### 二叉树最近公共祖先
@@ -159,6 +204,83 @@ int getDepth(TreeNode *root, int &maxDiameter) {
 int diameterOfBinaryTree(TreeNode* root) {
     int ans = 0;
     getDepth(root, ans);
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(\log n)$。
+
+### 二叉树的最大深度
+二叉树的 最大深度 是指从根节点到最远叶子节点的最长路径上的节点数。
+
+```cpp
+/*
+    3
+  /   \
+ 9    20
+     /  \
+    15  7
+max depth = 3
+*/
+
+int maxDepth(TreeNode* root) {
+    if (root == nullptr) { return 0; }
+    int leftDep = maxDepth(root->left);
+    int rightDep = maxDepth(root->right);
+    return 1 + max(leftDep, rightDep);
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(\log n)$。
+
+### 二叉树的最小深度
+最小深度是从根节点到最近叶子节点的最短路径上的节点数量。
+
+```cpp
+/*
+    3
+  /   \
+ 9    20
+     /  \
+    15  7
+min depth = 2
+*/
+
+int minDepth(TreeNode* root) {
+    if (root == nullptr) { return 0; }
+    int leftDep = minDepth(root->left);
+    int rightDep = minDepth(root->right);
+    if (leftDep != 0 && rightDep != 0) {
+        return 1 + min(leftDep, rightDep);
+    }
+    return 1 + max(leftDep, rightDep);
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(\log n)$。
+
+### 二叉树中的最大路径和
+二叉树中的 路径 被定义为一条节点序列，序列中每对相邻节点之间都存在一条边。同一个节点在一条路径序列中 至多出现一次 。该路径 至少包含一个 节点，且不一定经过根节点。路径和是路径中各节点值的总和。给你一个二叉树的根节点 root ，返回其 最大路径和 。
+
+```cpp
+/*
+   -10
+  /   \
+ 9    20
+     /  \
+    15   7
+返回 42
+*/
+int dfs(TreeNode *root, int &ans) {
+    if (root == nullptr) { return 0; }
+    int left = dfs(root->left, ans);
+    int right = dfs(root->right, ans);
+    int sum = max(root->val + left + right, root->val + max(left, right));
+    if (ans < sum) {
+        ans = sum;
+    }
+    return max(0, root->val + max(left, right));
+}
+int maxPathSum(TreeNode* root) {
+    int ans = INT_MIN;
+    dfs(root, ans);
     return ans;
 }
 ```

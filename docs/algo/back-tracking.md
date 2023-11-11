@@ -47,7 +47,6 @@ public:
 ```
 时间复杂度 $O(n 2^{n})$，空间复杂度 $O(n 2^{n})$，n 是单词的长度。
 
-
 ### 单词分拆 II
 给定一个字符串 s 和一个字符串字典 wordDict ，在字符串 s 中增加空格来构建一个句子，使得句子中所有的单词都在词典中。以任意顺序 返回所有这些可能的句子。注意：词典中的同一个单词可能在分段中被重复使用多次。例如，输入:s = "catsanddog", wordDict = ["cat","cats","and","sand","dog"]，输出:["cats and dog","cat sand dog"]。
 
@@ -148,3 +147,125 @@ int minDays(int n) {
 }
 ```
 时间复杂度：$O(\log n)$，空间复杂度 $O(n)$。
+
+### N 皇后
+按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。n 皇后问题 研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。给你一个整数 n ，返回所有不同的 n 皇后问题 的解决方案。每一种解法包含一个不同的 n 皇后问题 的棋子放置方案，该方案中 'Q' 和 '.' 分别代表了皇后和空位。例如，n = 4，返回 [ [".Q..", "...Q", "Q...", "..Q."], ["..Q.", "Q...", "...Q", ".Q.."] ]
+
+```cpp
+class Solution {
+public:
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string>> ans;
+        string str = "";
+        for (int i = 0; i < n; i++) { str += "."; }
+        vector<string> res(n, str);
+        unordered_set<int> col, diag1, diag2;
+        DFS(col, diag1, diag2, n, 0, ans, res);
+        return ans;
+    }
+    void DFS(unordered_set<int> &col,
+             unordered_set<int> &diag1,
+             unordered_set<int> &diag2,
+             int n, int i,
+             vector<vector<string>> &ans,
+             vector<string> &res) {
+        if (i == n) {
+            ans.emplace_back(res);
+            return;
+        }
+        for (int j = 0; j < n; j++) {
+            if (isOkPos(col, diag1, diag2, i, j)) {
+                res[i][j] = 'Q';
+                col.insert(j);
+                diag1.insert(i-j);
+                diag2.insert(i+j);
+                DFS(col, diag1, diag2, n, i+1, ans, res);
+                res[i][j] = '.';
+                col.erase(j);
+                diag1.erase(i-j);
+                diag2.erase(i+j);
+            }
+        }
+    }
+    bool isOkPos(unordered_set<int> &col, unordered_set<int> &diag1,
+                    unordered_set<int> &diag2, int i, int j) {
+        if (col.find(j) != col.end() ||
+            diag1.find(i-j) != diag1.end() ||
+            diag2.find(i+j) != diag2.end()) { return false; }
+        return true;
+    }
+};
+```
+时间复杂度：$O(2^{n})$，空间复杂度：$O(n^{2})$。
+
+### 解数独
+编写一个程序，通过填充空格来解决数独问题。数独的解法需 遵循如下规则：
+
+数字 1-9 在每一行只能出现一次。
+
+数字 1-9 在每一列只能出现一次。
+
+数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。（请参考示例图）
+
+数独部分空格内已填入了数字，空白格用 '.' 表示。
+
+$$
+\begin{bmatrix}
+5 & 3 & . & . & 7 & . & . & . & . \\
+6 & . & . & 1 & 9 & 5 & . & . & . \\
+. & 9 & 8 & . & . & . & . & 6 & . \\
+8 & . & . & . & 6 & . & . & . & 3 \\
+4 & . & . & 8 & . & 3 & . & . & 1 \\
+7 & . & . & . & 2 & . & . & . & 6 \\
+. & 6 & . & . & . & . & 2 & 8 & . \\
+. & . & . & 4 & 1 & 9 & . & . & 5 \\
+. & . & . & . & 8 & . & . & 7 & 9
+\end{bmatrix} \Rightarrow
+\begin{bmatrix}
+5 & 3 & {\color{Red} 4} & {\color{Red} 6} & 7 & {\color{Red} 8} & {\color{Red} 9} & {\color{Red} 1} & {\color{Red} 2} \\
+6 & {\color{Red} 7} & {\color{Red} 2} & 1 & 9 & 5 & {\color{Red} 3} & {\color{Red} 4} & {\color{Red} 8} \\
+{\color{Red} 1} & 9 & 8 & {\color{Red} 3} & {\color{Red} 4} & {\color{Red} 2} & {\color{Red} 5} & 6 & {\color{Red} 7} \\
+8 & {\color{Red} 5} & {\color{Red} 9} & {\color{Red} 7} & 6 & {\color{Red} 1} & {\color{Red} 4} & {\color{Red} 2} & 3 \\
+4 & {\color{Red} 2} & {\color{Red} 6} & 8 & {\color{Red} 5} & 3 & {\color{Red} 7} & {\color{Red} 9} & 1 \\
+7 & {\color{Red} 1} & {\color{Red} 3} & {\color{Red} 9} & 2 & {\color{Red} 4} & {\color{Red} 8} & {\color{Red} 5} & 6 \\
+{\color{Red} 9} & 6 & {\color{Red} 1} & {\color{Red} 5} & {\color{Red} 3} & {\color{Red} 7} & 2 & 8 & {\color{Red} 4} \\
+{\color{Red} 2} & {\color{Red} 8} & {\color{Red} 7} & 4 & 1 & 9 & {\color{Red} 6} & {\color{Red} 3} & 5 \\
+{\color{Red} 3} & {\color{Red} 4} & {\color{Red} 5} & {\color{Red} 2} & 8 & {\color{Red} 6} & {\color{Red} 1} & 7 & 9
+\end{bmatrix}
+$$
+
+```cpp
+class Solution {
+public:
+    void solveSudoku(vector<vector<char>>& board) {
+        isSolver(board);
+    }
+    bool isSolver(vector<vector<char>> &board) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] == '.') {
+                    for (char c = '1'; c <= '9'; c++) {
+                        if (isFeasible(board, i, j, c)) {
+                            board[i][j] = c;
+                            if (isSolver(board)) { return true; }
+                            else { board[i][j] = '.'; }
+                        }
+                    }
+                    // No feasible number
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    bool isFeasible(vector<vector<char>> board, int row, int col, char c) {
+        for(int i = 0; i < 9; i++) {
+            if(board[row][i] == c) { return false; }
+            if(board[i][col] == c) { return false; }
+            if(board[3*(row/3)+i/3][3*(col/3)+i%3] == c) { return false; }
+        }
+        return true;
+    }
+};
+```
+时间复杂度：$O(n^{2}2^{n})$，空间复杂度：$O(n^{3})$。

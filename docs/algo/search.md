@@ -160,6 +160,71 @@ void DFS(vector<vector<int>> &res, vector<int> &arr,
 ```
 时间复杂度 $O(2^{n})$，空间复杂度 $O(n)$。
 
+### 子集
+**「序列元素不重复」**
+
+给你一个整数数组 nums ，数组中的元素互不相同 。返回该数组所有可能的子集（幂集）。例如，nums = [1,2,3]，返回 [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ans;
+        int n = int(nums.size());
+        vector<int> arr;
+        dfs(ans, arr, nums, n, 0);
+        return ans;
+    }
+    void dfs(vector<vector<int>> &ans,
+             vector<int> &arr,
+             vector<int> &nums,
+             int n, int idx) {
+        if (idx == n) {
+            ans.emplace_back(arr);
+            return;
+        }
+        arr.emplace_back(nums[idx]);
+        dfs(ans, arr, nums, n, idx+1);
+        arr.pop_back();
+        dfs(ans, arr, nums, n, idx+1);
+    }
+};
+```
+时间复杂度：$O(2^{n})$，空间复杂度：$O(2^{n})$。
+
+**「序列元素有重复」**
+
+```cpp
+/*
+Input: nums = [1,2,2]
+Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
+*/
+class Solution {
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        vector<vector<int>> ans;
+        int n = int(nums.size());
+        sort(nums.begin(), nums.end());
+        vector<int> arr;
+        dfs(ans, arr, nums, 0, n);
+        return ans;
+    }
+    void dfs(vector<vector<int>> &ans,
+             vector<int> &arr,
+             vector<int> &nums,
+             int idx, int n) {
+        for (int i = idx; i < n; i++) {
+            if (i > idx && nums[i] == nums[i-1]) { continue; }
+            arr.emplace_back(nums[i]);
+            dfs(ans, arr, nums, i+1, n);
+            arr.pop_back();
+        }
+        ans.emplace_back(arr);
+    }
+};
+```
+时间复杂度：$O(2^{n})$，空间复杂度：$O(2^{n})$。
+
 ### 二叉树某一节点所有距离为 k 的节点
 给定一棵二叉树和节点 target，求所有的距离 target 为 k 的节点。这里的距离指的是边的个数
 
@@ -406,7 +471,6 @@ int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
 }
 ```
 
-
 ### 访问所有节点的最短路径
 给定一个无向连通图 G，找到一条最短的路径，满足所有的即节点都被访问到。例如，graph = [[1, 2, 3], [ 0 ], [ 0 ], [ 0 ]]，graph[ i ] 表示与 i 相邻的节点列表，最短路径是 1 -> 0 -> 2 -> 0 -> 3，长度是 4
 
@@ -451,7 +515,6 @@ int shortestPathLength(vector<vector<int>>& graph) {
 }
 ```
 时间复杂度：$O(2^{n} n^{2})$，空间复杂度：$O(n 2^{n})$
-
 
 ### 最小高度树
 树是一个无向图，其中任何两个顶点只通过一条路径连接。 换句话说，一个任何没有简单环路的连通图都是一棵树。
@@ -525,3 +588,43 @@ vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
 }
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(n)$
+
+### 打开转盘锁
+你有一个带有四个圆形拨轮的转盘锁。每个拨轮都有10个数字： '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' 。每个拨轮可以自由旋转：例如把 '9' 变为 '0'，'0' 变为 '9' 。每次旋转都只能旋转一个拨轮的一位数字。锁的初始数字为 '0000' ，一个代表四个拨轮的数字的字符串。列表 deadends 包含了一组死亡数字，一旦拨轮的数字和列表里的任何一个元素相同，这个锁将会被永久锁定，无法再被旋转。字符串 target 代表可以解锁的数字，你需要给出解锁需要的最小旋转次数，如果无论如何不能解锁，返回 -1 。
+
+**「分析」**
+
+「BFS」
+
+```cpp
+int openLock(vector<string>& deadends, string target) {
+    string init = "0000";
+    int n = int(init.length()), ans = 0;
+    unordered_set<string> vis;
+    for (string &str : deadends) { vis.insert(str); }
+    if (vis.find(init) != vis.end()) { return -1; }
+    queue<string> qLock;
+    qLock.push(init);
+    while (!qLock.empty()) {
+        int num = int(qLock.size());
+        while (num--) {
+            string str = qLock.front();
+            qLock.pop();
+            if (str == target) { return ans; }
+            for (int i = 0; i < n; i++) {
+                string tmp = str;
+                for (int d = -1; d <= 1; d += 2) {
+                    tmp[i] = (str[i] - '0' + 10 + d) % 10 + '0';
+                    if (vis.find(tmp) == vis.end()) {
+                        vis.insert(tmp);
+                        qLock.push(tmp);
+                    }
+                }
+            }
+        }
+        ans++;
+    }
+    return -1;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$。

@@ -68,6 +68,60 @@ ListNode *reverse(ListNode *p1, ListNode *p2) {
 ```
 时间复杂度 $O(n)$，递归版本的空间复杂度 $O(\log n)$，迭代版本的空间复杂度 $O(1)$
 
+**「部分区间反转」**
+
+```cpp
+/*
+Input: head = [1,2,3,4,5], left = 2, right = 4
+Output: [1,4,3,2,5]
+1 -> 2 -> 3 -> 4 -> 5
+          |
+          v
+1 -> 4 -> 3 -> 2 -> 5
+*/
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        if (left >= right || head == nullptr) { return head; }
+        ListNode *pre = new ListNode(0);
+        pre->next = head;
+        ListNode *p1 = head, *p0 = pre;
+        int i = 1;
+        while (i < left) {
+            p1 = p1->next;
+            p0 = p0->next;
+            i++;
+            if (p1 == nullptr) { delete pre; return head; }
+        }
+        ListNode *tail = p1, *p2 = p1->next;
+        if (p2 == nullptr) {
+            delete pre;
+            return head;
+        }
+        ListNode *p3 = p2->next;
+        while (i < right) {
+            p2->next = p1;
+            p1 = p2;
+            p2 = p3;
+            if (p3 == nullptr) {
+                p0->next = p1;
+                tail->next = p2;
+                head = pre->next;
+                delete pre;
+                return head;
+            }
+            p3 = p3->next;
+            i++;
+        }
+        p0->next = p1;
+        tail->next = p2;
+        head = pre->next;
+        delete pre;
+        return head;
+    }
+};
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$。
 
 ### 找出两个链表的相交结点
 给定两个链表A、B，找出两者相交的结点，如果不相交，返回为空指针。
@@ -172,8 +226,7 @@ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
     return nullptr;
 }
 ```
-时间复杂度 $O(n)$，空间复杂度 $O(1)$
-
+时间复杂度 $O(n)$，空间复杂度 $O(1)$。
 
 ### 链表的中心节点
 给定一个单链表，返回链表的中心节点，如果链表的结点个数是偶数，则返回靠后位置的结点。
@@ -196,8 +249,78 @@ ListNode* middleNode(ListNode* head) {
     return p1;
 }
 ```
-时间复杂度 $O(n)$，空间复杂度 $O(1)$
+时间复杂度 $O(n)$，空间复杂度 $O(1)$。
 
+### 两两交换链表中的节点
+给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。例如，1->2->3->4 变成 2->1->4->3。
+
+```cpp
+ListNode* swapPairs(ListNode* head) {
+    if (head == nullptr || head->next == nullptr) { return head; }
+    ListNode *pre = new ListNode(0);
+    ListNode *par = head, *son = head->next, *gra = pre;
+    pre->next = head;
+    while (son != nullptr) {
+        par->next = son->next;
+        son->next = par;
+        gra->next = son;
+        gra = par;
+        par = par->next;
+        if (par == nullptr) { break; }
+        son = par->next;
+    }
+    head = pre->next;
+    delete pre;
+    return head;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$。
+
+### K 个一组翻转链表
+给你链表的头节点 head ，每 k 个节点一组进行翻转，请你返回修改后的链表。k 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。例如，1->2->3->4->5，k = 2 时，返回 2->1->4->3->5；k = 3 时，返回 3->2->1->4->5。
+
+```cpp
+ListNode* reverseKGroup(ListNode* head, int k) {
+    if (head == nullptr || head->next == nullptr || k < 2) {
+        return head;
+    }
+    ListNode *front = head;
+    for (int i = 0; i < k; i++) {
+        if (front == nullptr) {
+            return head;
+        }
+        front = front->next;
+    }
+    bool isEnd = false;
+    ListNode *pre = new ListNode(0);
+    ListNode *gra = pre, *par = head, *son = head->next;
+    while (true) {
+        ListNode *temp = front, *p1 = gra, *p2 = par, *p3 = son;
+        while (p2 != temp) {
+            if (front == nullptr) {
+                isEnd = true;
+            } else {
+                front = front->next;
+            }
+            p2->next = p1;
+            p1 = p2;
+            p2 = p3;
+            if (p3 == nullptr) { break; }
+            p3 = p3->next;
+        }
+        par->next = p2;
+        gra->next = p1;
+        gra = par;
+        par = p2;
+        son = p3;
+        if (isEnd || p3 == nullptr) { break; }
+    }
+    head = pre->next;
+    delete pre;
+    return head;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$。
 
 ### LRU 缓存机制
 ```cpp
@@ -234,7 +357,6 @@ struct BiNode {
     BiNode *prec, *next;
     BiNode(int k, int v): key(k), val(v), prec(nullptr), next(nullptr) {}
 };
-
 
 class LRUCache {
     BiNode *head;
@@ -313,8 +435,36 @@ public:
  * obj->put(key,value);
  */
 ```
-时间复杂度 $O(1)$，空间复杂度 $O(1)$
+时间复杂度 $O(1)$，空间复杂度 $O(1)$。
 
+### 环形链表
+给定一个链表的头节点  head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
+
+**「分析」**
+
+「快慢指针」
+
+```cpp
+ListNode *detectCycle(ListNode *head) {
+    if (head == NULL) { return head; }
+    ListNode *p1 = head, *p2 = head;
+    while (true) {
+        if (p2 == NULL) { return NULL; }
+        p2 = p2->next;
+        if (p2 == NULL) { return NULL; }
+        p2 = p2->next;
+        p1 = p1->next;
+        if (p1 == p2) { break; }
+    }
+    p1 = head;
+    while (p1 != p2) {
+        p2 = p2->next;
+        p1 = p1->next;
+    }
+    return p1;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$。
 
 ### 复杂链表的复制
 题目描述：输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针random指向一个随机节点），请对此链表进行深拷贝，并返回拷贝后的头结点。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）
@@ -358,4 +508,60 @@ public：
     }
 };
 ```
-时间复杂度 $O(n)$，空间复杂度 $O(1)$
+时间复杂度 $O(n)$，空间复杂度 $O(1)$。
+
+### 删除链表中的重复元素
+**「保留重复的元素」**
+
+```cpp
+/*
+Input: 1 -> 1 -> 2
+Output: 1 -> 2
+*/
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if (head == nullptr) { return head; }
+        ListNode *p1 = head, *p2 = head->next;
+        while (true) {
+            while (p2 != nullptr && p1->val == p2->val) { p2 = p2->next; }
+            p1->next = p2;
+            p1 = p2;
+            if (p2 == nullptr) { break; }
+            p2 = p2->next;
+        }
+        return head;
+    }
+};
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$。
+
+**「不保留重复的元素」**
+
+```cpp
+/*
+Input: 1 -> 2 -> 3 -> 3 -> 4 -> 4 ->5
+Output: 1 -> 2 -> 5
+*/
+ListNode* deleteDuplicates(ListNode* head) {
+    if (head == nullptr || head->next == nullptr) { return head; }
+    ListNode *pre = new ListNode(0);
+    pre->next = head;
+    ListNode *p1 = pre, *p2 = head;
+    while (p2 != nullptr) {
+        bool isDup = false;
+        while (p2->next != nullptr &&
+                p2->next->val == p2->val) {
+            p2 = p2->next;
+            isDup = true;
+        }
+        p2 = p2->next;
+        if (isDup) { p1->next = p2; }
+        else { p1 = p1->next; }
+    }
+    head = pre->next;
+    delete pre;
+    return head;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$。
