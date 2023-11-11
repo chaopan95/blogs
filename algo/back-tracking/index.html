@@ -577,6 +577,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#n_1" class="md-nav__link">
+    N 皇后
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    解数独
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1114,6 +1128,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../machine-learning/embs/" class="md-nav__link">
+        词向量
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../machine-learning/pgm/" class="md-nav__link">
         概率图
       </a>
@@ -1248,6 +1274,20 @@
           <li class="md-nav__item">
   <a href="#n" class="md-nav__link">
     吃掉 N 个橘子的最少天数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n_1" class="md-nav__link">
+    N 皇后
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    解数独
   </a>
   
 </li>
@@ -1475,6 +1515,218 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>。</p>
+<h3 id="n_1">N 皇后<a class="headerlink" href="#n_1" title="Permanent link">&para;</a></h3>
+<p>按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。n 皇后问题 研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。给你一个整数 n ，返回所有不同的 n 皇后问题 的解决方案。每一种解法包含一个不同的 n 皇后问题 的棋子放置方案，该方案中 'Q' 和 '.' 分别代表了皇后和空位。例如，n = 4，返回 [ [".Q..", "...Q", "Q...", "..Q."], ["..Q.", "Q...", "...Q", ".Q.."] ]</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;&gt;</span> <span class="n">solveNQueens</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;&gt;</span> <span class="n">ans</span><span class="p">;</span>
+        <span class="n">string</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="n">str</span> <span class="o">+=</span> <span class="s">&quot;.&quot;</span><span class="p">;</span> <span class="p">}</span>
+        <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+        <span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">col</span><span class="p">,</span> <span class="n">diag1</span><span class="p">,</span> <span class="n">diag2</span><span class="p">;</span>
+        <span class="n">DFS</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">diag1</span><span class="p">,</span> <span class="n">diag2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">DFS</span><span class="p">(</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">col</span><span class="p">,</span>
+             <span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">diag1</span><span class="p">,</span>
+             <span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">diag2</span><span class="p">,</span>
+             <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+             <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">ans</span><span class="p">,</span>
+             <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">res</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ans</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">isOkPos</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">diag1</span><span class="p">,</span> <span class="n">diag2</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;Q&#39;</span><span class="p">;</span>
+                <span class="n">col</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
+                <span class="n">diag1</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="p">);</span>
+                <span class="n">diag2</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">);</span>
+                <span class="n">DFS</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">diag1</span><span class="p">,</span> <span class="n">diag2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+                <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="p">;</span>
+                <span class="n">col</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
+                <span class="n">diag1</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="p">);</span>
+                <span class="n">diag2</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">isOkPos</span><span class="p">(</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">col</span><span class="p">,</span> <span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">diag1</span><span class="p">,</span>
+                    <span class="n">unordered_set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">diag2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">col</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">!=</span> <span class="n">col</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">||</span>
+            <span class="n">diag1</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="p">)</span> <span class="o">!=</span> <span class="n">diag1</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">||</span>
+            <span class="n">diag2</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span> <span class="o">!=</span> <span class="n">diag2</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(2^{n})</span><script type="math/tex">O(2^{n})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>。</p>
+<h3 id="_3">解数独<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>编写一个程序，通过填充空格来解决数独问题。数独的解法需 遵循如下规则：</p>
+<p>数字 1-9 在每一行只能出现一次。</p>
+<p>数字 1-9 在每一列只能出现一次。</p>
+<p>数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。（请参考示例图）</p>
+<p>数独部分空格内已填入了数字，空白格用 '.' 表示。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+5 &amp; 3 &amp; . &amp; . &amp; 7 &amp; . &amp; . &amp; . &amp; . \\
+6 &amp; . &amp; . &amp; 1 &amp; 9 &amp; 5 &amp; . &amp; . &amp; . \\
+. &amp; 9 &amp; 8 &amp; . &amp; . &amp; . &amp; . &amp; 6 &amp; . \\
+8 &amp; . &amp; . &amp; . &amp; 6 &amp; . &amp; . &amp; . &amp; 3 \\
+4 &amp; . &amp; . &amp; 8 &amp; . &amp; 3 &amp; . &amp; . &amp; 1 \\
+7 &amp; . &amp; . &amp; . &amp; 2 &amp; . &amp; . &amp; . &amp; 6 \\
+. &amp; 6 &amp; . &amp; . &amp; . &amp; . &amp; 2 &amp; 8 &amp; . \\
+. &amp; . &amp; . &amp; 4 &amp; 1 &amp; 9 &amp; . &amp; . &amp; 5 \\
+. &amp; . &amp; . &amp; . &amp; 8 &amp; . &amp; . &amp; 7 &amp; 9
+\end{bmatrix} \Rightarrow
+\begin{bmatrix}
+5 &amp; 3 &amp; {\color{Red} 4} &amp; {\color{Red} 6} &amp; 7 &amp; {\color{Red} 8} &amp; {\color{Red} 9} &amp; {\color{Red} 1} &amp; {\color{Red} 2} \\
+6 &amp; {\color{Red} 7} &amp; {\color{Red} 2} &amp; 1 &amp; 9 &amp; 5 &amp; {\color{Red} 3} &amp; {\color{Red} 4} &amp; {\color{Red} 8} \\
+{\color{Red} 1} &amp; 9 &amp; 8 &amp; {\color{Red} 3} &amp; {\color{Red} 4} &amp; {\color{Red} 2} &amp; {\color{Red} 5} &amp; 6 &amp; {\color{Red} 7} \\
+8 &amp; {\color{Red} 5} &amp; {\color{Red} 9} &amp; {\color{Red} 7} &amp; 6 &amp; {\color{Red} 1} &amp; {\color{Red} 4} &amp; {\color{Red} 2} &amp; 3 \\
+4 &amp; {\color{Red} 2} &amp; {\color{Red} 6} &amp; 8 &amp; {\color{Red} 5} &amp; 3 &amp; {\color{Red} 7} &amp; {\color{Red} 9} &amp; 1 \\
+7 &amp; {\color{Red} 1} &amp; {\color{Red} 3} &amp; {\color{Red} 9} &amp; 2 &amp; {\color{Red} 4} &amp; {\color{Red} 8} &amp; {\color{Red} 5} &amp; 6 \\
+{\color{Red} 9} &amp; 6 &amp; {\color{Red} 1} &amp; {\color{Red} 5} &amp; {\color{Red} 3} &amp; {\color{Red} 7} &amp; 2 &amp; 8 &amp; {\color{Red} 4} \\
+{\color{Red} 2} &amp; {\color{Red} 8} &amp; {\color{Red} 7} &amp; 4 &amp; 1 &amp; 9 &amp; {\color{Red} 6} &amp; {\color{Red} 3} &amp; 5 \\
+{\color{Red} 3} &amp; {\color{Red} 4} &amp; {\color{Red} 5} &amp; {\color{Red} 2} &amp; 8 &amp; {\color{Red} 6} &amp; {\color{Red} 1} &amp; 7 &amp; 9
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+5 & 3 & . & . & 7 & . & . & . & . \\
+6 & . & . & 1 & 9 & 5 & . & . & . \\
+. & 9 & 8 & . & . & . & . & 6 & . \\
+8 & . & . & . & 6 & . & . & . & 3 \\
+4 & . & . & 8 & . & 3 & . & . & 1 \\
+7 & . & . & . & 2 & . & . & . & 6 \\
+. & 6 & . & . & . & . & 2 & 8 & . \\
+. & . & . & 4 & 1 & 9 & . & . & 5 \\
+. & . & . & . & 8 & . & . & 7 & 9
+\end{bmatrix} \Rightarrow
+\begin{bmatrix}
+5 & 3 & {\color{Red} 4} & {\color{Red} 6} & 7 & {\color{Red} 8} & {\color{Red} 9} & {\color{Red} 1} & {\color{Red} 2} \\
+6 & {\color{Red} 7} & {\color{Red} 2} & 1 & 9 & 5 & {\color{Red} 3} & {\color{Red} 4} & {\color{Red} 8} \\
+{\color{Red} 1} & 9 & 8 & {\color{Red} 3} & {\color{Red} 4} & {\color{Red} 2} & {\color{Red} 5} & 6 & {\color{Red} 7} \\
+8 & {\color{Red} 5} & {\color{Red} 9} & {\color{Red} 7} & 6 & {\color{Red} 1} & {\color{Red} 4} & {\color{Red} 2} & 3 \\
+4 & {\color{Red} 2} & {\color{Red} 6} & 8 & {\color{Red} 5} & 3 & {\color{Red} 7} & {\color{Red} 9} & 1 \\
+7 & {\color{Red} 1} & {\color{Red} 3} & {\color{Red} 9} & 2 & {\color{Red} 4} & {\color{Red} 8} & {\color{Red} 5} & 6 \\
+{\color{Red} 9} & 6 & {\color{Red} 1} & {\color{Red} 5} & {\color{Red} 3} & {\color{Red} 7} & 2 & 8 & {\color{Red} 4} \\
+{\color{Red} 2} & {\color{Red} 8} & {\color{Red} 7} & 4 & 1 & 9 & {\color{Red} 6} & {\color{Red} 3} & 5 \\
+{\color{Red} 3} & {\color{Red} 4} & {\color{Red} 5} & {\color{Red} 2} & 8 & {\color{Red} 6} & {\color{Red} 1} & 7 & 9
+\end{bmatrix}
+</script>
+</div>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">solveSudoku</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&gt;&amp;</span> <span class="n">board</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">isSolver</span><span class="p">(</span><span class="n">board</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">isSolver</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">board</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;.&#39;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;1&#39;</span><span class="p">;</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;9&#39;</span><span class="p">;</span> <span class="n">c</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">isFeasible</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span> <span class="p">{</span>
+                            <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="n">isSolver</span><span class="p">(</span><span class="n">board</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
+                            <span class="k">else</span> <span class="p">{</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="p">;</span> <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                    <span class="c1">// No feasible number</span>
+                    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">isFeasible</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;&gt;</span> <span class="n">board</span><span class="p">,</span> <span class="kt">int</span> <span class="n">row</span><span class="p">,</span> <span class="kt">int</span> <span class="n">col</span><span class="p">,</span> <span class="kt">char</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">row</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">i</span><span class="o">/</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">col</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">i</span><span class="o">%</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(n^{2}2^{n})</span><script type="math/tex">O(n^{2}2^{n})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>。</p>
                 
               
               

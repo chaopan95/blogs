@@ -13,21 +13,21 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/algo/sort/quick/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/machine-learning/embs/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>快速排序 - 个人博客</title>
+        <title>词向量 - 个人博客</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -63,7 +63,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="red">
   
     
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -82,7 +82,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="个人博客" class="md-header__button md-logo" aria-label="个人博客" data-md-component="logo">
+    <a href="../.." title="个人博客" class="md-header__button md-logo" aria-label="个人博客" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              快速排序
+              词向量
             
           </span>
         </div>
@@ -162,7 +162,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="个人博客" class="md-nav__button md-logo" aria-label="个人博客" data-md-component="logo">
+    <a href="../.." title="个人博客" class="md-nav__button md-logo" aria-label="个人博客" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -181,7 +181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         介绍
       </a>
     </li>
@@ -194,14 +194,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       <label class="md-nav__link" for="__nav_2">
         算法
@@ -217,14 +215,12 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
       
       <label class="md-nav__link" for="__nav_2_1">
         排序
@@ -242,7 +238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../basis/" class="md-nav__link">
+      <a href="../../algo/sort/basis/" class="md-nav__link">
         基础
       </a>
     </li>
@@ -254,7 +250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../merge/" class="md-nav__link">
+      <a href="../../algo/sort/merge/" class="md-nav__link">
         归并排序
       </a>
     </li>
@@ -264,67 +260,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          快速排序
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../algo/sort/quick/" class="md-nav__link">
         快速排序
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    原理
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    题目
-  </a>
-  
-    <nav class="md-nav" aria-label="题目">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#k" class="md-nav__link">
-    数组中的第K个最大元素
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -361,7 +301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/basis/" class="md-nav__link">
+      <a href="../../algo/dp/basis/" class="md-nav__link">
         基础
       </a>
     </li>
@@ -373,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/segment/" class="md-nav__link">
+      <a href="../../algo/dp/segment/" class="md-nav__link">
         划分区间
       </a>
     </li>
@@ -385,7 +325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/knapsack/" class="md-nav__link">
+      <a href="../../algo/dp/knapsack/" class="md-nav__link">
         背包问题
       </a>
     </li>
@@ -397,7 +337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/lis/" class="md-nav__link">
+      <a href="../../algo/dp/lis/" class="md-nav__link">
         最长递增子序列
       </a>
     </li>
@@ -409,7 +349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/path/" class="md-nav__link">
+      <a href="../../algo/dp/path/" class="md-nav__link">
         路径问题
       </a>
     </li>
@@ -421,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/matrix/" class="md-nav__link">
+      <a href="../../algo/dp/matrix/" class="md-nav__link">
         矩阵问题
       </a>
     </li>
@@ -433,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/stocks/" class="md-nav__link">
+      <a href="../../algo/dp/stocks/" class="md-nav__link">
         股票买卖
       </a>
     </li>
@@ -445,7 +385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/lcs/" class="md-nav__link">
+      <a href="../../algo/dp/lcs/" class="md-nav__link">
         最长公共子序列
       </a>
     </li>
@@ -457,7 +397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/edit-distance/" class="md-nav__link">
+      <a href="../../algo/dp/edit-distance/" class="md-nav__link">
         编辑距离
       </a>
     </li>
@@ -469,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/rob/" class="md-nav__link">
+      <a href="../../algo/dp/rob/" class="md-nav__link">
         打家劫舍
       </a>
     </li>
@@ -481,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/sequence/" class="md-nav__link">
+      <a href="../../algo/dp/sequence/" class="md-nav__link">
         序列型
       </a>
     </li>
@@ -493,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/interval/" class="md-nav__link">
+      <a href="../../algo/dp/interval/" class="md-nav__link">
         区间型
       </a>
     </li>
@@ -505,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/left-right-traversal/" class="md-nav__link">
+      <a href="../../algo/dp/left-right-traversal/" class="md-nav__link">
         左右遍历型
       </a>
     </li>
@@ -517,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/digits/" class="md-nav__link">
+      <a href="../../algo/dp/digits/" class="md-nav__link">
         数位型
       </a>
     </li>
@@ -529,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dp/tree/" class="md-nav__link">
+      <a href="../../algo/dp/tree/" class="md-nav__link">
         树上型
       </a>
     </li>
@@ -547,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../greedy/" class="md-nav__link">
+      <a href="../../algo/greedy/" class="md-nav__link">
         贪心
       </a>
     </li>
@@ -559,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../divide-conquer/" class="md-nav__link">
+      <a href="../../algo/divide-conquer/" class="md-nav__link">
         分治
       </a>
     </li>
@@ -571,7 +511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../back-tracking/" class="md-nav__link">
+      <a href="../../algo/back-tracking/" class="md-nav__link">
         回溯
       </a>
     </li>
@@ -583,7 +523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../binary-search/" class="md-nav__link">
+      <a href="../../algo/binary-search/" class="md-nav__link">
         二分
       </a>
     </li>
@@ -595,7 +535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../two-pointers/" class="md-nav__link">
+      <a href="../../algo/two-pointers/" class="md-nav__link">
         双指针
       </a>
     </li>
@@ -607,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search/" class="md-nav__link">
+      <a href="../../algo/search/" class="md-nav__link">
         搜索
       </a>
     </li>
@@ -619,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../prefix-sum/" class="md-nav__link">
+      <a href="../../algo/prefix-sum/" class="md-nav__link">
         前缀和
       </a>
     </li>
@@ -631,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/" class="md-nav__link">
+      <a href="../../algo/math/" class="md-nav__link">
         数学
       </a>
     </li>
@@ -643,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../matrix/" class="md-nav__link">
+      <a href="../../algo/matrix/" class="md-nav__link">
         矩阵
       </a>
     </li>
@@ -655,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../leetcode/" class="md-nav__link">
+      <a href="../../algo/leetcode/" class="md-nav__link">
         Leetcode
       </a>
     </li>
@@ -697,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/vector/" class="md-nav__link">
+      <a href="../../data-structure/vector/" class="md-nav__link">
         数组
       </a>
     </li>
@@ -709,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/list/" class="md-nav__link">
+      <a href="../../data-structure/list/" class="md-nav__link">
         链表
       </a>
     </li>
@@ -721,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/stack-queue/" class="md-nav__link">
+      <a href="../../data-structure/stack-queue/" class="md-nav__link">
         栈 & 队列
       </a>
     </li>
@@ -733,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/monotone-stack/" class="md-nav__link">
+      <a href="../../data-structure/monotone-stack/" class="md-nav__link">
         单调栈
       </a>
     </li>
@@ -745,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/monotone-queue/" class="md-nav__link">
+      <a href="../../data-structure/monotone-queue/" class="md-nav__link">
         单调队列
       </a>
     </li>
@@ -778,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/tree/basis/" class="md-nav__link">
+      <a href="../../data-structure/tree/basis/" class="md-nav__link">
         基础
       </a>
     </li>
@@ -790,7 +730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/tree/binary-tree/" class="md-nav__link">
+      <a href="../../data-structure/tree/binary-tree/" class="md-nav__link">
         二叉树
       </a>
     </li>
@@ -802,7 +742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/tree/traversal/" class="md-nav__link">
+      <a href="../../data-structure/tree/traversal/" class="md-nav__link">
         遍历
       </a>
     </li>
@@ -814,7 +754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/tree/prefix-tree/" class="md-nav__link">
+      <a href="../../data-structure/tree/prefix-tree/" class="md-nav__link">
         前缀树
       </a>
     </li>
@@ -832,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/string/" class="md-nav__link">
+      <a href="../../data-structure/string/" class="md-nav__link">
         字符串
       </a>
     </li>
@@ -844,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/unionset/" class="md-nav__link">
+      <a href="../../data-structure/unionset/" class="md-nav__link">
         并查集
       </a>
     </li>
@@ -856,7 +796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/binary-indexed-tree/" class="md-nav__link">
+      <a href="../../data-structure/binary-indexed-tree/" class="md-nav__link">
         树状数组
       </a>
     </li>
@@ -868,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/segment-tree/" class="md-nav__link">
+      <a href="../../data-structure/segment-tree/" class="md-nav__link">
         线段树
       </a>
     </li>
@@ -880,7 +820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/priority-queue/" class="md-nav__link">
+      <a href="../../data-structure/priority-queue/" class="md-nav__link">
         优先队列
       </a>
     </li>
@@ -892,7 +832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../data-structure/hash/" class="md-nav__link">
+      <a href="../../data-structure/hash/" class="md-nav__link">
         哈希表
       </a>
     </li>
@@ -911,12 +851,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       <label class="md-nav__link" for="__nav_4">
         机器学习
@@ -934,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/ml-strategies/" class="md-nav__link">
+      <a href="../ml-strategies/" class="md-nav__link">
         机器学习策略
       </a>
     </li>
@@ -946,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/linear-regression/" class="md-nav__link">
+      <a href="../linear-regression/" class="md-nav__link">
         线性回归
       </a>
     </li>
@@ -958,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/logistic-regression/" class="md-nav__link">
+      <a href="../logistic-regression/" class="md-nav__link">
         逻辑回归
       </a>
     </li>
@@ -970,7 +912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/perceptron/" class="md-nav__link">
+      <a href="../perceptron/" class="md-nav__link">
         感知机
       </a>
     </li>
@@ -982,7 +924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/svm/" class="md-nav__link">
+      <a href="../svm/" class="md-nav__link">
         支持向量机
       </a>
     </li>
@@ -994,7 +936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/decision-tree/" class="md-nav__link">
+      <a href="../decision-tree/" class="md-nav__link">
         决策树
       </a>
     </li>
@@ -1006,7 +948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/activation/" class="md-nav__link">
+      <a href="../activation/" class="md-nav__link">
         激活函数
       </a>
     </li>
@@ -1018,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/roc/" class="md-nav__link">
+      <a href="../roc/" class="md-nav__link">
         ROC
       </a>
     </li>
@@ -1030,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/mlp/" class="md-nav__link">
+      <a href="../mlp/" class="md-nav__link">
         MLP
       </a>
     </li>
@@ -1042,7 +984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/initialization/" class="md-nav__link">
+      <a href="../initialization/" class="md-nav__link">
         初始化
       </a>
     </li>
@@ -1054,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/optimization/" class="md-nav__link">
+      <a href="../optimization/" class="md-nav__link">
         优化
       </a>
     </li>
@@ -1066,7 +1008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/regularization/" class="md-nav__link">
+      <a href="../regularization/" class="md-nav__link">
         正则化
       </a>
     </li>
@@ -1078,7 +1020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/normalization/" class="md-nav__link">
+      <a href="../normalization/" class="md-nav__link">
         归一化
       </a>
     </li>
@@ -1090,7 +1032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/cnn/" class="md-nav__link">
+      <a href="../cnn/" class="md-nav__link">
         CNN
       </a>
     </li>
@@ -1100,11 +1042,122 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../machine-learning/embs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          词向量
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         词向量
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    定义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#word2vec" class="md-nav__link">
+    Word2vec
+  </a>
+  
+    <nav class="md-nav" aria-label="Word2vec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    思路
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    条件概率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    目标函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    梯度下降
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    两种方案
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    训练方法
+  </a>
+  
+    <nav class="md-nav" aria-label="训练方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#negative-sampling" class="md-nav__link">
+    Negative Sampling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarchical-softmax" class="md-nav__link">
+    Hierarchical Softmax
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1114,7 +1167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../machine-learning/pgm/" class="md-nav__link">
+      <a href="../pgm/" class="md-nav__link">
         概率图
       </a>
     </li>
@@ -1156,7 +1209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../math/prob-stat/" class="md-nav__link">
+      <a href="../../math/prob-stat/" class="md-nav__link">
         概率&统计
       </a>
     </li>
@@ -1168,7 +1221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../math/linear-algebra/" class="md-nav__link">
+      <a href="../../math/linear-algebra/" class="md-nav__link">
         线性代数
       </a>
     </li>
@@ -1180,7 +1233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../math/graph/" class="md-nav__link">
+      <a href="../../math/graph/" class="md-nav__link">
         图论
       </a>
     </li>
@@ -1218,22 +1271,77 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    原理
+    定义
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    题目
+  <a href="#word2vec" class="md-nav__link">
+    Word2vec
   </a>
   
-    <nav class="md-nav" aria-label="题目">
+    <nav class="md-nav" aria-label="Word2vec">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#k" class="md-nav__link">
-    数组中的第K个最大元素
+  <a href="#_2" class="md-nav__link">
+    思路
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    条件概率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    目标函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    梯度下降
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    两种方案
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    训练方法
+  </a>
+  
+    <nav class="md-nav" aria-label="训练方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#negative-sampling" class="md-nav__link">
+    Negative Sampling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarchical-softmax" class="md-nav__link">
+    Hierarchical Softmax
   </a>
   
 </li>
@@ -1256,53 +1364,146 @@
               
                 
                 
-                  <h1>快速排序</h1>
+                  <h1>词向量</h1>
                 
-                <h2 id="_1">原理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>快速排序找到一个中轴（pivot）使得右侧的数值不小于中轴值且左侧的数值不大于中轴值。</p>
-<h2 id="_2">题目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="k">数组中的第K个最大元素<a class="headerlink" href="#k" title="Permanent link">&para;</a></h3>
-<p>给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。你必须设计并实现时间复杂度为 O(n) 的算法解决此问题。例如，[3,2,1,5,6,4], k = 2，返回 5。</p>
-<p><strong>「分析」</strong></p>
-<p>「改进版快速排序」</p>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">findKthLargest</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">nums</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">k</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span> <span class="n">j</span><span class="o">--</span><span class="p">;</span> <span class="p">}</span>
-            <span class="n">swap</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
-            <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span> <span class="n">i</span><span class="o">++</span><span class="p">;</span> <span class="p">}</span>
-            <span class="n">swap</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="p">}</span>
-        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span> <span class="n">e</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
-        <span class="k">else</span> <span class="p">{</span> <span class="n">b</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
-时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>。</p>
+                <h2 id="_1">定义<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>词向量是一种将单词数字化表达的方法，即将单词空间投影到向量空间。</p>
+<h2 id="word2vec">Word2vec<a class="headerlink" href="#word2vec" title="Permanent link">&para;</a></h2>
+<p>Word2vec（Mikolov et al. 2013）是一种生成词向量的框架。</p>
+<h3 id="_2">思路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>1）一个大语料库</p>
+<p>2）每一个单词可以被向量话</p>
+<p>3）本文中，每一个词都会有中心词（center）和上下文（outside）</p>
+<p>4）用 c 和 o 的词向量相似度来计算条件概率 P(o | c) 或者 P(c | o)</p>
+<p>5）调整词向量，以达到最大概率</p>
+<h3 id="_3">条件概率<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>对一条文本「我爱天安门」来说，如果给出中心词「天」，那么我想知道「爱」和「门」的条件概率是多少呢？</p>
+<div>
+<div class="MathJax_Preview">
+P(o | c) = P(w_{t+j} | w_{t}) = P(\text{天} | \text{爱})
+</div>
+<script type="math/tex; mode=display">
+P(o | c) = P(w_{t+j} | w_{t}) = P(\text{天} | \text{爱})
+</script>
+</div>
+<p>这里就是用到给定中心词 c 来求上下文词 o 的条件概率。一般而言，上下文词处于中心的窗口内。如果依次遍历中心词（滑动窗口），即可求出所有的条件概率。</p>
+<h3 id="_4">目标函数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>一个固定的窗口长度 m，对每个位置，预测所有上下文词 o。使用极大似然估计（MLE）</p>
+<div>
+<div class="MathJax_Preview">
+L(\theta) = \prod_{t \in [1, T]} \prod_{j \in [-m, 0) \bigcup_{}^{} (0,m]} P(w_{t+j} | w_{t}; \theta)
+</div>
+<script type="math/tex; mode=display">
+L(\theta) = \prod_{t \in [1, T]} \prod_{j \in [-m, 0) \bigcup_{}^{} (0,m]} P(w_{t+j} | w_{t}; \theta)
+</script>
+</div>
+<p>对数损失函数</p>
+<div>
+<div class="MathJax_Preview">
+J(\theta) = -\frac{1}{T} \log L(\theta) = -\frac{1}{T} \sum_{t \in [1, T]} \sum_{j \in [-m, 0) \bigcup_{}^{} (0,m]} \log P(w_{t+j} | w_{t}; \theta)
+</div>
+<script type="math/tex; mode=display">
+J(\theta) = -\frac{1}{T} \log L(\theta) = -\frac{1}{T} \sum_{t \in [1, T]} \sum_{j \in [-m, 0) \bigcup_{}^{} (0,m]} \log P(w_{t+j} | w_{t}; \theta)
+</script>
+</div>
+<p>最小化损失函数前，需要计算条件概率。对每一个词，我们设计两个词向量，<span><span class="MathJax_Preview">v_{w}</span><script type="math/tex">v_{w}</script></span> 表示 w 是一个中心词时的向量，<span><span class="MathJax_Preview">u_{w}</span><script type="math/tex">u_{w}</script></span> 表示 w 是一个上下文词的向量。</p>
+<div>
+<div class="MathJax_Preview">
+P(o | c) = \frac{\exp(u_{o}^{T} v_{c})}{\sum_{w \in V}\exp(u_{w}^{T} v_{c})}
+</div>
+<script type="math/tex; mode=display">
+P(o | c) = \frac{\exp(u_{o}^{T} v_{c})}{\sum_{w \in V}\exp(u_{w}^{T} v_{c})}
+</script>
+</div>
+<p>这里 V 代表语料库的大小，<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 代表全部可学习的参数，每个词有两个向量。</p>
+<div>
+<div class="MathJax_Preview">
+\theta =
+\begin{bmatrix}
+v_{1} \\
+\vdots \\
+v_{V} \\
+u_{1} \\
+\vdots \\
+u_{V} \\
+\end{bmatrix}
+\in R^{2dV}
+</div>
+<script type="math/tex; mode=display">
+\theta =
+\begin{bmatrix}
+v_{1} \\
+\vdots \\
+v_{V} \\
+u_{1} \\
+\vdots \\
+u_{V} \\
+\end{bmatrix}
+\in R^{2dV}
+</script>
+</div>
+<h3 id="_5">梯度下降<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>对 <span><span class="MathJax_Preview">v_{c}</span><script type="math/tex">v_{c}</script></span> 求导</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{\partial}{\partial v_{c}} \log \frac{\exp(u_{o}^{T}v_{c})}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} &amp;= \frac{\partial}{\partial v_{c}} [\log \exp(u_{o}^{T}v_{c}) - \log \sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})] \\
+&amp;= \frac{\partial}{\partial v_{c}} u_{o}^{T}v_{c} - \frac{\partial}{\partial v_{c}} \log \sum_{w=1}^{V}\exp(u_{w}^{T}v_{c}) \\
+&amp;= u_{o} - \frac{1}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} \sum_{w=1}^{V} \frac{\partial} {\partial v_{c}} \exp(u_{w}^{T}v_{c}) \\
+&amp;= u_{o} - \frac{1}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} \sum_{w=1}^{V} \exp(u_{w}^{T}v_{c}) u_{w} \\
+&amp;= u_{o} - \sum_{w=1}^{V} \frac{\exp(u_{w}^{T}v_{c})}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} u_{w} \\
+&amp;= u_{o} - \sum_{w=1}^{V} P(w | c) u_{w}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial}{\partial v_{c}} \log \frac{\exp(u_{o}^{T}v_{c})}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} &= \frac{\partial}{\partial v_{c}} [\log \exp(u_{o}^{T}v_{c}) - \log \sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})] \\
+&= \frac{\partial}{\partial v_{c}} u_{o}^{T}v_{c} - \frac{\partial}{\partial v_{c}} \log \sum_{w=1}^{V}\exp(u_{w}^{T}v_{c}) \\
+&= u_{o} - \frac{1}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} \sum_{w=1}^{V} \frac{\partial} {\partial v_{c}} \exp(u_{w}^{T}v_{c}) \\
+&= u_{o} - \frac{1}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} \sum_{w=1}^{V} \exp(u_{w}^{T}v_{c}) u_{w} \\
+&= u_{o} - \sum_{w=1}^{V} \frac{\exp(u_{w}^{T}v_{c})}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} u_{w} \\
+&= u_{o} - \sum_{w=1}^{V} P(w | c) u_{w}
+\end{aligned}
+</script>
+</div>
+<p><span><span class="MathJax_Preview">u_{o}</span><script type="math/tex">u_{o}</script></span> 表示观察到的上下文词的向量，<span><span class="MathJax_Preview">\sum_{w=1}^{V} P(w | c) u_{w}</span><script type="math/tex">\sum_{w=1}^{V} P(w | c) u_{w}</script></span> 表示一个期望值，给出中心词后，所有文本次的加权平均。</p>
+<p>对 <span><span class="MathJax_Preview">u_{o}</span><script type="math/tex">u_{o}</script></span> 求导</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{\partial}{\partial u_{0}} \log \frac{\exp(u_{o}^{T}v_{c})}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} &amp;= \frac{\partial}{\partial u_{0}} [\log \exp(u_{o}^{T}v_{c}) - \log \sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})] \\
+&amp;= \frac{\partial}{\partial u_{0}} u_{o}^{T}v_{c} - \frac{\partial}{\partial u_{0}} \log \sum_{w=1}^{V}\exp(u_{w}^{T}v_{c}) \\
+&amp;= v_{c} - \frac{1}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} \frac{\partial}{\partial u_{0}} \exp(u_{o}^{T}v_{c}) \\
+&amp;= v_{c} - \frac{\exp{u_{o}^{T}v_{c}}}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} v_{c} \\
+&amp;= v_{c} - P(o | c) v_{c}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial}{\partial u_{0}} \log \frac{\exp(u_{o}^{T}v_{c})}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} &= \frac{\partial}{\partial u_{0}} [\log \exp(u_{o}^{T}v_{c}) - \log \sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})] \\
+&= \frac{\partial}{\partial u_{0}} u_{o}^{T}v_{c} - \frac{\partial}{\partial u_{0}} \log \sum_{w=1}^{V}\exp(u_{w}^{T}v_{c}) \\
+&= v_{c} - \frac{1}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} \frac{\partial}{\partial u_{0}} \exp(u_{o}^{T}v_{c}) \\
+&= v_{c} - \frac{\exp{u_{o}^{T}v_{c}}}{\sum_{w=1}^{V}\exp(u_{w}^{T}v_{c})} v_{c} \\
+&= v_{c} - P(o | c) v_{c}
+\end{aligned}
+</script>
+</div>
+<p>参数更新</p>
+<div>
+<div class="MathJax_Preview">
+\theta^{new} = \theta^{old} - \alpha \gradient_{theta} J(\theta)
+</div>
+<script type="math/tex; mode=display">
+\theta^{new} = \theta^{old} - \alpha \gradient_{theta} J(\theta)
+</script>
+</div>
+<h3 id="_6">两种方案<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>skip-gram（SG）：用中心词预测上下文词</p>
+<p>Continuous Bag of Words（CBOW）：用上下文预测中心词</p>
+<h2 id="_7">训练方法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="negative-sampling">Negative Sampling<a class="headerlink" href="#negative-sampling" title="Permanent link">&para;</a></h3>
+<p>对整个语料库求条件概率的成本高昂，考虑对负样本随机采样，降低计算复杂度。假设每次采样 k 个负样本，那么在一次窗口中，最多有 2m+1 的单词和 2km 的负样本。</p>
+<h3 id="hierarchical-softmax">Hierarchical Softmax<a class="headerlink" href="#hierarchical-softmax" title="Permanent link">&para;</a></h3>
                 
               
               
@@ -1322,7 +1523,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../merge/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 归并排序" rel="prev">
+        <a href="../cnn/" class="md-footer__link md-footer__link--prev" aria-label="上一页: CNN" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1331,20 +1532,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              归并排序
+              CNN
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../dp/basis/" class="md-footer__link md-footer__link--next" aria-label="下一页: 基础" rel="next">
+        <a href="../pgm/" class="md-footer__link md-footer__link--next" aria-label="下一页: 概率图" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              基础
+              概率图
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1377,10 +1578,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
