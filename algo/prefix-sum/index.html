@@ -597,51 +597,71 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    题目
+  </a>
+  
+    <nav class="md-nav" aria-label="题目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#k" class="md-nav__link">
     和为K的子数组
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     元素和为目标值的子矩阵数量
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     连续的子数组和
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     最长01等量子串
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#01_1" class="md-nav__link">
     统计等量连续 01 的连续子字符
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     航班预定统计
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     分割数组的最多方案数
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    砖墙
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1251,51 +1271,71 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    题目
+  </a>
+  
+    <nav class="md-nav" aria-label="题目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#k" class="md-nav__link">
     和为K的子数组
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     元素和为目标值的子矩阵数量
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     连续的子数组和
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
     最长01等量子串
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#01_1" class="md-nav__link">
     统计等量连续 01 的连续子字符
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     航班预定统计
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     分割数组的最多方案数
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    砖墙
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1316,7 +1356,8 @@
                 
                 <h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>前缀和，顾名思义，将一个序列的前 n 个元素累加起来。</p>
-<h2 id="k">和为K的子数组<a class="headerlink" href="#k" title="Permanent link">&para;</a></h2>
+<h2 id="_2">题目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="k">和为K的子数组<a class="headerlink" href="#k" title="Permanent link">&para;</a></h3>
 <p>给定一个数组 nums 和一个 k 值，求所有的连续子数组和等于 k 的个数</p>
 <p><strong>「分析」</strong></p>
 <p>暴力枚举的时间复杂度高达 <span><span class="MathJax_Preview">n^{3}</span><script type="math/tex">n^{3}</script></span>，利用前缀和的复杂度也会达到 <span><span class="MathJax_Preview">n^{2}</span><script type="math/tex">n^{2}</script></span>，我们在这里使用前缀和 + 哈希表进一步减小时间复杂度。</p>
@@ -1344,7 +1385,7 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，n 为数组的长度。</p>
-<h2 id="_2">元素和为目标值的子矩阵数量<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">元素和为目标值的子矩阵数量<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>给定一个矩阵 matrix （<span><span class="MathJax_Preview">m \times n</span><script type="math/tex">m \times n</script></span>） 和一个目标值 target，计算出所有的子矩阵和等于目标值的数目。</p>
 <p><strong>「分析」</strong></p>
 <p>题目要求是矩阵和，很容易联想到前缀和。但是如果在前缀和的基础上，暴力循环求解的话，时间复杂度为 <span><span class="MathJax_Preview">O(m^{2}n^{2})</span><script type="math/tex">O(m^{2}n^{2})</script></span>，这样会超时。为了降低时间复杂度，我们使用哈希表的方法。具体地，一个矩形有四个边长，我们首先确定上边和下边，在依次遍历左边的过程中，用哈希表记录此时的子矩阵的和及出现的频率，如果后续的更大矩阵和与目标值的差值存在与哈希表中，那么可以将具有这些矩阵和的个数累加起来。</p>
@@ -1422,7 +1463,7 @@ j \\
 </code></pre></div>
 </td></tr></table>
 时间复杂度<span><span class="MathJax_Preview">O(m^{2}n)</span><script type="math/tex">O(m^{2}n)</script></span>，空间复杂度<span><span class="MathJax_Preview">O(mn)</span><script type="math/tex">O(mn)</script></span>，m 为矩阵的行数，n 为矩阵的列数</p>
-<h2 id="_3">连续的子数组和<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">连续的子数组和<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>给定一个数组 nums 如 [23, 2, 4, 6, 7] 和一个整数 k 如 6，先判断这个数组是否存在一个连续子数组，其和是 k 的整数倍。这里要求子数组的长度至少为 2。</p>
 <p><strong>「分析」</strong></p>
 <p>前缀和对 k 的余数 + 哈希表</p>
@@ -1464,7 +1505,7 @@ j \\
 <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
 </code></pre></div>
 </td></tr></table>
-<h2 id="01">最长01等量子串<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="01">最长01等量子串<a class="headerlink" href="#01" title="Permanent link">&para;</a></h3>
 <p>给定一个只包含0和1的字符串如"0010011001001010110"，求其最长子串，这个子串中0和1的个数相等，给出的例子有一个最大长度为 16 的 01 子串</p>
 <p><strong>「分析」</strong></p>
 <p>前缀和 + 哈希表</p>
@@ -1518,7 +1559,7 @@ j \\
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<h2 id="01_1">统计等量连续 01 的连续子字符<a class="headerlink" href="#01_1" title="Permanent link">&para;</a></h2>
+<h3 id="01_1">统计等量连续 01 的连续子字符<a class="headerlink" href="#01_1" title="Permanent link">&para;</a></h3>
 <p>给定一个字符 s = '00110011'，求 s 的所有连续子字符串中，‘0’ 和 ’1‘ 的数量相等并且 ‘0’ 和 ‘1’ 连续的个数。</p>
 <p><strong>「分析」</strong></p>
 <p>与统计 01 等量的连续子字符串不同，本题要求所有的子字符串中的 ‘0’ 和 ‘1’ 也要连续，即 ‘0101’ 虽然等量，但是所有的 ‘0’ 和所有的 ‘1’ 并非连续。一个解决办法是：将同类的字符分块统计后累加相邻两块内容。</p>
@@ -1560,7 +1601,7 @@ j \\
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span></p>
-<h2 id="_4">航班预定统计<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">航班预定统计<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>给定一个列表 bookings = [[1, 2, 10], [2, 3, 20], [2, 5, 25]] 表示从 i 到 j 的航班预定人数，另给一个整数 n 表示航班数（从 1 开始），求每一航班的预定人数之和。</p>
 <div>
 <div class="MathJax_Preview">
@@ -1612,7 +1653,7 @@ j \\
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n + m)</span><script type="math/tex">O(n + m)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，其中 n 是航班数，m 是预定数</p>
-<h2 id="_5">分割数组的最多方案数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">分割数组的最多方案数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>给你一个下标从 0 开始且长度为 n 的整数数组 nums 。分割 数组 nums 的方案数定义为符合以下两个条件的 pivot 数目：</p>
 <p>1) 1 &lt;= pivot &lt; n</p>
 <p>2) nums[0] + nums[1] + ... + nums[pivot - 1] == nums[pivot] + nums[pivot + 1] + ... + nums[n - 1] 同时给你一个整数 k 。你可以将 nums 中 一个 元素变为 k 或 不改变 数组。</p>
@@ -1677,6 +1718,52 @@ j \\
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span></p>
+<h3 id="_7">砖墙<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>你的面前有一堵矩形的、由 n 行砖块组成的砖墙。这些砖块高度相同（也就是一个单位高）但是宽度不同。每一行砖块的宽度之和相等。你现在要画一条 自顶向下 的、穿过 最少 砖块的垂线。如果你画的线只是从砖块的边缘经过，就不算穿过这块砖。你不能沿着墙的两个垂直边缘之一画线，这样显然是没有穿过一块砖的。给你一个二维数组 wall ，该数组包含这堵墙的相关信息。其中，wall[i] 是一个代表从左至右每块砖的宽度的数组。你需要找出怎样画才能使这条线 穿过的砖块数量最少 ，并且返回 穿过的砖块数量 。</p>
+<p><strong>「分析」</strong></p>
+<p>「前缀和 + 哈希」穿过最少的砖块等价于穿过最多的边界。因为砖块是无缝贴合的，那么我们只需要记录每个砖块的边界，找到边界最多的个数。</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
+<span class="cm">输入：wall = [[1,2,2,1],[3,1,2],[1,3,2],[2,4],[3,1,2],[1,3,1,1]]</span>
+<span class="cm">输出：2</span>
+<span class="cm">*/</span>
+
+<span class="kt">int</span> <span class="nf">leastBricks</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">wall</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">cnt</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="nl">row</span> <span class="p">:</span> <span class="n">wall</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">row</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">row</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">cnt</span><span class="p">[</span><span class="n">sum</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">cnt</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">cnt</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="n">it</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">wall</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+时间复杂度：<span><span class="MathJax_Preview">O(nm)</span><script type="math/tex">O(nm)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，这里，n 是 wall 的长度，m 是每一行的平均长度。</p>
                 
               
               
