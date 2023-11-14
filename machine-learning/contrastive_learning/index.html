@@ -1324,7 +1324,7 @@ L_{q} = -log \frac{\exp(q \cdot k_{+} / \tau)}{\sum_{i=0}^{K} \exp(q \cdot k_{i}
 L_{q} = -log \frac{\exp(q \cdot k_{+} / \tau)}{\sum_{i=0}^{K} \exp(q \cdot k_{i} / \tau)}
 </script>
 </div>
-<p>这里的 K 表示采集的负样本的个数，即每一个样本为一个类别，总共 K + 1 个类别。<span><span class="MathJax_Preview">q \cdot k</span><script type="math/tex">q \cdot k</script></span> 表达了模型的预估分，通常使用相似度。温度系数 <span><span class="MathJax_Preview">\tao</span><script type="math/tex">\tao</script></span> 反映了对正负样本的敏感程度，越小越敏感，模型便会更关注困难样本（误分）。</p>
+<p>这里的 K 表示采集的负样本的个数，即每一个样本为一个类别，总共 K + 1 个类别。<span><span class="MathJax_Preview">q \cdot k</span><script type="math/tex">q \cdot k</script></span> 表达了模型的预估分，通常使用相似度。温度系数 <span><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span> 反映了对正负样本的敏感程度，越小越敏感，模型便会更关注困难样本（误分）。</p>
                 
               
               
