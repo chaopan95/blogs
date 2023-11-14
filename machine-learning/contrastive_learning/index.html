@@ -13,14 +13,14 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/machine-learning/linear-regression/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/machine-learning/contrastive_learning/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>线性回归 - 个人博客</title>
+        <title>Contrastive learning - 个人博客</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              线性回归
+              Contrastive learning
             
           </span>
         </div>
@@ -851,14 +851,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       <label class="md-nav__link" for="__nav_4">
         机器学习
@@ -886,61 +884,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          线性回归
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../linear-regression/" class="md-nav__link">
         线性回归
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    定义
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    解析解
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    数值解
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1229,15 +1177,28 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    解析解
+    原理
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    数值解
+    损失函数
   </a>
+  
+    <nav class="md-nav" aria-label="损失函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infonce" class="md-nav__link">
+    InfoNCE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1254,54 +1215,39 @@
               
                 
                 
-                  <h1>线性回归</h1>
+                  <h1>Contrastive learning</h1>
                 
                 <h2 id="_1">定义<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>不同于分类问题，回归问题的 label 是一个连续值。线形回归则是用一次多变量的线形叠加模型 label。形如</p>
-<div>
-<div class="MathJax_Preview">
-\hat{y} = \sum_{i = 0}^{m} a_{i}x_{i}
-</div>
-<script type="math/tex; mode=display">
-\hat{y} = \sum_{i = 0}^{m} a_{i}x_{i}
-</script>
-</div>
-<h2 id="_2">解析解<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>对比学习（contrastive learning）是一机器学习的方法，用于区分相似和不相似的数据。</p>
+<h2 id="_2">原理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_3">损失函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="infonce">InfoNCE<a class="headerlink" href="#infonce" title="Permanent link">&para;</a></h3>
+<p>InfoNCE 是 NCE（noise contrastive estimation）的一个变种。NCE 又是来源于 softmax 和 cross entropy。假设网络结构输出结果是 Z，对其进行 softmax 后再取对数得到预测值 <span><span class="MathJax_Preview">\hat{Y}</span><script type="math/tex">\hat{Y}</script></span>，ground truth 为 <span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span>，对应相乘即可得到在分类问题上常用的交叉熵损失函数。</p>
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
-(\frac{1}{n}\left \| Xw-y \right \|^{2})^{'} &amp;= \frac{2}{n}X^{T}(Xw-y) \\
-&amp;= \frac{2}{n}(X^{T}Xw-X^{T}y) = 0 \\
-w &amp;= (X^{T}X)^{-1}X^{T}y
+&amp; \hat{Y} = \text{softmax}(Z) = \frac{\exp(z^{+})}{\sum_{j \in K}\exp(z_{j})} \\
+&amp; L(Y, \hat{Y}) = - \sum_{i \in K} y_{i} \log y_{i}
 \end{aligned}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
-(\frac{1}{n}\left \| Xw-y \right \|^{2})^{'} &= \frac{2}{n}X^{T}(Xw-y) \\
-&= \frac{2}{n}(X^{T}Xw-X^{T}y) = 0 \\
-w &= (X^{T}X)^{-1}X^{T}y
+& \hat{Y} = \text{softmax}(Z) = \frac{\exp(z^{+})}{\sum_{j \in K}\exp(z_{j})} \\
+& L(Y, \hat{Y}) = - \sum_{i \in K} y_{i} \log y_{i}
 \end{aligned}
 </script>
 </div>
-<p><span><span class="MathJax_Preview">\bigstar</span><script type="math/tex">\bigstar</script></span> 解析解需要对矩阵求逆，当维度较高时，成本大</p>
-<h2 id="_3">数值解<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>损失函数：MSE (mean square error)</p>
+<p>这里的 k 表示了分类的类别，在图像领域每一张图片都是一个类别。逐一计算成本太高，这里引出了 NCE，用负采样的方式简化了计算。K 个类别简化成 2 个类别：数据和噪声（也可以看成正样本和负样本），体现出 noise contrastive；因为没有计算全样本，而是采样若干负样本，因此是 estimation。</p>
+<p>有些时候，二分类模型略显粗糙，但全分类计算成本有过大。如果在两者之间去一个折中，便可以兼顾彼此，这就诞生了 InfoNCE。</p>
 <div>
 <div class="MathJax_Preview">
-\begin{aligned}
-L(w) &amp;= \frac{1}{n}\sum_{i=1}^{n}(w^{T}x_{i}-y_{i})^{2} \\
-&amp;= \frac{1}{n}\left \| Xw-y \right \|^{2} \\
-&amp;\rightarrow \min_{w}
-\end{aligned}
+L_{q} = -log \frac{\exp(q \cdot k_{+} / \tau)}{\sum_{i=0}^{K} \exp(q \cdot k_{i} / \tau)}
 </div>
 <script type="math/tex; mode=display">
-\begin{aligned}
-L(w) &= \frac{1}{n}\sum_{i=1}^{n}(w^{T}x_{i}-y_{i})^{2} \\
-&= \frac{1}{n}\left \| Xw-y \right \|^{2} \\
-&\rightarrow \min_{w}
-\end{aligned}
+L_{q} = -log \frac{\exp(q \cdot k_{+} / \tau)}{\sum_{i=0}^{K} \exp(q \cdot k_{i} / \tau)}
 </script>
 </div>
+<p>这里的 K 表示采集的负样本的个数，即每一个样本为一个类别，总共 K + 1 个类别。<span><span class="MathJax_Preview">q \cdot k</span><script type="math/tex">q \cdot k</script></span> 表达了模型的预估分，通常使用相似度。温度系数 <span><span class="MathJax_Preview">\tao</span><script type="math/tex">\tao</script></span> 反映了对正负样本的敏感程度，越小越敏感，模型便会更关注困难样本（误分）。</p>
                 
               
               
@@ -1317,41 +1263,6 @@ L(w) &= \frac{1}{n}\sum_{i=1}^{n}(w^{T}x_{i}-y_{i})^{2} \\
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../ml-strategies/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 机器学习策略" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              机器学习策略
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../logistic-regression/" class="md-footer__link md-footer__link--next" aria-label="下一页: 逻辑回归" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              逻辑回归
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
