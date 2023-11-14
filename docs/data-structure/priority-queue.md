@@ -146,3 +146,123 @@ int kthSmallest(vector<vector<int>>& mat, int k) {
 }
 ```
 时间复杂度 $O(mkn)$，空间复杂度 $O(kn)$。
+
+### 滑动窗口最大值
+给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。返回 滑动窗口中的最大值 。
+
+**「分析」**
+
+「优先队列」
+
+```cpp
+/*
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [3,3,5,5,6,7]
+Explanation: 
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+*/
+vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+    vector<int> ans;
+    multiset<int> hash;
+    int n = (int)nums.size();
+    for (int i = 0; i < k; i++) {
+        hash.insert(nums[i]);
+    }
+    for (int i = k; i < n; i++) {
+        ans.emplace_back(*--hash.end());
+        hash.erase(hash.find(nums[i-k]));
+        hash.insert(nums[i]);
+    }
+    ans.emplace_back(*--hash.end());
+    return ans;
+}
+
+vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+    vector<int> ans;
+    int n = (int)nums.size();
+    priority_queue<pair<int, int>> pq;
+    for (int i = 0; i < k; i++) {
+        pq.emplace(nums[i], i);
+    }
+    for (int i = k; i <= n; i++) {
+        while (pq.top().second + k < i) {
+            pq.pop();
+        }
+        ans.emplace_back(pq.top().first);
+        if (i < n) { pq.emplace(nums[i], i); }
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n \log k)$，空间复杂度：$O(n)$。
+
+### 接雨水
+给你一个 m x n 的矩阵，其中的值均为非负整数，代表二维高度图每个单元的高度，请计算图中形状最多能接多少体积的雨水。
+
+**「分析」**
+
+「优先队列」
+
+```cpp
+/*
+给出如下 3x6 的高度图:
+[
+  [1,4,3,1,3,2],
+  [3,2,1,3,2,4],
+  [2,3,3,2,3,1]
+]
+返回 4 。
+*/
+
+int trapRainWater(vector< vector< int>>& heightMap) {
+    int nRow = (int)heightMap.size();
+    if (nRow == 0) { return 0; }
+    int nCol = (int)heightMap[0].size();
+    if (nCol < 3) { return 0; }
+    typedef pair < int, pair< int, int>> PIII;
+    priority_queue < PIII, vector < PIII>, greater< PIII>> heap;
+    bool **vis = new bool *[nRow];
+    for (int i = 0; i < nRow; i++) {
+        vis[i] = new bool [nCol]{};
+        heap.push({heightMap[i][0], {i, 0}});
+        heap.push({heightMap[i][nCol-1], {i, nCol-1}});
+        vis[i][0] = vis[i][nCol-1] = true;
+    }
+    for (int j = 0; j < nCol; j++) {
+        heap.push({heightMap[0][j], {0, j}});
+        heap.push({heightMap[nRow-1][j], {nRow-1, j}});
+        vis[0][j] = vis[nRow-1][j] = true;
+    }
+    int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, -1, 0, 1};
+    int ans = 0;
+    while (!heap.empty()) {
+        auto cur = heap.top();
+        heap.pop();
+        int x = cur.second.first, y = cur.second.second;
+        int h = cur.first;
+        for (int i = 0; i < 4; i++) {
+            int xx = x + dx[i];
+            int yy = y + dy[i];
+            if (xx >= 0 && xx < nRow && yy >= 0 && yy < nCol &&
+                !vis[xx][yy]) {
+                vis[xx][yy] = true;
+                ans += max(h - heightMap[xx][yy], 0);
+                heap.push({max(h, heightMap[xx][yy]), {xx, yy}});
+            }
+        }
+    }
+    for (int i = 0; i < nRow; i++) {
+        delete []vis[i];
+    }
+    delete []vis;
+    return ans;
+}
+```
+时间复杂度：$O(nm)$，空间复杂度：$O(nm)$。

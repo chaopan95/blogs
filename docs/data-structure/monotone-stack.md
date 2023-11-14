@@ -35,7 +35,9 @@ vector<int> nextGreaterNumber(vector<int>& nums) {
 ```
 时间复杂度 $O(n)$，空间复杂度 $O(n)$
 
-## 最长正值区间
+
+## 题目
+### 最长正值区间
 给定一个序列e.g.[1,3,-2,-4,1]，请找出最大的一个子区间，使得这个区间元素的和为正数
 
 「分析」
@@ -72,7 +74,7 @@ int longest_postive_value_interval(vector<int>& nums) {
 ```
 时间复杂度 $O(n)$，空间复杂度 $O(n)$
 
-## 下下个更大的元素
+### 下下个更大的元素
 给定一个序列[2,4,0,9,6]，请找出每个元素右侧第二个大于自身的元素
 
 「分析」
@@ -99,7 +101,7 @@ vector<int> nextNextGreaterNumber(vector<int>& nums) {
 ```
 时间复杂度 $O(n)$，空间复杂度 $O(n)$
 
-## 去重复字母
+### 去重复字母
 给定一个字符串 s，将 s 中的所有重复字母去掉，返回一个不改变原字符串内字母相对位置且字典序最小的无重复字符串。如 s = cbacdcbc -> s' = acdb
 
 **「分析」**
@@ -139,8 +141,7 @@ string removeDuplicateLetters(string s) {
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(\Sigma)$，这里的 $\Sigma$ 指的是字符的集合，本题是 26。
 
-
-## 判断二叉搜索树的先序遍历
+### 判断二叉搜索树的先序遍历
 给定一个二叉搜索树的遍历序列，判断是否是先序遍历序列
 
 **「分析」**
@@ -164,7 +165,7 @@ bool verifyPreorder(vector<int>& preorder) {
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(n)$
 
-## 移除 k 个字符后的最小值
+### 移除 k 个字符后的最小值
 给定一个只包含数字的字符串 num = “10200” 和一个整数 k = 1，删除 k 个字符，使得剩下的数字值最小，结果不包含前置 0.
 
 **「分析」**
@@ -189,3 +190,95 @@ string removeKdigits(string num, int k) {
 }
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(n)$
+
+### 柱状图中最大的矩形
+给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。求在该柱状图中，能够勾勒出来的矩形的最大面积。
+
+**「分析」**
+
+「单调栈」
+
+```cpp
+/*
+Input: heights = [2,1,5,6,2,3]
+Output: 10
+Explanation: The above is a histogram where width of each bar is 1.
+The largest rectangle is shown in the red area, which has an area = 10 units.
+*/
+
+int largestRectangleArea(vector<int>& heights) {
+    int ans = 0, n = int(heights.size());
+    if (n == 0) { return ans; }
+    heights.emplace_back(0);
+    stack<int> stk;
+    for (int i = 0; i <= n; i++) {
+        while (!stk.empty() && heights[stk.top()] > heights[i]) {
+            int H = heights[stk.top()];
+            int W = i;
+            stk.pop();
+            if (!stk.empty()) { W = i - stk.top() - 1; }
+            int area = H * W;
+            if (ans < area) { ans = area; }
+        }
+        stk.push(i);
+    }
+    heights.pop_back();
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$。
+
+### 最大矩形
+给定一个仅包含 0 和 1 、大小为 rows x cols 的二维二进制矩阵，找出只包含 1 的最大矩形，并返回其面积。
+
+$$
+\begin{matrix}
+1 & 0 & 1 & 0 & 0 \\
+1 & 0 & \color{red}1 & \color{red}1 & \color{red}1 \\
+1 & 1 & \color{red}1 & \color{red}1 & \color{red}1 \\
+1 & 0 & 0 & 1 & 0
+\end{matrix}
+$$
+
+最大面积是 6
+
+**「分析」**
+
+「单调栈」将矩阵压缩成一行，每个位置的值表示当前列连续的 1 的个数。后续对这一列求最大面积。
+
+```cpp
+class Solution {
+public:
+    int maximalRectangle(vector<vector<char>>& matrix) {
+        int ans = 0;
+        int nRow = int(matrix.size());
+        if (nRow == 0) { return ans; }
+        int nCol = int(matrix[0].size());
+        vector<int> heights(nCol, 0);
+        for (int i = 0; i < nRow; i++) {
+            for (int j = 0; j < nCol; j++) {
+                heights[j] = (heights[j] + 1) * (matrix[i][j] - '0');
+            }
+            ans = max(ans, getRecArea(heights));
+        }
+        return ans;
+    }
+    int getRecArea(vector<int> heights) {
+        int ans = 0, n = int(heights.size());
+        stack<int> stk;
+        heights.emplace_back(0);
+        for (int i = 0; i <= n; i++) {
+            while (!stk.empty() && heights[stk.top()] > heights[i]) {
+                int H = heights[stk.top()];
+                int W = i;
+                stk.pop();
+                if (!stk.empty()) { W = i - stk.top() - 1; }
+                ans = max(ans, W * H);
+            }
+            stk.push(i);
+        }
+        return ans;
+    }
+};
+```
+时间复杂度：$O(n^{2})$，空间复杂度：$O(n)$。

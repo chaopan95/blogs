@@ -86,6 +86,7 @@ nav:
             - 数位型: algo/dp/digits.md
             - 树上型: algo/dp/tree.md
         - 贪心: algo/greedy.md
+        - 递归: algo/recursion.md
         - 分治: algo/divide-conquer.md
         - 回溯: algo/back-tracking.md
         - 二分: algo/binary-search.md
@@ -94,7 +95,6 @@ nav:
         - 前缀和: algo/prefix-sum.md
         - 数学: algo/math.md
         - 矩阵: algo/matrix.md
-        - Leetcode: algo/leetcode.md
     - 数据结构:
         - 数组: data-structure/vector.md
         - 链表: data-structure/list.md
@@ -129,6 +129,8 @@ nav:
         - CNN: machine-learning/cnn.md
         - 词向量: machine-learning/embs.md
         - 概率图: machine-learning/pgm.md
+        - 信号与系统: machine-learning/signals.md
+        - 对比学习: machine-learning/contrastive_learning.md
     - 数学:
         - 概率&统计: math/prob-stat.md
         - 线性代数: math/linear-algebra.md

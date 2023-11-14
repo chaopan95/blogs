@@ -269,3 +269,60 @@ public:
 };
 ```
 时间复杂度：$O(n^{2}2^{n})$，空间复杂度：$O(n^{3})$。
+
+### 摘樱桃
+给你一个 n x n 的网格 grid ，代表一块樱桃地，每个格子由以下三种数字的一种来表示：
+
+0 表示这个格子是空的，所以你可以穿过它。
+
+1 表示这个格子里装着一个樱桃，你可以摘到樱桃然后穿过它。
+
+-1 表示这个格子里有荆棘，挡着你的路。
+
+请你统计并返回：在遵守下列规则的情况下，能摘到的最多樱桃数：
+
+从位置 (0, 0) 出发，最后到达 (n - 1, n - 1) ，只能向下或向右走，并且只能穿越有效的格子（即只可以穿过值为 0 或者 1 的格子）；当到达 (n - 1, n - 1) 后，你要继续走，直到返回到 (0, 0) ，只能向上或向左走，并且只能穿越有效的格子；当你经过一个格子且这个格子包含一个樱桃时，你将摘到樱桃并且这个格子会变成空的（值变为 0 ）；如果在 (0, 0) 和 (n - 1, n - 1) 之间不存在一条可经过的路径，则无法摘到任何一个樱桃。
+
+**「分析」**
+
+「DFS」从起点到终点同时走两条路。
+
+```cpp
+/*
+Input: grid = [[1,1,-1],[1,-1,1],[-1,1,1]]
+Output: 0
+*/
+class Solution {
+public:
+    int cherryPickup(vector<vector<int>>& grid) {
+        int n = int(grid.size());
+        if (n == 0) { return 0; }
+        vector<vector<vector<int>>> 
+            dp(n, vector<vector<int>>(n, vector<int>(n, -1)));
+        int ans = move(dp, grid, 0, 0, 0, n);
+        return max(0, ans);
+    }
+
+    int move(vector<vector<vector<int>>> &dp,
+             vector<vector<int>> &grid,
+             int r1, int c1, int c2, int n) {
+        int r2 = r1 + c1 - c2;
+        if (r1 >= n || c1 >= n || r2 >= n || c2 >= n ||
+            grid[r1][c1] == -1 ||
+            grid[r2][c2] == -1) { return -2; }
+        if (r1 == n-1 && c1 == n-1) { return grid[r1][c1]; }
+        if (dp[r1][c1][c2] != -1) { return dp[r1][c1][c2]; }
+        int ans = move(dp, grid, r1, c1+1, c2+1, n);
+        ans = max(ans, move(dp, grid, r1+1, c1, c2+1, n));
+        ans = max(ans, move(dp, grid, r1, c1+1, c2, n));
+        ans = max(ans, move(dp, grid, r1+1, c1, c2, n));
+        if (ans >= 0) {
+            ans += grid[r1][c1] + (c1 != c2 || r1 != r2) *
+                grid[r2][c2];
+        }
+        dp[r1][c1][c2] = ans;
+        return ans;
+    }
+};
+```
+时间复杂度：$O(nm)$，空间复杂度：$O(nm)$。

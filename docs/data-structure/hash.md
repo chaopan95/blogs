@@ -225,3 +225,170 @@ int firstMissingPositive(vector<int>& nums) {
 }
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(1)$。
+
+### 存在重复元素
+给你一个整数数组 nums 和两个整数 k 和 t 。找出满足下述条件的下标对 (i, j)：
+
+i != j,
+
+abs(i - j) <= k
+
+abs(nums[i] - nums[j]) <= t
+
+如果存在，返回 true ；否则，返回 false 。
+
+**「分析」**
+
+「哈希表」
+
+```cpp
+/*
+Input: nums = [1,5,9,1,5,9], k = 2, t = 3
+Output: false
+*/
+class Solution {
+public:
+    bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
+        int n = (int)nums.size();
+        if (n <= 1) { return false; }
+        set<int> hash;
+        set<int>::iterator iter;
+        for (int i = 0; i < n; i++) {
+            iter = hash.lower_bound(max(nums[i], INT_MIN + t) - t);
+            if (iter != hash.end() &&
+                *iter <= min(nums[i], INT_MAX - t) + t) {
+                return true;
+            }
+            hash.insert(nums[i]);
+            if (i >= k) { hash.erase(nums[i-k]); }
+        }
+        return false;
+    }
+};
+```
+时间复杂度：$O(n \log n)$，空间复杂度：$O(n)$。
+
+### 最小覆盖子串
+给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t 所有字符的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字符串 "" 。
+
+**「分析」**
+
+「滑动窗口 + 哈希表」
+
+```cpp
+/*
+Input: s = "ADOBECODEBANC", t = "ABC"
+Output: "BANC"
+*/
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        unordered_map<char, int> tDict, sDict;
+        for (const auto &c : t) {
+            tDict[c]++;
+        }
+        int ns = int(s.length());
+        int l = 0, r = -1, ansL = -1, minLen = INT_MAX;
+        while (r < ns) {
+            if (tDict.find(s[++r]) != tDict.end()) {
+                sDict[s[r]]++;
+            }
+            while (isCover(tDict, sDict) && l <= r) {
+                if (r - l + 1 < minLen) {
+                    minLen = r - l + 1;
+                    ansL = l;
+                }
+                if (tDict.find(s[l]) != tDict.end()) {
+                    sDict[s[l]]--;
+                }
+                l++;
+            }
+        }
+        return -1 == ansL ? string() : s.substr(ansL, minLen);
+    }
+    bool isCover(unordered_map<char, int> &tDict,
+                 unordered_map<char, int> &sDict) {
+        for (const auto &item : tDict) {
+            if (sDict[item.first] < item.second) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$。
+
+### 最长连续序列
+给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。请你设计并实现时间复杂度为 O(n) 的算法解决此问题。例如，nums = [100,4,200,1,3,2]，返回 4，最长连续序列是 [1, 2, 3, 4]。
+
+**「分析」**
+
+「哈希表」
+
+```cpp
+int longestConsecutive(vector<int>& nums) {
+    if (nums.empty()) { return 0; }
+    int ans = 1;
+    unordered_set<int> hash;
+    for (const auto &ele : nums) { hash.insert(ele); }
+    for (const int &ele : nums) {
+        if (hash.find(ele - 1) != hash.end()) {
+            int curNum = ele;
+            int len = 1;
+            while (hash.find(curNum) != hash.end()) {
+                curNum++;
+                len++;
+            }
+            ans = max(ans, len);
+        }
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$。
+
+### 至少有 K 个重复字符的最长子串
+给你一个字符串 s 和一个整数 k ，请你找出 s 中的最长子串， 要求该子串中的每一字符出现次数都不少于 k 。返回这一子串的长度。如果不存在这样的子字符串，则返回 0。例如，s = "ababbc", k = 2，返回 5，因为最长子串为 "ababb" ，其中 'a' 重复了 2 次， 'b' 重复了 3 次。
+
+**「分析」**
+
+「哈希表」
+
+```cpp
+int longestSubstring(string s, int k) {
+    int n = int(s.length()), ans = 0;
+    for (int t = 1; t <= 26; t++) {
+        int l = 0, r = 0, tot = 0, numLessK = 0;
+        int *count = new int [26]{};
+        while (r < n) {
+            count[s[r] - 'a']++;
+            if (count[s[r] - 'a'] == 1) {
+                tot++;
+                numLessK++;
+            }
+            if (count[s[r] - 'a'] == k) {
+                numLessK--;
+            }
+            while (tot > t) {
+                count[s[l] - 'a']--;
+                if (count[s[l] - 'a'] == k-1) {
+                    numLessK++;
+                }
+                if (count[s[l] - 'a'] == 0) {
+                    numLessK--;
+                    tot--;
+                }
+                l++;
+            }
+            if (numLessK == 0) {
+                ans = max(ans, r - l + 1);
+            }
+            r++;
+        }
+        delete []count;
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$。

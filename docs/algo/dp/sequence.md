@@ -1,6 +1,7 @@
 ## 基础
 序列型动态规划表示状态成一个序列，可以是无环图、也可以是有环图。
 
+
 ## 题目
 ### 正则表达式匹配
 给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 '.' 和 '*' 的正则表达式匹配。'.' 匹配任意单个字符，'*' 匹配零个或多个前面的那一个元素。例如，s = "ab"，p = ".*"，返回 true
@@ -710,3 +711,252 @@ public:
 ```
 时间复杂度：$O(n)$，空间复杂度：$O(1)$。
 
+### 最长有效括号
+给你一个只包含 '(' 和 ')' 的字符串，找出最长有效（格式正确且连续）括号子串的长度。例如，s = ")()())"，返回 4，最长有效括号子串是 "()()"。
+
+**「分析」**
+
+「序列型DP」
+
+```cpp
+int longestValidParentheses(string s) {
+    int maxLen = 0, n = int(s.length()), leftCount = 0;
+    if (n < 2) { return maxLen; }
+    int *dp = new int [n]{};
+    for (int i = 0; i < n; i++) {
+        if (leftCount == 0 && s[i] == ')') {
+            continue;
+        }
+        if (s[i] == '(') {
+            leftCount++;
+        } else {
+            leftCount--;
+            dp[i] = dp[i-1] + 1;
+            if (i - dp[i] * 2 >= 0) {
+                dp[i] += dp[i-dp[i]*2];
+            }
+        }
+        maxLen = maxLen > dp[i] ? maxLen : dp[i];
+    }
+    delete []dp;
+    return maxLen * 2;
+}
+
+// 常数空间
+int longestValidParentheses(string s) {
+    int ans = 0, L = 0, R = 0;
+    for (char c : s) {
+        if (c == '(') {
+            L++;
+        } else {
+            R++;
+        }
+        if (L == R) {
+            ans = max(ans, 2 * R);
+        } else if (L < R) {
+            L = R = 0;
+        }
+    }
+    L = R = 0;
+    for (int i = (int)s.length() - 1; i >= 0; i--) {
+        if (s[i] == '(') {
+            L++;
+        } else {
+            R++;
+        }
+        if (L == R) {
+            ans = max(ans, 2 * R);
+        } else if (L > R) {
+            L = R = 0;
+        }
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(n)$。
+
+### 不同的子序列
+给你两个字符串 s 和 t ，统计并返回在 s 的 子序列 中 t 出现的个数，结果需要对 100000007 取模。例如，s = "babgbag", t = "bag"，返回 5，因为 s 有 5 个子序列满足要求，即 [babgbag, babgbag, babgbag, babgbag, babgbag]
+
+**「分析」**
+
+「序列型」设 dp[i][j] 表示 s[:i] 满足 t[:j] 的子序列数目。转移方程如下：
+
+$$
+dp[i][j] =
+\begin{cases}
+dp[i - 1][j - 1] + dp[i - 1][j], &s[i] == t[j] \\
+dp[i - 1][j], &\text{else}
+\end{cases}
+$$
+
+因为 s 的子序列必须包含 t，所以状态转移来自 s 的前一位。
+
+```cpp
+int numDistinct(string s, string t) {
+    const int MOD = 1000000007;
+    vector<vector<int>> dp(s.size() + 1, vector<int>(t.size() + 1));
+    for (int i = 0; i <= s.size(); i++) {
+        for (int j = 0; j <= t.size(); j++) {
+            if (j == 0) {
+                dp[i][j] = 1;
+            } else if (i == 0) {
+                dp[i][j] = 0;
+            } else {
+                dp[i][j] = dp[i - 1][j] % MOD;
+                if (s[i - 1] == t[j - 1]) {
+                    dp[i][j] = (dp[i][j] % MOD + dp[i - 1][j - 1] % MOD) % MOD;
+                }
+            }
+        }
+    }
+    return dp[s.size()][t.size()];
+}
+```
+时间复杂度：$O(nm)$，空间复杂度：$O(nm)$，这里，n 是 s 的长度，m 是 t 的长度。
+
+### 扰乱字符串
+使用下面描述的算法可以扰乱字符串 s 得到字符串 t ：
+
+如果字符串的长度为 1 ，算法停止
+
+如果字符串的长度 > 1 ，执行下述步骤：
+
+在一个随机下标处将字符串分割成两个非空的子字符串。即，如果已知字符串 s ，则可以将其分成两个子字符串 x 和 y ，且满足 s = x + y 。随机 决定是要「交换两个子字符串」还是要「保持这两个子字符串的顺序不变」。即，在执行这一步骤之后，s 可能是 s = x + y 或者 s = y + x 。在 x 和 y 这两个子字符串上继续从步骤 1 开始递归执行此算法。给你两个 长度相等 的字符串 s1 和 s2，判断 s2 是否是 s1 的扰乱字符串。如果是，返回 true ；否则，返回 false 。
+
+**「分析」**
+
+「序列型」设 dp[i][j][k] 表示 s[i:i+k] 和 t[j:j+k] 是扰乱字符。
+
+```cpp
+bool isScramble(string s1, string s2) {
+    int n = int(s1.length());
+    if (n != int(s2.length())) { return false; }
+    if (n == 0) { return true; }
+    bool ***dp = new bool **[n];
+    for (int i = 0; i < n; i++) {
+        dp[i] = new bool *[n];
+        for (int j = 0; j < n; j++) {
+            dp[i][j] = new bool [n+1]{};
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            dp[i][j][1] = s1[i] == s2[j];
+        }
+    }
+    for (int len = 2; len <= n; len++) {
+        for (int i = 0; i < n - len + 1; i++) {
+            for (int j = 0; j < n - len + 1; j++) {
+                for (int k = 1; k < len; k++) {
+                    dp[i][j][len] = (
+                        (dp[i][j][k] && dp[i+k][j+k][len-k]) ||
+                        (dp[i+k][j][len-k] && dp[i][j+len-k][k])
+                    );
+                    if (dp[i][j][len]) { break; }
+                }
+            }
+        }
+    }
+    bool ans = dp[0][0][n];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) { delete []dp[i][j]; }
+        delete []dp[i];
+    }
+    delete []dp;
+    return ans;
+}
+```
+时间复杂度：$O(n^{4})$，空间复杂度：$O(n^{3})$。
+
+### 青蛙过河
+一只青蛙想要过河。 假定河流被等分为若干个单元格，并且在每一个单元格内都有可能放有一块石子（也有可能没有）。 青蛙可以跳上石子，但是不可以跳入水中。给你石子的位置列表 stones（用单元格序号 升序 表示）， 请判定青蛙能否成功过河（即能否在最后一步跳至最后一块石子上）。开始时， 青蛙默认已站在第一块石子上，并可以假定它第一步只能跳跃 1 个单位（即只能从单元格 1 跳至单元格 2 ）。如果青蛙上一步跳跃了 k 个单位，那么它接下来的跳跃距离只能选择为 k - 1、k 或 k + 1 个单位。 另请注意，青蛙只能向前方（终点的方向）跳跃。
+
+**「分析」**
+
+「序列型」
+
+```cpp
+/*
+输入：stones = [0,1,2,3,4,8,9,11]
+输出：false
+解释：这是因为第 5 和第 6 个石子之间的间距太大，没有可选的方案供青蛙跳
+跃过去。
+*/
+
+bool canCross(vector<int>& stones) {
+    unordered_map<int, int> dict;
+    int n = (int)stones.size();
+    if (n <= 1) { return true; }
+    vector<vector<int>> dp(n, vector<int>(n, 0));
+    dp[0][0] = true;
+    for (int i = 1; i < n; i++) {
+        if (stones[i] - stones[i-1] > i) {
+            return false;
+        }
+        for (int j = i - 1; j >= 0; j--) {
+            int k = stones[i] - stones[j];
+            if (k > j + 1) {
+                break;
+            }
+            dp[i][k] = dp[j][k-1] || dp[j][k] || dp[j][k+1];
+            if (i == n - 1 && dp[i][k]) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+```
+时间复杂度：$O(n^{2})$，空间复杂度：$O(n^{2})$。
+
+### 最大整除子集
+给你一个由 无重复 正整数组成的集合 nums ，请你找出并返回其中最大的整除子集 answer ，子集中每一元素对 (answer[i], answer[j]) 都应当满足：
+
+answer[i] % answer[j] == 0 ，或
+
+answer[j] % answer[i] == 0
+
+如果存在多个有效解子集，返回其中任何一个均可。
+
+**「分析」**
+
+「排序 + 动态规划」
+
+```cpp
+/*
+Input: nums = [1,2,3]
+Output: [1,2]
+Explanation: [1,3] is also accepted.
+*/
+
+vector<int> largestDivisibleSubset(vector<int>& nums) {
+    vector<int> ans;
+    int n = (int)nums.size();
+    if (n < 2) { return nums; }
+    sort(nums.begin(), nums.end());
+    vector<int> dp(n, 1);
+    vector<int> par(n, -1);
+    int len = 1;
+    for (int i = 1; i < n; i++) {
+        for (int j = i - 1; j >= 0; j--) {
+            if (nums[i] % nums[j] == 0 && dp[j] + 1 > dp[i]) {
+                dp[i] = max(dp[i], dp[j] + 1);
+                par[i] = j;
+            }
+        }
+        len = max(len, dp[i]);
+    }
+    ans.resize(len);
+    for (int i = n - 1; i >= 0;) {
+        if (dp[i] == len) {
+            ans[--len] = nums[i];
+            i = par[i];
+        } else {
+            i--;
+        }
+    }
+    return ans;
+}
+```
+时间复杂度：$O(n^{2})$，空间复杂度：$O(n)$。

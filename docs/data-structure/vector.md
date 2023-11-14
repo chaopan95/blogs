@@ -77,3 +77,36 @@ $$
 $$
 
 摊均复杂度 $O(1)$
+
+
+## 题目
+### 删除有序数组中的重复项
+给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使得出现次数超过两次的元素只出现两次 ，返回删除后数组的新长度。不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+
+**「分析」**
+
+「数组」
+
+```cpp
+/*
+Input: nums = [1,1,1,2,2,3]
+Output: 5, nums = [1,1,2,2,3]
+
+Input: nums = [0,0,1,1,1,1,2,3,3]
+Output: 7, nums = [0,0,1,1,2,3,3]
+*/
+
+int removeDuplicates(vector<int>& nums) {
+    int n = int(nums.size());
+    if (n < 3) { return n; }
+    int len = 1, count = 1;
+    for (int i = 1; i < n; i++)
+    {
+        if (nums[i] == nums[i-1]) { count++; }
+        else { count = 1; }
+        if (count <= 2) { nums[len++] = nums[i]; }
+    }
+    return len;
+}
+```
+时间复杂度：$O(n)$，空间复杂度：$O(1)$。
