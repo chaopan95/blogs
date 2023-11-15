@@ -1,5 +1,170 @@
 ## 简介
-优先队列是一种特殊的数据结构，通常以数组的形式，按照当前所有元素的一个特性，e.g. 最大值、最小值等等。
+优先队列（priority queue）是一种按照优先级（call-by-priority）来访问元素的数据结构，通常以数组的形式，这里的优先级可以指最大值、最小值等等。
+
+
+## 二叉堆
+满二叉树（Complete Binary Tree）是一种特殊的自平衡树（AVL），其左子树不短于右子树。逻辑上，满二叉树堆（complete binary heap）等价于满二叉树；物理上，满二叉堆等价于数组。假设一个元素的秩为 i（数组下标），那么其父节点（如果有）的秩为 $\frac{i-1}{2}$，左孩孑节点的秩为 2i+1，右孩子节点的秩为 2i+2。
+
+$$
+\begin{matrix}
+& & & & & & & & & 0 \\
+& & & & & & & \swarrow & & & & \searrow \\
+& & & & & & 1 & & & & & & 2 \\
+& & & & & \swarrow & & \searrow & & & & & \\
+& & & & 3 & & & & 4 & & & &
+\end{matrix}
+$$
+
+**大顶堆**：顶点之外的所有节点值小于父节点 $H[i] \leq H[parent(i)]$，顶点是整个堆的最大值。**小顶堆**的定义与之相对应。
+
+### 插入
+这里以大顶堆为例。堆以数组的形式存储元素，如果我们想插入一个新元素 e，只需要将其放在在队尾。这个时候需要检查堆内结构，如果 e 小于其父节点，无需调整；否则，我们需要交换 e 和其父节点。但这样会引入新的问题：新的父节点有可能依然小于 e。对此，我们继续交换两者的位置，直到满足堆序要求。我们将这一操作成为上滤（percolate up），这里无需每次都交换，只需要找到最后一个位置即可。时间复杂度为 $O(\log n)$。
+
+### 删除
+当我们准备删除堆顶元素时，将其与数组的最后一个元素交换位置，然后丢弃。检查此时的根结点元素是否满足堆序要求。如果不满足，与它的较大的那个子节点（如果有）交换位置。持续这一操作，直到满足堆序要求。同样地，我们只需要找到最后一个字节点，交换一次即可。这一操作成为小滤（percolate down），时间复杂度 $O(\log n)$。
+
+### 建堆化
+给定一组数据，我们需要对其建堆（heapification）。
+
+#### 自顶向下
+对代建堆的数据，逐一插入堆中，采用上滤的方法调整堆内结构。最坏的情况时间复杂度 $O(n \log n)$，
+
+```cpp
+void percolateUp(vector<int> &arr, int idx) {
+    int n = int(arr.size());
+    if (idx < 0 || idx >= n) { return; }
+    while (idx > 0) {
+        int parIdx = (idx - 1) / 2;
+        if (arr[parIdx] > arr[idx]) {
+            swap(arr[parIdx], arr[idx]);
+            idx = parIdx;
+        } else {
+            return;
+        }
+    }
+}
+
+void heapify(vector<int> &arr) {
+    int n = int(arr.size());
+    for (int i = 1; i < n; i++) {
+        percolateUp(arr, i);
+    }
+}
+```
+
+#### 自底向上
+对满二叉树而言，叶子结点占所有节点的一半，且优先出现在树的左侧。因此，我们只需要对数组内一半的节点采用下滤操作即可建堆。最后的节点位置 $\left \lfloor \frac{n}{2} \right \rfloor - 1$。最坏情况下的时间复杂度 $\sum_{i} height(i) = O(n)$。
+
+```cpp
+void percolateDown(vector<int> &arr, int idx) {
+    int n = int(arr.size());
+    if (idx < 0 || idx >= n) { return; }
+    while (idx < n) {
+        int leftIdx = idx * 2 + 1, rightIdx = idx * 2 + 2;
+        if (leftIdx >= n) { break; }
+        if (rightIdx >= n) { rightIdx = leftIdx; }
+        if (arr[idx] < min(arr[leftIdx], arr[rightIdx])) { return; }
+        if (arr[leftIdx] < arr[rightIdx]) {
+            swap(arr[idx], arr[leftIdx]);
+            idx = leftIdx;
+        } else {
+            swap(arr[idx], arr[rightIdx]);
+            idx = rightIdx;
+        }
+    }
+}
+
+void heapify(vector<int> &arr) {
+    int n = int(arr.size());
+    for (int i = n-1; i >= 0; i--) {
+        percolateDown(arr, i);
+    }
+}
+```
+
+## 左式堆
+左式堆（leftist heap）具备二叉堆的性质之外，还用来高效合并两个堆 A 和 B。如果我们想合并两个堆，一个简单的方法是 A.insert(B.removeMax)，需要 $O(m \log(m+n))$ 的时间复杂度。另一种方法是用 Floid Heapification 的方法，即先 union(A, B) 再 heapify(A+B)，需要 $O(n+m)$ 的时间复杂度。左式堆可以进一步降低时间复杂度 $O(\log n)$。堆内的节点尽可能落在左侧，在右侧合并。
+
+### 零路长度
+我们假设所有的外部节点都是空节点，那么定义零路径长度（Null Path Length）
+
+$$
+NPL(x) =
+\begin{cases}
+0, & \text{x is null} \\
+1 + min(NPL(lc(x)), NPL(rc(x))), & \text{otherwise}
+\end{cases}
+$$
+
+以上述的图例而言，0 号节点的 NPL 为 3。
+
+这里，lc(x) 是 x 的左孩子，rc(x) 是 x 的右孩子。实际上，如果我们把上述的 min 改成 max，那么我们会得到一棵树高度的定义。NPL(x) 表达了 x 到外部节点的最短距离。
+
+### 左式堆性质
+对任何一个节点，左孩子节点的 NPL 不小于右孩子节点的 NPL，即 $NPL(lc(x)) \geq NPL(rc(x))$
+
+某一节点的 NPL 等于左右孩子节点的 NPL 较小值再加一。$NPL(x) = 1 + NPL(rc(x))$
+
+左式堆的子堆也是一个左式堆。
+
+### 右链
+这里定义**右链（Right Chain）**，从某一个节点 x 开始，沿着右孩子节点一路向下直到空节点。右链的最末端节点一定是空节点，并且有最小的NPL。
+
+$$
+NPL(r) = \left | rChain(r) \right | = d
+$$
+
+一个右链长为 d 的左式堆一定包含了一个高度为 d 的完整二叉树。并且，这个左式堆一定含有 $2^{d+1}-1$ 个节点，其中 $2^{d}-1$ 个内部节点。换言之，如果一个左式堆有 n 个节点，那么
+
+$$
+d \leq \left \lfloor log_{2}(n+1) \right \rfloor - 1 = O(logn)
+$$
+
+### 合并
+因为左式堆打破了常规堆的结构，所以我们用二叉树替代数组来实现左式堆。假设我们有 2 个左式堆 A 和 B（A > B），取 A 的右子堆，递归地与 B 合并，然后将合并后的结果当作 A 的右子堆。如果 A 的左子堆的 NPL 小于新的子堆的 NPL，交换两者。
+
+```cpp
+template <typename T>
+static BinNodePosi(T) merge(BinNodePosi(T) a, BinNodePosi(T) b) {
+	if (!a) return b;
+	if (!b) return a;
+	if (a->data <  b->data) swap(a, b);
+	a->rc = merge(a->rc, b);
+	a->rc->parent = a;
+	if (!a->lc || a->lc->npl < a->rc->npl) swap(a->lc, a->rc);
+	a->npl = a->rc?a->rc->npl+1:1;
+	return a;
+}
+```
+
+### 插入
+堆新增一个元素，调整堆的结构。
+
+```cpp
+void PQ_LeftHeap<T>::insert (T e) {
+	BinNodePosi(T) v = new BinNode<T>(e);
+	_root = merge(_root, v);
+	_root->parent = NULL;
+	_size++;
+}
+```
+
+### 删除堆顶
+同样地，当我们删除堆顶的元素后，需要重新调整堆内的顺序。
+
+```cpp
+void PQ_LeftHeap<T>::delMax () {
+	BinNodePosi(T) lHeap = _root->lc;
+	BinNodePosi(T) rHeap = _root->rc;
+	T e = _root->data;
+	delete _root;
+	_size--;
+	_root = merge(lHeap, rHeap);
+	if (_root) _root->parent = NULL;
+	return e;
+}
+```
+时间复杂度：$O(n \log n)$。
 
 
 ## 题目
