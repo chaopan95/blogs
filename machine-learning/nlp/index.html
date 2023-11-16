@@ -13,14 +13,14 @@
         <meta name="author" content="潘超">
       
       
-        <link rel="canonical" href="https://chaopan95.github.io/blogs/machine-learning/embs/">
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/machine-learning/nlp/">
       
       <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>词向量 - 个人博客</title>
+        <title>NLP - 个人博客</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#word2vec" class="md-skip">
           跳转至
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              词向量
+              NLP
             
           </span>
         </div>
@@ -1052,12 +1052,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          词向量
+          NLP
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        词向量
+        NLP
       </a>
       
         
@@ -1073,13 +1073,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    定义
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#word2vec" class="md-nav__link">
     Word2vec
   </a>
@@ -1088,47 +1081,42 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     思路
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     条件概率
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     目标函数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     梯度下降
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     两种方案
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     训练方法
   </a>
   
@@ -1151,6 +1139,66 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    符号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    模型结构
+  </a>
+  
+    <nav class="md-nav" aria-label="模型结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    前向传播 &amp; 反向传播
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnn" class="md-nav__link">
+    RNN 类型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    梯度消失与梯度爆炸
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gru" class="md-nav__link">
+    GRU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lstm" class="md-nav__link">
+    LSTM
+  </a>
   
 </li>
       
@@ -1294,13 +1342,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    定义
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#word2vec" class="md-nav__link">
     Word2vec
   </a>
@@ -1309,47 +1350,42 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     思路
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     条件概率
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     目标函数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     梯度下降
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     两种方案
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     训练方法
   </a>
   
@@ -1374,6 +1410,66 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    符号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    模型结构
+  </a>
+  
+    <nav class="md-nav" aria-label="模型结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    前向传播 &amp; 反向传播
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rnn" class="md-nav__link">
+    RNN 类型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    梯度消失与梯度爆炸
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gru" class="md-nav__link">
+    GRU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lstm" class="md-nav__link">
+    LSTM
+  </a>
+  
+</li>
       
     </ul>
   
@@ -1388,19 +1484,18 @@
               
                 
                 
-                  <h1>词向量</h1>
+                  <h1>NLP</h1>
                 
-                <h2 id="_1">定义<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>词向量是一种将单词数字化表达的方法，即将单词空间投影到向量空间。</p>
-<h2 id="word2vec">Word2vec<a class="headerlink" href="#word2vec" title="Permanent link">&para;</a></h2>
-<p>Word2vec（Mikolov et al. 2013）是一种生成词向量的框架。</p>
-<h3 id="_2">思路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+                <h2 id="word2vec">Word2vec<a class="headerlink" href="#word2vec" title="Permanent link">&para;</a></h2>
+<p>词向量是一种将单词数字化表达的方法，即将单词空间投影到向量空间。Word2vec（Mikolov et al. 2013）是一种生成词向量的框架。</p>
+<p><img alt="" src="../images/embs1.png" /></p>
+<h3 id="_1">思路<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>1）一个大语料库</p>
 <p>2）每一个单词可以被向量话</p>
 <p>3）本文中，每一个词都会有中心词（center）和上下文（outside）</p>
 <p>4）用 c 和 o 的词向量相似度来计算条件概率 P(o | c) 或者 P(c | o)</p>
 <p>5）调整词向量，以达到最大概率</p>
-<h3 id="_3">条件概率<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_2">条件概率<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>对一条文本「我爱天安门」来说，如果给出中心词「天」，那么我想知道「爱」和「门」的条件概率是多少呢？</p>
 <div>
 <div class="MathJax_Preview">
@@ -1411,7 +1506,7 @@ P(o | c) = P(w_{t+j} | w_{t}) = P(\text{天} | \text{爱})
 </script>
 </div>
 <p>这里就是用到给定中心词 c 来求上下文词 o 的条件概率。一般而言，上下文词处于中心的窗口内。如果依次遍历中心词（滑动窗口），即可求出所有的条件概率。</p>
-<h3 id="_4">目标函数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_3">目标函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>一个固定的窗口长度 m，对每个位置，预测所有上下文词 o。使用极大似然估计（MLE）</p>
 <div>
 <div class="MathJax_Preview">
@@ -1466,7 +1561,7 @@ u_{V} \\
 \in R^{2dV}
 </script>
 </div>
-<h3 id="_5">梯度下降<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_4">梯度下降<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>对 <span><span class="MathJax_Preview">v_{c}</span><script type="math/tex">v_{c}</script></span> 求导</p>
 <div>
 <div class="MathJax_Preview">
@@ -1521,13 +1616,315 @@ u_{V} \\
 \theta^{new} = \theta^{old} - \alpha \nabla_{theta} J(\theta)
 </script>
 </div>
-<h3 id="_6">两种方案<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_5">两种方案<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>skip-gram（SG）：用中心词预测上下文词</p>
 <p>Continuous Bag of Words（CBOW）：用上下文预测中心词</p>
-<h2 id="_7">训练方法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<h3 id="negative-sampling">Negative Sampling<a class="headerlink" href="#negative-sampling" title="Permanent link">&para;</a></h3>
+<h3 id="_6">训练方法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="negative-sampling">Negative Sampling<a class="headerlink" href="#negative-sampling" title="Permanent link">&para;</a></h4>
 <p>对整个语料库求条件概率的成本高昂，考虑对负样本随机采样，降低计算复杂度。假设每次采样 k 个负样本，那么在一次窗口中，最多有 2m+1 的单词和 2km 的负样本。</p>
-<h3 id="hierarchical-softmax">Hierarchical Softmax<a class="headerlink" href="#hierarchical-softmax" title="Permanent link">&para;</a></h3>
+<h4 id="hierarchical-softmax">Hierarchical Softmax<a class="headerlink" href="#hierarchical-softmax" title="Permanent link">&para;</a></h4>
+<h2 id="_7">符号<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>token：单词</p>
+<p>文本：一个序列的token</p>
+<p>输入：<span><span class="MathJax_Preview">x_{t}, t \in [1, T_{x}]</span><script type="math/tex">x_{t}, t \in [1, T_{x}]</script></span>，表示序列中第 t 个 token，<span><span class="MathJax_Preview">T_{x}</span><script type="math/tex">T_{x}</script></span> 代表文本长度。</p>
+<p>输出：<span><span class="MathJax_Preview">\hat{y}_{t}, t \in [1, T_{y}]</span><script type="math/tex">\hat{y}_{t}, t \in [1, T_{y}]</script></span>，表示第 t 个预测 token，<span><span class="MathJax_Preview">T_{y}</span><script type="math/tex">T_{y}</script></span> 代表输出长度。</p>
+<p>中间结果：<span><span class="MathJax_Preview">h_{t}, t \in [1, T_{x}]</span><script type="math/tex">h_{t}, t \in [1, T_{x}]</script></span></p>
+<p>真实标签：<span><span class="MathJax_Preview">y_{t}</span><script type="math/tex">y_{t}</script></span></p>
+<p>损失函数：<span><span class="MathJax_Preview">L_{t}(y_{t}, \hat{y}_{t})</span><script type="math/tex">L_{t}(y_{t}, \hat{y}_{t})</script></span>，衡量预测值与真实值的差距</p>
+<p>EOS：end of sentence，一个文本的终止符</p>
+<p>UNK：unknow words，未知词汇</p>
+<h2 id="_8">模型结构<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>递归神经网络（Recurrent Neural Network）结构
+<img alt="" src="../images/rnn1.png" /></p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; h_{t} = f_{h}(V \cdot x_{t} + W \cdot h_{t-1} + b_{h}) \\
+&amp; \hat{y_{}}_{t} = f_{y}(U \cdot h_{t} + b_{y}) \\
+&amp; L = \sum_{t} L_{t}(y_{t}, \hat{y_{t}})
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& h_{t} = f_{h}(V \cdot x_{t} + W \cdot h_{t-1} + b_{h}) \\
+& \hat{y_{}}_{t} = f_{y}(U \cdot h_{t} + b_{y}) \\
+& L = \sum_{t} L_{t}(y_{t}, \hat{y_{t}})
+\end{aligned}
+</script>
+</div>
+<p>RNN 的优势：1）任意的序列长度，2）较少的参数，因为所有的参数在不同时刻是共享的。</p>
+<p>MLP 效果差的原因：MLP 要求输入序列的长度固定，如果尝试一个固定长度的窗口，具体使用多大的窗口也是难以确定的。</p>
+<p>单向 RNN 只能接受左侧的信息，为了能接受右侧的编码，双向RNN（Bidirectional RNN）应用而生，在单向 RNN 基础上，新增一个 block。</p>
+<p><img alt="" src="../images/rnn2.png" /></p>
+<div>
+<div class="MathJax_Preview">
+\hat{y}_{t} = f_{h}(W_{\overrightarrow{h}} \overrightarrow{h}_{t-1} + W_{\overleftarrow{h}} \overleftarrow{h}_{t-1} + V x_{t} + b)
+</div>
+<script type="math/tex; mode=display">
+\hat{y}_{t} = f_{h}(W_{\overrightarrow{h}} \overrightarrow{h}_{t-1} + W_{\overleftarrow{h}} \overleftarrow{h}_{t-1} + V x_{t} + b)
+</script>
+</div>
+<h3 id="_9">前向传播 &amp; 反向传播<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>前向传播计算中间结果和损失函数 <span><span class="MathJax_Preview">h_{t}, \hat{y_{t}}, L_{t}</span><script type="math/tex">h_{t}, \hat{y_{t}}, L_{t}</script></span></p>
+<p>与 MLP 不同，反向传播还需要考虑时间，即 Backpropagation Through Time (BPTT)。所有的参数在时间步长上是共享，这意味着，如果我们想计算参数的梯度，我们需要对全时间步长的梯度求和。</p>
+<div>
+<div class="MathJax_Preview">
+\frac{\partial L}{\partial U}, \frac{\partial L}{\partial V}, \frac{\partial L}{\partial W}, \frac{\partial L}{\partial b_{x}}, \frac{\partial L}{\partial b_{h}}
+</div>
+<script type="math/tex; mode=display">
+\frac{\partial L}{\partial U}, \frac{\partial L}{\partial V}, \frac{\partial L}{\partial W}, \frac{\partial L}{\partial b_{x}}, \frac{\partial L}{\partial b_{h}}
+</script>
+</div>
+<p>计算 <span><span class="MathJax_Preview">\frac{\partial L}{\partial U}</span><script type="math/tex">\frac{\partial L}{\partial U}</script></span></p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{\partial L}{\partial U} &amp;= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial U} \\
+&amp;= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial U}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial L}{\partial U} &= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial U} \\
+&= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial U}
+\end{aligned}
+</script>
+</div>
+<p><span><span class="MathJax_Preview">\hat{y_{t}}</span><script type="math/tex">\hat{y_{t}}</script></span> 只依赖 U，因为</p>
+<div>
+<div class="MathJax_Preview">\hat{y_{}}_{t} = f_{y}(U \cdot h_{t} + b_{y})</div>
+<script type="math/tex; mode=display">\hat{y_{}}_{t} = f_{y}(U \cdot h_{t} + b_{y})</script>
+</div>
+<p>计算 <span><span class="MathJax_Preview">\frac{\partial L}{\partial W}</span><script type="math/tex">\frac{\partial L}{\partial W}</script></span></p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{\partial L}{\partial W} &amp; = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial W} \\
+&amp; = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} (\frac{\partial h_{t}}{\partial W} + \frac{\partial h_{t}}{\partial h_{t-1}}\frac{\partial h_{t-1}}{\partial W} \\&amp;+ \frac{\partial h_{t}}{\partial h_{t-1}} \frac{\partial h_{t-1}}{\partial h_{t-2}} \frac{\partial h_{t-2}}{\partial W}+ ...) \\
+&amp; = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} \frac{\partial h_{t}}{\partial h_{t-1}} ... \frac{\partial h_{k+1}}{\partial h_{k}} \frac{\partial h_{k}}{\partial W} \\
+&amp; = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}})\frac{\partial h_{k}}{\partial W}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial L}{\partial W} & = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial W} \\
+& = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} (\frac{\partial h_{t}}{\partial W} + \frac{\partial h_{t}}{\partial h_{t-1}}\frac{\partial h_{t-1}}{\partial W} \\&+ \frac{\partial h_{t}}{\partial h_{t-1}} \frac{\partial h_{t-1}}{\partial h_{t-2}} \frac{\partial h_{t-2}}{\partial W}+ ...) \\
+& = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} \frac{\partial h_{t}}{\partial h_{t-1}} ... \frac{\partial h_{k+1}}{\partial h_{k}} \frac{\partial h_{k}}{\partial W} \\
+& = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}})\frac{\partial h_{k}}{\partial W}
+\end{aligned}
+</script>
+</div>
+<p><span><span class="MathJax_Preview">h_{t}</span><script type="math/tex">h_{t}</script></span> 依赖它的前面的隐层。</p>
+<p>计算 <span><span class="MathJax_Preview">\frac{\partial L}{\partial V}</span><script type="math/tex">\frac{\partial L}{\partial V}</script></span>，同计算 W，<span><span class="MathJax_Preview">h_{t}</span><script type="math/tex">h_{t}</script></span> 依赖前面的隐层。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{\partial L}{\partial V} &amp;= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial V} \\
+&amp;= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t}\frac{\partial h_{i}}{\partial h_{i-1}}) \frac{\partial h_{k}}{\partial V}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial L}{\partial V} &= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial V} \\
+&= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t}\frac{\partial h_{i}}{\partial h_{i-1}}) \frac{\partial h_{k}}{\partial V}
+\end{aligned}
+</script>
+</div>
+<p>计算 <span><span class="MathJax_Preview">\frac{\partial L}{\partial b_{y}}</span><script type="math/tex">\frac{\partial L}{\partial b_{y}}</script></span> 和 <span><span class="MathJax_Preview">\frac{\partial L}{\partial b_{h}}</span><script type="math/tex">\frac{\partial L}{\partial b_{h}}</script></span></p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \frac{\partial L}{\partial b_{y}} = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial b_{y}} \\
+&amp; \frac{\partial L}{\partial b_{h}} = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}}) \frac{\partial h_{k}}{\partial b_{h}}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \frac{\partial L}{\partial b_{y}} = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial b_{y}} \\
+& \frac{\partial L}{\partial b_{h}} = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}}) \frac{\partial h_{k}}{\partial b_{h}}
+\end{aligned}
+</script>
+</div>
+<p>考虑 RNN 作为语言生成模型，<span><span class="MathJax_Preview">\hat{y_{t}}</span><script type="math/tex">\hat{y_{t}}</script></span> 是在某个时刻的输出，L 时输入序列的长度，N 是语料库的大小。<span><span class="MathJax_Preview">\hat{y_{t}}</span><script type="math/tex">\hat{y_{t}}</script></span> 是一个长为 N 的向量，每一个元素的值介于 0 和 1 之间，表示概率值，加和为 1。</p>
+<h3 id="rnn">RNN 类型<a class="headerlink" href="#rnn" title="Permanent link">&para;</a></h3>
+<p>RNN 有 5 种类型：1）一对一，2）一对多（语音生成），3）多对一（情绪分析），4）多对多，输入序列与输出序列等长，5）多对多，输入输出不等长</p>
+<p><img alt="" src="../images/rnn3.png" /></p>
+<h2 id="_10">梯度消失与梯度爆炸<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>梯度计算如下</p>
+<div>
+<div class="MathJax_Preview">\frac{\partial L_{t}}{\partial W} = \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}})\frac{\partial h_{k}}{\partial W}</div>
+<script type="math/tex; mode=display">\frac{\partial L_{t}}{\partial W} = \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}})\frac{\partial h_{k}}{\partial W}</script>
+</div>
+<p><span><span class="MathJax_Preview">\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}}</span><script type="math/tex">\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}}</script></span> 代表了 k 到 t 梯度的贡献。显然，k 与 t 的间隔越大，连乘的项越多。</p>
+<p>假设某一时刻 <span><span class="MathJax_Preview">h_{i}</span><script type="math/tex">h_{i}</script></span> 是一个标量，那么 <span><span class="MathJax_Preview">\frac{\partial h_{i}}{\partial h_{i-1}}</span><script type="math/tex">\frac{\partial h_{i}}{\partial h_{i-1}}</script></span> 也是一个标量。如果 <span><span class="MathJax_Preview">\left | \frac{\partial h_{i}}{\partial h_{i-1}} \right | &lt; 1</span><script type="math/tex">\left | \frac{\partial h_{i}}{\partial h_{i-1}} \right | < 1</script></span>，乘积趋向 0，这就是梯度消失（Vanishing gradients）；如果 <span><span class="MathJax_Preview">\left | \frac{\partial h_{i}}{\partial h_{i-1}} \right | &gt; 1</span><script type="math/tex">\left | \frac{\partial h_{i}}{\partial h_{i-1}} \right | > 1</script></span>，乘积趋向无穷，这就是梯度爆炸（Exploding Gradients）。</p>
+<p>梯度消失导致长距离训练失效，梯度爆炸导致计算结果变成 NaN。</p>
+<p>梯度消失的缓解方法：激活函数ReLU，正交初始化权重（<span><span class="MathJax_Preview">Q^{T} = Q^{-1} \Rightarrow \prod_{i}Q_{i}</span><script type="math/tex">Q^{T} = Q^{-1} \Rightarrow \prod_{i}Q_{i}</script></span>），抄近路（skip connection）。</p>
+<p>梯度爆炸的缓解方法：梯度裁剪（gradients clipping）或者截断反向传播（truncated BPTT）。</p>
+<p>ReLU 激活函数</p>
+<div>
+<div class="MathJax_Preview">
+\frac{\partial h_{t}}{\partial h_{t-1}} = \frac{\partial h_{t}}{\partial pr_{t}}\frac{\partial pr_{t}}{\partial h_{t-1}} = diag(f'_{h}(pr_{t})) \cdot W
+</div>
+<script type="math/tex; mode=display">
+\frac{\partial h_{t}}{\partial h_{t-1}} = \frac{\partial h_{t}}{\partial pr_{t}}\frac{\partial pr_{t}}{\partial h_{t-1}} = diag(f'_{h}(pr_{t})) \cdot W
+</script>
+</div>
+<h2 id="gru">GRU<a class="headerlink" href="#gru" title="Permanent link">&para;</a></h2>
+<p>GRU 全称是 Gated Recurrent Unit</p>
+<p><img alt="" src="../images/gru1.png" /></p>
+<p>GRU 有两个门，r 代表重置门（reset gate），u 代表更新门（update gate）。它们对输入做线形变换后接一个 sigmoid 激活函数，最终的值域是 [0, 1]。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; r_{t} = \sigma (V_{r} x_{t} + W_{r} h_{t-1} + b_{r}) \\
+&amp; u_{t} = \sigma (V_{u} x_{t} + W_{u} h_{t-1} + b_{u})
+\end{aligned} \Rightarrow
+\begin{pmatrix}
+r_{t} \\
+u_{t}
+\end{pmatrix} =
+\begin{pmatrix}
+\sigma \\
+\sigma
+\end{pmatrix}
+(V x_{t} + W h_{t-1} + b)
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& r_{t} = \sigma (V_{r} x_{t} + W_{r} h_{t-1} + b_{r}) \\
+& u_{t} = \sigma (V_{u} x_{t} + W_{u} h_{t-1} + b_{u})
+\end{aligned} \Rightarrow
+\begin{pmatrix}
+r_{t} \\
+u_{t}
+\end{pmatrix} =
+\begin{pmatrix}
+\sigma \\
+\sigma
+\end{pmatrix}
+(V x_{t} + W h_{t-1} + b)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; g_{t} = f_{h} (V_{g} x_{t} + W_{g} (h_{t-1} \cdot r_{t}) + b_{g}) \\
+&amp; h_{t} = (1 - u_{t}) \cdot g_{t} + u_{t} \cdot h_{t-1}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& g_{t} = f_{h} (V_{g} x_{t} + W_{g} (h_{t-1} \cdot r_{t}) + b_{g}) \\
+& h_{t} = (1 - u_{t}) \cdot g_{t} + u_{t} \cdot h_{t-1}
+\end{aligned}
+</script>
+</div>
+<p>重置门作为 g 的输入，起到的作用类似于 LSTM 的输入门；更新门平衡前面隐层单元的值。</p>
+<p>GRU 避免梯度消失，因为它有一个梯度捷径（short way）。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; u_{t} = \sigma(V_{u}x_{t} + W_{u}h_{t-1} + b_{u}) \\
+&amp; h_{t} = (1-u_{t}) \cdot g_{t} + u_{t} \cdot h_{t-1} \\
+&amp; \frac{\partial h_{t}}{\partial h_{t-1}} = diag(1 - u_{t}) \cdot \frac{\partial g_{h}}{\partial h_{h-1}} + diag(u_{h}) \Rightarrow \text{ High initial } b_{u}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& u_{t} = \sigma(V_{u}x_{t} + W_{u}h_{t-1} + b_{u}) \\
+& h_{t} = (1-u_{t}) \cdot g_{t} + u_{t} \cdot h_{t-1} \\
+& \frac{\partial h_{t}}{\partial h_{t-1}} = diag(1 - u_{t}) \cdot \frac{\partial g_{h}}{\partial h_{h-1}} + diag(u_{h}) \Rightarrow \text{ High initial } b_{u}
+\end{aligned}
+</script>
+</div>
+<p>如果我们将重置门打开（输出值 1 代表打开），更新门关闭（输出值 0 代表关闭），GRU 退化成一个简单版 RNN。</p>
+<h2 id="lstm">LSTM<a class="headerlink" href="#lstm" title="Permanent link">&para;</a></h2>
+<p>LSTM 全称 Long Short Term Memory</p>
+<p><img alt="" src="../images/lstm1.png" /></p>
+<p>c 代表内部记忆（internal memory）</p>
+<p>h 代表隐层单元，与 c 相同尺寸</p>
+<p>i 代表输入门（input gate）</p>
+<p>o 代表漱出门（output gate）</p>
+<p>f 代表遗忘门（forget gate）</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp;
+\begin{aligned}
+&amp; g_{t} = f_{h} (V_{g} x_{t} + W_{g} h_{t-1} + b_{g}) \\
+&amp; i_{t} = \sigma(V_{i} x_{t} + W_{i} h_{t-1} + b_{i}) \\
+&amp; o_{t} = \sigma(V_{o} x_{t} + W_{o} h_{t-1} + b_{o}) \\
+&amp; f_{t} = \sigma(V_{f} x_{t} + W_{f} h_{t-1} + b_{f})
+\end{aligned} \quad \Rightarrow \quad
+\begin{pmatrix}
+g_{t} \\
+i_{t} \\
+o_{t} \\
+f_{t}
+\end{pmatrix} = 
+\begin{pmatrix}
+f\\
+\sigma \\
+\sigma \\
+\sigma
+\end{pmatrix}
+(V x_{t} + W h_{t-1} + b)
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&
+\begin{aligned}
+& g_{t} = f_{h} (V_{g} x_{t} + W_{g} h_{t-1} + b_{g}) \\
+& i_{t} = \sigma(V_{i} x_{t} + W_{i} h_{t-1} + b_{i}) \\
+& o_{t} = \sigma(V_{o} x_{t} + W_{o} h_{t-1} + b_{o}) \\
+& f_{t} = \sigma(V_{f} x_{t} + W_{f} h_{t-1} + b_{f})
+\end{aligned} \quad \Rightarrow \quad
+\begin{pmatrix}
+g_{t} \\
+i_{t} \\
+o_{t} \\
+f_{t}
+\end{pmatrix} = 
+\begin{pmatrix}
+f\\
+\sigma \\
+\sigma \\
+\sigma
+\end{pmatrix}
+(V x_{t} + W h_{t-1} + b)
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; c_{t} = f_{t} \cdot c_{t-1} + i_{t} \cdot g_{t}, \quad \text{where } \cdot \text{ means element-wise multiplication} \\
+&amp; h_{t} = o_{t} \cdot f_{h}(c_{t}) \\
+&amp; \frac{\partial c_{t}}{\partial c_{t-1}} = diag(f_{t}) \Rightarrow \text{ High initial } b_{f}, \quad \text{to avoid vanishing gradients}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& c_{t} = f_{t} \cdot c_{t-1} + i_{t} \cdot g_{t}, \quad \text{where } \cdot \text{ means element-wise multiplication} \\
+& h_{t} = o_{t} \cdot f_{h}(c_{t}) \\
+& \frac{\partial c_{t}}{\partial c_{t-1}} = diag(f_{t}) \Rightarrow \text{ High initial } b_{f}, \quad \text{to avoid vanishing gradients}
+\end{aligned}
+</script>
+</div>
+<p>如果 <span><span class="MathJax_Preview">x \in R^{n}</span><script type="math/tex">x \in R^{n}</script></span> 并且 <span><span class="MathJax_Preview">h \in R^{m}</span><script type="math/tex">h \in R^{m}</script></span>，矩阵 V、W 和向量 b 的尺寸如下：</p>
+<div>
+<div class="MathJax_Preview">
+V \in R^{4m \times n}, \quad W \in R^{4m \times m}, \quad b \in R^{4m}
+</div>
+<script type="math/tex; mode=display">
+V \in R^{4m \times n}, \quad W \in R^{4m \times m}, \quad b \in R^{4m}
+</script>
+</div>
+<p>对这些门而言，我们使用 sigmoid 作为激活函数，其结果位于 0 - 1 之间。靠近 1 表示门打开；趋向 0 表示门关闭。输入门控制存储在内部记忆里的内容，g 和 i 的元素相乘结果，加入到内部记忆里。输出门控制从内部记忆中读取的内容，记忆单元 C 与 o 相乘，结果传给隐层单元。遗忘门控制传播信息的完整程度。</p>
+<p>三个门的开与关，造成 LSTM 单元不同的功能。例如，关闭 f，打开 i 和 o，LSTM 退化成一个简单的 RNN。</p>
+<p><img alt="" src="../images/lstm2.png" /></p>
+<p>相比于 RNN，LSTM 需要 4 倍的参数。 <span><span class="MathJax_Preview">h_{t-1}</span><script type="math/tex">h_{t-1}</script></span> 和 <span><span class="MathJax_Preview">h_{t}</span><script type="math/tex">h_{t}</script></span> 之间依旧有梯度爆炸的可能，因为非常大的 W 会导致，因此梯度截断是有用的。</p>
                 
               
               
