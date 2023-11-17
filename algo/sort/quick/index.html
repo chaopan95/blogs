@@ -254,6 +254,78 @@
   
   
     <li class="md-nav__item">
+      <a href="../select/" class="md-nav__link">
+        选择排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bubble/" class="md-nav__link">
+        冒泡排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../insert/" class="md-nav__link">
+        插入排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bucket/" class="md-nav__link">
+        桶排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../heap/" class="md-nav__link">
+        堆排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shell/" class="md-nav__link">
+        希尔排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../merge/" class="md-nav__link">
         归并排序
       </a>
@@ -1102,6 +1174,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../machine-learning/cv/" class="md-nav__link">
+        CV
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../machine-learning/nlp/" class="md-nav__link">
         NLP
       </a>
@@ -1283,7 +1367,132 @@
                   <h1>快速排序</h1>
                 
                 <h2 id="_1">原理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>快速排序找到一个中轴（pivot）使得右侧的数值不小于中轴值且左侧的数值不大于中轴值。</p>
+<p>快速排序（Quick Sort）找到一个中轴（pivot）使得右侧的数值不小于中轴值且左侧的数值不大于中轴值。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; S = S_{1} + S_{2} \\
+&amp; max(S_{1}) \leq min(S_{2})
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& S = S_{1} + S_{2} \\
+& max(S_{1}) \leq min(S_{2})
+\end{aligned}
+</script>
+</div>
+<p>如果两部分各自有序，那么整个数组也有序。分隔两段这一操作，可以表述成找一个中轴（pivot），用双指针的方法：</p>
+<p>1）对于给定的一段数组，在头和尾各放置一个指针 i 和 j</p>
+<p>2）如果 S[i] &gt;= S[j] 交换 i 和 j 对应的元素，然后移动 i 或者 j，直到 i == j</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">quickSort</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">pnt</span><span class="p">,</span> <span class="kt">int</span> <span class="n">start</span><span class="p">,</span> <span class="kt">int</span> <span class="n">end</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">start</span><span class="p">;</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">end</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">pnt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">pnt</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">j</span><span class="o">--</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">swap</span><span class="p">(</span><span class="n">pnt</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">pnt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">pnt</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">swap</span><span class="p">(</span><span class="n">pnt</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">quickSort</span><span class="p">(</span><span class="n">pnt</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">quickSort</span><span class="p">(</span><span class="n">pnt</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+平均时间复杂度：<span><span class="MathJax_Preview">O(n \log n)</span><script type="math/tex">O(n \log n)</script></span>，最差时间复杂度：<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(\log n)</span><script type="math/tex">O(\log n)</script></span>。快速排序改变了数组的相对位置，因此它是不稳定排序。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+T(n) &amp;= (n + 1) + \frac{1}{n} \\
+&amp;= \sum_{k=0}^{n-1}[T(k) + T(n-k-1)] \\
+&amp;= (n + 1) + \frac{2}{n} \sum_{k=0}^{n-1}T(k) \\
+nT(n) &amp;= n(n+1) + 2\sum_{k=0}^{n-1}T(k) \\
+(n-1)T(n-1) &amp;= (n-1)n + 2\sum_{k=0}^{n-2}T(k)
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+T(n) &= (n + 1) + \frac{1}{n} \\
+&= \sum_{k=0}^{n-1}[T(k) + T(n-k-1)] \\
+&= (n + 1) + \frac{2}{n} \sum_{k=0}^{n-1}T(k) \\
+nT(n) &= n(n+1) + 2\sum_{k=0}^{n-1}T(k) \\
+(n-1)T(n-1) &= (n-1)n + 2\sum_{k=0}^{n-2}T(k)
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+nT(n) - (n-1)T(n-1) &amp;= 2n + 2T(n-1) \\
+nT(n) - (n+1)T(n-1) &amp;= 2n
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+nT(n) - (n-1)T(n-1) &= 2n + 2T(n-1) \\
+nT(n) - (n+1)T(n-1) &= 2n
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{T(n)}{n+1} &amp;= \frac{2}{n+1} + \frac{T(n-1)}{n} \\
+&amp;= \frac{2}{n+1} + \frac{2}{n} + \frac{T(n-2)}{n-1}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{T(n)}{n+1} &= \frac{2}{n+1} + \frac{T(n-1)}{n} \\
+&= \frac{2}{n+1} + \frac{2}{n} + \frac{T(n-2)}{n-1}
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{T(n)}{n+1} &amp;= \frac{2}{n+1} + \frac{T(n-1)}{n} \\
+&amp;= \frac{2}{n+1} + \frac{2}{n} + \frac{T(n-2)}{n-1} \\
+&amp;= \frac{2}{n+1} + \frac{2}{n} + \frac{2}{n-1} + \cdots + \frac{2}{2} + \frac{T(0)}{1} \\
+&amp;= (2ln2)\log n \\
+&amp;= 1.39\log n
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{T(n)}{n+1} &= \frac{2}{n+1} + \frac{T(n-1)}{n} \\
+&= \frac{2}{n+1} + \frac{2}{n} + \frac{T(n-2)}{n-1} \\
+&= \frac{2}{n+1} + \frac{2}{n} + \frac{2}{n-1} + \cdots + \frac{2}{2} + \frac{T(0)}{1} \\
+&= (2ln2)\log n \\
+&= 1.39\log n
+\end{aligned}
+</script>
+</div>
 <h2 id="_2">题目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="k">数组中的第K个最大元素<a class="headerlink" href="#k" title="Permanent link">&para;</a></h3>
 <p>给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。你必须设计并实现时间复杂度为 O(n) 的算法解决此问题。例如，[3,2,1,5,6,4], k = 2，返回 5。</p>
