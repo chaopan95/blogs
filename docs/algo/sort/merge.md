@@ -1,5 +1,44 @@
 ## 原理
-归并排序采用分治的思想，将待排序的数据分块，并在块内排好序，块之间重新组织称有序数据。
+归并排序（Merge Sort）采用分治的思想，将待排序的数据分块，并在块内排好序，块之间重新组织称有序数据。
+
+以递归的方式实现，包含两步：
+
+1）将带排序的数组分成两个子数组，通常是均匀分割，这里代排序的数组长度至少为 2。
+
+2）两个子数组内是有序的，这是合并这两个数组
+
+时间复杂度
+
+$$
+T(n) = 2T(\frac{n}{2}) + O(n) \Leftrightarrow T(n) = n \log n
+$$
+
+```cpp
+template <typename T>
+void vector<T>::mergeSort(Rank lo, Rank hi) {
+	if (hi - lo < 2) return;
+	int mi = (lo + hi) >> 1;
+	mergeSort(lo, mi);
+	mergeSort(mi, hi);
+	merge(lo, mi, hi);
+}
+
+template <typename T>
+void vector<T>::merge(Rank lo, Rank mi, Rank hi) {
+	T *A = _elem + lo;
+	int lb = mi - lo;
+	T *B = new T[b];
+	for (Rank i = 0; i < lb; B[i]=A[i++]);
+	int lc = hi - mi;
+	T *C = _elem + mi;
+	for (Rank i = 0, j = 0, k = 0; (j < lb) || (k < lc); ) {
+		if ((j < lb) && (lc <= k || (B[i] <= C[k]))) A[i++] = B[j++];
+		if ((k < lc) && (lb <= j || (C[k] < B[j]))) A[i++] = C[k++];
+	}
+	delete []B;
+}
+```
+时间复杂度：$O(n \log n)$，空间复杂度：$O(n)$。
 
 
 ## 题目

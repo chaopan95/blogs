@@ -67,6 +67,12 @@ nav:
     - 算法:
         - 排序:
             - 基础: algo/sort/basis.md
+            - 选择排序: algo/sort/select.md
+            - 冒泡排序: algo/sort/bubble.md
+            - 插入排序: algo/sort/insert.md
+            - 桶排序: algo/sort/bucket.md
+            - 堆排序: algo/sort/heap.md
+            - 希尔排序: algo/sort/shell.md
             - 归并排序: algo/sort/merge.md
             - 快速排序: algo/sort/quick.md
         - 动态规划:
@@ -127,6 +133,7 @@ nav:
         - 正则化: machine-learning/regularization.md
         - 归一化: machine-learning/normalization.md
         - CNN: machine-learning/cnn.md
+        - CV: machine-learning/cv.md
         - NLP: machine-learning/nlp.md
         - 概率图: machine-learning/pgm.md
         - 信号与系统: machine-learning/signals.md
