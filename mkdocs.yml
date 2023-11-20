@@ -125,6 +125,8 @@ nav:
         - 感知机: machine-learning/perceptron.md
         - 支持向量机: machine-learning/svm.md
         - 决策树: machine-learning/decision-tree.md
+        - 聚类: machine-learning/clustering.md
+        - 降维: machine-learning/dimension_reduction.md
         - 激活函数: machine-learning/activation.md
         - ROC: machine-learning/roc.md
         - MLP: machine-learning/mlp.md

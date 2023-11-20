@@ -94,3 +94,22 @@ w_{n1}
 $$
 
 假设 10 条样本，每条样本 5 个特征，X 总共有 10*(5+1)=60 个值。
+
+
+## 正则化
+损失函数
+
+$$
+J(\theta) = -\frac{1}{m} [\sum_{i=1}^{m} y^{i} \log(h_{\theta}(x^{i})) + (1 - y^{i}) \log(1 - h_{\theta}(x^{i}))] + \frac{\lambda}{2m} \sum_{j=1}^{m} \theta_{j}^{2}
+$$
+
+梯度下降
+
+$$
+\begin{aligned}
+& \frac{\partial J(\theta)}{\partial \theta_{j}} = -\frac{1}{m} \sum_{i}^{m} x^{i}(y^{i} - h_{\theta}(x^{i})) + \frac{\lambda}{m} \theta_{j} \\
+& i = 1, ..., m \\
+& j = 0, 1, .., n \\
+&x_{0}^{i} = 1
+\end{aligned}
+$$

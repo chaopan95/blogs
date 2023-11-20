@@ -785,13 +785,34 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    进制转化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    检查括号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    栈排列
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     队列
   </a>
   
@@ -799,7 +820,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     用队列实现栈
   </a>
   
@@ -1096,6 +1117,30 @@
   
   
     <li class="md-nav__item">
+      <a href="../../machine-learning/clustering/" class="md-nav__link">
+        聚类
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine-learning/dimension_reduction/" class="md-nav__link">
+        降维
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../machine-learning/activation/" class="md-nav__link">
         激活函数
       </a>
@@ -1364,13 +1409,34 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    进制转化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    检查括号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    栈排列
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     队列
   </a>
   
@@ -1378,7 +1444,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     用队列实现栈
   </a>
   
@@ -1405,7 +1471,34 @@
                   <h1>栈 & 队列</h1>
                 
                 <h2 id="_1">栈<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>栈是一种具有【先进后出】特性的数据结构，通常于辅助实现非递归算法，如DFS。</p>
+<p>栈是一种具有【先进后出】特性的数据结构，通常于辅助实现非递归算法，如DFS。栈的实现通常是基于数组或者链表。以数组为例，我们可以将数组头视作栈底，数组尾视作栈顶。插入和删除操作都是 <span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span> 时间。接口定义如下：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">stack</span><span class="o">:</span> <span class="k">public</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">vois</span> <span class="n">push</span><span class="p">(</span><span class="n">T</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">insert</span><span class="p">(</span><span class="n">size</span><span class="p">(),</span> <span class="n">e</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">T</span> <span class="n">pop</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">remove</span><span class="p">(</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">T</span> <span class="o">&amp;</span><span class="n">top</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)[</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
 <h3 id="_2">两个栈实现队列<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -1599,9 +1692,130 @@
 </code></pre></div>
 </td></tr></table>
 时间复杂度：<span><span class="MathJax_Preview">O(1)</span><script type="math/tex">O(1)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>。</p>
-<h2 id="_4">队列<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>队列是一种具有【先进先出】特性的数据结构，用于实现BFS算法。</p>
-<h3 id="_5">用队列实现栈<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_4">进制转化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>进制转化（Base Convert）将一种进制下的值转化成另一种进值下的值，如 <span><span class="MathJax_Preview">89_{10} = 1011001_{2}</span><script type="math/tex">89_{10} = 1011001_{2}</script></span>。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{89}{2} &amp; = 44, \quad &amp; \text{mod} = 1 \\
+\frac{44}{2} &amp; = 22, \quad &amp; \text{mod} = 0 \\
+\frac{22}{2} &amp; = 11, \quad &amp; \text{mod} = 0 \\
+\frac{11}{2} &amp; = 5, \quad &amp; \text{mod} = 1 \\
+\frac{5}{2} &amp; = 2, \quad &amp; \text{mod} = 1 \\
+\frac{2}{2} &amp; = 1, \quad &amp; \text{mod} = 0 \\
+\frac{1}{2} &amp; = 0, \quad &amp; \text{mod} = 1
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{89}{2} & = 44, \quad & \text{mod} = 1 \\
+\frac{44}{2} & = 22, \quad & \text{mod} = 0 \\
+\frac{22}{2} & = 11, \quad & \text{mod} = 0 \\
+\frac{11}{2} & = 5, \quad & \text{mod} = 1 \\
+\frac{5}{2} & = 2, \quad & \text{mod} = 1 \\
+\frac{2}{2} & = 1, \quad & \text{mod} = 0 \\
+\frac{1}{2} & = 0, \quad & \text{mod} = 1
+\end{aligned}
+</script>
+</div>
+<p>有底向上记录余数，便得 1011001。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">convert</span><span class="p">(</span><span class="n">stack</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">S</span><span class="p">,</span> <span class="n">_int64</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">base</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="kt">char</span> <span class="n">digit</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">&#39;0&#39;</span><span class="p">,</span> <span class="sc">&#39;1&#39;</span><span class="p">,</span> <span class="sc">&#39;2&#39;</span><span class="p">,</span> <span class="sc">&#39;3&#39;</span><span class="p">,</span> <span class="sc">&#39;4&#39;</span><span class="p">,</span> <span class="sc">&#39;5&#39;</span><span class="p">,</span>
+        <span class="sc">&#39;6&#39;</span><span class="p">,</span> <span class="sc">&#39;7&#39;</span><span class="p">,</span> <span class="sc">&#39;8&#39;</span><span class="p">,</span> <span class="sc">&#39;9&#39;</span><span class="p">,</span> <span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="sc">&#39;B&#39;</span><span class="p">,</span> <span class="sc">&#39;C&#39;</span><span class="p">,</span> <span class="sc">&#39;D&#39;</span><span class="p">,</span> <span class="sc">&#39;E&#39;</span><span class="p">,</span> <span class="sc">&#39;F&#39;</span><span class="p">};</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">S</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">digit</span><span class="p">[</span><span class="n">n</span><span class="o">%</span><span class="n">base</span><span class="p">]);</span>
+        <span class="n">n</span> <span class="o">/=</span> <span class="n">base</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_5">检查括号<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>给定一个括号序列，检查是否是有效的组合。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">paren</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="n">exp</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">lo</span><span class="p">,</span> <span class="kt">int</span> <span class="n">hi</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">stack</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">S</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">lo</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">hi</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="sc">&#39;(&#39;</span> <span class="o">==</span> <span class="n">exp</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">S</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">exp</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">S</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">S</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">S</span><span class="p">.</span><span class="n">empty</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_6">栈排列<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>栈排列（Stack Permutation）考虑一个栈 A，从栈顶到栈尾元素依次如下 <span><span class="MathJax_Preview">&lt; a_{1}, a_{2}, \cdots, a_{n}]</span><script type="math/tex">< a_{1}, a_{2}, \cdots, a_{n}]</script></span>，B 和 S 是两个空栈。只允许如下两种操作</p>
+<p>1）S.push(A.pop())</p>
+<p>2）B.push(S.pop())</p>
+<p><img alt="" src="../images/stack1.png" /></p>
+<p>将 A 所有的元素转移到 B <span><span class="MathJax_Preview">[ a_{k1}, a_{k2}, \cdots, a_{kn} &gt;</span><script type="math/tex">[ a_{k1}, a_{k2}, \cdots, a_{kn} ></script></span>，我们称 B 是 A 的一个栈排列。加入一个栈有 n 个元素，</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; SP(n)=\sum_{k=1}^{n}SP(k-1)\times SP(n-k) \\
+&amp; SP(1)=1
+\end{aligned} \Rightarrow
+SP(n)=catalan(n)=\frac{(2n)!}{(n+1)!n!}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& SP(n)=\sum_{k=1}^{n}SP(k-1)\times SP(n-k) \\
+& SP(1)=1
+\end{aligned} \Rightarrow
+SP(n)=catalan(n)=\frac{(2n)!}{(n+1)!n!}
+</script>
+</div>
+<p>如果一个栈有三个元素 i，j，k（由底到顶），那么 k，j，i 将不会是一个栈排列。</p>
+<h2 id="_7">队列<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>队列是一种具有【先进先出】特性的数据结构，用于实现BFS算法。接口如下：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">queue</span><span class="o">:</span> <span class="k">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="n">enqueue</span><span class="p">(</span><span class="n">T</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">insertAsLast</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">T</span> <span class="n">dequeue</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">remove</span><span class="p">(</span><span class="n">first</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="n">T</span> <span class="o">&amp;</span><span class="n">front</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">first</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="_8">用队列实现栈<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>只用一个队列实现栈的功能：压入、弹出、取栈顶元素</p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2

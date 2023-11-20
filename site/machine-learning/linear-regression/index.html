@@ -1009,6 +1009,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    正则化
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1060,6 +1067,30 @@
     <li class="md-nav__item">
       <a href="../decision-tree/" class="md-nav__link">
         决策树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clustering/" class="md-nav__link">
+        聚类
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dimension_reduction/" class="md-nav__link">
+        降维
       </a>
     </li>
   
@@ -1337,6 +1368,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    正则化
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1396,6 +1434,81 @@ L(w) &= \frac{1}{n}\sum_{i=1}^{n}(w^{T}x_{i}-y_{i})^{2} \\
 &= \frac{1}{n}\left \| Xw-y \right \|^{2} \\
 &\rightarrow \min_{w}
 \end{aligned}
+</script>
+</div>
+<h2 id="_4">正则化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>损失函数</p>
+<div>
+<div class="MathJax_Preview">
+J(\theta) = \frac{1}{2m} [\sum_{i=1}^{m} (h_{\theta} (x^{i}) - y^{i})^{2} + \lambda \sum_{j=1}^{n} \theta_{j}^{2}]
+</div>
+<script type="math/tex; mode=display">
+J(\theta) = \frac{1}{2m} [\sum_{i=1}^{m} (h_{\theta} (x^{i}) - y^{i})^{2} + \lambda \sum_{j=1}^{n} \theta_{j}^{2}]
+</script>
+</div>
+<p>梯度下降</p>
+<div>
+<div class="MathJax_Preview">
+\frac{\partial J(\theta)}{\partial \theta_{j}} = \frac{1}{m}\sum_{i=1}^{m} (h_{\theta} (x^{i}) - y^{i}) x_{j}^{i} + \frac{\lambda}{m} \theta_{j}, \quad i = 1, ..., m, \quad j = 0, 1, .., n, \quad x_{0}^{i} = 1
+</div>
+<script type="math/tex; mode=display">
+\frac{\partial J(\theta)}{\partial \theta_{j}} = \frac{1}{m}\sum_{i=1}^{m} (h_{\theta} (x^{i}) - y^{i}) x_{j}^{i} + \frac{\lambda}{m} \theta_{j}, \quad i = 1, ..., m, \quad j = 0, 1, .., n, \quad x_{0}^{i} = 1
+</script>
+</div>
+<p>解析解</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+J(\theta) &amp; = (X\theta - Y)^{T} (X\theta - Y) + \lambda \theta^{T} \theta \\
+&amp; = ( \theta^{T} X^{T} - Y^{T}) (X\theta - Y) + \lambda \theta^{T} \theta \\
+&amp; = \theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T}Y + \lambda \theta^{T} \theta
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+J(\theta) & = (X\theta - Y)^{T} (X\theta - Y) + \lambda \theta^{T} \theta \\
+& = ( \theta^{T} X^{T} - Y^{T}) (X\theta - Y) + \lambda \theta^{T} \theta \\
+& = \theta^{T} X^{T} X \theta - \theta^{T} X^{T} Y - Y^{T} X \theta + Y^{T}Y + \lambda \theta^{T} \theta
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{\partial J(\theta)}{\partial \theta} &amp; = \frac{\theta^{T} X^{T} X \theta}{\partial \theta} - \frac{Y^{T} X \theta}{\partial \theta} - \frac{\partial \theta^{T} X^{T} Y}{\partial \theta} + \lambda \frac{\partial \theta^{T} \theta}{\partial \theta} \\
+&amp; = (X^{T}X + (X^{T}X)^{T}) \theta - X^{T}Y - X^{T}Y + 2 \lambda \theta \\
+&amp; = 2 X^{T} X \theta - 2 X^{T} Y + 2\lambda \theta = 0
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial J(\theta)}{\partial \theta} & = \frac{\theta^{T} X^{T} X \theta}{\partial \theta} - \frac{Y^{T} X \theta}{\partial \theta} - \frac{\partial \theta^{T} X^{T} Y}{\partial \theta} + \lambda \frac{\partial \theta^{T} \theta}{\partial \theta} \\
+& = (X^{T}X + (X^{T}X)^{T}) \theta - X^{T}Y - X^{T}Y + 2 \lambda \theta \\
+& = 2 X^{T} X \theta - 2 X^{T} Y + 2\lambda \theta = 0
+\end{aligned}
+</script>
+</div>
+<p>不对偏置项惩罚</p>
+<div>
+<div class="MathJax_Preview">
+\theta = (X^{T}X + \lambda E)^{-1} X^{T} Y, \quad \text{where } E =
+\begin{bmatrix}
+0 &amp;  &amp;  &amp;  &amp;  &amp; \\
+   &amp; 1 &amp;  &amp; &amp;  &amp; \\
+   &amp;  &amp; \ddots &amp;  &amp;  &amp; \\
+   &amp;  &amp; &amp; &amp;  1  &amp; \\
+   &amp;  &amp;  &amp;  &amp;  &amp; 1
+\end{bmatrix}_{n \times n}
+</div>
+<script type="math/tex; mode=display">
+\theta = (X^{T}X + \lambda E)^{-1} X^{T} Y, \quad \text{where } E =
+\begin{bmatrix}
+0 &  &  &  &  & \\
+   & 1 &  & &  & \\
+   &  & \ddots &  &  & \\
+   &  & & &  1  & \\
+   &  &  &  &  & 1
+\end{bmatrix}_{n \times n}
 </script>
 </div>
                 
