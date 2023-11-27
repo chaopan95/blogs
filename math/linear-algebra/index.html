@@ -1272,7 +1272,7 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    基础
+    几何解释
   </a>
   
 </li>
@@ -1328,7 +1328,7 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    基础
+    几何解释
   </a>
   
 </li>
@@ -1348,7 +1348,104 @@
                 
                   <h1>线性代数</h1>
                 
-                <h2 id="_1">基础<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+                <h2 id="_1">几何解释<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>考虑一组两元一次方程组</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+2x-y=0 \\
+-x+2y=3
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+2x-y=0 \\
+-x+2y=3
+\end{cases}
+</script>
+</div>
+<p>如果将每一行看成一条直线，这个方程组可以被画出来</p>
+<p><img alt="" src="../images/la1.png" /></p>
+<p>我们引入矩阵的表达方式</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+2 &amp; -1 \\
+-1 &amp; 2
+\end{bmatrix} &amp;
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix} &amp;
+= &amp;
+\begin{bmatrix}
+0 \\
+3
+\end{bmatrix} \\
+A &amp; X &amp; = &amp; b
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+2 & -1 \\
+-1 & 2
+\end{bmatrix} &
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix} &
+= &
+\begin{bmatrix}
+0 \\
+3
+\end{bmatrix} \\
+A & X & = & b
+\end{matrix}
+</script>
+</div>
+<p>我们还可以将上述的一元二次方程组的求解过程看作是向量的线性组合</p>
+<div>
+<div class="MathJax_Preview">
+x
+\begin{bmatrix}
+2 \\
+-1
+\end{bmatrix}
++
+y
+\begin{bmatrix}
+-1 \\
+2
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+3
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+x
+\begin{bmatrix}
+2 \\
+-1
+\end{bmatrix}
++
+y
+\begin{bmatrix}
+-1 \\
+2
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+3
+\end{bmatrix}
+</script>
+</div>
+<p><img alt="" src="../images/la2.png" /></p>
+<p>线性代数的几何解释是，列向量的线性组合（linear combination of columns）。</p>
                 
               
               
