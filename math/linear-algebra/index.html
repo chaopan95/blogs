@@ -1277,6 +1277,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    消元法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    逆
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1329,6 +1343,20 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     几何解释
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    消元法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    逆
   </a>
   
 </li>
@@ -1446,6 +1474,619 @@ y
 </div>
 <p><img alt="" src="../images/la2.png" /></p>
 <p>线性代数的几何解释是，列向量的线性组合（linear combination of columns）。</p>
+<p>对于上述的方程组，我们可以求的结果</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+x = 1 \\
+y = 2
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+x = 1 \\
+y = 2
+\end{cases}
+</script>
+</div>
+<p>这里如果 x 和 y 可以取任意值，那么通过上面的组合，我们可以得到二维平面的任意向量，也就是说 Ax = b，无论 b 是何值，x 都有解。我们得到一个重要的发现，Ax 表示的是 A 在对应空间上的所有列向量的线性组合。</p>
+<p>我们可以把矩阵乘法理解成列向量的线性组合，例如</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+2 &amp; 5 \\
+1 &amp; 3
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+2
+\end{bmatrix}
+=
+1
+\begin{bmatrix}
+2 \\
+1
+\end{bmatrix}
++
+2
+\begin{bmatrix}
+5 \\
+3
+\end{bmatrix}
+=
+\begin{bmatrix}
+12 \\
+7
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+2 & 5 \\
+1 & 3
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+2
+\end{bmatrix}
+=
+1
+\begin{bmatrix}
+2 \\
+1
+\end{bmatrix}
++
+2
+\begin{bmatrix}
+5 \\
+3
+\end{bmatrix}
+=
+\begin{bmatrix}
+12 \\
+7
+\end{bmatrix}
+</script>
+</div>
+<h2 id="_2">消元法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>考虑一个三元一次方程组</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+x + 2y + z = 2 \\
+3x + 8y + z = 12 \\
+4y + z = 1
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+x + 2y + z = 2 \\
+3x + 8y + z = 12 \\
+4y + z = 1
+\end{cases}
+</script>
+</div>
+<p>在求解多元一次方程组的时候，我们使用的正是消元法，它的思想是用方程关系，不断减少未知数的个数。将上述的方程组，转化成 Ax = b 的形式后，A 的矩阵表达</p>
+<div>
+<div class="MathJax_Preview">
+A = 
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 \\
+3 &amp; \color{red}\boxed{8} &amp; 1 \\
+0 &amp; 4 &amp; \color{red}\boxed{1}
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+A = 
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 \\
+3 & \color{red}\boxed{8} & 1 \\
+0 & 4 & \color{red}\boxed{1}
+\end{bmatrix}
+</script>
+</div>
+<p>方框圈中的叫做主元（pivot）。消元的过程如下，用第一行消除剩下行的第一个元</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 \\
+3 &amp; \color{red}\boxed{8} &amp; 1 \\
+0 &amp; 4 &amp; \color{red}\boxed{1}
+\end{bmatrix} \Leftrightarrow 
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 \\
+0 &amp; \color{red}\boxed{2} &amp; -2 \\
+0 &amp; 4 &amp; \color{red}\boxed{1}
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 \\
+3 & \color{red}\boxed{8} & 1 \\
+0 & 4 & \color{red}\boxed{1}
+\end{bmatrix} \Leftrightarrow 
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 \\
+0 & \color{red}\boxed{2} & -2 \\
+0 & 4 & \color{red}\boxed{1}
+\end{bmatrix}
+</script>
+</div>
+<p>用第二行消除剩下行的第二个元</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 \\
+0 &amp; \color{red}\boxed{2} &amp; -2 \\
+0 &amp; 4 &amp; \color{red}\boxed{1}
+\end{bmatrix} \Leftrightarrow 
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 \\
+0 &amp; \color{red}\boxed{2} &amp; -2 \\
+0 &amp; 0 &amp; \color{red}\boxed{5}
+\end{bmatrix} = U
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 \\
+0 & \color{red}\boxed{2} & -2 \\
+0 & 4 & \color{red}\boxed{1}
+\end{bmatrix} \Leftrightarrow 
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 \\
+0 & \color{red}\boxed{2} & -2 \\
+0 & 0 & \color{red}\boxed{5}
+\end{bmatrix} = U
+</script>
+</div>
+<p>我们得到了上三角矩阵（upper-triangle）通常用 U 表示。继续用最后一行消除其他行</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 \\
+0 &amp; \color{red}\boxed{2} &amp; -2 \\
+0 &amp; 0 &amp; \color{red}\boxed{5}
+\end{bmatrix} \Leftrightarrow
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 0 \\
+0 &amp; \color{red}\boxed{2} &amp; 0 \\
+0 &amp; 0 &amp; \color{red}\boxed{5}
+\end{bmatrix} \Leftrightarrow
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 0 &amp; 0 \\
+0 &amp; \color{red}\boxed{2} &amp; 0 \\
+0 &amp; 0 &amp; \color{red}\boxed{5}
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 \\
+0 & \color{red}\boxed{2} & -2 \\
+0 & 0 & \color{red}\boxed{5}
+\end{bmatrix} \Leftrightarrow
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 0 \\
+0 & \color{red}\boxed{2} & 0 \\
+0 & 0 & \color{red}\boxed{5}
+\end{bmatrix} \Leftrightarrow
+\begin{bmatrix}
+\color{red}\boxed{1}  & 0 & 0 \\
+0 & \color{red}\boxed{2} & 0 \\
+0 & 0 & \color{red}\boxed{5}
+\end{bmatrix}
+</script>
+</div>
+<p>消元的过程实际上是将 A 转化成 U。我们在找主元时，需要找到某个非零值作为主元，这个过程可以交换矩阵的两行。得到 U 之后，需要带回到原来的方程组，因为我们对 A 进行了线性变换，需要对 b 也要做同样的变换，因此引入 增广矩阵（augment matrix），即在矩阵 A 的右侧并入 b。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 &amp; 2 \\
+3 &amp; \color{red}\boxed{8} &amp; 1 &amp; 12 \\
+0 &amp; 4 &amp; \color{red}\boxed{1} &amp; 2
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 & 2 \\
+3 & \color{red}\boxed{8} & 1 & 12 \\
+0 & 4 & \color{red}\boxed{1} & 2
+\end{bmatrix}
+</script>
+</div>
+<p>消元所做的一系列线性变换，同样作用到增广矩阵上。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 &amp; 2 \\
+3 &amp; \color{red}\boxed{8} &amp; 1 &amp; 12 \\
+0 &amp; 4 &amp; \color{red}\boxed{1} &amp; 2
+\end{bmatrix} \\
+\Updownarrow \\
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 &amp; 2\\
+0 &amp; \color{red}\boxed{2} &amp; -2 &amp; 6 \\
+0 &amp; 4 &amp; \color{red}\boxed{1} &amp; 2
+\end{bmatrix} \\
+\Updownarrow \\
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 &amp; 2 \\
+0 &amp; \color{red}\boxed{2} &amp; -2 &amp; 6 \\
+0 &amp; 0 &amp; \color{red}\boxed{5} &amp; -10
+\end{bmatrix} \\
+\Updownarrow \\
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 0 &amp; 4 \\
+0 &amp; \color{red}\boxed{2} &amp; 0 &amp; 2 \\
+0 &amp; 0 &amp; \color{red}\boxed{5} &amp; -10
+\end{bmatrix} \\
+\Updownarrow \\
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 0 &amp; 0 &amp; 2 \\
+0 &amp; \color{red}\boxed{2} &amp; 0 &amp; 2 \\
+0 &amp; 0 &amp; \color{red}\boxed{5} &amp; -10
+\end{bmatrix}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 & 2 \\
+3 & \color{red}\boxed{8} & 1 & 12 \\
+0 & 4 & \color{red}\boxed{1} & 2
+\end{bmatrix} \\
+\Updownarrow \\
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 & 2\\
+0 & \color{red}\boxed{2} & -2 & 6 \\
+0 & 4 & \color{red}\boxed{1} & 2
+\end{bmatrix} \\
+\Updownarrow \\
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 & 2 \\
+0 & \color{red}\boxed{2} & -2 & 6 \\
+0 & 0 & \color{red}\boxed{5} & -10
+\end{bmatrix} \\
+\Updownarrow \\
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 0 & 4 \\
+0 & \color{red}\boxed{2} & 0 & 2 \\
+0 & 0 & \color{red}\boxed{5} & -10
+\end{bmatrix} \\
+\Updownarrow \\
+\begin{bmatrix}
+\color{red}\boxed{1}  & 0 & 0 & 2 \\
+0 & \color{red}\boxed{2} & 0 & 2 \\
+0 & 0 & \color{red}\boxed{5} & -10
+\end{bmatrix}
+\end{matrix}
+</script>
+</div>
+<p>最终的解</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+x = 2 \\
+y = 1 \\
+z = -2
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+x = 2 \\
+y = 1 \\
+z = -2
+\end{cases}
+</script>
+</div>
+<p>考虑两个矩阵相乘</p>
+<div>
+<div class="MathJax_Preview">
+AB = 
+\begin{bmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} &amp; b_{12} \\
+b_{21} &amp; b_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11}b_{11} + a_{12}b_{21} &amp; a_{11}b_{12} + a_{12}b_{22} \\
+a_{21}b_{11} + a_{22}b_{21} &amp; a_{21}b_{12} + a_{22}b_{22}
+\end{bmatrix} = C
+</div>
+<script type="math/tex; mode=display">
+AB = 
+\begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\
+a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}
+\end{bmatrix} = C
+</script>
+</div>
+<p>如果我们以 A 为基准点，右乘 B 得倒 C。C 有两列，每一列可以看成 B 对应的列右乘到 A 上 </p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+AB &amp;=
+\begin{bmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} &amp; b_{12} \\
+b_{21} &amp; b_{22}
+\end{bmatrix} \\
+&amp;=
+\begin{bmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+B_{1} &amp; B_{2} \\
+\end{bmatrix}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+AB &=
+\begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22}
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+B_{1} & B_{2} \\
+\end{bmatrix}
+\end{aligned}
+</script>
+</div>
+<p>同样地，以 B 为基准点，C 相当于 B 左乘 A，即 A 的每一行左乘到 B 上。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+AB &amp;=
+\begin{bmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} &amp; b_{12} \\
+b_{21} &amp; b_{22}
+\end{bmatrix} \\
+&amp;=
+\begin{bmatrix}
+A_{1} \\
+A_{2}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} &amp; b_{12} \\
+b_{21} &amp; b_{22}
+\end{bmatrix}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+AB &=
+\begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22}
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+A_{1} \\
+A_{2}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22}
+\end{bmatrix}
+\end{aligned}
+</script>
+</div>
+<p>根据上面的发现，一个矩阵 A 通过消元得倒 U，本质上是一个行向量的线性变行，因此也就是一个不断左乘矩阵的过程。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 \\
+3 &amp; \color{red}\boxed{8} &amp; 1 \\
+0 &amp; 4 &amp; \color{red}\boxed{1}
+\end{bmatrix} \Leftrightarrow 
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 \\
+0 &amp; \color{red}\boxed{2} &amp; -2 \\
+0 &amp; 4 &amp; \color{red}\boxed{1}
+\end{bmatrix} \\
+\Downarrow \\
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+-3 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 \\
+3 &amp; \color{red}\boxed{8} &amp; 1 \\
+0 &amp; 4 &amp; \color{red}\boxed{1}
+\end{bmatrix} =
+\begin{bmatrix}
+\color{red}\boxed{1}  &amp; 2 &amp; 1 \\
+0 &amp; \color{red}\boxed{2} &amp; -2 \\
+0 &amp; 4 &amp; \color{red}\boxed{1}
+\end{bmatrix}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 \\
+3 & \color{red}\boxed{8} & 1 \\
+0 & 4 & \color{red}\boxed{1}
+\end{bmatrix} \Leftrightarrow 
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 \\
+0 & \color{red}\boxed{2} & -2 \\
+0 & 4 & \color{red}\boxed{1}
+\end{bmatrix} \\
+\Downarrow \\
+\begin{bmatrix}
+1 & 0 & 0 \\
+-3 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 \\
+3 & \color{red}\boxed{8} & 1 \\
+0 & 4 & \color{red}\boxed{1}
+\end{bmatrix} =
+\begin{bmatrix}
+\color{red}\boxed{1}  & 2 & 1 \\
+0 & \color{red}\boxed{2} & -2 \\
+0 & 4 & \color{red}\boxed{1}
+\end{bmatrix}
+\end{matrix}
+</script>
+</div>
+<p>这里我们把左乘的矩阵成为初等变换矩阵（elementary matrix）或者消元矩阵（elimination matrix），用 E 表示。仔细观察会发现，A 的第一行和第三行没有变换，对应的 E 的第一行和第三行同单位矩阵（identity matrix），第二行减去第一行的三倍，所以 E 的第二行为 (-3, 1, 0)。总结来说，一个行向量 a（<span><span class="MathJax_Preview">1 \times n</span><script type="math/tex">1 \times n</script></span>）左乘到一个矩阵 B（<span><span class="MathJax_Preview">n \times m</span><script type="math/tex">n \times m</script></span>），得到一个行向量 c（<span><span class="MathJax_Preview">1 \times m</span><script type="math/tex">1 \times m</script></span>），这个行向量 c 的值就是 B 的行向量线性组合的结果，线性组合的系数来自于 a。</p>
+<p>如果涉及到行交换，我们需要用到置换矩阵（permutation matrix），用 P 表示。例如，交换两行需要将 P 左乘</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+a &amp; b \\
+c &amp; d
+\end{bmatrix} =
+\begin{bmatrix}
+c &amp; d \\
+a &amp; b
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix} =
+\begin{bmatrix}
+c & d \\
+a & b
+\end{bmatrix}
+</script>
+</div>
+<p>交换两列需要将 P 右乘到矩阵上</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+a &amp; b \\
+c &amp; d
+\end{bmatrix}
+\begin{bmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{bmatrix} =
+\begin{bmatrix}
+b &amp; a \\
+d &amp; c
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix} =
+\begin{bmatrix}
+b & a \\
+d & c
+\end{bmatrix}
+</script>
+</div>
+<p>我们可以发现，置换矩阵其实是单位矩阵的一种变体，如果我们想交换矩阵 A 的某两列（行），只要需要将单位矩阵对应两列（行）交换得到 P，然后右（左）乘到 A 上。</p>
+<h2 id="_3">逆<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>假设我们有一个矩阵 A，我们想找到一个矩阵 B 使得 B A = I。B 就是 A 的逆矩阵（inverse），也写作 <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span>，例如</p>
+<div>
+<div class="MathJax_Preview">
+A =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+-3 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+A =
+\begin{bmatrix}
+1 & 0 & 0 \\
+-3 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+</script>
+</div>
+<p>逆矩阵左乘</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+3 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+-3 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix} =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+1 & 0 & 0 \\
+3 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+-3 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} =
+\begin{bmatrix}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+</script>
+</div>
                 
               
               
