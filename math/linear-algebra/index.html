@@ -1286,6 +1286,13 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    乘法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     逆
   </a>
   
@@ -1356,6 +1363,13 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    乘法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     逆
   </a>
   
@@ -2030,7 +2044,247 @@ d & c
 </script>
 </div>
 <p>我们可以发现，置换矩阵其实是单位矩阵的一种变体，如果我们想交换矩阵 A 的某两列（行），只要需要将单位矩阵对应两列（行）交换得到 P，然后右（左）乘到 A 上。</p>
-<h2 id="_3">逆<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_3">乘法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>考虑两个矩阵 <span><span class="MathJax_Preview">A_{n \times m}</span><script type="math/tex">A_{n \times m}</script></span> 和 <span><span class="MathJax_Preview">B_{m \times p}</span><script type="math/tex">B_{m \times p}</script></span>，两者的尺寸表现在其下标上，乘积后的矩阵为 <span><span class="MathJax_Preview">C_{n \times p}</span><script type="math/tex">C_{n \times p}</script></span>，C 中的某个位置的元素结果遵循着如下规则</p>
+<div>
+<div class="MathJax_Preview">
+C_{ij} = \sum_{k = 1}^{m} A_{ik}B_{kj}
+</div>
+<script type="math/tex; mode=display">
+C_{ij} = \sum_{k = 1}^{m} A_{ik}B_{kj}
+</script>
+</div>
+<p>A 的列数和 B 的行数要保持一致。</p>
+<p>如果我们将矩阵 B 还成一组列向量的组合，那么每一列和 A 想乘，便会得到 C 的每一列，这是矩阵乘法的另一种视角：<strong>C 中的每一列都是 A 的列向量的线性组合，线性组合的系数来自于 B 对应的列。</strong></p>
+<div>
+<div class="MathJax_Preview">
+A_{n \times m}
+\begin{bmatrix}
+\mid &amp; \mid &amp; \cdots &amp; \mid \\
+B_{1} &amp; B_{2} &amp; \cdots &amp; B_{p}  \\
+\mid &amp; \mid &amp; \cdots &amp; \mid
+\end{bmatrix}_{m \times p}
+=
+\begin{bmatrix}
+\mid &amp; \mid &amp; \cdots &amp; \mid \\
+C_{1} &amp; C_{2} &amp; \cdots &amp; C_{p}  \\
+\mid &amp; \mid &amp; \cdots &amp; \mid
+\end{bmatrix}_{n \times p}
+</div>
+<script type="math/tex; mode=display">
+A_{n \times m}
+\begin{bmatrix}
+\mid & \mid & \cdots & \mid \\
+B_{1} & B_{2} & \cdots & B_{p}  \\
+\mid & \mid & \cdots & \mid
+\end{bmatrix}_{m \times p}
+=
+\begin{bmatrix}
+\mid & \mid & \cdots & \mid \\
+C_{1} & C_{2} & \cdots & C_{p}  \\
+\mid & \mid & \cdots & \mid
+\end{bmatrix}_{n \times p}
+</script>
+</div>
+<p>同样地，如果我们将 A 看成一组行向量，那么 A 的每一行左乘到 B 上，就会得到 C 的对应行。这是行向量的视角：<strong>C 中的每一行都是 B 的行向量的线性组合，线性组合的系数来自 B 对应的行</strong>。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+- &amp; A_{1} &amp; - \\
+- &amp; A_{2} &amp; - \\
+\vdots &amp; \vdots &amp; \vdots \\
+- &amp; A_{n} &amp; -
+\end{bmatrix}_{n \times m}
+B_{m \times p}
+=
+\begin{bmatrix}
+- &amp; C_{1} &amp; - \\
+- &amp; C_{2} &amp; - \\
+\vdots &amp; \vdots &amp; \vdots \\
+- &amp; C_{n} &amp; -
+\end{bmatrix}_{n \times p}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+- & A_{1} & - \\
+- & A_{2} & - \\
+\vdots & \vdots & \vdots \\
+- & A_{n} & -
+\end{bmatrix}_{n \times m}
+B_{m \times p}
+=
+\begin{bmatrix}
+- & C_{1} & - \\
+- & C_{2} & - \\
+\vdots & \vdots & \vdots \\
+- & C_{n} & -
+\end{bmatrix}_{n \times p}
+</script>
+</div>
+<p>结合列向量和行向量这两种视角，我们可以总结出矩阵乘积的核心是，矩阵 A 的列向量与矩阵 B 的行向量两两相乘，然后全部加起来。</p>
+<div>
+<div class="MathJax_Preview">
+C = AB = \sum (\text{col of A})(\text{row of B})
+</div>
+<script type="math/tex; mode=display">
+C = AB = \sum (\text{col of A})(\text{row of B})
+</script>
+</div>
+<p>例如</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+C &amp;= AB \\
+&amp;=
+\begin{bmatrix}
+2 &amp; 7 \\
+3 &amp; 8 \\
+4 &amp; 9
+\end{bmatrix}
+\begin{bmatrix}
+1 &amp; 6 \\
+0 &amp; 0
+\end{bmatrix} \\
+&amp;=
+\begin{bmatrix}
+2 \\
+3 \\
+4
+\end{bmatrix}
+\begin{bmatrix}
+1 &amp; 6
+\end{bmatrix} +
+\begin{bmatrix}
+2 \\
+3 \\
+4
+\end{bmatrix}
+\begin{bmatrix}
+0 &amp; 0
+\end{bmatrix} +
+\begin{bmatrix}
+7 \\
+8 \\
+9
+\end{bmatrix}
+\begin{bmatrix}
+1 &amp; 6
+\end{bmatrix} +
+\begin{bmatrix}
+7 \\
+8 \\
+9
+\end{bmatrix}
+\begin{bmatrix}
+0 &amp; 0
+\end{bmatrix} \\
+&amp;=
+\begin{bmatrix}
+2 + 0 + 7 + 0 &amp; 12 + 0 + 42 + 0 \\
+3 + 0 + 8 + 0 &amp; 18 + 0 + 48 + 0 \\
+4 + 0 + 9 + 0 &amp; 24 + 0 + 54 + 0
+\end{bmatrix} \\
+&amp;=
+\begin{bmatrix}
+9 &amp; 54 \\
+11 &amp; 66 \\
+13 &amp; 78
+\end{bmatrix}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+C &= AB \\
+&=
+\begin{bmatrix}
+2 & 7 \\
+3 & 8 \\
+4 & 9
+\end{bmatrix}
+\begin{bmatrix}
+1 & 6 \\
+0 & 0
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+2 \\
+3 \\
+4
+\end{bmatrix}
+\begin{bmatrix}
+1 & 6
+\end{bmatrix} +
+\begin{bmatrix}
+2 \\
+3 \\
+4
+\end{bmatrix}
+\begin{bmatrix}
+0 & 0
+\end{bmatrix} +
+\begin{bmatrix}
+7 \\
+8 \\
+9
+\end{bmatrix}
+\begin{bmatrix}
+1 & 6
+\end{bmatrix} +
+\begin{bmatrix}
+7 \\
+8 \\
+9
+\end{bmatrix}
+\begin{bmatrix}
+0 & 0
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+2 + 0 + 7 + 0 & 12 + 0 + 42 + 0 \\
+3 + 0 + 8 + 0 & 18 + 0 + 48 + 0 \\
+4 + 0 + 9 + 0 & 24 + 0 + 54 + 0
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+9 & 54 \\
+11 & 66 \\
+13 & 78
+\end{bmatrix}
+\end{aligned}
+</script>
+</div>
+<p>有些时候，较大矩阵间乘积计算较为复杂，我们可以对其进行「分块」（block）处理。</p>
+<div>
+<div class="MathJax_Preview">
+\left[\begin{array} {c:c}
+A_{1} &amp; A_{2} \\ \hline 
+A_{3} &amp; A_{4}
+\end{array} \right]
+\left[\begin{array} {c:c}
+B_{1} &amp; B_{2} \\ \hline 
+B_{3} &amp; B_{4}
+\end{array} \right] =
+\left[\begin{array} {c:c}
+A_{1}B_{1} + A_{2}B_{3} &amp; A_{1}B_{2} + A_{2}B_{4} \\ \hline 
+A_{3}B_{1} + A_{4}B_{3} &amp; A_{3}B_{2} + A_{4}B_{4}
+\end{array} \right]
+</div>
+<script type="math/tex; mode=display">
+\left[\begin{array} {c:c}
+A_{1} & A_{2} \\ \hline 
+A_{3} & A_{4}
+\end{array} \right]
+\left[\begin{array} {c:c}
+B_{1} & B_{2} \\ \hline 
+B_{3} & B_{4}
+\end{array} \right] =
+\left[\begin{array} {c:c}
+A_{1}B_{1} + A_{2}B_{3} & A_{1}B_{2} + A_{2}B_{4} \\ \hline 
+A_{3}B_{1} + A_{4}B_{3} & A_{3}B_{2} + A_{4}B_{4}
+\end{array} \right]
+</script>
+</div>
+<h2 id="_4">逆<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>假设我们有一个矩阵 A，我们想找到一个矩阵 B 使得 B A = I。B 就是 A 的逆矩阵（inverse），也写作 <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span>，例如</p>
 <div>
 <div class="MathJax_Preview">
@@ -2085,6 +2339,15 @@ A =
 1 & 1 & 0 \\
 0 & 0 & 1
 \end{bmatrix}
+</script>
+</div>
+<p>如果 A 是一个方阵（square matrix），即列数和行数是相等的。那么 A 的逆矩阵 <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span>，左逆和右逆时等价的。</p>
+<div>
+<div class="MathJax_Preview">
+A^{-1} A = I = A A^{-1}
+</div>
+<script type="math/tex; mode=display">
+A^{-1} A = I = A A^{-1}
 </script>
 </div>
                 
