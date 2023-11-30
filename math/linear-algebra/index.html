@@ -1298,6 +1298,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#lu" class="md-nav__link">
+    LU 分解
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1371,6 +1378,13 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     逆
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lu" class="md-nav__link">
+    LU 分解
   </a>
   
 </li>
@@ -1792,6 +1806,15 @@ z = -2
 \end{cases}
 </script>
 </div>
+<p>算法复杂度 <span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span></p>
+<div>
+<div class="MathJax_Preview">
+n^{2} + (n - 1)^{2} + \cdots + 1^{2} = \frac{n(n+1)(n+2)}{6}
+</div>
+<script type="math/tex; mode=display">
+n^{2} + (n - 1)^{2} + \cdots + 1^{2} = \frac{n(n+1)(n+2)}{6}
+</script>
+</div>
 <p>考虑两个矩阵相乘</p>
 <div>
 <div class="MathJax_Preview">
@@ -2043,7 +2066,73 @@ d & c
 \end{bmatrix}
 </script>
 </div>
-<p>我们可以发现，置换矩阵其实是单位矩阵的一种变体，如果我们想交换矩阵 A 的某两列（行），只要需要将单位矩阵对应两列（行）交换得到 P，然后右（左）乘到 A 上。</p>
+<p>我们可以发现，置换矩阵其实是单位矩阵的一种变体，如果我们想交换矩阵 A 的某两列（行），只要需要将单位矩阵对应两列（行）交换得到 P，然后右（左）乘到 A 上。对于一个 n 阶单位矩阵，总共有 n! 个置换矩阵，这里包含单位矩阵。例如，n = 3 时</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+0 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+0 & 1 & 0
+\end{bmatrix}
+</script>
+</div>
 <h2 id="_3">乘法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>考虑两个矩阵 <span><span class="MathJax_Preview">A_{n \times m}</span><script type="math/tex">A_{n \times m}</script></span> 和 <span><span class="MathJax_Preview">B_{m \times p}</span><script type="math/tex">B_{m \times p}</script></span>，两者的尺寸表现在其下标上，乘积后的矩阵为 <span><span class="MathJax_Preview">C_{n \times p}</span><script type="math/tex">C_{n \times p}</script></span>，C 中的某个位置的元素结果遵循着如下规则</p>
 <div>
@@ -2556,6 +2645,133 @@ E [A, I] = [EA, E] = [I, A^{-1}]
 </script>
 </div>
 <p>可知，EA = I，那么 E 就是 A 的逆矩阵。</p>
+<h2 id="lu">LU 分解<a class="headerlink" href="#lu" title="Permanent link">&para;</a></h2>
+<p>假设 A 时可逆的，那么</p>
+<div>
+<div class="MathJax_Preview">
+A^{-1}A = I
+</div>
+<script type="math/tex; mode=display">
+A^{-1}A = I
+</script>
+</div>
+<p>对两端进行转置</p>
+<div>
+<div class="MathJax_Preview">
+(AA^{-1})^{T} = (A^{-1})^{T}A^{T} = I^{T} = I
+</div>
+<script type="math/tex; mode=display">
+(AA^{-1})^{T} = (A^{-1})^{T}A^{T} = I^{T} = I
+</script>
+</div>
+<p>我们可以得出一个结论，A 的转置的逆矩阵等价于 A 的逆矩阵的转置</p>
+<div>
+<div class="MathJax_Preview">
+(A^{T})^{-1} = (A^{-1})^{T}
+</div>
+<script type="math/tex; mode=display">
+(A^{T})^{-1} = (A^{-1})^{T}
+</script>
+</div>
+<p>前面说到消元的本质是行向量的线性变换，对矩阵 A 左乘一个初等变换矩阵得到 U</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+1 &amp; 0 \\
+-4 &amp; 1
+\end{bmatrix} &amp;
+\begin{bmatrix}
+2 &amp; 1 \\
+8 &amp; 7
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+2 &amp; 1 \\
+0 &amp; 3
+\end{bmatrix} \\
+E &amp; A &amp; = &amp; U
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+1 & 0 \\
+-4 & 1
+\end{bmatrix} &
+\begin{bmatrix}
+2 & 1 \\
+8 & 7
+\end{bmatrix} & = &
+\begin{bmatrix}
+2 & 1 \\
+0 & 3
+\end{bmatrix} \\
+E & A & = & U
+\end{matrix}
+</script>
+</div>
+<p>我们将 E 挪到等式的右侧，便可以得到 A 的分解。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+2 &amp; 1 \\
+8 &amp; 7
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+1 &amp; 0 \\
+4 &amp; 1
+\end{bmatrix} &amp;
+\begin{bmatrix}
+2 &amp; 1 \\
+0 &amp; 3
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+1 &amp; 0 \\
+4 &amp; 1
+\end{bmatrix} &amp;
+\begin{bmatrix}
+2 &amp; 0 \\
+0 &amp; 3
+\end{bmatrix} &amp;
+\begin{bmatrix}
+1 &amp; \frac{1}{2} \\
+0 &amp; 1
+\end{bmatrix} \\
+A &amp; = &amp; L &amp; U &amp; = &amp; L &amp; D &amp; U
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+2 & 1 \\
+8 & 7
+\end{bmatrix} & = &
+\begin{bmatrix}
+1 & 0 \\
+4 & 1
+\end{bmatrix} &
+\begin{bmatrix}
+2 & 1 \\
+0 & 3
+\end{bmatrix} & = &
+\begin{bmatrix}
+1 & 0 \\
+4 & 1
+\end{bmatrix} &
+\begin{bmatrix}
+2 & 0 \\
+0 & 3
+\end{bmatrix} &
+\begin{bmatrix}
+1 & \frac{1}{2} \\
+0 & 1
+\end{bmatrix} \\
+A & = & L & U & = & L & D & U
+\end{matrix}
+</script>
+</div>
+<p>L 代表下三角（lower triangle），U 代表上三角（upper triangle），D 代表对角（diagonal）</p>
                 
               
               
