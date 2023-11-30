@@ -3785,12 +3785,52 @@ I & F \\
 </div>
 <p>此时有 0 个解或者 <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> 个解</p>
 <p>总结如下</p>
-<p>| 秩与行列数的关系 | 主元变量个数 | 自由变量个数 | 零空间 N(A) | Ax = b 的解个数 | Ax = b 的解（如果有） |
-| :----: | :----: | :----: | :----: | :----: |
-| 列满秩（r = n &lt; m） | n | 0 | 只有零向量 | 0 或者 1 | <span><span class="MathJax_Preview">x_{c} = x_{p}</span><script type="math/tex">x_{c} = x_{p}</script></span> |
-| 行满秩（r = m &lt; n） | m | n - m | 零向量和自由变量对应的向量 | <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> | <span><span class="MathJax_Preview">x_{c} = x_{p} + x_{n}</span><script type="math/tex">x_{c} = x_{p} + x_{n}</script></span> |
-| 列满秩且行满秩（r = n = m） | r | 0 | 零向量 | 1 | <span><span class="MathJax_Preview">x_{c} = x_{p}</span><script type="math/tex">x_{c} = x_{p}</script></span> |
-| 列不满秩且行不满秩（r &lt; n, r &lt; m） | r | n - r | 零向量和自由变量对应的向量 | 0 或者 <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> | <span><span class="MathJax_Preview">x_{c} = x_{p} + x_{n}</span><script type="math/tex">x_{c} = x_{p} + x_{n}</script></span> |</p>
+<table>
+<thead>
+<tr>
+<th align="center">秩与行列数的关系</th>
+<th align="center">主元变量个数</th>
+<th align="center">自由变量个数</th>
+<th align="center">零空间 N(A)</th>
+<th align="center">Ax = b 的解个数</th>
+<th align="center">Ax = b 的解（如果有）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">列满秩（r = n &lt; m）</td>
+<td align="center">n</td>
+<td align="center">0</td>
+<td align="center">只有零向量</td>
+<td align="center">0 或者 1</td>
+<td align="center"><span><span class="MathJax_Preview">x_{c} = x_{p}</span><script type="math/tex">x_{c} = x_{p}</script></span></td>
+</tr>
+<tr>
+<td align="center">行满秩（r = m &lt; n）</td>
+<td align="center">m</td>
+<td align="center">n - m</td>
+<td align="center">零向量和自由变量对应的向量</td>
+<td align="center"><span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span></td>
+<td align="center"><span><span class="MathJax_Preview">x_{c} = x_{p} + x_{n}</span><script type="math/tex">x_{c} = x_{p} + x_{n}</script></span></td>
+</tr>
+<tr>
+<td align="center">列满秩且行满秩（r = n = m）</td>
+<td align="center">r</td>
+<td align="center">0</td>
+<td align="center">零向量</td>
+<td align="center">1</td>
+<td align="center"><span><span class="MathJax_Preview">x_{c} = x_{p}</span><script type="math/tex">x_{c} = x_{p}</script></span></td>
+</tr>
+<tr>
+<td align="center">列不满秩且行不满秩（r &lt; n, r &lt; m）</td>
+<td align="center">r</td>
+<td align="center">n - r</td>
+<td align="center">零向量和自由变量对应的向量</td>
+<td align="center">0 或者 <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span></td>
+<td align="center"><span><span class="MathJax_Preview">x_{c} = x_{p} + x_{n}</span><script type="math/tex">x_{c} = x_{p} + x_{n}</script></span></td>
+</tr>
+</tbody>
+</table>
                 
               
               
