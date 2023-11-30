@@ -1305,6 +1305,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    转置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    向量空间
+  </a>
+  
+    <nav class="md-nav" aria-label="向量空间">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    子空间
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    列空间
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    零空间
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1386,6 +1427,47 @@
   <a href="#lu" class="md-nav__link">
     LU 分解
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    转置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    向量空间
+  </a>
+  
+    <nav class="md-nav" aria-label="向量空间">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    子空间
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    列空间
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    零空间
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2133,6 +2215,21 @@ d & c
 \end{bmatrix}
 </script>
 </div>
+<p>置换矩阵有一个性质</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; P^{-1} = P^{T} \\
+&amp; P^{T} P = I
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& P^{-1} = P^{T} \\
+& P^{T} P = I
+\end{aligned}
+</script>
+</div>
 <h2 id="_3">乘法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>考虑两个矩阵 <span><span class="MathJax_Preview">A_{n \times m}</span><script type="math/tex">A_{n \times m}</script></span> 和 <span><span class="MathJax_Preview">B_{m \times p}</span><script type="math/tex">B_{m \times p}</script></span>，两者的尺寸表现在其下标上，乘积后的矩阵为 <span><span class="MathJax_Preview">C_{n \times p}</span><script type="math/tex">C_{n \times p}</script></span>，C 中的某个位置的元素结果遵循着如下规则</p>
 <div>
@@ -2771,7 +2868,226 @@ A & = & L & U & = & L & D & U
 \end{matrix}
 </script>
 </div>
-<p>L 代表下三角（lower triangle），U 代表上三角（upper triangle），D 代表对角（diagonal）</p>
+<p>L 代表下三角（lower triangle），U 代表上三角（upper triangle），D 代表对角（diagonal）。如果我们考虑行交换，那么应该写成 PA = LU。</p>
+<h2 id="_5">转置<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>矩阵的转置指的是将 A 的列向量用行向量的方式排列</p>
+<div>
+<div class="MathJax_Preview">
+A^{T}_{ji} = A_{ij}
+</div>
+<script type="math/tex; mode=display">
+A^{T}_{ji} = A_{ij}
+</script>
+</div>
+<p>例如</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; A =
+\begin{bmatrix}
+1 &amp; 3 \\
+2 &amp; 3 \\
+4 &amp; 1
+\end{bmatrix} \\
+&amp; A^{T} = 
+\begin{bmatrix}
+1 &amp; 2 &amp; 4 \\
+3 &amp; 3 &amp; 1
+\end{bmatrix}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& A =
+\begin{bmatrix}
+1 & 3 \\
+2 & 3 \\
+4 & 1
+\end{bmatrix} \\
+& A^{T} = 
+\begin{bmatrix}
+1 & 2 & 4 \\
+3 & 3 & 1
+\end{bmatrix}
+\end{aligned}
+</script>
+</div>
+<p>如果矩阵的转置和自身相等，这样的矩阵成为「对症矩阵」（symmetric matrix）。</p>
+<div>
+<div class="MathJax_Preview">
+A = A^{T} =
+\begin{bmatrix}
+3 &amp; 1 &amp; 7 \\
+1 &amp; 2 &amp; 9 \\
+7 &amp; 9 &amp; 4
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+A = A^{T} =
+\begin{bmatrix}
+3 & 1 & 7 \\
+1 & 2 & 9 \\
+7 & 9 & 4
+\end{bmatrix}
+</script>
+</div>
+<p>显然，对称矩阵一定是方阵。但是非对称矩阵也可以变成对称矩阵，方法是左乘它的转置。</p>
+<div>
+<div class="MathJax_Preview">
+(A^{T}A)^{T} = A^{T}(A^{T})^{T} = A^{T}A
+</div>
+<script type="math/tex; mode=display">
+(A^{T}A)^{T} = A^{T}(A^{T})^{T} = A^{T}A
+</script>
+</div>
+<h2 id="_6">向量空间<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>向量空间（vector space）可以看成是向量的一个集合，在这个集合里，我们可以进行线性运算（加乘 <span><span class="MathJax_Preview">\alpha v + \beta w</span><script type="math/tex">\alpha v + \beta w</script></span>）。一个空间必须包含<strong>原点</strong>才能构成封闭空间。例如一个平面空间 <span><span class="MathJax_Preview">R^{2}</span><script type="math/tex">R^{2}</script></span> 涵盖了所有 2 维的向量（只有两个实数分量）。第一象限并不能构成向量空间，因为它不是封闭的线性运算。</p>
+<h3 id="_7">子空间<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>子空间（subspace）是原空间的自己。例如，实数平面 <span><span class="MathJax_Preview">R^{2}</span><script type="math/tex">R^{2}</script></span> 是一个原空间，那么它的子空间有三个</p>
+<p>1）实数平面本身（plane）</p>
+<p>2）任何一条过远点的直线（line）</p>
+<p>3）原点本身（point）</p>
+<p>假设有两个子空间 S 和 T，那么两者的交集 <span><span class="MathJax_Preview">S \cap T</span><script type="math/tex">S \cap T</script></span> 也是一个子空间。</p>
+<h3 id="_8">列空间<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>下面考虑矩阵如何构成子空间，有一个矩阵如下</p>
+<div>
+<div class="MathJax_Preview">
+A =
+\begin{bmatrix}
+1 &amp; 1 &amp; 2 \\
+2 &amp; 1 &amp; 3 \\
+3 &amp; 1 &amp; 4 \\
+4 &amp; 1 &amp; 5
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+A =
+\begin{bmatrix}
+1 & 1 & 2 \\
+2 & 1 & 3 \\
+3 & 1 & 4 \\
+4 & 1 & 5
+\end{bmatrix}
+</script>
+</div>
+<p>A 的列向量属于 <span><span class="MathJax_Preview">R^{4}</span><script type="math/tex">R^{4}</script></span>，因为有 4 个实数分量。列向量的所有线性组合构成了一个子空间，我们称之为<strong>列空间</strong>（column space），用 C(A) 表示。从上面的例子可知，第三列向量是前两列的线性组合，那么它们所有的线性组合将会是一个平面。</p>
+<p>这时我们会问一个问题，Ax = b 是否有解？</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+1 &amp; 1 &amp; 2 \\
+2 &amp; 1 &amp; 3 \\
+3 &amp; 1 &amp; 4 \\
+4 &amp; 1 &amp; 5
+\end{bmatrix} &amp;
+\begin{bmatrix}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+b_{1} \\
+b_{2} \\
+b_{3} \\
+b_{4}
+\end{bmatrix} \\
+A &amp; x &amp; = &amp; b
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+1 & 1 & 2 \\
+2 & 1 & 3 \\
+3 & 1 & 4 \\
+4 & 1 & 5
+\end{bmatrix} &
+\begin{bmatrix}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{bmatrix} & = &
+\begin{bmatrix}
+b_{1} \\
+b_{2} \\
+b_{3} \\
+b_{4}
+\end{bmatrix} \\
+A & x & = & b
+\end{matrix}
+</script>
+</div>
+<p>这里有三个未知数，但是方程数目是 4，通常情况是无解的。但是根据前面总结，Ax 表示的 A 的列向量的线性组合，如果 b 是这个线性组合中的一员，也就是说 <strong>b 属于 A 的列空间 C(A)</strong>，那么方程组有解；反制，无解。</p>
+<p>因为 A 的三个列向量是线性相关的，因此有一列是没有贡献的，我们可以去除任意一列。通常是最后一列，保留前面的线性无关的列，也称作主列。</p>
+<h3 id="_9">零空间<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>零空间（null space）表示 Ax = 0 的所有解集合 x，记作 N(A)。从定义可以看出，零空间针对 x，而列空间针对 b。例如</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+1 &amp; 1 &amp; 2 \\
+2 &amp; 1 &amp; 3 \\
+3 &amp; 1 &amp; 4 \\
+4 &amp; 1 &amp; 5
+\end{bmatrix} &amp;
+\begin{bmatrix}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+0 \\
+0 \\
+0 \\
+0
+\end{bmatrix} \\
+A &amp; x &amp; = &amp; b
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+1 & 1 & 2 \\
+2 & 1 & 3 \\
+3 & 1 & 4 \\
+4 & 1 & 5
+\end{bmatrix} &
+\begin{bmatrix}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{bmatrix} & = &
+\begin{bmatrix}
+0 \\
+0 \\
+0 \\
+0
+\end{bmatrix} \\
+A & x & = & b
+\end{matrix}
+</script>
+</div>
+<p>这里零空间 <span><span class="MathJax_Preview">x \in R^{3}</span><script type="math/tex">x \in R^{3}</script></span>，因为有三个未知数。我们可以解这个方程组</p>
+<div>
+<div class="MathJax_Preview">
+x = c
+\begin{bmatrix}
+1 \\
+1 \\
+-1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+x = c
+\begin{bmatrix}
+1 \\
+1 \\
+-1
+\end{bmatrix}
+</script>
+</div>
+<p>这里 c 可以取任意的实数，自然包含了全 0 解。可以看出，零空间实际上是一条直线。</p>
                 
               
               
