@@ -2912,7 +2912,7 @@ A^{T}_{ji} = A_{ij}
 \end{aligned}
 </script>
 </div>
-<p>如果矩阵的转置和自身相等，这样的矩阵成为「对症矩阵」（symmetric matrix）。</p>
+<p>如果矩阵的转置和自身相等，这样的矩阵成为「对称矩阵」（symmetric matrix）。</p>
 <div>
 <div class="MathJax_Preview">
 A = A^{T} =
@@ -3018,7 +3018,7 @@ A & x & = & b
 \end{matrix}
 </script>
 </div>
-<p>这里有三个未知数，但是方程数目是 4，通常情况是无解的。但是根据前面总结，Ax 表示的 A 的列向量的线性组合，如果 b 是这个线性组合中的一员，也就是说 <strong>b 属于 A 的列空间 C(A)</strong>，那么方程组有解；反制，无解。</p>
+<p>这里有三个未知数，但是方程数目是 4，通常情况是无解的。但是根据前面总结，Ax 表示的 A 的列向量的线性组合，如果 b 是这个线性组合中的一员，也就是说 <strong>b 属于 A 的列空间 C(A)</strong>，那么方程组有解；反之，无解。</p>
 <p>因为 A 的三个列向量是线性相关的，因此有一列是没有贡献的，我们可以去除任意一列。通常是最后一列，保留前面的线性无关的列，也称作主列。</p>
 <h3 id="_9">零空间<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>零空间（null space）表示 Ax = 0 的所有解集合 x，记作 N(A)。从定义可以看出，零空间针对 x，而列空间针对 b。例如</p>
@@ -3088,6 +3088,261 @@ x = c
 </script>
 </div>
 <p>这里 c 可以取任意的实数，自然包含了全 0 解。可以看出，零空间实际上是一条直线。</p>
+<p>下面我们来求解零空间，考虑这样的一个矩阵 A</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+1 &amp; 2 &amp; 2 &amp; 2 \\
+2 &amp; 4 &amp; 6 &amp; 8 \\
+3 &amp; 6 &amp; 8 &amp; 10
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+1 & 2 & 2 & 2 \\
+2 & 4 & 6 & 8 \\
+3 & 6 & 8 & 10
+\end{bmatrix}
+</script>
+</div>
+<p>通过消元，转化成上三角矩阵 U 或者阶梯形式（echelon form）</p>
+<div>
+<div class="MathJax_Preview">
+U =
+\begin{bmatrix}
+\boxed{\color{red} 1} &amp; 2 &amp; 2 &amp; 2 \\
+0 &amp; 0 &amp; \boxed{\color{red} 2} &amp; 4 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+U =
+\begin{bmatrix}
+\boxed{\color{red} 1} & 2 & 2 & 2 \\
+0 & 0 & \boxed{\color{red} 2} & 4 \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+</script>
+</div>
+<p>这个例子里，只有两个主元，主元的个数叫做矩阵的秩（rank）。主元所在的列叫主元列（pivot columns），其他的列叫做自由列（free columns）。这里「自由」指的是我们可以给对应的未知数（<span><span class="MathJax_Preview">x_{2}, x_{4}</span><script type="math/tex">x_{2}, x_{4}</script></span>）任意值。根据消元后系数，方程组如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+x_{1} + 2x_{2} + 2x_{3} + 2x_{4} = 0 \\
+2x_{4} + 4x_{4} = 0
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+x_{1} + 2x_{2} + 2x_{3} + 2x_{4} = 0 \\
+2x_{4} + 4x_{4} = 0
+\end{cases}
+</script>
+</div>
+<p>我们不妨给两个自由变量 <span><span class="MathJax_Preview">x_{2} = 1, x_{4} = 0</span><script type="math/tex">x_{2} = 1, x_{4} = 0</script></span></p>
+<div>
+<div class="MathJax_Preview">
+x =
+\begin{bmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+x =
+\begin{bmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{bmatrix}
+</script>
+</div>
+<p>也可以敷另外一组值 <span><span class="MathJax_Preview">x_{2} = 0, x_{4} = 1</span><script type="math/tex">x_{2} = 0, x_{4} = 1</script></span></p>
+<div>
+<div class="MathJax_Preview">
+x =
+\begin{bmatrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+x =
+\begin{bmatrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{bmatrix}
+</script>
+</div>
+<p>这两个都称为特解，注意到有几个自由列，就有几个特解。最后零空间的解为所有特解的线性组合</p>
+<div>
+<div class="MathJax_Preview">
+x = \alpha_{1}
+\begin{bmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{bmatrix} + \alpha_{2}
+\begin{bmatrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+x = \alpha_{1}
+\begin{bmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{bmatrix} + \alpha_{2}
+\begin{bmatrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{bmatrix}
+</script>
+</div>
+<p>如果一个矩阵 A 的尺寸是 <span><span class="MathJax_Preview">m \times n</span><script type="math/tex">m \times n</script></span>，它的秩为 r，那么它的主元个数和主元列数为 r，自由列数为 n - r。</p>
+<p>这里总结一下求解零空间的算法：</p>
+<p>1）消元得到 U</p>
+<p>2）确定主元列和自由列</p>
+<p>3）给自由变量赋值求的特解</p>
+<p>4）所有特解的线性组合即为最终解</p>
+<p>上述的消元还可以更精炼，U 向上消元，并且将主元值变成 1，得到<strong>简化行阶梯形式</strong>（reduced row echelon form），用 R 表示。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+U = \begin{bmatrix}
+\boxed{\color{red} 1} &amp; 2 &amp; 2 &amp; 2 \\
+0 &amp; 0 &amp; \boxed{\color{red} 2} &amp; 4 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix} \\
+\Downarrow \\
+\begin{bmatrix}
+\boxed{\color{red} 1} &amp; 2 &amp; 0 &amp; -2 \\
+0 &amp; 0 &amp; \boxed{\color{red} 2} &amp; 4 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix} \\
+\Downarrow \\
+R = \begin{bmatrix}
+\boxed{\color{red} 1} &amp; 2 &amp; 0 &amp; -2 \\
+0 &amp; 0 &amp; \boxed{\color{red} 1} &amp; 2 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+U = \begin{bmatrix}
+\boxed{\color{red} 1} & 2 & 2 & 2 \\
+0 & 0 & \boxed{\color{red} 2} & 4 \\
+0 & 0 & 0 & 0
+\end{bmatrix} \\
+\Downarrow \\
+\begin{bmatrix}
+\boxed{\color{red} 1} & 2 & 0 & -2 \\
+0 & 0 & \boxed{\color{red} 2} & 4 \\
+0 & 0 & 0 & 0
+\end{bmatrix} \\
+\Downarrow \\
+R = \begin{bmatrix}
+\boxed{\color{red} 1} & 2 & 0 & -2 \\
+0 & 0 & \boxed{\color{red} 1} & 2 \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\end{matrix}
+</script>
+</div>
+<p>这里为什么可以将主元值变成 1 的原因是 Ax = 0 无需考虑 b 的大小。如果我们将 R 中的主列全部排到左边，自由列放到右边</p>
+<div>
+<div class="MathJax_Preview">
+R = 
+\begin{bmatrix}
+\boxed{\color{red} 1} &amp; 2 &amp; 0 &amp; -2 \\
+0 &amp; 0 &amp; \boxed{\color{red} 1} &amp; 2 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix} =
+\left[\begin{array} {cc:cc}
+\boxed{\color{red} 1} &amp; 0 &amp; 2 &amp; -2 \\
+0 &amp; \boxed{\color{red} 1} &amp; 0 &amp; 2 \\ 
+\hdashline
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array} \right] =
+\left[\begin{array} {c:c}
+I &amp; F \\ 
+\hdashline
+0 &amp; 0
+\end{array} \right]
+</div>
+<script type="math/tex; mode=display">
+R = 
+\begin{bmatrix}
+\boxed{\color{red} 1} & 2 & 0 & -2 \\
+0 & 0 & \boxed{\color{red} 1} & 2 \\
+0 & 0 & 0 & 0
+\end{bmatrix} =
+\left[\begin{array} {cc:cc}
+\boxed{\color{red} 1} & 0 & 2 & -2 \\
+0 & \boxed{\color{red} 1} & 0 & 2 \\ 
+\hdashline
+0 & 0 & 0 & 0
+\end{array} \right] =
+\left[\begin{array} {c:c}
+I & F \\ 
+\hdashline
+0 & 0
+\end{array} \right]
+</script>
+</div>
+<p>F 块内的值刚好是特解中主元变量对应的值的相反数，这里很好理解，因为我们给自由变量特定的值，解出来的主元变量值一定是自由变量的系数相反数。按照这个方法，最后解的形式为</p>
+<div>
+<div class="MathJax_Preview">
+x =
+\begin{bmatrix}
+-F \\
+I
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+x =
+\begin{bmatrix}
+-F \\
+I
+\end{bmatrix}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+I &amp; F
+\end{bmatrix}
+\begin{bmatrix}
+x_{\text{pivot}} \\
+x_{\text{free}}
+\end{bmatrix} = I x_{\text{pivot}} + F x_{\text{free}} = 0
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+I & F
+\end{bmatrix}
+\begin{bmatrix}
+x_{\text{pivot}} \\
+x_{\text{free}}
+\end{bmatrix} = I x_{\text{pivot}} + F x_{\text{free}} = 0
+</script>
+</div>
                 
               
               
