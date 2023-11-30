@@ -1346,6 +1346,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    完整解
+  </a>
+  
+    <nav class="md-nav" aria-label="完整解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    秩与解的关系
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1462,6 +1482,26 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     零空间
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    完整解
+  </a>
+  
+    <nav class="md-nav" aria-label="完整解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    秩与解的关系
   </a>
   
 </li>
@@ -3160,7 +3200,7 @@ x =
 \end{bmatrix}
 </script>
 </div>
-<p>也可以敷另外一组值 <span><span class="MathJax_Preview">x_{2} = 0, x_{4} = 1</span><script type="math/tex">x_{2} = 0, x_{4} = 1</script></span></p>
+<p>也可以赋另外一组值 <span><span class="MathJax_Preview">x_{2} = 0, x_{4} = 1</span><script type="math/tex">x_{2} = 0, x_{4} = 1</script></span></p>
 <div>
 <div class="MathJax_Preview">
 x =
@@ -3181,7 +3221,7 @@ x =
 \end{bmatrix}
 </script>
 </div>
-<p>这两个都称为特解，注意到有几个自由列，就有几个特解。最后零空间的解为所有特解的线性组合</p>
+<p>这两个都称为特解，注意到有几个自由列，就有几个特解。最后<strong>零空间的解为所有特解的线性组合</strong></p>
 <div>
 <div class="MathJax_Preview">
 x = \alpha_{1}
@@ -3343,6 +3383,414 @@ x_{\text{free}}
 \end{bmatrix} = I x_{\text{pivot}} + F x_{\text{free}} = 0
 </script>
 </div>
+<h2 id="_10">完整解<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>考虑求解 Ax = b 样例如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+1 &amp; 2 &amp; 2 &amp; 2 \\
+2 &amp; 4 &amp; 6 &amp; 8 \\
+3 &amp; 6 &amp; 8 &amp; 10
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{bmatrix} =
+\begin{bmatrix}
+b_{1} \\
+b_{2} \\
+b_{3}
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+1 & 2 & 2 & 2 \\
+2 & 4 & 6 & 8 \\
+3 & 6 & 8 & 10
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{bmatrix} =
+\begin{bmatrix}
+b_{1} \\
+b_{2} \\
+b_{3}
+\end{bmatrix}
+</script>
+</div>
+<p>我们首先需要确定可解行（solvability），即 b 满足什么条件方程组有解。根据前面的总结，b 必须在 A 的列空间里，对增广矩阵进行消元</p>
+<div>
+<div class="MathJax_Preview">
+\left[ \begin{array} {cccc:c}
+1 &amp; 2 &amp; 2 &amp; 2 &amp; b_{1} \\
+2 &amp; 4 &amp; 6 &amp; 8 &amp; b_{2} \\
+3 &amp; 6 &amp; 8 &amp; 10 &amp; b_{3}
+\end{array} \right] \Leftrightarrow
+\left[ \begin{array} {cccc:c}
+1 &amp; 2 &amp; 2 &amp; 2 &amp; b_{1} \\
+0 &amp; 0 &amp; 2 &amp; 4 &amp; b_{2} - 2b_{1} \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; b_{3} - b_{2} - b_{1}
+\end{array} \right]
+</div>
+<script type="math/tex; mode=display">
+\left[ \begin{array} {cccc:c}
+1 & 2 & 2 & 2 & b_{1} \\
+2 & 4 & 6 & 8 & b_{2} \\
+3 & 6 & 8 & 10 & b_{3}
+\end{array} \right] \Leftrightarrow
+\left[ \begin{array} {cccc:c}
+1 & 2 & 2 & 2 & b_{1} \\
+0 & 0 & 2 & 4 & b_{2} - 2b_{1} \\
+0 & 0 & 0 & 0 & b_{3} - b_{2} - b_{1}
+\end{array} \right]
+</script>
+</div>
+<p>可知增管矩阵的最后一行必须要全为 0 才有解，即</p>
+<div>
+<div class="MathJax_Preview">
+b_{3} - b_{2} - b_{1} = 0
+</div>
+<script type="math/tex; mode=display">
+b_{3} - b_{2} - b_{1} = 0
+</script>
+</div>
+<p>总结一下，如果 A 的行向量线性组合产生了 0 行向量，那么 b 对应的线性组合也要产生 0，才会有解。</p>
+<p>假设 Ax = b 是可解的，如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+1 &amp; 2 &amp; 2 &amp; 2 \\
+2 &amp; 4 &amp; 6 &amp; 8 \\
+3 &amp; 6 &amp; 8 &amp; 10
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{bmatrix} =
+\begin{bmatrix}
+1 \\
+5 \\
+6
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+1 & 2 & 2 & 2 \\
+2 & 4 & 6 & 8 \\
+3 & 6 & 8 & 10
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{bmatrix} =
+\begin{bmatrix}
+1 \\
+5 \\
+6
+\end{bmatrix}
+</script>
+</div>
+<p>求解的方法是特解 + 通解</p>
+<p>1）特解：让所有的自由变量置成 0，求出主元变量的解，对于上例而言，<span><span class="MathJax_Preview">x_{2}</span><script type="math/tex">x_{2}</script></span> 和 <span><span class="MathJax_Preview">x_{4}</span><script type="math/tex">x_{4}</script></span> 是自由变量，置成 0。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+x_{1} + 2 x_{3} = 1 \\
+2 x_{3} = 3
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+x_{1} + 2 x_{3} = 1 \\
+2 x_{3} = 3
+\end{cases}
+</script>
+</div>
+<p>特解为</p>
+<div>
+<div class="MathJax_Preview">
+x_{\text{particular}} =
+\begin{bmatrix}
+-2 \\
+0 \\
+3 / 2 \\
+0
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+x_{\text{particular}} =
+\begin{bmatrix}
+-2 \\
+0 \\
+3 / 2 \\
+0
+\end{bmatrix}
+</script>
+</div>
+<p>2）通解，其实是零空间的解，即 <span><span class="MathJax_Preview">A x_{\text{null space}} = 0</span><script type="math/tex">A x_{\text{null space}} = 0</script></span></p>
+<div>
+<div class="MathJax_Preview">
+x_{n} = c_{1}
+\begin{bmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{bmatrix} + c_{2}
+\begin{bmatrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+x_{n} = c_{1}
+\begin{bmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{bmatrix} + c_{2}
+\begin{bmatrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{bmatrix}
+</script>
+</div>
+<p>而最终完整的解为二者之和</p>
+<div>
+<div class="MathJax_Preview">
+x_{c} = x_{p} + x_{n} =
+\begin{bmatrix}
+-2 \\
+0 \\
+3 / 2 \\
+0
+\end{bmatrix} +
+c_{1}
+\begin{bmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{bmatrix} + c_{2}
+\begin{bmatrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+x_{c} = x_{p} + x_{n} =
+\begin{bmatrix}
+-2 \\
+0 \\
+3 / 2 \\
+0
+\end{bmatrix} +
+c_{1}
+\begin{bmatrix}
+-2 \\
+1 \\
+0 \\
+0
+\end{bmatrix} + c_{2}
+\begin{bmatrix}
+2 \\
+0 \\
+-2 \\
+1
+\end{bmatrix}
+</script>
+</div>
+<p>原因如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+A x_{p} = b \\
+A x_{n} = 0
+\end{cases} \Leftrightarrow
+A(x_{p} + x_{n}) = b
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+A x_{p} = b \\
+A x_{n} = 0
+\end{cases} \Leftrightarrow
+A(x_{p} + x_{n}) = b
+</script>
+</div>
+<h3 id="_11">秩与解的关系<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>假设 A 是一个 <span><span class="MathJax_Preview">m \times n</span><script type="math/tex">m \times n</script></span> 的矩阵，它的秩为 r，那么 r 与 m 和 n 的数量关系如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+r \leq m \\
+r \leq n
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+r \leq m \\
+r \leq n
+\end{matrix}
+</script>
+</div>
+<p>1）列满秩代表 r = n，这时 n 个主元变量，0 个自由变量，零空间里只有零向量。例如</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+1 &amp; 3 \\
+2 &amp; 1 \\
+6 &amp; 1 \\
+5 &amp; 1
+\end{bmatrix} \Leftrightarrow
+\begin{bmatrix}
+1 &amp; 3 \\
+0 &amp; -5 \\
+0 &amp; 0 \\
+0 &amp; 0
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+1 & 3 \\
+2 & 1 \\
+6 & 1 \\
+5 & 1
+\end{bmatrix} \Leftrightarrow
+\begin{bmatrix}
+1 & 3 \\
+0 & -5 \\
+0 & 0 \\
+0 & 0
+\end{bmatrix}
+</script>
+</div>
+<p>b 的后两行不为 0 时，Ax = b 无解；反之，有唯一解。表面上时 4 个方程，但在有解的情况下，只有 2 个有效的方程或者叫线性无关方程。如果将 U 转化成 R（简化行阶梯形式）形如</p>
+<div>
+<div class="MathJax_Preview">
+R =
+\begin{bmatrix}
+I \\
+0
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+R =
+\begin{bmatrix}
+I \\
+0
+\end{bmatrix}
+</script>
+</div>
+<p>2）行满秩代表 r = m，消元时不会出现零向量行，因此对任意的 b 有解。m 个主元变量，n - m 个自由变量。例如</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+1 &amp; 2 &amp; 6 &amp; 5 \\
+3 &amp; 1 &amp; 1 &amp; 1
+\end{bmatrix} \Leftrightarrow
+\begin{bmatrix}
+1 &amp; 2 &amp; 6 &amp; 5 \\
+0 &amp; -5 &amp; -17 &amp; -14
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+1 & 2 & 6 & 5 \\
+3 & 1 & 1 & 1
+\end{bmatrix} \Leftrightarrow
+\begin{bmatrix}
+1 & 2 & 6 & 5 \\
+0 & -5 & -17 & -14
+\end{bmatrix}
+</script>
+</div>
+<p>如果将 U 转化成 R 形如</p>
+<div>
+<div class="MathJax_Preview">
+R =
+\begin{bmatrix}
+I &amp; F
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+R =
+\begin{bmatrix}
+I & F
+\end{bmatrix}
+</script>
+</div>
+<p>这里不一定全部的主元列在左侧，主元列和自由列交错也是可能的。</p>
+<p>3）列满秩且行满秩代表 r = n = m，此时矩阵时方阵，并且时可逆的</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+1 & 2 \\
+3 & 1
+\end{bmatrix}
+</script>
+</div>
+<p>如果将 U 转化成 R 形如</p>
+<div>
+<div class="MathJax_Preview">
+R =
+\begin{bmatrix}
+I
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+R =
+\begin{bmatrix}
+I
+\end{bmatrix}
+</script>
+</div>
+<p>4）列和行均不满秩，即 r &lt; m 且 r &lt; n，此时 R 的形式</p>
+<div>
+<div class="MathJax_Preview">
+R =
+\begin{bmatrix}
+I &amp; F \\
+0 &amp; 0
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+R =
+\begin{bmatrix}
+I & F \\
+0 & 0
+\end{bmatrix}
+</script>
+</div>
+<p>此时有 0 个解或者 <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> 个解</p>
+<p>总结如下</p>
+<p>| 秩与行列数的关系 | 主元变量个数 | 自由变量个数 | 零空间 N(A) | Ax = b 的解个数 | Ax = b 的解（如果有） |
+| :----: | :----: | :----: | :----: | :----: |
+| 列满秩（r = n &lt; m） | n | 0 | 只有零向量 | 0 或者 1 | <span><span class="MathJax_Preview">x_{c} = x_{p}</span><script type="math/tex">x_{c} = x_{p}</script></span> |
+| 行满秩（r = m &lt; n） | m | n - m | 零向量和自由变量对应的向量 | <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> | <span><span class="MathJax_Preview">x_{c} = x_{p} + x_{n}</span><script type="math/tex">x_{c} = x_{p} + x_{n}</script></span> |
+| 列满秩且行满秩（r = n = m） | r | 0 | 零向量 | 1 | <span><span class="MathJax_Preview">x_{c} = x_{p}</span><script type="math/tex">x_{c} = x_{p}</script></span> |
+| 列不满秩且行不满秩（r &lt; n, r &lt; m） | r | n - r | 零向量和自由变量对应的向量 | 0 或者 <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span> | <span><span class="MathJax_Preview">x_{c} = x_{p} + x_{n}</span><script type="math/tex">x_{c} = x_{p} + x_{n}</script></span> |</p>
                 
               
               
