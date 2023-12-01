@@ -1407,6 +1407,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    正交
+  </a>
+  
+    <nav class="md-nav" aria-label="正交">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    投影
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    最小二乘法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1584,6 +1611,33 @@
           <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     4 个基本空间
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    正交
+  </a>
+  
+    <nav class="md-nav" aria-label="正交">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    投影
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    最小二乘法
   </a>
   
 </li>
@@ -4162,6 +4216,484 @@ x_{n} = c_{1}
 </tbody>
 </table>
 <p>注意到列空间 <span><span class="MathJax_Preview">C(A)</span><script type="math/tex">C(A)</script></span> 和左零空间 <span><span class="MathJax_Preview">N(A^{T})</span><script type="math/tex">N(A^{T})</script></span> 隶属同空间，并且它们的维数之和是所属空间的维数，此外这两个空间是垂直的。行空间和零空间同理。</p>
+<h2 id="_16">正交<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>正交向量（orthogonal vectors）意味着两个向量是垂直的（perpendicular），或者两者的内积为 0。</p>
+<div>
+<div class="MathJax_Preview">
+x^{T} y = 0
+</div>
+<script type="math/tex; mode=display">
+x^{T} y = 0
+</script>
+</div>
+<p>零向量与任何向量正交。</p>
+<p>如果我们将向量推广到子空间，即两个子空间是正交的，意味着，两个子空间内的任意向量是正交的。</p>
+<div>
+<div class="MathJax_Preview">
+x^{T} y = 0, \forall x \in S, \forall y \in T \Leftrightarrow S \perp T
+</div>
+<script type="math/tex; mode=display">
+x^{T} y = 0, \forall x \in S, \forall y \in T \Leftrightarrow S \perp T
+</script>
+</div>
+<p>在 4 个基本空间一节里，我们说零空间和行空间是正交的，原因如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+\cdots &amp; \text{row 1 of A} &amp; \cdots \\
+\cdots &amp; \text{row 2 of A} &amp; \cdots \\
+\vdots &amp; \vdots &amp; \vdots \\
+\cdots &amp; \text{row m of A} &amp; \cdots
+\end{bmatrix} &amp;
+\begin{bmatrix}
+x
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+0 \\
+0 \\
+\vdots \\
+0
+\end{bmatrix} \\
+A &amp; x &amp; = &amp; 0 
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+\cdots & \text{row 1 of A} & \cdots \\
+\cdots & \text{row 2 of A} & \cdots \\
+\vdots & \vdots & \vdots \\
+\cdots & \text{row m of A} & \cdots
+\end{bmatrix} &
+\begin{bmatrix}
+x
+\end{bmatrix} & = &
+\begin{bmatrix}
+0 \\
+0 \\
+\vdots \\
+0
+\end{bmatrix} \\
+A & x & = & 0 
+\end{matrix}
+</script>
+</div>
+<p>这里假设零空间有非零向量，那么 A 的每一行与 x 相乘，结果都是 0，因此 A 的行空间与零空间是正交的。更具体地，这两个子空间的维数和等于原空间 <span><span class="MathJax_Preview">R^{n}</span><script type="math/tex">R^{n}</script></span> 的维数。例如，在三维空间里，行空间的维数是 2，那么零空间的维数为 1。列空间和左零空间也是同样的道理。</p>
+<p>我们前面知道任意一个矩阵 A，左乘它的转置，可以得到一个对称矩阵</p>
+<div>
+<div class="MathJax_Preview">
+(A^{T})_{n \times m}A_{m \times n} = (A^{T}A)_{n \times n}
+</div>
+<script type="math/tex; mode=display">
+(A^{T})_{n \times m}A_{m \times n} = (A^{T}A)_{n \times n}
+</script>
+</div>
+<p>但是 <span><span class="MathJax_Preview">A^{T}A</span><script type="math/tex">A^{T}A</script></span> 并一定可逆，反例如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 \\
+3 &amp; 3 &amp; 3
+\end{bmatrix}
+\begin{bmatrix}
+1 &amp; 3 \\
+1 &amp; 3 \\
+1 &amp; 3
+\end{bmatrix} =
+\begin{bmatrix}
+3 &amp; 9 \\
+9 &amp; 27
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+1 & 1 & 1 \\
+3 & 3 & 3
+\end{bmatrix}
+\begin{bmatrix}
+1 & 3 \\
+1 & 3 \\
+1 & 3
+\end{bmatrix} =
+\begin{bmatrix}
+3 & 9 \\
+9 & 27
+\end{bmatrix}
+</script>
+</div>
+<p>这里我们得到两个关系</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{N}(A^{T}A) = \text{N}(A) \\
+&amp; \text{rank}(A^{T}A) = \text{rank}(A)
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{N}(A^{T}A) = \text{N}(A) \\
+& \text{rank}(A^{T}A) = \text{rank}(A)
+\end{aligned}
+</script>
+</div>
+<p>所以 <span><span class="MathJax_Preview">A^{T}A</span><script type="math/tex">A^{T}A</script></span> 可逆的充要条件是 A 的列向量线性无关。</p>
+<h3 id="_17">投影<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>投影（projection）指的是一个向量 b 在另一个向量 a 的反向上的分量 p。如图</p>
+<p><img alt="" src="../images/la3.png" /></p>
+<p>e 是误差分量，e 越小说明 b 和 a 越接近，e 与 a 是垂直关系。</p>
+<div>
+<div class="MathJax_Preview">
+\overrightarrow{e} \perp \overrightarrow{a} \Leftrightarrow (\overrightarrow{b} - \overrightarrow{p}) \perp \overrightarrow{a}
+</div>
+<script type="math/tex; mode=display">
+\overrightarrow{e} \perp \overrightarrow{a} \Leftrightarrow (\overrightarrow{b} - \overrightarrow{p}) \perp \overrightarrow{a}
+</script>
+</div>
+<p>用内积表示</p>
+<div>
+<div class="MathJax_Preview">
+a^{T}(b - p) = a^{T}(b - xa) = 0
+</div>
+<script type="math/tex; mode=display">
+a^{T}(b - p) = a^{T}(b - xa) = 0
+</script>
+</div>
+<p>这里 x 是一个标量，a 和 b 是矢量。</p>
+<div>
+<div class="MathJax_Preview">
+a^{T}xa = x a^{T} a = a^{T}b
+</div>
+<script type="math/tex; mode=display">
+a^{T}xa = x a^{T} a = a^{T}b
+</script>
+</div>
+<p>可以求 x</p>
+<div>
+<div class="MathJax_Preview">
+x = \frac{a^{T}b}{a^{T}a}
+</div>
+<script type="math/tex; mode=display">
+x = \frac{a^{T}b}{a^{T}a}
+</script>
+</div>
+<p>投影分量 p</p>
+<div>
+<div class="MathJax_Preview">
+p = xa = \frac{a^{T}b}{a^{T}a} a = a \frac{a^{T}b}{a^{T}a} = \frac{aa^{T}}{a^{T}a} b = P b
+</div>
+<script type="math/tex; mode=display">
+p = xa = \frac{a^{T}b}{a^{T}a} a = a \frac{a^{T}b}{a^{T}a} = \frac{aa^{T}}{a^{T}a} b = P b
+</script>
+</div>
+<p>我们可以定义投影矩阵</p>
+<div>
+<div class="MathJax_Preview">
+P = \frac{aa^{T}}{a^{T}a}
+</div>
+<script type="math/tex; mode=display">
+P = \frac{aa^{T}}{a^{T}a}
+</script>
+</div>
+<p>分母 <span><span class="MathJax_Preview">a^{T}a</span><script type="math/tex">a^{T}a</script></span> 是一个标量，a 表示一个列向量。这个投影矩阵的性质如下：</p>
+<p>1）rank(P) = 1</p>
+<p>2）P 是一个对称矩阵 <span><span class="MathJax_Preview">P^{T} = P</span><script type="math/tex">P^{T} = P</script></span></p>
+<p>3）如果 b 对 a 做两次投影，得到的结果与投影一次的结果相同，即 <span><span class="MathJax_Preview">P^{2} = P</span><script type="math/tex">P^{2} = P</script></span></p>
+<p>为什么需要投影？有些时候 Ax = b 是无解的，但我们还想求解，只能退而求其次，求一个近似解，即 <span><span class="MathJax_Preview">A\hat{x} = p</span><script type="math/tex">A\hat{x} = p</script></span>，p 是 b 在列空间上的一个投影，而 <span><span class="MathJax_Preview">\hat{x}</span><script type="math/tex">\hat{x}</script></span> 是这个 x 的近似解。</p>
+<p>因为是投影，所以垂直分量是 <span><span class="MathJax_Preview">b - p</span><script type="math/tex">b - p</script></span>，而 p 又是 A 的一个线性组合 <span><span class="MathJax_Preview">A\hat{x}</span><script type="math/tex">A\hat{x}</script></span>，利用内积关系</p>
+<div>
+<div class="MathJax_Preview">
+A^{T}e = A^{T}(b - Ax) = 0
+</div>
+<script type="math/tex; mode=display">
+A^{T}e = A^{T}(b - Ax) = 0
+</script>
+</div>
+<p>如果这里是三维空间，上式表达的意思是 b 的垂直分量正交于 A 的列空间。这说明 e 属于 A 的零空间 N(A)</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; e \perp C(A) \\
+&amp; e \in N(A)
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& e \perp C(A) \\
+& e \in N(A)
+\end{aligned}
+</script>
+</div>
+<p>继续解上式</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+A^{T}b = A^{T}A \hat{x} \\
+\Downarrow \\
+\hat{x} = (A^{T}A)^{-1}A^{T}b
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+A^{T}b = A^{T}A \hat{x} \\
+\Downarrow \\
+\hat{x} = (A^{T}A)^{-1}A^{T}b
+\end{matrix}
+</script>
+</div>
+<p>b 在列空间上的分量 p</p>
+<div>
+<div class="MathJax_Preview">
+p = A \hat{x} = A (A^{T}A)^{-1}A^{T}b = P b
+</div>
+<script type="math/tex; mode=display">
+p = A \hat{x} = A (A^{T}A)^{-1}A^{T}b = P b
+</script>
+</div>
+<p>这里的 A 代表的任意维，如果 A 是向量，上式退化成</p>
+<div>
+<div class="MathJax_Preview">
+p = a \hat{x} = a (a^{T}a)^{-1} a^{T}b = \frac{aa^{T}}{a^{T}a}b
+</div>
+<script type="math/tex; mode=display">
+p = a \hat{x} = a (a^{T}a)^{-1} a^{T}b = \frac{aa^{T}}{a^{T}a}b
+</script>
+</div>
+<p>投影矩阵</p>
+<div>
+<div class="MathJax_Preview">
+P = A (A^{T}A)^{-1}A^{T}
+</div>
+<script type="math/tex; mode=display">
+P = A (A^{T}A)^{-1}A^{T}
+</script>
+</div>
+<p>因为 A 不一定是可逆的，所以不能写成 <span><span class="MathJax_Preview">A A^{-1} (A^{T})^{-1} A^{T} = I</span><script type="math/tex">A A^{-1} (A^{T})^{-1} A^{T} = I</script></span>。那如果 A 是可逆的，这意味着 A 零空间维数位 0，换句话说 b 是在列空间里，我们无需投影，原方程组有解。</p>
+<p>如果 b 在列空间里，Pb = b，也就是无需投影；如果 b 正交于列空间，Pb = 0；如果 b 与列空间有夹脚，Pb 的结果是 b 在列空间上的投影。 </p>
+<p>需要证明一个定理，<strong>如果 A 的列向量线性无关的，那么 <span><span class="MathJax_Preview">A^{T}A</span><script type="math/tex">A^{T}A</script></span> 是可逆的</strong>。如果 <span><span class="MathJax_Preview">A^{T}A</span><script type="math/tex">A^{T}A</script></span> 可逆，那么 <span><span class="MathJax_Preview">A^{T}A x = 0</span><script type="math/tex">A^{T}A x = 0</script></span>，x 必须是零向量。等式两侧左乘 <span><span class="MathJax_Preview">x^{T}</span><script type="math/tex">x^{T}</script></span></p>
+<div>
+<div class="MathJax_Preview">
+x^{T} A^{T} A x = 0
+</div>
+<script type="math/tex; mode=display">
+x^{T} A^{T} A x = 0
+</script>
+</div>
+<p>根据转置的性质</p>
+<div>
+<div class="MathJax_Preview">
+(Ax)^{T} Ax = 0
+</div>
+<script type="math/tex; mode=display">
+(Ax)^{T} Ax = 0
+</script>
+</div>
+<p>如果把 Ax 看成一个整体，那么 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">(Ax)^{T} Ax</span><script type="math/tex">(Ax)^{T} Ax</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">(Ax)^{T} Ax</span><script type="math/tex">(Ax)^{T} Ax</script></span></script></span> 表示的是 Ax 的模，这意味着</p>
+<div>
+<div class="MathJax_Preview">
+Ax = 0
+</div>
+<script type="math/tex; mode=display">
+Ax = 0
+</script>
+</div>
+<p>因为 A 的列向量是线性无关，可以推出 x = 0，这与我们的假设一直。</p>
+<h3 id="_18">最小二乘法<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>最小二乘法（least sqaure）是一种线性回归的方法。如果我们有若干个点，我们需要绘制一条直线，尽可能的穿过这些点。例如，点 (1, 1)，(2, 2)，(3, 2)，假设直线为 y = C + D t</p>
+<p>写出方程组</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+C + D = 1 \\
+C + 2D = 2 \\
+C + 3D = 2
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+C + D = 1 \\
+C + 2D = 2 \\
+C + 3D = 2
+\end{cases}
+</script>
+</div>
+<p>写成矩阵形式</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+1 &amp; 1 \\
+1 &amp; 2 \\
+1 &amp; 3
+\end{bmatrix} &amp;
+\begin{bmatrix}
+C \\
+D
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+1 \\
+2 \\
+3
+\end{bmatrix} \\
+A &amp; x &amp; = &amp; b
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+1 & 1 \\
+1 & 2 \\
+1 & 3
+\end{bmatrix} &
+\begin{bmatrix}
+C \\
+D
+\end{bmatrix} & = &
+\begin{bmatrix}
+1 \\
+2 \\
+3
+\end{bmatrix} \\
+A & x & = & b
+\end{matrix}
+</script>
+</div>
+<p>根据前面的经验，这个方程组无解。我们现在先找到一组解，最接近 b。</p>
+<div>
+<div class="MathJax_Preview">
+\min ||e||^{2} = \min ||Ax - b||^{2}
+</div>
+<script type="math/tex; mode=display">
+\min ||e||^{2} = \min ||Ax - b||^{2}
+</script>
+</div>
+<p>问题转化成求解 <span><span class="MathJax_Preview">\hat{x}</span><script type="math/tex">\hat{x}</script></span></p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 \\
+1 &amp; 2 &amp; 3\\
+\end{bmatrix} &amp;
+\begin{bmatrix}
+1 &amp; 1 \\
+1 &amp; 2 \\
+1 &amp; 3
+\end{bmatrix} &amp;
+\begin{bmatrix}
+\hat{C} \\
+\hat{D}
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 \\
+1 &amp; 2 &amp; 3\\
+\end{bmatrix} &amp;
+\begin{bmatrix}
+1 \\
+2 \\
+3
+\end{bmatrix} \\
+A^{T} &amp; A &amp; x &amp; = &amp; A^{T} &amp; b
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 2 & 3\\
+\end{bmatrix} &
+\begin{bmatrix}
+1 & 1 \\
+1 & 2 \\
+1 & 3
+\end{bmatrix} &
+\begin{bmatrix}
+\hat{C} \\
+\hat{D}
+\end{bmatrix} & = &
+\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 2 & 3\\
+\end{bmatrix} &
+\begin{bmatrix}
+1 \\
+2 \\
+3
+\end{bmatrix} \\
+A^{T} & A & x & = & A^{T} & b
+\end{matrix}
+</script>
+</div>
+<p>新的方程组</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+3 &amp; 6 \\
+6 &amp; 14
+\end{bmatrix}
+\begin{bmatrix}
+\hat{C} \\
+\hat{D}
+\end{bmatrix} =
+\begin{bmatrix}
+5 \\
+11
+\end{bmatrix} \Leftrightarrow
+\begin{cases}
+3 \hat{C} + 6 \hat{D} = 5 \\
+6 \hat{C} + 14 \hat{D} = 11
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+3 & 6 \\
+6 & 14
+\end{bmatrix}
+\begin{bmatrix}
+\hat{C} \\
+\hat{D}
+\end{bmatrix} =
+\begin{bmatrix}
+5 \\
+11
+\end{bmatrix} \Leftrightarrow
+\begin{cases}
+3 \hat{C} + 6 \hat{D} = 5 \\
+6 \hat{C} + 14 \hat{D} = 11
+\end{cases}
+</script>
+</div>
+<p>我们也可以用微分的方法求解</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\min ||e||^{2} &amp;= \min ||Ax - b||^{2} \\
+&amp;= (\hat{C} + \hat{D} - 1)^{2} + (\hat{C} + 2\hat{D} - 2)^{2} + (\hat{C} + 3\hat{D} - 2)^{2}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\min ||e||^{2} &= \min ||Ax - b||^{2} \\
+&= (\hat{C} + \hat{D} - 1)^{2} + (\hat{C} + 2\hat{D} - 2)^{2} + (\hat{C} + 3\hat{D} - 2)^{2}
+\end{aligned}
+</script>
+</div>
+<p>分别对两个分量求偏微分</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+\hat{C} = 2/3 \\
+\hat{D} = 1/2
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+\hat{C} = 2/3 \\
+\hat{D} = 1/2
+\end{cases}
+</script>
+</div>
+<p>直线 y = &#8532; + &frac12; t</p>
                 
               
               
