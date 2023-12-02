@@ -1429,8 +1429,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    正交基
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    行列式
+  </a>
   
 </li>
       
@@ -1642,8 +1656,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    正交基
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    行列式
+  </a>
   
 </li>
       
@@ -4693,7 +4721,411 @@ A^{T} & A & x & = & A^{T} & b
 \end{cases}
 </script>
 </div>
-<p>直线 y = &#8532; + &frac12; t</p>
+<p>直线方程</p>
+<div>
+<div class="MathJax_Preview">
+y = \frac{2}{3} + \frac{1}{2} t
+</div>
+<script type="math/tex; mode=display">
+y = \frac{2}{3} + \frac{1}{2} t
+</script>
+</div>
+<h3 id="_19">正交基<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>正交基（orthogonal basis）指的是基向量之间相互正交，如果将基向量的模长变成单位长度，那么我们称之为标准正交基（orthonormal basis），用 q 表示。</p>
+<div>
+<div class="MathJax_Preview">
+q_{i}^{T}q_{j} =
+\begin{cases}
+1, &amp; i = j \\
+0, &amp; i \neq j
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+q_{i}^{T}q_{j} =
+\begin{cases}
+1, & i = j \\
+0, & i \neq j
+\end{cases}
+</script>
+</div>
+<p>我们将这些正交基（列向量的形式）放入到矩阵中，这个矩阵叫做标准正交矩阵 Q</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+| &amp; | &amp; \cdots &amp; | \\
+q_{1} &amp; q_{2} &amp; \cdots &amp; q_{n} \\
+| &amp; | &amp; \cdots &amp; |
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+| & | & \cdots & | \\
+q_{1} & q_{2} & \cdots & q_{n} \\
+| & | & \cdots & |
+\end{bmatrix}
+</script>
+</div>
+<p>因为每一列与其他列相互正交，即</p>
+<div>
+<div class="MathJax_Preview">
+Q^{T}Q =
+\begin{bmatrix}
+- &amp; q_{1}^{T} &amp; - \\
+- &amp; q_{2}^{T} &amp; - \\
+\vdots &amp; \vdots &amp; \vdots \\
+- &amp; q_{n}^{T} &amp; -
+\end{bmatrix}
+\begin{bmatrix}
+| &amp; | &amp; \cdots &amp; | \\
+q_{1} &amp; q_{2} &amp; \cdots &amp; q_{n} \\
+| &amp; | &amp; \cdots &amp; |
+\end{bmatrix} =
+\begin{bmatrix}
+1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots  &amp; \ddots  &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1
+\end{bmatrix} = I
+</div>
+<script type="math/tex; mode=display">
+Q^{T}Q =
+\begin{bmatrix}
+- & q_{1}^{T} & - \\
+- & q_{2}^{T} & - \\
+\vdots & \vdots & \vdots \\
+- & q_{n}^{T} & -
+\end{bmatrix}
+\begin{bmatrix}
+| & | & \cdots & | \\
+q_{1} & q_{2} & \cdots & q_{n} \\
+| & | & \cdots & |
+\end{bmatrix} =
+\begin{bmatrix}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & \vdots  & \ddots  & \vdots \\
+0 & 0 & \cdots & 1
+\end{bmatrix} = I
+</script>
+</div>
+<p>一般情况，正交矩阵指的是方阵，Q 的转置等于 Q 的逆矩阵</p>
+<div>
+<div class="MathJax_Preview">
+Q^{T} = Q^{-1}
+</div>
+<script type="math/tex; mode=display">
+Q^{T} = Q^{-1}
+</script>
+</div>
+<p>现在我们考虑的是如何正交化？答案是格拉姆-施密特方法（Graham-Schmidt）。这个方法的思想是固定前面的列向量，将后一个列向量投影到前面的列向量空间上，保留垂直的分量作为当前的正交向量，为了保持所有的向量是单位模长，需要归一化。如图</p>
+<p><img alt="" src="../images/la4.png" /></p>
+<p>有两个向量 a 和 b，将 a 作为第一个正交向量 A，并对 A 归一化</p>
+<div>
+<div class="MathJax_Preview">
+q_{1} = \frac{A}{||A||}
+</div>
+<script type="math/tex; mode=display">
+q_{1} = \frac{A}{||A||}
+</script>
+</div>
+<p>b 对 A 做投影，垂直分量为第二个正交向量 B</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; B = b - Pb = b - \frac{A A^{T}}{A^{T} A} b \\
+&amp; q_{2} = \frac{B}{||B||}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& B = b - Pb = b - \frac{A A^{T}}{A^{T} A} b \\
+& q_{2} = \frac{B}{||B||}
+\end{aligned}
+</script>
+</div>
+<p>验证可知 B 与 A 垂直</p>
+<div>
+<div class="MathJax_Preview">
+A^{T} B = A^{T} (b - \frac{A A^{T}}{A^{T} A} b) = A^{T} b - A^{T} \frac{A A^{T}}{A^{T} A} b = 0
+</div>
+<script type="math/tex; mode=display">
+A^{T} B = A^{T} (b - \frac{A A^{T}}{A^{T} A} b) = A^{T} b - A^{T} \frac{A A^{T}}{A^{T} A} b = 0
+</script>
+</div>
+<p>假设此时还有一个向量 c，用同样的方法得到第三个正交向量</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; C = c - P_{A}c - P_{B}c = c - \frac{A A^{T}}{A^{T} A} c - \frac{B B^{T}}{B^{T} B} c \\
+&amp; q_{3} = \frac{C}{||C||}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& C = c - P_{A}c - P_{B}c = c - \frac{A A^{T}}{A^{T} A} c - \frac{B B^{T}}{B^{T} B} c \\
+& q_{3} = \frac{C}{||C||}
+\end{aligned}
+</script>
+</div>
+<h2 id="_20">行列式<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p>行列式（determinant）记作为 det(A) 用 |A| 表示，体现了方阵 A 的信息。行列式为 0 时，A 是奇异的。行列式的性质：</p>
+<p>1）det(A) = 1</p>
+<div>
+<div class="MathJax_Preview">
+\begin{vmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{vmatrix} = 1
+</div>
+<script type="math/tex; mode=display">
+\begin{vmatrix}
+1 & 0 \\
+0 & 1
+\end{vmatrix} = 1
+</script>
+</div>
+<p>2）交换两行或两列，改变行列式的符号</p>
+<div>
+<div class="MathJax_Preview">
+\begin{vmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{vmatrix} = -1
+</div>
+<script type="math/tex; mode=display">
+\begin{vmatrix}
+0 & 1 \\
+1 & 0
+\end{vmatrix} = -1
+</script>
+</div>
+<p>3）行列式是一个线性函数：某一行同乘一个 t，等价于原式乘 t</p>
+<div>
+<div class="MathJax_Preview">
+\begin{vmatrix}
+ta &amp; tb \\
+c &amp; d
+\end{vmatrix} = t
+\begin{vmatrix}
+a &amp; b \\
+c &amp; d
+\end{vmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{vmatrix}
+ta & tb \\
+c & d
+\end{vmatrix} = t
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix}
+</script>
+</div>
+<p>同一行线性可加</p>
+<div>
+<div class="MathJax_Preview">
+\begin{vmatrix}
+a + a' &amp; b + b' \\
+c &amp; d
+\end{vmatrix} =
+\begin{vmatrix}
+a &amp; b \\
+c &amp; d
+\end{vmatrix} + 
+\begin{vmatrix}
+a' &amp; b' \\
+c &amp; d
+\end{vmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{vmatrix}
+a + a' & b + b' \\
+c & d
+\end{vmatrix} =
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} + 
+\begin{vmatrix}
+a' & b' \\
+c & d
+\end{vmatrix}
+</script>
+</div>
+<p>整个行列式并不满足可加性 <span><span class="MathJax_Preview">\text{det}(A + B) \neq \text{det}(A) + \text{det}(B)</span><script type="math/tex">\text{det}(A + B) \neq \text{det}(A) + \text{det}(B)</script></span></p>
+<p>4）如果 A 的两行（列）相等，那么 det(A) = 0，因为我们可以交换这两行（列），A 不变，但行列式符号改变。</p>
+<p>5）某一行（列）加另一行（列）的 a 倍，行列式不变。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{vmatrix}
+a &amp; b \\
+c &amp; d
+\end{vmatrix} =
+\begin{vmatrix}
+a &amp; b \\
+c + ia &amp; d + ib
+\end{vmatrix} =
+\begin{vmatrix}
+a &amp; b \\
+c &amp; d
+\end{vmatrix} + i
+\begin{vmatrix}
+a &amp; b \\
+a &amp; b
+\end{vmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} =
+\begin{vmatrix}
+a & b \\
+c + ia & d + ib
+\end{vmatrix} =
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} + i
+\begin{vmatrix}
+a & b \\
+a & b
+\end{vmatrix}
+</script>
+</div>
+<p>6）某一行（列）为 0，行列式为 0。</p>
+<p>7）将 A 转化成上三角 U，行列式等于对角元素之积。</p>
+<div>
+<div class="MathJax_Preview">
+\text{det}(U) =
+\begin{vmatrix}
+d_{1} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+0 &amp; d_{2} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; d_{n}
+\end{vmatrix}
+</div>
+<script type="math/tex; mode=display">
+\text{det}(U) =
+\begin{vmatrix}
+d_{1} & a_{12} & \cdots & a_{1n} \\
+0 & d_{2} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & d_{n}
+\end{vmatrix}
+</script>
+</div>
+<p>如果消元后，对角元素不为 0，那么通过向上消元将非对角元素消去</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\text{det}(U) &amp;=
+\begin{vmatrix}
+d_{1} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+0 &amp; d_{2} &amp; \cdots &amp;a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; d_{n}
+\end{vmatrix} \\
+&amp;=
+\begin{vmatrix}
+d_{1} &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; d_{2} &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; d_{n}
+\end{vmatrix} \\
+&amp;= d_{1}
+\begin{vmatrix}
+1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; d_{2} &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; d_{n}
+\end{vmatrix} \\
+&amp;= d_{1} d_{2}
+\begin{vmatrix}
+1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; d_{n}
+\end{vmatrix} \\
+&amp;= \prod_{i = 1}^{n} d_{i}
+\begin{vmatrix}
+1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1
+\end{vmatrix}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\text{det}(U) &=
+\begin{vmatrix}
+d_{1} & a_{12} & \cdots & a_{1n} \\
+0 & d_{2} & \cdots &a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & d_{n}
+\end{vmatrix} \\
+&=
+\begin{vmatrix}
+d_{1} & 0 & \cdots & 0 \\
+0 & d_{2} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & d_{n}
+\end{vmatrix} \\
+&= d_{1}
+\begin{vmatrix}
+1 & 0 & \cdots & 0 \\
+0 & d_{2} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & d_{n}
+\end{vmatrix} \\
+&= d_{1} d_{2}
+\begin{vmatrix}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & d_{n}
+\end{vmatrix} \\
+&= \prod_{i = 1}^{n} d_{i}
+\begin{vmatrix}
+1 & 0 & \cdots & 0 \\
+0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & 1
+\end{vmatrix}
+\end{aligned}
+</script>
+</div>
+<p>8）当 A 是奇异的，A 的行列式为 0；当 A 时可逆的，det(A) 不为 0。</p>
+<p>9）A 和 B 乘积的行列式等于各自行列式的乘积</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \text{det}(AB) = \text{det}(A) \text{det}(B) \\
+&amp; \text{det}(A^{-1}) = \frac{1}{\text{det}(A)} \\
+&amp; \text{det}(A^{2}) = \text{det}(A)^{2} \\
+&amp; \text{det}(2A) = 2^{n} \text{det}(A)
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \text{det}(AB) = \text{det}(A) \text{det}(B) \\
+& \text{det}(A^{-1}) = \frac{1}{\text{det}(A)} \\
+& \text{det}(A^{2}) = \text{det}(A)^{2} \\
+& \text{det}(2A) = 2^{n} \text{det}(A)
+\end{aligned}
+</script>
+</div>
+<p>10）A 转置的行列式等于 A 的行列式</p>
+<div>
+<div class="MathJax_Preview">
+\text{det}(A^{T}) = \text{det}(A)
+</div>
+<script type="math/tex; mode=display">
+\text{det}(A^{T}) = \text{det}(A)
+</script>
+</div>
                 
               
               
