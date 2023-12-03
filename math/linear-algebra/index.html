@@ -1509,6 +1509,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    正定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    相似
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    奇异值分解
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1794,6 +1815,27 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    正定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    相似
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    奇异值分解
+  </a>
   
 </li>
       
@@ -5944,6 +5986,46 @@ x_{1} & x_{2} & \cdots & x_{n} \\
 </script>
 </div>
 <p><strong>一个矩阵 A 的特征值相互不同（无重复特征值），那么 A 一定有 n 个线性无关的特征向量（可对角化）。</strong></p>
+<h2 id="_28">正定<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
+<p>矩阵的特殊性体现在特征值和特征向量上。对于实对称矩阵 <span><span class="MathJax_Preview">A^{T} = A</span><script type="math/tex">A^{T} = A</script></span>，所有的特征值是实数，特征向量是相互正价的。</p>
+<div>
+<div class="MathJax_Preview">
+A = S \Lambda S^{-1} = Q \Lambda Q^{-1} = Q \Lambda Q^{T}
+</div>
+<script type="math/tex; mode=display">
+A = S \Lambda S^{-1} = Q \Lambda Q^{-1} = Q \Lambda Q^{T}
+</script>
+</div>
+<p>正定矩阵（positive definite matrix）是实对称矩阵，所有的特征值是正值，所有的主元是正值，所有的子行列式（sub-determinant）是正值。</p>
+<div>
+<div class="MathJax_Preview">
+x^{T} A x &gt; 0
+</div>
+<script type="math/tex; mode=display">
+x^{T} A x > 0
+</script>
+</div>
+<h2 id="_29">相似<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
+<p>如果存在一个可逆矩阵 M，两个矩阵 A 和 B 是相似的，需要满足如下条件</p>
+<div>
+<div class="MathJax_Preview">
+B = M^{-1} A M
+</div>
+<script type="math/tex; mode=display">
+B = M^{-1} A M
+</script>
+</div>
+<h2 id="_30">奇异值分解<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
+<p>奇异值分解（singular value decomposition，简称 SVD）</p>
+<div>
+<div class="MathJax_Preview">
+A = U \Sigma V^{T}
+</div>
+<script type="math/tex; mode=display">
+A = U \Sigma V^{T}
+</script>
+</div>
+<p><span><span class="MathJax_Preview">\Sigma</span><script type="math/tex">\Sigma</script></span> 是对角矩阵，U 和 V 是正交矩阵</p>
                 
               
               
