@@ -1480,6 +1480,33 @@
     特征值和特征向量
   </a>
   
+    <nav class="md-nav" aria-label="特征值和特征向量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    求解
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    迹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    对角化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1740,6 +1767,33 @@
   <a href="#_24" class="md-nav__link">
     特征值和特征向量
   </a>
+  
+    <nav class="md-nav" aria-label="特征值和特征向量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    求解
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    迹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    对角化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4935,6 +4989,50 @@ A^{T} B = A^{T} (b - \frac{A A^{T}}{A^{T} A} b) = A^{T} b - A^{T} \frac{A A^{T}}
 \end{aligned}
 </script>
 </div>
+<p>利用 Q 可以对 A 进行分解</p>
+<div>
+<div class="MathJax_Preview">
+A = Q R
+</div>
+<script type="math/tex; mode=display">
+A = Q R
+</script>
+</div>
+<p>其中 Q 是正交矩阵，R 是非奇异上三角矩阵。例如 A 有两列线性无关向量，可以得到正交向量</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+A &amp;= [a, b] \\
+&amp;= QR \\
+&amp;= [q_{1}, q_{2}]
+\begin{bmatrix}
+a^{T}q_{1} &amp; b^{T}q_{1} \\
+a^{T}q_{2} &amp; b^{T}q_{2}
+\end{bmatrix} \\
+&amp;= [q_{1}, q_{2}]
+\begin{bmatrix}
+a^{T}q_{1} &amp; b^{T}q_{1} \\
+0 &amp; b^{T}q_{2}
+\end{bmatrix}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+A &= [a, b] \\
+&= QR \\
+&= [q_{1}, q_{2}]
+\begin{bmatrix}
+a^{T}q_{1} & b^{T}q_{1} \\
+a^{T}q_{2} & b^{T}q_{2}
+\end{bmatrix} \\
+&= [q_{1}, q_{2}]
+\begin{bmatrix}
+a^{T}q_{1} & b^{T}q_{1} \\
+0 & b^{T}q_{2}
+\end{bmatrix}
+\end{aligned}
+</script>
+</div>
 <h2 id="_20">行列式<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
 <p>行列式（determinant）记作为 det(A) 用 |A| 表示，体现了方阵 A 的信息。行列式为 0 时，A 是奇异的。行列式的性质：</p>
 <p>1）det(A) = 1</p>
@@ -5420,17 +5518,17 @@ a_{31} & 0 & 0
 <div class="MathJax_Preview">
 \begin{vmatrix}
 + &amp; - &amp; + &amp; - &amp; + &amp; - \\
+- &amp; + &amp; - &amp; + &amp; - &amp; + \\
 + &amp; - &amp; + &amp; - &amp; + &amp; - \\
-+ &amp; - &amp; + &amp; - &amp; + &amp; - \\
-+ &amp; - &amp; + &amp; - &amp; + &amp; -
+- &amp; + &amp; - &amp; + &amp; - &amp; +
 \end{vmatrix}
 </div>
 <script type="math/tex; mode=display">
 \begin{vmatrix}
 + & - & + & - & + & - \\
+- & + & - & + & - & + \\
 + & - & + & - & + & - \\
-+ & - & + & - & + & - \\
-+ & - & + & - & + & -
+- & + & - & + & - & +
 \end{vmatrix}
 </script>
 </div>
@@ -5573,6 +5671,279 @@ ad - bc = 6 - 1 = 5
 </script>
 </div>
 <h2 id="_24">特征值和特征向量<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
+<p>矩阵就像一个函数，作用在 x 上，得到 Ax 表示对 x 做了映射，变换前后的两个向量方向通常不同，而我们关心的则是共线的情况。使得 Ax 与 x 共线的向量称之为特征向量（eigen vector），这里的共线表示同向、反向或者零向量。</p>
+<div>
+<div class="MathJax_Preview">
+Ax = \lambda x
+</div>
+<script type="math/tex; mode=display">
+Ax = \lambda x
+</script>
+</div>
+<p><span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> 则是特征值（eigen value）。</p>
+<h3 id="_25">求解<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>现在考虑如何求解</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+Ax = \lambda x \\
+\Downarrow \\
+(A - \lambda I)x = 0
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+Ax = \lambda x \\
+\Downarrow \\
+(A - \lambda I)x = 0
+\end{matrix}
+</script>
+</div>
+<p>如果存在 x，那么 <span><span class="MathJax_Preview">A - \lambda I</span><script type="math/tex">A - \lambda I</script></span> 一定是奇异的；否则，x 只有零向量的解。</p>
+<div>
+<div class="MathJax_Preview">
+\det(A - \lambda I) = 0
+</div>
+<script type="math/tex; mode=display">
+\det(A - \lambda I) = 0
+</script>
+</div>
+<p>例如</p>
+<div>
+<div class="MathJax_Preview">
+A = 
+\begin{bmatrix}
+3 &amp; 1 \\
+1 &amp; 3
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+A = 
+\begin{bmatrix}
+3 & 1 \\
+1 & 3
+\end{bmatrix}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\det(A - \lambda I) = 0 =
+\begin{vmatrix}
+3 - \lambda &amp; 1 \\
+1 &amp; 3 - \lambda
+\end{vmatrix} = (3 - \lambda)^{2} - 1
+</div>
+<script type="math/tex; mode=display">
+\det(A - \lambda I) = 0 =
+\begin{vmatrix}
+3 - \lambda & 1 \\
+1 & 3 - \lambda
+\end{vmatrix} = (3 - \lambda)^{2} - 1
+</script>
+</div>
+<p>解得</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+\lambda_{1} = 2 \\
+\lambda_{2} = 4
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+\lambda_{1} = 2 \\
+\lambda_{2} = 4
+\end{cases}
+</script>
+</div>
+<p>重新代回</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; A - \lambda_{1} I =
+\begin{bmatrix}
+3 - 2 &amp; 1 \\
+1 &amp; 3 - 2
+\end{bmatrix} =
+\begin{bmatrix}
+1 &amp; 1 \\
+1 &amp; 1
+\end{bmatrix} \\
+&amp; A - \lambda_{2} I =
+\begin{bmatrix}
+3 - 4 &amp; 1 \\
+1 &amp; 3 - 4
+\end{bmatrix} =
+\begin{bmatrix}
+-1 &amp; 1 \\
+1 &amp; -1
+\end{bmatrix}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& A - \lambda_{1} I =
+\begin{bmatrix}
+3 - 2 & 1 \\
+1 & 3 - 2
+\end{bmatrix} =
+\begin{bmatrix}
+1 & 1 \\
+1 & 1
+\end{bmatrix} \\
+& A - \lambda_{2} I =
+\begin{bmatrix}
+3 - 4 & 1 \\
+1 & 3 - 4
+\end{bmatrix} =
+\begin{bmatrix}
+-1 & 1 \\
+1 & -1
+\end{bmatrix}
+\end{aligned}
+</script>
+</div>
+<p>特征向量</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; x_{1} =
+\begin{bmatrix}
+1 \\
+-1
+\end{bmatrix} \\
+&amp; x_{2} =
+\begin{bmatrix}
+1 \\
+1
+\end{bmatrix}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& x_{1} =
+\begin{bmatrix}
+1 \\
+-1
+\end{bmatrix} \\
+& x_{2} =
+\begin{bmatrix}
+1 \\
+1
+\end{bmatrix}
+\end{aligned}
+</script>
+</div>
+<p>特征值与行列式的关系</p>
+<div>
+<div class="MathJax_Preview">
+\det(A) = \prod_{i=1}^{n} \lambda_{i}
+</div>
+<script type="math/tex; mode=display">
+\det(A) = \prod_{i=1}^{n} \lambda_{i}
+</script>
+</div>
+<h3 id="_26">迹<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>矩阵 A 对角线上的值的和叫做迹（trace）。</p>
+<div>
+<div class="MathJax_Preview">
+\text{Tr}(A) = \sum_{i=1}^{n} a_{ii} = \sum_{i=1}^{n} \lambda_{i}
+</div>
+<script type="math/tex; mode=display">
+\text{Tr}(A) = \sum_{i=1}^{n} a_{ii} = \sum_{i=1}^{n} \lambda_{i}
+</script>
+</div>
+<h3 id="_27">对角化<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>假设 A 有 n 个线性无关的特征向量，并将它们以列向量的形式排列成矩阵 S。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+AS &amp;= A
+\begin{bmatrix}
+| &amp; | &amp; \cdots &amp; | \\
+x_{1} &amp; x_{2} &amp; \cdots &amp; x_{n} \\
+| &amp; | &amp; \cdots &amp; |
+\end{bmatrix} =
+\begin{bmatrix}
+| &amp; | &amp; \cdots &amp; | \\
+\lambda_{1}x_{1} &amp; \lambda_{2}x_{2} &amp; \cdots &amp; \lambda_{n}x_{n} \\
+| &amp; | &amp; \cdots &amp; |
+\end{bmatrix} \\
+&amp;=
+\begin{bmatrix}
+| &amp; | &amp; \cdots &amp; | \\
+x_{1} &amp; x_{2} &amp; \cdots &amp; x_{n} \\
+| &amp; | &amp; \cdots &amp; |
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_{1} &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; \lambda_{2} &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; \lambda_{n}
+\end{bmatrix} \\
+&amp;= S \Lambda
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+AS &= A
+\begin{bmatrix}
+| & | & \cdots & | \\
+x_{1} & x_{2} & \cdots & x_{n} \\
+| & | & \cdots & |
+\end{bmatrix} =
+\begin{bmatrix}
+| & | & \cdots & | \\
+\lambda_{1}x_{1} & \lambda_{2}x_{2} & \cdots & \lambda_{n}x_{n} \\
+| & | & \cdots & |
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+| & | & \cdots & | \\
+x_{1} & x_{2} & \cdots & x_{n} \\
+| & | & \cdots & |
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_{1} & 0 & \cdots & 0 \\
+0 & \lambda_{2} & \cdots & 0 \\
+\vdots & \vdots & \vdots & \vdots \\
+0 & 0 & \cdots & \lambda_{n}
+\end{bmatrix} \\
+&= S \Lambda
+\end{aligned}
+</script>
+</div>
+<p>A 与 S 矩阵相乘，可以看作 A 与 S 的每一列分别相乘，这是乘法的列向量线性组合视角。<span><span class="MathJax_Preview">\Lambda</span><script type="math/tex">\Lambda</script></span> 称之为特征值矩阵（eigenvalue matrix）。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; S^{-1}AS = \Lambda \\
+&amp; A = S \Lambda S^{-1}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& S^{-1}AS = \Lambda \\
+& A = S \Lambda S^{-1}
+\end{aligned}
+</script>
+</div>
+<p>总结一下，<strong>如果方阵 A 有 n 个线性无关的特征向量，它就可以被对角化</strong>。矩阵的幂指数对应特征值的幂指数或特征矩阵的幂指数。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; A^{n} x = A^{n-1} Ax = A^{n-1} \lambda x = \lambda A^{n-1}x = \lambda^{n}x \\
+&amp; A^{n} = (S \Lambda S^{-1})^{n} = S \Lambda^{n} S^{-1}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& A^{n} x = A^{n-1} Ax = A^{n-1} \lambda x = \lambda A^{n-1}x = \lambda^{n}x \\
+& A^{n} = (S \Lambda S^{-1})^{n} = S \Lambda^{n} S^{-1}
+\end{aligned}
+</script>
+</div>
+<p><strong>一个矩阵 A 的特征值相互不同（无重复特征值），那么 A 一定有 n 个线性无关的特征向量（可对角化）。</strong></p>
                 
               
               
