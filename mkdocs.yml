@@ -64,83 +64,95 @@ markdown_extensions:
 # Contents
 nav:
     - 介绍: index.md
-    - 算法:
-        - 排序:
-            - 基础: algo/sort/basis.md
-            - 选择排序: algo/sort/select.md
-            - 冒泡排序: algo/sort/bubble.md
-            - 插入排序: algo/sort/insert.md
-            - 桶排序: algo/sort/bucket.md
-            - 堆排序: algo/sort/heap.md
-            - 希尔排序: algo/sort/shell.md
-            - 归并排序: algo/sort/merge.md
-            - 快速排序: algo/sort/quick.md
-        - 动态规划:
-            - 基础: algo/dp/basis.md
-            - 划分区间: algo/dp/segment.md
-            - 背包问题: algo/dp/knapsack.md
-            - 最长递增子序列: algo/dp/lis.md
-            - 路径问题: algo/dp/path.md
-            - 矩阵问题: algo/dp/matrix.md
-            - 股票买卖: algo/dp/stocks.md
-            - 最长公共子序列: algo/dp/lcs.md
-            - 编辑距离: algo/dp/edit-distance.md
-            - 打家劫舍: algo/dp/rob.md
-            - 序列型: algo/dp/sequence.md
-            - 区间型: algo/dp/interval.md
-            - 左右遍历型: algo/dp/left-right-traversal.md
-            - 数位型: algo/dp/digits.md
-            - 树上型: algo/dp/tree.md
-        - 贪心: algo/greedy.md
-        - 递归: algo/recursion.md
-        - 分治: algo/divide-conquer.md
-        - 回溯: algo/back-tracking.md
-        - 二分: algo/binary-search.md
-        - 双指针: algo/two-pointers.md
-        - 搜索: algo/search.md
-        - 前缀和: algo/prefix-sum.md
-        - 数学: algo/math.md
-        - 矩阵: algo/matrix.md
-    - 数据结构:
-        - 数组: data-structure/vector.md
-        - 链表: data-structure/list.md
-        - 栈 & 队列: data-structure/stack-queue.md
-        - 单调栈: data-structure/monotone-stack.md
-        - 单调队列: data-structure/monotone-queue.md
-        - 树:
-            - 基础: data-structure/tree/basis.md
-            - 二叉树: data-structure/tree/binary-tree.md
-            - 遍历: data-structure/tree/traversal.md
-            - 前缀树: data-structure/tree/prefix-tree.md
-        - 字符串: data-structure/string.md
-        - 并查集: data-structure/unionset.md
-        - 树状数组: data-structure/binary-indexed-tree.md
-        - 线段树: data-structure/segment-tree.md
-        - 优先队列: data-structure/priority-queue.md
-        - 哈希表: data-structure/hash.md
+    - 计算机基础:
+        - 算法:
+            - 排序:
+                - 基础: cs/algo/sort/basis.md
+                - 选择排序: cs/algo/sort/select.md
+                - 冒泡排序: cs/algo/sort/bubble.md
+                - 插入排序: cs/algo/sort/insert.md
+                - 桶排序: cs/algo/sort/bucket.md
+                - 堆排序: cs/algo/sort/heap.md
+                - 希尔排序: cs/algo/sort/shell.md
+                - 归并排序: cs/algo/sort/merge.md
+                - 快速排序: cs/algo/sort/quick.md
+            - 动态规划:
+                - 基础: cs/algo/dp/basis.md
+                - 划分区间: cs/algo/dp/segment.md
+                - 背包问题: cs/algo/dp/knapsack.md
+                - 最长递增子序列: cs/algo/dp/lis.md
+                - 路径问题: cs/algo/dp/path.md
+                - 矩阵问题: cs/algo/dp/matrix.md
+                - 股票买卖: cs/algo/dp/stocks.md
+                - 最长公共子序列: cs/algo/dp/lcs.md
+                - 编辑距离: cs/algo/dp/edit-distance.md
+                - 打家劫舍: cs/algo/dp/rob.md
+                - 序列型: cs/algo/dp/sequence.md
+                - 区间型: cs/algo/dp/interval.md
+                - 左右遍历型: cs/algo/dp/left-right-traversal.md
+                - 数位型: cs/algo/dp/digits.md
+                - 树上型: cs/algo/dp/tree.md
+            - 贪心: cs/algo/greedy.md
+            - 递归: cs/algo/recursion.md
+            - 分治: cs/algo/divide-conquer.md
+            - 回溯: cs/algo/back-tracking.md
+            - 二分: cs/algo/binary-search.md
+            - 双指针: cs/algo/two-pointers.md
+            - 搜索: cs/algo/search.md
+            - 前缀和: cs/algo/prefix-sum.md
+            - 数学: cs/algo/math.md
+            - 矩阵: cs/algo/matrix.md
+        - 数据结构:
+            - 数组: cs/data-structure/vector.md
+            - 链表: cs/data-structure/list.md
+            - 栈 & 队列: cs/data-structure/stack-queue.md
+            - 单调栈: cs/data-structure/monotone-stack.md
+            - 单调队列: cs/data-structure/monotone-queue.md
+            - 树:
+                - 基础: cs/data-structure/tree/basis.md
+                - 二叉树: cs/data-structure/tree/binary-tree.md
+                - 遍历: cs/data-structure/tree/traversal.md
+                - 前缀树: cs/data-structure/tree/prefix-tree.md
+            - 字符串: cs/data-structure/string.md
+            - 并查集: cs/data-structure/unionset.md
+            - 树状数组: cs/data-structure/binary-indexed-tree.md
+            - 线段树: cs/data-structure/segment-tree.md
+            - 优先队列: cs/data-structure/priority-queue.md
+            - 哈希表: cs/data-structure/hash.md
     - 机器学习:
-        - 机器学习策略: machine-learning/ml-strategies.md
-        - 线性回归: machine-learning/linear-regression.md
-        - 逻辑回归: machine-learning/logistic-regression.md
-        - 感知机: machine-learning/perceptron.md
-        - 支持向量机: machine-learning/svm.md
-        - 决策树: machine-learning/decision-tree.md
-        - 聚类: machine-learning/clustering.md
-        - 降维: machine-learning/dimension_reduction.md
-        - 激活函数: machine-learning/activation.md
-        - ROC: machine-learning/roc.md
-        - MLP: machine-learning/mlp.md
-        - 初始化: machine-learning/initialization.md
-        - 优化: machine-learning/optimization.md
-        - 正则化: machine-learning/regularization.md
-        - 归一化: machine-learning/normalization.md
-        - CNN: machine-learning/cnn.md
-        - CV: machine-learning/cv.md
-        - NLP: machine-learning/nlp.md
-        - 概率图: machine-learning/pgm.md
-        - 信号与系统: machine-learning/signals.md
-        - 对比学习: machine-learning/contrastive_learning.md
+        - 基础:
+            - 感知机: ml/basis/perceptron.md
+            - 决策树: ml/basis/decision-tree.md
+            - 线性回归: ml/basis/linear-regression.md
+            - 逻辑回归: ml/basis/logistic-regression.md
+            - 支持向量机: ml/basis/svm.md
+            - 聚类: ml/basis/clustering.md
+            - 降维: ml/basis/dimension_reduction.md
+            - ROC: ml/basis/roc.md
+            - 机器学习策略: ml/basis/strategies.md
+        - 深度学习:
+            - MLP: ml/dl/mlp.md
+            - 激活函数: ml/dl/activation.md
+            - 初始化: ml/dl/initialization.md
+            - 优化: ml/dl/optimization.md
+            - 正则化: ml/dl/regularization.md
+            - 归一化: ml/dl/normalization.md
+        - CV:
+            - 卷积网络: ml/cv/cnn.md
+            - CNN: ml/cv/struct.md
+        - NLP:
+            - 基础: ml/nlp/basis.md
+            - Word2Vec: ml/nlp/w2v.md
+            - RNN: ml/nlp/rnn.md
+        - 概率图:
+            - 表达: ml/pgm/representation.md
+            - 推断: ml/pgm/inference.md
+            - 学习: ml/pgm/linearning.md
+        - 对比学习:
+            - 对比学习: ml/cl/contrastive_learning.md
     - 数学:
         - 概率&统计: math/prob-stat.md
         - 线性代数: math/linear-algebra.md
         - 图论: math/graph.md
+    - 信号与系统:
+        - 基础: signals/basis.md
