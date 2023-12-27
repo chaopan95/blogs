@@ -331,6 +331,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://chaopan95.github.io/blogs/ml/dl/initialization/</loc>
+         <lastmod>2023-12-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://chaopan95.github.io/blogs/ml/dl/mlp/</loc>
          <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
@@ -347,11 +352,6 @@
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/ml/dl/regularization/</loc>
-         <lastmod>2023-12-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://chaopan95.github.io/blogs/ml/dl/images/initialization/</loc>
          <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
