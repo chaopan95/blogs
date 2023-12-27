@@ -2,372 +2,372 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://chaopan95.github.io/blogs/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/back-tracking/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/back-tracking/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/binary-search/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/binary-search/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/divide-conquer/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/divide-conquer/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/greedy/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/greedy/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/math/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/math/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/matrix/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/matrix/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/prefix-sum/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/prefix-sum/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/recursion/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/recursion/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/search/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/search/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/two-pointers/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/two-pointers/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/basis/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/basis/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/digits/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/digits/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/edit-distance/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/edit-distance/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/interval/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/interval/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/knapsack/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/knapsack/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/lcs/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/lcs/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/left-right-traversal/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/left-right-traversal/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/lis/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/lis/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/matrix/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/matrix/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/path/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/path/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/rob/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/rob/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/segment/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/segment/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/sequence/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/sequence/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/stocks/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/stocks/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/dp/tree/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/dp/tree/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/sort/basis/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/sort/basis/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/sort/bubble/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/sort/bubble/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/sort/bucket/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/sort/bucket/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/sort/heap/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/sort/heap/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/sort/insert/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/sort/insert/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/sort/merge/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/sort/merge/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/sort/quick/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/sort/quick/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/sort/select/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/sort/select/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/algo/sort/shell/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/algo/sort/shell/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/binary-indexed-tree/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/binary-indexed-tree/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/hash/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/hash/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/list/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/list/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/monotone-queue/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/monotone-queue/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/monotone-stack/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/monotone-stack/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/priority-queue/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/priority-queue/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/segment-tree/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/segment-tree/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/stack-queue/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/stack-queue/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/string/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/string/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/unionset/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/unionset/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/vector/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/vector/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/tree/basis/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/tree/basis/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/tree/binary-tree/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/tree/binary-tree/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/tree/prefix-tree/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/tree/prefix-tree/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chaopan95.github.io/blogs/data-structure/tree/traversal/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <loc>https://chaopan95.github.io/blogs/cs/data-structure/tree/traversal/</loc>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/activation/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/clustering/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/cnn/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/contrastive_learning/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/cv/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/decision-tree/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/dimension_reduction/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/initialization/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/linear-regression/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/logistic-regression/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/ml-strategies/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/mlp/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/nlp/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/normalization/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/optimization/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/perceptron/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/pgm/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/regularization/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/roc/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/signals/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/machine-learning/svm/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/math/graph/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/math/linear-algebra/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chaopan95.github.io/blogs/math/prob-stat/</loc>
-         <lastmod>2023-12-03</lastmod>
+         <lastmod>2023-12-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
