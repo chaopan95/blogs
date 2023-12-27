@@ -1,0 +1,2076 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="算法">
+      
+      
+      
+        <meta name="author" content="潘超">
+      
+      
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/ml/nlp/rnn/">
+      
+      <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+    
+    
+      
+        <title>RNN - 个人博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700%7CFira+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Fira Sans";--md-code-font-family:"Fira Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rnn" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="个人博客" class="md-header__button md-logo" aria-label="个人博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RNN
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="个人博客" class="md-nav__button md-logo" aria-label="个人博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人博客
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        介绍
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        计算机基础
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="计算机基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          计算机基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        算法
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="算法" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1" type="checkbox" id="__nav_2_1_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1_1">
+        排序
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="排序" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          排序
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/sort/basis/" class="md-nav__link">
+        基础
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/sort/select/" class="md-nav__link">
+        选择排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/sort/bubble/" class="md-nav__link">
+        冒泡排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/sort/insert/" class="md-nav__link">
+        插入排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/sort/bucket/" class="md-nav__link">
+        桶排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/sort/heap/" class="md-nav__link">
+        堆排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/sort/shell/" class="md-nav__link">
+        希尔排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/sort/merge/" class="md-nav__link">
+        归并排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/sort/quick/" class="md-nav__link">
+        快速排序
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_2" type="checkbox" id="__nav_2_1_2" >
+      
+      <label class="md-nav__link" for="__nav_2_1_2">
+        动态规划
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="动态规划" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          动态规划
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/basis/" class="md-nav__link">
+        基础
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/segment/" class="md-nav__link">
+        划分区间
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/knapsack/" class="md-nav__link">
+        背包问题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/lis/" class="md-nav__link">
+        最长递增子序列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/path/" class="md-nav__link">
+        路径问题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/matrix/" class="md-nav__link">
+        矩阵问题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/stocks/" class="md-nav__link">
+        股票买卖
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/lcs/" class="md-nav__link">
+        最长公共子序列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/edit-distance/" class="md-nav__link">
+        编辑距离
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/rob/" class="md-nav__link">
+        打家劫舍
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/sequence/" class="md-nav__link">
+        序列型
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/interval/" class="md-nav__link">
+        区间型
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/left-right-traversal/" class="md-nav__link">
+        左右遍历型
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/digits/" class="md-nav__link">
+        数位型
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/dp/tree/" class="md-nav__link">
+        树上型
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/greedy/" class="md-nav__link">
+        贪心
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/recursion/" class="md-nav__link">
+        递归
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/divide-conquer/" class="md-nav__link">
+        分治
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/back-tracking/" class="md-nav__link">
+        回溯
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/binary-search/" class="md-nav__link">
+        二分
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/two-pointers/" class="md-nav__link">
+        双指针
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/search/" class="md-nav__link">
+        搜索
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/prefix-sum/" class="md-nav__link">
+        前缀和
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/math/" class="md-nav__link">
+        数学
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/algo/matrix/" class="md-nav__link">
+        矩阵
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        数据结构
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据结构" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          数据结构
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/vector/" class="md-nav__link">
+        数组
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/list/" class="md-nav__link">
+        链表
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/stack-queue/" class="md-nav__link">
+        栈 & 队列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/monotone-stack/" class="md-nav__link">
+        单调栈
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/monotone-queue/" class="md-nav__link">
+        单调队列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_6" type="checkbox" id="__nav_2_2_6" >
+      
+      <label class="md-nav__link" for="__nav_2_2_6">
+        树
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="树" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          树
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/tree/basis/" class="md-nav__link">
+        基础
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/tree/binary-tree/" class="md-nav__link">
+        二叉树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/tree/traversal/" class="md-nav__link">
+        遍历
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/tree/prefix-tree/" class="md-nav__link">
+        前缀树
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/string/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/unionset/" class="md-nav__link">
+        并查集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/binary-indexed-tree/" class="md-nav__link">
+        树状数组
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/segment-tree/" class="md-nav__link">
+        线段树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/priority-queue/" class="md-nav__link">
+        优先队列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/data-structure/hash/" class="md-nav__link">
+        哈希表
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        机器学习
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="机器学习" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          机器学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        基础
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="基础" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basis/perceptron/" class="md-nav__link">
+        感知机
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basis/decision-tree/" class="md-nav__link">
+        决策树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basis/linear-regression/" class="md-nav__link">
+        线性回归
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basis/logistic-regression/" class="md-nav__link">
+        逻辑回归
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basis/svm/" class="md-nav__link">
+        支持向量机
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basis/clustering/" class="md-nav__link">
+        聚类
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basis/dimension_reduction/" class="md-nav__link">
+        降维
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basis/roc/" class="md-nav__link">
+        ROC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basis/strategies/" class="md-nav__link">
+        机器学习策略
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        深度学习
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="深度学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          深度学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl/mlp/" class="md-nav__link">
+        MLP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl/activation/" class="md-nav__link">
+        激活函数
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl/initialization.md" class="md-nav__link">
+        初始化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl/optimization/" class="md-nav__link">
+        优化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl/regularization/" class="md-nav__link">
+        正则化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dl/normalization/" class="md-nav__link">
+        归一化
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        CV
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CV" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          CV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cv/cnn/" class="md-nav__link">
+        卷积网络
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cv/struct/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" checked>
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        NLP
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="NLP" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          NLP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basis/" class="md-nav__link">
+        基础
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../w2v/" class="md-nav__link">
+        Word2Vec
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RNN
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        RNN
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rnn" class="md-nav__link">
+    RNN
+  </a>
+  
+    <nav class="md-nav" aria-label="RNN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    前向传播 &amp; 反向传播
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    结构类型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    梯度消失与梯度爆炸
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gru" class="md-nav__link">
+    GRU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lstm" class="md-nav__link">
+    LSTM
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      <label class="md-nav__link" for="__nav_3_5">
+        概率图
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="概率图" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          概率图
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pgm/representation/" class="md-nav__link">
+        表达
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pgm/inference/" class="md-nav__link">
+        推断
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pgm/linearning/" class="md-nav__link">
+        学习
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      <label class="md-nav__link" for="__nav_3_6">
+        对比学习
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="对比学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          对比学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contrastive_learning.md" class="md-nav__link">
+        对比学习
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        数学
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数学" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          数学
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/prob-stat/" class="md-nav__link">
+        概率&统计
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/linear-algebra/" class="md-nav__link">
+        线性代数
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../math/graph/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        信号与系统
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="信号与系统" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          信号与系统
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../signals/basis/" class="md-nav__link">
+        基础
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rnn" class="md-nav__link">
+    RNN
+  </a>
+  
+    <nav class="md-nav" aria-label="RNN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    前向传播 &amp; 反向传播
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    结构类型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    梯度消失与梯度爆炸
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gru" class="md-nav__link">
+    GRU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lstm" class="md-nav__link">
+    LSTM
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>RNN</h1>
+                
+                <h2 id="rnn">RNN<a class="headerlink" href="#rnn" title="Permanent link">&para;</a></h2>
+<p>递归神经网络（Recurrent Neural Network）结构
+<img alt="" src="../images/rnn1.png" /></p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; h_{t} = f_{h}(V \cdot x_{t} + W \cdot h_{t-1} + b_{h}) \\
+&amp; \hat{y_{}}_{t} = f_{y}(U \cdot h_{t} + b_{y}) \\
+&amp; L = \sum_{t} L_{t}(y_{t}, \hat{y_{t}})
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& h_{t} = f_{h}(V \cdot x_{t} + W \cdot h_{t-1} + b_{h}) \\
+& \hat{y_{}}_{t} = f_{y}(U \cdot h_{t} + b_{y}) \\
+& L = \sum_{t} L_{t}(y_{t}, \hat{y_{t}})
+\end{aligned}
+</script>
+</div>
+<p>RNN 的优势：1）任意的序列长度，2）较少的参数，因为所有的参数在不同时刻是共享的。</p>
+<p>MLP 效果差的原因：MLP 要求输入序列的长度固定，如果尝试一个固定长度的窗口，具体使用多大的窗口也是难以确定的。</p>
+<p>单向 RNN 只能接受左侧的信息，为了能接受右侧的编码，双向RNN（Bidirectional RNN）应用而生，在单向 RNN 基础上，新增一个 block。</p>
+<p><img alt="" src="../images/rnn2.png" /></p>
+<div>
+<div class="MathJax_Preview">
+\hat{y}_{t} = f_{h}(W_{\overrightarrow{h}} \overrightarrow{h}_{t-1} + W_{\overleftarrow{h}} \overleftarrow{h}_{t-1} + V x_{t} + b)
+</div>
+<script type="math/tex; mode=display">
+\hat{y}_{t} = f_{h}(W_{\overrightarrow{h}} \overrightarrow{h}_{t-1} + W_{\overleftarrow{h}} \overleftarrow{h}_{t-1} + V x_{t} + b)
+</script>
+</div>
+<h3 id="_1">前向传播 &amp; 反向传播<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>前向传播计算中间结果和损失函数 <span><span class="MathJax_Preview">h_{t}, \hat{y_{t}}, L_{t}</span><script type="math/tex">h_{t}, \hat{y_{t}}, L_{t}</script></span></p>
+<p>与 MLP 不同，反向传播还需要考虑时间，即 Backpropagation Through Time (BPTT)。所有的参数在时间步长上是共享，这意味着，如果我们想计算参数的梯度，我们需要对全时间步长的梯度求和。</p>
+<div>
+<div class="MathJax_Preview">
+\frac{\partial L}{\partial U}, \frac{\partial L}{\partial V}, \frac{\partial L}{\partial W}, \frac{\partial L}{\partial b_{x}}, \frac{\partial L}{\partial b_{h}}
+</div>
+<script type="math/tex; mode=display">
+\frac{\partial L}{\partial U}, \frac{\partial L}{\partial V}, \frac{\partial L}{\partial W}, \frac{\partial L}{\partial b_{x}}, \frac{\partial L}{\partial b_{h}}
+</script>
+</div>
+<p>计算 <span><span class="MathJax_Preview">\frac{\partial L}{\partial U}</span><script type="math/tex">\frac{\partial L}{\partial U}</script></span></p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{\partial L}{\partial U} &amp;= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial U} \\
+&amp;= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial U}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial L}{\partial U} &= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial U} \\
+&= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial U}
+\end{aligned}
+</script>
+</div>
+<p><span><span class="MathJax_Preview">\hat{y_{t}}</span><script type="math/tex">\hat{y_{t}}</script></span> 只依赖 U，因为</p>
+<div>
+<div class="MathJax_Preview">\hat{y_{}}_{t} = f_{y}(U \cdot h_{t} + b_{y})</div>
+<script type="math/tex; mode=display">\hat{y_{}}_{t} = f_{y}(U \cdot h_{t} + b_{y})</script>
+</div>
+<p>计算 <span><span class="MathJax_Preview">\frac{\partial L}{\partial W}</span><script type="math/tex">\frac{\partial L}{\partial W}</script></span></p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{\partial L}{\partial W} &amp; = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial W} \\
+&amp; = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} (\frac{\partial h_{t}}{\partial W} + \frac{\partial h_{t}}{\partial h_{t-1}}\frac{\partial h_{t-1}}{\partial W} \\&amp;+ \frac{\partial h_{t}}{\partial h_{t-1}} \frac{\partial h_{t-1}}{\partial h_{t-2}} \frac{\partial h_{t-2}}{\partial W}+ ...) \\
+&amp; = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} \frac{\partial h_{t}}{\partial h_{t-1}} ... \frac{\partial h_{k+1}}{\partial h_{k}} \frac{\partial h_{k}}{\partial W} \\
+&amp; = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}})\frac{\partial h_{k}}{\partial W}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial L}{\partial W} & = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial W} \\
+& = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} (\frac{\partial h_{t}}{\partial W} + \frac{\partial h_{t}}{\partial h_{t-1}}\frac{\partial h_{t-1}}{\partial W} \\&+ \frac{\partial h_{t}}{\partial h_{t-1}} \frac{\partial h_{t-1}}{\partial h_{t-2}} \frac{\partial h_{t-2}}{\partial W}+ ...) \\
+& = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} \frac{\partial h_{t}}{\partial h_{t-1}} ... \frac{\partial h_{k+1}}{\partial h_{k}} \frac{\partial h_{k}}{\partial W} \\
+& = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}})\frac{\partial h_{k}}{\partial W}
+\end{aligned}
+</script>
+</div>
+<p><span><span class="MathJax_Preview">h_{t}</span><script type="math/tex">h_{t}</script></span> 依赖它的前面的隐层。</p>
+<p>计算 <span><span class="MathJax_Preview">\frac{\partial L}{\partial V}</span><script type="math/tex">\frac{\partial L}{\partial V}</script></span>，同计算 W，<span><span class="MathJax_Preview">h_{t}</span><script type="math/tex">h_{t}</script></span> 依赖前面的隐层。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\frac{\partial L}{\partial V} &amp;= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial V} \\
+&amp;= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t}\frac{\partial h_{i}}{\partial h_{i-1}}) \frac{\partial h_{k}}{\partial V}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\partial L}{\partial V} &= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial V} \\
+&= \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t}\frac{\partial h_{i}}{\partial h_{i-1}}) \frac{\partial h_{k}}{\partial V}
+\end{aligned}
+</script>
+</div>
+<p>计算 <span><span class="MathJax_Preview">\frac{\partial L}{\partial b_{y}}</span><script type="math/tex">\frac{\partial L}{\partial b_{y}}</script></span> 和 <span><span class="MathJax_Preview">\frac{\partial L}{\partial b_{h}}</span><script type="math/tex">\frac{\partial L}{\partial b_{h}}</script></span></p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \frac{\partial L}{\partial b_{y}} = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial b_{y}} \\
+&amp; \frac{\partial L}{\partial b_{h}} = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}}) \frac{\partial h_{k}}{\partial b_{h}}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \frac{\partial L}{\partial b_{y}} = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial b_{y}} \\
+& \frac{\partial L}{\partial b_{h}} = \sum_{t=0}^{T} \frac{\partial L_{t}}{\partial \hat{y_{t}}}\frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}}) \frac{\partial h_{k}}{\partial b_{h}}
+\end{aligned}
+</script>
+</div>
+<p>考虑 RNN 作为语言生成模型，<span><span class="MathJax_Preview">\hat{y_{t}}</span><script type="math/tex">\hat{y_{t}}</script></span> 是在某个时刻的输出，L 时输入序列的长度，N 是语料库的大小。<span><span class="MathJax_Preview">\hat{y_{t}}</span><script type="math/tex">\hat{y_{t}}</script></span> 是一个长为 N 的向量，每一个元素的值介于 0 和 1 之间，表示概率值，加和为 1。</p>
+<h3 id="_2">结构类型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>RNN 有 5 种类型：1）一对一，2）一对多（语音生成），3）多对一（情绪分析），4）多对多，输入序列与输出序列等长，5）多对多，输入输出不等长</p>
+<p><img alt="" src="../images/rnn3.png" /></p>
+<h2 id="_3">梯度消失与梯度爆炸<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>梯度计算如下</p>
+<div>
+<div class="MathJax_Preview">\frac{\partial L_{t}}{\partial W} = \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}})\frac{\partial h_{k}}{\partial W}</div>
+<script type="math/tex; mode=display">\frac{\partial L_{t}}{\partial W} = \frac{\partial L_{t}}{\partial \hat{y_{t}}} \frac{\partial \hat{y_{t}}}{\partial h_{t}} \sum_{k=0}^{t} (\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}})\frac{\partial h_{k}}{\partial W}</script>
+</div>
+<p><span><span class="MathJax_Preview">\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}}</span><script type="math/tex">\prod_{i=k+1}^{t} \frac{\partial h_{i}}{\partial h_{i-1}}</script></span> 代表了 k 到 t 梯度的贡献。显然，k 与 t 的间隔越大，连乘的项越多。</p>
+<p>假设某一时刻 <span><span class="MathJax_Preview">h_{i}</span><script type="math/tex">h_{i}</script></span> 是一个标量，那么 <span><span class="MathJax_Preview">\frac{\partial h_{i}}{\partial h_{i-1}}</span><script type="math/tex">\frac{\partial h_{i}}{\partial h_{i-1}}</script></span> 也是一个标量。如果 <span><span class="MathJax_Preview">\left | \frac{\partial h_{i}}{\partial h_{i-1}} \right | &lt; 1</span><script type="math/tex">\left | \frac{\partial h_{i}}{\partial h_{i-1}} \right | < 1</script></span>，乘积趋向 0，这就是梯度消失（Vanishing gradients）；如果 <span><span class="MathJax_Preview">\left | \frac{\partial h_{i}}{\partial h_{i-1}} \right | &gt; 1</span><script type="math/tex">\left | \frac{\partial h_{i}}{\partial h_{i-1}} \right | > 1</script></span>，乘积趋向无穷，这就是梯度爆炸（Exploding Gradients）。</p>
+<p>梯度消失导致长距离训练失效，梯度爆炸导致计算结果变成 NaN。</p>
+<p>梯度消失的缓解方法：激活函数ReLU，正交初始化权重（<span><span class="MathJax_Preview">Q^{T} = Q^{-1} \Rightarrow \prod_{i}Q_{i}</span><script type="math/tex">Q^{T} = Q^{-1} \Rightarrow \prod_{i}Q_{i}</script></span>），抄近路（skip connection）。</p>
+<p>梯度爆炸的缓解方法：梯度裁剪（gradients clipping）或者截断反向传播（truncated BPTT）。</p>
+<p>ReLU 激活函数</p>
+<div>
+<div class="MathJax_Preview">
+\frac{\partial h_{t}}{\partial h_{t-1}} = \frac{\partial h_{t}}{\partial pr_{t}}\frac{\partial pr_{t}}{\partial h_{t-1}} = diag(f'_{h}(pr_{t})) \cdot W
+</div>
+<script type="math/tex; mode=display">
+\frac{\partial h_{t}}{\partial h_{t-1}} = \frac{\partial h_{t}}{\partial pr_{t}}\frac{\partial pr_{t}}{\partial h_{t-1}} = diag(f'_{h}(pr_{t})) \cdot W
+</script>
+</div>
+<h2 id="gru">GRU<a class="headerlink" href="#gru" title="Permanent link">&para;</a></h2>
+<p>GRU 全称是 Gated Recurrent Unit</p>
+<p><img alt="" src="../images/gru1.png" /></p>
+<p>GRU 有两个门，r 代表重置门（reset gate），u 代表更新门（update gate）。它们对输入做线形变换后接一个 sigmoid 激活函数，最终的值域是 [0, 1]。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; r_{t} = \sigma (V_{r} x_{t} + W_{r} h_{t-1} + b_{r}) \\
+&amp; u_{t} = \sigma (V_{u} x_{t} + W_{u} h_{t-1} + b_{u})
+\end{aligned} \Rightarrow
+\begin{pmatrix}
+r_{t} \\
+u_{t}
+\end{pmatrix} =
+\begin{pmatrix}
+\sigma \\
+\sigma
+\end{pmatrix}
+(V x_{t} + W h_{t-1} + b)
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& r_{t} = \sigma (V_{r} x_{t} + W_{r} h_{t-1} + b_{r}) \\
+& u_{t} = \sigma (V_{u} x_{t} + W_{u} h_{t-1} + b_{u})
+\end{aligned} \Rightarrow
+\begin{pmatrix}
+r_{t} \\
+u_{t}
+\end{pmatrix} =
+\begin{pmatrix}
+\sigma \\
+\sigma
+\end{pmatrix}
+(V x_{t} + W h_{t-1} + b)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; g_{t} = f_{h} (V_{g} x_{t} + W_{g} (h_{t-1} \cdot r_{t}) + b_{g}) \\
+&amp; h_{t} = (1 - u_{t}) \cdot g_{t} + u_{t} \cdot h_{t-1}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& g_{t} = f_{h} (V_{g} x_{t} + W_{g} (h_{t-1} \cdot r_{t}) + b_{g}) \\
+& h_{t} = (1 - u_{t}) \cdot g_{t} + u_{t} \cdot h_{t-1}
+\end{aligned}
+</script>
+</div>
+<p>重置门作为 g 的输入，起到的作用类似于 LSTM 的输入门；更新门平衡前面隐层单元的值。</p>
+<p>GRU 避免梯度消失，因为它有一个梯度捷径（short way）。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; u_{t} = \sigma(V_{u}x_{t} + W_{u}h_{t-1} + b_{u}) \\
+&amp; h_{t} = (1-u_{t}) \cdot g_{t} + u_{t} \cdot h_{t-1} \\
+&amp; \frac{\partial h_{t}}{\partial h_{t-1}} = diag(1 - u_{t}) \cdot \frac{\partial g_{h}}{\partial h_{h-1}} + diag(u_{h}) \Rightarrow \text{ High initial } b_{u}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& u_{t} = \sigma(V_{u}x_{t} + W_{u}h_{t-1} + b_{u}) \\
+& h_{t} = (1-u_{t}) \cdot g_{t} + u_{t} \cdot h_{t-1} \\
+& \frac{\partial h_{t}}{\partial h_{t-1}} = diag(1 - u_{t}) \cdot \frac{\partial g_{h}}{\partial h_{h-1}} + diag(u_{h}) \Rightarrow \text{ High initial } b_{u}
+\end{aligned}
+</script>
+</div>
+<p>如果我们将重置门打开（输出值 1 代表打开），更新门关闭（输出值 0 代表关闭），GRU 退化成一个简单版 RNN。</p>
+<h2 id="lstm">LSTM<a class="headerlink" href="#lstm" title="Permanent link">&para;</a></h2>
+<p>LSTM 全称 Long Short Term Memory</p>
+<p><img alt="" src="../images/lstm1.png" /></p>
+<p>c 代表内部记忆（internal memory）</p>
+<p>h 代表隐层单元，与 c 相同尺寸</p>
+<p>i 代表输入门（input gate）</p>
+<p>o 代表漱出门（output gate）</p>
+<p>f 代表遗忘门（forget gate）</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp;
+\begin{aligned}
+&amp; g_{t} = f_{h} (V_{g} x_{t} + W_{g} h_{t-1} + b_{g}) \\
+&amp; i_{t} = \sigma(V_{i} x_{t} + W_{i} h_{t-1} + b_{i}) \\
+&amp; o_{t} = \sigma(V_{o} x_{t} + W_{o} h_{t-1} + b_{o}) \\
+&amp; f_{t} = \sigma(V_{f} x_{t} + W_{f} h_{t-1} + b_{f})
+\end{aligned} \quad \Rightarrow \quad
+\begin{pmatrix}
+g_{t} \\
+i_{t} \\
+o_{t} \\
+f_{t}
+\end{pmatrix} = 
+\begin{pmatrix}
+f\\
+\sigma \\
+\sigma \\
+\sigma
+\end{pmatrix}
+(V x_{t} + W h_{t-1} + b)
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&
+\begin{aligned}
+& g_{t} = f_{h} (V_{g} x_{t} + W_{g} h_{t-1} + b_{g}) \\
+& i_{t} = \sigma(V_{i} x_{t} + W_{i} h_{t-1} + b_{i}) \\
+& o_{t} = \sigma(V_{o} x_{t} + W_{o} h_{t-1} + b_{o}) \\
+& f_{t} = \sigma(V_{f} x_{t} + W_{f} h_{t-1} + b_{f})
+\end{aligned} \quad \Rightarrow \quad
+\begin{pmatrix}
+g_{t} \\
+i_{t} \\
+o_{t} \\
+f_{t}
+\end{pmatrix} = 
+\begin{pmatrix}
+f\\
+\sigma \\
+\sigma \\
+\sigma
+\end{pmatrix}
+(V x_{t} + W h_{t-1} + b)
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; c_{t} = f_{t} \cdot c_{t-1} + i_{t} \cdot g_{t}, \quad \text{where } \cdot \text{ means element-wise multiplication} \\
+&amp; h_{t} = o_{t} \cdot f_{h}(c_{t}) \\
+&amp; \frac{\partial c_{t}}{\partial c_{t-1}} = diag(f_{t}) \Rightarrow \text{ High initial } b_{f}, \quad \text{to avoid vanishing gradients}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& c_{t} = f_{t} \cdot c_{t-1} + i_{t} \cdot g_{t}, \quad \text{where } \cdot \text{ means element-wise multiplication} \\
+& h_{t} = o_{t} \cdot f_{h}(c_{t}) \\
+& \frac{\partial c_{t}}{\partial c_{t-1}} = diag(f_{t}) \Rightarrow \text{ High initial } b_{f}, \quad \text{to avoid vanishing gradients}
+\end{aligned}
+</script>
+</div>
+<p>如果 <span><span class="MathJax_Preview">x \in R^{n}</span><script type="math/tex">x \in R^{n}</script></span> 并且 <span><span class="MathJax_Preview">h \in R^{m}</span><script type="math/tex">h \in R^{m}</script></span>，矩阵 V、W 和向量 b 的尺寸如下：</p>
+<div>
+<div class="MathJax_Preview">
+V \in R^{4m \times n}, \quad W \in R^{4m \times m}, \quad b \in R^{4m}
+</div>
+<script type="math/tex; mode=display">
+V \in R^{4m \times n}, \quad W \in R^{4m \times m}, \quad b \in R^{4m}
+</script>
+</div>
+<p>对这些门而言，我们使用 sigmoid 作为激活函数，其结果位于 0 - 1 之间。靠近 1 表示门打开；趋向 0 表示门关闭。输入门控制存储在内部记忆里的内容，g 和 i 的元素相乘结果，加入到内部记忆里。输出门控制从内部记忆中读取的内容，记忆单元 C 与 o 相乘，结果传给隐层单元。遗忘门控制传播信息的完整程度。</p>
+<p>三个门的开与关，造成 LSTM 单元不同的功能。例如，关闭 f，打开 i 和 o，LSTM 退化成一个简单的 RNN。</p>
+<p><img alt="" src="../images/lstm2.png" /></p>
+<p>相比于 RNN，LSTM 需要 4 倍的参数。 <span><span class="MathJax_Preview">h_{t-1}</span><script type="math/tex">h_{t-1}</script></span> 和 <span><span class="MathJax_Preview">h_{t}</span><script type="math/tex">h_{t}</script></span> 之间依旧有梯度爆炸的可能，因为非常大的 W 会导致，因此梯度截断是有用的。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../w2v/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Word2Vec" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Word2Vec
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../pgm/representation/" class="md-footer__link md-footer__link--next" aria-label="下一页: 表达" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              表达
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Chao PAN
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

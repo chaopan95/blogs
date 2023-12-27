@@ -1,0 +1,2092 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="算法">
+      
+      
+      
+        <meta name="author" content="潘超">
+      
+      
+        <link rel="canonical" href="https://chaopan95.github.io/blogs/signals/basis/">
+      
+      <link rel="icon" href="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+    
+    
+      
+        <title>基础 - 个人博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,400i,700%7CFira+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Fira Sans";--md-code-font-family:"Fira Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="个人博客" class="md-header__button md-logo" aria-label="个人博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="个人博客" class="md-nav__button md-logo" aria-label="个人博客" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人博客
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        介绍
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        计算机基础
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="计算机基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          计算机基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        算法
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="算法" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          算法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1" type="checkbox" id="__nav_2_1_1" >
+      
+      <label class="md-nav__link" for="__nav_2_1_1">
+        排序
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="排序" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          排序
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/sort/basis/" class="md-nav__link">
+        基础
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/sort/select/" class="md-nav__link">
+        选择排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/sort/bubble/" class="md-nav__link">
+        冒泡排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/sort/insert/" class="md-nav__link">
+        插入排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/sort/bucket/" class="md-nav__link">
+        桶排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/sort/heap/" class="md-nav__link">
+        堆排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/sort/shell/" class="md-nav__link">
+        希尔排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/sort/merge/" class="md-nav__link">
+        归并排序
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/sort/quick/" class="md-nav__link">
+        快速排序
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_2" type="checkbox" id="__nav_2_1_2" >
+      
+      <label class="md-nav__link" for="__nav_2_1_2">
+        动态规划
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="动态规划" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          动态规划
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/basis/" class="md-nav__link">
+        基础
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/segment/" class="md-nav__link">
+        划分区间
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/knapsack/" class="md-nav__link">
+        背包问题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/lis/" class="md-nav__link">
+        最长递增子序列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/path/" class="md-nav__link">
+        路径问题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/matrix/" class="md-nav__link">
+        矩阵问题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/stocks/" class="md-nav__link">
+        股票买卖
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/lcs/" class="md-nav__link">
+        最长公共子序列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/edit-distance/" class="md-nav__link">
+        编辑距离
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/rob/" class="md-nav__link">
+        打家劫舍
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/sequence/" class="md-nav__link">
+        序列型
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/interval/" class="md-nav__link">
+        区间型
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/left-right-traversal/" class="md-nav__link">
+        左右遍历型
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/digits/" class="md-nav__link">
+        数位型
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/dp/tree/" class="md-nav__link">
+        树上型
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/greedy/" class="md-nav__link">
+        贪心
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/recursion/" class="md-nav__link">
+        递归
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/divide-conquer/" class="md-nav__link">
+        分治
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/back-tracking/" class="md-nav__link">
+        回溯
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/binary-search/" class="md-nav__link">
+        二分
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/two-pointers/" class="md-nav__link">
+        双指针
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/search/" class="md-nav__link">
+        搜索
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/prefix-sum/" class="md-nav__link">
+        前缀和
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/math/" class="md-nav__link">
+        数学
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/algo/matrix/" class="md-nav__link">
+        矩阵
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      <label class="md-nav__link" for="__nav_2_2">
+        数据结构
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据结构" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          数据结构
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/vector/" class="md-nav__link">
+        数组
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/list/" class="md-nav__link">
+        链表
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/stack-queue/" class="md-nav__link">
+        栈 & 队列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/monotone-stack/" class="md-nav__link">
+        单调栈
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/monotone-queue/" class="md-nav__link">
+        单调队列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_6" type="checkbox" id="__nav_2_2_6" >
+      
+      <label class="md-nav__link" for="__nav_2_2_6">
+        树
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="树" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          树
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/tree/basis/" class="md-nav__link">
+        基础
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/tree/binary-tree/" class="md-nav__link">
+        二叉树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/tree/traversal/" class="md-nav__link">
+        遍历
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/tree/prefix-tree/" class="md-nav__link">
+        前缀树
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/string/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/unionset/" class="md-nav__link">
+        并查集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/binary-indexed-tree/" class="md-nav__link">
+        树状数组
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/segment-tree/" class="md-nav__link">
+        线段树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/priority-queue/" class="md-nav__link">
+        优先队列
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/data-structure/hash/" class="md-nav__link">
+        哈希表
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        机器学习
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="机器学习" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          机器学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        基础
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="基础" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/basis/perceptron/" class="md-nav__link">
+        感知机
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/basis/decision-tree/" class="md-nav__link">
+        决策树
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/basis/linear-regression/" class="md-nav__link">
+        线性回归
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/basis/logistic-regression/" class="md-nav__link">
+        逻辑回归
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/basis/svm/" class="md-nav__link">
+        支持向量机
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/basis/clustering/" class="md-nav__link">
+        聚类
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/basis/dimension_reduction/" class="md-nav__link">
+        降维
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/basis/roc/" class="md-nav__link">
+        ROC
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/basis/strategies/" class="md-nav__link">
+        机器学习策略
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        深度学习
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="深度学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          深度学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/dl/mlp/" class="md-nav__link">
+        MLP
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/dl/activation/" class="md-nav__link">
+        激活函数
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/dl/initialization.md" class="md-nav__link">
+        初始化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/dl/optimization/" class="md-nav__link">
+        优化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/dl/regularization/" class="md-nav__link">
+        正则化
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/dl/normalization/" class="md-nav__link">
+        归一化
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        CV
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CV" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          CV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/cv/cnn/" class="md-nav__link">
+        卷积网络
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/cv/struct/" class="md-nav__link">
+        CNN
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        NLP
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="NLP" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          NLP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/nlp/basis/" class="md-nav__link">
+        基础
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/nlp/w2v/" class="md-nav__link">
+        Word2Vec
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/nlp/rnn/" class="md-nav__link">
+        RNN
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      <label class="md-nav__link" for="__nav_3_5">
+        概率图
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="概率图" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          概率图
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/pgm/representation/" class="md-nav__link">
+        表达
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/pgm/inference/" class="md-nav__link">
+        推断
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/pgm/linearning/" class="md-nav__link">
+        学习
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      <label class="md-nav__link" for="__nav_3_6">
+        对比学习
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="对比学习" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          对比学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml/contrastive_learning.md" class="md-nav__link">
+        对比学习
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        数学
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数学" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          数学
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/prob-stat/" class="md-nav__link">
+        概率&统计
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/linear-algebra/" class="md-nav__link">
+        线性代数
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/graph/" class="md-nav__link">
+        图论
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        信号与系统
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="信号与系统" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          信号与系统
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        基础
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    卷积
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    滤波
+  </a>
+  
+    <nav class="md-nav" aria-label="滤波">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    高通滤波
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    低通滤波
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    傅立叶变换
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    卷积
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    滤波
+  </a>
+  
+    <nav class="md-nav" aria-label="滤波">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    高通滤波
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    低通滤波
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    傅立叶变换
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>基础</h1>
+                
+                <h2 id="_1">卷积<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>卷积三步骤：反转、平移、求和。</p>
+<div>
+<div class="MathJax_Preview">
+y(n_{1}, n_{2}) = x(k_{1}, k_{2})**h(n_{1}, n_{2}) = \sum_{k_{1}=-\infty}^{\infty}\sum_{k_{2}=-\infty}^{\infty} x(k_{1}, k_{2}) h(n_{1}-k_{1}, n_{2}-k_{2})
+</div>
+<script type="math/tex; mode=display">
+y(n_{1}, n_{2}) = x(k_{1}, k_{2})**h(n_{1}, n_{2}) = \sum_{k_{1}=-\infty}^{\infty}\sum_{k_{2}=-\infty}^{\infty} x(k_{1}, k_{2}) h(n_{1}-k_{1}, n_{2}-k_{2})
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+B(i, j) = \sum_{m=0}\sum_{n=0}K(m, n)A(i-m, j-n)
+</div>
+<script type="math/tex; mode=display">
+B(i, j) = \sum_{m=0}\sum_{n=0}K(m, n)A(i-m, j-n)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+S(n) = (f*g)[ n ] = \sum_{m=0}^{N-1} f(m)g(n-m)
+</div>
+<script type="math/tex; mode=display">
+S(n) = (f*g)[ n ] = \sum_{m=0}^{N-1} f(m)g(n-m)
+</script>
+</div>
+<p>N 代表信号 f[ n ] 的长度，S(n) 的长度等于 f[ n ] 与 g[ n ] 的和减1；</p>
+<p>例如，f[ n ] = [1, 2, 3]，g[ n ] = [2, 3, 1]</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+S(0) &amp;= \sum_{m=0}^{2} f(m)g(0-m) \\
+&amp;= f(0)g(0) + f(1)g(-1) + f(2)g(-2) \\
+&amp;= 1\cdot 2 + 2\cdot 0 + 3\cdot 0 \\
+&amp;= 2
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S(0) &= \sum_{m=0}^{2} f(m)g(0-m) \\
+&= f(0)g(0) + f(1)g(-1) + f(2)g(-2) \\
+&= 1\cdot 2 + 2\cdot 0 + 3\cdot 0 \\
+&= 2
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+S(1) &amp;= \sum_{m=0}^{2} f(m)g(1-m) \\
+&amp;= f(0)g(1) + f(1)g(0) + f(2)g(-1) \\
+&amp;= 1\cdot 3 + 2\cdot 2 + 3\cdot 0 \\
+&amp;= 7
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S(1) &= \sum_{m=0}^{2} f(m)g(1-m) \\
+&= f(0)g(1) + f(1)g(0) + f(2)g(-1) \\
+&= 1\cdot 3 + 2\cdot 2 + 3\cdot 0 \\
+&= 7
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+S(2) &amp;= \sum_{m=0}^{2} f(m)g(2-m) \\
+&amp;= f(0)g(2) + f(1)g(1)+ f(2)g(0) \\
+&amp;= 1\cdot 1 + 2\cdot 3 + 3\cdot 2 \\
+&amp;= 13
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S(2) &= \sum_{m=0}^{2} f(m)g(2-m) \\
+&= f(0)g(2) + f(1)g(1)+ f(2)g(0) \\
+&= 1\cdot 1 + 2\cdot 3 + 3\cdot 2 \\
+&= 13
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+S(3) &amp;= \sum_{m=0}^{2} f(m)g(3-m) \\
+&amp;= f(0)g(3) + f(1)g(2) + f(2)g(1) \\
+&amp;= 1\cdot 0 + 2\cdot 1 + 3\cdot 3 \\
+&amp;= 11
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S(3) &= \sum_{m=0}^{2} f(m)g(3-m) \\
+&= f(0)g(3) + f(1)g(2) + f(2)g(1) \\
+&= 1\cdot 0 + 2\cdot 1 + 3\cdot 3 \\
+&= 11
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+S(4) &amp;= \sum_{m=0}^{2} f(m)g(4-m) \\
+&amp;= f(0)g(4) + f(1)g(3) + f(2)g(2) \\
+&amp;= 1\cdot 0 + 2\cdot 0 + 3\cdot 1 \\
+&amp;= 3
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S(4) &= \sum_{m=0}^{2} f(m)g(4-m) \\
+&= f(0)g(4) + f(1)g(3) + f(2)g(2) \\
+&= 1\cdot 0 + 2\cdot 0 + 3\cdot 1 \\
+&= 3
+\end{aligned}
+</script>
+</div>
+<h2 id="_2">滤波<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">高通滤波<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>对比增强（连接区域的明暗变化）后，一张图像会变的尖锐。高通滤波（high pass filter）能捕获高频信息同时丢弃低频信息。相对邻居像素，高频率波核可以增加明亮程度。核通常的范式为中心是正值，四周为负值，形如</p>
+<div>
+<div class="MathJax_Preview">
+\frac{1}{9}
+\begin{vmatrix}
+-1 &amp; -1 &amp; -1\\
+-1 &amp; 8 &amp; -1\\
+-1 &amp; -1 &amp; -1
+\end{vmatrix}
+</div>
+<script type="math/tex; mode=display">
+\frac{1}{9}
+\begin{vmatrix}
+-1 & -1 & -1\\
+-1 & 8 & -1\\
+-1 & -1 & -1
+\end{vmatrix}
+</script>
+</div>
+<h3 id="_4">低通滤波<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>平均附近的像素来减少像素之间的差异，最终让一张图像变平滑。低通滤波（low pass filter）能捕获低频信息同时过滤高频信息。一个低通滤波形如：</p>
+<div>
+<div class="MathJax_Preview">
+\frac{1}{9}
+\begin{vmatrix}
+1 &amp; 1 &amp; 1\\
+1 &amp; 1 &amp; 1\\
+1 &amp; 1 &amp; 1
+\end{vmatrix}
+</div>
+<script type="math/tex; mode=display">
+\frac{1}{9}
+\begin{vmatrix}
+1 & 1 & 1\\
+1 & 1 & 1\\
+1 & 1 & 1
+\end{vmatrix}
+</script>
+</div>
+<h2 id="_5">傅立叶变换<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>二位傅立叶变换（2D Fourier transform）</p>
+<div>
+<div class="MathJax_Preview">
+x(n_{1}, n_{2}) = e^{\omega_{1}^{'}n_{1} + \omega_{2}^{'}n_{2}} \rightarrow h(n_{1}, n_{2}) \rightarrow y(n_{1}, n_{2})
+</div>
+<script type="math/tex; mode=display">
+x(n_{1}, n_{2}) = e^{\omega_{1}^{'}n_{1} + \omega_{2}^{'}n_{2}} \rightarrow h(n_{1}, n_{2}) \rightarrow y(n_{1}, n_{2})
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+y(n_{1}, n_{2}) &amp;= x(n_{1}, n_{2})**h(n_{1}, n_{2}) \\
+&amp; = \sum_{k_{1}=-\infty}^{\infty}\sum_{k_{2}=-\infty}^{\infty} e^{j\omega_{1}^{'}(n_{1}-k_{1})} e^{j\omega_{2}^{'}(n_{2}-k_{2})} h(k_{1}, k_{2}) \\
+&amp; = e^{j\omega_{1}^{'}n_{1}} e^{j\omega_{2}^{'}n_{2}} \sum_{k_{1}=-\infty}^{\infty}\sum_{k_{2}=-\infty}^{\infty} h(k_{1}, k_{2}) e^{-j\omega_{1}^{'}k_{1}} e^{-j\omega_{2}^{'}k_{2}}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+y(n_{1}, n_{2}) &= x(n_{1}, n_{2})**h(n_{1}, n_{2}) \\
+& = \sum_{k_{1}=-\infty}^{\infty}\sum_{k_{2}=-\infty}^{\infty} e^{j\omega_{1}^{'}(n_{1}-k_{1})} e^{j\omega_{2}^{'}(n_{2}-k_{2})} h(k_{1}, k_{2}) \\
+& = e^{j\omega_{1}^{'}n_{1}} e^{j\omega_{2}^{'}n_{2}} \sum_{k_{1}=-\infty}^{\infty}\sum_{k_{2}=-\infty}^{\infty} h(k_{1}, k_{2}) e^{-j\omega_{1}^{'}k_{1}} e^{-j\omega_{2}^{'}k_{2}}
+\end{aligned}
+</script>
+</div>
+<p>频率响应（Frequency response）</p>
+<div>
+<div class="MathJax_Preview">
+H(\omega_{1}^{'}, \omega_{2}^{'}) = \sum_{k_{1}=-\infty}^{\infty}\sum_{k_{2}=-\infty}^{\infty} h(k_{1}, k_{2}) e^{-j\omega_{1}^{'}k_{1}} e^{-j\omega_{2}^{'}k_{2}}
+</div>
+<script type="math/tex; mode=display">
+H(\omega_{1}^{'}, \omega_{2}^{'}) = \sum_{k_{1}=-\infty}^{\infty}\sum_{k_{2}=-\infty}^{\infty} h(k_{1}, k_{2}) e^{-j\omega_{1}^{'}k_{1}} e^{-j\omega_{2}^{'}k_{2}}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+X(\omega_{1}, \omega_{2}) = \sum_{n_{1}=-\infty}^{\infty}\sum_{n_{2}=-\infty}^{\infty} x(n_{1}, n_{2}) e^{-j\omega_{1}n_{1}} e^{-j\omega_{2}n_{2}}
+</div>
+<script type="math/tex; mode=display">
+X(\omega_{1}, \omega_{2}) = \sum_{n_{1}=-\infty}^{\infty}\sum_{n_{2}=-\infty}^{\infty} x(n_{1}, n_{2}) e^{-j\omega_{1}n_{1}} e^{-j\omega_{2}n_{2}}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x(n_{1}, n_{2}) = \frac{1}{4\pi^{2}} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} X(\omega_{1}, \omega_{2}) e^{j\omega_{1}n_{1}} e^{j\omega_{2}n_{2}} d\omega_{1}d\omega_{2}
+</div>
+<script type="math/tex; mode=display">
+x(n_{1}, n_{2}) = \frac{1}{4\pi^{2}} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} X(\omega_{1}, \omega_{2}) e^{j\omega_{1}n_{1}} e^{j\omega_{2}n_{2}} d\omega_{1}d\omega_{2}
+</script>
+</div>
+<p>性质</p>
+<div>
+<div class="MathJax_Preview">
+X(\omega_{1}, \omega_{2}) = X(\omega_{1}+2\pi, \omega_{2}+2\pi)
+</div>
+<script type="math/tex; mode=display">
+X(\omega_{1}, \omega_{2}) = X(\omega_{1}+2\pi, \omega_{2}+2\pi)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x(n_{1}-m_{1}, n_{2}-m_{2}) \leftrightarrow e^{-j\omega_{1}n_{1}} e^{-j\omega_{2}n_{2}} X(\omega_{1}, \omega_{2})
+</div>
+<script type="math/tex; mode=display">
+x(n_{1}-m_{1}, n_{2}-m_{2}) \leftrightarrow e^{-j\omega_{1}n_{1}} e^{-j\omega_{2}n_{2}} X(\omega_{1}, \omega_{2})
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x(n_{1}, n_{2})e^{j\theta_{1}n_{1}+j\theta_{2}n_{2}} \leftrightarrow X(\omega_{1}-\theta_{1}, \omega_{2}-\theta_{2})
+</div>
+<script type="math/tex; mode=display">
+x(n_{1}, n_{2})e^{j\theta_{1}n_{1}+j\theta_{2}n_{2}} \leftrightarrow X(\omega_{1}-\theta_{1}, \omega_{2}-\theta_{2})
+</script>
+</div>
+<p>对 <span><span class="MathJax_Preview">x(n_{1}, n_{2})</span><script type="math/tex">x(n_{1}, n_{2})</script></span></p>
+<div>
+<div class="MathJax_Preview">
+|X(\omega_{1}, \omega_{2})| = |X(-\omega_{1}, -\omega_{2})|
+</div>
+<script type="math/tex; mode=display">
+|X(\omega_{1}, \omega_{2})| = |X(-\omega_{1}, -\omega_{2})|
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+arg X(\omega_{1}, \omega_{2}) = -argX(-\omega_{1}, -\omega_{2})
+</div>
+<script type="math/tex; mode=display">
+arg X(\omega_{1}, \omega_{2}) = -argX(-\omega_{1}, -\omega_{2})
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\int_{n_{1}}\int_{n_{2}} |x(n_{1}, n_{2})|^{2} = \frac{1}{4\pi^{2}} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} |x(\omega_{1}, \omega_{2})|^{2} d\omega_{1}d\omega_{2}
+</div>
+<script type="math/tex; mode=display">
+\int_{n_{1}}\int_{n_{2}} |x(n_{1}, n_{2})|^{2} = \frac{1}{4\pi^{2}} \int_{-\pi}^{\pi}\int_{-\pi}^{\pi} |x(\omega_{1}, \omega_{2})|^{2} d\omega_{1}d\omega_{2}
+</script>
+</div>
+<p>例如</p>
+<div>
+<div class="MathJax_Preview">
+h(n_{1}, n_{2}) = 
+\begin{vmatrix}
+h(-1, 1) &amp; h(0, 1) &amp; h(1, 1)\\
+h(-1, 0) &amp; h(0, 0) &amp; h(0, 1)\\
+h(-1, -1) &amp; h(0, -1) &amp; h(1, -1)
+\end{vmatrix} = 
+\begin{vmatrix}
+0.075 &amp; 0.124 &amp; 0.075\\
+0.124 &amp; 0.204 &amp; 0.124\\
+0.075 &amp; 0.124 &amp; 0.075
+\end{vmatrix}
+</div>
+<script type="math/tex; mode=display">
+h(n_{1}, n_{2}) = 
+\begin{vmatrix}
+h(-1, 1) & h(0, 1) & h(1, 1)\\
+h(-1, 0) & h(0, 0) & h(0, 1)\\
+h(-1, -1) & h(0, -1) & h(1, -1)
+\end{vmatrix} = 
+\begin{vmatrix}
+0.075 & 0.124 & 0.075\\
+0.124 & 0.204 & 0.124\\
+0.075 & 0.124 & 0.075
+\end{vmatrix}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+H(\omega_{1}, \omega_{2}) &amp;= 0.204 + 0.124 \cdot 2 \cdot cos\omega_{1} + 0.124\cdot 2 \cdot cos\omega_{2} \\
+&amp;+ 0.075 \cdot cos(\omega_{1}+\omega_{2}) + 0.075 \cdot 2 \cdot cos(\omega_{1} - \omega_{2})
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+H(\omega_{1}, \omega_{2}) &= 0.204 + 0.124 \cdot 2 \cdot cos\omega_{1} + 0.124\cdot 2 \cdot cos\omega_{2} \\
+&+ 0.075 \cdot cos(\omega_{1}+\omega_{2}) + 0.075 \cdot 2 \cdot cos(\omega_{1} - \omega_{2})
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+h(n_{1}, n_{2}) = 
+\begin{vmatrix}
+h(-1, 1) &amp; h(0, 1) &amp; h(1, 1)\\
+h(-1, 0) &amp; h(0, 0) &amp; h(0, 1)\\
+h(-1, -1) &amp; h(0, -1) &amp; h(1, -1)
+\end{vmatrix} = 
+\begin{vmatrix}
+-1 &amp; -1 &amp; -1\\
+-1 &amp; 9 &amp; -1\\
+-1 &amp; -1 &amp; -1
+\end{vmatrix}
+</div>
+<script type="math/tex; mode=display">
+h(n_{1}, n_{2}) = 
+\begin{vmatrix}
+h(-1, 1) & h(0, 1) & h(1, 1)\\
+h(-1, 0) & h(0, 0) & h(0, 1)\\
+h(-1, -1) & h(0, -1) & h(1, -1)
+\end{vmatrix} = 
+\begin{vmatrix}
+-1 & -1 & -1\\
+-1 & 9 & -1\\
+-1 & -1 & -1
+\end{vmatrix}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+H(\omega_{1}, \omega_{2}) = 9 - 2 \cdot cos\omega_{1} - 2 \cdot cos\omega_{2} - 2 \cdot cos(\omega_{1}+\omega_{2}) - 2 \cdot cos(\omega_{1} - \omega_{2})
+</div>
+<script type="math/tex; mode=display">
+H(\omega_{1}, \omega_{2}) = 9 - 2 \cdot cos\omega_{1} - 2 \cdot cos\omega_{2} - 2 \cdot cos(\omega_{1}+\omega_{2}) - 2 \cdot cos(\omega_{1} - \omega_{2})
+</script>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../math/graph/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 图论" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              图论
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Chao PAN
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
