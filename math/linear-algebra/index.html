@@ -6339,7 +6339,7 @@ x_{1} & x_{2} & \cdots & x_{n} \\
 <p><strong>一个矩阵 A 的特征值相互不同（无重复特征值），那么 A 一定有 n 个线性无关的特征向量（可对角化）。</strong></p>
 <p>如果有重复的特征值，可能有 n 个线性无关特征向量。例如 A 是单位矩阵，特征值均为 1，但是可以找到 n 个线性无关特征向量。如果 A 时上三角矩阵且对角元素有重复，那么特征值有重复，特征向量也会重复。这种向量时不能对角化处理的。</p>
 <h3 id="_28">幂指数<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
-<p>现在有一个第推方程</p>
+<p>现在有一个递推方程</p>
 <div>
 <div class="MathJax_Preview">
 u_{k+1} = A u_{k}
@@ -6490,7 +6490,7 @@ u_{n + 1} & = & A & u_{n}
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
-A - \lambda I =
+(A - \lambda I)x =
 \begin{bmatrix}
 1 - \lambda &amp; 1 \\
 1 &amp; \lambda
@@ -6518,7 +6518,7 @@ x_{2} =
 </div>
 <script type="math/tex; mode=display">
 \begin{matrix}
-A - \lambda I =
+(A - \lambda I)x =
 \begin{bmatrix}
 1 - \lambda & 1 \\
 1 & \lambda
