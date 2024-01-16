@@ -1726,27 +1726,34 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    幂指数
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     正定
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
+  <a href="#_30" class="md-nav__link">
     相似
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
+  <a href="#_31" class="md-nav__link">
     奇异值分解
   </a>
   
@@ -2077,27 +2084,34 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    幂指数
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     正定
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
+  <a href="#_30" class="md-nav__link">
     相似
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
+  <a href="#_31" class="md-nav__link">
     奇异值分解
   </a>
   
@@ -6159,7 +6173,7 @@ A =
 \text{Tr}(A) = \sum_{i=1}^{n} a_{ii} = \sum_{i=1}^{n} \lambda_{i}
 </script>
 </div>
-<p>一个上三角行列式的特征值就是对角线上的值，例如</p>
+<p>一个上三角矩阵的特征值就是对角线上的值，例如</p>
 <div>
 <div class="MathJax_Preview">
 \begin{bmatrix}
@@ -6324,7 +6338,250 @@ x_{1} & x_{2} & \cdots & x_{n} \\
 <p>随着 n 趋向于无穷大，<span><span class="MathJax_Preview">A^{n}</span><script type="math/tex">A^{n}</script></span> 趋向于 0，条件是 A 的所有特征值 <span><span class="MathJax_Preview">|\lambda_{i}| &lt; 1</span><script type="math/tex">|\lambda_{i}| < 1</script></span>。</p>
 <p><strong>一个矩阵 A 的特征值相互不同（无重复特征值），那么 A 一定有 n 个线性无关的特征向量（可对角化）。</strong></p>
 <p>如果有重复的特征值，可能有 n 个线性无关特征向量。例如 A 是单位矩阵，特征值均为 1，但是可以找到 n 个线性无关特征向量。如果 A 时上三角矩阵且对角元素有重复，那么特征值有重复，特征向量也会重复。这种向量时不能对角化处理的。</p>
-<h2 id="_28">正定<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
+<h3 id="_28">幂指数<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>现在有一个第推方程</p>
+<div>
+<div class="MathJax_Preview">
+u_{k+1} = A u_{k}
+</div>
+<script type="math/tex; mode=display">
+u_{k+1} = A u_{k}
+</script>
+</div>
+<p>给定初始值 <span><span class="MathJax_Preview">u_{0}</span><script type="math/tex">u_{0}</script></span>，那么我们可以求其中任意一项</p>
+<div>
+<div class="MathJax_Preview">
+u_{k} = Au_{k-1} = A^{2} u_{k-2} = \cdots = A^{k} u_{0}
+</div>
+<script type="math/tex; mode=display">
+u_{k} = Au_{k-1} = A^{2} u_{k-2} = \cdots = A^{k} u_{0}
+</script>
+</div>
+<p>考虑把 <span><span class="MathJax_Preview">u_{0}</span><script type="math/tex">u_{0}</script></span> 写成特征向量的一种线性组合</p>
+<div>
+<div class="MathJax_Preview">
+u_{0} = \sum_{i = 1}^{n} c_{i} x_{i}
+</div>
+<script type="math/tex; mode=display">
+u_{0} = \sum_{i = 1}^{n} c_{i} x_{i}
+</script>
+</div>
+<p>那么 <span><span class="MathJax_Preview">u_{1}</span><script type="math/tex">u_{1}</script></span> 可知</p>
+<div>
+<div class="MathJax_Preview">
+u_{1} = Au_{1} = \sum_{i = 1}^{n} Ac_{i} x_{i} = \sum_{i = 1}^{n} c_{i} \lambda_{i} x_{i}
+</div>
+<script type="math/tex; mode=display">
+u_{1} = Au_{1} = \sum_{i = 1}^{n} Ac_{i} x_{i} = \sum_{i = 1}^{n} c_{i} \lambda_{i} x_{i}
+</script>
+</div>
+<p>同理，<span><span class="MathJax_Preview">u_{k}</span><script type="math/tex">u_{k}</script></span> 可知</p>
+<div>
+<div class="MathJax_Preview">
+u_{k} = A^{k}u_{0} = \sum_{i = 1}^{n} A^{n}c_{i} x_{i} = \sum_{i = 1}^{n} c_{i} \lambda_{i}^{n} x_{i}
+</div>
+<script type="math/tex; mode=display">
+u_{k} = A^{k}u_{0} = \sum_{i = 1}^{n} A^{n}c_{i} x_{i} = \sum_{i = 1}^{n} c_{i} \lambda_{i}^{n} x_{i}
+</script>
+</div>
+<p>这样一来，求 A 的幂指数转化成求 A 的特征值的幂指数，简化了计算。</p>
+<p>以斐波那契数列为例，0，1，1，2，3，5，8，13... 我们希望求 <span><span class="MathJax_Preview">F_{100}</span><script type="math/tex">F_{100}</script></span> 并且了解增长的速度有多快（由特征值决定）。其递推方程如下</p>
+<div>
+<div class="MathJax_Preview">
+F_{n + 2} = F_{n + 1} + F_{n}
+</div>
+<script type="math/tex; mode=display">
+F_{n + 2} = F_{n + 1} + F_{n}
+</script>
+</div>
+<p>构造方程组</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+F_{n + 2} = F_{n + 1} + F_{n} \\
+F_{n + 1} = F_{n + 1}
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+F_{n + 2} = F_{n + 1} + F_{n} \\
+F_{n + 1} = F_{n + 1}
+\end{cases}
+</script>
+</div>
+<p>定义</p>
+<div>
+<div class="MathJax_Preview">
+u_{n} =
+\begin{bmatrix}
+F_{n + 1} \\
+F_{n}
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+u_{n} =
+\begin{bmatrix}
+F_{n + 1} \\
+F_{n}
+\end{bmatrix}
+</script>
+</div>
+<p>可得方程组</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+F_{n + 2} \\
+F_{n + 1}
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+1 &amp; 1 \\
+1 &amp; 0
+\end{bmatrix} &amp;
+\begin{bmatrix}
+F_{n + 1} \\
+F_{n}
+\end{bmatrix} \\
+u_{n + 1} &amp; = &amp; A &amp; u_{n}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+F_{n + 2} \\
+F_{n + 1}
+\end{bmatrix} & = &
+\begin{bmatrix}
+1 & 1 \\
+1 & 0
+\end{bmatrix} &
+\begin{bmatrix}
+F_{n + 1} \\
+F_{n}
+\end{bmatrix} \\
+u_{n + 1} & = & A & u_{n}
+\end{matrix}
+</script>
+</div>
+<p>A 是一个对称矩阵，有 n 个线性无关的特征向量，其特征值如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\det(A) = \lambda^{2} - \lambda - 1 = 0 \\
+\Downarrow \\
+\begin{cases}
+\lambda_{1} = \frac{1 + \sqrt{5}}{2} \approx 1.618 \\
+\lambda_{2} = \frac{1 - \sqrt{5}}{2} \approx -0.618
+\end{cases}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\det(A) = \lambda^{2} - \lambda - 1 = 0 \\
+\Downarrow \\
+\begin{cases}
+\lambda_{1} = \frac{1 + \sqrt{5}}{2} \approx 1.618 \\
+\lambda_{2} = \frac{1 - \sqrt{5}}{2} \approx -0.618
+\end{cases}
+\end{matrix}
+</script>
+</div>
+<p>同样可以求出两个特征向量 <span><span class="MathJax_Preview">x_{1}, x_{2}</span><script type="math/tex">x_{1}, x_{2}</script></span>。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+A - \lambda I =
+\begin{bmatrix}
+1 - \lambda &amp; 1 \\
+1 &amp; \lambda
+\end{bmatrix}
+\begin{bmatrix}
+\lambda \\
+1
+\end{bmatrix} =
+\begin{bmatrix}
+0 \\
+0
+\end{bmatrix} \\
+\Downarrow \\
+x_{1} =
+\begin{bmatrix}
+\lambda_{1} \\
+1
+\end{bmatrix},
+x_{2} =
+\begin{bmatrix}
+\lambda_{2} \\
+1
+\end{bmatrix}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+A - \lambda I =
+\begin{bmatrix}
+1 - \lambda & 1 \\
+1 & \lambda
+\end{bmatrix}
+\begin{bmatrix}
+\lambda \\
+1
+\end{bmatrix} =
+\begin{bmatrix}
+0 \\
+0
+\end{bmatrix} \\
+\Downarrow \\
+x_{1} =
+\begin{bmatrix}
+\lambda_{1} \\
+1
+\end{bmatrix},
+x_{2} =
+\begin{bmatrix}
+\lambda_{2} \\
+1
+\end{bmatrix}
+\end{matrix}
+</script>
+</div>
+<p>根据构造的方程组，初始值</p>
+<div>
+<div class="MathJax_Preview">
+u_{0} =
+\begin{bmatrix}
+F_{1} \\
+F_{0}
+\end{bmatrix} =
+\begin{bmatrix}
+0 \\
+0
+\end{bmatrix} =
+c_{1}x_{1} + c_{2}x_{2}
+</div>
+<script type="math/tex; mode=display">
+u_{0} =
+\begin{bmatrix}
+F_{1} \\
+F_{0}
+\end{bmatrix} =
+\begin{bmatrix}
+0 \\
+0
+\end{bmatrix} =
+c_{1}x_{1} + c_{2}x_{2}
+</script>
+</div>
+<p>最后，绝对值大于 1 的特征值将会主导数列增长的速度</p>
+<div>
+<div class="MathJax_Preview">
+F_{100} \approx c_{1}(\frac{1 + \sqrt{5}}{2})^{100}
+</div>
+<script type="math/tex; mode=display">
+F_{100} \approx c_{1}(\frac{1 + \sqrt{5}}{2})^{100}
+</script>
+</div>
+<h2 id="_29">正定<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
 <p>矩阵的特殊性体现在特征值和特征向量上。对于实对称矩阵 <span><span class="MathJax_Preview">A^{T} = A</span><script type="math/tex">A^{T} = A</script></span>，所有的特征值是实数，特征向量是相互正价的。</p>
 <div>
 <div class="MathJax_Preview">
@@ -6343,7 +6600,7 @@ x^{T} A x &gt; 0
 x^{T} A x > 0
 </script>
 </div>
-<h2 id="_29">相似<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
+<h2 id="_30">相似<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
 <p>如果存在一个可逆矩阵 M，两个矩阵 A 和 B 是相似的，需要满足如下条件</p>
 <div>
 <div class="MathJax_Preview">
@@ -6353,7 +6610,7 @@ B = M^{-1} A M
 B = M^{-1} A M
 </script>
 </div>
-<h2 id="_30">奇异值分解<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
+<h2 id="_31">奇异值分解<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
 <p>奇异值分解（singular value decomposition，简称 SVD）</p>
 <div>
 <div class="MathJax_Preview">
