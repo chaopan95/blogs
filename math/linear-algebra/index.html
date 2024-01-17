@@ -6631,7 +6631,7 @@ u(o) =
 <p>转化成如下形式 <span><span class="MathJax_Preview">\frac{dU}{dt} = AU</span><script type="math/tex">\frac{dU}{dt} = AU</script></span></p>
 <div>
 <div class="MathJax_Preview">
-\begin{aligned}
+\begin{matrix}
 \frac{d}{dt} &amp;
 \begin{bmatrix}
 u_{1} \\
@@ -6646,10 +6646,10 @@ u_{1} \\
 u_{2}
 \end{bmatrix} \\
 \frac{d}{dt} &amp; U &amp; = &amp; A &amp; U
-\end{aligned}
+\end{matrix}
 </div>
 <script type="math/tex; mode=display">
-\begin{aligned}
+\begin{matrix}
 \frac{d}{dt} &
 \begin{bmatrix}
 u_{1} \\
@@ -6664,7 +6664,7 @@ u_{1} \\
 u_{2}
 \end{bmatrix} \\
 \frac{d}{dt} & U & = & A & U
-\end{aligned}
+\end{matrix}
 </script>
 </div>
 <p>A 的两个特征值</p>
@@ -6721,29 +6721,45 @@ u(t) = c_{1}e^{\lambda_{1}t}x_{1} + c_{2}e^{\lambda_{2}t}x_{2}
 <p>根据初始条件可以求出系数，最终解为</p>
 <div>
 <div class="MathJax_Preview">
-u(t) = \color{red} \frac{1}{3}
+u(t) = \frac{1}{3}
 \begin{bmatrix}
 2 \\
 1
-\end{bmatrix} \color{black} + \frac{1}{3} e^{-3t}
+\end{bmatrix} + \frac{1}{3} e^{-3t}
 \begin{bmatrix}
 1 \\
 -1
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-u(t) = \color{red} \frac{1}{3}
+u(t) = \frac{1}{3}
 \begin{bmatrix}
 2 \\
 1
-\end{bmatrix} \color{black} + \frac{1}{3} e^{-3t}
+\end{bmatrix} + \frac{1}{3} e^{-3t}
 \begin{bmatrix}
 1 \\
 -1
 \end{bmatrix}
 </script>
 </div>
-<p>当 t 趋向于正无穷，这个解会达到一个稳态，就是红色部分。</p>
+<p>当 t 趋向于正无穷，这个解会达到一个稳态。</p>
+<div>
+<div class="MathJax_Preview">
+\frac{1}{3}
+\begin{bmatrix}
+2 \\
+1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\frac{1}{3}
+\begin{bmatrix}
+2 \\
+1
+\end{bmatrix}
+</script>
+</div>
 <p>u(t) 的最终解类似于上一节的幂指数解</p>
 <div>
 <div class="MathJax_Preview">
