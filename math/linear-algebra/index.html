@@ -1740,27 +1740,34 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    矩阵指数
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
+  <a href="#_31" class="md-nav__link">
     正定
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
+  <a href="#_32" class="md-nav__link">
     相似
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
+  <a href="#_33" class="md-nav__link">
     奇异值分解
   </a>
   
@@ -2105,27 +2112,34 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    矩阵指数
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
+  <a href="#_31" class="md-nav__link">
     正定
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
+  <a href="#_32" class="md-nav__link">
     相似
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
+  <a href="#_33" class="md-nav__link">
     奇异值分解
   </a>
   
@@ -6779,7 +6793,125 @@ u_{k} = c_{1}\lambda_{1}^{k}x_{1} + c_{2}\lambda_{2}^{k}x_{2} + \cdots
 \end{matrix}
 </script>
 </div>
-<h2 id="_30">正定<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
+<p>特征值决定了解在无限时间下的的状态</p>
+<p>1）稳定（stability）：不论初始值为多少，随着 t 趋向于无穷，u(t) 趋向于 0，这要求 <span><span class="MathJax_Preview">e^{\lambda t} \rightarrow 0</span><script type="math/tex">e^{\lambda t} \rightarrow 0</script></span>，可知，<span><span class="MathJax_Preview">\lambda &lt; 0</span><script type="math/tex">\lambda < 0</script></span>。这里解的形式如果是复数形式，e.g. <span><span class="MathJax_Preview">e^{(-3+6i)t}</span><script type="math/tex">e^{(-3+6i)t}</script></span>，虚数部分不影响，因为虚数部分的模长为单位 1。</p>
+<div>
+<div class="MathJax_Preview">
+|e^{(-3+6i)t}| = |e^{-3t}e^{6it}| = |e^{-3t}|
+</div>
+<script type="math/tex; mode=display">
+|e^{(-3+6i)t}| = |e^{-3t}e^{6it}| = |e^{-3t}|
+</script>
+</div>
+<p>所以，特征值实数部分要小于 0。</p>
+<p>2）稳态（steady state）：一个特征值为 0，剩余的特征值（实数部分）小于 0。</p>
+<p>3）发散（blow up）：任意的特征值（实数部分）大于 0。</p>
+<p>考虑一个二阶微分方程</p>
+<div>
+<div class="MathJax_Preview">
+y'' + b y' + ky = 0
+</div>
+<script type="math/tex; mode=display">
+y'' + b y' + ky = 0
+</script>
+</div>
+<p>类似于斐波那契数列构造方程组，我们令</p>
+<div>
+<div class="MathJax_Preview">
+u =
+\begin{bmatrix}
+y' \\
+y
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+u =
+\begin{bmatrix}
+y' \\
+y
+\end{bmatrix}
+</script>
+</div>
+<p>重写方程组</p>
+<div>
+<div class="MathJax_Preview">
+u' =
+\begin{bmatrix}
+y'' \\
+y'
+\end{bmatrix} =
+\begin{bmatrix}
+-b &amp; k \\
+1 &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+y' \\
+y
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+u' =
+\begin{bmatrix}
+y'' \\
+y'
+\end{bmatrix} =
+\begin{bmatrix}
+-b & k \\
+1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+y' \\
+y
+\end{bmatrix}
+</script>
+</div>
+<p>类似地，我们可以处理更高阶的微分。</p>
+<h3 id="_30">矩阵指数<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<p>两个泰勒展开式</p>
+<div>
+<div class="MathJax_Preview">
+e^{x} = 1 + x + \frac{x^{2}}{2} + \cdots \frac{x^{n}}{n!} = \sum_{i=n = 0}^{\infty} \frac{x^{n}}{n!}
+</div>
+<script type="math/tex; mode=display">
+e^{x} = 1 + x + \frac{x^{2}}{2} + \cdots \frac{x^{n}}{n!} = \sum_{i=n = 0}^{\infty} \frac{x^{n}}{n!}
+</script>
+</div>
+<p>几何级数</p>
+<div>
+<div class="MathJax_Preview">
+\frac{1}{1-x} = \sum_{n=0} x^{n}
+</div>
+<script type="math/tex; mode=display">
+\frac{1}{1-x} = \sum_{n=0} x^{n}
+</script>
+</div>
+<p>对矩阵同样适应</p>
+<div>
+<div class="MathJax_Preview">
+e^{At} = I + At + \frac{(At)^{2}}{2} + \frac{(At)^{3}}{6} + \cdots + \frac{(At)^{n}}{n!} + \cdots
+</div>
+<script type="math/tex; mode=display">
+e^{At} = I + At + \frac{(At)^{2}}{2} + \frac{(At)^{3}}{6} + \cdots + \frac{(At)^{n}}{n!} + \cdots
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+(I - At)^{-1} = I + At + (At)^{2} + \cdots + (At)^{n} + \cdots 
+</div>
+<script type="math/tex; mode=display">
+(I - At)^{-1} = I + At + (At)^{2} + \cdots + (At)^{n} + \cdots 
+</script>
+</div>
+<p>如果 A 可对角化，那么</p>
+<div>
+<div class="MathJax_Preview">
+e^{At} = \sum_{n=0}^{\infty} S^{-1} (\Lambda t)^{n} S = S^{-1} e^{\Lambda t} S
+</div>
+<script type="math/tex; mode=display">
+e^{At} = \sum_{n=0}^{\infty} S^{-1} (\Lambda t)^{n} S = S^{-1} e^{\Lambda t} S
+</script>
+</div>
+<h2 id="_31">正定<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
 <p>矩阵的特殊性体现在特征值和特征向量上。对于实对称矩阵 <span><span class="MathJax_Preview">A^{T} = A</span><script type="math/tex">A^{T} = A</script></span>，所有的特征值是实数，特征向量是相互正价的。</p>
 <div>
 <div class="MathJax_Preview">
@@ -6798,7 +6930,7 @@ x^{T} A x &gt; 0
 x^{T} A x > 0
 </script>
 </div>
-<h2 id="_31">相似<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
+<h2 id="_32">相似<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
 <p>如果存在一个可逆矩阵 M，两个矩阵 A 和 B 是相似的，需要满足如下条件</p>
 <div>
 <div class="MathJax_Preview">
@@ -6808,7 +6940,7 @@ B = M^{-1} A M
 B = M^{-1} A M
 </script>
 </div>
-<h2 id="_32">奇异值分解<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
+<h2 id="_33">奇异值分解<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
 <p>奇异值分解（singular value decomposition，简称 SVD）</p>
 <div>
 <div class="MathJax_Preview">
