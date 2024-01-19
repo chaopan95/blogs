@@ -1773,6 +1773,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    应用
+  </a>
+  
+    <nav class="md-nav" aria-label="应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    马尔可夫矩阵
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2142,6 +2162,26 @@
   <a href="#_33" class="md-nav__link">
     奇异值分解
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    应用
+  </a>
+  
+    <nav class="md-nav" aria-label="应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    马尔可夫矩阵
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -6793,7 +6833,7 @@ u_{k} = c_{1}\lambda_{1}^{k}x_{1} + c_{2}\lambda_{2}^{k}x_{2} + \cdots
 \end{matrix}
 </script>
 </div>
-<p>特征值决定了解在无限时间下的的状态</p>
+<p>特征值决定了在无穷时间下解的的状态</p>
 <p>1）稳定（stability）：不论初始值为多少，随着 t 趋向于无穷，u(t) 趋向于 0，这要求 <span><span class="MathJax_Preview">e^{\lambda t} \rightarrow 0</span><script type="math/tex">e^{\lambda t} \rightarrow 0</script></span>，可知，<span><span class="MathJax_Preview">\lambda &lt; 0</span><script type="math/tex">\lambda < 0</script></span>。这里解的形式如果是复数形式，e.g. <span><span class="MathJax_Preview">e^{(-3+6i)t}</span><script type="math/tex">e^{(-3+6i)t}</script></span>，虚数部分不影响，因为虚数部分的模长为单位 1。</p>
 <div>
 <div class="MathJax_Preview">
@@ -6951,6 +6991,203 @@ A = U \Sigma V^{T}
 </script>
 </div>
 <p><span><span class="MathJax_Preview">\Sigma</span><script type="math/tex">\Sigma</script></span> 是对角矩阵，U 和 V 是正交矩阵</p>
+<h2 id="_34">应用<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h2>
+<h3 id="_35">马尔可夫矩阵<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<p>马尔可夫矩阵（Markov Matrix）表示状态转移概率，满足两个性质</p>
+<p>1） 所有的元素（entry）必须大于等于 0</p>
+<p>2）每一列元素的和为 1</p>
+<p>形如</p>
+<div>
+<div class="MathJax_Preview">
+A =
+\begin{bmatrix}
+0.1 &amp; 0.01 &amp; 0.3 \\
+0.2 &amp; 0.99 &amp; 0.3 \\
+0.7 &amp; 0 &amp; 0.4
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+A =
+\begin{bmatrix}
+0.1 & 0.01 & 0.3 \\
+0.2 & 0.99 & 0.3 \\
+0.7 & 0 & 0.4
+\end{bmatrix}
+</script>
+</div>
+<p>性质 2）导致了 A 的特征值其中一个是 1，这样会达到稳态，其他的特征值绝对值均小于 1。</p>
+<p>本质上，马尔可夫矩阵符合矩阵幂指数，形如</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+u_{k} &amp;= A^{k} u_{0} \\
+&amp;= c_{1} \lambda_{1}^{k} x_{1} + c_{2} \lambda_{2}^{k} x_{2} + \cdots + c_{n} \lambda_{n}^{k} x_{n}\\
+&amp;\approx c_{1} x_{1}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+u_{k} &= A^{k} u_{0} \\
+&= c_{1} \lambda_{1}^{k} x_{1} + c_{2} \lambda_{2}^{k} x_{2} + \cdots + c_{n} \lambda_{n}^{k} x_{n}\\
+&\approx c_{1} x_{1}
+\end{aligned}
+</script>
+</div>
+<p>因为只有一个特征值等于 1，所以随着 k 趋向于无穷，解会达到一个稳态。</p>
+<p>下面说一下，为什么 A 有一个特征值为 1。以上面的 A 为例，平移一个单位</p>
+<div>
+<div class="MathJax_Preview">
+A - I =
+\begin{bmatrix}
+-0.9 &amp; 0.01 &amp; 0.3 \\
+0.2 &amp; -0.01 &amp; 0.3 \\
+0.7 &amp; 0 &amp; -0.6
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+A - I =
+\begin{bmatrix}
+-0.9 & 0.01 & 0.3 \\
+0.2 & -0.01 & 0.3 \\
+0.7 & 0 & -0.6
+\end{bmatrix}
+</script>
+</div>
+<p>可知，每一列的和为 0，说明行向量是相关的，那么 A - I 是奇异的</p>
+<div>
+<div class="MathJax_Preview">
+\det(A - I) = 0
+</div>
+<script type="math/tex; mode=display">
+\det(A - I) = 0
+</script>
+</div>
+<p>据一个人口迁移的例子，加州和麻省两个地方的人口相互转移</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+u_{cal} \\
+u_{mass}
+\end{bmatrix}_{k+1} &amp; = &amp;
+\begin{bmatrix}
+0.9 &amp; 0.2 \\
+0.1 &amp; 0.8
+\end{bmatrix} &amp;
+\begin{bmatrix}
+u_{cal} \\
+u_{mass}
+\end{bmatrix}_{k} \\
+u_{k + 1} &amp; = &amp; A &amp; u_{k + 1}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+u_{cal} \\
+u_{mass}
+\end{bmatrix}_{k+1} & = &
+\begin{bmatrix}
+0.9 & 0.2 \\
+0.1 & 0.8
+\end{bmatrix} &
+\begin{bmatrix}
+u_{cal} \\
+u_{mass}
+\end{bmatrix}_{k} \\
+u_{k + 1} & = & A & u_{k + 1}
+\end{matrix}
+</script>
+</div>
+<p>初始条件</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+u_{cal} \\
+u_{mass}
+\end{bmatrix} =
+\begin{bmatrix}
+0 \\
+1000
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+u_{cal} \\
+u_{mass}
+\end{bmatrix} =
+\begin{bmatrix}
+0 \\
+1000
+\end{bmatrix}
+</script>
+</div>
+<p>可求特征值和特征向量</p>
+<div>
+<div class="MathJax_Preview">
+\begin{cases}
+\lambda_{1} = 1 \\
+\lambda_{2} = 0.7
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+\begin{cases}
+\lambda_{1} = 1 \\
+\lambda_{2} = 0.7
+\end{cases}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_{1} =
+\begin{bmatrix}
+2 \\
+1
+\end{bmatrix},
+x_{2} =
+\begin{bmatrix}
+-1 \\
+1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+x_{1} =
+\begin{bmatrix}
+2 \\
+1
+\end{bmatrix},
+x_{2} =
+\begin{bmatrix}
+-1 \\
+1
+\end{bmatrix}
+</script>
+</div>
+<p>最终解</p>
+<div>
+<div class="MathJax_Preview">
+u_{k} = \frac{1000}{3} 1^{k}
+\begin{bmatrix}
+2 \\
+1
+\end{bmatrix} + \frac{2000}{3} 0.7^{k}
+\begin{bmatrix}
+-1 \\
+1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+u_{k} = \frac{1000}{3} 1^{k}
+\begin{bmatrix}
+2 \\
+1
+\end{bmatrix} + \frac{2000}{3} 0.7^{k}
+\begin{bmatrix}
+-1 \\
+1
+\end{bmatrix}
+</script>
+</div>
                 
               
               
