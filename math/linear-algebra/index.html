@@ -7015,26 +7015,7 @@ A =
 \end{bmatrix}
 </script>
 </div>
-<p>性质 2）导致了 A 的特征值其中一个是 1，这样会达到稳态，其他的特征值绝对值均小于 1。</p>
-<p>本质上，马尔可夫矩阵符合矩阵幂指数，形如</p>
-<div>
-<div class="MathJax_Preview">
-\begin{aligned}
-u_{k} &amp;= A^{k} u_{0} \\
-&amp;= c_{1} \lambda_{1}^{k} x_{1} + c_{2} \lambda_{2}^{k} x_{2} + \cdots + c_{n} \lambda_{n}^{k} x_{n}\\
-&amp;\approx c_{1} x_{1}
-\end{aligned}
-</div>
-<script type="math/tex; mode=display">
-\begin{aligned}
-u_{k} &= A^{k} u_{0} \\
-&= c_{1} \lambda_{1}^{k} x_{1} + c_{2} \lambda_{2}^{k} x_{2} + \cdots + c_{n} \lambda_{n}^{k} x_{n}\\
-&\approx c_{1} x_{1}
-\end{aligned}
-</script>
-</div>
-<p>因为只有一个特征值等于 1，所以随着 k 趋向于无穷，解会达到一个稳态。</p>
-<p>下面说一下，为什么 A 有一个特征值为 1。以上面的 A 为例，平移一个单位</p>
+<p>性质 2）导致了 A 的特征值其中一个是 1，这样会达到稳态，其他的特征值绝对值均小于 1。A 平移一个单位</p>
 <div>
 <div class="MathJax_Preview">
 A - I =
@@ -7062,7 +7043,24 @@ A - I =
 \det(A - I) = 0
 </script>
 </div>
-<p>据一个人口迁移的例子，加州和麻省两个地方的人口相互转移</p>
+<p>本质上，马尔可夫矩阵符合矩阵幂指数，形如</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+u_{k} &amp;= A^{k} u_{0} \\
+&amp;= c_{1} \lambda_{1}^{k} x_{1} + c_{2} \lambda_{2}^{k} x_{2} + \cdots + c_{n} \lambda_{n}^{k} x_{n}\\
+&amp;\approx c_{1} x_{1}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+u_{k} &= A^{k} u_{0} \\
+&= c_{1} \lambda_{1}^{k} x_{1} + c_{2} \lambda_{2}^{k} x_{2} + \cdots + c_{n} \lambda_{n}^{k} x_{n}\\
+&\approx c_{1} x_{1}
+\end{aligned}
+</script>
+</div>
+<p>因为只有一个特征值等于 1，所以随着 k 趋向于无穷，解会达到一个稳态。一个人口迁移的例子，加州和麻省两个地方的人口相互迁移</p>
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
