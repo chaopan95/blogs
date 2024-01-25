@@ -1788,6 +1788,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    傅立叶级数
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2176,6 +2183,13 @@
           <li class="md-nav__item">
   <a href="#_35" class="md-nav__link">
     马尔可夫矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    傅立叶级数
   </a>
   
 </li>
@@ -6952,22 +6966,187 @@ e^{At} = \sum_{n=0}^{\infty} S^{-1} (\Lambda t)^{n} S = S^{-1} e^{\Lambda t} S
 </script>
 </div>
 <h2 id="_31">正定<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
-<p>矩阵的特殊性体现在特征值和特征向量上。对于实对称矩阵 <span><span class="MathJax_Preview">A^{T} = A</span><script type="math/tex">A^{T} = A</script></span>，所有的特征值是实数，特征向量是相互正价的。</p>
+<p>矩阵的特殊性体现在特征值和特征向量上。对于实对称矩阵</p>
 <div>
 <div class="MathJax_Preview">
-A = S \Lambda S^{-1} = Q \Lambda Q^{-1} = Q \Lambda Q^{T}
+\mathbf{A^{T} = A}
 </div>
 <script type="math/tex; mode=display">
-A = S \Lambda S^{-1} = Q \Lambda Q^{-1} = Q \Lambda Q^{T}
+\mathbf{A^{T} = A}
 </script>
 </div>
-<p>正定矩阵（positive definite matrix）是实对称矩阵，所有的特征值是正值，所有的主元是正值，所有的子行列式（sub-determinant）是正值。</p>
+<p>所有的特征值是实数，特征向量是正交的。</p>
 <div>
 <div class="MathJax_Preview">
-x^{T} A x &gt; 0
+\mathbf{A = S \Lambda S^{-1} = Q \Lambda Q^{-1} = Q \Lambda Q^{T}}
 </div>
 <script type="math/tex; mode=display">
-x^{T} A x > 0
+\mathbf{A = S \Lambda S^{-1} = Q \Lambda Q^{-1} = Q \Lambda Q^{T}}
+</script>
+</div>
+<p>为什么对称矩阵 <span><span class="MathJax_Preview">\mathrm{A}</span><script type="math/tex">\mathrm{A}</script></span> 的特征值是实数？假设其特征值是 <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span>，特征向量是 <span><span class="MathJax_Preview">\mathrm{x}</span><script type="math/tex">\mathrm{x}</script></span>，有</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{A x = \lambda x}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{A x = \lambda x}
+</script>
+</div>
+<p>取共轭</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{\bar{A} \bar{x} = \bar{\lambda} \bar{x}}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{\bar{A} \bar{x} = \bar{\lambda} \bar{x}}
+</script>
+</div>
+<p>因为 <span><span class="MathJax_Preview">\mathrm{A}</span><script type="math/tex">\mathrm{A}</script></span> 是对称矩阵，所以有</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{A \bar{x} = \bar{\lambda} \bar{x}}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{A \bar{x} = \bar{\lambda} \bar{x}}
+</script>
+</div>
+<p>对登时两侧转置</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{\bar{x}^{T} A^{T} = \bar{x}^{T} \bar{\lambda}}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{\bar{x}^{T} A^{T} = \bar{x}^{T} \bar{\lambda}}
+</script>
+</div>
+<p><span><span class="MathJax_Preview">\mathrm{A}</span><script type="math/tex">\mathrm{A}</script></span> 是对称矩阵</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{\bar{x}^{T} A = \bar{x}^{T} \bar{\lambda}}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{\bar{x}^{T} A = \bar{x}^{T} \bar{\lambda}}
+</script>
+</div>
+<p>同时右乘 <span><span class="MathJax_Preview">\mathbf{x}</span><script type="math/tex">\mathbf{x}</script></span></p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{\bar{x}^{T} A x = \bar{x}^{T} \bar{\lambda} x}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{\bar{x}^{T} A x = \bar{x}^{T} \bar{\lambda} x}
+</script>
+</div>
+<p>对 <span><span class="MathJax_Preview">\mathbf{A x = \lambda x}</span><script type="math/tex">\mathbf{A x = \lambda x}</script></span> 左乘 <span><span class="MathJax_Preview">\mathbf{\bar{x}^{T}}</span><script type="math/tex">\mathbf{\bar{x}^{T}}</script></span></p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{\bar{x}^{T} A x = \bar{x}^{T} \lambda x}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{\bar{x}^{T} A x = \bar{x}^{T} \lambda x}
+</script>
+</div>
+<p>联立上式</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{\bar{x}^{T} A x = \bar{x}^{T} \lambda x = \bar{x}^{T} \bar{\lambda} x}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{\bar{x}^{T} A x = \bar{x}^{T} \lambda x = \bar{x}^{T} \bar{\lambda} x}
+</script>
+</div>
+<p>因为特征向量的与自己的内积非负，并且特征向量是非零向量，所以</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{\bar{x}^{T} x &gt; 0}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{\bar{x}^{T} x > 0}
+</script>
+</div>
+<p>最终可知特征值是实数。</p>
+<div>
+<div class="MathJax_Preview">
+\lambda = \bar{\lambda}
+</div>
+<script type="math/tex; mode=display">
+\lambda = \bar{\lambda}
+</script>
+</div>
+<p>对复数矩阵，特征值是实数的条件是</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{A = \bar{A}^{T}}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{A = \bar{A}^{T}}
+</script>
+</div>
+<p>对实数矩阵，特征值是实数的条件是</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{A = A^{T}}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{A = A^{T}}
+</script>
+</div>
+<p>对称矩阵的主元符号与特征值的符号相等，也就是说正主元的个数等于正特征值的个数。</p>
+<p>正定矩阵（positive definite matrix）是实对称矩阵，所有的特征值是正值，所有的主元是正值，所有的子行列式（sub-determinant）是正值。这里的子行列式指的是从左上角到右下角逐层扩充的行列式。例如有一行列式如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{vmatrix}
+5 &amp; 3 &amp; 4 \\
+3 &amp; 2 &amp; 7 \\
+4 &amp; 7 &amp; 6
+\end{vmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{vmatrix}
+5 & 3 & 4 \\
+3 & 2 & 7 \\
+4 & 7 & 6
+\end{vmatrix}
+</script>
+</div>
+<p>子行列式如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{vmatrix}
+5
+\end{vmatrix},
+\begin{vmatrix}
+5 &amp; 3 \\
+3 &amp; 2
+\end{vmatrix},
+\begin{vmatrix}
+5 &amp; 3 &amp; 4 \\
+3 &amp; 2 &amp; 7 \\
+4 &amp; 7 &amp; 6
+\end{vmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{vmatrix}
+5
+\end{vmatrix},
+\begin{vmatrix}
+5 & 3 \\
+3 & 2
+\end{vmatrix},
+\begin{vmatrix}
+5 & 3 & 4 \\
+3 & 2 & 7 \\
+4 & 7 & 6
+\end{vmatrix}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\mathrm{x^{T} A x &gt; 0}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{x^{T} A x > 0}
 </script>
 </div>
 <h2 id="_32">相似<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
@@ -6999,26 +7178,26 @@ A = U \Sigma V^{T}
 <p>形如</p>
 <div>
 <div class="MathJax_Preview">
-A =
+\mathrm{A =
 \begin{bmatrix}
 0.1 &amp; 0.01 &amp; 0.3 \\
 0.2 &amp; 0.99 &amp; 0.3 \\
 0.7 &amp; 0 &amp; 0.4
-\end{bmatrix}
+\end{bmatrix}}
 </div>
 <script type="math/tex; mode=display">
-A =
+\mathrm{A =
 \begin{bmatrix}
 0.1 & 0.01 & 0.3 \\
 0.2 & 0.99 & 0.3 \\
 0.7 & 0 & 0.4
-\end{bmatrix}
+\end{bmatrix}}
 </script>
 </div>
 <p>性质 2）导致了 A 的特征值其中一个是 1，这样会达到稳态，其他的特征值绝对值均小于 1。A 平移一个单位</p>
 <div>
 <div class="MathJax_Preview">
-A - I =
+\mathbf{A - I} =
 \begin{bmatrix}
 -0.9 &amp; 0.01 &amp; 0.3 \\
 0.2 &amp; -0.01 &amp; 0.3 \\
@@ -7026,7 +7205,7 @@ A - I =
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-A - I =
+\mathbf{A - I} =
 \begin{bmatrix}
 -0.9 & 0.01 & 0.3 \\
 0.2 & -0.01 & 0.3 \\
@@ -7037,24 +7216,24 @@ A - I =
 <p>可知，每一列的和为 0，说明行向量是相关的，那么 A - I 是奇异的</p>
 <div>
 <div class="MathJax_Preview">
-\det(A - I) = 0
+\det(\mathbf{A - I}) = 0
 </div>
 <script type="math/tex; mode=display">
-\det(A - I) = 0
+\det(\mathbf{A - I}) = 0
 </script>
 </div>
 <p>本质上，马尔可夫矩阵符合矩阵幂指数，形如</p>
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
-u_{k} &amp;= A^{k} u_{0} \\
+u_{k} &amp;= \mathrm{A}^{k} u_{0} \\
 &amp;= c_{1} \lambda_{1}^{k} x_{1} + c_{2} \lambda_{2}^{k} x_{2} + \cdots + c_{n} \lambda_{n}^{k} x_{n}\\
 &amp;\approx c_{1} x_{1}
 \end{aligned}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
-u_{k} &= A^{k} u_{0} \\
+u_{k} &= \mathrm{A}^{k} u_{0} \\
 &= c_{1} \lambda_{1}^{k} x_{1} + c_{2} \lambda_{2}^{k} x_{2} + \cdots + c_{n} \lambda_{n}^{k} x_{n}\\
 &\approx c_{1} x_{1}
 \end{aligned}
@@ -7076,7 +7255,7 @@ u_{mass}
 u_{cal} \\
 u_{mass}
 \end{bmatrix}_{k} \\
-u_{k + 1} &amp; = &amp; A &amp; u_{k + 1}
+\mathbf{u_{k + 1}} &amp; = &amp; \mathbf{A} &amp; \mathbf{u_{k + 1}}
 \end{matrix}
 </div>
 <script type="math/tex; mode=display">
@@ -7093,7 +7272,7 @@ u_{mass}
 u_{cal} \\
 u_{mass}
 \end{bmatrix}_{k} \\
-u_{k + 1} & = & A & u_{k + 1}
+\mathbf{u_{k + 1}} & = & \mathbf{A} & \mathbf{u_{k + 1}}
 \end{matrix}
 </script>
 </div>
@@ -7184,6 +7363,154 @@ u_{k} = \frac{1000}{3} 1^{k}
 -1 \\
 1
 \end{bmatrix}
+</script>
+</div>
+<h3 id="_36">傅立叶级数<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<p>考虑一组正交基 <span><span class="MathJax_Preview">\mathrm{q}_{1}, \mathrm{q}_{2}, \cdots, \mathrm{q}_{n}</span><script type="math/tex">\mathrm{q}_{1}, \mathrm{q}_{2}, \cdots, \mathrm{q}_{n}</script></span>，对于任意的向量 V</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{V} = \mathrm{x}_{1} \mathrm{q}_{1} + \mathrm{x}_{2} \mathrm{q}_{2} + \cdots + \mathrm{x}_{n} \mathrm{q}_{n}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{V} = \mathrm{x}_{1} \mathrm{q}_{1} + \mathrm{x}_{2} \mathrm{q}_{2} + \cdots + \mathrm{x}_{n} \mathrm{q}_{n}
+</script>
+</div>
+<p>如何知道 <span><span class="MathJax_Preview">\mathrm{x}_{1}</span><script type="math/tex">\mathrm{x}_{1}</script></span>，可以通过 <span><span class="MathJax_Preview">\mathrm{V}</span><script type="math/tex">\mathrm{V}</script></span> 与 <span><span class="MathJax_Preview">\mathrm{q}_{1}</span><script type="math/tex">\mathrm{q}_{1}</script></span> 内积获得</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{q}_{1}^{T} \mathrm{V} = \mathrm{x}_{1} \mathrm{q}_{1}^{\mathrm{T}} \mathrm{q}_{1} + \mathrm{x}_{2} \mathrm{q}_{1}^{\mathrm{T}} \mathrm{q}_{2} + \cdots + \mathrm{x}_{n} \mathrm{q}_{1}^{\mathrm{T}} \mathrm{q}_{n} = \mathrm{x}_{1}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{q}_{1}^{T} \mathrm{V} = \mathrm{x}_{1} \mathrm{q}_{1}^{\mathrm{T}} \mathrm{q}_{1} + \mathrm{x}_{2} \mathrm{q}_{1}^{\mathrm{T}} \mathrm{q}_{2} + \cdots + \mathrm{x}_{n} \mathrm{q}_{1}^{\mathrm{T}} \mathrm{q}_{n} = \mathrm{x}_{1}
+</script>
+</div>
+<p>对于所有的 x</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+| &amp; | &amp; \cdots &amp; | \\
+\mathrm{q}_{1} &amp; \mathrm{q}_{2} &amp; \cdots &amp; \mathrm{q}_{n} \\
+| &amp; | &amp; \cdots &amp; |
+\end{bmatrix} &amp;
+\begin{bmatrix}
+\mathrm{x}_{1} \\
+\mathrm{x}_{2} \\
+\vdots \\
+\mathrm{x}_{n}
+\end{bmatrix} &amp; = &amp; V \\
+\mathbf{Q} &amp; \mathbf{X} &amp; = &amp; \mathbf{V}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+| & | & \cdots & | \\
+\mathrm{q}_{1} & \mathrm{q}_{2} & \cdots & \mathrm{q}_{n} \\
+| & | & \cdots & |
+\end{bmatrix} &
+\begin{bmatrix}
+\mathrm{x}_{1} \\
+\mathrm{x}_{2} \\
+\vdots \\
+\mathrm{x}_{n}
+\end{bmatrix} & = & V \\
+\mathbf{Q} & \mathbf{X} & = & \mathbf{V}
+\end{matrix}
+</script>
+</div>
+<p>因为 Q 是正交矩阵，所以可逆</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{X} = \mathbf{Q}^{-1} \mathbf{V} = \mathbf{Q}^{\mathrm{T}} \mathbf{V}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{X} = \mathbf{Q}^{-1} \mathbf{V} = \mathbf{Q}^{\mathrm{T}} \mathbf{V}
+</script>
+</div>
+<p>傅立叶级数（Fourier series）：对于一个函数 f(x) 可以表示成一连串的正余弦函数之和。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\mathrm{f(x)} &amp;= \mathrm{a}_{0} + \mathrm{a}_{1} \cos \mathrm{x} + \mathrm{b}_{1} \sin \mathrm{x} + \mathrm{a}_{2} \cos \mathrm{2x} + \mathrm{b}_{2} \sin \mathrm{2x} + \cdots \\
+&amp;+ \mathrm{a}_{n} \cos \mathrm{nx} + \mathrm{b}_{n} \sin \mathrm{nx} + \cdots
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathrm{f(x)} &= \mathrm{a}_{0} + \mathrm{a}_{1} \cos \mathrm{x} + \mathrm{b}_{1} \sin \mathrm{x} + \mathrm{a}_{2} \cos \mathrm{2x} + \mathrm{b}_{2} \sin \mathrm{2x} + \cdots \\
+&+ \mathrm{a}_{n} \cos \mathrm{nx} + \mathrm{b}_{n} \sin \mathrm{nx} + \cdots
+\end{aligned}
+</script>
+</div>
+<p>傅立叶级数是无穷维的，但是正余弦是正交的，可以看成一组基。两个函数的内积如下</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{f}^{\mathrm{T}} \mathrm{g} = \int \mathrm{f(x)} \mathrm{g(x)} \mathrm{dx}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{f}^{\mathrm{T}} \mathrm{g} = \int \mathrm{f(x)} \mathrm{g(x)} \mathrm{dx}
+</script>
+</div>
+<p>同样地，傅立叶级数的某一项系数的求解</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\int_{0}^{2\pi} \mathrm{f(x)} \cos \mathrm{x} \mathrm{dx} &amp;= \mathrm{a}_{1} \int_{0}^{2\pi} (\cos \mathrm{x})^{2} \mathrm{dx} \\
+&amp;= \mathrm{a}_{1} \int_{0}^{2\pi} \frac{1 + \cos \mathrm{2x}}{2} \mathrm{dx} \\
+&amp;= \mathrm{a}_{1} \pi
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\int_{0}^{2\pi} \mathrm{f(x)} \cos \mathrm{x} \mathrm{dx} &= \mathrm{a}_{1} \int_{0}^{2\pi} (\cos \mathrm{x})^{2} \mathrm{dx} \\
+&= \mathrm{a}_{1} \int_{0}^{2\pi} \frac{1 + \cos \mathrm{2x}}{2} \mathrm{dx} \\
+&= \mathrm{a}_{1} \pi
+\end{aligned}
+</script>
+</div>
+<p>所以</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{a}_{1} = \frac{1}{\pi} \int_{0}^{2\pi} \mathrm{f(x)} \cos \mathrm{x} \mathrm{dx}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{a}_{1} = \frac{1}{\pi} \int_{0}^{2\pi} \mathrm{f(x)} \cos \mathrm{x} \mathrm{dx}
+</script>
+</div>
+<p>这里解释一下，为什么除了 <span><span class="MathJax_Preview">\mathrm{a}_{1} \cos \mathrm{x}</span><script type="math/tex">\mathrm{a}_{1} \cos \mathrm{x}</script></span>，其他项都是 0。利用积化和差公式转化成周期函数</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+&amp; \cos(\alpha) \sin(\beta) = \frac{\sin(\alpha + \beta) - \sin(\alpha - \beta)}{2} \\
+&amp; \sin(\alpha) \cos(\beta) = \frac{\sin(\alpha + \beta) + \sin(\alpha - \beta)}{2} \\
+&amp; \cos(\alpha) \cos(\beta) = \frac{\cos(\alpha - \beta) + \cos(\alpha + \beta)}{2} \\
+&amp; \sin(\alpha) \sin(\beta) = \frac{\cos(\alpha - \beta) - \cos(\alpha + \beta)}{2}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \cos(\alpha) \sin(\beta) = \frac{\sin(\alpha + \beta) - \sin(\alpha - \beta)}{2} \\
+& \sin(\alpha) \cos(\beta) = \frac{\sin(\alpha + \beta) + \sin(\alpha - \beta)}{2} \\
+& \cos(\alpha) \cos(\beta) = \frac{\cos(\alpha - \beta) + \cos(\alpha + \beta)}{2} \\
+& \sin(\alpha) \sin(\beta) = \frac{\cos(\alpha - \beta) - \cos(\alpha + \beta)}{2}
+\end{aligned}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\int_{0}^{2\pi} \mathrm{a}_{k} \cos \mathrm{(kx)} \cos \mathrm{x} = \mathrm{a}_{k} \int_{0}^{2\pi} \frac{\cos \mathrm{(kx - x)} + \cos \mathrm{(kx + x)}}{2} = 0
+</div>
+<script type="math/tex; mode=display">
+\int_{0}^{2\pi} \mathrm{a}_{k} \cos \mathrm{(kx)} \cos \mathrm{x} = \mathrm{a}_{k} \int_{0}^{2\pi} \frac{\cos \mathrm{(kx - x)} + \cos \mathrm{(kx + x)}}{2} = 0
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\int_{0}^{2\pi} \mathrm{a}_{k} \sin \mathrm{(kx)} \cos \mathrm{x} = \mathrm{b}_{k} \int_{0}^{2\pi} \frac{\sin \mathrm{(kx + x)} + \sin \mathrm{(kx - x)}}{2} = 0
+</div>
+<script type="math/tex; mode=display">
+\int_{0}^{2\pi} \mathrm{a}_{k} \sin \mathrm{(kx)} \cos \mathrm{x} = \mathrm{b}_{k} \int_{0}^{2\pi} \frac{\sin \mathrm{(kx + x)} + \sin \mathrm{(kx - x)}}{2} = 0
 </script>
 </div>
                 
