@@ -2259,14 +2259,14 @@
 <div>
 <div class="MathJax_Preview">
 \begin{cases}
-2x-y=0 \\
--x+2y=3
+\mathrm{2x-y=0} \\
+\mathrm{-x+2y=3}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
 \begin{cases}
-2x-y=0 \\
--x+2y=3
+\mathrm{2x-y=0} \\
+\mathrm{-x+2y=3}
 \end{cases}
 </script>
 </div>
@@ -2289,7 +2289,7 @@ y
 0 \\
 3
 \end{bmatrix} \\
-A &amp; X &amp; = &amp; b
+\mathbf{A} &amp; \mathbf{X} &amp; = &amp; \mathbf{b}
 \end{matrix}
 </div>
 <script type="math/tex; mode=display">
@@ -2307,20 +2307,20 @@ y
 0 \\
 3
 \end{bmatrix} \\
-A & X & = & b
+\mathbf{A} & \mathbf{X} & = & \mathbf{b}
 \end{matrix}
 </script>
 </div>
 <p>我们还可以将上述的一元二次方程组的求解过程看作是向量的线性组合</p>
 <div>
 <div class="MathJax_Preview">
-x
+\mathrm{x}
 \begin{bmatrix}
 2 \\
 -1
 \end{bmatrix}
 +
-y
+\mathrm{y}
 \begin{bmatrix}
 -1 \\
 2
@@ -2332,13 +2332,13 @@ y
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-x
+\mathrm{x}
 \begin{bmatrix}
 2 \\
 -1
 \end{bmatrix}
 +
-y
+\mathrm{y}
 \begin{bmatrix}
 -1 \\
 2
@@ -2356,14 +2356,14 @@ y
 <div>
 <div class="MathJax_Preview">
 \begin{cases}
-x = 1 \\
-y = 2
+\mathrm{x = 1} \\
+\mathrm{y = 2}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
 \begin{cases}
-x = 1 \\
-y = 2
+\mathrm{x = 1} \\
+\mathrm{y = 2}
 \end{cases}
 </script>
 </div>
@@ -2430,23 +2430,23 @@ y = 2
 <div>
 <div class="MathJax_Preview">
 \begin{cases}
-x + 2y + z = 2 \\
-3x + 8y + z = 12 \\
-4y + z = 1
+\mathrm{x + 2y + z = 2} \\
+\mathrm{3x + 8y + z = 12} \\
+\mathrm{4y + z = 1}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
 \begin{cases}
-x + 2y + z = 2 \\
-3x + 8y + z = 12 \\
-4y + z = 1
+\mathrm{x + 2y + z = 2} \\
+\mathrm{3x + 8y + z = 12} \\
+\mathrm{4y + z = 1}
 \end{cases}
 </script>
 </div>
 <p>在求解多元一次方程组的时候，我们使用的正是消元法，它的思想是用方程关系，不断减少未知数的个数。将上述的方程组，转化成 Ax = b 的形式后，A 的矩阵表达</p>
 <div>
 <div class="MathJax_Preview">
-A = 
+\mathrm{A} = 
 \begin{bmatrix}
 \boxed{\color{red} 1} &amp; 2 &amp; 1 \\
 3 &amp; \boxed{\color{red} 8} &amp; 1 \\
@@ -2454,7 +2454,7 @@ A =
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-A = 
+\mathrm{A} = 
 \begin{bmatrix}
 \boxed{\color{red} 1} & 2 & 1 \\
 3 & \boxed{\color{red} 8} & 1 \\
@@ -2643,102 +2643,102 @@ A =
 <div>
 <div class="MathJax_Preview">
 \begin{cases}
-x = 2 \\
-y = 1 \\
-z = -2
+\mathrm{x = 2} \\
+\mathrm{y = 1} \\
+\mathrm{z = -2}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
 \begin{cases}
-x = 2 \\
-y = 1 \\
-z = -2
+\mathrm{x = 2} \\
+\mathrm{y = 1} \\
+\mathrm{z = -2}
 \end{cases}
 </script>
 </div>
 <p>算法复杂度 <span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span></p>
 <div>
 <div class="MathJax_Preview">
-n^{2} + (n - 1)^{2} + \cdots + 1^{2} = \frac{n(n+1)(n+2)}{6}
+\mathrm{n^{2} + (n - 1)^{2} + \cdots + 1^{2} = \frac{n(n+1)(n+2)}{6}}
 </div>
 <script type="math/tex; mode=display">
-n^{2} + (n - 1)^{2} + \cdots + 1^{2} = \frac{n(n+1)(n+2)}{6}
+\mathrm{n^{2} + (n - 1)^{2} + \cdots + 1^{2} = \frac{n(n+1)(n+2)}{6}}
 </script>
 </div>
 <p>考虑两个矩阵相乘</p>
 <div>
 <div class="MathJax_Preview">
-AB = 
+\mathrm{AB} = 
 \begin{bmatrix}
-a_{11} &amp; a_{12} \\
-a_{21} &amp; a_{22}
+\mathrm{a}_{11} &amp; \mathrm{a}_{12} \\
+\mathrm{a}_{21} &amp; \mathrm{a}_{22}
 \end{bmatrix}
 \begin{bmatrix}
-b_{11} &amp; b_{12} \\
-b_{21} &amp; b_{22}
+\mathrm{b}_{11} &amp; \mathrm{b}_{12} \\
+\mathrm{b}_{21} &amp; \mathrm{b}_{22}
 \end{bmatrix} =
 \begin{bmatrix}
-a_{11}b_{11} + a_{12}b_{21} &amp; a_{11}b_{12} + a_{12}b_{22} \\
-a_{21}b_{11} + a_{22}b_{21} &amp; a_{21}b_{12} + a_{22}b_{22}
-\end{bmatrix} = C
+\mathrm{a_{11}b_{11} + a_{12}b_{21}} &amp; \mathrm{a_{11}b_{12} + a_{12}b_{22}} \\
+\mathrm{a_{21}b_{11} + a_{22}b_{21}} &amp; \mathrm{a_{21}b_{12} + a_{22}b_{22}}
+\end{bmatrix} = \mathrm{C}
 </div>
 <script type="math/tex; mode=display">
-AB = 
+\mathrm{AB} = 
 \begin{bmatrix}
-a_{11} & a_{12} \\
-a_{21} & a_{22}
+\mathrm{a}_{11} & \mathrm{a}_{12} \\
+\mathrm{a}_{21} & \mathrm{a}_{22}
 \end{bmatrix}
 \begin{bmatrix}
-b_{11} & b_{12} \\
-b_{21} & b_{22}
+\mathrm{b}_{11} & \mathrm{b}_{12} \\
+\mathrm{b}_{21} & \mathrm{b}_{22}
 \end{bmatrix} =
 \begin{bmatrix}
-a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\
-a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}
-\end{bmatrix} = C
+\mathrm{a_{11}b_{11} + a_{12}b_{21}} & \mathrm{a_{11}b_{12} + a_{12}b_{22}} \\
+\mathrm{a_{21}b_{11} + a_{22}b_{21}} & \mathrm{a_{21}b_{12} + a_{22}b_{22}}
+\end{bmatrix} = \mathrm{C}
 </script>
 </div>
 <p>如果我们以 A 为基准点，右乘 B 得倒 C。C 有两列，每一列可以看成 B 对应的列右乘到 A 上 </p>
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
-AB &amp;=
+\mathrm{AB} &amp;=
 \begin{bmatrix}
-a_{11} &amp; a_{12} \\
-a_{21} &amp; a_{22}
+\mathrm{a}_{11} &amp; \mathrm{a}_{12} \\
+\mathrm{a}_{21} &amp; \mathrm{a}_{22}
 \end{bmatrix}
 \begin{bmatrix}
-b_{11} &amp; b_{12} \\
-b_{21} &amp; b_{22}
+\mathrm{b}_{11} &amp; \mathrm{b}_{12} \\
+\mathrm{b}_{21} &amp; \mathrm{b}_{22}
 \end{bmatrix} \\
 &amp;=
 \begin{bmatrix}
-a_{11} &amp; a_{12} \\
-a_{21} &amp; a_{22}
+\mathrm{a}_{11} &amp; \mathrm{a}_{12} \\
+\mathrm{a}_{21} &amp; \mathrm{a}_{22}
 \end{bmatrix}
 \begin{bmatrix}
-B_{1} &amp; B_{2} \\
+\mathrm{B}_{1} &amp; \mathrm{B}_{2} \\
 \end{bmatrix}
 \end{aligned}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
-AB &=
+\mathrm{AB} &=
 \begin{bmatrix}
-a_{11} & a_{12} \\
-a_{21} & a_{22}
+\mathrm{a}_{11} & \mathrm{a}_{12} \\
+\mathrm{a}_{21} & \mathrm{a}_{22}
 \end{bmatrix}
 \begin{bmatrix}
-b_{11} & b_{12} \\
-b_{21} & b_{22}
+\mathrm{b}_{11} & \mathrm{b}_{12} \\
+\mathrm{b}_{21} & \mathrm{b}_{22}
 \end{bmatrix} \\
 &=
 \begin{bmatrix}
-a_{11} & a_{12} \\
-a_{21} & a_{22}
+\mathrm{a}_{11} & \mathrm{a}_{12} \\
+\mathrm{a}_{21} & \mathrm{a}_{22}
 \end{bmatrix}
 \begin{bmatrix}
-B_{1} & B_{2} \\
+\mathrm{B}_{1} & \mathrm{B}_{2} \\
 \end{bmatrix}
 \end{aligned}
 </script>
@@ -2862,12 +2862,12 @@ b_{21} & b_{22}
 1 &amp; 0
 \end{bmatrix}
 \begin{bmatrix}
-a &amp; b \\
-c &amp; d
+\mathrm{a} &amp; \mathrm{b} \\
+\mathrm{c} &amp; \mathrm{d}
 \end{bmatrix} =
 \begin{bmatrix}
-c &amp; d \\
-a &amp; b
+\mathrm{c} &amp; \mathrm{d} \\
+\mathrm{a} &amp; \mathrm{b}
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
@@ -2876,12 +2876,12 @@ a &amp; b
 1 & 0
 \end{bmatrix}
 \begin{bmatrix}
-a & b \\
-c & d
+\mathrm{a} & \mathrm{b} \\
+\mathrm{c} & \mathrm{d}
 \end{bmatrix} =
 \begin{bmatrix}
-c & d \\
-a & b
+\mathrm{c} & \mathrm{d} \\
+\mathrm{a} & \mathrm{b}
 \end{bmatrix}
 </script>
 </div>
@@ -2889,30 +2889,30 @@ a & b
 <div>
 <div class="MathJax_Preview">
 \begin{bmatrix}
-a &amp; b \\
-c &amp; d
+\mathrm{a} &amp; \mathrm{b} \\
+\mathrm{c} &amp; \mathrm{d}
 \end{bmatrix}
 \begin{bmatrix}
 0 &amp; 1 \\
 1 &amp; 0
 \end{bmatrix} =
 \begin{bmatrix}
-b &amp; a \\
-d &amp; c
+\mathrm{b} &amp; \mathrm{a} \\
+\mathrm{d} &amp; \mathrm{c}
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
 \begin{bmatrix}
-a & b \\
-c & d
+\mathrm{a} & \mathrm{b} \\
+\mathrm{c} & \mathrm{d}
 \end{bmatrix}
 \begin{bmatrix}
 0 & 1 \\
 1 & 0
 \end{bmatrix} =
 \begin{bmatrix}
-b & a \\
-d & c
+\mathrm{b} & \mathrm{a} \\
+\mathrm{d} & \mathrm{c}
 \end{bmatrix}
 </script>
 </div>
@@ -2987,14 +2987,14 @@ d & c
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
-&amp; P^{-1} = P^{T} \\
-&amp; P^{T} P = I
+&amp; \mathbf{P^{-1} = P^{T}} \\
+&amp; \mathbf{P^{T} P = I}
 \end{aligned}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
-& P^{-1} = P^{T} \\
-& P^{T} P = I
+& \mathbf{P^{-1} = P^{T}} \\
+& \mathbf{P^{T} P = I}
 \end{aligned}
 </script>
 </div>
@@ -3002,93 +3002,93 @@ d & c
 <p>考虑两个矩阵 <span><span class="MathJax_Preview">A_{n \times m}</span><script type="math/tex">A_{n \times m}</script></span> 和 <span><span class="MathJax_Preview">B_{m \times p}</span><script type="math/tex">B_{m \times p}</script></span>，两者的尺寸表现在其下标上，乘积后的矩阵为 <span><span class="MathJax_Preview">C_{n \times p}</span><script type="math/tex">C_{n \times p}</script></span>，C 中的某个位置的元素结果遵循着如下规则</p>
 <div>
 <div class="MathJax_Preview">
-C_{ij} = \sum_{k = 1}^{m} A_{ik}B_{kj}
+\mathrm{C_{ij} = \sum_{k = 1}^{m} A_{ik}B_{kj}}
 </div>
 <script type="math/tex; mode=display">
-C_{ij} = \sum_{k = 1}^{m} A_{ik}B_{kj}
+\mathrm{C_{ij} = \sum_{k = 1}^{m} A_{ik}B_{kj}}
 </script>
 </div>
 <p>A 的列数和 B 的行数要保持一致。</p>
 <p>如果我们将矩阵 B 还成一组列向量的组合，那么每一列和 A 想乘，便会得到 C 的每一列，这是矩阵乘法的另一种视角：<strong>C 中的每一列都是 A 的列向量的线性组合，线性组合的系数来自于 B 对应的列。</strong></p>
 <div>
 <div class="MathJax_Preview">
-A_{n \times m}
+\mathrm{A_{n \times m}}
 \begin{bmatrix}
 \mid &amp; \mid &amp; \cdots &amp; \mid \\
-B_{1} &amp; B_{2} &amp; \cdots &amp; B_{p}  \\
+\mathrm{B}_{1} &amp; \mathrm{B}_{2} &amp; \cdots &amp; \mathrm{B_{p}}  \\
 \mid &amp; \mid &amp; \cdots &amp; \mid
-\end{bmatrix}_{m \times p}
+\end{bmatrix}_{\mathrm{m \times p}}
 =
 \begin{bmatrix}
 \mid &amp; \mid &amp; \cdots &amp; \mid \\
-C_{1} &amp; C_{2} &amp; \cdots &amp; C_{p}  \\
+\mathrm{C_{1}} &amp; \mathrm{C_{2}} &amp; \cdots &amp; \mathrm{C_{p}}  \\
 \mid &amp; \mid &amp; \cdots &amp; \mid
-\end{bmatrix}_{n \times p}
+\end{bmatrix}_{\mathrm{n \times p}}
 </div>
 <script type="math/tex; mode=display">
-A_{n \times m}
+\mathrm{A_{n \times m}}
 \begin{bmatrix}
 \mid & \mid & \cdots & \mid \\
-B_{1} & B_{2} & \cdots & B_{p}  \\
+\mathrm{B}_{1} & \mathrm{B}_{2} & \cdots & \mathrm{B_{p}}  \\
 \mid & \mid & \cdots & \mid
-\end{bmatrix}_{m \times p}
+\end{bmatrix}_{\mathrm{m \times p}}
 =
 \begin{bmatrix}
 \mid & \mid & \cdots & \mid \\
-C_{1} & C_{2} & \cdots & C_{p}  \\
+\mathrm{C_{1}} & \mathrm{C_{2}} & \cdots & \mathrm{C_{p}}  \\
 \mid & \mid & \cdots & \mid
-\end{bmatrix}_{n \times p}
+\end{bmatrix}_{\mathrm{n \times p}}
 </script>
 </div>
 <p>同样地，如果我们将 A 看成一组行向量，那么 A 的每一行左乘到 B 上，就会得到 C 的对应行。这是行向量的视角：<strong>C 中的每一行都是 B 的行向量的线性组合，线性组合的系数来自 B 对应的行</strong>。</p>
 <div>
 <div class="MathJax_Preview">
 \begin{bmatrix}
-- &amp; A_{1} &amp; - \\
-- &amp; A_{2} &amp; - \\
+- &amp; \mathrm{A_{1}} &amp; - \\
+- &amp; \mathrm{A_{2}} &amp; - \\
 \vdots &amp; \vdots &amp; \vdots \\
-- &amp; A_{n} &amp; -
-\end{bmatrix}_{n \times m}
-B_{m \times p}
+- &amp; \mathrm{A_{n}} &amp; -
+\end{bmatrix}_{\mathrm{n \times m}}
+\mathrm{B_{m \times p}}
 =
 \begin{bmatrix}
-- &amp; C_{1} &amp; - \\
-- &amp; C_{2} &amp; - \\
+- &amp; \mathrm{C_{1}} &amp; - \\
+- &amp; \mathrm{C_{2}} &amp; - \\
 \vdots &amp; \vdots &amp; \vdots \\
-- &amp; C_{n} &amp; -
-\end{bmatrix}_{n \times p}
+- &amp; \mathrm{C_{n}} &amp; -
+\end{bmatrix}_{\mathrm{n \times p}}
 </div>
 <script type="math/tex; mode=display">
 \begin{bmatrix}
-- & A_{1} & - \\
-- & A_{2} & - \\
+- & \mathrm{A_{1}} & - \\
+- & \mathrm{A_{2}} & - \\
 \vdots & \vdots & \vdots \\
-- & A_{n} & -
-\end{bmatrix}_{n \times m}
-B_{m \times p}
+- & \mathrm{A_{n}} & -
+\end{bmatrix}_{\mathrm{n \times m}}
+\mathrm{B_{m \times p}}
 =
 \begin{bmatrix}
-- & C_{1} & - \\
-- & C_{2} & - \\
+- & \mathrm{C_{1}} & - \\
+- & \mathrm{C_{2}} & - \\
 \vdots & \vdots & \vdots \\
-- & C_{n} & -
-\end{bmatrix}_{n \times p}
+- & \mathrm{C_{n}} & -
+\end{bmatrix}_{\mathrm{n \times p}}
 </script>
 </div>
 <p>结合列向量和行向量这两种视角，我们可以总结出矩阵乘积的核心是，矩阵 A 的列向量与矩阵 B 的行向量两两相乘，然后全部加起来。</p>
 <div>
 <div class="MathJax_Preview">
-C = AB = \sum (\text{col of A})(\text{row of B})
+\mathrm{C = AB = \sum (\text{col of A})(\text{row of B})}
 </div>
 <script type="math/tex; mode=display">
-C = AB = \sum (\text{col of A})(\text{row of B})
+\mathrm{C = AB = \sum (\text{col of A})(\text{row of B})}
 </script>
 </div>
 <p>例如</p>
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
-C &amp;= AB \\
+\mathrm{C} &amp;= \mathrm{AB} \\
 &amp;=
 \begin{bmatrix}
 2 &amp; 7 \\
@@ -3148,7 +3148,7 @@ C &amp;= AB \\
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
-C &= AB \\
+\mathrm{C} &= \mathrm{AB} \\
 &=
 \begin{bmatrix}
 2 & 7 \\
@@ -3211,30 +3211,30 @@ C &= AB \\
 <div>
 <div class="MathJax_Preview">
 \left[\begin{array} {c:c}
-A_{1} &amp; A_{2} \\ \hline 
-A_{3} &amp; A_{4}
+\mathrm{A_{1}} &amp; \mathrm{A_{2}} \\ \hline 
+\mathrm{A_{3}} &amp; \mathrm{A_{4}}
 \end{array} \right]
 \left[\begin{array} {c:c}
-B_{1} &amp; B_{2} \\ \hline 
-B_{3} &amp; B_{4}
+\mathrm{B_{1}} &amp; \mathrm{B_{2}} \\ \hline 
+\mathrm{B_{3}} &amp; \mathrm{B_{4}}
 \end{array} \right] =
 \left[\begin{array} {c:c}
-A_{1}B_{1} + A_{2}B_{3} &amp; A_{1}B_{2} + A_{2}B_{4} \\ \hline 
-A_{3}B_{1} + A_{4}B_{3} &amp; A_{3}B_{2} + A_{4}B_{4}
+\mathrm{A_{1}B_{1}} + \mathrm{A_{2}B_{3}} &amp; \mathrm{A_{1}B_{2}} + \mathrm{A_{2}B_{4}} \\ \hline 
+\mathrm{A_{3}B_{1} + A_{4}B_{3}} &amp; \mathrm{A_{3}B_{2} + A_{4}B_{4}}
 \end{array} \right]
 </div>
 <script type="math/tex; mode=display">
 \left[\begin{array} {c:c}
-A_{1} & A_{2} \\ \hline 
-A_{3} & A_{4}
+\mathrm{A_{1}} & \mathrm{A_{2}} \\ \hline 
+\mathrm{A_{3}} & \mathrm{A_{4}}
 \end{array} \right]
 \left[\begin{array} {c:c}
-B_{1} & B_{2} \\ \hline 
-B_{3} & B_{4}
+\mathrm{B_{1}} & \mathrm{B_{2}} \\ \hline 
+\mathrm{B_{3}} & \mathrm{B_{4}}
 \end{array} \right] =
 \left[\begin{array} {c:c}
-A_{1}B_{1} + A_{2}B_{3} & A_{1}B_{2} + A_{2}B_{4} \\ \hline 
-A_{3}B_{1} + A_{4}B_{3} & A_{3}B_{2} + A_{4}B_{4}
+\mathrm{A_{1}B_{1}} + \mathrm{A_{2}B_{3}} & \mathrm{A_{1}B_{2}} + \mathrm{A_{2}B_{4}} \\ \hline 
+\mathrm{A_{3}B_{1} + A_{4}B_{3}} & \mathrm{A_{3}B_{2} + A_{4}B_{4}}
 \end{array} \right]
 </script>
 </div>
@@ -3242,7 +3242,7 @@ A_{3}B_{1} + A_{4}B_{3} & A_{3}B_{2} + A_{4}B_{4}
 <p>假设我们有一个矩阵 A，我们想找到一个矩阵 B 使得 B A = I。B 就是 A 的逆矩阵（inverse），也写作 <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span>，例如</p>
 <div>
 <div class="MathJax_Preview">
-A =
+\mathrm{A} =
 \begin{bmatrix}
 1 &amp; 0 &amp; 0 \\
 -3 &amp; 1 &amp; 0 \\
@@ -3250,7 +3250,7 @@ A =
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-A =
+\mathrm{A} =
 \begin{bmatrix}
 1 & 0 & 0 \\
 -3 & 1 & 0 \\
@@ -3298,26 +3298,26 @@ A =
 <p>如果 A 是一个方阵（square matrix），即列数和行数是相等的。那么 A 的逆矩阵 <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span>，左逆和右逆时等价的。</p>
 <div>
 <div class="MathJax_Preview">
-A^{-1} A = I = A A^{-1}
+\mathbf{A^{-1} A = I = A A^{-1}}
 </div>
 <script type="math/tex; mode=display">
-A^{-1} A = I = A A^{-1}
+\mathbf{A^{-1} A = I = A A^{-1}}
 </script>
 </div>
 <p>如果有逆矩阵，我们称 A 时可逆的（invertible）或者是非奇异的（non-singular）。很自然地，我们会问什么时候，矩阵 A 是不可逆的？答案就是，如果我们能找打一个非零解 x，使得 Ax = 0（也就是 A 的线性组合等于 0），那么 A 就是不可逆（奇异）的。这里用反证法，假设 A 是可逆的，那么我们对 Ax 左乘逆矩阵 <span><span class="MathJax_Preview">A^{-1}</span><script type="math/tex">A^{-1}</script></span>。</p>
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
-Ax = 0 \\
-A^{-1} Ax = A^{-1} 0 = 0 \\
-x = 0 \\
+\mathbf{Ax = 0} \\
+\mathbf{A^{-1} Ax = A^{-1} 0 = 0} \\
+\mathbf{x = 0} \\
 \end{matrix}
 </div>
 <script type="math/tex; mode=display">
 \begin{matrix}
-Ax = 0 \\
-A^{-1} Ax = A^{-1} 0 = 0 \\
-x = 0 \\
+\mathbf{Ax = 0} \\
+\mathbf{A^{-1} Ax = A^{-1} 0 = 0} \\
+\mathbf{x = 0} \\
 \end{matrix}
 </script>
 </div>
@@ -3325,14 +3325,14 @@ x = 0 \\
 <p>现在我们关心如何求一个矩阵的逆矩阵，例如</p>
 <div>
 <div class="MathJax_Preview">
-A =
+\mathrm{A} =
 \begin{bmatrix}
 1 &amp; 3 \\
 2 &amp; 7
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-A =
+\mathrm{A} =
 \begin{bmatrix}
 1 & 3 \\
 2 & 7
@@ -3347,8 +3347,8 @@ A =
 2 &amp; 7
 \end{bmatrix}
 \begin{bmatrix}
-a &amp; b \\
-c &amp; d
+\mathrm{a} &amp; \mathrm{b} \\
+\mathrm{c} &amp; \mathrm{d}
 \end{bmatrix} =
 \begin{bmatrix}
 1 &amp; 0 \\
@@ -3361,8 +3361,8 @@ c &amp; d
 2 & 7
 \end{bmatrix}
 \begin{bmatrix}
-a & b \\
-c & d
+\mathrm{a} & \mathrm{b} \\
+\mathrm{c} & \mathrm{d}
 \end{bmatrix} =
 \begin{bmatrix}
 1 & 0 \\
@@ -3432,14 +3432,14 @@ d
 <p>这样就可以使用消元法。有没有一种可以同事处理多个方程组求解的方法？答案就是「高斯-若尔」（Gauss-Jordan）方法，将矩阵 A 和单位矩阵拼接成一起。</p>
 <div>
 <div class="MathJax_Preview">
-[A, I] =
+\mathrm{[A, I]} =
 \left[\begin{array} {cc:cc}
 1 &amp; 3 &amp; 1 &amp; 0\\ 
 2 &amp; 7 &amp; 0 &amp; 1
 \end{array} \right]
 </div>
 <script type="math/tex; mode=display">
-[A, I] =
+\mathrm{[A, I]} =
 \left[\begin{array} {cc:cc}
 1 & 3 & 1 & 0\\ 
 2 & 7 & 0 & 1
@@ -3491,22 +3491,22 @@ d
 \left[\begin{array} {cc:cc}
 1 &amp; 0 &amp; 7 &amp; -3 \\ 
 0 &amp; 1 &amp; -2 &amp; 1
-\end{array} \right] = [I, A^{-1}]
+\end{array} \right] = [I, \mathrm{A^{-1}}]
 </div>
 <script type="math/tex; mode=display">
 \left[\begin{array} {cc:cc}
 1 & 0 & 7 & -3 \\ 
 0 & 1 & -2 & 1
-\end{array} \right] = [I, A^{-1}]
+\end{array} \right] = [I, \mathrm{A^{-1}}]
 </script>
 </div>
 <p>消元的本质是行向量的线性组合，实现的方式是左乘一个初等矩阵 E，如下</p>
 <div>
 <div class="MathJax_Preview">
-E [A, I] = [EA, E] = [I, A^{-1}]
+\mathbf{E [A, I] = [EA, E] = [I, A^{-1}]}
 </div>
 <script type="math/tex; mode=display">
-E [A, I] = [EA, E] = [I, A^{-1}]
+\mathbf{E [A, I] = [EA, E] = [I, A^{-1}]}
 </script>
 </div>
 <p>可知，EA = I，那么 E 就是 A 的逆矩阵。</p>
@@ -3514,28 +3514,28 @@ E [A, I] = [EA, E] = [I, A^{-1}]
 <p>假设 A 时可逆的，那么</p>
 <div>
 <div class="MathJax_Preview">
-A^{-1}A = I
+\mathbf{A^{-1}A = I}
 </div>
 <script type="math/tex; mode=display">
-A^{-1}A = I
+\mathbf{A^{-1}A = I}
 </script>
 </div>
 <p>对两端进行转置</p>
 <div>
 <div class="MathJax_Preview">
-(AA^{-1})^{T} = (A^{-1})^{T}A^{T} = I^{T} = I
+\mathbf{(AA^{-1})^{T} = (A^{-1})^{T}A^{T} = I^{T} = I}
 </div>
 <script type="math/tex; mode=display">
-(AA^{-1})^{T} = (A^{-1})^{T}A^{T} = I^{T} = I
+\mathbf{(AA^{-1})^{T} = (A^{-1})^{T}A^{T} = I^{T} = I}
 </script>
 </div>
 <p>我们可以得出一个结论，A 的转置的逆矩阵等价于 A 的逆矩阵的转置</p>
 <div>
 <div class="MathJax_Preview">
-(A^{T})^{-1} = (A^{-1})^{T}
+\mathbf{(A^{T})^{-1} = (A^{-1})^{T}}
 </div>
 <script type="math/tex; mode=display">
-(A^{T})^{-1} = (A^{-1})^{T}
+\mathbf{(A^{T})^{-1} = (A^{-1})^{T}}
 </script>
 </div>
 <p>前面说到消元的本质是行向量的线性变换，对矩阵 A 左乘一个初等变换矩阵得到 U</p>
@@ -3554,7 +3554,7 @@ A^{-1}A = I
 2 &amp; 1 \\
 0 &amp; 3
 \end{bmatrix} \\
-E &amp; A &amp; = &amp; U
+\mathbf{E} &amp; \mathbf{A} &amp; = &amp; \mathbf{U}
 \end{matrix}
 </div>
 <script type="math/tex; mode=display">
@@ -3571,7 +3571,7 @@ E &amp; A &amp; = &amp; U
 2 & 1 \\
 0 & 3
 \end{bmatrix} \\
-E & A & = & U
+\mathbf{E} & \mathbf{A} & = & \mathbf{U}
 \end{matrix}
 </script>
 </div>
@@ -3603,7 +3603,7 @@ E & A & = & U
 1 &amp; \frac{1}{2} \\
 0 &amp; 1
 \end{bmatrix} \\
-A &amp; = &amp; L &amp; U &amp; = &amp; L &amp; D &amp; U
+\mathrm{A} &amp; = &amp; \mathrm{L} &amp; \mathrm{U} &amp; = &amp; \mathrm{L} &amp; \mathrm{D} &amp; \mathrm{U}
 \end{matrix}
 </div>
 <script type="math/tex; mode=display">
@@ -3632,7 +3632,7 @@ A &amp; = &amp; L &amp; U &amp; = &amp; L &amp; D &amp; U
 1 & \frac{1}{2} \\
 0 & 1
 \end{bmatrix} \\
-A & = & L & U & = & L & D & U
+\mathrm{A} & = & \mathrm{L} & \mathrm{U} & = & \mathrm{L} & \mathrm{D} & \mathrm{U}
 \end{matrix}
 </script>
 </div>
@@ -3641,23 +3641,23 @@ A & = & L & U & = & L & D & U
 <p>矩阵的转置指的是将 A 的列向量用行向量的方式排列</p>
 <div>
 <div class="MathJax_Preview">
-A^{T}_{ji} = A_{ij}
+\mathrm{A^{T}_{ji} = A_{ij}}
 </div>
 <script type="math/tex; mode=display">
-A^{T}_{ji} = A_{ij}
+\mathrm{A^{T}_{ji} = A_{ij}}
 </script>
 </div>
 <p>例如</p>
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
-&amp; A =
+&amp; \mathrm{A} =
 \begin{bmatrix}
 1 &amp; 3 \\
 2 &amp; 3 \\
 4 &amp; 1
 \end{bmatrix} \\
-&amp; A^{T} = 
+&amp; \mathrm{A^{T}} = 
 \begin{bmatrix}
 1 &amp; 2 &amp; 4 \\
 3 &amp; 3 &amp; 1
@@ -3666,13 +3666,13 @@ A^{T}_{ji} = A_{ij}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
-& A =
+& \mathrm{A} =
 \begin{bmatrix}
 1 & 3 \\
 2 & 3 \\
 4 & 1
 \end{bmatrix} \\
-& A^{T} = 
+& \mathrm{A^{T}} = 
 \begin{bmatrix}
 1 & 2 & 4 \\
 3 & 3 & 1
@@ -3683,7 +3683,7 @@ A^{T}_{ji} = A_{ij}
 <p>如果矩阵的转置和自身相等，这样的矩阵成为「对称矩阵」（symmetric matrix）。</p>
 <div>
 <div class="MathJax_Preview">
-A = A^{T} =
+\mathrm{A = A^{T}} =
 \begin{bmatrix}
 3 &amp; 1 &amp; 7 \\
 1 &amp; 2 &amp; 9 \\
@@ -3691,7 +3691,7 @@ A = A^{T} =
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-A = A^{T} =
+\mathrm{A = A^{T}} =
 \begin{bmatrix}
 3 & 1 & 7 \\
 1 & 2 & 9 \\
@@ -3702,10 +3702,10 @@ A = A^{T} =
 <p>显然，对称矩阵一定是方阵。但是非对称矩阵也可以变成对称矩阵，方法是左乘它的转置。</p>
 <div>
 <div class="MathJax_Preview">
-(A^{T}A)^{T} = A^{T}(A^{T})^{T} = A^{T}A
+\mathbf{(A^{T}A)^{T} = A^{T}(A^{T})^{T} = A^{T}A}
 </div>
 <script type="math/tex; mode=display">
-(A^{T}A)^{T} = A^{T}(A^{T})^{T} = A^{T}A
+\mathbf{(A^{T}A)^{T} = A^{T}(A^{T})^{T} = A^{T}A}
 </script>
 </div>
 <h2 id="_6">向量空间<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
@@ -3720,7 +3720,7 @@ A = A^{T} =
 <p>下面考虑矩阵如何构成子空间，有一个矩阵如下</p>
 <div>
 <div class="MathJax_Preview">
-A =
+\mathrm{A} =
 \begin{bmatrix}
 1 &amp; 1 &amp; 2 \\
 2 &amp; 1 &amp; 3 \\
@@ -3729,7 +3729,7 @@ A =
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-A =
+\mathrm{A} =
 \begin{bmatrix}
 1 & 1 & 2 \\
 2 & 1 & 3 \\
@@ -3760,7 +3760,7 @@ b_{2} \\
 b_{3} \\
 b_{4}
 \end{bmatrix} \\
-A &amp; x &amp; = &amp; b
+\mathrm{A} &amp; \mathrm{x} &amp; = &amp; \mathrm{b}
 \end{matrix}
 </div>
 <script type="math/tex; mode=display">
@@ -3782,7 +3782,7 @@ b_{2} \\
 b_{3} \\
 b_{4}
 \end{bmatrix} \\
-A & x & = & b
+\mathrm{A} & \mathrm{x} & = & \mathrm{b}
 \end{matrix}
 </script>
 </div>
@@ -3810,7 +3810,7 @@ x_{3}
 0 \\
 0
 \end{bmatrix} \\
-A &amp; x &amp; = &amp; b
+\mathrm{A} &amp; \mathrm{x} &amp; = &amp; \mathrm{b}
 \end{matrix}
 </div>
 <script type="math/tex; mode=display">
@@ -3832,7 +3832,7 @@ x_{3}
 0 \\
 0
 \end{bmatrix} \\
-A & x & = & b
+\mathrm{A} & \mathrm{x} & = & \mathrm{b}
 \end{matrix}
 </script>
 </div>
@@ -3876,7 +3876,7 @@ x = c
 <p>通过消元，转化成上三角矩阵 U 或者阶梯形式（echelon form）</p>
 <div>
 <div class="MathJax_Preview">
-U =
+\mathrm{U} =
 \begin{bmatrix}
 \boxed{\color{red} 1} &amp; 2 &amp; 2 &amp; 2 \\
 0 &amp; 0 &amp; \boxed{\color{red} 2} &amp; 4 \\
@@ -3884,7 +3884,7 @@ U =
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-U =
+\mathrm{U} =
 \begin{bmatrix}
 \boxed{\color{red} 1} & 2 & 2 & 2 \\
 0 & 0 & \boxed{\color{red} 2} & 4 \\
@@ -3896,21 +3896,21 @@ U =
 <div>
 <div class="MathJax_Preview">
 \begin{cases}
-x_{1} + 2x_{2} + 2x_{3} + 2x_{4} = 0 \\
-2x_{4} + 4x_{4} = 0
+\mathrm{x_{1} + 2x_{2} + 2x_{3} + 2x_{4} = 0} \\
+\mathrm{2x_{4} + 4x_{4} = 0}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
 \begin{cases}
-x_{1} + 2x_{2} + 2x_{3} + 2x_{4} = 0 \\
-2x_{4} + 4x_{4} = 0
+\mathrm{x_{1} + 2x_{2} + 2x_{3} + 2x_{4} = 0} \\
+\mathrm{2x_{4} + 4x_{4} = 0}
 \end{cases}
 </script>
 </div>
-<p>我们不妨给两个自由变量 <span><span class="MathJax_Preview">x_{2} = 1, x_{4} = 0</span><script type="math/tex">x_{2} = 1, x_{4} = 0</script></span></p>
+<p>我们不妨给两个自由变量 <span><span class="MathJax_Preview">\mathrm{x}_{2} = 1, \mathrm{x}_{4} = 0</span><script type="math/tex">\mathrm{x}_{2} = 1, \mathrm{x}_{4} = 0</script></span></p>
 <div>
 <div class="MathJax_Preview">
-x =
+\mathrm{x} =
 \begin{bmatrix}
 -2 \\
 1 \\
@@ -3919,7 +3919,7 @@ x =
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-x =
+\mathrm{x} =
 \begin{bmatrix}
 -2 \\
 1 \\
@@ -3928,10 +3928,10 @@ x =
 \end{bmatrix}
 </script>
 </div>
-<p>也可以赋另外一组值 <span><span class="MathJax_Preview">x_{2} = 0, x_{4} = 1</span><script type="math/tex">x_{2} = 0, x_{4} = 1</script></span></p>
+<p>也可以赋另外一组值 <span><span class="MathJax_Preview">\mathrm{x}_{2} = 0, \mathrm{x}_{4} = 1</span><script type="math/tex">\mathrm{x}_{2} = 0, \mathrm{x}_{4} = 1</script></span></p>
 <div>
 <div class="MathJax_Preview">
-x =
+\mathrm{x} =
 \begin{bmatrix}
 2 \\
 0 \\
@@ -3940,7 +3940,7 @@ x =
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-x =
+\mathrm{x} =
 \begin{bmatrix}
 2 \\
 0 \\
@@ -3952,7 +3952,7 @@ x =
 <p>这两个都称为特解，注意到有几个自由列，就有几个特解。最后<strong>零空间的解为所有特解的线性组合</strong></p>
 <div>
 <div class="MathJax_Preview">
-x = \alpha_{1}
+\mathrm{x} = \alpha_{1}
 \begin{bmatrix}
 -2 \\
 1 \\
@@ -3967,7 +3967,7 @@ x = \alpha_{1}
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-x = \alpha_{1}
+\mathrm{x} = \alpha_{1}
 \begin{bmatrix}
 -2 \\
 1 \\
@@ -3992,7 +3992,7 @@ x = \alpha_{1}
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
-U = \begin{bmatrix}
+\mathrm{U} = \begin{bmatrix}
 \boxed{\color{red} 1} &amp; 2 &amp; 2 &amp; 2 \\
 0 &amp; 0 &amp; \boxed{\color{red} 2} &amp; 4 \\
 0 &amp; 0 &amp; 0 &amp; 0
@@ -4004,7 +4004,7 @@ U = \begin{bmatrix}
 0 &amp; 0 &amp; 0 &amp; 0
 \end{bmatrix} \\
 \Downarrow \\
-R = \begin{bmatrix}
+\mathrm{R} = \begin{bmatrix}
 \boxed{\color{red} 1} &amp; 2 &amp; 0 &amp; -2 \\
 0 &amp; 0 &amp; \boxed{\color{red} 1} &amp; 2 \\
 0 &amp; 0 &amp; 0 &amp; 0
@@ -4013,7 +4013,7 @@ R = \begin{bmatrix}
 </div>
 <script type="math/tex; mode=display">
 \begin{matrix}
-U = \begin{bmatrix}
+\mathrm{U} = \begin{bmatrix}
 \boxed{\color{red} 1} & 2 & 2 & 2 \\
 0 & 0 & \boxed{\color{red} 2} & 4 \\
 0 & 0 & 0 & 0
@@ -4025,7 +4025,7 @@ U = \begin{bmatrix}
 0 & 0 & 0 & 0
 \end{bmatrix} \\
 \Downarrow \\
-R = \begin{bmatrix}
+\mathrm{R} = \begin{bmatrix}
 \boxed{\color{red} 1} & 2 & 0 & -2 \\
 0 & 0 & \boxed{\color{red} 1} & 2 \\
 0 & 0 & 0 & 0
@@ -4036,7 +4036,7 @@ R = \begin{bmatrix}
 <p>这里为什么可以将主元值变成 1 的原因是 Ax = 0 无需考虑 b 的大小。如果我们将 R 中的主列全部排到左边，自由列放到右边</p>
 <div>
 <div class="MathJax_Preview">
-R = 
+\mathrm{R} =
 \begin{bmatrix}
 \boxed{\color{red} 1} &amp; 2 &amp; 0 &amp; -2 \\
 0 &amp; 0 &amp; \boxed{\color{red} 1} &amp; 2 \\
@@ -4049,13 +4049,13 @@ R =
 0 &amp; 0 &amp; 0 &amp; 0
 \end{array} \right] =
 \left[\begin{array} {c:c}
-I &amp; F \\ 
+\mathrm{I} &amp; \mathrm{F} \\ 
 \hdashline
 0 &amp; 0
 \end{array} \right]
 </div>
 <script type="math/tex; mode=display">
-R = 
+\mathrm{R} =
 \begin{bmatrix}
 \boxed{\color{red} 1} & 2 & 0 & -2 \\
 0 & 0 & \boxed{\color{red} 1} & 2 \\
@@ -4068,7 +4068,7 @@ R =
 0 & 0 & 0 & 0
 \end{array} \right] =
 \left[\begin{array} {c:c}
-I & F \\ 
+\mathrm{I} & \mathrm{F} \\ 
 \hdashline
 0 & 0
 \end{array} \right]
@@ -4077,38 +4077,38 @@ I & F \\
 <p>F 块内的值刚好是特解中主元变量对应的值的相反数，这里很好理解，因为我们给自由变量特定的值，解出来的主元变量值一定是自由变量的系数相反数。按照这个方法，最后解的形式为</p>
 <div>
 <div class="MathJax_Preview">
-x =
+\mathrm{x} =
 \begin{bmatrix}
--F \\
-I
+\mathrm{-F} \\
+\mathrm{I}
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-x =
+\mathrm{x} =
 \begin{bmatrix}
--F \\
-I
+\mathrm{-F} \\
+\mathrm{I}
 \end{bmatrix}
 </script>
 </div>
 <div>
 <div class="MathJax_Preview">
 \begin{bmatrix}
-I &amp; F
+\mathrm{I} &amp; \mathrm{F}
 \end{bmatrix}
 \begin{bmatrix}
-x_{\text{pivot}} \\
-x_{\text{free}}
-\end{bmatrix} = I x_{\text{pivot}} + F x_{\text{free}} = 0
+\mathrm{x}_{\text{pivot}} \\
+\mathrm{x}_{\text{free}}
+\end{bmatrix} = \mathrm{I x_{\text{pivot}} + F x_{\text{free}}} = 0
 </div>
 <script type="math/tex; mode=display">
 \begin{bmatrix}
-I & F
+\mathrm{I} & \mathrm{F}
 \end{bmatrix}
 \begin{bmatrix}
-x_{\text{pivot}} \\
-x_{\text{free}}
-\end{bmatrix} = I x_{\text{pivot}} + F x_{\text{free}} = 0
+\mathrm{x}_{\text{pivot}} \\
+\mathrm{x}_{\text{free}}
+\end{bmatrix} = \mathrm{I x_{\text{pivot}} + F x_{\text{free}}} = 0
 </script>
 </div>
 <h2 id="_10">完整解<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
@@ -4121,15 +4121,15 @@ x_{\text{free}}
 3 &amp; 6 &amp; 8 &amp; 10
 \end{bmatrix}
 \begin{bmatrix}
-x_{1} \\
-x_{2} \\
-x_{3} \\
-x_{4}
+\mathrm{x}_{1} \\
+\mathrm{x}_{2} \\
+\mathrm{x}_{3} \\
+\mathrm{x}_{4}
 \end{bmatrix} =
 \begin{bmatrix}
-b_{1} \\
-b_{2} \\
-b_{3}
+\mathrm{b}_{1} \\
+\mathrm{b}_{2} \\
+\mathrm{b}_{3}
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
@@ -4139,15 +4139,15 @@ b_{3}
 3 & 6 & 8 & 10
 \end{bmatrix}
 \begin{bmatrix}
-x_{1} \\
-x_{2} \\
-x_{3} \\
-x_{4}
+\mathrm{x}_{1} \\
+\mathrm{x}_{2} \\
+\mathrm{x}_{3} \\
+\mathrm{x}_{4}
 \end{bmatrix} =
 \begin{bmatrix}
-b_{1} \\
-b_{2} \\
-b_{3}
+\mathrm{b}_{1} \\
+\mathrm{b}_{2} \\
+\mathrm{b}_{3}
 \end{bmatrix}
 </script>
 </div>
@@ -4160,9 +4160,9 @@ b_{3}
 3 &amp; 6 &amp; 8 &amp; 10 &amp; b_{3}
 \end{array} \right] \Leftrightarrow
 \left[ \begin{array} {cccc:c}
-1 &amp; 2 &amp; 2 &amp; 2 &amp; b_{1} \\
-0 &amp; 0 &amp; 2 &amp; 4 &amp; b_{2} - 2b_{1} \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; b_{3} - b_{2} - b_{1}
+1 &amp; 2 &amp; 2 &amp; 2 &amp; \mathrm{b}_{1} \\
+0 &amp; 0 &amp; 2 &amp; 4 &amp; \mathrm{b}_{2} - 2 \mathrm{b}_{1} \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \mathrm{b}_{3} - \mathrm{b}_{2} - \mathrm{b}_{1}
 \end{array} \right]
 </div>
 <script type="math/tex; mode=display">
@@ -4172,19 +4172,19 @@ b_{3}
 3 & 6 & 8 & 10 & b_{3}
 \end{array} \right] \Leftrightarrow
 \left[ \begin{array} {cccc:c}
-1 & 2 & 2 & 2 & b_{1} \\
-0 & 0 & 2 & 4 & b_{2} - 2b_{1} \\
-0 & 0 & 0 & 0 & b_{3} - b_{2} - b_{1}
+1 & 2 & 2 & 2 & \mathrm{b}_{1} \\
+0 & 0 & 2 & 4 & \mathrm{b}_{2} - 2 \mathrm{b}_{1} \\
+0 & 0 & 0 & 0 & \mathrm{b}_{3} - \mathrm{b}_{2} - \mathrm{b}_{1}
 \end{array} \right]
 </script>
 </div>
 <p>可知增管矩阵的最后一行必须要全为 0 才有解，即</p>
 <div>
 <div class="MathJax_Preview">
-b_{3} - b_{2} - b_{1} = 0
+\mathrm{b_{3} - b_{2} - b_{1} = 0}
 </div>
 <script type="math/tex; mode=display">
-b_{3} - b_{2} - b_{1} = 0
+\mathrm{b_{3} - b_{2} - b_{1} = 0}
 </script>
 </div>
 <p>总结一下，如果 A 的行向量线性组合产生了 0 行向量，那么 b 对应的线性组合也要产生 0，才会有解。</p>
@@ -4197,10 +4197,10 @@ b_{3} - b_{2} - b_{1} = 0
 3 &amp; 6 &amp; 8 &amp; 10
 \end{bmatrix}
 \begin{bmatrix}
-x_{1} \\
-x_{2} \\
-x_{3} \\
-x_{4}
+\mathrm{x}_{1} \\
+\mathrm{x}_{2} \\
+\mathrm{x}_{3} \\
+\mathrm{x}_{4}
 \end{bmatrix} =
 \begin{bmatrix}
 1 \\
@@ -4215,10 +4215,10 @@ x_{4}
 3 & 6 & 8 & 10
 \end{bmatrix}
 \begin{bmatrix}
-x_{1} \\
-x_{2} \\
-x_{3} \\
-x_{4}
+\mathrm{x}_{1} \\
+\mathrm{x}_{2} \\
+\mathrm{x}_{3} \\
+\mathrm{x}_{4}
 \end{bmatrix} =
 \begin{bmatrix}
 1 \\
@@ -4228,25 +4228,25 @@ x_{4}
 </script>
 </div>
 <p>求解的方法是特解 + 通解</p>
-<p>1）特解：让所有的自由变量置成 0，求出主元变量的解，对于上例而言，<span><span class="MathJax_Preview">x_{2}</span><script type="math/tex">x_{2}</script></span> 和 <span><span class="MathJax_Preview">x_{4}</span><script type="math/tex">x_{4}</script></span> 是自由变量，置成 0。</p>
+<p>1）特解：让所有的自由变量置成 0，求出主元变量的解，对于上例而言，<span><span class="MathJax_Preview">\mathrm{x}_{2}</span><script type="math/tex">\mathrm{x}_{2}</script></span> 和 <span><span class="MathJax_Preview">\mathrm{x}_{4}</span><script type="math/tex">\mathrm{x}_{4}</script></span> 是自由变量，置成 0。</p>
 <div>
 <div class="MathJax_Preview">
 \begin{cases}
-x_{1} + 2 x_{3} = 1 \\
-2 x_{3} = 3
+\mathrm{x_{1} + 2 x_{3} = 1} \\
+\mathrm{2 x_{3} = 3}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
 \begin{cases}
-x_{1} + 2 x_{3} = 1 \\
-2 x_{3} = 3
+\mathrm{x_{1} + 2 x_{3} = 1} \\
+\mathrm{2 x_{3} = 3}
 \end{cases}
 </script>
 </div>
 <p>特解为</p>
 <div>
 <div class="MathJax_Preview">
-x_{\text{particular}} =
+\mathrm{x_{\text{particular}}} =
 \begin{bmatrix}
 -2 \\
 0 \\
@@ -4255,7 +4255,7 @@ x_{\text{particular}} =
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-x_{\text{particular}} =
+\mathrm{x_{\text{particular}}} =
 \begin{bmatrix}
 -2 \\
 0 \\
@@ -4264,16 +4264,16 @@ x_{\text{particular}} =
 \end{bmatrix}
 </script>
 </div>
-<p>2）通解，其实是零空间的解，即 <span><span class="MathJax_Preview">A x_{\text{null space}} = 0</span><script type="math/tex">A x_{\text{null space}} = 0</script></span></p>
+<p>2）通解，其实是零空间的解，即 <span><span class="MathJax_Preview">\mathrm{A x_{\text{null space}} = 0}</span><script type="math/tex">\mathrm{A x_{\text{null space}} = 0}</script></span></p>
 <div>
 <div class="MathJax_Preview">
-x_{n} = c_{1}
+\mathrm{x_{n} = c_{1}}
 \begin{bmatrix}
 -2 \\
 1 \\
 0 \\
 0
-\end{bmatrix} + c_{2}
+\end{bmatrix} + \mathrm{c_{2}}
 \begin{bmatrix}
 2 \\
 0 \\
@@ -4282,13 +4282,13 @@ x_{n} = c_{1}
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-x_{n} = c_{1}
+\mathrm{x_{n} = c_{1}}
 \begin{bmatrix}
 -2 \\
 1 \\
 0 \\
 0
-\end{bmatrix} + c_{2}
+\end{bmatrix} + \mathrm{c_{2}}
 \begin{bmatrix}
 2 \\
 0 \\
@@ -4300,20 +4300,20 @@ x_{n} = c_{1}
 <p>而最终完整的解为二者之和</p>
 <div>
 <div class="MathJax_Preview">
-x_{c} = x_{p} + x_{n} =
+\mathrm{x_{c} = x_{p} + x_{n}} =
 \begin{bmatrix}
 -2 \\
 0 \\
 3 / 2 \\
 0
 \end{bmatrix} +
-c_{1}
+\mathrm{c_{1}}
 \begin{bmatrix}
 -2 \\
 1 \\
 0 \\
 0
-\end{bmatrix} + c_{2}
+\end{bmatrix} + \mathrm{c_{2}}
 \begin{bmatrix}
 2 \\
 0 \\
@@ -4322,20 +4322,20 @@ c_{1}
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-x_{c} = x_{p} + x_{n} =
+\mathrm{x_{c} = x_{p} + x_{n}} =
 \begin{bmatrix}
 -2 \\
 0 \\
 3 / 2 \\
 0
 \end{bmatrix} +
-c_{1}
+\mathrm{c_{1}}
 \begin{bmatrix}
 -2 \\
 1 \\
 0 \\
 0
-\end{bmatrix} + c_{2}
+\end{bmatrix} + \mathrm{c_{2}}
 \begin{bmatrix}
 2 \\
 0 \\
@@ -4348,17 +4348,17 @@ c_{1}
 <div>
 <div class="MathJax_Preview">
 \begin{cases}
-A x_{p} = b \\
-A x_{n} = 0
+\mathrm{A x_{p} = b} \\
+\mathrm{A x_{n} = 0}
 \end{cases} \Leftrightarrow
-A(x_{p} + x_{n}) = b
+\mathrm{A(x_{p} + x_{n}) = b}
 </div>
 <script type="math/tex; mode=display">
 \begin{cases}
-A x_{p} = b \\
-A x_{n} = 0
+\mathrm{A x_{p} = b} \\
+\mathrm{A x_{n} = 0}
 \end{cases} \Leftrightarrow
-A(x_{p} + x_{n}) = b
+\mathrm{A(x_{p} + x_{n}) = b}
 </script>
 </div>
 <h3 id="_11">秩与解的关系<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
@@ -4366,14 +4366,14 @@ A(x_{p} + x_{n}) = b
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
-r \leq m \\
-r \leq n
+\mathrm{r \leq m} \\
+\mathrm{r \leq n}
 \end{matrix}
 </div>
 <script type="math/tex; mode=display">
 \begin{matrix}
-r \leq m \\
-r \leq n
+\mathrm{r \leq m} \\
+\mathrm{r \leq n}
 \end{matrix}
 </script>
 </div>
@@ -4411,16 +4411,16 @@ r \leq n
 <p>b 的后两行不为 0 时，Ax = b 无解；反之，有唯一解。表面上时 4 个方程，但在有解的情况下，只有 2 个有效的方程或者叫线性无关方程。如果将 U 转化成 R（简化行阶梯形式）形如</p>
 <div>
 <div class="MathJax_Preview">
-R =
+\mathrm{R} =
 \begin{bmatrix}
-I \\
+\mathrm{I} \\
 0
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-R =
+\mathrm{R} =
 \begin{bmatrix}
-I \\
+\mathrm{I} \\
 0
 \end{bmatrix}
 </script>
@@ -4451,15 +4451,15 @@ I \\
 <p>如果将 U 转化成 R 形如</p>
 <div>
 <div class="MathJax_Preview">
-R =
+\mathrm{R} =
 \begin{bmatrix}
-I &amp; F
+\mathrm{I} &amp; \mathrm{F}
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-R =
+\mathrm{R} =
 \begin{bmatrix}
-I & F
+\mathrm{I} & \mathrm{F}
 \end{bmatrix}
 </script>
 </div>
@@ -4482,31 +4482,31 @@ I & F
 <p>如果将 U 转化成 R 形如</p>
 <div>
 <div class="MathJax_Preview">
-R =
+\mathrm{R} =
 \begin{bmatrix}
-I
+\mathrm{I}
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-R =
+\mathrm{R} =
 \begin{bmatrix}
-I
+\mathrm{I}
 \end{bmatrix}
 </script>
 </div>
 <p>4）列和行均不满秩，即 r &lt; m 且 r &lt; n，此时 R 的形式</p>
 <div>
 <div class="MathJax_Preview">
-R =
+\mathrm{R} =
 \begin{bmatrix}
-I &amp; F \\
+\mathrm{I} &amp; \mathrm{F} \\
 0 &amp; 0
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-R =
+\mathrm{R} =
 \begin{bmatrix}
-I & F \\
+\mathrm{I} & \mathrm{F} \\
 0 & 0
 \end{bmatrix}
 </script>
@@ -4531,7 +4531,7 @@ I & F \\
 <td align="center">0</td>
 <td align="center">只有零向量</td>
 <td align="center">0 或者 1</td>
-<td align="center"><span><span class="MathJax_Preview">x_{c} = x_{p}</span><script type="math/tex">x_{c} = x_{p}</script></span></td>
+<td align="center"><span><span class="MathJax_Preview">\mathrm{x_{c} = x_{p}}</span><script type="math/tex">\mathrm{x_{c} = x_{p}}</script></span></td>
 </tr>
 <tr>
 <td align="center">行满秩（r = m &lt; n）</td>
@@ -4539,7 +4539,7 @@ I & F \\
 <td align="center">n - m</td>
 <td align="center">零向量和自由变量对应的向量</td>
 <td align="center"><span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span></td>
-<td align="center"><span><span class="MathJax_Preview">x_{c} = x_{p} + x_{n}</span><script type="math/tex">x_{c} = x_{p} + x_{n}</script></span></td>
+<td align="center"><span><span class="MathJax_Preview">\mathrm{x_{c} = x_{p} + x_{n}}</span><script type="math/tex">\mathrm{x_{c} = x_{p} + x_{n}}</script></span></td>
 </tr>
 <tr>
 <td align="center">列满秩且行满秩（r = n = m）</td>
@@ -4547,7 +4547,7 @@ I & F \\
 <td align="center">0</td>
 <td align="center">零向量</td>
 <td align="center">1</td>
-<td align="center"><span><span class="MathJax_Preview">x_{c} = x_{p}</span><script type="math/tex">x_{c} = x_{p}</script></span></td>
+<td align="center"><span><span class="MathJax_Preview">\mathrm{x_{c} = x_{p}}</span><script type="math/tex">\mathrm{x_{c} = x_{p}}</script></span></td>
 </tr>
 <tr>
 <td align="center">列不满秩且行不满秩（r &lt; n, r &lt; m）</td>
@@ -4555,7 +4555,7 @@ I & F \\
 <td align="center">n - r</td>
 <td align="center">零向量和自由变量对应的向量</td>
 <td align="center">0 或者 <span><span class="MathJax_Preview">\infty</span><script type="math/tex">\infty</script></span></td>
-<td align="center"><span><span class="MathJax_Preview">x_{c} = x_{p} + x_{n}</span><script type="math/tex">x_{c} = x_{p} + x_{n}</script></span></td>
+<td align="center"><span><span class="MathJax_Preview">\mathrm{x_{c} = x_{p} + x_{n}}</span><script type="math/tex">\mathrm{x_{c} = x_{p} + x_{n}}</script></span></td>
 </tr>
 </tbody>
 </table>
@@ -4563,14 +4563,14 @@ I & F \\
 <p>线性相关（linear dependence）指的是一组向量是否通过某种线性组合得倒零向量。如果有非零的组合，即向量的系数至少一个不为 0，则称之为线性相关；反之称之为线性独立（independence）。例如，下面三个向量</p>
 <div>
 <div class="MathJax_Preview">
-c_{1}\begin{bmatrix}
+\mathrm{c}_{1}\begin{bmatrix}
 2 \\
 1
-\end{bmatrix} + c_{2}
+\end{bmatrix} + \mathrm{c}_{2}
 \begin{bmatrix}
 1 \\
 2
-\end{bmatrix} + c_{3}
+\end{bmatrix} + \mathrm{c}_{3}
 \begin{bmatrix}
 3 \\
 3
@@ -4590,14 +4590,14 @@ c_{1}\begin{bmatrix}
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-c_{1}\begin{bmatrix}
+\mathrm{c}_{1}\begin{bmatrix}
 2 \\
 1
-\end{bmatrix} + c_{2}
+\end{bmatrix} + \mathrm{c}_{2}
 \begin{bmatrix}
 1 \\
 2
-\end{bmatrix} + c_{3}
+\end{bmatrix} + \mathrm{c}_{3}
 \begin{bmatrix}
 3 \\
 3
@@ -4717,13 +4717,13 @@ c_{1}\begin{bmatrix}
 <p>首先，列向量有三个元素，因此表示的是 <span><span class="MathJax_Preview">R^{3}</span><script type="math/tex">R^{3}</script></span> 空间；其次，4 个列向量线性相关，通过消元可知有 2 个主元列和 2 个自由列，矩阵的秩序为 2，维数是 2；然后，零空间 N(A) 有 2 个特解；最后列空间的前两个列向量可以构成一组基，零空间的两个特解也可以构成零空间的基。</p>
 <div>
 <div class="MathJax_Preview">
-x_{n} = c_{1}
+\mathrm{x_{n} = c_{1}}
 \begin{bmatrix}
 -1 \\
 -1 \\
 1 \\
 0
-\end{bmatrix} + c_{2}
+\end{bmatrix} + \mathrm{c_{2}}
 \begin{bmatrix}
 -1 \\
 0 \\
@@ -4732,13 +4732,13 @@ x_{n} = c_{1}
 \end{bmatrix}
 </div>
 <script type="math/tex; mode=display">
-x_{n} = c_{1}
+\mathrm{x_{n} = c_{1}}
 \begin{bmatrix}
 -1 \\
 -1 \\
 1 \\
 0
-\end{bmatrix} + c_{2}
+\end{bmatrix} + \mathrm{c_{2}}
 \begin{bmatrix}
 -1 \\
 0 \\
@@ -4751,29 +4751,29 @@ x_{n} = c_{1}
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
-&amp; \text{rank}(A) = \#(\text{主元列}) = \text{dim C}(A) = r \\
-&amp; \text{dim N}(A) = \#(\text{自由列}) = n - r
+&amp; \mathrm{\text{rank}(A) = \#(\text{主元列}) = \text{dim C}(A) = r} \\
+&amp; \mathrm{\text{dim N}(A) = \#(\text{自由列}) = n - r}
 \end{aligned}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
-& \text{rank}(A) = \#(\text{主元列}) = \text{dim C}(A) = r \\
-& \text{dim N}(A) = \#(\text{自由列}) = n - r
+& \mathrm{\text{rank}(A) = \#(\text{主元列}) = \text{dim C}(A) = r} \\
+& \mathrm{\text{dim N}(A) = \#(\text{自由列}) = n - r}
 \end{aligned}
 </script>
 </div>
 <h3 id="4">4 个基本空间<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p>假设有矩阵 <span><span class="MathJax_Preview">A_{m \times n}</span><script type="math/tex">A_{m \times n}</script></span>，4 个基本的空间如下</p>
-<p>1）列空间 <span><span class="MathJax_Preview">C(A) \in R^{m}</span><script type="math/tex">C(A) \in R^{m}</script></span></p>
-<p>2）零空间 <span><span class="MathJax_Preview">N(A) \in R^{n}</span><script type="math/tex">N(A) \in R^{n}</script></span></p>
-<p>3）行空间 <span><span class="MathJax_Preview">R(A) = C(A^{T}) \in R^{n}</span><script type="math/tex">R(A) = C(A^{T}) \in R^{n}</script></span>，A 的行空间等价于 <span><span class="MathJax_Preview">A^{T}</span><script type="math/tex">A^{T}</script></span> 的列空间</p>
-<p>4）左零空间 <span><span class="MathJax_Preview">N(A^{T}) \in R^{m}</span><script type="math/tex">N(A^{T}) \in R^{m}</script></span>，「左」来自于左乘</p>
+<p>假设有矩阵 <span><span class="MathJax_Preview">\mathrm{A_{m \times n}}</span><script type="math/tex">\mathrm{A_{m \times n}}</script></span>，4 个基本的空间如下</p>
+<p>1）列空间 <span><span class="MathJax_Preview">\mathrm{C(A) \in R^{m}}</span><script type="math/tex">\mathrm{C(A) \in R^{m}}</script></span></p>
+<p>2）零空间 <span><span class="MathJax_Preview">\mathrm{N(A) \in R^{n}}</span><script type="math/tex">\mathrm{N(A) \in R^{n}}</script></span></p>
+<p>3）行空间 <span><span class="MathJax_Preview">\mathrm{R(A) = C(A^{T}) \in R^{n}}</span><script type="math/tex">\mathrm{R(A) = C(A^{T}) \in R^{n}}</script></span>，A 的行空间等价于 <span><span class="MathJax_Preview">A^{T}</span><script type="math/tex">A^{T}</script></span> 的列空间</p>
+<p>4）左零空间 <span><span class="MathJax_Preview">\mathrm{N(A^{T}) \in R^{m}}</span><script type="math/tex">\mathrm{N(A^{T}) \in R^{m}}</script></span>，「左」来自于左乘</p>
 <div>
 <div class="MathJax_Preview">
-(Ax)^{T} = 0^{T} = x^{T} A^{T}
+\mathbf{(Ax)^{T} = 0^{T} = x^{T} A^{T}}
 </div>
 <script type="math/tex; mode=display">
-(Ax)^{T} = 0^{T} = x^{T} A^{T}
+\mathbf{(Ax)^{T} = 0^{T} = x^{T} A^{T}}
 </script>
 </div>
 <table>
