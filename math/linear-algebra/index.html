@@ -7259,6 +7259,80 @@ A &= \mathrm{[a, b]} \\
 \mathrm{w_{n} = e^{\frac{2\pi}{n}i} = e^{\frac{2\pi}{2n}2i} = w_{2n}^{2}}
 </script>
 </div>
+<p>矩阵分解如下</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+\mathrm{F_{2n}}
+\end{bmatrix} =
+\begin{bmatrix}
+\mathrm{I} &amp; \mathrm{D} \\
+\mathrm{I} &amp; \mathrm{-D}
+\end{bmatrix}
+\begin{bmatrix}
+\mathrm{F_{n}} &amp; 0 \\
+0 &amp; \mathrm{F_{n}}
+\end{bmatrix} \mathrm{P}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+\mathrm{F_{2n}}
+\end{bmatrix} =
+\begin{bmatrix}
+\mathrm{I} & \mathrm{D} \\
+\mathrm{I} & \mathrm{-D}
+\end{bmatrix}
+\begin{bmatrix}
+\mathrm{F_{n}} & 0 \\
+0 & \mathrm{F_{n}}
+\end{bmatrix} \mathrm{P}
+</script>
+</div>
+<p>其中 D 是对角矩阵</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{D} =
+\begin{bmatrix}
+1 &amp;  &amp;  &amp;  &amp;  \\
+&amp; \mathrm{w} &amp; &amp; &amp; \\
+&amp; &amp; \mathrm{w^{2}} &amp; &amp; \\\
+&amp; &amp; &amp; \ddots &amp; \\
+&amp; &amp; &amp; &amp; \mathrm{w^{n-1}}
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{D} =
+\begin{bmatrix}
+1 &  &  &  &  \\
+& \mathrm{w} & & & \\
+& & \mathrm{w^{2}} & & \\\
+& & & \ddots & \\
+& & & & \mathrm{w^{n-1}}
+\end{bmatrix}
+</script>
+</div>
+<p>P 是置换矩阵，按照偶数行（从 0 开始）排在前面，奇数行排在后面，以一个 4 阶为例</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{P} =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{P} =
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+</script>
+</div>
+<p>递归地继续分解矩阵，直到 1 阶或 2 阶矩阵。FFT 的核心思想是建立一个复数正交矩阵。</p>
 <h2 id="_33">正定<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
 <h3 id="_34">对称矩阵<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
 <p>矩阵的特殊性体现在特征值和特征向量上。对于实对称矩阵</p>
