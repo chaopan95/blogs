@@ -7511,12 +7511,121 @@ A &= \mathrm{[a, b]} \\
 \end{vmatrix}
 </script>
 </div>
+<p>矩阵 A 是正定矩阵，需要符合下面三个条件之一</p>
+<p>1）所有的特征值大于0，即 <span><span class="MathJax_Preview">\lambda_{i} &gt; 0</span><script type="math/tex">\lambda_{i} > 0</script></span></p>
+<p>2）所有的主元大于0</p>
+<p>3）对任意的非零 x 满足</p>
 <div>
 <div class="MathJax_Preview">
 \mathrm{x^{T} A x &gt; 0}
 </div>
 <script type="math/tex; mode=display">
 \mathrm{x^{T} A x > 0}
+</script>
+</div>
+<p>如果特征值中，有一部分是 0，另一部分是正数，这样的矩阵成为半正定（positive semi-definite）矩阵，例如</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{A} =
+\begin{bmatrix}
+2 &amp; 6 \\
+6 &amp; 18
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{A} =
+\begin{bmatrix}
+2 & 6 \\
+6 & 18
+\end{bmatrix}
+</script>
+</div>
+<p>两个特征值</p>
+<div>
+<div class="MathJax_Preview">
+\lambda_{1} = 0, \lambda_{2} = 20
+</div>
+<script type="math/tex; mode=display">
+\lambda_{1} = 0, \lambda_{2} = 20
+</script>
+</div>
+<p>举一个正定矩阵的例子</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{A} =
+\begin{bmatrix}
+2 &amp; 6 \\
+6 &amp; 19
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{A} =
+\begin{bmatrix}
+2 & 6 \\
+6 & 19
+\end{bmatrix}
+</script>
+</div>
+<p>按照定义，对于任意的非零 x</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\mathrm{x^{T} A x} &amp;=
+\begin{bmatrix}
+\mathrm{x_{1}} &amp; \mathrm{x_{2}}
+\end{bmatrix}
+\begin{bmatrix}
+2 &amp; 6 \\
+6 &amp; 19
+\end{bmatrix}
+\begin{bmatrix}
+\mathrm{x_{1}} \\
+\mathrm{x_{2}}
+\end{bmatrix} \\
+&amp;= \mathrm{2 x_{1}^{2} + 12 x_{1}x_{1} + 19x_{2}^{2}} \\
+&amp;= \mathrm{2(x_{1} + 3x_{2})^{2} + x_{2}^{2}} &gt; 0
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathrm{x^{T} A x} &=
+\begin{bmatrix}
+\mathrm{x_{1}} & \mathrm{x_{2}}
+\end{bmatrix}
+\begin{bmatrix}
+2 & 6 \\
+6 & 19
+\end{bmatrix}
+\begin{bmatrix}
+\mathrm{x_{1}} \\
+\mathrm{x_{2}}
+\end{bmatrix} \\
+&= \mathrm{2 x_{1}^{2} + 12 x_{1}x_{1} + 19x_{2}^{2}} \\
+&= \mathrm{2(x_{1} + 3x_{2})^{2} + x_{2}^{2}} > 0
+\end{aligned}
+</script>
+</div>
+<p>注意到二次型的两个系数正好是矩阵的两个主元</p>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+2 &amp; 6 \\
+6 &amp; 19
+\end{bmatrix} =
+\begin{bmatrix}
+2 &amp; 6 \\
+0 &amp; 1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+2 & 6 \\
+6 & 19
+\end{bmatrix} =
+\begin{bmatrix}
+2 & 6 \\
+0 & 1
+\end{bmatrix}
 </script>
 </div>
 <h2 id="_36">相似<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h2>
