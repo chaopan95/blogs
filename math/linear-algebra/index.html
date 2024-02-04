@@ -1521,13 +1521,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lu" class="md-nav__link">
-    LU 分解
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     转置
   </a>
@@ -1815,8 +1808,28 @@
       
         <li class="md-nav__item">
   <a href="#_37" class="md-nav__link">
-    奇异值分解
+    分解
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lu" class="md-nav__link">
+    LU 分解
+  </a>
+  
+    <nav class="md-nav" aria-label="LU 分解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#svd" class="md-nav__link">
+    SVD
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1967,13 +1980,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lu" class="md-nav__link">
-    LU 分解
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     转置
   </a>
@@ -2261,8 +2267,28 @@
       
         <li class="md-nav__item">
   <a href="#_37" class="md-nav__link">
-    奇异值分解
+    分解
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lu" class="md-nav__link">
+    LU 分解
+  </a>
+  
+    <nav class="md-nav" aria-label="LU 分解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#svd" class="md-nav__link">
+    SVD
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3564,133 +3590,6 @@ d
 </script>
 </div>
 <p>可知，EA = I，那么 E 就是 A 的逆矩阵。</p>
-<h2 id="lu">LU 分解<a class="headerlink" href="#lu" title="Permanent link">&para;</a></h2>
-<p>假设 A 时可逆的，那么</p>
-<div>
-<div class="MathJax_Preview">
-\mathbf{A^{-1}A = I}
-</div>
-<script type="math/tex; mode=display">
-\mathbf{A^{-1}A = I}
-</script>
-</div>
-<p>对两端进行转置</p>
-<div>
-<div class="MathJax_Preview">
-\mathbf{(AA^{-1})^{T} = (A^{-1})^{T}A^{T} = I^{T} = I}
-</div>
-<script type="math/tex; mode=display">
-\mathbf{(AA^{-1})^{T} = (A^{-1})^{T}A^{T} = I^{T} = I}
-</script>
-</div>
-<p>我们可以得出一个结论，A 的转置的逆矩阵等价于 A 的逆矩阵的转置</p>
-<div>
-<div class="MathJax_Preview">
-\mathbf{(A^{T})^{-1} = (A^{-1})^{T}}
-</div>
-<script type="math/tex; mode=display">
-\mathbf{(A^{T})^{-1} = (A^{-1})^{T}}
-</script>
-</div>
-<p>前面说到消元的本质是行向量的线性变换，对矩阵 A 左乘一个初等变换矩阵得到 U</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-\begin{bmatrix}
-1 &amp; 0 \\
--4 &amp; 1
-\end{bmatrix} &amp;
-\begin{bmatrix}
-2 &amp; 1 \\
-8 &amp; 7
-\end{bmatrix} &amp; = &amp;
-\begin{bmatrix}
-2 &amp; 1 \\
-0 &amp; 3
-\end{bmatrix} \\
-\mathbf{E} &amp; \mathbf{A} &amp; = &amp; \mathbf{U}
-\end{matrix}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-\begin{bmatrix}
-1 & 0 \\
--4 & 1
-\end{bmatrix} &
-\begin{bmatrix}
-2 & 1 \\
-8 & 7
-\end{bmatrix} & = &
-\begin{bmatrix}
-2 & 1 \\
-0 & 3
-\end{bmatrix} \\
-\mathbf{E} & \mathbf{A} & = & \mathbf{U}
-\end{matrix}
-</script>
-</div>
-<p>我们将 E 挪到等式的右侧，便可以得到 A 的分解。</p>
-<div>
-<div class="MathJax_Preview">
-\begin{matrix}
-\begin{bmatrix}
-2 &amp; 1 \\
-8 &amp; 7
-\end{bmatrix} &amp; = &amp;
-\begin{bmatrix}
-1 &amp; 0 \\
-4 &amp; 1
-\end{bmatrix} &amp;
-\begin{bmatrix}
-2 &amp; 1 \\
-0 &amp; 3
-\end{bmatrix} &amp; = &amp;
-\begin{bmatrix}
-1 &amp; 0 \\
-4 &amp; 1
-\end{bmatrix} &amp;
-\begin{bmatrix}
-2 &amp; 0 \\
-0 &amp; 3
-\end{bmatrix} &amp;
-\begin{bmatrix}
-1 &amp; \frac{1}{2} \\
-0 &amp; 1
-\end{bmatrix} \\
-\mathrm{A} &amp; = &amp; \mathrm{L} &amp; \mathrm{U} &amp; = &amp; \mathrm{L} &amp; \mathrm{D} &amp; \mathrm{U}
-\end{matrix}
-</div>
-<script type="math/tex; mode=display">
-\begin{matrix}
-\begin{bmatrix}
-2 & 1 \\
-8 & 7
-\end{bmatrix} & = &
-\begin{bmatrix}
-1 & 0 \\
-4 & 1
-\end{bmatrix} &
-\begin{bmatrix}
-2 & 1 \\
-0 & 3
-\end{bmatrix} & = &
-\begin{bmatrix}
-1 & 0 \\
-4 & 1
-\end{bmatrix} &
-\begin{bmatrix}
-2 & 0 \\
-0 & 3
-\end{bmatrix} &
-\begin{bmatrix}
-1 & \frac{1}{2} \\
-0 & 1
-\end{bmatrix} \\
-\mathrm{A} & = & \mathrm{L} & \mathrm{U} & = & \mathrm{L} & \mathrm{D} & \mathrm{U}
-\end{matrix}
-</script>
-</div>
-<p>L 代表下三角（lower triangle），U 代表上三角（upper triangle），D 代表对角（diagonal）。如果我们考虑行交换，那么应该写成 PA = LU。</p>
 <h2 id="_5">转置<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>矩阵的转置指的是将 A 的列向量用行向量的方式排列</p>
 <div>
@@ -7638,8 +7537,136 @@ A &= \mathrm{[a, b]} \\
 \mathbf{B = M^{-1} A M}
 </script>
 </div>
-<h2 id="_37">奇异值分解<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h2>
-<p>奇异值分解（singular value decomposition，简称 SVD）</p>
+<h2 id="_37">分解<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h2>
+<h2 id="lu">LU 分解<a class="headerlink" href="#lu" title="Permanent link">&para;</a></h2>
+<p>假设 A 时可逆的，那么</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{A^{-1}A = I}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{A^{-1}A = I}
+</script>
+</div>
+<p>对两端进行转置</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{(AA^{-1})^{T} = (A^{-1})^{T}A^{T} = I^{T} = I}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{(AA^{-1})^{T} = (A^{-1})^{T}A^{T} = I^{T} = I}
+</script>
+</div>
+<p>我们可以得出一个结论，A 的转置的逆矩阵等价于 A 的逆矩阵的转置</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{(A^{T})^{-1} = (A^{-1})^{T}}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{(A^{T})^{-1} = (A^{-1})^{T}}
+</script>
+</div>
+<p>前面说到消元的本质是行向量的线性变换，对矩阵 A 左乘一个初等变换矩阵得到 U</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+1 &amp; 0 \\
+-4 &amp; 1
+\end{bmatrix} &amp;
+\begin{bmatrix}
+2 &amp; 1 \\
+8 &amp; 7
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+2 &amp; 1 \\
+0 &amp; 3
+\end{bmatrix} \\
+\mathbf{E} &amp; \mathbf{A} &amp; = &amp; \mathbf{U}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+1 & 0 \\
+-4 & 1
+\end{bmatrix} &
+\begin{bmatrix}
+2 & 1 \\
+8 & 7
+\end{bmatrix} & = &
+\begin{bmatrix}
+2 & 1 \\
+0 & 3
+\end{bmatrix} \\
+\mathbf{E} & \mathbf{A} & = & \mathbf{U}
+\end{matrix}
+</script>
+</div>
+<p>我们将 E 挪到等式的右侧，便可以得到 A 的分解。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\begin{bmatrix}
+2 &amp; 1 \\
+8 &amp; 7
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+1 &amp; 0 \\
+4 &amp; 1
+\end{bmatrix} &amp;
+\begin{bmatrix}
+2 &amp; 1 \\
+0 &amp; 3
+\end{bmatrix} &amp; = &amp;
+\begin{bmatrix}
+1 &amp; 0 \\
+4 &amp; 1
+\end{bmatrix} &amp;
+\begin{bmatrix}
+2 &amp; 0 \\
+0 &amp; 3
+\end{bmatrix} &amp;
+\begin{bmatrix}
+1 &amp; \frac{1}{2} \\
+0 &amp; 1
+\end{bmatrix} \\
+\mathrm{A} &amp; = &amp; \mathrm{L} &amp; \mathrm{U} &amp; = &amp; \mathrm{L} &amp; \mathrm{D} &amp; \mathrm{U}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\begin{bmatrix}
+2 & 1 \\
+8 & 7
+\end{bmatrix} & = &
+\begin{bmatrix}
+1 & 0 \\
+4 & 1
+\end{bmatrix} &
+\begin{bmatrix}
+2 & 1 \\
+0 & 3
+\end{bmatrix} & = &
+\begin{bmatrix}
+1 & 0 \\
+4 & 1
+\end{bmatrix} &
+\begin{bmatrix}
+2 & 0 \\
+0 & 3
+\end{bmatrix} &
+\begin{bmatrix}
+1 & \frac{1}{2} \\
+0 & 1
+\end{bmatrix} \\
+\mathrm{A} & = & \mathrm{L} & \mathrm{U} & = & \mathrm{L} & \mathrm{D} & \mathrm{U}
+\end{matrix}
+</script>
+</div>
+<p>L 代表下三角（lower triangle），U 代表上三角（upper triangle），D 代表对角（diagonal）。如果我们考虑行交换，那么应该写成 PA = LU。</p>
+<h3 id="svd">SVD<a class="headerlink" href="#svd" title="Permanent link">&para;</a></h3>
+<p>SVD（singular value decomposition）是奇异值分解的简称，对于任意的矩阵 A 可以分解成成两个正交矩阵和一个对角矩阵，表达如下</p>
 <div>
 <div class="MathJax_Preview">
 \mathbf{A = U \Sigma V^{T}}
@@ -7648,7 +7675,445 @@ A &= \mathrm{[a, b]} \\
 \mathbf{A = U \Sigma V^{T}}
 </script>
 </div>
-<p><span><span class="MathJax_Preview">\Sigma</span><script type="math/tex">\Sigma</script></span> 是对角矩阵，U 和 V 是正交矩阵</p>
+<p>如果 A 是实对称矩阵时，SVD 退化成如下形式</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{A = Q \Lambda Q^{T}}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{A = Q \Lambda Q^{T}}
+</script>
+</div>
+<p>更一般地情况，A 是可对角化的</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{A = S \Lambda S^{-1}}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{A = S \Lambda S^{-1}}
+</script>
+</div>
+<p>对于一个矩阵 <span><span class="MathJax_Preview">\mathrm{A_{n \times m}}</span><script type="math/tex">\mathrm{A_{n \times m}}</script></span> 而言，有列空间 <span><span class="MathJax_Preview">\mathrm{R^{m}}</span><script type="math/tex">\mathrm{R^{m}}</script></span> 和行空间 <span><span class="MathJax_Preview">\mathrm{R^{n}}</span><script type="math/tex">\mathrm{R^{n}}</script></span>。SVD 的想法是在行空间中找到一组基变换成列空间的一组基。例如，行空间的一组基为</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{v_{1}, v_{2}, \cdots, v_{r}}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{v_{1}, v_{2}, \cdots, v_{r}}
+</script>
+</div>
+<p>列空间的一组基为</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{u_{1}, u_{2}, \cdots, u_{r}}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{u_{1}, u_{2}, \cdots, u_{r}}
+</script>
+</div>
+<p>我们希望 A 经过行向量的基，变成列向量的基</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\mathrm{A v_{1} = \sigma_{1} u_{1}} \\
+\mathrm{A v_{2} = \sigma_{2} u_{2}} \\
+\vdots \\
+\mathrm{A v_{r} = \sigma_{r} u_{r}}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\mathrm{A v_{1} = \sigma_{1} u_{1}} \\
+\mathrm{A v_{2} = \sigma_{2} u_{2}} \\
+\vdots \\
+\mathrm{A v_{r} = \sigma_{r} u_{r}}
+\end{matrix}
+</script>
+</div>
+<p>即为</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\mathrm{A}
+\begin{bmatrix}
+\mathrm{v_{1}} &amp; \mathrm{v_{2}} &amp; \cdots &amp; \mathrm{v_{r}}
+\end{bmatrix} &amp;=
+\begin{bmatrix}
+\mathrm{u_{1} \sigma_{1}} &amp; \mathrm{u_{2} \sigma_{2}} &amp; \cdots &amp; \mathrm{v_{r} \sigma_{r}}
+\end{bmatrix} \\
+&amp;= \begin{bmatrix}
+\mathrm{u_{1}} &amp; \mathrm{u_{2}} &amp; \cdots &amp; \mathrm{u_{r}}
+\end{bmatrix}
+\begin{bmatrix}
+\sigma_{1} &amp; &amp; &amp; \\
+&amp; \sigma_{2} &amp; &amp; \\
+&amp; &amp; \ddots &amp; \\
+&amp; &amp; &amp; \sigma_{r} \\
+\end{bmatrix}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathrm{A}
+\begin{bmatrix}
+\mathrm{v_{1}} & \mathrm{v_{2}} & \cdots & \mathrm{v_{r}}
+\end{bmatrix} &=
+\begin{bmatrix}
+\mathrm{u_{1} \sigma_{1}} & \mathrm{u_{2} \sigma_{2}} & \cdots & \mathrm{v_{r} \sigma_{r}}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+\mathrm{u_{1}} & \mathrm{u_{2}} & \cdots & \mathrm{u_{r}}
+\end{bmatrix}
+\begin{bmatrix}
+\sigma_{1} & & & \\
+& \sigma_{2} & & \\
+& & \ddots & \\
+& & & \sigma_{r} \\
+\end{bmatrix}
+\end{aligned}
+</script>
+</div>
+<p>最终的形式为</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\mathrm{A V = U \Sigma} \\
+\Downarrow \\
+\mathrm{A = U \Sigma V^{-1} = U \Sigma V^{T}}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\mathrm{A V = U \Sigma} \\
+\Downarrow \\
+\mathrm{A = U \Sigma V^{-1} = U \Sigma V^{T}}
+\end{matrix}
+</script>
+</div>
+<p>如果我们想消除 U</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\mathrm{A^{T} A} &amp;= \mathrm{(U \Sigma V^{T})^{T} U \Sigma V^{T}} \\
+&amp;= \mathrm{V \Sigma U^{T} U \Sigma V^{T}} \\
+&amp;= \mathrm{V \Sigma^{2} V^{T}}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathrm{A^{T} A} &= \mathrm{(U \Sigma V^{T})^{T} U \Sigma V^{T}} \\
+&= \mathrm{V \Sigma U^{T} U \Sigma V^{T}} \\
+&= \mathrm{V \Sigma^{2} V^{T}}
+\end{aligned}
+</script>
+</div>
+<p>同样地，消除 V</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\mathrm{A A^{T}} &amp;= \mathrm{U \Sigma V^{T} (U \Sigma V^{T})^{T}} \\
+&amp;= \mathrm{U \Sigma V^{T} V \Sigma U^{T}} \\
+&amp;= \mathrm{U \Sigma^{2} U^{T}}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathrm{A A^{T}} &= \mathrm{U \Sigma V^{T} (U \Sigma V^{T})^{T}} \\
+&= \mathrm{U \Sigma V^{T} V \Sigma U^{T}} \\
+&= \mathrm{U \Sigma^{2} U^{T}}
+\end{aligned}
+</script>
+</div>
+<p>因此，如果想求出 U 和 V 只需要计算对应的对称矩阵的特征向量。例如</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{A} =
+\begin{bmatrix}
+4 &amp; 4 \\
+-3 &amp; 3
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{A} =
+\begin{bmatrix}
+4 & 4 \\
+-3 & 3
+\end{bmatrix}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\mathrm{A^{T}A} =
+\begin{bmatrix}
+4 &amp; -3 \\
+4 &amp; 3
+\end{bmatrix}
+\begin{bmatrix}
+4 &amp; 4 \\
+-3 &amp; 3
+\end{bmatrix} =
+\begin{bmatrix}
+25 &amp; 7 \\
+7 &amp; 25
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{A^{T}A} =
+\begin{bmatrix}
+4 & -3 \\
+4 & 3
+\end{bmatrix}
+\begin{bmatrix}
+4 & 4 \\
+-3 & 3
+\end{bmatrix} =
+\begin{bmatrix}
+25 & 7 \\
+7 & 25
+\end{bmatrix}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\mathrm{A A^{T}} =
+\begin{bmatrix}
+4 &amp; 4 \\
+-3 &amp; 3
+\end{bmatrix}
+\begin{bmatrix}
+4 &amp; -3 \\
+4 &amp; 3
+\end{bmatrix} =
+\begin{bmatrix}
+32 &amp; 0 \\
+0 &amp; 18
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{A A^{T}} =
+\begin{bmatrix}
+4 & 4 \\
+-3 & 3
+\end{bmatrix}
+\begin{bmatrix}
+4 & -3 \\
+4 & 3
+\end{bmatrix} =
+\begin{bmatrix}
+32 & 0 \\
+0 & 18
+\end{bmatrix}
+</script>
+</div>
+<p>特征值</p>
+<div>
+<div class="MathJax_Preview">
+\Sigma^{2} =
+\begin{bmatrix}
+32 &amp; 0 \\
+0 &amp; 18
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\Sigma^{2} =
+\begin{bmatrix}
+32 & 0 \\
+0 & 18
+\end{bmatrix}
+</script>
+</div>
+<p>特征向量（归一化）</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{U} =
+\begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{U} =
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\mathrm{V} = \frac{\sqrt{2}}{2}
+\begin{bmatrix}
+1 &amp; 1 \\
+1 &amp; -1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{V} = \frac{\sqrt{2}}{2}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix}
+</script>
+</div>
+<p>最后代回验证</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\mathrm{A} &amp;= \mathrm{U \Sigma V^{T}} \\
+&amp;=
+\begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+\sqrt{32} &amp; 0 \\
+0 &amp; \sqrt{18}
+\end{bmatrix}
+\frac{\sqrt{2}}{2}
+\begin{bmatrix}
+1 &amp; 1 \\
+1 &amp; -1
+\end{bmatrix} \\
+&amp;= \begin{bmatrix}
+4 &amp; 4 \\
+3 &amp; -3
+\end{bmatrix} \\
+&amp; \neq \begin{bmatrix}
+4 &amp; 4 \\
+-3 &amp; 3
+\end{bmatrix}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathrm{A} &= \mathrm{U \Sigma V^{T}} \\
+&=
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+\sqrt{32} & 0 \\
+0 & \sqrt{18}
+\end{bmatrix}
+\frac{\sqrt{2}}{2}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix} \\
+&= \begin{bmatrix}
+4 & 4 \\
+3 & -3
+\end{bmatrix} \\
+& \neq \begin{bmatrix}
+4 & 4 \\
+-3 & 3
+\end{bmatrix}
+\end{aligned}
+</script>
+</div>
+<p>这里出错了，原因是我们算出来正价矩阵 V 对应的特征值是平方状态</p>
+<div>
+<div class="MathJax_Preview">
+\Sigma^{2} =
+\begin{bmatrix}
+32 &amp; 0 \\
+0 &amp; 18
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\Sigma^{2} =
+\begin{bmatrix}
+32 & 0 \\
+0 & 18
+\end{bmatrix}
+</script>
+</div>
+<p>我们再取根号时默认了为正值。正确的方法是通过下式或者对角矩阵值的正负号</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{A V = \Sigma U}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{A V = \Sigma U}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{bmatrix}
+4 &amp; 4 \\
+-3 &amp; 3
+\end{bmatrix}
+\frac{\sqrt{2}}{2}
+\begin{bmatrix}
+1 &amp; 1 \\
+1 &amp; -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+\sqrt{32} &amp; 0 \\
+0 &amp; -\sqrt{18}
+\end{bmatrix}
+\begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 1
+\end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+4 & 4 \\
+-3 & 3
+\end{bmatrix}
+\frac{\sqrt{2}}{2}
+\begin{bmatrix}
+1 & 1 \\
+1 & -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+\sqrt{32} & 0 \\
+0 & -\sqrt{18}
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+</script>
+</div>
+<p>一般情况下，我们会选取对角元素为正值。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">svd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,],[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vh</span> <span class="o">=</span> <span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">Vh</span><span class="p">)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[[-1. 0.]</span>
+<span class="sd">[ 0. 1.]]</span>
+<span class="sd">[5.65685425 4.24264069]</span>
+<span class="sd">[[-0.70710678 -0.70710678]</span>
+<span class="sd">[-0.70710678 0.70710678]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="_38">应用<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h2>
 <h3 id="_39">马尔可夫矩阵<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
 <p>马尔可夫矩阵（Markov Matrix）表示状态转移概率，满足两个性质</p>
