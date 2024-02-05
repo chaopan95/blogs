@@ -7527,6 +7527,34 @@ A &= \mathrm{[a, b]} \\
 \end{bmatrix}
 </script>
 </div>
+<p>如果 A 和 B 都是正定矩阵且维度一致，那么 A + B 也是正定的，因为</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{x^{T} (A + B) x = x^{T}Ax + x^{T}Bx &gt; 0}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{x^{T} (A + B) x = x^{T}Ax + x^{T}Bx > 0}
+</script>
+</div>
+<p>正定性串联了最小二乘法，考虑一个矩阵 <span><span class="MathJax_Preview">\mathrm{A_{m \times n}}</span><script type="math/tex">\mathrm{A_{m \times n}}</script></span>，但是我们可以做一个转化</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{B = A^{T}A}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{B = A^{T}A}
+</script>
+</div>
+<p>我们关心 B 是不是一个正定矩阵或者半正定</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{x^{T}Bx = x^{T}A^{T}Ax = (Ax)^{T}Ax = |Ax|^{2} \geq 0}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{x^{T}Bx = x^{T}A^{T}Ax = (Ax)^{T}Ax = |Ax|^{2} \geq 0}
+</script>
+</div>
+<p>只有当 Ax = 0 时，上式的等号才成立，也就是 A 的零空间只有零向量时，即 A 的秩为 n。</p>
 <h2 id="_36">相似<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h2>
 <p>如果存在一个可逆矩阵 M，两个矩阵 A 和 B 是相似的，需要满足如下条件</p>
 <div>
