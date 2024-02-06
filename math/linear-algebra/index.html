@@ -3776,7 +3776,72 @@ d
 \mathrm{A_{right}^{-1} = A^{T}(AA^{T})^{-1}}
 </script>
 </div>
-<p>（4）如果行与列均不满秩（r &lt; m, r &lt; n）</p>
+<p>（4）如果行与列均不满秩（r &lt; m, r &lt; n），那么零空间和左零空间将会包含除了零向量的其他向量。假设行空间的向量为 x，通过 A 可以得到列空间的一个向量 Ax，如果这个向量通过某个变换 B 再回到 x，那么 B 就是 A 的伪逆（pseudo-inverse）</p>
+<div>
+<div class="MathJax_Preview">
+\mathrm{x = B Ax = A^{+} Ax}
+</div>
+<script type="math/tex; mode=display">
+\mathrm{x = B Ax = A^{+} Ax}
+</script>
+</div>
+<p>通过 SVD 求解 A 的伪逆</p>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\mathrm{A = U \Sigma V^{T}} \\
+\Downarrow \\
+\mathrm{A_{+} = V \Sigma^{+} U^{T}}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\mathrm{A = U \Sigma V^{T}} \\
+\Downarrow \\
+\mathrm{A_{+} = V \Sigma^{+} U^{T}}
+\end{matrix}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\begin{matrix}
+\Sigma =
+\begin{bmatrix}
+\sigma_{1} &amp; &amp; &amp; \\
+&amp; \sigma_{2} &amp; &amp; \\
+&amp; &amp; 0 &amp; \\
+&amp; &amp; &amp; \ddots
+\end{bmatrix}_{\mathrm{m \times n}} \\
+\Downarrow \\
+\Sigma^{+} =
+\begin{bmatrix}
+\frac{1}{\sigma_{1}} &amp; &amp; &amp; \\
+&amp; \frac{1}{\sigma_{2}} &amp; &amp; \\
+&amp; &amp; 0 &amp; \\
+&amp; &amp; &amp; \ddots
+\end{bmatrix}_{\mathrm{n \times m}}
+\end{matrix}
+</div>
+<script type="math/tex; mode=display">
+\begin{matrix}
+\Sigma =
+\begin{bmatrix}
+\sigma_{1} & & & \\
+& \sigma_{2} & & \\
+& & 0 & \\
+& & & \ddots
+\end{bmatrix}_{\mathrm{m \times n}} \\
+\Downarrow \\
+\Sigma^{+} =
+\begin{bmatrix}
+\frac{1}{\sigma_{1}} & & & \\
+& \frac{1}{\sigma_{2}} & & \\
+& & 0 & \\
+& & & \ddots
+\end{bmatrix}_{\mathrm{n \times m}}
+\end{matrix}
+</script>
+</div>
 <h2 id="_8">向量空间<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>向量空间（vector space）可以看成是向量的一个集合，在这个集合里，我们可以进行线性运算（加乘 <span><span class="MathJax_Preview">\alpha v + \beta w</span><script type="math/tex">\alpha v + \beta w</script></span>）。一个空间必须包含<strong>原点</strong>才能构成封闭空间。例如一个平面空间 <span><span class="MathJax_Preview">R^{2}</span><script type="math/tex">R^{2}</script></span> 涵盖了所有 2 维的向量（只有两个实数分量）。第一象限并不能构成向量空间，因为它不是封闭的线性运算。</p>
 <h3 id="_9">子空间<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
