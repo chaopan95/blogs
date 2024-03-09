@@ -1846,30 +1846,24 @@ $$
 \end{aligned}
 $$
 
-利用 Q 可以对 A 进行分解
-
-$$
-\mathbf{A = Q R}
-$$
-
-其中 Q 是正交矩阵，R 是非奇异上三角矩阵。例如 A 有两列线性无关向量，可以得到正交向量
-
-$$
-\begin{aligned}
-A &= \mathrm{[a, b]} \\
-&= \mathrm{QR} \\
-&= \mathrm{[q_{1}, q_{2}]}
-\begin{bmatrix}
-\mathrm{a^{T}q_{1}} & \mathrm{b^{T}q_{1}} \\
-\mathrm{a^{T}q_{2}} & \mathrm{b^{T}q_{2}}
-\end{bmatrix} \\
-&= \mathrm{[q_{1}, q_{2}]}
-\begin{bmatrix}
-\mathrm{a^{T}q_{1}} & \mathrm{b^{T}q_{1}} \\
-0 & \mathrm{b^{T}q_{2}}
-\end{bmatrix}
-\end{aligned}
-$$
+```python
+import numpy as np
+from scipy import linalg
+A = np.array([[1,1,0],[0,1,1],[1,0,1]])
+a = linalg.orth(A)
+print(np.array(linalg.orth(A),dtype=float))
+'''
+[[-5.77350269e-01  4.08248290e-01 -7.07106781e-01]
+ [-5.77350269e-01 -8.16496581e-01 -7.85046229e-17]
+ [-5.77350269e-01  4.08248290e-01  7.07106781e-01]]
+'''
+print(np.dot(A,A.T)-1)
+'''
+[[1 0 0]
+ [0 1 0]
+ [0 0 1]]
+'''
+```
 
 
 ## 行列式
@@ -3355,7 +3349,7 @@ $$
 
 
 ## 分解
-### LU 分解
+### LU
 假设 A 时可逆的，那么
 
 $$
@@ -3427,6 +3421,87 @@ $$
 $$
 
 L 代表下三角（lower triangle），U 代表上三角（upper triangle），D 代表对角（diagonal）。如果我们考虑行交换，那么应该写成 PA = LU。
+
+### QR
+正交三角分解（orthogonal triangle decomposition）用 QR 表示，因为 Q 在线性代数通常代表正交矩阵。考虑一个列满秩的矩阵 $\mathrm{A_{m \times n}}$，即列向量是线性无关的。
+
+$$
+\mathrm{A} =
+\begin{bmatrix}
+\mathrm{a_{1}} & \mathrm{a_{2}} & \cdots & \mathrm{a_{n}}
+\end{bmatrix}
+$$
+
+因此，我们可以对 A 进行正交化
+
+$$
+\begin{aligned}
+& \mathrm{q_{1} = \frac{a_{1}}{|a_{1}|} = k_{11}a_{1}} \\
+& \mathrm{q_{2} = \frac{a_{2} - \frac{a_{1}a_{1}^{T}}{a_{1}^{T}a_{1}}a_{2}}{|a_{2}|} = k_{22} a_{2} + k_{12} a_{1}} & \\
+& \vdots \\
+& \mathrm{q_{n} = \frac{a_{n} - \sum_{i=1}^{n-1} \frac{a_{i}a_{i}^{T}}{a_{i}^{T}a_{i}}a_{n}}{|a_{n}|} = k_{nn} a_{n} + \sum_{i = 1}^{n - 1} k_{in} a_{i}}
+\end{aligned}
+$$
+
+用正交向量表示 A 的列向量
+
+$$
+\begin{aligned}
+& \mathrm{a_{1} = h_{11} q_{1}} \\
+& \mathrm{a_{2} = h_{22} q_{2} + h_{12} q_{1}} \\
+& \vdots \\
+& \mathrm{a_{n} = h_{nn} q_{n} + \sum_{i = 1}^{n - 1} k_{in} q_{i}}
+\end{aligned}
+$$
+
+写成矩阵相乘的形式
+
+$$
+\mathrm{A_{m \times n} =
+\begin{bmatrix}
+\mathrm{q_{1}} & \mathrm{q_{2}} & \cdots & \mathrm{q_{n}}
+\end{bmatrix}
+\begin{bmatrix}
+\mathrm{h_{11}} & \mathrm{h_{12}} & \cdots & \mathrm{h_{1n}} \\
+& \mathrm{h_{22}} & \cdots & \mathrm{h_{2n}} \\
+& & \ddots &  \vdots \\
+& & & \mathrm{h_{nn}}
+\end{bmatrix}
+= Q_{m \times n} R_{n \times n}}
+$$
+
+```python
+import numpy as np
+
+A = [
+    [1, 0, 0],
+    [1, 1, 0],
+    [1, 1, 1],
+    [1, 1, 1]
+]
+A = np.array(A)
+Q, R = np.linalg.qr(A)
+print(Q)
+'''
+[[-0.5         0.8660254   0.        ]
+ [-0.5        -0.28867513  0.81649658]
+ [-0.5        -0.28867513 -0.40824829]
+ [-0.5        -0.28867513 -0.40824829]]
+'''
+print(R)
+'''
+[[-2.         -1.5        -1.        ]
+ [ 0.         -0.8660254  -0.57735027]
+ [ 0.          0.         -0.81649658]]
+'''
+print(Q.dot(Q.transpose()))
+'''
+array([[1.00000000e+00, 2.89687929e-17, 2.89687929e-17, 2.89687929e-17],
+       [2.89687929e-17, 1.00000000e+00, 7.07349921e-17, 7.07349921e-17],
+       [2.89687929e-17, 7.07349921e-17, 5.00000000e-01, 5.00000000e-01],
+       [2.89687929e-17, 7.07349921e-17, 5.00000000e-01, 5.00000000e-01]])
+'''
+```
 
 ### SVD
 SVD（singular value decomposition）是奇异值分解的简称，对于任意的矩阵 A 可以分解成成两个正交矩阵和一个对角矩阵，表达如下
@@ -3670,12 +3745,16 @@ a = [[4, 4,],[-3, 3]]
 A = np.array(a)
 U, s, Vh = svd(A)
 print(U)
-print(s)
-print(Vh)
 '''
 [[-1. 0.]
 [ 0. 1.]]
+'''
+print(s)
+'''
 [5.65685425 4.24264069]
+'''
+print(Vh)
+'''
 [[-0.70710678 -0.70710678]
 [-0.70710678 0.70710678]]
 '''

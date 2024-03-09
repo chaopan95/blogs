@@ -64,6 +64,10 @@ markdown_extensions:
 # Contents
 nav:
     - 介绍: index.md
+    - 数学:
+        - 线性代数: math/linear-algebra.md
+        - 概率&统计: math/prob-stat.md
+        - 图论: math/graph.md
     - 计算机基础:
         - 算法:
             - 排序:
@@ -150,9 +154,5 @@ nav:
             - 学习: ml/pgm/linearning.md
         - 对比学习:
             - 对比学习: ml/cl/contrastive_learning.md
-    - 数学:
-        - 概率&统计: math/prob-stat.md
-        - 线性代数: math/linear-algebra.md
-        - 图论: math/graph.md
     - 信号与系统:
         - 基础: signals/basis.md

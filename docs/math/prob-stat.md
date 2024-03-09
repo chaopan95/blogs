@@ -1,5 +1,7 @@
 ## 概率
-### 联合概率 Joint probability
+### 联合概率
+联合概率（Joint probability）
+
 $$
 \begin{aligned}
 P(X = x \text{ and } Y = y) &= P(X = x \mid Y = y) P(y = y) \\
@@ -16,8 +18,9 @@ $$
 \end{aligned}
 $$
 
+### 边际概率
+边际概率（Marginal Probability）
 
-### 边际概率 Marginal Probability
 $$
 \begin{aligned}
 & P(X = x) = \sum_{Y} P(X = a, Y = b) \\
@@ -25,7 +28,9 @@ $$
 \end{aligned}
 $$
 
-### 条件概率 Conditional probability
+### 条件概率
+条件概率（Conditional probability）
+
 $$
 \begin{aligned}
 & \sum_{x} P(X = a \mid Y = b) = 1 \\
@@ -33,7 +38,9 @@ $$
 \end{aligned}
 $$
 
-### 期望 Expect
+### 期望
+期望（Expect）
+
 $$
 \begin{aligned}
 & \text{E}(X, Y) = \sum_{i} x_{i} p(x_{i}), \quad i = 1, 2, \cdots, n \\
@@ -41,8 +48,12 @@ $$
 \end{aligned}
 $$
 
-### 方差 Variance
-$$\text{Var}(f(x)) = \text{E}[(f(x) - \text{E}[f(x)])^{2}]$$
+### 方差
+方差（Variance）
+
+$$
+\text{Var}(f(x)) = \text{E}[(f(x) - \text{E}[f(x)])^{2}]
+$$
 
 两个独立的标准正态分布 $X \sim (0, 1)$ $Y \sim (0, 1)$，两者的乘积也是服从标准正态分布
 
@@ -63,14 +74,14 @@ $$
 
 两个正态分布的之和也是服从正态分布 $N(\mu_{1} + \mu_{2}, \sigma_{1}^{2} + \sigma_{2}^{2})$
 
-## 样本方差 Sample Variance
+## 样本方差
 设样本均值（sample mean）是 $\bar{X}$, 样本方差（sample variance）是 $S^{2}$, 总体均值（ensemble average）是 $\mu$, 总体方差（ensemble variance）是 $\sigma^{2}$
 
 $$
-S^{2} = \frac{1}{n-1} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}
+\mathrm{S^{2} = \frac{1}{n-1} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}}
 $$
 
-## 无偏估计 Unbiased Estimate
+## 无偏估计
 假设我们想知道一个大学的学生身高，调查每一个学生不太现实（但是准确的），于是我们可以随机挑选100位同学，求一个均值。为了获得一个精确的估计，我们重复实验，然后计算样本均值，$\bar{X}_{2}$, $\bar{X}_{3}$, $\cdots$, $\bar{X}_{k}$。这里 $\bar{X}$ 就称为一个随机变量，$\bar{X}_{i}$ 是其可能的一个值。
 
 多次重复实验下，期望趋向于真值。样本方差如下：
@@ -109,7 +120,7 @@ $$
 S^{2} = \frac{n}{n-1}(\frac{1}{n}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) = \frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{X})^{2}
 $$
 
-因此
+因此，无偏估计（Unbiased Estimate）
 
 $$
 \begin{aligned}
@@ -126,8 +137,9 @@ E(S^{2}) & = E(\frac{1}{n-1} \sum_{i=1}^{n}(x_{i} - \bar{X})^{2}) = E(\frac{1}{n
 \end{aligned}
 $$
 
+### 协方差
+协方差（Covariance）
 
-### 协方差 Covariance
 $$
 \text{Cov}(f(x), g(y)) = \text{E}[(f(x) - \text{E}[f(x)])(g(y) - \text{E}[g(y)])]
 $$
