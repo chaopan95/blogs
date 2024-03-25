@@ -1785,16 +1785,16 @@
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
-&amp; \text{v = [1, 2, 3]} \\
-&amp; \text{w = [1, 2, 4]} \\
-&amp; \text{W = 6}
+&amp; \mathrm{v = [1, 2, 3]} \\
+&amp; \mathrm{w = [1, 2, 4]} \\
+&amp; \mathrm{W = 6}
 \end{aligned}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
-& \text{v = [1, 2, 3]} \\
-& \text{w = [1, 2, 4]} \\
-& \text{W = 6}
+& \mathrm{v = [1, 2, 3]} \\
+& \mathrm{w = [1, 2, 4]} \\
+& \mathrm{W = 6}
 \end{aligned}
 </script>
 </div>
@@ -1803,10 +1803,10 @@
 <p>设 dp[ i ][ j ] 为从第 i 件物品到最后一件物品在背包容量为 j 下的最大价值。此时的状态只会有两个：（1）第 i 件物品没有被选中，（2）第 i 件物品被选中。状态转移方程如下：</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ]} = \max(\text{dp[i + 1]][ j ], dp[i + 1][j - w[ i ]]} + v[ i ])
+\mathrm{dp[ i ][ j ] = \max(\text{dp[i + 1]][ j ], dp[i + 1][j - w[ i ]]} + v[ i ])}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ]} = \max(\text{dp[i + 1]][ j ], dp[i + 1][j - w[ i ]]} + v[ i ])
+\mathrm{dp[ i ][ j ] = \max(\text{dp[i + 1]][ j ], dp[i + 1][j - w[ i ]]} + v[ i ])}
 </script>
 </div>
 <p>（1）如果第 i 件物品没有被选中，那么第 i + 1 到最后一件物品的重量就是 j；（2）如果第 i 件物品被选中了，那么第 i + 1 到最后一件物品的重量就是 j - w[ i ]，这里可以认为，第 i 件物品被加入后，总重量将会达到 j，那么加入之前的重量自然就等于 j - w[ i ]。当然，在计算的时候需要判定，当前的总重量 j 是否大于第 i 件物品的重量。</p>
@@ -1833,7 +1833,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(N \times W)</span><script type="math/tex">O(N \times W)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(W)</span><script type="math/tex">O(W)</script></span>，N 为物品的数目，W 为限定的重量</p>
+时间复杂度 <span><span class="MathJax_Preview">\mathrm{O(N \times W)}</span><script type="math/tex">\mathrm{O(N \times W)}</script></span>，空间复杂度 <span><span class="MathJax_Preview">\mathrm{O(W)}</span><script type="math/tex">\mathrm{O(W)}</script></span>，N 为物品的数目，W 为限定的重量</p>
 <p><strong>「重构最优解」</strong></p>
 <p>除了得到最终的总价值，我们也希望获知背包的方案，即挑选哪些物品放入背包中。在这一步，我们需要二维数组记录每一步的迭代。因为某一件物品只有两种选择，加入背包和不加入背包，并且，当前的物品只与后（前）一件物品有关系，我们只需要知道 dp[ i ][ j ] 是等于 dp[i + 1][ j ] 还是等于 dp[i + 1][j - w[ i ]] + v[ i ]。如果是后者，说明第 i 件物品被放入，反之，则未被放入。我们只需要记录哪些物品被放入即可，同时更新 j。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1892,34 +1892,34 @@
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
-&amp; \text{pos + neg = sum} \\
-&amp; \text{pos - neg = target}
+&amp; \mathrm{pos + neg = sum} \\
+&amp; \mathrm{pos - neg = target}
 \end{aligned} \Rightarrow
-2 \times \text{neg = sum - target}
+2 \times \mathrm{neg = sum - target}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
-& \text{pos + neg = sum} \\
-& \text{pos - neg = target}
+& \mathrm{pos + neg = sum} \\
+& \mathrm{pos - neg = target}
 \end{aligned} \Rightarrow
-2 \times \text{neg = sum - target}
+2 \times \mathrm{neg = sum - target}
 </script>
 </div>
 <p>所以，sum 必须不小于 target，并且 sum - targte 必须是偶数。</p>
 <p>设 dp[ i ][ j ] 为从第 i 个数到最后一个数中求和等于 j 的方案数目。状态转移方程如下：</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ]} = 
+\mathrm{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, &amp; \quad \text{j } &lt; \text{nums[ i ]} \\
-\text{dp[i + 1][ j ] + dp[i + 1][j - nums[ i ]]}, &amp;\quad \text{j } \geq \text{nums[ i ]}
+\mathrm{dp[i + 1][ j ]}, &amp; \quad \mathrm{j } &lt; \text{nums[ i ]} \\
+\mathrm{dp[i + 1][ j ] + dp[i + 1][j - nums[ i ]]}, &amp;\quad \mathrm{j \geq \text{nums[ i ]}}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ]} = 
+\mathrm{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, & \quad \text{j } < \text{nums[ i ]} \\
-\text{dp[i + 1][ j ] + dp[i + 1][j - nums[ i ]]}, &\quad \text{j } \geq \text{nums[ i ]}
+\mathrm{dp[i + 1][ j ]}, & \quad \mathrm{j } < \text{nums[ i ]} \\
+\mathrm{dp[i + 1][ j ] + dp[i + 1][j - nums[ i ]]}, &\quad \mathrm{j \geq \text{nums[ i ]}}
 \end{cases}
 </script>
 </div>
@@ -1953,24 +1953,24 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(target \times n)</span><script type="math/tex">O(target \times n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(target)</span><script type="math/tex">O(target)</script></span>，这里 target 是目标值大小，n 是数组长度。</p>
+时间复杂度 <span><span class="MathJax_Preview">\mathrm{O(target \times n)}</span><script type="math/tex">\mathrm{O(target \times n)}</script></span>，空间复杂度 <span><span class="MathJax_Preview">\mathrm{O(target)}</span><script type="math/tex">\mathrm{O(target)}</script></span>，这里 target 是目标值大小，n 是数组长度。</p>
 <h3 id="_2">分割等和子集<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>给定一个正整数构成的数组，如 nums = [1, 5, 11, 5]，判断能否将此数组分割成两个数组（不要求连续），使两个子数组的和相等。给出的例子可以被分成 [1, 5, 5] 和 [ 11 ]</p>
 <p><strong>「分析」</strong></p>
 <p>按照题意，我们将一个数组分成两个部分，可以理解成选取若干个数，其和是原数组和的一半。因此，可以将此题转换成 01 背包问题。设 dp[ i ][ j ] 为从第 i 个元素到最后一个元素中选取某几个值，其和是否等于 j。如果原数组的和 sum 是奇数，那么直接返回 false，因为两个相等数的和一定是偶数。状态转移方程如下</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ]} = 
+\mathrm{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, &amp;\quad \text{j } &lt; \text{nums[ i ]} \\
-\text{dp[i + 1][ j ] or dp[i + 1][j - nums[ i ]]}, &amp;\quad \text{j } \geq \text{nums[ i ]}
+\mathrm{dp[i + 1][ j ]}, &amp;\quad \mathrm{j &lt; nums[ i ]} \\
+\mathrm{dp[i + 1][ j ] or dp[i + 1][j - nums[ i ]]}, &amp;\quad \mathrm{j \geq nums[ i ]}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ]} = 
+\mathrm{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, &\quad \text{j } < \text{nums[ i ]} \\
-\text{dp[i + 1][ j ] or dp[i + 1][j - nums[ i ]]}, &\quad \text{j } \geq \text{nums[ i ]}
+\mathrm{dp[i + 1][ j ]}, &\quad \mathrm{j < nums[ i ]} \\
+\mathrm{dp[i + 1][ j ] or dp[i + 1][j - nums[ i ]]}, &\quad \mathrm{j \geq nums[ i ]}
 \end{cases}
 </script>
 </div>
@@ -2040,7 +2040,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(sum \times n)</span><script type="math/tex">O(sum \times n)</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(sum)</span><script type="math/tex">O(sum)</script></span>，这里 sum 是原数组的和的一半，n 是数组长度。</p>
+时间复杂度 <span><span class="MathJax_Preview">\mathrm{O(sum \times n)}</span><script type="math/tex">\mathrm{O(sum \times n)}</script></span>，空间复杂度 <span><span class="MathJax_Preview">\mathrm{O(sum)}</span><script type="math/tex">\mathrm{O(sum)}</script></span>，这里 sum 是原数组的和的一半，n 是数组长度。</p>
 <h3 id="_3">最后一块石头的重量<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>给定一个数组 stones = [2, 7, 4, 1, 8, 1] 表示一组石头的重量。从当前的石头里任取两个，质量是 x 和 y，如果两块质量相等即 x = y，那么这两块石头被移除；反之，移除较小的那一块，并且较大的那一块变成这两块质量的差值（绝对值）。重复这个过程，直到剩余一块或者无剩余，求剩余的最小质量是多少。</p>
 <p><strong>「分析」</strong></p>
@@ -2048,59 +2048,59 @@
 <div>
 <div class="MathJax_Preview">
 \begin{aligned}
-&amp; \text{pos + neg = sum} \\
-&amp; \text{pos - neg = res}
-\end{aligned} \quad \Rightarrow \quad 2 \times \text{neg = sum - res}
+&amp; \mathrm{pos + neg = sum} \\
+&amp; \mathrm{pos - neg = res}
+\end{aligned} \quad \Rightarrow \quad 2 \times \mathrm{neg = sum - res}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
-& \text{pos + neg = sum} \\
-& \text{pos - neg = res}
-\end{aligned} \quad \Rightarrow \quad 2 \times \text{neg = sum - res}
+& \mathrm{pos + neg = sum} \\
+& \mathrm{pos - neg = res}
+\end{aligned} \quad \Rightarrow \quad 2 \times \mathrm{neg = sum - res}
 </script>
 </div>
 <p>那么我们可以得知</p>
 <div>
 <div class="MathJax_Preview">
-0 \leq \text{neg} \leq \left \lfloor \frac{\text{sum}}{2} \right \rfloor
+\mathrm{0 \leq neg \leq \left \lfloor \frac{sum}{2} \right \rfloor}
 </div>
 <script type="math/tex; mode=display">
-0 \leq \text{neg} \leq \left \lfloor \frac{\text{sum}}{2} \right \rfloor
+\mathrm{0 \leq neg \leq \left \lfloor \frac{sum}{2} \right \rfloor}
 </script>
 </div>
 <p>因此，我们可以理解成，从原数组中选取若干个值，其和等于 neg，并且使得</p>
 <div>
 <div class="MathJax_Preview">
-\arg \min_{\text{neg}} \text{(sum} - \text{neg} \times \text{2)}
+\mathrm{\arg \min_{neg} (sum - neg \times 2)}
 </div>
 <script type="math/tex; mode=display">
-\arg \min_{\text{neg}} \text{(sum} - \text{neg} \times \text{2)}
+\mathrm{\arg \min_{neg} (sum - neg \times 2)}
 </script>
 </div>
 <p>设 dp[ i ][ j ] 为从第 i 个数字到最后一个数字中选取若干个，它们的和在不超过 j 的情况下最大值是多少。状态转移方程为</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ]} = 
+\mathrm{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, &amp;\quad \text{j } &lt; \text{stones[ i ]} \\
+\mathrm{dp[i + 1][ j ]}, &amp;\quad \mathrm{j &lt; stones[ i ]} \\
 \max
 \begin{cases}
-\text{dp[i + 1][ j ]} \\
-\text{dp[i + 1][j - stones[ i ]] + stones[ i ]]}
+\mathrm{dp[i + 1][ j ]} \\
+\mathrm{dp[i + 1][j - stones[ i ]] + stones[ i ]]}
 \end{cases}
-, &amp;\quad \text{j } \geq \text{stones[ i ]}
+, &amp;\quad \mathrm{j \geq stones[ i ]}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ]} = 
+\mathrm{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, &\quad \text{j } < \text{stones[ i ]} \\
+\mathrm{dp[i + 1][ j ]}, &\quad \mathrm{j < stones[ i ]} \\
 \max
 \begin{cases}
-\text{dp[i + 1][ j ]} \\
-\text{dp[i + 1][j - stones[ i ]] + stones[ i ]]}
+\mathrm{dp[i + 1][ j ]} \\
+\mathrm{dp[i + 1][j - stones[ i ]] + stones[ i ]]}
 \end{cases}
-, &\quad \text{j } \geq \text{stones[ i ]}
+, &\quad \mathrm{j \geq stones[ i ]}
 \end{cases}
 </script>
 </div>
@@ -2129,44 +2129,44 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度：<span><span class="MathJax_Preview">O(tar \times n)</span><script type="math/tex">O(tar \times n)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(tar)</span><script type="math/tex">O(tar)</script></span>，这里 tar 是原数组的和的一半，n 是数组长度。</p>
+时间复杂度：<span><span class="MathJax_Preview">\mathrm{O(tar \times n)}</span><script type="math/tex">\mathrm{O(tar \times n)}</script></span>，空间复杂度：<span><span class="MathJax_Preview">\mathrm{O(tar)}</span><script type="math/tex">\mathrm{O(tar)}</script></span>，这里 tar 是原数组的和的一半，n 是数组长度。</p>
 <h3 id="_4">盈利计划<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>给定一个整数 n 代表人数，minProfit 代表最低盈利额，一串工作需要的人数 group = [2, 2]，每项工作对应的利润 profit = [2, 3]。要求实现最低盈利额，并且投入的人数和不能超过 n，这样的分配方案数目有多少个？</p>
 <p><strong>「分析」</strong></p>
 <p>在 01 背包问题的基础上，本题增加了最低盈利额的限制。设 dp[ i ][ j ][ k ] 为从 i 开始的工作中选取某些工作投入人力，在恰好 j 个人且盈利额不低于 k 的情况下，方案数目。状态转移方程如下</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ][ k ]} =
+\mathrm{dp[ i ][ j ][ k ]} =
 \begin{cases}
-\text{dp[i + 1][ j ][ k ]}, &amp;\quad \text{j } &lt; \text{group[ i ]} \\
+\mathrm{dp[i + 1][ j ][ k ]}, &amp;\quad \mathrm{j &lt; group[ i ]} \\
 \begin{aligned}
-&amp; \text{dp[i + 1][ j ][ k ]} + \\
-&amp; \text{dp[i + 1][j - group[ i ]][max(0, k - profit[ i ])]}
+&amp; \mathrm{dp[i + 1][ j ][ k ]} + \\
+&amp; \mathrm{dp[i + 1][j - group[ i ]][max(0, k - profit[ i ])]}
 \end{aligned}
-, &amp;\quad \text{j } \geq \text{group[ i ]}
+, &amp;\quad \mathrm{j \geq group[ i ]}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ][ k ]} =
+\mathrm{dp[ i ][ j ][ k ]} =
 \begin{cases}
-\text{dp[i + 1][ j ][ k ]}, &\quad \text{j } < \text{group[ i ]} \\
+\mathrm{dp[i + 1][ j ][ k ]}, &\quad \mathrm{j < group[ i ]} \\
 \begin{aligned}
-& \text{dp[i + 1][ j ][ k ]} + \\
-& \text{dp[i + 1][j - group[ i ]][max(0, k - profit[ i ])]}
+& \mathrm{dp[i + 1][ j ][ k ]} + \\
+& \mathrm{dp[i + 1][j - group[ i ]][max(0, k - profit[ i ])]}
 \end{aligned}
-, &\quad \text{j } \geq \text{group[ i ]}
+, &\quad \mathrm{j \geq group[ i ]}
 \end{cases}
 </script>
 </div>
 <p>边界条件 dp[ len ][ 0 ][ 0 ] = 1，表明不选任何工作时，投入的人数是 0，最低的盈利额也是 0，此时也是满足条件的一种方案。进一步，我们会发现，当 k = 0 即最低盈利额为 0，那么不论 i 和 j 为何值，dp[ i ][ j ][ 0 ] 均为 1。</p>
-<p><span><span class="MathJax_Preview">\text{k - profit[ i ]}</span><script type="math/tex">\text{k - profit[ i ]}</script></span> 为负数，说明第 i 个工作的利润本身就超过 minProfit，这就意味着，在选择第 i 个工作前，最低盈利可以为 0，这个时候只要投入的人数不超过 j - group[ i ]，都被视为满足要求的方案。相反，如果我们约束 <span><span class="MathJax_Preview">\text{k} \geq \text{profit[ i ]}</span><script type="math/tex">\text{k} \geq \text{profit[ i ]}</script></span>，我们最终得到的结果是<strong>恰好等于 minProfit</strong>的方案数，因为 k - profit[ i ] 只会转移到第三维成为 0 的状态。</p>
+<p><span><span class="MathJax_Preview">\mathrm{k - profit[ i ]}</span><script type="math/tex">\mathrm{k - profit[ i ]}</script></span> 为负数，说明第 i 个工作的利润本身就超过 minProfit，这就意味着，在选择第 i 个工作前，最低盈利可以为 0，这个时候只要投入的人数不超过 j - group[ i ]，都被视为满足要求的方案。相反，如果我们约束 <span><span class="MathJax_Preview">\mathrm{k \geq profit[ i ]}</span><script type="math/tex">\mathrm{k \geq profit[ i ]}</script></span>，我们最终得到的结果是<strong>恰好等于 minProfit</strong>的方案数，因为 k - profit[ i ] 只会转移到第三维成为 0 的状态。</p>
 <p>最终的答案是考察所有的工作且满足最低盈利额的条件下，对投入的人数遍历</p>
 <div>
 <div class="MathJax_Preview">
-\text{ans} = \sum_{j = 0}^{n} \text{dp[ 0 ][ j ][ minProfit ]}
+\mathrm{ans = \sum_{j = 0}^{n} dp[ 0 ][ j ][ minProfit ]}
 </div>
 <script type="math/tex; mode=display">
-\text{ans} = \sum_{j = 0}^{n} \text{dp[ 0 ][ j ][ minProfit ]}
+\mathrm{ans = \sum_{j = 0}^{n} dp[ 0 ][ j ][ minProfit ]}
 </script>
 </div>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -2210,7 +2210,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度：<span><span class="MathJax_Preview">O(len \times n \times minProfit)</span><script type="math/tex">O(len \times n \times minProfit)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n \times minProfit)</span><script type="math/tex">O(n \times minProfit)</script></span>，这里 len 是工作的个数 / 利润数组的长度，n 是总人数，minProfit 是最低盈利额。</p>
+时间复杂度：<span><span class="MathJax_Preview">\mathrm{O(len \times n \times minProfit)}</span><script type="math/tex">\mathrm{O(len \times n \times minProfit)}</script></span>，空间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n \times minProfit)}</span><script type="math/tex">\mathrm{O(n \times minProfit)}</script></span>，这里 len 是工作的个数 / 利润数组的长度，n 是总人数，minProfit 是最低盈利额。</p>
 <p>这个题目也可以定义成 dp[ i ][ j ][ k ] 从第 i 个工作到最后一个工作中选取某几个，在投入不超过 j 个人且利润不低于 k 的条件下的方案数目。对应的初始化应该改成 dp[ i ][ j ][ 0 ] = 1，最后的结果是 dp[ 0 ][ n ][ minProfit ]。</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -2253,10 +2253,10 @@
 <p>假设nums可以被分成两个数组，那么两个字数组的均值和nums的均值是一样的</p>
 <div>
 <div class="MathJax_Preview">
-\frac{S_{A}}{n_{A}} = \frac{S_{B}}{n_{B}} = \frac{S}{n} = \text{avg}
+\mathrm{\frac{S_{A}}{n_{A}} = \frac{S_{B}}{n_{B}} = \frac{S}{n} = avg}
 </div>
 <script type="math/tex; mode=display">
-\frac{S_{A}}{n_{A}} = \frac{S_{B}}{n_{B}} = \frac{S}{n} = \text{avg}
+\mathrm{\frac{S_{A}}{n_{A}} = \frac{S_{B}}{n_{B}} = \frac{S}{n} = avg}
 </script>
 </div>
 <p>那么，我们可以提前检查，是否存在<span><span class="MathJax_Preview">{n_{A}}</span><script type="math/tex">{n_{A}}</script></span>能够满足上式。之后就可以把问题转化为0-1背包问题，dp[ i ][ j ][ k ] 表示前 i 个元素中，选择 j 个数字，其和是否等于 k。同时需要检查 j * sum 是否等于 k * n。</p>
@@ -2325,32 +2325,32 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度：O(<span><span class="MathJax_Preview">n^{2}\sum\text{nums}</span><script type="math/tex">n^{2}\sum\text{nums}</script></span>)，空间复杂度：O(<span><span class="MathJax_Preview">n\sum\text{nums}</span><script type="math/tex">n\sum\text{nums}</script></span>)。</p>
+时间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n^{2}\sum nums)}</span><script type="math/tex">\mathrm{O(n^{2}\sum nums)}</script></span>，空间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n\sum nums)}</span><script type="math/tex">\mathrm{O(n\sum nums)}</script></span>。</p>
 <h2 id="_6">完全背包<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>一个背包承重总量是 W，有 N 种物品，每一件有自己的价值 <span><span class="MathJax_Preview">v_{i}</span><script type="math/tex">v_{i}</script></span> 和 重量 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span>，每一种类的物品无限供应，试问在不超过背包承重总量下，背包的价值最大。</p>
+<p>一个背包承重总量是 W，有 N 种物品，每一件有自己的价值 <span><span class="MathJax_Preview">\mathrm{v_{i}}</span><script type="math/tex">\mathrm{v_{i}}</script></span> 和 重量 <span><span class="MathJax_Preview">\mathrm{w_{i}}</span><script type="math/tex">\mathrm{w_{i}}</script></span>，每一种类的物品无限供应，试问在不超过背包承重总量下，背包的价值最大。</p>
 <p><strong>「分析」</strong></p>
-<p>完全背包问题种，每一件物品的供应是无限的，但因为背包承重总量有限，可以放入的数目依然有限 <span><span class="MathJax_Preview">0 \leq c_{i} \leq \frac{W}{w_{i}}</span><script type="math/tex">0 \leq c_{i} \leq \frac{W}{w_{i}}</script></span>，那么我们依然可以设 dp[ i ][ j ] 为从第 i 件物品到最后一件物品中选取若干件，在重量和不超过 j 的情况下最大价值。</p>
+<p>完全背包问题种，每一件物品的供应是无限的，但因为背包承重总量有限，可以放入的数目依然有限 <span><span class="MathJax_Preview">\mathrm{0 \leq c_{i} \leq \frac{W}{w_{i}}}</span><script type="math/tex">\mathrm{0 \leq c_{i} \leq \frac{W}{w_{i}}}</script></span>，那么我们依然可以设 dp[ i ][ j ] 为从第 i 件物品到最后一件物品中选取若干件，在重量和不超过 j 的情况下最大价值。</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ]} =
+\mathrm{dp[ i ][ j ]} =
 \begin{cases}
-\text{dp[i + 1][ j ]}, &amp;\quad \text{j } &lt; \text{w[ i ]} \\
+\mathrm{dp[i + 1][ j ]}, &amp;\quad \mathrm{j &lt; w[ i ]} \\
 \max
 \begin{cases}
-\text{dp[i + 1][ j ]} \\
-\text{dp[ i ][j - w[ i ]] + v[ i ]}
-\end{cases}, &amp;\quad \text{j } \geq \text{w[ i ]}
+\mathrm{dp[i + 1][ j ]} \\
+\mathrm{dp[ i ][j - w[ i ]] + v[ i ]}
+\end{cases}, &amp;\quad \mathrm{j \geq w[ i ]}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ]} =
+\mathrm{dp[ i ][ j ]} =
 \begin{cases}
-\text{dp[i + 1][ j ]}, &\quad \text{j } < \text{w[ i ]} \\
+\mathrm{dp[i + 1][ j ]}, &\quad \mathrm{j < w[ i ]} \\
 \max
 \begin{cases}
-\text{dp[i + 1][ j ]} \\
-\text{dp[ i ][j - w[ i ]] + v[ i ]}
-\end{cases}, &\quad \text{j } \geq \text{w[ i ]}
+\mathrm{dp[i + 1][ j ]} \\
+\mathrm{dp[ i ][j - w[ i ]] + v[ i ]}
+\end{cases}, &\quad \mathrm{j \geq w[ i ]}
 \end{cases}
 </script>
 </div>
@@ -2387,10 +2387,10 @@
 <p>空间上进行优化</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ j ]} = \max(\text{dp[ j ], dp[j - w[ i ]] + v[ i ]})
+\mathrm{dp[ j ] = \max(dp[ j ], dp[j - w[ i ]] + v[ i ]})
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ j ]} = \max(\text{dp[ j ], dp[j - w[ i ]] + v[ i ]})
+\mathrm{dp[ j ] = \max(dp[ j ], dp[j - w[ i ]] + v[ i ]})
 </script>
 </div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -2421,27 +2421,27 @@
 <p>本题可以被理解成完全背包问题，每一枚硬币的价值为 1，求最小的价值。设 dp[ i ][ j ] 从第 i 个到最后一个硬币中选取若干个构成 j 数额的最少硬币个数。状态转移方程如下</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ]} =
+\mathrm{dp[ i ][ j ]} =
 \begin{cases}
-\text{dp[i + 1][ j ]}, &amp;\quad \text{j } &lt; \text{coins[ i ]} \\
+\mathrm{dp[i + 1][ j ]}, &amp;\quad \mathrm{j &lt; coins[ i ]} \\
 \max
 \begin{cases}
-\text{dp[i + 1][ j ]} \\
-\text{dp[ i ][j - coins[ i ]] + 1}
+\mathrm{dp[i + 1][ j ]} \\
+\mathrm{dp[ i ][j - coins[ i ]] + 1}
 \end{cases}
-, &amp;\quad \text{j } \geq \text{coins[ i ]}
+, &amp;\quad \mathrm{j \geq coins[ i ]}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ]} =
+\mathrm{dp[ i ][ j ]} =
 \begin{cases}
-\text{dp[i + 1][ j ]}, &\quad \text{j } < \text{coins[ i ]} \\
+\mathrm{dp[i + 1][ j ]}, &\quad \mathrm{j < coins[ i ]} \\
 \max
 \begin{cases}
-\text{dp[i + 1][ j ]} \\
-\text{dp[ i ][j - coins[ i ]] + 1}
+\mathrm{dp[i + 1][ j ]} \\
+\mathrm{dp[ i ][j - coins[ i ]] + 1}
 \end{cases}
-, &\quad \text{j } \geq \text{coins[ i ]}
+, &\quad \mathrm{j \geq coins[ i ]}
 \end{cases}
 </script>
 </div>
@@ -2467,24 +2467,24 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度：<span><span class="MathJax_Preview">O(n \times amount)</span><script type="math/tex">O(n \times amount)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(amount)</span><script type="math/tex">O(amount)</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
+时间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n \times amount)}</span><script type="math/tex">\mathrm{O(n \times amount)}</script></span>，空间复杂度：<span><span class="MathJax_Preview">\mathrm{O(amount)}</span><script type="math/tex">\mathrm{O(amount)}</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
 <h3 id="ii">换零钱 II<a class="headerlink" href="#ii" title="Permanent link">&para;</a></h3>
 <p>同上题背景，求能够组合出给定金额的零钱方案数目</p>
 <p><strong>「分析」</strong></p>
 <p>设 dp[ i ][ j ] 从第 i 个到最后一个硬币中选取若干个组成金额是 j 的方案数目</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ]} = 
+\mathrm{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, &amp;\quad \text{j } &lt; \text{coins[ i ]} \\
-\text{dp[i + 1][ j ] + dp[ i ][j - coins[ i ]]}, &amp;\quad \text{j } \geq \text{coins[ i ]}
+\mathrm{dp[i + 1][ j ]}, &amp;\quad \mathrm{j &lt; coins[ i ]} \\
+\mathrm{dp[i + 1][ j ] + dp[ i ][j - coins[ i ]]}, &amp;\quad \mathrm{j \geq coins[ i ]}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ]} = 
+\mathrm{dp[ i ][ j ]} = 
 \begin{cases}
-\text{dp[i + 1][ j ]}, &\quad \text{j } < \text{coins[ i ]} \\
-\text{dp[i + 1][ j ] + dp[ i ][j - coins[ i ]]}, &\quad \text{j } \geq \text{coins[ i ]}
+\mathrm{dp[i + 1][ j ]}, &\quad \mathrm{j < coins[ i ]} \\
+\mathrm{dp[i + 1][ j ] + dp[ i ][j - coins[ i ]]}, &\quad \mathrm{j \geq coins[ i ]}
 \end{cases}
 </script>
 </div>
@@ -2509,7 +2509,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度：<span><span class="MathJax_Preview">O(\text{n} \times \text{amount})</span><script type="math/tex">O(\text{n} \times \text{amount})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(\text{amount})</span><script type="math/tex">O(\text{amount})</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
+时间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n \times amount)}</span><script type="math/tex">\mathrm{O(n \times amount)}</script></span>，空间复杂度：<span><span class="MathJax_Preview">\mathrm{O(amount)}</span><script type="math/tex">\mathrm{O(amount)}</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
 <h3 id="iii">换零钱 III<a class="headerlink" href="#iii" title="Permanent link">&para;</a></h3>
 <p>同上题背景，依然求方案数目，但要求硬币具有先后顺序，例如 coins = [1, 2, 3]，组成 amount = 3 的方案有 [1, 1, 1]，[1, 2]，[2, 1]，[ 3 ] 4 种，注意到 [1, 2] 和 [2, 1] 是不一样的方案。</p>
 <p><strong>「分析」</strong></p>
@@ -2539,7 +2539,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度：<span><span class="MathJax_Preview">O(n \times amount)</span><script type="math/tex">O(n \times amount)</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(amount)</span><script type="math/tex">O(amount)</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
+时间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n \times amount)}</span><script type="math/tex">\mathrm{O(n \times amount)}</script></span>，空间复杂度：<span><span class="MathJax_Preview">\mathrm{O(amount)}</span><script type="math/tex">\mathrm{O(amount)}</script></span>，其中，n 表示零钱数组的长度，amount 表示需要组成的金额。</p>
 <h3 id="_7">平方数的最小个数<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>给定一个正数 n = 13，它可以由若干个平方数相加而得，返回这些平方数的个数的最小值。13 = 4 + 9，即最小值为 2.</p>
 <p><strong>「分析」</strong></p>
@@ -2581,14 +2581,14 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度：<span><span class="MathJax_Preview">O(n \sqrt{n})</span><script type="math/tex">O(n \sqrt{n})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，其中 n 是给定的值。</p>
+时间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n \sqrt{n})}</span><script type="math/tex">\mathrm{O(n \sqrt{n})}</script></span>，空间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n)}</span><script type="math/tex">\mathrm{O(n)}</script></span>，其中 n 是给定的值。</p>
 <p>方法 2：设 dp[ i ] 为构成 i 的最小平方数的个数。</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ]} = \min_{k \in [1, i)} (\text{dp[ k ] + dp[i - k]})
+\mathrm{dp[ i ] = \min_{k \in [1, i)} (dp[ k ] + dp[i - k])}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ]} = \min_{k \in [1, i)} (\text{dp[ k ] + dp[i - k]})
+\mathrm{dp[ i ] = \min_{k \in [1, i)} (dp[ k ] + dp[i - k])}
 </script>
 </div>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -2630,7 +2630,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度：<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n)</span><script type="math/tex">O(n)</script></span>，其中 n 是给定的值。</p>
+时间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n^{2})}</span><script type="math/tex">\mathrm{O(n^{2})}</script></span>，空间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n)}</span><script type="math/tex">\mathrm{O(n)}</script></span>，其中 n 是给定的值。</p>
                 
               
               

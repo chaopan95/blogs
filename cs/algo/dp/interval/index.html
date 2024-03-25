@@ -1692,20 +1692,20 @@
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
-&amp; aaabb\underline{c}baa \\
+&amp; \mathrm{aaabb\underline{c}baa} \\
 &amp; \downarrow \\
-&amp; aaa\underline{bbb}aa \\
+&amp; \mathrm{aaa\underline{bbb}aa} \\
 &amp; \downarrow \\
-&amp; \underline{aaaaa}
+&amp; \mathrm{\underline{aaaaa}}
 \end{matrix}
 </div>
 <script type="math/tex; mode=display">
 \begin{matrix}
-& aaabb\underline{c}baa \\
+& \mathrm{aaabb\underline{c}baa} \\
 & \downarrow \\
-& aaa\underline{bbb}aa \\
+& \mathrm{aaa\underline{bbb}aa} \\
 & \downarrow \\
-& \underline{aaaaa}
+& \mathrm{\underline{aaaaa}}
 \end{matrix}
 </script>
 </div>
@@ -1713,17 +1713,17 @@
 <p>设 dp[ i ][ j ] 为字符串 s[i : j] 删除有相同字符组成的子串的最小次数。如果两端的字符相同，那么状态跳转到 s[i : j - 1]；如果两端字符串不想等，那么我们寻找一个最佳切分点 k ，使切分出来的两段和最小。特别地，对于每一个单字符，最小切割次数是 1 。</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ]} =
+\mathrm{dp[ i ][ j ]} =
 \begin{cases}
-\text{dp[ i ][j - 1]}, &amp; \quad \text{s[ i ] == s[ j ]} \\
-\min_{k \in [i, j)}(\text{dp[ i ][ k ] + dp[k + 1][ j ]}), &amp; \quad \text{otherwise}
+\mathrm{dp[ i ][j - 1]}, &amp; \quad \mathrm{s[ i ] == s[ j ]} \\
+\mathrm{\min_{k \in [i, j)}(dp[ i ][ k ] + dp[k + 1][ j ])}, &amp; \quad \text{otherwise}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ]} =
+\mathrm{dp[ i ][ j ]} =
 \begin{cases}
-\text{dp[ i ][j - 1]}, & \quad \text{s[ i ] == s[ j ]} \\
-\min_{k \in [i, j)}(\text{dp[ i ][ k ] + dp[k + 1][ j ]}), & \quad \text{otherwise}
+\mathrm{dp[ i ][j - 1]}, & \quad \mathrm{s[ i ] == s[ j ]} \\
+\mathrm{\min_{k \in [i, j)}(dp[ i ][ k ] + dp[k + 1][ j ])}, & \quad \text{otherwise}
 \end{cases}
 </script>
 </div>
@@ -1762,7 +1762,7 @@
 <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span></p>
+时间复杂度 <span><span class="MathJax_Preview">\mathrm{O(n^{3})}</span><script type="math/tex">\mathrm{O(n^{3})}</script></span>，空间复杂度 <span><span class="MathJax_Preview">\mathrm{O(n^{2})}</span><script type="math/tex">\mathrm{O(n^{2})}</script></span></p>
 <h3 id="_4">删除回文串的最小次数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>给定一个字符串如“aabc”，每一次删除一个回文子串，直到字符串为空，求最小删除次数。</p>
 <p><strong>「分析」</strong></p>
@@ -1770,33 +1770,33 @@
 <div>
 <div class="MathJax_Preview">
 \begin{matrix}
-\text{case 1: } &amp; {\color{Red} a}xxxx \\
-\text{case 2: } &amp; {\color{Red} a}xx{\color{Red} a}xxx
+\mathrm{\text{case 1: }} &amp; \mathrm{{\color{Red} a}xxxx} \\
+\mathrm{\text{case 2: }} &amp; \mathrm{{\color{Red} a}xx{\color{Red} a}xxx}
 \end{matrix}
 </div>
 <script type="math/tex; mode=display">
 \begin{matrix}
-\text{case 1: } & {\color{Red} a}xxxx \\
-\text{case 2: } & {\color{Red} a}xx{\color{Red} a}xxx
+\mathrm{\text{case 1: }} & \mathrm{{\color{Red} a}xxxx} \\
+\mathrm{\text{case 2: }} & \mathrm{{\color{Red} a}xx{\color{Red} a}xxx}
 \end{matrix}
 </script>
 </div>
 <p>case 1 只删除一个字符，case 2 删除一个区间的字符</p>
 <div>
 <div class="MathJax_Preview">
-\text{dp[ i ][ j ]} =
+\mathrm{dp[ i ][ j ]} =
 \begin{cases}
-\text{1}, &amp; \quad i == j \\
-\max(\text{dp[i + 1][ j ] + 1, dp[i + 2][ j ] + 1}), &amp; \quad \text{s[ i ] == s[i + 1]} \\
-\max_{k \in [i + 2, j]} (\text{dp[i + 1][k - 1] + dp[k + 1][ j ]}), &amp; \quad \text{s[ i ] == s[ k ]}
+1, &amp; \quad \mathrm{i == j} \\
+\mathrm{\max(dp[i + 1][ j ] + 1, dp[i + 2][ j ] + 1)}, &amp; \quad \mathrm{s[ i ] == s[i + 1]} \\
+\mathrm{\max_{k \in [i + 2, j]} (dp[i + 1][k - 1] + dp[k + 1][ j ])}, &amp; \quad \mathrm{s[ i ] == s[ k ]}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{dp[ i ][ j ]} =
+\mathrm{dp[ i ][ j ]} =
 \begin{cases}
-\text{1}, & \quad i == j \\
-\max(\text{dp[i + 1][ j ] + 1, dp[i + 2][ j ] + 1}), & \quad \text{s[ i ] == s[i + 1]} \\
-\max_{k \in [i + 2, j]} (\text{dp[i + 1][k - 1] + dp[k + 1][ j ]}), & \quad \text{s[ i ] == s[ k ]}
+1, & \quad \mathrm{i == j} \\
+\mathrm{\max(dp[i + 1][ j ] + 1, dp[i + 2][ j ] + 1)}, & \quad \mathrm{s[ i ] == s[i + 1]} \\
+\mathrm{\max_{k \in [i + 2, j]} (dp[i + 1][k - 1] + dp[k + 1][ j ])}, & \quad \mathrm{s[ i ] == s[ k ]}
 \end{cases}
 </script>
 </div>
@@ -1837,7 +1837,7 @@
 <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度 <span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>，空间复杂度 <span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span></p>
+时间复杂度 <span><span class="MathJax_Preview">\mathrm{O(n^{3})}</span><script type="math/tex">\mathrm{O(n^{3})}</script></span>，空间复杂度 <span><span class="MathJax_Preview">\mathrm{O(n^{2})}</span><script type="math/tex">\mathrm{O(n^{2})}</script></span></p>
 <h3 id="_5">戳气球<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>有 n 个气球，编号为0 到 n - 1，每个气球上都标有一个数字，这些数字存在数组 nums 中。现在要求你戳破所有的气球。戳破第 i 个气球，你可以获得 nums[i - 1] * nums[i] * nums[i + 1] 枚硬币。 这里的 i - 1 和 i + 1 代表和 i 相邻的两个气球的序号。如果 i - 1或 i + 1 超出了数组的边界，那么就当它是一个数字为 1 的气球。求所能获得硬币的最大数量。</p>
 <p><strong>「分析」</strong></p>
@@ -1913,7 +1913,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-时间复杂度：<span><span class="MathJax_Preview">O(n^{3})</span><script type="math/tex">O(n^{3})</script></span>，空间复杂度：<span><span class="MathJax_Preview">O(n^{2})</span><script type="math/tex">O(n^{2})</script></span>。</p>
+时间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n^{3})}</span><script type="math/tex">\mathrm{O(n^{3})}</script></span>，空间复杂度：<span><span class="MathJax_Preview">\mathrm{O(n^{2})}</span><script type="math/tex">\mathrm{O(n^{2})}</script></span>。</p>
                 
               
               

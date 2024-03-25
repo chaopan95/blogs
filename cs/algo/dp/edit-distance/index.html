@@ -1674,34 +1674,34 @@
 <p>莱文斯特距离（Levenshtein distance）有三种操作：增加、删除和替换</p>
 <div>
 <div class="MathJax_Preview">
-\text{LD}_{a, b}(i, j) =
+\mathrm{LD_{a, b}(i, j)} =
 \begin{cases}
-\max(i, j), &amp; \min(i, j) = 0 \\
+\mathrm{\max(i, j)}, &amp; \mathrm{\min(i, j) = 0} \\
 \min
 \begin{cases}
-\text{LD}_{a, b}(i-1, j) + 1 \\
-\text{LD}_{a, b}(i, j-1) + 1 \\
-\text{LD}_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}
+\mathrm{LD_{a, b}(i-1, j) + 1} \\
+\mathrm{LD_{a, b}(i, j-1) + 1} \\
+\mathrm{LD_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}}
 \end{cases}, &amp; \text{otherwise}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{LD}_{a, b}(i, j) =
+\mathrm{LD_{a, b}(i, j)} =
 \begin{cases}
-\max(i, j), & \min(i, j) = 0 \\
+\mathrm{\max(i, j)}, & \mathrm{\min(i, j) = 0} \\
 \min
 \begin{cases}
-\text{LD}_{a, b}(i-1, j) + 1 \\
-\text{LD}_{a, b}(i, j-1) + 1 \\
-\text{LD}_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}
+\mathrm{LD_{a, b}(i-1, j) + 1} \\
+\mathrm{LD_{a, b}(i, j-1) + 1} \\
+\mathrm{LD_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}}
 \end{cases}, & \text{otherwise}
 \end{cases}
 </script>
 </div>
 <p>a, b denote two strings to compare.</p>
-<p>If <span><span class="MathJax_Preview">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i-1, j) + 1</span><script type="math/tex">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i-1, j) + 1</script></span>, delete <span><span class="MathJax_Preview">a_{i}</span><script type="math/tex">a_{i}</script></span></p>
-<p>If <span><span class="MathJax_Preview">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i, j-1) + 1</span><script type="math/tex">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i, j-1) + 1</script></span>, insert <span><span class="MathJax_Preview">b_{j}</span><script type="math/tex">b_{j}</script></span> at <span><span class="MathJax_Preview">a_{i}</span><script type="math/tex">a_{i}</script></span></p>
-<p>If <span><span class="MathJax_Preview">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}</span><script type="math/tex">\text{LD}_{a, b}(i, j) = \text{LD}_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}</script></span>, replace <span><span class="MathJax_Preview">a_{i}</span><script type="math/tex">a_{i}</script></span> with <span><span class="MathJax_Preview">b_{j}</span><script type="math/tex">b_{j}</script></span></p>
+<p>If <span><span class="MathJax_Preview">\mathrm{LD_{a, b}(i, j) = LD_{a, b}(i-1, j) + 1}</span><script type="math/tex">\mathrm{LD_{a, b}(i, j) = LD_{a, b}(i-1, j) + 1}</script></span>, delete <span><span class="MathJax_Preview">\mathrm{a_{i}}</span><script type="math/tex">\mathrm{a_{i}}</script></span></p>
+<p>If <span><span class="MathJax_Preview">\mathrm{LD_{a, b}(i, j) = LD_{a, b}(i, j-1) + 1}</span><script type="math/tex">\mathrm{LD_{a, b}(i, j) = LD_{a, b}(i, j-1) + 1}</script></span>, insert <span><span class="MathJax_Preview">\mathrm{b_{j}}</span><script type="math/tex">\mathrm{b_{j}}</script></span> at <span><span class="MathJax_Preview">\mathrm{a_{i}}</span><script type="math/tex">\mathrm{a_{i}}</script></span></p>
+<p>If <span><span class="MathJax_Preview">\mathrm{LD_{a, b}(i, j) = LD_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}}</span><script type="math/tex">\mathrm{LD_{a, b}(i, j) = LD_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}}</script></span>, replace <span><span class="MathJax_Preview">\mathrm{a_{i}}</span><script type="math/tex">\mathrm{a_{i}}</script></span> with <span><span class="MathJax_Preview">\mathrm{b_{j}}</span><script type="math/tex">\mathrm{b_{j}}</script></span></p>
 <p>例如：word1 = "horse", word2 = "ros"，莱文斯特距离为3</p>
 <p>解释：</p>
 <p>horse -&gt; rorse (将 'h' 替换为 'r')</p>
@@ -1852,40 +1852,40 @@
 <p>Damerau-Levenshtein distance</p>
 <div>
 <div class="MathJax_Preview">
-\text{DLD}_{a, b}(i, j) =
+\mathrm{DLD_{a, b}(i, j)} =
 \begin{cases}
-\max(i, j), &amp; \quad \text{if } \min(i, j) = 0 \\
+\mathrm{\max(i, j)}, &amp; \quad \mathrm{\min(i, j) = 0} \\
 \min
 \begin{cases}
-\text{DLD}_{a, b}(i-1, j) + 1 \\
-\text{DLD}_{a, b}(i, j-1) + 1 \\
-\text{DLD}_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}} \\
-\text{DLD}_{a, b}(i-2, j-2) + 1
-\end{cases}, &amp; \quad \text{if } i, j &gt; 1 \text{ and } a_{i} = b_{j-1} \text{ and } a_{i-1} = b_{j} \\
+\mathrm{DLD_{a, b}(i-1, j) + 1} \\
+\mathrm{DLD_{a, b}(i, j-1) + 1} \\
+\mathrm{DLD_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}} \\
+\mathrm{DLD_{a, b}(i-2, j-2) + 1}
+\end{cases}, &amp; \quad \mathrm{i, j &gt; 1 \text{ and } a_{i} = b_{j-1} \text{ and } a_{i-1} = b_{j}} \\
 \min
 \begin{cases}
-\text{DLD}_{a, b}(i-1, j) + 1 \\
-\text{DLD}_{a, b}(i, j-1) + 1 \\
-\text{DLD}_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}
+\mathrm{DLD_{a, b}(i-1, j) + 1} \\
+\mathrm{DLD_{a, b}(i, j-1) + 1} \\
+\mathrm{DLD_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}}
 \end{cases}, &amp; \quad \text{otherwise}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-\text{DLD}_{a, b}(i, j) =
+\mathrm{DLD_{a, b}(i, j)} =
 \begin{cases}
-\max(i, j), & \quad \text{if } \min(i, j) = 0 \\
+\mathrm{\max(i, j)}, & \quad \mathrm{\min(i, j) = 0} \\
 \min
 \begin{cases}
-\text{DLD}_{a, b}(i-1, j) + 1 \\
-\text{DLD}_{a, b}(i, j-1) + 1 \\
-\text{DLD}_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}} \\
-\text{DLD}_{a, b}(i-2, j-2) + 1
-\end{cases}, & \quad \text{if } i, j > 1 \text{ and } a_{i} = b_{j-1} \text{ and } a_{i-1} = b_{j} \\
+\mathrm{DLD_{a, b}(i-1, j) + 1} \\
+\mathrm{DLD_{a, b}(i, j-1) + 1} \\
+\mathrm{DLD_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}} \\
+\mathrm{DLD_{a, b}(i-2, j-2) + 1}
+\end{cases}, & \quad \mathrm{i, j > 1 \text{ and } a_{i} = b_{j-1} \text{ and } a_{i-1} = b_{j}} \\
 \min
 \begin{cases}
-\text{DLD}_{a, b}(i-1, j) + 1 \\
-\text{DLD}_{a, b}(i, j-1) + 1 \\
-\text{DLD}_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}
+\mathrm{DLD_{a, b}(i-1, j) + 1} \\
+\mathrm{DLD_{a, b}(i, j-1) + 1} \\
+\mathrm{DLD_{a, b}(i-1, j-1) + 1_{a_{i} \neq b_{j}}}
 \end{cases}, & \quad \text{otherwise}
 \end{cases}
 </script>
