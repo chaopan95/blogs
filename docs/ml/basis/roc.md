@@ -183,7 +183,8 @@ double auc3(vector<double> predict, vector<int> label,
             neg_hist[nth_bin]++;
         }
     }
-    int accumulated_negative = 0, satisfied_pair = 0;
+    int accumulated_negative = 0;
+    double satisfied_pair = 0;
     for (int i = 0; i < bins; i++) {
         satisfied_pair += pos_hist[i] * accumulated_negative +
         pos_hist[i] * neg_hist[i] * 0.5;
