@@ -1989,7 +1989,8 @@
 23
 24
 25
-26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="nf">auc3</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">predict</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">label</span><span class="p">,</span>
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="nf">auc3</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">predict</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">label</span><span class="p">,</span>
             <span class="kt">int</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// 时间复杂度O(n)</span>
     <span class="kt">int</span> <span class="n">cnt_pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cnt_neg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -2007,7 +2008,8 @@
             <span class="n">neg_hist</span><span class="p">[</span><span class="n">nth_bin</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="kt">int</span> <span class="n">accumulated_negative</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">satisfied_pair</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">accumulated_negative</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">satisfied_pair</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">bins</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">satisfied_pair</span> <span class="o">+=</span> <span class="n">pos_hist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">accumulated_negative</span> <span class="o">+</span>
         <span class="n">pos_hist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">neg_hist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">;</span>
